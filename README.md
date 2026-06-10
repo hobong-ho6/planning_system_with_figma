@@ -100,6 +100,7 @@ Figma 프로토타입 인터랙션을 분석해 브라우저에서 클릭 가능
 │   ├── fetch_glossary.py        # 용어집 API 조회 → glossary.json
 │   ├── validate_translation.py  # 3단계 검증 (P0 발견 시 exit 1)
 │   ├── export_to_xlt.py         # XLT 업로드용 엑셀 생성
+│   ├── test_validation.py       # 회귀 테스트 (스크립트 수정 후 실행)
 │   ├── setup_new_project.sh     # 새 프로젝트 초기화
 │   └── requirements.txt         # pandas, openpyxl, requests
 ├── templates/           # 프로토타입 템플릿 (index.html, style.css, script.js, data.js, i18n.js)

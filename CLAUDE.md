@@ -91,6 +91,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `validate_translation.py` | 3단계 검증 수행 (P0/P1/P2) | 1단계 Step 5 |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
 | `setup_new_project.sh` | 새 프로젝트 초기화 (복사 + 폴더 생성 + 검증) | 새 프로젝트 시작 시 |
+| `test_validation.py` | 엑셀 규격·검증 로직 회귀 테스트 | scripts/ 수정 후 필수 실행 |
 | `requirements.txt` | Python 의존성 목록 | 최초 설치 시 |
 
 **사용 예시**:
