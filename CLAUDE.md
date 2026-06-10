@@ -64,7 +64,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ### md 폴더 관리 규칙
 - 모든 가이드/절차 문서는 `md/` 폴더에만 생성·수정한다
-- 프로젝트 루트에 가이드성 `.md` 파일을 생성하지 않는다 (CLAUDE.md, service-spec.md 제외)
+- 프로젝트 루트에 가이드성 `.md` 파일을 생성하지 않는다 (CLAUDE.md, README.md, service-spec.md 제외)
 - 새로운 절차가 필요하면 `md/` 폴더에 추가하고 CLAUDE.md의 모듈별 가이드 표를 업데이트한다
 
 ### 🚀 사전 준비된 리소스
