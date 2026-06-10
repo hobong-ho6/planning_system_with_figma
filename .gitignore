@@ -1,0 +1,14 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+
+# 프로젝트별 산출물 (CLAUDE.md '복사 제외 항목' 참조)
+xlt/
+assets/
+scripts/glossary.json
+translation_*.json
+translation_*.md
+*_validation_report.md
