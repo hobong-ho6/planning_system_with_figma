@@ -90,6 +90,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `fetch_glossary.py` | 용어집 API 조회 → glossary.json | 1단계 Step 3 |
 | `validate_translation.py` | 3단계 검증 수행 (P0/P1/P2) | 1단계 Step 5 |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
+| `build_prototype_data.py` | data.js/i18n.js 생성 + 무결성 검증 (입력: prototype_input.json, translation_extract.json, translation_data.json, comments_data.json) | 2단계 Step 5 |
 | `setup_new_project.sh` | 새 프로젝트 초기화 (복사 + 폴더 생성 + 검증) | 새 프로젝트 시작 시 |
 | `test_validation.py` | 엑셀 규격·검증 로직 회귀 테스트 | scripts/ 수정 후 필수 실행 |
 | `requirements.txt` | Python 의존성 목록 | 최초 설치 시 |
@@ -108,6 +109,10 @@ issues = validator.run()
 # 1단계 Step 7: 엑셀 생성
 from scripts.export_to_xlt import create_xlt_excel
 filepath = create_xlt_excel(translation_data, output_dir='xlt')
+```
+```bash
+# 2단계 Step 5: data.js/i18n.js 생성 (입력 JSON 산출물 준비 후)
+python3 scripts/build_prototype_data.py
 ```
 
 #### 🎨 프로토타입 템플릿 (`templates/`)
@@ -193,7 +198,7 @@ cp templates/* .
 새 프로젝트에서 다음을 확인:
 - [ ] `CLAUDE.md` 파일 존재
 - [ ] `md/` 폴더에 7개 가이드 파일 존재
-- [ ] `scripts/` 폴더에 3개 Python 스크립트 + setup_new_project.sh + requirements.txt 존재
+- [ ] `scripts/` 폴더에 5개 Python 스크립트(fetch_glossary, validate_translation, export_to_xlt, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
 - [ ] `templates/` 폴더에 5개 템플릿 존재
 - [ ] Python 의존성 설치 완료 (`pip list | grep pandas`)
 

@@ -103,6 +103,29 @@ Figma 파일의 프로토타입 인터랙션을 추출하여, 브라우저에서
 - ⚠️ `get_screenshot` URL은 위키 등 외부 문서에 삽입 금지 (만료됨) — 로컬 다운로드 전용
 
 ### Step 5: 웹 프로토타입 생성
+
+**data.js/i18n.js는 손으로 작성하지 않는다 — 표준 스크립트로 생성한다:**
+
+1. Step 1~3, 7~8의 추출 결과를 `prototype_input.json`으로 저장:
+   ```jsonc
+   {
+     "startScreen": "51762:8511",
+     "screens": [ { "id": "51762:8511", "name": "프레임 이름", "w": 375, "h": 812 } ],
+     "interactions": [
+       { "src": "화면ID", "trig": "ON_CLICK", "dest": "화면ID", "x": 0, "y": 0, "w": 100, "h": 50, "label": "설명" },
+       { "src": "...", "trig": "AFTER_TIMEOUT", "dest": "...", "x": 0, "y": 0, "w": 375, "h": 812, "label": "...", "timeoutSec": 1 }
+     ],
+     "variants": [ { "screenId": "화면ID", "x": 24, "y": 1145, "w": 16, "h": 16, "label": "체크박스" } ]
+   }
+   ```
+2. 템플릿 복사 + 생성 스크립트 실행:
+   ```bash
+   cp templates/index.html templates/style.css templates/script.js .
+   python3 scripts/build_prototype_data.py
+   ```
+   - 입력: `prototype_input.json`, `translation_extract.json`, `translation_data.json`(aliases 포함), `comments_data.json`
+   - 스크립트가 화면별 텍스트 수 일치·한글 텍스트 키 매핑·인터랙션 화면 존재·AFTER_TIMEOUT timeoutSec를 자동 검증하고, 실패 시 누락 목록을 출력하며 중단된다
+
 파일 구조:
 ```
 project/
@@ -354,6 +377,23 @@ variantSwaps: [
 - [ ] 긴 화면(812px 초과) 스크롤 및 핫스팟/오버레이 위치 확인
 - [ ] 모든 경로가 상대 경로인지 확인 (dropweb 규격)
 
+**자동 무결성 체크 (node로 즉시 실행 가능):**
+```bash
+cat data.js i18n.js > /tmp/check.js && cat >> /tmp/check.js <<'JS'
+const fs = require('fs');
+let fail = 0;
+const bad = APP_DATA.interactions.filter(i => !APP_DATA.screens[i.sourceScreen] || (i.trigger !== 'CHANGE_TO' && !APP_DATA.screens[i.destination]));
+if (bad.length) { fail++; console.log('❌ 인터랙션 화면 누락:', bad.length); }
+let miss = 0;
+for (const nodes of Object.values(APP_DATA.textNodes))
+  for (const n of nodes) if (n.xltKey && I18N.en_US[n.text] === undefined) miss++;
+if (miss) { fail++; console.log('❌ I18N 매핑 누락:', miss); }
+for (const s of Object.values(APP_DATA.screens)) if (!fs.existsSync(s.image)) { fail++; console.log('❌ 이미지 없음:', s.image); }
+console.log(fail ? '❌ 무결성 실패' : '✅ 무결성 통과');
+JS
+node /tmp/check.js
+```
+
 ---
 
 ## 사용자 확인 사항
@@ -387,3 +427,6 @@ variantSwaps: [
 1. `md/` 폴더를 복사하거나 동일 위치에서 참조
 2. CLAUDE.md의 파이프라인 순서에 따라 실행
 3. 모든 코드 파일은 절차에 따라 자동 생성됨
+
+### 뷰어 코드 수정 시 템플릿 동기화 (필수)
+프로젝트 루트의 `index.html`/`style.css`/`script.js`에 **기능을 추가·수정했다면 동일 내용을 `templates/`에도 반영**한다 (`cp index.html style.css script.js templates/`). 동기화하지 않으면 다음 프로젝트가 구버전 뷰어로 생성된다. 단, `data.js`/`i18n.js`는 프로젝트별 산출물이므로 templates에 복사하지 않는다.

@@ -26,3 +26,4 @@ generate_prototype_data.py
 wiki_content.xhtml
 wiki_image_urls.json
 .claude/
+prototype_input.json
