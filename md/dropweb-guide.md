@@ -126,6 +126,16 @@ my-site/
 - 최대 파일 크기: **150MB** (ZIP 압축 상태)
 - ZIP 파일만 업로드 가능
 
+### 6-1. ZIP 생성 규칙
+
+- 배포용 ZIP은 반드시 **`프로젝트루트/dropweb/` 폴더에 생성**한다 (폴더가 없으면 생성)
+  ```bash
+  mkdir -p dropweb
+  zip -r dropweb/dropweb_prototype.zip index.html style.css script.js data.js i18n.js service-spec.md assets/ -x "*.DS_Store"
+  ```
+- ZIP에는 **배포 파일만 포함**한다: `index.html`, `style.css`, `script.js`, `data.js`, `i18n.js`, `service-spec.md`, `assets/`
+- 포함 금지: `md/`, `scripts/`, `templates/`, `xlt/`, `dropweb/`(자기 자신), `.claude/`, `.git/`, 임시 파일(`translation_*.json` 등)
+
 ### 7. 서비스 기획서 자동 관리 (service-spec.md)
 
 사이트 개발과 동시에 **`service-spec.md`** 파일을 작업 폴더에 생성하고, 기능 추가/수정/삭제 시 항상 최신 상태로 유지합니다.

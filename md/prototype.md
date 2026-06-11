@@ -68,6 +68,8 @@ Figma 파일의 프로토타입 인터랙션을 추출하여, 브라우저에서
 4. **페이지 소속 검증**: 도출된 각 화면 ID의 상위 페이지가 URL의 node-id(대상 페이지)와 일치하는지 확인
    - 인터랙션 destination은 페이지 경계를 넘을 수 있으므로, 검증 없이 수집하면 다른 페이지의 화면이 export 대상에 포함된다
    - 다른 페이지 소속 화면은 목록에서 **제외**하고, 제외된 화면 ID와 출처 페이지를 사용자에게 보고한다
+   - 예외: `CHANGE_TO`의 destination은 화면이 아니라 **컴포넌트 variant**(COMPONENT_SET 자식)이므로 화면 목록·페이지 소속 검증 대상이 아니다 — Step 7에서 처리한다
+5. **AFTER_TIMEOUT 트리거는 지연 시간도 추출**: `reaction.trigger.timeout`(초 단위)을 함께 수집한다 — Step 5에서 실제 타이머로 구현하는 데 필요
 
 **추출 완료 후 보고:**
 ```
@@ -95,6 +97,11 @@ Figma 파일의 프로토타입 인터랙션을 추출하여, 브라우저에서
 2. 반환된 URL에서 PNG 다운로드 → `assets/screens/` 저장
 3. 파일명 규칙: `{nodeId에서 : → -}.png` (예: `51762-8511.png`)
 
+**토큰이 없을 때 대안 (MCP `get_screenshot`):**
+- REST API 토큰이 없으면 MCP `get_screenshot`으로 export 가능 — 단, **1x 해상도**(원본 크기, scale 미지원)이고 반환 URL이 **단기 만료**되므로 발급 즉시 curl로 다운로드한다
+- `get_screenshot`이 invalid node로 실패하는 노드(라이브러리 컴포넌트 variant 등)는 `use_figma`에서 `node.exportAsync({format:"PNG", constraint:{type:"SCALE", value:4}})` 후 base64로 반환받아 저장한다
+- ⚠️ `get_screenshot` URL은 위키 등 외부 문서에 삽입 금지 (만료됨) — 로컬 다운로드 전용
+
 ### Step 5: 웹 프로토타입 생성
 파일 구조:
 ```
@@ -112,7 +119,7 @@ project/
 const APP_DATA = {
   startScreen: "시작화면ID",
   screens: { "ID": { name, image, width, height } },
-  interactions: [{ sourceScreen, trigger, destination, hotspot: {x,y,w,h}, label }],
+  interactions: [{ sourceScreen, trigger, destination, hotspot: {x,y,w,h}, label, timeoutMs? }],  // timeoutMs: AFTER_TIMEOUT 전용 (Figma trigger.timeout 초 → ms)
   comments: [{ id, screenId, author, date, message, offset, resolved }]
 };
 ```
@@ -122,6 +129,10 @@ const APP_DATA = {
 - 뒤로가기: history 스택 기반
 - 코멘트 토글: ON/OFF 버튼으로 핀 표시/숨김
 - 핫스팟 디버그 모드: 영역 시각화
+- **AFTER_TIMEOUT 자동 전환**: 핫스팟이 아닌 **실제 타이머**로 구현한다
+  - `trigger === 'AFTER_TIMEOUT'` 인터랙션은 핫스팟 렌더링에서 제외 (전체 프레임 타임아웃이 핫스팟이 되면 다른 클릭을 가린다)
+  - 화면 진입 시 `setTimeout(() => navigateTo(dest), timeoutMs)` 예약, 화면 이탈(navigateTo) 시 기존 타이머 전부 `clearTimeout`
+  - 한 화면에 타임아웃이 여러 개면 Figma와 동일하게 가장 짧은 것이 먼저 발동한다
 
 #### script.js ↔ data.js 인터페이스 계약 (필수)
 script.js는 반드시 아래 전역 변수와 구조에 의존해야 한다. 독자적 데이터 구조를 만들지 않는다.
@@ -303,7 +314,13 @@ variantSwaps: [
 - z-index를 hotspot(10)보다 낮게(8) 설정하여 네비게이션 핫스팟과 충돌 방지
 - 같은 위치에 NAVIGATE와 CHANGE_TO가 모두 있으면 CHANGE_TO 우선 (상위 z-index)
 
-### Step 8: 코멘트 통합 (선택)
+### Step 8: 코멘트 통합 — 코멘트가 있으면 필수
+
+**⚠️ 이 단계는 생략 가능한 단계가 아니다.** 과거 "(선택)"이라는 표기를 "해도 되고 안 해도 된다"로 잘못 해석해 코멘트를 누락한 사례가 있다.
+- 반드시 코멘트 API를 조회한다. 대상 페이지에 코멘트가 **있으면 무조건 포함**한다
+- 생략이 허용되는 경우는 단 두 가지: ① 조회 결과 대상 페이지 소속 코멘트가 0건, ② 사용자가 "코멘트 미포함"을 명시적으로 선택
+- 어느 경우든 조회 결과(전체 N건 중 대상 페이지 M건)를 사용자에게 보고한다
+
 1. Figma REST API로 코멘트 조회:
    ```
    GET https://api.figma.com/v1/files/{fileKey}/comments
@@ -320,10 +337,17 @@ variantSwaps: [
 3. `node_offset` 좌표를 화면 내 위치로 매핑
 4. 팝오버는 `position: fixed`로 device-frame 밖에 렌더링 (잘림 방지)
 
+#### 코멘트 UI 동작 (필수 구현)
+- **우측 코멘트 리스트 패널**: 화면 우측에 현재 화면의 코멘트 전체 리스트(작성자·날짜·내용)를 고정 패널로 표시. 코멘트가 없는 화면에서는 패널 숨김
+- **리스트 → 화면 연동**: 리스트 항목 클릭 시 해당 코멘트 팝오버가 화면 내 핀 위치에서 열림. 핀이 숨김 상태면 자동 표시, 핀이 뷰포트 밖이면(긴 화면) 해당 위치로 스크롤, 선택된 리스트 항목은 하이라이트
+- **외부 클릭 닫기**: 팝오버가 열린 상태에서 팝오버·핀·리스트 항목 이외 영역을 클릭하면 팝오버가 닫힘 (`document` click 리스너에서 `closest()`로 예외 판별)
+- 화면 전환 시 열린 팝오버는 닫고 패널을 새 화면 기준으로 갱신
+
 ### Step 9: 검증
 - [ ] 브라우저에서 index.html 열어 클릭 네비게이션 확인
 - [ ] 모든 핫스팟이 올바른 화면으로 이동하는지 확인
 - [ ] 코멘트 토글 ON/OFF 정상 동작
+- [ ] 우측 코멘트 리스트 패널 표시, 리스트 클릭 → 화면 내 팝오버 열림, 외부 클릭 → 닫힘 확인
 - [ ] XLT Key 토글 ON 시 각 텍스트 위치에 Key가 정확히 표시되는지 확인
 - [ ] 언어 선택과 XLT 토글 조합 동작 확인
 - [ ] Variant Swap 클릭 시 컴포넌트 이미지가 전환되는지 확인

@@ -11,7 +11,8 @@ const state = {
     showComments: false,
     showXltKeys: false,
     debugHotspots: false,
-    variantStates: {}  // { variantId: currentStateIndex }
+    variantStates: {},  // { variantId: currentStateIndex }
+    timeoutTimers: []  // AFTER_TIMEOUT 자동 전환 타이머
 };
 
 // DOM Elements
@@ -56,6 +57,9 @@ function navigateTo(screenId) {
     renderScreen(screen);
     renderHotspots(screenId);
     renderVariants(screenId);
+    scheduleTimeouts(screenId);
+    renderCommentPanel(screenId);
+    closeCommentPopover();
 
     // Update overlays
     if (state.showXltKeys) {
@@ -83,7 +87,7 @@ function renderScreen(screen) {
 function renderHotspots(screenId) {
     hotspotsOverlay.innerHTML = '';
 
-    const interactions = APP_DATA.interactions.filter(i => i.sourceScreen === screenId);
+    const interactions = APP_DATA.interactions.filter(i => i.sourceScreen === screenId && i.trigger !== 'AFTER_TIMEOUT');
 
     interactions.forEach(interaction => {
         const hotspot = document.createElement('div');
@@ -105,6 +109,17 @@ function renderHotspots(screenId) {
         hotspot.title = interaction.label || `Go to ${APP_DATA.screens[interaction.destination]?.name}`;
 
         hotspotsOverlay.appendChild(hotspot);
+    });
+}
+
+function scheduleTimeouts(screenId) {
+    // 화면 전환 시 기존 타이머 해제 후, AFTER_TIMEOUT 인터랙션을 Figma 설정 시간대로 예약
+    state.timeoutTimers.forEach(clearTimeout);
+    state.timeoutTimers = [];
+
+    const timeouts = APP_DATA.interactions.filter(i => i.sourceScreen === screenId && i.trigger === 'AFTER_TIMEOUT');
+    timeouts.forEach(t => {
+        state.timeoutTimers.push(setTimeout(() => navigateTo(t.destination), t.timeoutMs || 1000));
     });
 }
 
@@ -217,6 +232,69 @@ function renderVariants(screenId) {
     });
 }
 
+function renderCommentPanel(screenId) {
+    const panel = document.getElementById('comment-panel');
+    const list = document.getElementById('comment-panel-list');
+    const comments = APP_DATA.comments?.filter(c => c.screenId === screenId) || [];
+
+    if (comments.length === 0) {
+        panel.style.display = 'none';
+        list.innerHTML = '';
+        return;
+    }
+
+    panel.style.display = 'flex';
+    document.getElementById('comment-panel-count').textContent = `(${comments.length})`;
+    list.innerHTML = '';
+
+    comments.forEach(comment => {
+        const li = document.createElement('li');
+        li.className = 'comment-panel-item';
+        li.dataset.commentId = comment.id;
+
+        const meta = document.createElement('div');
+        meta.className = 'meta';
+        meta.innerHTML = `<span>${comment.author}</span><span>${new Date(comment.date).toLocaleDateString('ko-KR')}</span>`;
+
+        const msg = document.createElement('div');
+        msg.className = 'msg';
+        msg.textContent = comment.message;
+
+        li.appendChild(meta);
+        li.appendChild(msg);
+        li.addEventListener('click', () => openCommentOnScreen(comment, li));
+        list.appendChild(li);
+    });
+}
+
+function openCommentOnScreen(comment, listItem) {
+    // 핀이 숨겨져 있으면 표시
+    if (!state.showComments) toggleComments();
+
+    // 핀 위치가 뷰포트 밖이면 스크롤 (긴 화면 대응)
+    let rect = deviceFrame.getBoundingClientRect();
+    const pinTop = rect.top + comment.offset.y;
+    if (pinTop < 80 || pinTop > window.innerHeight - 120) {
+        window.scrollBy({ top: pinTop - window.innerHeight / 2, behavior: 'instant' });
+        rect = deviceFrame.getBoundingClientRect();
+    }
+
+    showCommentPopover(comment, rect.left + comment.offset.x + 28, rect.top + comment.offset.y);
+
+    // 리스트 항목 하이라이트
+    document.querySelectorAll('.comment-panel-item.active').forEach(el => el.classList.remove('active'));
+    if (listItem) listItem.classList.add('active');
+}
+
+// 코멘트 팝오버 외부 클릭 시 닫기
+document.addEventListener('click', (e) => {
+    const popover = document.getElementById('comment-popover');
+    if (popover.style.display === 'none') return;
+    if (popover.contains(e.target)) return;
+    if (e.target.closest('.comment-pin') || e.target.closest('.comment-panel-item')) return;
+    closeCommentPopover();
+});
+
 function showCommentPopover(comment, x, y) {
     const popover = document.getElementById('comment-popover');
     document.getElementById('comment-author').textContent = comment.author;
@@ -230,6 +308,7 @@ function showCommentPopover(comment, x, y) {
 
 function closeCommentPopover() {
     document.getElementById('comment-popover').style.display = 'none';
+    document.querySelectorAll('.comment-panel-item.active').forEach(el => el.classList.remove('active'));
 }
 
 function goBack() {

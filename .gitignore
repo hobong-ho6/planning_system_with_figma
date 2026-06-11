@@ -12,3 +12,17 @@ scripts/glossary.json
 translation_*.json
 translation_*.md
 *_validation_report.md
+
+# 프로토타입 산출물 (templates/에서 생성됨)
+/index.html
+/style.css
+/script.js
+/data.js
+/i18n.js
+service-spec.md
+dropweb/
+comments_data.json
+generate_prototype_data.py
+wiki_content.xhtml
+wiki_image_urls.json
+.claude/

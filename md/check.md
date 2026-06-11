@@ -112,6 +112,10 @@ terms_sorted = sorted(glossary['terminology'].items(), key=lambda x: -len(x[0]))
 | 확인 → EN `OK/Confirm` (버튼 라벨) | ✅ 정상 의역 | UI UX 표준 |
 | 변경 → ZH `變更/變動` | ✅ 정상 의역 | 동의어 |
 | 자산 → EN `funds` (컨텍스트) | ✅ 정상 의역 | 컨텍스트 의역 |
+| 확인 → EN `Check ...` (문장 첫 글자 대문자) | ✅ 오탐 | 검증기가 대소문자를 구분해 용어집 준수를 위반으로 보고함 |
+| 송금 → EN `sent/sending` (활용형) | ✅ 오탐 | 용어집 단어의 시제·활용 변화는 위반이 아님 |
+
+> 검증기(`validate_translation.py`)의 P1 용어집 매칭은 **대소문자·활용형 오탐**이 발생한다. P1 보고 건은 기계적으로 수정하지 말고, 위 표 기준으로 진짜 위반인지 수동 판별 후 사용자에게 오탐/실제 위반을 구분해 보고한다.
 
 ### B. 예외 패턴 표기 통일 (USDT, JPYC, PIN, API, URL, Apple, Google, IDRP)
 
