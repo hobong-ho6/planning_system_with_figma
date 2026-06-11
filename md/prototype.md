@@ -64,6 +64,9 @@ Figma 파일의 프로토타입 인터랙션을 추출하여, 브라우저에서
    - destination ID
    - transition (SMART_ANIMATE, duration, easing)
 3. 결과에서 프로토타입 플로우에 연결된 **모든 화면 ID** 목록 도출
+4. **페이지 소속 검증**: 도출된 각 화면 ID의 상위 페이지가 URL의 node-id(대상 페이지)와 일치하는지 확인
+   - 인터랙션 destination은 페이지 경계를 넘을 수 있으므로, 검증 없이 수집하면 다른 페이지의 화면이 export 대상에 포함된다
+   - 다른 페이지 소속 화면은 목록에서 **제외**하고, 제외된 화면 ID와 출처 페이지를 사용자에게 보고한다
 
 **추출 완료 후 보고:**
 ```
@@ -304,7 +307,15 @@ variantSwaps: [
    ```
    GET https://api.figma.com/v1/files/{fileKey}/comments
    ```
-2. 해당 페이지에 속하는 코멘트만 필터링 (`client_meta.node_id`로 확인)
+   - ⚠️ 이 API는 **파일 전체의 코멘트**를 반환한다 (페이지 필터 파라미터 없음). 필터링 없이 사용하면 다른 페이지의 코멘트가 섞여 들어온다
+2. 해당 페이지에 속하는 코멘트만 필터링 — **소속 페이지를 반드시 역추적**:
+   - `client_meta.node_id`는 코멘트가 달린 개별 노드(화면 내부의 중첩 노드일 수 있음)를 가리키므로, 현재 페이지의 화면 프레임 ID 목록과 단순 대조하면 안 된다
+   - 각 코멘트의 `client_meta.node_id`를 nodes API로 조회해 소속 페이지를 확인:
+     ```
+     GET https://api.figma.com/v1/files/{fileKey}/nodes?ids={node_ids}
+     ```
+     (응답의 각 노드 문서를 따라 최상위 페이지 ID 확인)
+   - 소속 페이지 ID가 URL의 node-id(대상 페이지)와 일치하는 코멘트만 포함한다
 3. `node_offset` 좌표를 화면 내 위치로 매핑
 4. 팝오버는 `position: fixed`로 device-frame 밖에 렌더링 (잘림 방지)
 

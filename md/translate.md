@@ -53,6 +53,8 @@ Figma 파일에서 화면별 텍스트 노드를 추출하고, 다국어 번역�
 
 1. `use_figma`로 대상 페이지 설정 (`setCurrentPageAsync`)
 2. **모든 화면 프레임**에서 `findAll(n => n.type === 'TEXT')` 실행
+   - ⚠️ `findAll`은 반드시 **현재 페이지의 자식 프레임**에서만 실행한다. document 루트에서 실행하면 파일 전체(다른 페이지 포함)가 탐색되어 다른 페이지의 텍스트가 섞여 들어온다
+   - `setCurrentPageAsync`를 건너뛴 채 추출하지 않는다
 3. 추출 데이터:
    - `characters` (텍스트 내용)
    - `x, y, w, h` (화면 내 상대 좌표)
