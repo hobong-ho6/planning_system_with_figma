@@ -55,13 +55,27 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 - 번역 검토/확인 용도
 
 ### Step 4: 이미지 처리
-- Figma REST API로 export한 이미지 URL 사용
-- `ac:image` 태그로 삽입, 너비 **300px 고정**:
-  ```xml
-  <ac:image ac:width="300">
-    <ri:url ri:value="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/..."/>
-  </ac:image>
-  ```
+
+**핵심: Confluence에 파일을 업로드하는 것이 아니라, Figma REST API가 반환하는 공개 S3 URL을 외부 이미지로 삽입한다.**
+
+1. Figma REST API로 이미지 URL 발급 (Personal Access Token 필수):
+   ```bash
+   curl -H "X-Figma-Token: $FIGMA_TOKEN" \
+     "https://api.figma.com/v1/images/{fileKey}?ids={nodeId1},{nodeId2}&scale=2&format=png"
+   ```
+   - 응답의 `images` 객체에 노드별 공개 S3 URL이 담김 (`https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/...`)
+   - 여러 노드는 `ids`에 쉼표로 묶어 한 번에 발급
+2. `ac:image` 태그로 삽입, 너비 **300px 고정**:
+   ```xml
+   <ac:image ac:width="300">
+     <ri:url ri:value="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/..."/>
+   </ac:image>
+   ```
+
+**⚠️ 실패 사례 — 아래 방법은 동작하지 않는다:**
+- ❌ **Figma MCP `get_screenshot`의 URL**(`https://www.figma.com/api/mcp/asset/...`)을 위키에 삽입 — 단기 만료 + 인증 필요 URL이라 위키에서 이미지가 깨진다. 이 URL은 로컬 PNG 다운로드 전용이다
+- ❌ **로컬 PNG를 Confluence 첨부파일로 업로드** — wiki MCP 도구에 첨부 업로드 기능이 없다 (페이지 조회/생성/수정, 코멘트, 라벨, 검색만 지원). `<ri:attachment>` 참조도 첨부가 없으므로 실패한다
+- ❌ **markdown 포맷으로 이미지 포함 업데이트** — `ac:image` 너비 지정과 중첩표가 동작하지 않는다. 반드시 storage 포맷을 사용한다
 
 ### Step 5: 위키 업데이트
 1. **storage 포맷** 사용 (nested table 지원을 위해)
