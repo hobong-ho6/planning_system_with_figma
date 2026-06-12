@@ -46,14 +46,38 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 ```
 
 ### Step 3: 콘텐츠 작성
+
+#### Screen 표 (화면 선정 — `Case` 프레임 제외)
+- **이름이 `Case`로 시작하는 프레임은 Screen 표에 포함하지 않는다** (예: `Case 선택 - 니모닉, SNS`, `Case1. SNS 계정 1개 보유`) — 프로토타입 분기 테스트용 화면이므로 화면 정의서 대상이 아니다
+- 판별 기준은 **프레임 이름의 시작 문자열**이다. `(New) Case2. ...`처럼 `(New)`로 시작하는 프레임은 **포함 대상**이다
+- 이 제외 규칙은 **3단계 위키의 Screen 표에만** 적용된다 — 1단계 번역의 `(New)` 필터, 2단계 프로토타입의 전체 화면 수집과 혼동하지 않는다 (CLAUDE.md '단계별 프레임 필터 규칙' 참조)
+- 제외한 프레임 목록(이름·node-id)을 사용자에게 보고한다
+
 #### Screen 표 (Screen ID 컬럼)
 - **Screen ID에는 Figma의 프레임 이름을 그대로 사용**한다 (예: `(New) 자산 전송 팝업`)
 - ❌ `SC-01` 같은 임의 번호를 만들지 않는다 — Figma·프로토타입과 위키 간 화면 식별이 어긋난다
 - node-id는 프레임 이름 아래 괄호로 병기 가능 (예: `(51762:2592)`)
 
+#### Screen 표 (Description 컬럼 — Figma 코멘트 필수 반영)
+- 화면 설명 1~2문장과 함께 **해당 화면의 Figma 코멘트를 Description에 포함**한다 — 코멘트는 화면 정책이다
+- **번호 규칙**: 화면 내 위치 **y좌표가 가장 위에 있는 코멘트부터** `1.`, `2.`, … 순차 번호를 붙인다
+  - 예: 가장 상단 코멘트가 "일주일간 보지 않기"라면 → `1. 일주일간 보지 않기`
+- 코멘트가 없는 화면은 화면 설명만 기재한다
+- 코멘트 조회·대상 페이지 필터링 방법은 `md/prototype.md` Step 8과 동일 — 2단계 산출물 `comments_data.json`이 있으면 재사용한다 (`screenId`별 그룹핑 후 `offset.y` 오름차순 정렬)
+
 #### Screen 표 (XLT 컬럼)
 - `XLT Key | KR` 만 표시 (간결하게 한국어만)
 - 이미지와 함께 빠르게 텍스트 확인 용도
+- **화면별 키 목록 도출 절차 (필수 — 전체 키를 모든 화면에 붙이지 않는다):** `translation_extract.json`의 해당 화면 `items`를 순회하며 `rows`의 ko_KR 매핑과 `aliases`로 키를 찾고, **등장 순서를 유지한 채 중복 제거**한다. lookup이 없는 텍스트(숫자·주소·심볼 등 번역 제외 항목)는 건너뛴다:
+
+```python
+ko2key = {r['ko_KR']: r['xlt_key'] for r in trans['rows']}
+keys = []
+for item in screen['items']:
+    k = ko2key.get(item['t']) or trans['aliases'].get(item['t'])
+    if k and k not in keys:
+        keys.append(k)
+```
 
 #### 다국어 번역 (별도 섹션)
 - `XLT Key | KR | JA | EN | TH | ZH-TW` 전체 표시
@@ -70,6 +94,7 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
    ```
    - 응답의 `images` 객체에 노드별 공개 S3 URL이 담김 (`https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/...`)
    - 여러 노드는 `ids`에 쉼표로 묶어 한 번에 발급
+   - 일시적 `400`/`5xx` 응답이 올 수 있다 — 오류 본문을 출력하며 재시도하고, 반복 실패 시 `ids`를 절반씩 나눠 분할 발급한다
 2. `ac:image` 태그로 삽입, 너비 **300px 고정**:
    ```xml
    <ac:image ac:width="300">
@@ -91,6 +116,45 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
    - `content`: XHTML 콘텐츠
    - `version_comment`: 변경 내용 요약
 3. 업데이트 후 반환된 version 확인
+
+#### storage XHTML 캐노니컬 골격 (이 구조를 그대로 채운다 — 임의 변형 금지)
+
+```xml
+<h1>History</h1>
+<table><tbody>
+<tr><th>날짜</th><th>버전</th><th>변경 내용</th><th>작성자</th></tr>
+<tr><td>YYYY-MM-DD</td><td>v1.0</td><td>최초 작성 — ...</td><td>작성자 (Claude 자동 생성)</td></tr>
+</tbody></table>
+<h1>Related Docs</h1>
+<ul>
+<li>Figma 디자인: <a href="https://www.figma.com/design/...">...</a></li>
+<li>Figma 프로토타입: <a href="https://www.figma.com/proto/...?node-id=...&amp;page-id=...">...</a></li>
+</ul>
+<hr/>
+<h1>Screen</h1>
+<p>Screen ID는 Figma 프레임 이름을 그대로 사용합니다. (화면 선정·코멘트 규칙 안내문)</p>
+<table><tbody>
+<tr><th>Screen ID</th><th>Screen</th><th>Description</th><th>XLT</th></tr>
+<tr>
+  <td>(New) 자산 전송 팝업<br/>(51762:2592)</td>
+  <td><ac:image ac:width="300"><ri:url ri:value="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/..."/></ac:image></td>
+  <td><p>화면 설명 1~2문장.</p><p><strong>Figma 코멘트</strong><br/>1. 상단 코멘트<br/>2. 다음 코멘트</p></td>
+  <td><table><tbody><tr><th>XLT Key</th><th>KR</th></tr><tr><td>KW_...</td><td>한국어 (셀 내 줄바꿈은 &lt;br/&gt;)</td></tr></tbody></table></td>
+</tr>
+</tbody></table>
+<hr/>
+<h1>다국어 번역 (XLT Full Translation)</h1>
+<table><tbody>
+<tr><th>XLT Key</th><th>KR</th><th>JA</th><th>EN</th><th>TH</th><th>ZH-TW</th></tr>
+<tr><td>KW_...</td><td>...</td><td>...</td><td>...</td><td>...</td><td>...</td></tr>
+</tbody></table>
+```
+
+**작성 규칙:**
+- 셀 안 줄바꿈은 `<br/>` (마크다운 `\n` 사용 금지)
+- `<a href>` URL의 `&`는 반드시 `&amp;`로 이스케이프 (XML 파싱 오류 방지)
+- 코멘트가 없는 화면의 Description은 설명 `<p>` 하나만, XLT가 없는 화면(비 `(New)` 프레임)의 XLT 셀은 `-`
+- 코멘트 없는 페이지/문단도 골격의 섹션 순서(History → Related Docs → Screen → 다국어 번역)는 유지한다
 
 ### Step 6: 검증
 - [ ] 페이지 URL 접속하여 렌더링 확인

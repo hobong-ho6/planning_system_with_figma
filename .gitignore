@@ -27,3 +27,5 @@ wiki_content.xhtml
 wiki_image_urls.json
 .claude/
 prototype_input.json
+comments_raw.json
+wiki_screen_keys.json

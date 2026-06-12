@@ -47,6 +47,7 @@ Figma 파일의 프로토타입 인터랙션을 추출하여, 브라우저에서
 2. `get_metadata` 도구로 페이지 구조 확인
 3. 직속 자식 프레임(화면) 목록 파악
    - ⚠️ 화면 크기를 기준으로 필터링하지 않는다 — 화면 크기는 프로젝트마다 다를 수 있으므로, 크기와 무관하게 페이지의 직속 자식 프레임을 모두 화면으로 취급한다
+   - ⚠️ **이름 기준 필터링도 하지 않는다** — `(New)` 필터는 1단계(번역 추출) 전용, `Case` 시작 프레임 제외는 3단계(위키) 전용이다. **프로토타입은 `(New)`/`Case` 여부와 무관하게 모든 직속 자식 프레임과 모든 인터랙션을 포함**한다 (CLAUDE.md '단계별 프레임 필터 규칙' 참조)
 
 **조회 완료 후 보고:**
 ```
@@ -70,6 +71,51 @@ Figma 파일의 프로토타입 인터랙션을 추출하여, 브라우저에서
    - 다른 페이지 소속 화면은 목록에서 **제외**하고, 제외된 화면 ID와 출처 페이지를 사용자에게 보고한다
    - 예외: `CHANGE_TO`의 destination은 화면이 아니라 **컴포넌트 variant**(COMPONENT_SET 자식)이므로 화면 목록·페이지 소속 검증 대상이 아니다 — Step 7에서 처리한다
 5. **AFTER_TIMEOUT 트리거는 지연 시간도 추출**: `reaction.trigger.timeout`(초 단위)을 함께 수집한다 — Step 5에서 실제 타이머로 구현하는 데 필요
+6. **destination이 비어 있는 reactions는 제외**: `destinationId`가 null/미지정인 인터랙션(Figma에서 연결이 끊긴 핫스팟)은 수집하지 않는다 — prototype_input.json에 넣으면 `build_prototype_data.py`가 "인터랙션의 화면 ID가 screens에 없음"으로 중단된다. 제외한 목록(노드·트리거)을 사용자에게 보고한다
+
+#### 표준 추출 스크립트 (use_figma — PAGE_ID만 바꿔 실행)
+
+아래 스크립트는 Step 1~3·7의 추출을 한 번에 수행하며, 출력이 `prototype_input.json`의 `screens`/`interactions`/`variants` 형식과 일치한다. **임의로 재작성하지 말고 이 코드를 사용한다.**
+
+```javascript
+const PAGE_ID = '51664:4208';  // ← 대상 페이지 ID로 변경
+const page = await figma.getNodeByIdAsync(PAGE_ID);
+await figma.setCurrentPageAsync(page);
+
+const frames = page.children.filter(n => n.type === 'FRAME');
+const screens = frames.map(f => ({ id: f.id, name: f.name, w: Math.round(f.width), h: Math.round(f.height) }));
+const screenIds = new Set(frames.map(f => f.id));
+
+const interactions = [], variants = [], skipped = [], external = [];
+const nodes = page.findAll(n => 'reactions' in n && n.reactions && n.reactions.length > 0);
+for (const n of nodes) {
+  let p = n;
+  while (p.parent && p.parent.type !== 'PAGE') p = p.parent;   // 트리거 노드 → 최상위 화면 프레임 역추적
+  const sb = p.absoluteBoundingBox, bb = n.absoluteBoundingBox;
+  const x = (bb && sb) ? Math.round(bb.x - sb.x) : 0, y = (bb && sb) ? Math.round(bb.y - sb.y) : 0;
+  const w = bb ? Math.round(bb.width) : 0, h = bb ? Math.round(bb.height) : 0;
+  for (const r of n.reactions) {
+    const actions = r.actions || (r.action ? [r.action] : []);  // 구버전 단수 r.action도 처리
+    for (const a of actions) {
+      if (!a || !a.destinationId) { skipped.push({ node: n.id, name: n.name, trig: r.trigger && r.trigger.type }); continue; }
+      if (a.navigation === 'CHANGE_TO') {                        // variant swap은 Step 7에서 처리
+        variants.push({ screenId: p.id, x, y, w, h, label: n.name, destVariant: a.destinationId });
+        continue;
+      }
+      const it = { src: p.id, trig: r.trigger ? r.trigger.type : null, dest: a.destinationId, x, y, w, h, label: n.name };
+      if (r.trigger && r.trigger.type === 'AFTER_TIMEOUT') it.timeoutSec = r.trigger.timeout;
+      if (!screenIds.has(a.destinationId)) external.push(a.destinationId);  // Step 2-4 페이지 소속 검증 대상
+      interactions.push(it);
+    }
+  }
+}
+return { screenCount: screens.length, screens, interactionCount: interactions.length, interactions,
+         variants, skipped, externalDests: [...new Set(external)] };
+```
+
+- `externalDests`는 Step 2-4의 페이지 소속 검증으로 처리한다 (다른 페이지 화면 → 제외·보고 / COMPONENT_SET 자식 variant → Step 7)
+- `label`은 노드 이름이 들어가므로, prototype_input.json 작성 시 의미 있는 설명("전송하기 → 서명화면" 등)으로 다듬는다
+- 출력이 약 20KB를 넘어 잘리면 `screens`와 `interactions`를 별도 호출로 나눠 반환받는다
 
 **추출 완료 후 보고:**
 ```
@@ -96,6 +142,7 @@ Figma 파일의 프로토타입 인터랙션을 추출하여, 브라우저에서
    ```
 2. 반환된 URL에서 PNG 다운로드 → `assets/screens/` 저장
 3. 파일명 규칙: `{nodeId에서 : → -}.png` (예: `51762-8511.png`)
+4. **일시 오류 폴백**: images API가 간헐적으로 `400`/`5xx`를 반환할 수 있다 — 오류 본문을 출력하며 그대로 재시도하고, 반복 실패 시 `ids`를 절반씩 나눠 분할 발급한다
 
 **토큰이 없을 때 대안 (MCP `get_screenshot`):**
 - REST API 토큰이 없으면 MCP `get_screenshot`으로 export 가능 — 단, **1x 해상도**(원본 크기, scale 미지원)이고 반환 URL이 **단기 만료**되므로 발급 즉시 curl로 다운로드한다
@@ -309,6 +356,25 @@ node.reactions.forEach(r => {
 - 저장 위치: `assets/variants/{nodeId}.png`
 - source 상태 + destination 상태 모두 export
 
+#### 기본 상태(defaultState) 판별 + export 표준 코드
+- **defaultState는 트리거 인스턴스의 현재 variant다**: `instance.variantProperties`를 확인한다 (예: `{Checked: "True"}` → 기본 상태 `checked`)
+- CHANGE_TO destination(variant COMPONENT)의 부모 COMPONENT_SET 자식 전체를 export하면 두 상태가 모두 확보된다. 작은 컴포넌트이므로 base64 반환이 MCP 출력 한도 내에서 안전하다:
+
+```javascript
+const inst = await figma.getNodeByIdAsync('트리거 인스턴스 ID');     // 예: 51833:1336
+const dest = await figma.getNodeByIdAsync('CHANGE_TO destinationId'); // 예: 51813:9264
+const set = dest.parent;  // COMPONENT_SET
+const out = { instanceState: inst.variantProperties, variants: [] };
+for (const c of set.children) {
+  const bytes = await c.exportAsync({ format: 'PNG', constraint: { type: 'SCALE', value: 4 } });
+  out.variants.push({ id: c.id, name: c.name, w: Math.round(c.width), h: Math.round(c.height),
+                      b64: figma.base64Encode(bytes) });
+}
+return out;
+```
+
+- 반환된 b64를 디코드해 `assets/variants/checked.png` / `unchecked.png`로 저장하면 `build_prototype_data.py`의 기본 states 경로와 일치한다 (instanceState가 가리키는 상태 = defaultState)
+
 #### data.js 구조
 ```javascript
 variantSwaps: [
@@ -359,6 +425,26 @@ variantSwaps: [
    - 소속 페이지 ID가 URL의 node-id(대상 페이지)와 일치하는 코멘트만 포함한다
 3. `node_offset` 좌표를 화면 내 위치로 매핑
 4. 팝오버는 `position: fixed`로 device-frame 밖에 렌더링 (잘림 방지)
+
+#### comments_data.json 생성 규칙 (필드 매핑 — 임의 변형 금지)
+
+조회 결과에서 **대상 페이지의 루트 코멘트만** 선별해 아래 매핑으로 저장한다:
+
+| comments_data.json 필드 | Figma API 필드 | 규칙 |
+|---|---|---|
+| `id` | `id` | 그대로 |
+| `screenId` | `client_meta.node_id` | 화면 프레임 ID여야 함 — 화면 목록에 없으면 노드 조상 역추적(2번 항목)으로 소속 확인 |
+| `author` | `user.handle` | 그대로 |
+| `date` | `created_at` | 앞 10자리 (`YYYY-MM-DD`) |
+| `message` | `message` | **전문 그대로** (자르지 않음) |
+| `offset` | `client_meta.node_offset` | 정수 반올림. node_id가 화면 프레임이면 이미 화면 상대좌표 |
+| `resolved` | `resolved_at` | 값이 있으면 `true` |
+
+**선별 규칙:**
+- **답글(`parent_id`가 있는 코멘트)은 제외한다** — 좌표가 없는 스레드 응답이므로 핀 대상이 아니다. 제외 건수를 보고한다
+- `client_meta.node_id`가 **삭제된 노드**(조회 시 null)인 코멘트는 제외하고 보고한다
+- `client_meta.node_id`가 **페이지 자체**인 코멘트는 offset이 캔버스 절대좌표다 — `(offset − 화면 absoluteBoundingBox 원점)`으로 변환해 포함 화면을 판별하고, 어떤 화면에도 들어가지 않으면 제외·보고한다
+- 위키 Description용 정렬(화면별 `offset.y` 오름차순)은 3단계에서 수행한다 (`md/wiki.md` Step 3)
 
 #### 코멘트 UI 동작 (필수 구현)
 - **우측 코멘트 리스트 패널**: 화면 우측에 현재 화면의 코멘트 전체 리스트(작성자·날짜·내용)를 고정 패널로 표시. 코멘트가 없는 화면에서는 패널 숨김

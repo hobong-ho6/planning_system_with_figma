@@ -53,7 +53,7 @@ Figma 파일에서 화면별 텍스트 노드를 추출하고, 다국어 번역�
 
 1. `use_figma`로 대상 페이지 설정 (`setCurrentPageAsync`)
 2. **추출 대상 프레임 필터링**: 현재 페이지의 직속 자식 프레임 중 이름이 `(New)`로 시작하는 프레임만 추출 대상으로 한다
-   - 이 필터는 **번역 텍스트 추출에만 적용**된다 (프로토타입 생성의 화면 범위와는 무관)
+   - 이 필터는 **번역 텍스트 추출에만 적용**된다 — 2단계 프로토타입은 전체 프레임·전체 인터랙션을 수집하고, 3단계 위키는 `Case` 시작 프레임만 제외한다 (CLAUDE.md '단계별 프레임 필터 규칙' 참조)
    - 필터링 결과(대상 프레임 수 / 전체 프레임 수)를 사용자에게 보고한다
 3. 대상 프레임에서 `findAll(n => n.type === 'TEXT')` 실행
    - ⚠️ `findAll`은 반드시 **현재 페이지의 자식 프레임**에서만 실행한다. document 루트에서 실행하면 파일 전체(다른 페이지 포함)가 탐색되어 다른 페이지의 텍스트가 섞여 들어온다
@@ -144,6 +144,8 @@ curl -s "https://landpress-content.line-scdn.net/contents/v2/projects/wdmwbfuv10
 
 #### 5.2 심화 검증 (md/check.md 기반)
 **번역 데이터를 임시 엑셀로 저장 후 3단계 검증 수행:**
+
+임시 엑셀은 `translation_data.json`의 rows를 Step 7과 동일 규격(properties/plurals 시트, 첫 컬럼명 공백)으로 변환해 프로젝트 루트에 `xlt_validation_temp.xlsx`로 생성하고, `TranslationValidator(엑셀경로, 'scripts/glossary.json')`로 검증한다. **검증 통과 후 임시 엑셀은 삭제**한다 (최종 엑셀은 Step 7에서 별도 생성).
 
 **1단계: 한국어 맞춤법·띄어쓰기 검토**
 - [ ] 오타 확인 (`미선` → `미션` 등)
