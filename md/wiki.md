@@ -182,15 +182,17 @@ for item in screen['items']:
 - `XLT Key | KR | JA | EN | TH | ZH-TW` 전체 표시
 - 번역 검토/확인 용도
 
-### Step 4: 이미지 처리
+### Step 4: 이미지 처리 — 모든 화면: 로컬 다운로드 → Confluence 직접 첨부
 
-화면에 코멘트(정책)가 있는지 여부에 따라 처리 방식이 나뉜다.
+**기본 원칙: 모든 화면 이미지는 ① Figma에서 로컬로 다운로드 → ② 코멘트 있으면 번호 어노테이션 → ③ 로컬 파일을 Confluence에 직접 첨부(`ri:attachment`)한다.** 위키 토큰(Confluence PAT)이 있으므로 첨부 업로드가 가능하며, **Figma S3 URL을 위키 본문에 직접 넣지 않는다** — S3 URL은 로컬 다운로드 출처로만 쓰고, 본문은 항상 첨부 참조를 사용한다 (S3 URL은 수 시간~수일 내 만료되어 깨진다).
+
+코멘트 유무는 **어노테이션(4-B) 단계만** 가른다 — 다운로드(4-A)·첨부(4-C)·본문 참조는 모든 화면이 동일하다.
 
 ---
 
-#### 4-A. 코멘트 없는 화면 — Figma S3 URL 직접 사용
+#### 4-A. 이미지 S3 URL 발급 → 로컬 다운로드 (모든 화면 공통)
 
-Figma REST API로 이미지 URL 일괄 발급 후 위키에 삽입한다.
+**① Figma REST로 S3 URL 일괄 발급**
 
 ```bash
 # node ID는 URL 인코딩 필수 (: → %3A)
@@ -202,20 +204,26 @@ curl -s -H "X-Figma-Token: $FIGMA_TOKEN" \
 
 - 응답 `images` 객체에서 노드별 S3 URL 추출 (`https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/...`)
 - 일시적 오류 시 재시도, 반복 실패 시 `ids`를 절반씩 나눠 분할 발급
-- `ac:image` 태그, 너비 **300px 고정**:
-  ```xml
-  <ac:image ac:width="300">
-    <ri:url ri:value="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/..."/>
-  </ac:image>
-  ```
 
-> ⚠️ Figma S3 URL은 수 시간~수일 내 만료된다. 코멘트가 있어 번호 어노테이션이 필요한 화면은 4-B 방식으로 처리한다.
+**② S3 URL에서 로컬로 다운로드**
+
+```python
+import urllib.request
+req = urllib.request.Request(s3_url, headers={"User-Agent": "Mozilla/5.0"})
+with urllib.request.urlopen(req) as r, open(out_path, "wb") as f:
+    f.write(r.read())
+```
+
+- 저장 경로: `assets/screens/{프레임명_공백→언더스코어}.png`
+- 파일명은 위키 첨부 파일명 = 본문 `ri:attachment ri:filename`과 **정확히 일치**시킨다
+- 코멘트 **없는** 화면: 이 원본을 그대로 4-C(첨부)로 보낸다
+- 코멘트 **있는** 화면: 4-B(번호 어노테이션)를 거친 뒤 4-C로 보낸다
 
 ---
 
-#### 4-B. 코멘트 있는 화면 — 번호 어노테이션 이미지 생성 후 Confluence 직접 첨부
+#### 4-B. 코멘트 있는 화면 — 번호 어노테이션 (로컬 이미지에 적용)
 
-어노테이션 이미지는 로컬에서 생성한 파일이므로 Figma S3 URL이 없다. Confluence PAT가 있으면 직접 첨부파일로 업로드하고, 없으면 GitHub 임시 스테이징 방식(4-B-fallback)을 사용한다.
+코멘트 없는 화면은 이 단계를 건너뛴다. 코멘트 있는 화면만 4-A에서 다운로드한 **로컬 이미지**에 번호 원을 오버레이한 뒤, 같은 로컬 파일을 4-C로 보내 첨부한다.
 
 **처리 순서:**
 
@@ -225,24 +233,19 @@ curl -s -H "X-Figma-Token: $FIGMA_TOKEN" \
 # comments 구조: [(x, y, "정책 내용"), ...]  — y 오름차순 정렬된 상태
 ```
 
-**② Python Pillow로 번호 원 오버레이**
+**② Python Pillow로 번호 원 오버레이 (입력: 4-A에서 받은 로컬 파일)**
 
 ```python
 # pip install Pillow (scripts/requirements.txt에 포함)
-import urllib.request
 from PIL import Image, ImageDraw, ImageFont
-import io
 
 SCALE = 2        # Figma export scale
 CIRCLE_R = 18    # 반지름(픽셀, scale=2 기준)
 RED   = (220, 53, 69, 255)
 WHITE = (255, 255, 255, 255)
 
-def annotate(s3_url, comments, out_path):
-    with urllib.request.urlopen(urllib.request.Request(
-        s3_url, headers={"User-Agent": "Mozilla/5.0"}
-    )) as r:
-        img = Image.open(io.BytesIO(r.read()))
+def annotate(in_path, comments, out_path):
+    img = Image.open(in_path)
 
     overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
     draw = ImageDraw.Draw(overlay)
@@ -265,13 +268,17 @@ def annotate(s3_url, comments, out_path):
 ```
 
 - `comments`는 y좌표 오름차순 정렬 후 전달 — 이미지 번호 = Description 정책 번호
-- 출력 파일명: `{프레임명_공백→언더스코어}.png`
+- 출력 파일명: `{프레임명_공백→언더스코어}.png` (원본을 덮어쓰지 말고 별도 파일로 저장 권장)
 - 이미지가 너무 크면(413 에러) 50% 리사이즈 후 재시도: `img.resize((w//2, h//2), Image.LANCZOS)`
 
-**③ Confluence 직접 첨부 업로드 (Confluence PAT가 있는 경우 — 우선 방식)**
+---
+
+#### 4-C. 로컬 이미지를 Confluence에 직접 첨부 (모든 화면 공통 — 위키 토큰 필요)
+
+**① 첨부 업로드** — 4-A(원본) 또는 4-B(어노테이션)에서 만든 로컬 PNG를 그대로 올린다
 
 ```bash
-# CONFLUENCE_PAT: Confluence 프로필 → 개인 액세스 토큰에서 발급
+# CONFLUENCE_PAT(위키 토큰): Confluence 프로필 → 개인 액세스 토큰
 curl -H "Authorization: Bearer {CONFLUENCE_PAT}" \
   -X POST \
   "{BASE_URL}/rest/api/content/{pageId}/child/attachment" \
@@ -279,10 +286,11 @@ curl -H "Authorization: Bearer {CONFLUENCE_PAT}" \
   -F "file=@{image}.png;type=image/png"
 ```
 
-- 성공 시 HTTP 200 반환
+- 성공 시 HTTP 200. 같은 파일명이 이미 있으면 동일 엔드포인트가 **새 버전으로 갱신**된다
 - 413 에러 시 이미지를 50% 리사이즈 후 재시도
+- **이 단계는 위키 토큰(Confluence PAT)이 있어야 가능하다** — 토큰 우선 규칙상 토큰은 사전 확보가 원칙이며, 토큰이 정말 없을 때만 아래 fallback으로 우회한다
 
-**④ 위키에 첨부파일 참조 삽입**
+**② 위키 본문에 첨부 참조 삽입** (모든 화면 동일, 너비 300px 고정)
 
 ```xml
 <ac:image ac:width="300">
@@ -290,12 +298,12 @@ curl -H "Authorization: Bearer {CONFLUENCE_PAT}" \
 </ac:image>
 ```
 
-- `<ri:attachment>`는 **같은 페이지에 첨부된 파일**을 참조한다 — 외부 URL 불필요
-- 이 방식은 파일이 Confluence 서버에 영구 저장되므로 외부 의존성이 없다
+- `<ri:attachment>`는 **같은 페이지에 첨부된 파일**을 참조 — 외부 URL·만료 없음, Confluence 서버에 영구 저장
+- `ri:filename`은 4-A/4-B에서 업로드한 로컬 파일명과 **정확히 일치**해야 한다
 
 ---
 
-**4-B-fallback. Confluence PAT 없는 경우 — GitHub 임시 스테이징**
+**fallback. 위키 토큰(Confluence PAT)이 정말 없는 경우에만 — GitHub 임시 스테이징**
 
 ```bash
 # 레포 클론 (또는 기존 클론 재사용)
@@ -379,7 +387,7 @@ git -C /tmp/repo_clone push origin main
   ...
 </tr> -->
 
-<!-- 코멘트 없는 화면: Confluence 첨부 (또는 Figma S3 URL — 단기간만 유효) -->
+<!-- 코멘트 없는 화면: Confluence 첨부 (로컬 다운로드 원본을 첨부) -->
 <tr>
   <td>화면 이름</td>
   <td><ac:image ac:width="300"><ri:attachment ri:filename="{frame_name}.png"/></ac:image></td>
@@ -462,14 +470,14 @@ git -C /tmp/repo_clone push origin main
 | URL 유형 | 설명 | 적합 여부 |
 |----------|------|----------|
 | Figma MCP URL (`figma.com/api/mcp/asset/...`) | MCP 도구가 반환하는 URL | ❌ MCP 세션 종료 시 무효화, Confluence 서버가 인증 없이 로드 불가 → 이미지 깨짐 |
-| Figma S3 URL (`figma-alpha-api.s3.amazonaws.com/...`) | REST API 발급 공개 URL | ⚠️ 수 시간~수일 내 만료. 코멘트 없는 화면에만 임시 사용 가능 |
-| **Confluence 첨부파일** | 페이지에 직접 업로드 (`ri:attachment`) | ✅ **최우선 방식** — Confluence 서버에 영구 저장, 외부 의존성 없음. Confluence PAT 필요 |
-| GitHub raw URL (`raw.githubusercontent.com/...`) | 레포에 push한 파일의 공개 URL | ⚠️ 임시 스테이징 용도. PAT 없을 때 fallback. Confluence 캐싱에 의존하므로 불안정 |
+| Figma S3 URL (`figma-alpha-api.s3.amazonaws.com/...`) | REST API 발급 공개 URL | ⚠️ 수 시간~수일 내 만료. **본문에 직접 넣지 않는다** — 로컬 다운로드 출처로만 사용 |
+| **Confluence 첨부파일** | 로컬 이미지를 페이지에 직접 업로드 (`ri:attachment`) | ✅ **유일 기본 방식** — 모든 화면이 로컬 다운로드 후 이 방식으로 첨부. 영구 저장, 외부 의존성 없음. 위키 토큰(Confluence PAT) 필요 |
+| GitHub raw URL (`raw.githubusercontent.com/...`) | 레포에 push한 파일의 공개 URL | ⚠️ 임시 스테이징 용도. 위키 토큰이 정말 없을 때만 fallback. Confluence 캐싱에 의존하므로 불안정 |
 
 **결론 및 정책:**
-- Confluence PAT가 있으면 **항상 첨부파일 방식**을 사용한다 (`ri:attachment`)
-- Confluence PAT 없는 경우에만 GitHub 임시 스테이징 → 위키 업로드 완료 후 레포에서 삭제
-- Figma S3 URL은 만료되므로 장기 보존이 필요한 화면에는 사용하지 않는다
+- **모든 화면 이미지는 로컬로 다운로드한 뒤 Confluence 첨부파일(`ri:attachment`)로 삽입한다** — 코멘트 유무와 무관 (Step 4 참조)
+- Figma S3 URL은 **로컬 다운로드 출처로만** 쓰고 위키 본문에 직접 넣지 않는다 (만료되어 깨짐)
+- 위키 토큰(Confluence PAT)이 정말 없는 경우에만 GitHub 임시 스테이징 → 위키 업로드 완료 후 레포에서 삭제
 
 ### 페이지 형식 통일
 - 같은 space 내 유사 문서와 형식을 통일
