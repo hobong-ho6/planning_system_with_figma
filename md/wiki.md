@@ -226,14 +226,14 @@ def annotate(s3_url, comments, out_path):
 - `comments`는 y좌표 오름차순 정렬 후 전달 — 이미지 번호 = Description 정책 번호
 - 출력 파일명: `{프레임명_공백→언더스코어}.png`
 
-**③ GitHub 레포 `wiki/images/` 폴더에 저장 후 push**
+**③ GitHub 레포 `wiki/images/` 폴더에 저장 후 push (임시 스테이징)**
 
 ```bash
 # 레포 클론 (또는 기존 클론 재사용)
 git clone https://github.com/{owner}/{repo}.git /tmp/repo_clone
 cp {annotated}.png /tmp/repo_clone/wiki/images/
 git -C /tmp/repo_clone add wiki/images/
-git -C /tmp/repo_clone commit -m "wiki/images: {화면명} 번호 어노테이션 이미지 추가"
+git -C /tmp/repo_clone commit -m "wiki/images: {화면명} 번호 어노테이션 이미지 추가 (임시)"
 git -C /tmp/repo_clone push origin main
 ```
 
@@ -246,6 +246,16 @@ git -C /tmp/repo_clone push origin main
   <ri:url ri:value="https://raw.githubusercontent.com/{owner}/{repo}/main/wiki/images/{frame_name}.png"/>
 </ac:image>
 ```
+
+**⑤ 위키 업데이트 완료 후 GitHub에서 이미지 삭제**
+
+```bash
+git -C /tmp/repo_clone rm wiki/images/{frame_name}.png
+git -C /tmp/repo_clone commit -m "wiki/images: 위키 업로드 완료 — 임시 이미지 정리"
+git -C /tmp/repo_clone push origin main
+```
+
+> **왜 삭제해도 위키 이미지가 유지되는가:** Confluence는 외부 이미지를 처음 로드할 때 내부적으로 캐싱한다. 이후 원본 URL이 사라져도 캐시에서 서빙하므로 위키 이미지는 깨지지 않는다. GitHub는 URL을 발급하기 위한 임시 스테이징 역할만 한다.
 
 ---
 
@@ -342,9 +352,12 @@ git -C /tmp/repo_clone push origin main
 | Figma MCP URL (`figma.com/api/mcp/asset/...`) | MCP 도구가 반환하는 URL | MCP 세션 종료 시 무효화, Confluence 서버가 인증 없이 로드 불가 → 이미지 깨짐 |
 | Figma S3 URL (`figma-alpha-api.s3.amazonaws.com/...`) | REST API 발급 공개 URL | 수 시간~수일 내 만료. 번호 어노테이션 불가(원본 그대로) |
 | Confluence 첨부파일 | 페이지에 직접 업로드 | wiki MCP에 첨부 업로드 기능 없음, Confluence REST API 자격증명 별도 필요 |
-| **GitHub raw URL** (`raw.githubusercontent.com/...`) | 레포에 push한 파일의 공개 URL | ✅ 레포 유지 시 영구, 인증 불필요, push 권한 이미 보유 |
+| **GitHub raw URL** (`raw.githubusercontent.com/...`) | 레포에 push한 파일의 공개 URL | ✅ 임시 스테이징 용도로 사용. 위키 업로드 완료 후 레포에서 삭제 |
 
-**결론:** 번호 어노테이션 이미지는 로컬에서 생성하므로 Figma URL이 없다. GitHub `wiki/images/` 폴더에 저장해 영구 URL을 확보하는 것이 유일한 현실적 방법이다.
+**결론 및 정책:**
+- GitHub `wiki/images/`는 **임시 스테이징 저장소**로만 사용한다
+- Confluence가 이미지를 처음 로드하면 내부 캐시에 저장하므로, 이후 GitHub에서 삭제해도 위키 이미지는 유지된다
+- 위키 업데이트 완료(Step 5) 후 반드시 GitHub에서 이미지를 삭제한다 — 레포에 불필요한 바이너리가 쌓이지 않도록 한다
 
 ### 페이지 형식 통일
 - 같은 space 내 유사 문서와 형식을 통일
