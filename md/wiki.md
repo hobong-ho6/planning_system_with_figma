@@ -7,14 +7,16 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 
 ## ⛔ 시작 전 필수 확인 (없으면 진행 불가)
 
+> 🚨 **착수 전 최우선 — 토큰 먼저 요청.** 사용자 요청을 받으면 **맨 처음 행동**으로 Figma + Confluence(위키) 토큰을 요청하고, **두 토큰을 모두 받아 유효성을 검증한 뒤에만** 작업을 시작한다. 토큰을 받기 전에는 **토큰 없이 가능한 작업(위키 페이지 조회, Figma 구조·메타데이터 파싱, 범위·분량 파악 등)도 절대 진행하지 않는다** (CLAUDE.md '⛔ 토큰 우선 규칙' 참조).
+
 | 항목 | 확인 방법 | 없을 경우 |
 |------|-----------|-----------|
-| Figma Personal Access Token | `echo $FIGMA_TOKEN` 또는 사용자에게 요청 | **작업 중단 — 토큰 없이는 이미지 URL·코멘트 발급 불가** |
-| Confluence Personal Access Token | 사용자에게 요청 (Confluence → 프로필 → 개인 액세스 토큰) | GitHub 임시 스테이징 방식으로 대체 (Step 4-B 참조) |
+| Figma Personal Access Token | **사용자에게 요청** (env 추정·재사용 금지 — 작업마다 명시 요청) | **작업 중단 — 토큰 없이는 이미지 URL·코멘트 발급 불가** |
+| Confluence Personal Access Token | **사용자에게 요청** (Confluence → 프로필 → 개인 액세스 토큰) | **작업 중단 — 먼저 요청·수신 후 착수** (부재가 확정된 경우에만 Step 4-B GitHub 스테이징으로 대체) |
 | Confluence 위키 페이지 URL | 사용자 제공 | 작업 중단 |
 | Figma 파일 URL | 사용자 제공 | 작업 중단 |
 
-> ⚠️ FIGMA_TOKEN이 없는 상태에서 "일단 구조만 올리기" 금지 — 이미지와 코멘트가 누락된 불완전한 문서가 생성된다.
+> ⚠️ 토큰이 없는 상태에서 "일단 구조만 올리기" 또는 "토큰 없이 가능한 부분만 먼저" 금지 — 이미지와 코멘트가 누락된 불완전한 문서가 생성되고, 토큰 우선 규칙에도 위배된다.
 
 ## 사전 조건
 - Confluence 위키 페이지 URL 또는 Page ID
@@ -36,19 +38,25 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 
 ## 절차
 
-### Step 0: Figma 토큰 수집 (작업 시작 전 최우선)
+### Step 0: 토큰 수집 (작업 시작 전 최우선 — Figma + Confluence 둘 다)
 
-**모든 작업보다 먼저 수행한다. 토큰 확보 전까지 Step 1로 진행하지 않는다.**
+**모든 작업보다 먼저 수행한다. 두 토큰을 모두 확보·검증하기 전까지 Step 1은 물론, 위키 페이지 조회·Figma 구조 파싱·범위 파악 등 어떤 사전 작업도 진행하지 않는다.**
 
-1. 사용자에게 Figma Personal Access Token을 요청한다:
-   > "위키 업데이트를 위해 Figma Personal Access Token이 필요합니다. Figma → 프로필 → Settings → Security → Personal access tokens에서 발급 후 공유해 주세요."
-2. 토큰을 받으면 유효성 검증:
+1. 사용자에게 **Figma + Confluence 토큰을 함께** 요청한다 (맨 처음 행동):
+   > "위키 업데이트를 시작하기 전에 토큰 두 개가 필요합니다.
+   > ① Figma Personal Access Token — Figma → 프로필 → Settings → Security → Personal access tokens
+   > ② Confluence Personal Access Token — Confluence → 프로필 → 개인 액세스 토큰
+   > 두 토큰을 공유해 주시면 작업을 시작하겠습니다."
+2. 토큰을 받으면 각각 유효성 검증:
    ```bash
-   curl -s -H "X-Figma-Token: {TOKEN}" "https://api.figma.com/v1/me" | python3 -c "import json,sys; d=json.load(sys.stdin); print('✅ 유효:', d.get('email')) if d.get('email') else print('❌ 무효:', d)"
+   # Figma
+   curl -s -H "X-Figma-Token: {FIGMA_TOKEN}" "https://api.figma.com/v1/me" | python3 -c "import json,sys; d=json.load(sys.stdin); print('✅ Figma 유효:', d.get('email')) if d.get('email') else print('❌ 무효:', d)"
+   # Confluence (BASE_URL = 위키 URL의 호스트, 예: https://wiki.workers-hub.com)
+   curl -s -H "Authorization: Bearer {CONFLUENCE_PAT}" "{BASE_URL}/rest/api/user/current" | python3 -c "import json,sys; d=json.load(sys.stdin); print('✅ Confluence 유효:', d.get('username') or d.get('displayName')) if d else print('❌ 무효')"
    ```
-3. 유효하면 Step 1 진행. 무효하면 사용자에게 재발급 요청.
+3. 두 토큰이 모두 유효하면 Step 1 진행. 하나라도 무효하면 재발급 요청.
 
-> ❌ 토큰 없이 "일단 구조만 올리기" 금지 — 이미지(S3 URL)와 코멘트가 누락된 불완전한 문서가 생성된다.
+> ❌ 토큰을 받기 전 "토큰 없이 가능한 작업부터" 진행 금지 — 범위 파악·페이지 조회·구조 파싱 포함 일체 금지 (CLAUDE.md '⛔ 토큰 우선 규칙').
 
 ### Step 1: 대상 페이지 확인
 1. URL에서 Page ID 추출 (예: `pageId=4288438279`)
