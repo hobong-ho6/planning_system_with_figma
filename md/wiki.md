@@ -10,6 +10,7 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 | 항목 | 확인 방법 | 없을 경우 |
 |------|-----------|-----------|
 | Figma Personal Access Token | `echo $FIGMA_TOKEN` 또는 사용자에게 요청 | **작업 중단 — 토큰 없이는 이미지 URL·코멘트 발급 불가** |
+| Confluence Personal Access Token | 사용자에게 요청 (Confluence → 프로필 → 개인 액세스 토큰) | GitHub 임시 스테이징 방식으로 대체 (Step 4-B 참조) |
 | Confluence 위키 페이지 URL | 사용자 제공 | 작업 중단 |
 | Figma 파일 URL | 사용자 제공 | 작업 중단 |
 
@@ -168,13 +169,9 @@ curl -s -H "X-Figma-Token: $FIGMA_TOKEN" \
 
 ---
 
-#### 4-B. 코멘트 있는 화면 — 번호 어노테이션 이미지 생성 후 GitHub 영구 URL 사용
+#### 4-B. 코멘트 있는 화면 — 번호 어노테이션 이미지 생성 후 Confluence 직접 첨부
 
-**이 방식을 사용하는 이유:**
-- 어노테이션 이미지는 로컬에서 생성한 이미지이므로 Figma에 존재하지 않음 → Figma S3 URL 없음
-- wiki MCP에 첨부파일 업로드 기능이 없어 Confluence 직접 업로드 불가
-- GitHub `raw.githubusercontent.com` URL은 레포가 유지되는 한 영구적이며 인증 없이 공개 접근 가능
-- 이미 레포에 push 권한이 있으므로 추가 자격증명 불필요
+어노테이션 이미지는 로컬에서 생성한 파일이므로 Figma S3 URL이 없다. Confluence PAT가 있으면 직접 첨부파일로 업로드하고, 없으면 GitHub 임시 스테이징 방식(4-B-fallback)을 사용한다.
 
 **처리 순서:**
 
@@ -225,8 +222,36 @@ def annotate(s3_url, comments, out_path):
 
 - `comments`는 y좌표 오름차순 정렬 후 전달 — 이미지 번호 = Description 정책 번호
 - 출력 파일명: `{프레임명_공백→언더스코어}.png`
+- 이미지가 너무 크면(413 에러) 50% 리사이즈 후 재시도: `img.resize((w//2, h//2), Image.LANCZOS)`
 
-**③ GitHub 레포 `wiki/images/` 폴더에 저장 후 push (임시 스테이징)**
+**③ Confluence 직접 첨부 업로드 (Confluence PAT가 있는 경우 — 우선 방식)**
+
+```bash
+# CONFLUENCE_PAT: Confluence 프로필 → 개인 액세스 토큰에서 발급
+curl -H "Authorization: Bearer {CONFLUENCE_PAT}" \
+  -X POST \
+  "{BASE_URL}/rest/api/content/{pageId}/child/attachment" \
+  -H "X-Atlassian-Token: no-check" \
+  -F "file=@{image}.png;type=image/png"
+```
+
+- 성공 시 HTTP 200 반환
+- 413 에러 시 이미지를 50% 리사이즈 후 재시도
+
+**④ 위키에 첨부파일 참조 삽입**
+
+```xml
+<ac:image ac:width="300">
+  <ri:attachment ri:filename="{frame_name}.png"/>
+</ac:image>
+```
+
+- `<ri:attachment>`는 **같은 페이지에 첨부된 파일**을 참조한다 — 외부 URL 불필요
+- 이 방식은 파일이 Confluence 서버에 영구 저장되므로 외부 의존성이 없다
+
+---
+
+**4-B-fallback. Confluence PAT 없는 경우 — GitHub 임시 스테이징**
 
 ```bash
 # 레포 클론 (또는 기존 클론 재사용)
@@ -239,7 +264,7 @@ git -C /tmp/repo_clone push origin main
 
 > ℹ️ `assets/` 폴더는 `.gitignore` 대상이므로 반드시 `wiki/images/` 폴더를 사용한다.
 
-**④ GitHub raw URL로 위키에 삽입**
+GitHub raw URL 위키 삽입:
 
 ```xml
 <ac:image ac:width="300">
@@ -247,7 +272,7 @@ git -C /tmp/repo_clone push origin main
 </ac:image>
 ```
 
-**⑤ 위키 업데이트 완료 후 GitHub에서 이미지 삭제**
+위키 업데이트 완료 후 GitHub 이미지 삭제:
 
 ```bash
 git -C /tmp/repo_clone rm wiki/images/{frame_name}.png
@@ -255,7 +280,7 @@ git -C /tmp/repo_clone commit -m "wiki/images: 위키 업로드 완료 — 임�
 git -C /tmp/repo_clone push origin main
 ```
 
-> **왜 삭제해도 위키 이미지가 유지되는가:** Confluence는 외부 이미지를 처음 로드할 때 내부적으로 캐싱한다. 이후 원본 URL이 사라져도 캐시에서 서빙하므로 위키 이미지는 깨지지 않는다. GitHub는 URL을 발급하기 위한 임시 스테이징 역할만 한다.
+> ⚠️ GitHub 방식은 Confluence의 외부 이미지 캐싱에 의존한다. 캐시가 갱신되면 이미지가 깨질 수 있으므로, Confluence PAT 취득 후 첨부파일 방식으로 전환하는 것을 권장한다.
 
 ---
 
@@ -264,7 +289,6 @@ git -C /tmp/repo_clone push origin main
 | 방법 | 이유 |
 |------|------|
 | Figma MCP URL (`figma.com/api/mcp/asset/...`) | MCP 세션 종료 시 무효화, Confluence 서버에서 인증 없이 불러올 수 없어 이미지 깨짐 |
-| Confluence 첨부파일 업로드 | wiki MCP에 첨부 업로드 기능 없음 |
 | markdown 포맷으로 업데이트 | `ac:image` 너비 지정·중첩표 미지원, 반드시 storage 포맷 사용 |
 
 ### Step 5: 위키 업데이트
@@ -296,18 +320,25 @@ git -C /tmp/repo_clone push origin main
 <table><tbody>
 <tr><th>Screen ID</th><th>Screen</th><th>Description</th><th>XLT</th></tr>
 
-<!-- 코멘트(정책)가 있는 화면: 번호 어노테이션 이미지(GitHub) + 번호별 정책 -->
+<!-- 코멘트(정책)가 있는 화면: 번호 어노테이션 이미지(Confluence 첨부) + 번호별 정책 -->
 <tr>
   <td>(New) 자산 전송 팝업</td>
-  <td><ac:image ac:width="300"><ri:url ri:value="https://raw.githubusercontent.com/{owner}/{repo}/main/wiki/images/{frame_name}.png"/></ac:image></td>
+  <td><ac:image ac:width="300"><ri:attachment ri:filename="{frame_name}.png"/></ac:image></td>
   <td><p>화면 설명 1~2문장.</p><p><strong>정책</strong><br/>1. 상단 정책 내용<br/>2. 다음 정책 내용</p></td>
   <td><table><tbody><tr><th>XLT Key</th><th>KR</th></tr><tr><td>KW_...</td><td>한국어</td></tr></tbody></table></td>
 </tr>
 
-<!-- 코멘트 없는 화면: 원본 Figma S3 이미지 -->
+<!-- 코멘트(정책)가 있는 화면 (Confluence PAT 없을 때 fallback): GitHub 임시 URL -->
+<!-- <tr>
+  <td>(New) 자산 전송 팝업</td>
+  <td><ac:image ac:width="300"><ri:url ri:value="https://raw.githubusercontent.com/{owner}/{repo}/main/wiki/images/{frame_name}.png"/></ac:image></td>
+  ...
+</tr> -->
+
+<!-- 코멘트 없는 화면: Confluence 첨부 (또는 Figma S3 URL — 단기간만 유효) -->
 <tr>
   <td>화면 이름</td>
-  <td><ac:image ac:width="300"><ri:url ri:value="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/..."/></ac:image></td>
+  <td><ac:image ac:width="300"><ri:attachment ri:filename="{frame_name}.png"/></ac:image></td>
   <td><p>화면 설명 1~2문장.</p></td>
   <td>-</td>
 </tr>
@@ -343,21 +374,21 @@ git -C /tmp/repo_clone push origin main
 - markdown 포맷은 표 안의 표를 지원하지 않음
 - 이미지 크기 지정도 storage 포맷의 `ac:width` 속성 사용
 
-### 이미지 URL 전략 — 왜 GitHub를 사용하는가
+### 이미지 URL 전략
 
 위키에 이미지를 삽입할 수 있는 방법과 각각의 한계:
 
-| URL 유형 | 설명 | 문제 |
-|----------|------|------|
-| Figma MCP URL (`figma.com/api/mcp/asset/...`) | MCP 도구가 반환하는 URL | MCP 세션 종료 시 무효화, Confluence 서버가 인증 없이 로드 불가 → 이미지 깨짐 |
-| Figma S3 URL (`figma-alpha-api.s3.amazonaws.com/...`) | REST API 발급 공개 URL | 수 시간~수일 내 만료. 번호 어노테이션 불가(원본 그대로) |
-| Confluence 첨부파일 | 페이지에 직접 업로드 | wiki MCP에 첨부 업로드 기능 없음, Confluence REST API 자격증명 별도 필요 |
-| **GitHub raw URL** (`raw.githubusercontent.com/...`) | 레포에 push한 파일의 공개 URL | ✅ 임시 스테이징 용도로 사용. 위키 업로드 완료 후 레포에서 삭제 |
+| URL 유형 | 설명 | 적합 여부 |
+|----------|------|----------|
+| Figma MCP URL (`figma.com/api/mcp/asset/...`) | MCP 도구가 반환하는 URL | ❌ MCP 세션 종료 시 무효화, Confluence 서버가 인증 없이 로드 불가 → 이미지 깨짐 |
+| Figma S3 URL (`figma-alpha-api.s3.amazonaws.com/...`) | REST API 발급 공개 URL | ⚠️ 수 시간~수일 내 만료. 코멘트 없는 화면에만 임시 사용 가능 |
+| **Confluence 첨부파일** | 페이지에 직접 업로드 (`ri:attachment`) | ✅ **최우선 방식** — Confluence 서버에 영구 저장, 외부 의존성 없음. Confluence PAT 필요 |
+| GitHub raw URL (`raw.githubusercontent.com/...`) | 레포에 push한 파일의 공개 URL | ⚠️ 임시 스테이징 용도. PAT 없을 때 fallback. Confluence 캐싱에 의존하므로 불안정 |
 
 **결론 및 정책:**
-- GitHub `wiki/images/`는 **임시 스테이징 저장소**로만 사용한다
-- Confluence가 이미지를 처음 로드하면 내부 캐시에 저장하므로, 이후 GitHub에서 삭제해도 위키 이미지는 유지된다
-- 위키 업데이트 완료(Step 5) 후 반드시 GitHub에서 이미지를 삭제한다 — 레포에 불필요한 바이너리가 쌓이지 않도록 한다
+- Confluence PAT가 있으면 **항상 첨부파일 방식**을 사용한다 (`ri:attachment`)
+- Confluence PAT 없는 경우에만 GitHub 임시 스테이징 → 위키 업로드 완료 후 레포에서 삭제
+- Figma S3 URL은 만료되므로 장기 보존이 필요한 화면에는 사용하지 않는다
 
 ### 페이지 형식 통일
 - 같은 space 내 유사 문서와 형식을 통일
