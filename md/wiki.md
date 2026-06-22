@@ -139,27 +139,123 @@ for item in screen['items']:
 
 ### Step 4: 이미지 처리
 
-**핵심: Confluence에 파일을 업로드하는 것이 아니라, Figma REST API가 반환하는 공개 S3 URL을 외부 이미지로 삽입한다.**
+화면에 코멘트(정책)가 있는지 여부에 따라 처리 방식이 나뉜다.
 
-1. Figma REST API로 이미지 URL 발급 (Personal Access Token 필수):
-   ```bash
-   curl -H "X-Figma-Token: $FIGMA_TOKEN" \
-     "https://api.figma.com/v1/images/{fileKey}?ids={nodeId1},{nodeId2}&scale=2&format=png"
-   ```
-   - 응답의 `images` 객체에 노드별 공개 S3 URL이 담김 (`https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/...`)
-   - 여러 노드는 `ids`에 쉼표로 묶어 한 번에 발급
-   - 일시적 `400`/`5xx` 응답이 올 수 있다 — 오류 본문을 출력하며 재시도하고, 반복 실패 시 `ids`를 절반씩 나눠 분할 발급한다
-2. `ac:image` 태그로 삽입, 너비 **300px 고정**:
-   ```xml
-   <ac:image ac:width="300">
-     <ri:url ri:value="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/..."/>
-   </ac:image>
-   ```
+---
 
-**⚠️ 실패 사례 — 아래 방법은 동작하지 않는다:**
-- ❌ **Figma MCP `get_screenshot`의 URL**(`https://www.figma.com/api/mcp/asset/...`)을 위키에 삽입 — 단기 만료 + 인증 필요 URL이라 위키에서 이미지가 깨진다. 이 URL은 로컬 PNG 다운로드 전용이다
-- ❌ **로컬 PNG를 Confluence 첨부파일로 업로드** — wiki MCP 도구에 첨부 업로드 기능이 없다 (페이지 조회/생성/수정, 코멘트, 라벨, 검색만 지원). `<ri:attachment>` 참조도 첨부가 없으므로 실패한다
-- ❌ **markdown 포맷으로 이미지 포함 업데이트** — `ac:image` 너비 지정과 중첩표가 동작하지 않는다. 반드시 storage 포맷을 사용한다
+#### 4-A. 코멘트 없는 화면 — Figma S3 URL 직접 사용
+
+Figma REST API로 이미지 URL 일괄 발급 후 위키에 삽입한다.
+
+```bash
+# node ID는 URL 인코딩 필수 (: → %3A)
+IDS="nodeId1%3A0,nodeId2%3A0,..."
+curl -s -H "X-Figma-Token: $FIGMA_TOKEN" \
+  "https://api.figma.com/v1/images/{fileKey}?ids=${IDS}&scale=2&format=png" \
+  | python3 -c "import json,sys; [print(k,'→',v) for k,v in json.load(sys.stdin).get('images',{}).items()]"
+```
+
+- 응답 `images` 객체에서 노드별 S3 URL 추출 (`https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/...`)
+- 일시적 오류 시 재시도, 반복 실패 시 `ids`를 절반씩 나눠 분할 발급
+- `ac:image` 태그, 너비 **300px 고정**:
+  ```xml
+  <ac:image ac:width="300">
+    <ri:url ri:value="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/..."/>
+  </ac:image>
+  ```
+
+> ⚠️ Figma S3 URL은 수 시간~수일 내 만료된다. 코멘트가 있어 번호 어노테이션이 필요한 화면은 4-B 방식으로 처리한다.
+
+---
+
+#### 4-B. 코멘트 있는 화면 — 번호 어노테이션 이미지 생성 후 GitHub 영구 URL 사용
+
+**이 방식을 사용하는 이유:**
+- 어노테이션 이미지는 로컬에서 생성한 이미지이므로 Figma에 존재하지 않음 → Figma S3 URL 없음
+- wiki MCP에 첨부파일 업로드 기능이 없어 Confluence 직접 업로드 불가
+- GitHub `raw.githubusercontent.com` URL은 레포가 유지되는 한 영구적이며 인증 없이 공개 접근 가능
+- 이미 레포에 push 권한이 있으므로 추가 자격증명 불필요
+
+**처리 순서:**
+
+**① 코멘트 x·y 좌표 수집** (Step 3 코멘트 조회 결과 재사용)
+
+```python
+# comments 구조: [(x, y, "정책 내용"), ...]  — y 오름차순 정렬된 상태
+```
+
+**② Python Pillow로 번호 원 오버레이**
+
+```python
+# pip install Pillow (scripts/requirements.txt에 포함)
+import urllib.request
+from PIL import Image, ImageDraw, ImageFont
+import io
+
+SCALE = 2        # Figma export scale
+CIRCLE_R = 18    # 반지름(픽셀, scale=2 기준)
+RED   = (220, 53, 69, 255)
+WHITE = (255, 255, 255, 255)
+
+def annotate(s3_url, comments, out_path):
+    with urllib.request.urlopen(urllib.request.Request(
+        s3_url, headers={"User-Agent": "Mozilla/5.0"}
+    )) as r:
+        img = Image.open(io.BytesIO(r.read()))
+
+    overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
+    draw = ImageDraw.Draw(overlay)
+    try:
+        font = ImageFont.truetype("/System/Library/Fonts/Helvetica.ttc",
+                                  size=int(CIRCLE_R * 1.3))
+    except:
+        font = ImageFont.load_default()
+
+    for i, (x, y, _) in enumerate(comments, 1):
+        px, py = int(x * SCALE), int(y * SCALE)
+        draw.ellipse([px-CIRCLE_R, py-CIRCLE_R, px+CIRCLE_R, py+CIRCLE_R],
+                     fill=RED, outline=WHITE, width=2)
+        label = str(i)
+        bbox = draw.textbbox((0, 0), label, font=font)
+        tw, th = bbox[2]-bbox[0], bbox[3]-bbox[1]
+        draw.text((px - tw//2, py - th//2 - 1), label, fill=WHITE, font=font)
+
+    Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB").save(out_path)
+```
+
+- `comments`는 y좌표 오름차순 정렬 후 전달 — 이미지 번호 = Description 정책 번호
+- 출력 파일명: `{프레임명_공백→언더스코어}.png`
+
+**③ GitHub 레포 `wiki/images/` 폴더에 저장 후 push**
+
+```bash
+# 레포 클론 (또는 기존 클론 재사용)
+git clone https://github.com/{owner}/{repo}.git /tmp/repo_clone
+cp {annotated}.png /tmp/repo_clone/wiki/images/
+git -C /tmp/repo_clone add wiki/images/
+git -C /tmp/repo_clone commit -m "wiki/images: {화면명} 번호 어노테이션 이미지 추가"
+git -C /tmp/repo_clone push origin main
+```
+
+> ℹ️ `assets/` 폴더는 `.gitignore` 대상이므로 반드시 `wiki/images/` 폴더를 사용한다.
+
+**④ GitHub raw URL로 위키에 삽입**
+
+```xml
+<ac:image ac:width="300">
+  <ri:url ri:value="https://raw.githubusercontent.com/{owner}/{repo}/main/wiki/images/{frame_name}.png"/>
+</ac:image>
+```
+
+---
+
+**⚠️ 동작하지 않는 방법 (절대 사용 금지):**
+
+| 방법 | 이유 |
+|------|------|
+| Figma MCP URL (`figma.com/api/mcp/asset/...`) | MCP 세션 종료 시 무효화, Confluence 서버에서 인증 없이 불러올 수 없어 이미지 깨짐 |
+| Confluence 첨부파일 업로드 | wiki MCP에 첨부 업로드 기능 없음 |
+| markdown 포맷으로 업데이트 | `ac:image` 너비 지정·중첩표 미지원, 반드시 storage 포맷 사용 |
 
 ### Step 5: 위키 업데이트
 1. **storage 포맷** 사용 (nested table 지원을 위해)
@@ -186,15 +282,26 @@ for item in screen['items']:
 </ul>
 <hr/>
 <h1>Screen</h1>
-<p>Screen ID는 Figma 프레임 이름을 그대로 사용합니다. (화면 선정·코멘트 규칙 안내문)</p>
+<p>Screen ID는 Figma 프레임 이름을 그대로 사용합니다. 이미지의 번호 ⓝ는 아래 정책 번호와 1:1 대응합니다.</p>
 <table><tbody>
 <tr><th>Screen ID</th><th>Screen</th><th>Description</th><th>XLT</th></tr>
+
+<!-- 코멘트(정책)가 있는 화면: 번호 어노테이션 이미지(GitHub) + 번호별 정책 -->
 <tr>
-  <td>(New) 자산 전송 팝업<br/>(51762:2592)</td>
-  <td><ac:image ac:width="300"><ri:url ri:value="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/..."/></ac:image></td>
-  <td><p>화면 설명 1~2문장.</p><p><strong>Figma 코멘트</strong><br/>1. 상단 코멘트<br/>2. 다음 코멘트</p></td>
-  <td><table><tbody><tr><th>XLT Key</th><th>KR</th></tr><tr><td>KW_...</td><td>한국어 (셀 내 줄바꿈은 &lt;br/&gt;)</td></tr></tbody></table></td>
+  <td>(New) 자산 전송 팝업</td>
+  <td><ac:image ac:width="300"><ri:url ri:value="https://raw.githubusercontent.com/{owner}/{repo}/main/wiki/images/{frame_name}.png"/></ac:image></td>
+  <td><p>화면 설명 1~2문장.</p><p><strong>정책</strong><br/>1. 상단 정책 내용<br/>2. 다음 정책 내용</p></td>
+  <td><table><tbody><tr><th>XLT Key</th><th>KR</th></tr><tr><td>KW_...</td><td>한국어</td></tr></tbody></table></td>
 </tr>
+
+<!-- 코멘트 없는 화면: 원본 Figma S3 이미지 -->
+<tr>
+  <td>화면 이름</td>
+  <td><ac:image ac:width="300"><ri:url ri:value="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/..."/></ac:image></td>
+  <td><p>화면 설명 1~2문장.</p></td>
+  <td>-</td>
+</tr>
+
 </tbody></table>
 <hr/>
 <h1>다국어 번역 (XLT Full Translation)</h1>
@@ -207,8 +314,9 @@ for item in screen['items']:
 **작성 규칙:**
 - 셀 안 줄바꿈은 `<br/>` (마크다운 `\n` 사용 금지)
 - `<a href>` URL의 `&`는 반드시 `&amp;`로 이스케이프 (XML 파싱 오류 방지)
-- 코멘트가 없는 화면의 Description은 설명 `<p>` 하나만, XLT가 없는 화면(비 `(New)` 프레임)의 XLT 셀은 `-`
-- 코멘트 없는 페이지/문단도 골격의 섹션 순서(History → Related Docs → Screen → 다국어 번역)는 유지한다
+- 코멘트 없는 화면의 Description은 설명 `<p>` 하나만, XLT 없는 화면의 XLT 셀은 `-`
+- Screen 안내 문구에 "이미지의 번호 ⓝ는 아래 정책 번호와 1:1 대응합니다." 문구 포함
+- 섹션 순서(History → Related Docs → Screen → 다국어 번역)는 항상 유지한다
 
 ### Step 6: 검증
 - [ ] 페이지 URL 접속하여 렌더링 확인
@@ -225,9 +333,18 @@ for item in screen['items']:
 - markdown 포맷은 표 안의 표를 지원하지 않음
 - 이미지 크기 지정도 storage 포맷의 `ac:width` 속성 사용
 
-### 이미지 URL 유효기간
-- Figma API에서 반환하는 이미지 URL은 **만료될 수 있음**
-- 영구 보존이 필요하면 이미지를 다운로드하여 Confluence attachment로 업로드 권장
+### 이미지 URL 전략 — 왜 GitHub를 사용하는가
+
+위키에 이미지를 삽입할 수 있는 방법과 각각의 한계:
+
+| URL 유형 | 설명 | 문제 |
+|----------|------|------|
+| Figma MCP URL (`figma.com/api/mcp/asset/...`) | MCP 도구가 반환하는 URL | MCP 세션 종료 시 무효화, Confluence 서버가 인증 없이 로드 불가 → 이미지 깨짐 |
+| Figma S3 URL (`figma-alpha-api.s3.amazonaws.com/...`) | REST API 발급 공개 URL | 수 시간~수일 내 만료. 번호 어노테이션 불가(원본 그대로) |
+| Confluence 첨부파일 | 페이지에 직접 업로드 | wiki MCP에 첨부 업로드 기능 없음, Confluence REST API 자격증명 별도 필요 |
+| **GitHub raw URL** (`raw.githubusercontent.com/...`) | 레포에 push한 파일의 공개 URL | ✅ 레포 유지 시 영구, 인증 불필요, push 권한 이미 보유 |
+
+**결론:** 번호 어노테이션 이미지는 로컬에서 생성하므로 Figma URL이 없다. GitHub `wiki/images/` 폴더에 저장해 영구 URL을 확보하는 것이 유일한 현실적 방법이다.
 
 ### 페이지 형식 통일
 - 같은 space 내 유사 문서와 형식을 통일
