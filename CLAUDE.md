@@ -38,6 +38,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 번역과 XLT Key를 먼저 확정한 뒤, 프로토타입에 XLT Key 확인 기능을 포함하여 생성한다.
 
+**단일 프레임 흐름**: 특정 프레임 URL이 주어지면 그 프레임만 [1] 번역(`md/translate.md` 단일 프레임 모드) → [3] 위키 Mode B로 업데이트할 수 있다 (프로토타입 제외). 번역 결과(XLT Key + 5개 언어)는 위키 Screen 표의 XLT 컬럼과 다국어 번역 섹션에 반영된다. 상세는 `md/translate.md`·`md/wiki.md` 참조.
+
 ### ⚠️ 단계별 프레임 필터 규칙 (혼동 금지 — 필수 준수)
 
 각 필터는 **해당 단계에서만** 적용된다. 다른 단계에 적용하는 순간 화면·인터랙션·번역 누락이 발생한다.
