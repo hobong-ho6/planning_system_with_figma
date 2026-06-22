@@ -29,10 +29,26 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 
 | 항목 | 필수 | 설명 | 예시 |
 |------|:---:|------|------|
-| 위키 페이지 URL | ✅ | 업데이트 대상 페이지 | `https://wiki.workers-hub.com/pages/viewpage.action?pageId=4288438279` |
+| 위키 페이지 URL | ✅ | 업데이트 대상 Confluence 페이지 | `https://wiki.workers-hub.com/display/UNIFI/Guide+Kim` |
+| Figma URL | ✅ | **페이지** URL → 전체 화면 / **프레임** URL → 그 프레임만 (모드 분기) | `.../Web3?node-id=55762-1104` |
 | 참조 페이지 URL | - | 형식을 참조할 기존 페이지 | `[Screen]Unifi MINI - LV` |
 | 페이지 제목 유지 여부 | - | 기존 제목 유지 or 변경 | 기존 유지 |
-| Figma 토큰 | ✅ | 이미지 export용 (이미 있으면 재사용) | `figd_xxx...` |
+| Figma 토큰 | ✅ | 이미지·코멘트 발급용 — **작업마다 사용자에게 요청 (재사용 금지)** | `figd_xxx...` |
+
+---
+
+## 업데이트 모드 (입력 Figma URL에 따라 분기)
+
+위키 업데이트는 입력한 Figma URL이 가리키는 대상에 따라 두 모드로 동작한다. **토큰 수집(Step 0) 이후 모드를 판별**한다.
+
+| 모드 | 트리거(입력) | 동작 | 표 처리 |
+|------|------|------|------|
+| **A. 전체 페이지** | Figma **페이지** URL (또는 "페이지 전체" 요청) | 페이지의 모든 화면 수집 (`Case`·`(x)` 제외) | Screen 표 전체 생성/재작성 |
+| **B. 단일 프레임 행 추가** | Figma **프레임** URL + "이 프레임만/해당 프레임" 요청 | 지정한 **그 프레임 하나만** 처리 | 기존 Screen 표에 **그 프레임 행 1개만** 추가(없으면)·갱신(있으면), 나머지 내용 보존 |
+
+**모드 판별 (토큰 확보 후):** 입력 URL의 `node-id` 타입을 `GET /v1/files/{fileKey}/nodes?ids={id}`로 확인 — `CANVAS`(페이지)면 **Mode A**, `FRAME`/`COMPONENT`/`INSTANCE` 등 화면 프레임이면 **Mode B**. 모호하면 "이 프레임만 추가할까요, 페이지 전체를 갱신할까요?"라고 사용자에게 확인한다.
+
+Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 상세)"** 참조. Step 1~6은 기본적으로 Mode A(전체) 기준이다.
 
 ---
 
@@ -392,6 +408,43 @@ git -C /tmp/repo_clone push origin main
 - [ ] 이미지가 300px로 표시되는지 확인
 - [ ] Nested table (XLT 컬럼) 정상 렌더링 확인
 - [ ] 다국어 번역 섹션 표가 정상 표시되는지 확인
+
+---
+
+## 단일 프레임 행 추가/갱신 (Mode B 상세)
+
+특정 프레임 URL + 위키 주소만 입력된 경우, **기존 페이지를 보존한 채 그 프레임의 행 1개만** Screen 표에 추가(또는 갱신)한다. 전체 표를 다시 만들지 않는다.
+
+**전제:** Step 0(토큰) 완료. 입력 URL에서 `fileKey`와 프레임 `node-id` 추출.
+
+1. **대상 프레임 확정**
+   - `GET /v1/files/{fileKey}/nodes?ids={frameId}`로 프레임 이름·크기·소속 페이지 확인
+   - 이름이 `Case`/`(x)`로 시작하면 "이 프레임은 보통 Screen 표 제외 대상입니다. 그래도 추가할까요?"라고 확인 후 진행 — **명시적 단일 지정은 사용자 의사를 우선**한다 (자동 제외 규칙보다 우선)
+
+2. **기존 위키 페이지 원문 확보 (필수: storage 원문)**
+   - `confluence_get_page(page_id, convert_to_markdown=false)` — **반드시 raw storage XHTML**로 받는다 (markdown으로 받아 되쓰면 매크로·중첩표 등 다른 내용이 손상된다)
+   - 현재 version 기록. Screen 표(`<table>`의 `<tbody>`)가 이미 있으면 그것을 대상으로 하고, 없으면(신규 페이지) 캐노니컬 골격으로 Screen 표를 먼저 만든 뒤 행을 넣는다
+
+3. **그 프레임의 이미지·코멘트 생성** (Step 3 코멘트 규칙 + Step 4 이미지 규칙을 **그 프레임 하나에만** 적용)
+   - 코멘트(스레드 답글 포함, y좌표 상단부터 번호) → Description
+   - 코멘트 있으면 번호 어노테이션 이미지 생성 후 Confluence 첨부(4-B), 없으면 S3 URL(4-A)
+
+4. **행(`<tr>`) 구성 — 기존 Screen 표의 컬럼 구조와 동일하게 맞춘다**
+   - `Screen ID`(프레임 이름) | `Screen`(이미지) | `Description`(코멘트 번호 목록) | `XLT`(번역 없으면 기존 표 관례대로 `-`)
+
+5. **표에 surgical 삽입/치환**
+   - Screen 표 `<tbody>` 안에서 `Screen ID` 셀이 같은 프레임 이름인 `<tr>`을 탐색
+     - **있으면**: 그 `<tr>` 전체를 새 행으로 **치환**(갱신)
+     - **없으면**: `</tbody>` 직전에 새 `<tr>` **추가**
+   - History 표에도 변경 행 1줄 추가 권장 (날짜 · `"{프레임명} 행 추가/갱신"`)
+   - 그 외 모든 기존 내용(History 기존 행, Related Docs, 다른 Screen 행, 다국어 번역 섹션)은 **그대로 보존**
+
+6. **업데이트 적용**
+   - 수정한 **전체 storage 콘텐츠**를 `confluence_update_page(page_id, content_format='storage', content=수정본, version_comment="{프레임명} 행 추가/갱신")`로 전송
+   - 코멘트 어노테이션 이미지가 있으면 **먼저 페이지에 첨부 업로드**(Step 4-B ③) 후 본문에서 `ri:attachment`로 참조
+   - 반환 version 확인, 추가/갱신된 행을 사용자에게 보고
+
+> ⚠️ Mode B는 부분 갱신이다. **전체 표 재작성·다른 행 삭제 금지** — 반드시 원문(storage)을 받아 해당 행만 수정한 **전체 콘텐츠**를 전송한다. markdown으로 받아 되쓰면 기존 행·매크로가 손상되므로 금지.
 
 ---
 
