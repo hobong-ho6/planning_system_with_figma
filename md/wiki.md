@@ -72,10 +72,10 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 
 ### Step 3: 콘텐츠 작성
 
-#### Screen 표 (화면 선정 — `Case` 프레임 제외)
-- **이름이 `Case`로 시작하는 프레임은 Screen 표에 포함하지 않는다** (예: `Case 선택 - 니모닉, SNS`, `Case1. SNS 계정 1개 보유`) — 프로토타입 분기 테스트용 화면이므로 화면 정의서 대상이 아니다
+#### Screen 표 (화면 선정 — `Case`·`(x)` 프레임 제외)
+- **이름이 `Case` 또는 `(x)`로 시작하는 프레임은 Screen 표에 포함하지 않는다** — `Case`는 프로토타입 분기 테스트용 화면, `(x)`는 작업 중단·삭제 예정 화면이므로 화면 정의서 대상이 아니다 (예: `Case 선택 - 니모닉, SNS`, `Case1. SNS 계정 1개 보유`, `(x) 구버전 입금 화면`)
 - 판별 기준은 **프레임 이름의 시작 문자열**이다. `(New) Case2. ...`처럼 `(New)`로 시작하는 프레임은 **포함 대상**이다
-- 이 제외 규칙은 **3단계 위키의 Screen 표에만** 적용된다 — 1단계 번역의 `(New)` 필터, 2단계 프로토타입의 전체 화면 수집과 혼동하지 않는다 (CLAUDE.md '단계별 프레임 필터 규칙' 참조)
+- `Case` 제외는 **3단계 위키 Screen 표에만** 적용되고, `(x)` 제외는 **1단계 번역과 3단계 위키에 공통** 적용된다 — 2단계 프로토타입은 전체 화면을 수집한다(`(x)` 포함). 혼동하지 않는다 (CLAUDE.md '단계별 프레임 필터 규칙' 참조)
 - 제외한 프레임 목록(이름·node-id)을 사용자에게 보고한다
 
 #### Screen 표 (Screen ID 컬럼)
@@ -90,7 +90,8 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 - 화면 설명 1~2문장과 함께 **해당 화면의 Figma 코멘트를 Description에 포함**한다 — 코멘트는 화면 정책이다
 - **번호 규칙**: 화면 내 위치 **y좌표가 가장 위에 있는 코멘트부터** `1.`, `2.`, … 순차 번호를 붙인다
   - 예: 가장 상단 코멘트가 "일주일간 보지 않기"라면 → `1. 일주일간 보지 않기`
-- **미해결(resolved_at이 null) 코멘트만 포함**한다 — 해결된 코멘트는 이미 반영된 정책이다
+- **답글(스레드) 반영 필수**: 한 핀(코멘트)에 답글이 여러 개 달린 스레드는 **루트 코멘트 번호 아래 줄에 답글 본문만** `created_at` 시간순으로 이어 표시한다(작성자·날짜 없이 본문만, 들여쓰기 마커 `↳` 사용). 번호(`1.`, `2.`, …)는 **루트 코멘트에만** 부여하고 답글에는 부여하지 않는다 — 핀은 루트에만 존재하기 때문이다
+- **미해결(resolved_at이 null) 코멘트만 포함**한다 — 해결된 코멘트는 이미 반영된 정책이다 (루트가 해결됨이면 그 스레드의 답글도 함께 제외)
 - 코멘트가 없는 화면은 화면 설명만 기재한다
 
 **코멘트 조회 방법 (우선순위 순):**
@@ -104,21 +105,40 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
    import json, sys
    from collections import defaultdict
    d = json.loads(sys.stdin.buffer.read().decode('utf-8'))
-   grouped = defaultdict(list)
-   for c in d.get('comments', []):
+   comments = d.get('comments', [])
+
+   # 1차: 루트(좌표 있음 + 미해결) 수집
+   roots = {}                    # id -> 루트 정보
+   grouped = defaultdict(list)   # node_id -> [루트, ...]
+   for c in comments:
+       if c.get('parent_id'):    # 답글은 2차에서 처리
+           continue
        meta = c.get('client_meta') or {}
        node_id = meta.get('node_id', '')
        y = (meta.get('node_offset') or {}).get('y', 0)
        if node_id and c.get('message') and not c.get('resolved_at'):
-           grouped[node_id].append({'y': y, 'msg': c['message'].strip()})
+           root = {'id': c['id'], 'y': y, 'msg': c['message'].strip(), 'replies': []}
+           roots[c['id']] = root
+           grouped[node_id].append(root)
+
+   # 2차: 답글을 parent_id로 루트에 매칭 (created_at 오름차순)
+   for c in sorted(comments, key=lambda x: x.get('created_at', '')):
+       pid = c.get('parent_id')
+       if pid and pid in roots and c.get('message'):
+           roots[pid]['replies'].append(c['message'].strip())
+
+   # 출력: 루트(y 오름차순) → 그 아래 답글 본문
    for nid, cs in grouped.items():
-       for c in sorted(cs, key=lambda x: x['y']):
-           print(nid, c['y'], c['msg'])
+       for root in sorted(cs, key=lambda x: x['y']):
+           print(nid, root['y'], root['msg'])
+           for r in root['replies']:
+               print(nid, '  ↳', r)
    "
    ```
-   - 응답에서 `client_meta.node_id`로 프레임별 코멘트 그룹핑
+   - 응답에서 `client_meta.node_id`로 프레임별 코멘트 그룹핑 (루트만)
    - `node_offset.y` 오름차순 정렬
-   - `resolved_at`이 있으면(truthy) 제외
+   - `resolved_at`이 있으면(truthy) 제외 — 루트가 제외되면 스레드 통째 제외
+   - **답글(`parent_id` 보유, 좌표 없음)은 `parent_id`로 루트에 매칭**해 `created_at` 시간순으로 루트 아래에 본문만 출력
 
 #### Screen 표 (XLT 컬럼)
 - `XLT Key | KR` 만 표시 (간결하게 한국어만)
@@ -324,7 +344,7 @@ git -C /tmp/repo_clone push origin main
 <tr>
   <td>(New) 자산 전송 팝업</td>
   <td><ac:image ac:width="300"><ri:attachment ri:filename="{frame_name}.png"/></ac:image></td>
-  <td><p>화면 설명 1~2문장.</p><p><strong>정책</strong><br/>1. 상단 정책 내용<br/>2. 다음 정책 내용</p></td>
+  <td><p>화면 설명 1~2문장.</p><p><strong>정책</strong><br/>1. 상단 정책 내용<br/>&nbsp;&nbsp;↳ 첫 번째 답글 본문<br/>&nbsp;&nbsp;↳ 두 번째 답글 본문<br/>2. 다음 정책 내용</p></td>
   <td><table><tbody><tr><th>XLT Key</th><th>KR</th></tr><tr><td>KW_...</td><td>한국어</td></tr></tbody></table></td>
 </tr>
 

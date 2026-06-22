@@ -47,7 +47,7 @@ Figma 파일의 프로토타입 인터랙션을 추출하여, 브라우저에서
 2. `get_metadata` 도구로 페이지 구조 확인
 3. 직속 자식 프레임(화면) 목록 파악
    - ⚠️ 화면 크기를 기준으로 필터링하지 않는다 — 화면 크기는 프로젝트마다 다를 수 있으므로, 크기와 무관하게 페이지의 직속 자식 프레임을 모두 화면으로 취급한다
-   - ⚠️ **이름 기준 필터링도 하지 않는다** — `(New)` 필터는 1단계(번역 추출) 전용, `Case` 시작 프레임 제외는 3단계(위키) 전용이다. **프로토타입은 `(New)`/`Case` 여부와 무관하게 모든 직속 자식 프레임과 모든 인터랙션을 포함**한다 (CLAUDE.md '단계별 프레임 필터 규칙' 참조)
+   - ⚠️ **이름 기준 필터링도 하지 않는다** — `(New)` 필터는 1단계(번역 추출) 전용, `Case` 시작 프레임 제외는 3단계(위키) 전용, `(x)` 시작 프레임 제외는 1·3단계 전용이다. **프로토타입은 `(New)`/`Case`/`(x)` 여부와 무관하게 모든 직속 자식 프레임과 모든 인터랙션을 포함**한다 — `(x)` 프레임도 다른 화면의 네비게이션 대상일 수 있으므로 제외하면 동선이 끊긴다 (CLAUDE.md '단계별 프레임 필터 규칙' 참조)
 
 **조회 완료 후 보고:**
 ```
@@ -190,7 +190,7 @@ const APP_DATA = {
   startScreen: "시작화면ID",
   screens: { "ID": { name, image, width, height } },
   interactions: [{ sourceScreen, trigger, destination, hotspot: {x,y,w,h}, label, timeoutMs? }],  // timeoutMs: AFTER_TIMEOUT 전용 (Figma trigger.timeout 초 → ms)
-  comments: [{ id, screenId, author, date, message, offset, resolved }]
+  comments: [{ id, screenId, author, date, message, offset, resolved, replies: [{ author, date, message }] }]  // replies: 스레드 답글(시간순). 위키는 message만, 프로토타입은 전체 표시
 };
 ```
 
@@ -428,7 +428,7 @@ variantSwaps: [
 
 #### comments_data.json 생성 규칙 (필드 매핑 — 임의 변형 금지)
 
-조회 결과에서 **대상 페이지의 루트 코멘트만** 선별해 아래 매핑으로 저장한다:
+조회 결과에서 **대상 페이지의 루트 코멘트**와 **그 답글(스레드)** 을 함께 선별해 아래 매핑으로 저장한다. 답글은 루트의 `replies` 배열로 묶는다:
 
 | comments_data.json 필드 | Figma API 필드 | 규칙 |
 |---|---|---|
@@ -439,9 +439,10 @@ variantSwaps: [
 | `message` | `message` | **전문 그대로** (자르지 않음) |
 | `offset` | `client_meta.node_offset` | 정수 반올림. node_id가 화면 프레임이면 이미 화면 상대좌표 |
 | `resolved` | `resolved_at` | 값이 있으면 `true` |
+| `replies` | `parent_id`로 묶은 답글들 | 각 답글 `{author: user.handle, date: created_at[:10], message: 전문 그대로}`. `created_at` 오름차순 정렬. 좌표·resolved 없음(루트 상속) |
 
 **선별 규칙:**
-- **답글(`parent_id`가 있는 코멘트)은 제외한다** — 좌표가 없는 스레드 응답이므로 핀 대상이 아니다. 제외 건수를 보고한다
+- **답글(`parent_id`가 있는 코멘트)은 루트의 `replies`로 수집한다** — 답글은 좌표가 없어 별도 핀을 만들지 않지만 누락해서는 안 된다. `parent_id`로 루트에 매칭해 `created_at` 오름차순으로 루트의 `replies` 배열에 넣는다. 루트별 답글 수집 건수를 보고한다. (루트가 삭제·resolved로 제외되면 그 스레드의 답글도 함께 제외한다)
 - `client_meta.node_id`가 **삭제된 노드**(조회 시 null)인 코멘트는 제외하고 보고한다
 - `client_meta.node_id`가 **페이지 자체**인 코멘트는 offset이 캔버스 절대좌표다 — `(offset − 화면 absoluteBoundingBox 원점)`으로 변환해 포함 화면을 판별하고, 어떤 화면에도 들어가지 않으면 제외·보고한다
 - 위키 Description용 정렬(화면별 `offset.y` 오름차순)은 3단계에서 수행한다 (`md/wiki.md` Step 3)

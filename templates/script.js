@@ -252,9 +252,12 @@ function renderCommentPanel(screenId) {
         li.className = 'comment-panel-item';
         li.dataset.commentId = comment.id;
 
+        const replyCount = (comment.replies || []).length;
+        const replyBadge = replyCount > 0 ? ` 💬 ${replyCount}` : '';
+
         const meta = document.createElement('div');
         meta.className = 'meta';
-        meta.innerHTML = `<span>${comment.author}</span><span>${new Date(comment.date).toLocaleDateString('ko-KR')}</span>`;
+        meta.innerHTML = `<span>${comment.author}</span><span>${new Date(comment.date).toLocaleDateString('ko-KR')}${replyBadge}</span>`;
 
         const msg = document.createElement('div');
         msg.className = 'msg';
@@ -300,6 +303,32 @@ function showCommentPopover(comment, x, y) {
     document.getElementById('comment-author').textContent = comment.author;
     document.getElementById('comment-date').textContent = new Date(comment.date).toLocaleDateString('ko-KR');
     document.getElementById('comment-message').textContent = comment.message;
+
+    // 스레드 답글 렌더링 (시간순). 없으면 숨김
+    const repliesEl = document.getElementById('comment-replies');
+    repliesEl.innerHTML = '';
+    const replies = comment.replies || [];
+    if (replies.length > 0) {
+        repliesEl.style.display = 'block';
+        replies.forEach(reply => {
+            const item = document.createElement('div');
+            item.className = 'comment-reply';
+
+            const meta = document.createElement('div');
+            meta.className = 'comment-reply-meta';
+            meta.innerHTML = `<span>${reply.author}</span><span>${new Date(reply.date).toLocaleDateString('ko-KR')}</span>`;
+
+            const body = document.createElement('div');
+            body.className = 'comment-reply-body';
+            body.textContent = reply.message;
+
+            item.appendChild(meta);
+            item.appendChild(body);
+            repliesEl.appendChild(item);
+        });
+    } else {
+        repliesEl.style.display = 'none';
+    }
 
     popover.style.display = 'block';
     popover.style.left = Math.min(x, window.innerWidth - 320) + 'px';

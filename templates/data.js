@@ -66,7 +66,7 @@ const APP_DATA = {
         // ... 더 많은 variant
     ],
 
-    // 코멘트 (항상 포함)
+    // 코멘트 (항상 포함). replies: 스레드 답글(시간순) — 위키는 message만, 프로토타입은 전체 표시
     comments: [
         {
             id: "comment_1",
@@ -75,7 +75,10 @@ const APP_DATA = {
             date: "2026-06-10",
             message: "이 버튼 크기 확인 부탁드립니다",
             offset: { x: 50, y: 120 },
-            resolved: false
+            resolved: false,
+            replies: [
+                { author: "개발자", date: "2026-06-11", message: "44px로 맞추겠습니다" }
+            ]
         }
         // ... 더 많은 코멘트
     ]
