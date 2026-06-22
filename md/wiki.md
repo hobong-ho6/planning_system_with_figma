@@ -5,9 +5,19 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 
 ---
 
+## ⛔ 시작 전 필수 확인 (없으면 진행 불가)
+
+| 항목 | 확인 방법 | 없을 경우 |
+|------|-----------|-----------|
+| Figma Personal Access Token | `echo $FIGMA_TOKEN` 또는 사용자에게 요청 | **작업 중단 — 토큰 없이는 이미지 URL·코멘트 발급 불가** |
+| Confluence 위키 페이지 URL | 사용자 제공 | 작업 중단 |
+| Figma 파일 URL | 사용자 제공 | 작업 중단 |
+
+> ⚠️ FIGMA_TOKEN이 없는 상태에서 "일단 구조만 올리기" 금지 — 이미지와 코멘트가 누락된 불완전한 문서가 생성된다.
+
 ## 사전 조건
 - Confluence 위키 페이지 URL 또는 Page ID
-- 업데이트할 콘텐츠 (화면 이미지, 텍스트, 번역)
+- Figma Personal Access Token (`figd_xxx...`)
 - MCP Confluence 도구 접근 가능
 
 ---
@@ -24,6 +34,20 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 ---
 
 ## 절차
+
+### Step 0: Figma 토큰 수집 (작업 시작 전 최우선)
+
+**모든 작업보다 먼저 수행한다. 토큰 확보 전까지 Step 1로 진행하지 않는다.**
+
+1. 사용자에게 Figma Personal Access Token을 요청한다:
+   > "위키 업데이트를 위해 Figma Personal Access Token이 필요합니다. Figma → 프로필 → Settings → Security → Personal access tokens에서 발급 후 공유해 주세요."
+2. 토큰을 받으면 유효성 검증:
+   ```bash
+   curl -s -H "X-Figma-Token: {TOKEN}" "https://api.figma.com/v1/me" | python3 -c "import json,sys; d=json.load(sys.stdin); print('✅ 유효:', d.get('email')) if d.get('email') else print('❌ 무효:', d)"
+   ```
+3. 유효하면 Step 1 진행. 무효하면 사용자에게 재발급 요청.
+
+> ❌ 토큰 없이 "일단 구조만 올리기" 금지 — 이미지(S3 URL)와 코멘트가 누락된 불완전한 문서가 생성된다.
 
 ### Step 1: 대상 페이지 확인
 1. URL에서 Page ID 추출 (예: `pageId=4288438279`)
@@ -56,14 +80,44 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 #### Screen 표 (Screen ID 컬럼)
 - **Screen ID에는 Figma의 프레임 이름을 그대로 사용**한다 (예: `(New) 자산 전송 팝업`)
 - ❌ `SC-01` 같은 임의 번호를 만들지 않는다 — Figma·프로토타입과 위키 간 화면 식별이 어긋난다
-- node-id는 프레임 이름 아래 괄호로 병기 가능 (예: `(51762:2592)`)
+- ❌ node-id를 Screen ID 셀에 포함하지 않는다 (예: `(51762:2592)` 같은 괄호 병기 금지) — 프레임 이름만 표시한다
 
 #### Screen 표 (Description 컬럼 — Figma 코멘트 필수 반영)
+
+> ⚠️ **코멘트 수집은 선택이 아니라 필수다.** 코멘트를 빠뜨린 채 위키를 올리면 화면 정책이 누락된다. 토큰이 없으면 Step 1 이전에 중단한다.
+
 - 화면 설명 1~2문장과 함께 **해당 화면의 Figma 코멘트를 Description에 포함**한다 — 코멘트는 화면 정책이다
 - **번호 규칙**: 화면 내 위치 **y좌표가 가장 위에 있는 코멘트부터** `1.`, `2.`, … 순차 번호를 붙인다
   - 예: 가장 상단 코멘트가 "일주일간 보지 않기"라면 → `1. 일주일간 보지 않기`
+- **미해결(resolved_at이 null) 코멘트만 포함**한다 — 해결된 코멘트는 이미 반영된 정책이다
 - 코멘트가 없는 화면은 화면 설명만 기재한다
-- 코멘트 조회·대상 페이지 필터링 방법은 `md/prototype.md` Step 8과 동일 — 2단계 산출물 `comments_data.json`이 있으면 재사용한다 (`screenId`별 그룹핑 후 `offset.y` 오름차순 정렬)
+
+**코멘트 조회 방법 (우선순위 순):**
+
+1. **`comments_data.json`이 있는 경우** (2단계 완료 후): 재사용 (`screenId`별 그룹핑 후 `offset.y` 오름차순 정렬)
+2. **없는 경우 (필수 대안 — 건너뛰기 금지)**: Figma REST API로 직접 조회
+   ```bash
+   curl -s -H "X-Figma-Token: $FIGMA_TOKEN" \
+     "https://api.figma.com/v1/files/{fileKey}/comments" \
+     | python3 -c "
+   import json, sys
+   from collections import defaultdict
+   d = json.loads(sys.stdin.buffer.read().decode('utf-8'))
+   grouped = defaultdict(list)
+   for c in d.get('comments', []):
+       meta = c.get('client_meta') or {}
+       node_id = meta.get('node_id', '')
+       y = (meta.get('node_offset') or {}).get('y', 0)
+       if node_id and c.get('message') and not c.get('resolved_at'):
+           grouped[node_id].append({'y': y, 'msg': c['message'].strip()})
+   for nid, cs in grouped.items():
+       for c in sorted(cs, key=lambda x: x['y']):
+           print(nid, c['y'], c['msg'])
+   "
+   ```
+   - 응답에서 `client_meta.node_id`로 프레임별 코멘트 그룹핑
+   - `node_offset.y` 오름차순 정렬
+   - `resolved_at`이 있으면(truthy) 제외
 
 #### Screen 표 (XLT 컬럼)
 - `XLT Key | KR` 만 표시 (간결하게 한국어만)
