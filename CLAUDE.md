@@ -40,7 +40,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **단일 프레임 흐름**: 특정 프레임 URL이 주어지면 그 프레임만 [1] 번역(`md/translate.md` 단일 프레임 모드) → [3] 위키 Mode B로 업데이트할 수 있다 (프로토타입 제외). 번역 결과(XLT Key + 5개 언어)는 위키 Screen 표의 XLT 컬럼과 다국어 번역 섹션에 반영된다. 상세는 `md/translate.md`·`md/wiki.md` 참조.
 
-**코멘트 선별 흐름**: Figma 코멘트 본문을 `XLT`로 시작하게 달면(대소문자·콜론 무관), [1] 번역에서 `(New)` 전수 추출 대신 그 코멘트가 가리키는 텍스트만 선별 추출·번역할 수 있다(`md/translate.md` 코멘트 선별 모드). 대상 선택자는 본문의 `XLT` 마커이며 위키 Description 번호는 사람이 교차 확인하는 라벨이다. 코멘트→텍스트 매칭 결과는 번역 전 사용자 확인을 거친다. 상세는 `md/translate.md` 참조.
+**코멘트 선별 흐름**: Figma 코멘트 본문을 `XLT`로 시작하게 달면(대소문자·콜론 무관), [1] 번역에서 `(New)` 전수 추출 대신 그 코멘트가 가리키는 텍스트만 선별 추출·번역할 수 있다(`md/translate.md` 코멘트 선별 모드). 대상 선택자는 본문의 `XLT` 마커이며 위키 Description 번호는 사람이 교차 확인하는 라벨이다. **코멘트는 매 실행마다 Figma REST로 새로 조회한다(캐시·`comments_data.json` 미사용)** — 마커가 바뀔 수 있어 최신 상태로 선별해야 한다. 코멘트→텍스트 매칭 결과는 번역 전 사용자 확인을 거친다. 상세는 `md/translate.md` 참조.
 
 ### ⚠️ 단계별 프레임 필터 규칙 (혼동 금지 — 필수 준수)
 

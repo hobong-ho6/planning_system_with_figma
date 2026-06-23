@@ -92,7 +92,7 @@ Figma 파일에서 화면별 텍스트 노드를 추출하고, 다국어 번역�
 **절차:**
 
 1. `setCurrentPageAsync`로 대상 페이지 설정(또는 프레임 URL이면 그 프레임으로 한정).
-2. **`XLT` 코멘트 수집** — `md/wiki.md`의 코멘트 조회 REST 절차(`GET /v1/files/{fileKey}/comments`)를 재사용한다. 미해결(`resolved_at` null) **루트** 코멘트 중 마커 규칙(위)에 맞는 것만 필터하고, 각 `{id, node_id, node_offset{x,y}, message}`를 보관한다.
+2. **`XLT` 코멘트 수집 (⚠️ 캐시 금지 — 매 실행마다 새로 조회)** — `md/wiki.md`의 코멘트 조회 절차 중 **REST 직접 조회**(`GET /v1/files/{fileKey}/comments`)만 사용한다. **`comments_data.json` 등 캐시·이전 수집 결과를 재사용하지 않는다** (wiki.md의 "comments_data.json 재사용" 경로를 이 모드에서는 적용하지 않음). XLT 마커·코멘트는 추가·해결·이동·삭제될 수 있어, 캐시를 쓰면 사라졌거나 바뀐 마커를 잘못 선별할 수 있으므로 **매 번역 실행마다 Figma에서 최신 코멘트를 새로 가져온다.** 미해결(`resolved_at` null) **루트** 코멘트 중 마커 규칙(위)에 맞는 것만 필터하고, 각 `{id, node_id, node_offset{x,y}, message}`를 보관한다.
 3. 각 `XLT` 코멘트의 **대상 텍스트를 매칭**한다(아래 매칭 알고리즘).
 4. 매칭된 텍스트를 중복 제거한다 — **동일 한국어 원문 = 1개 키** 불변 규칙(Step 2) 준수. 원문 줄바꿈(`\n`)은 ko_KR에 보존하고, 매칭 lookup은 `\n`→공백 정규화로 비교한다.
 5. **확인 단계**(아래)에서 사용자 승인 후, 승인된 텍스트만으로 `translation_extract.json`을 생성한다(스키마 동일, `items`가 선별분만 포함). 이후 **Step 2~7을 그대로** 수행한다.
