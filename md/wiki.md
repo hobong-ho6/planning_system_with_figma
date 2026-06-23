@@ -133,10 +133,10 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 - **미해결(resolved_at이 null) 코멘트만 포함**한다 — 해결된 코멘트는 이미 반영된 정책이다 (루트가 해결됨이면 그 스레드의 답글도 함께 제외)
 - 코멘트가 없는 화면은 화면 설명만 기재한다
 
-**코멘트 조회 방법 (우선순위 순):**
+**코멘트 조회 방법 (원본 최신성 — CLAUDE.md '캐시 금지 규칙' 준수):**
 
-1. **`comments_data.json`이 있는 경우** (2단계 완료 후): 재사용 (`screenId`별 그룹핑 후 `offset.y` 오름차순 정렬)
-2. **없는 경우 (필수 대안 — 건너뛰기 금지)**: Figma REST API로 직접 조회
+1. **`comments_data.json`이 있는 경우** — **같은 작업 실행에서 2단계가 방금 생성한 파일일 때만** 재사용한다 (`screenId`별 그룹핑 후 `offset.y` 오름차순 정렬). 이전 세션의 캐시이거나 Figma 코멘트가 변경됐을 수 있으면 재사용하지 말고 2번으로 새로 조회한다.
+2. **그 외(파일 없음·이전 run·원본 변경 가능) — 필수 (건너뛰기 금지)**: Figma REST API로 직접 새로 조회
    ```bash
    curl -s -H "X-Figma-Token: $FIGMA_TOKEN" \
      "https://api.figma.com/v1/files/{fileKey}/comments" \
