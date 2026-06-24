@@ -198,6 +198,7 @@ for item in screen['items']:
 #### 다국어 번역 (별도 섹션)
 - `XLT Key | KR | JA | EN | TH | ZH-TW` 전체 표시
 - 번역 검토/확인 용도
+- **검증 게이트 필수**: 번역을 위키에 반영하기 전 `md/translate.md` '번역 품질 게이트'(한국어 교정 → `scripts/validate_translation.py` + check.md 3단계 → **검증 리포트 사용자 제시**)를 통과한다 — 위키 통합 작업에서도 생략 금지 (CLAUDE.md '⛔ 번역 품질 게이트').
 - **XLT 엑셀 첨부 (필수)**: 번역을 위키에 반영할 때 `md/translate.md` Step 7로 XLT 업로드용 엑셀(`xlt_output_YYYYMMDDHHmmss.xlsx`)을 **생성해 같은 Confluence 페이지에 첨부**하고, 다국어 번역 섹션 머리에 **다운로드 링크**를 넣는다 — 위키 문서와 업로드 엑셀이 한곳에서 함께 관리되도록 한다.
   - 첨부 업로드: 이미지와 동일하게 `POST {BASE}/rest/api/content/{pageId}/child/attachment` (`-F "file=@....xlsx;type=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"`)
   - 본문 링크(storage): `<ac:link><ri:attachment ri:filename="xlt_output_....xlsx" /><ac:plain-text-link-body><![CDATA[XLT 업로드 엑셀 다운로드]]></ac:plain-text-link-body></ac:link>`
