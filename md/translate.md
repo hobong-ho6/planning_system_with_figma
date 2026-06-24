@@ -138,7 +138,7 @@ def match(comment_pt, text_nodes, radius=60):   # radius(px)는 화면 밀도에
 - 여러 `XLT` 코멘트가 같은 텍스트를 가리키면 dedup.
 - 비텍스트 요소를 의도한 코멘트(좌표가 버튼·아이콘 위)는 확인 단계에서 사람이 거른다.
 
-**산출물 연결**: 선별 결과(XLT Key + 번역)는 단일 프레임 모드와 동일하게 위키 `md/wiki.md` Mode B의 XLT 컬럼·다국어 번역 섹션 입력으로 넘길 수 있다.
+**산출물 연결**: 선별 결과(XLT Key + 번역)는 단일 프레임 모드와 동일하게 위키 `md/wiki.md` Mode B의 XLT 컬럼·다국어 번역 섹션 입력으로 넘긴다. **추가로, XLT 코멘트도 다른 코멘트와 동일하게 y좌표 순 번호(`1.`, `2.`…)를 부여하고, 위키 업데이트 시 Description 영역에 그 번호 + 코멘트 내용으로 함께 갱신한다** — XLT만 번역한 경우에도 XLT 컬럼·다국어 섹션만 채우고 Description을 빠뜨리지 않는다 (`md/wiki.md` Step 3 'Description 컬럼' 규칙).
 
 ### Step 2: XLT Key 생성
 네이밍 규칙:
