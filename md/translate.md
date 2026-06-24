@@ -317,6 +317,7 @@ curl -s "https://landpress-content.line-scdn.net/contents/v2/projects/wdmwbfuv10
 ```
 - xlt 폴더가 없으면 자동 생성
 - 파일명 형식: `xlt_output_YYYYMMDDHHmmss.xlsx`
+- **위키 연동**: 위키 업데이트와 함께 진행할 때는 이 엑셀을 Confluence 페이지에 **첨부**하고 다국어 번역 섹션에 다운로드 링크를 넣는다 (`md/wiki.md` 'XLT 엑셀 첨부' 규칙)
 - 프로젝트 폴더 내에서 XLT 파일을 통합 관리
 
 **엑셀 구조:**
