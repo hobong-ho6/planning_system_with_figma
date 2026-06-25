@@ -57,6 +57,21 @@ class TranslationValidator:
 
             text = str(text)
 
+            # 외래어 음차 오염 / 알려진 표기 오류 (수동 검토 누적 패턴 — 정확 일치만, 자동 검출 보강용)
+            # 자동 검증은 "시작점"일 뿐 — 신규 패턴은 전체 행 수동 검토로 잡는다(md/check.md).
+            KO_BLOCKLIST = {
+                '포이가츠': "일본어 'ポイ活' 음차 오염 → '포인트(미션)' 권장",
+                '누리고다양한': "띄어쓰기 누락 → '누리고 다양한'",
+                '피부결과 윤곽': "다의어 모호('피부 결과' vs '피부결, 윤곽') → 원문 명확화 권장",
+            }
+            for bad, fix in KO_BLOCKLIST.items():
+                if bad in text:
+                    self.issues['P1'].append({
+                        'key': key,
+                        'issue': '표기 오류',
+                        'detail': f"{fix} ({text})"
+                    })
+
             # 맞춤법 검사
             if '되요' in text:
                 self.issues['P1'].append({

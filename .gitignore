@@ -11,6 +11,7 @@ assets/
 scripts/glossary.json
 translation_*.json
 translation_*.md
+!md/translation_validation_guide.md
 *_validation_report.md
 
 # 프로토타입 산출물 (templates/에서 생성됨)

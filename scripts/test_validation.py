@@ -53,6 +53,9 @@ TEST_DATA = [
     # P1 맞춤법 ('되요') + P1 placeholder 불일치
     {"xlt_key": "KW_t_mix", "ko_KR": "{{0}}원이 입금 되요", "en_US": "{{1}} deposited",
      "ja_JP": "{{0}}ウォンが入金されました", "zh_TW": "{{0}}元已存入", "th_TH": "ฝาก {{0}} วอนแล้ว"},
+    # P1 외래어 음차 blocklist ('포이가츠') — 자동 검증이 구조적으로 못 잡던 패턴
+    {"xlt_key": "KW_t_loan", "ko_KR": "포이가츠 미션으로 받기", "en_US": "Get with point missions",
+     "ja_JP": "ポイ活ミッションで受け取る", "zh_TW": "透過點數任務領取", "th_TH": "รับผ่านภารกิจสะสมแต้ม"},
 ]
 
 failures = []
@@ -105,6 +108,7 @@ check("P0 용어집 위반: ja_JP PIN 번역 검출", has_issue(issues, "P0", "K
 check("P0 빈칸: zh_TW 검출", has_issue(issues, "P0", "KW_t_p0", "빈칸"))
 check("P1 맞춤법: '되요' 검출", has_issue(issues, "P1", "KW_t_mix", "맞춤법"))
 check("P1 placeholder 불일치 검출", has_issue(issues, "P1", "KW_t_mix", "placeholder 불일치"))
+check("P1 외래어 음차 blocklist: '포이가츠' 검출", has_issue(issues, "P1", "KW_t_loan", "표기 오류"))
 check("P2 마침표 스타일 검출", any(i["issue"] == "마침표 스타일" for i in issues["P2"]))
 
 # --- 결과 ---
