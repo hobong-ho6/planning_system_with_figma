@@ -310,10 +310,11 @@ curl -s "https://landpress-content.line-scdn.net/contents/v2/projects/wdmwbfuv10
 
 #### A. 화면별 요약 (Screen 표에 삽입용)
 ```
-| XLT Key | KR |
-|---|---|
-| KW_home_deposit | 입금하기 |
+| No | XLT Key | KR |
+|---|---|---|
+| 9 | KW_home_deposit | 입금하기 |
 ```
+`No`는 그 텍스트를 가리키는 Description 정책 코멘트 번호(이미지 빨강 원 ⓝ)다 — 위키 단계에서 코멘트→텍스트 매칭으로 채운다 (`md/wiki.md` 'Screen 표 (XLT 컬럼)'). 코멘트가 없는 텍스트는 빈칸, 사용자 수동 입력값은 보존.
 
 #### B. 전체 번역표
 ```

@@ -181,9 +181,14 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
    - `resolved_at`이 있으면(truthy) 제외 — 루트가 제외되면 스레드 통째 제외
    - **답글(`parent_id` 보유, 좌표 없음)은 `parent_id`로 루트에 매칭**해 `created_at` 시간순으로 루트 아래에 본문만 출력
 
-#### Screen 표 (XLT 컬럼)
-- `XLT Key | KR` 만 표시 (간결하게 한국어만)
-- 이미지와 함께 빠르게 텍스트 확인 용도
+#### Screen 표 (XLT 컬럼 — `No | XLT Key | KR` 3컬럼)
+- **`No | XLT Key | KR`** 3컬럼으로 표시한다 (이미지와 함께 빠르게 텍스트 확인 용도).
+- **`No` = 그 XLT 텍스트를 가리키는 Description 정책 코멘트 번호**(이미지의 빨강 원 ⓝ 번호)다 — 표의 텍스트가 이미지 어디에 있는지 바로 찾도록 연결한다.
+  - **도출**: 화면의 미해결 루트 코멘트를 y좌표 순으로 번호화(= Description 정책 번호)한 뒤, 각 코멘트가 가리키는 텍스트를 매칭(좌표 포함/최근접 — `md/translate.md` '코멘트→텍스트 매칭 알고리즘')하고, **그 텍스트의 XLT 행에 해당 코멘트 번호**를 부여한다.
+  - 한 텍스트에 여러 코멘트가 대응하면 **최솟값(가장 위/먼저)** 을 쓴다. 코멘트가 가리키지 않는 텍스트는 `No`를 빈칸으로 둔다.
+  - **사용자가 수동 입력한 `No`는 보존**한다(자동 계산값으로 덮어쓰지 않음). 자동값과 다르면 사용자에게 보고한다.
+  - 원문(Figma) 텍스트와 XLT 교정값이 다르면(치환자 `{0}`·맞춤법 교정 등) 정규화(공백·치환자·숫자 제거) 매칭 후, 실패·다중매칭 건을 **사용자에게 보고**한다.
+  - 전역 「다국어 번역(XLT Full Translation)」 6컬럼 표에는 `No`를 넣지 않는다 — 한 키가 여러 화면에 쓰여 화면별 번호가 1:N이기 때문이다.
 - **화면별 키 목록 도출 절차 (필수 — 전체 키를 모든 화면에 붙이지 않는다):** `translation_extract.json`의 해당 화면 `items`를 순회하며 `rows`의 ko_KR 매핑과 `aliases`로 키를 찾고, **등장 순서를 유지한 채 중복 제거**한다. lookup이 없는 텍스트(숫자·주소·심볼 등 번역 제외 항목)는 건너뛴다:
 
 ```python
@@ -399,7 +404,7 @@ git -C /tmp/repo_clone push origin main
   <td>(New) 자산 전송 팝업</td>
   <td><ac:image ac:width="300"><ri:attachment ri:filename="{frame_name}.png"/></ac:image></td>
   <td><p>화면 설명 1~2문장.</p><p><strong>정책</strong><br/>1. 상단 정책 내용<br/>&nbsp;&nbsp;↳ 첫 번째 답글 본문<br/>&nbsp;&nbsp;↳ 두 번째 답글 본문<br/>2. 다음 정책 내용</p></td>
-  <td><table><tbody><tr><th>XLT Key</th><th>KR</th></tr><tr><td>KW_...</td><td>한국어</td></tr></tbody></table></td>
+  <td><table><tbody><tr><th>No</th><th>XLT Key</th><th>KR</th></tr><tr><td>9</td><td>KW_...</td><td>한국어</td></tr></tbody></table></td>
 </tr>
 
 <!-- 코멘트(정책)가 있는 화면 (Confluence PAT 없을 때 fallback): GitHub 임시 URL -->
