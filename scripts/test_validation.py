@@ -20,6 +20,7 @@ import pandas as pd
 sys.path.insert(0, str(Path(__file__).parent))
 from export_to_xlt import create_xlt_excel
 from validate_translation import TranslationValidator
+from patch_translation import apply_translation_patch, load_rows_from_excel
 
 # 용어집 픽스처 (실제 API 응답과 동일한 구조)
 GLOSSARY = {
@@ -110,6 +111,38 @@ check("P1 맞춤법: '되요' 검출", has_issue(issues, "P1", "KW_t_mix", "맞�
 check("P1 placeholder 불일치 검출", has_issue(issues, "P1", "KW_t_mix", "placeholder 불일치"))
 check("P1 외래어 음차 blocklist: '포이가츠' 검출", has_issue(issues, "P1", "KW_t_loan", "표기 오류"))
 check("P2 마침표 스타일 검출", any(i["issue"] == "마침표 스타일" for i in issues["P2"]))
+
+# --- 3. 번역 패치 (md/translate.md 키 단위 번역 패치 모드) ---
+print("\n[3] 번역 패치 검사")
+base = [
+    {"xlt_key": "KW_p1", "ko_KR": "로그인", "en_US": "Log in", "ja_JP": "ログイン", "zh_TW": "登入", "th_TH": "เข้าสู่ระบบ"},
+    {"xlt_key": "KW_p2", "ko_KR": "확인", "en_US": "Confirm", "ja_JP": "確認", "zh_TW": "確認", "th_TH": "ยืนยัน"},
+]
+# 3-1) 특정 언어만 교체, 나머지 보존
+rows = [dict(r) for r in base]
+rows, log = apply_translation_patch(rows, [{"xlt_key": "KW_p2", "values": {"th_TH": "ตกลง"}}])
+p2 = next(r for r in rows if r["xlt_key"] == "KW_p2")
+check("lang-specific: th_TH만 교체", p2["th_TH"] == "ตกลง")
+check("lang-specific: 미지정 언어 보존", p2["en_US"] == "Confirm" and p2["ko_KR"] == "확인")
+check("lang-specific: 변경로그 1건", len(log) == 1 and log[0][:2] == ("KW_p2", "th_TH"))
+# 3-2) ko 변경 + 여러 언어 동시 교체
+rows = [dict(r) for r in base]
+rows, log = apply_translation_patch(rows, [{"xlt_key": "KW_p1", "values": {"ko_KR": "로그인 하기", "en_US": "Sign in"}}])
+p1 = next(r for r in rows if r["xlt_key"] == "KW_p1")
+check("ko-source: ko+en 교체", p1["ko_KR"] == "로그인 하기" and p1["en_US"] == "Sign in")
+check("ko-source: 나머지 언어 보존", p1["ja_JP"] == "ログイン" and p1["zh_TW"] == "登入")
+# 3-3) 무결성 가드
+def expect_error(name, fn):
+    try:
+        fn(); check(name + " (예외 발생해야 함)", False)
+    except ValueError:
+        check(name, True)
+expect_error("없는 키 패치 차단", lambda: apply_translation_patch([dict(r) for r in base], [{"xlt_key": "NOPE", "values": {"en_US": "x"}}]))
+expect_error("빈 값 차단", lambda: apply_translation_patch([dict(r) for r in base], [{"xlt_key": "KW_p1", "values": {"en_US": "  "}}]))
+expect_error("미지 언어 차단", lambda: apply_translation_patch([dict(r) for r in base], [{"xlt_key": "KW_p1", "values": {"fr_FR": "x"}}]))
+# 3-4) 엑셀 왕복 후 패치 (load_rows_from_excel)
+rt = load_rows_from_excel(filepath)
+check("엑셀 로드 행 수 일치", len(rt) == len(TEST_DATA))
 
 # --- 결과 ---
 print(f"\n{'='*40}")

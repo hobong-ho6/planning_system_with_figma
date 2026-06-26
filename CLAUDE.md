@@ -68,6 +68,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **코멘트 선별 흐름**: Figma 코멘트 본문을 `XLT`로 시작하게 달면(대소문자·콜론 무관), [1] 번역에서 `(New)` 전수 추출 대신 그 코멘트가 가리키는 텍스트만 선별 추출·번역할 수 있다(`md/translate.md` 코멘트 선별 모드). 대상 선택자는 본문의 `XLT` 마커이며 위키 Description 번호는 사람이 교차 확인하는 라벨이다. **코멘트는 매 실행마다 Figma REST로 새로 조회한다(캐시·`comments_data.json` 미사용)** — 마커가 바뀔 수 있어 최신 상태로 선별해야 한다. 코멘트→텍스트 매칭 결과는 번역 전 사용자 확인을 거친다. 상세는 `md/translate.md` 참조.
 
+**키 단위 번역 패치 흐름**: 이미 위키·엑셀에 반영된 번역에서 **특정 XLT Key의 일부 언어만** 바꿔야 할 때(부서 검토로 한국어가 바뀌어 전체/일부 재번역, 또는 특정 언어 최종본만 교체), Figma 추출 없이 **키·언어 단위로 외과적 갱신**한다. `{키 + 변경 문구 + 변경할/유지할 언어}`를 받아 → 게이트(변경분) → `scripts/patch_translation.py`로 지정 언어 셀만 교체(나머지 보존) → 엑셀 재생성·재첨부 + 위키 다국어 표·Screen XLT 외과적 갱신(라이브 rebase). 상세는 `md/translate.md` "키 단위 번역 패치 모드" 참조.
+
 ### ⚠️ 단계별 프레임 필터 규칙 (혼동 금지 — 필수 준수)
 
 각 필터는 **해당 단계에서만** 적용된다. 다른 단계에 적용하는 순간 화면·인터랙션·번역 누락이 발생한다.
@@ -161,6 +163,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `fetch_glossary.py` | 용어집 API 조회 → glossary.json | 1단계 Step 3 |
 | `validate_translation.py` | 3단계 검증 수행 (P0/P1/P2) | 1단계 Step 5 |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
+| `patch_translation.py` | 키 단위 번역 패치 (지정 언어 셀만 교체·무결성 가드) | 키 단위 번역 패치 모드 (`md/translate.md`) |
 | `build_prototype_data.py` | data.js/i18n.js 생성 + 무결성 검증 (입력: prototype_input.json, translation_extract.json, translation_data.json, comments_data.json) | 2단계 Step 5 |
 | `setup_new_project.sh` | 새 프로젝트 초기화 (복사 + 폴더 생성 + 검증) | 새 프로젝트 시작 시 |
 | `test_validation.py` | 엑셀 규격·검증 로직 회귀 테스트 | scripts/ 수정 후 필수 실행 |
@@ -269,7 +272,7 @@ cp templates/* .
 새 프로젝트에서 다음을 확인:
 - [ ] `CLAUDE.md` 파일 존재
 - [ ] `md/` 폴더에 7개 가이드 파일 존재
-- [ ] `scripts/` 폴더에 5개 Python 스크립트(fetch_glossary, validate_translation, export_to_xlt, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
+- [ ] `scripts/` 폴더에 6개 Python 스크립트(fetch_glossary, validate_translation, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
 - [ ] `templates/` 폴더에 5개 템플릿 존재
 - [ ] Python 의존성 설치 완료 (`pip list | grep pandas`)
 
