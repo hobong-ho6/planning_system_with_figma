@@ -17,7 +17,8 @@
 
 ### v2.3 (2026-06-26)
 - **term 추가** `포이카츠`: ko `포이카츠` / ja `ポイ活` / en `point activity` / zh `點數活動` / th `การสะสมแต้ม`
-  - ⚠️ en/zh/th는 **잠정** — `ポイ活`은 일본 고유 개념이라 타 언어 표준이 모호. 검토 후 확정 권장.
+  - ja `ポイ活` **확정** (`point_mission`의 `ポイ活ミッションで最大100万円` 참고, 2026-06-26 사용자 승인).
+  - en `point activity` / zh `點數活動` / th `การสะสมแต้ม` 는 **잠정값으로 채택**(2026-06-26 사용자 승인). 추후 더 적절한 표준 발견 시 갱신.
 - **exception 추가** `*Unifi mini*` (id 9, brand): 전 언어 `Unifi mini` 유지
 - 배경: `포이가츠→포이카츠` 표기 표준화 + `Unifi Mini→Unifi mini` 브랜드 표기 통일에 맞춘 용어집 반영. (XLT: `point_mission` ko, `bridge_notice` 전 언어 동시 갱신)
 
