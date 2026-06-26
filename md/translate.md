@@ -168,6 +168,7 @@ curl -s "https://landpress-content.line-scdn.net/contents/v2/projects/wdmwbfuv10
 ```
 - 번역 예외 항목 확인 (번역하지 않고 유지할 용어)
 - 핵심 용어 번역 확인 (거래, 지갑, 토큰, 송금 등)
+- 용어집 **업데이트가 필요하면**(없는 도메인 용어·반복 오탐) `md/landpress.md` 절차로 전체 JSON을 산출해 사용자에게 안내 — API 읽기 전용이라 사용자가 Landpress CMS에 붙여넣어 반영
 
 ### Step 4: 번역 수행
 

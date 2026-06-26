@@ -58,6 +58,8 @@ Unifi/Unifi_WEB BROWSER_v1.2.7_20260420100020.xlsx
 
 **용어집은 실시간 API를 통해 제공됩니다.** 항상 최신 데이터를 사용하세요.
 
+> 📌 용어집 **업데이트(추가/수정)** 방법은 `md/landpress.md` 참조 — API는 **읽기 전용**이며, 갱신은 **전체 JSON을 산출해 사용자가 Landpress CMS(`web3_xlt_json`)에 붙여넣어** 반영한다. 로컬 `scripts/glossary.json`은 캐시이므로 원본 대신 수정하지 않는다.
+
 #### API 엔드포인트
 
 ```bash
