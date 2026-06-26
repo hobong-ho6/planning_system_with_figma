@@ -13,6 +13,11 @@
   https://landpress-content.line-scdn.net/contents/v2/projects/wdmwbfuv10x39bukv58ocevp/collections/web3_xlt_json/item
   ```
   응답의 `body.exceptions` 객체(= `{ metadata, exceptions, terminology }`)가 용어집이다.
+- **편집(붙여넣기) URL — 사용자가 직접 여는 Landpress CMS 편집 화면**:
+  ```
+  https://landpress-content-v2.linecorp.com/projects/wdmwbfuv10x39bukv58ocevp/content/collections/web3_xlt_json/items?env=main
+  ```
+  ⛔ **용어집 갱신 JSON을 산출·전달할 때마다 이 편집 URL을 반드시 함께 제공**한다 — 사용자가 바로 CMS로 이동해 붙여넣을 수 있도록.
 - **⚠️ Claude(툴체인)에서는 읽기만 가능하다.** API에 쓰기(PUT/POST) 경로가 없다.
 - `scripts/glossary.json`은 조회 결과를 저장하는 **로컬 캐시**일 뿐이다(`.gitignore` 대상, 매 조회 시 덮어써짐). **원본이 아니며, 원본 대신 임의 수정하지 않는다**(CLAUDE.md '캐시 금지 규칙').
 
@@ -94,6 +99,7 @@
 |---|---|
 | **갱신된 전체 JSON** | Landpress CMS에 그대로 붙여넣을 수 있는 완전한 `{metadata, exceptions, terminology}` |
 | **변경 요약** | 추가/수정된 용어 목록 + 각 용어의 5개 언어 표기 + 근거(어느 파일/행에서 도출) |
+| **Landpress 편집 URL** | §1의 편집(붙여넣기) URL — JSON과 **항상 함께** 제공(사용자가 바로 CMS로 이동) |
 
 > 부분 조각(추가 용어만)이 아니라 **항상 전체 JSON**을 산출한다 — 사용자가 통째로 붙여넣기 때문.
 >
