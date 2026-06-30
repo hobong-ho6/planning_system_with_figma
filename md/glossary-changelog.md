@@ -10,10 +10,18 @@
 | 2.1 | 2026-05-13 | 25 | 8 | 초기 (guide.md 기반, 암호화폐 예외 USDT/IDRP/JPYC 포함) |
 | 2.2 | 2026-06-26 | 29 | 8 | 도메인 용어 4종 추가: 미션·리워드·캐시백·회원가입 |
 | 2.3 | 2026-06-26 | 30 | 9 | 포이카츠(term) 추가 + Unifi mini 브랜드 예외 추가 |
+| 2.4 | 2026-06-30 | 33 | 9 | 도메인 용어 3종 추가: 혜택·인기·쇼핑 |
 
 ---
 
 ## 상세
+
+### v2.4 (2026-06-30)
+- **term 추가** (3): `혜택`(perks/特典/優惠/สิทธิประโยชน์), `인기`(popular/人気/人氣/ยอดนิยม), `쇼핑`(shopping/ショッピング/購物/ช้อปปิ้ง)
+  - 5개 언어 표기는 Guide Kim 위키 실제 번역에서 도출 — 혜택: `bridge_title`·`signup_done_desc`·`popular_benefit`, 인기: `kbeauty_desc`·`popular_benefit`, 쇼핑: `my_shopping`·`popular_benefit`.
+  - ⚠️ `혜택` th: 표준 `สิทธิประโยชน์` 채택. `특별한 혜택`(bridge_title)은 문맥상 `สิทธิพิเศษ`(special)로 유지 — 변형이지 위반 아님.
+- 배경: Guide Kim `Unifi LIFF(JP - Login x)` XLT 코멘트 번역(`mini_guidekim_popular_benefit`) 중 도메인어 반복 사용 + 자동 검증 P1 오탐 → 용어집 보완(게이트 d-1).
+- 비고: `K-컬쳐→K-컬처` 표기 통일(외래어 표기법)은 번역/엑셀/위키에서 직접 반영. `K-컬처`는 en/zh/th에서 `K-Culture`(라틴) 유지라 terminology 항목으로는 추가하지 않음.
 
 ### v2.3 (2026-06-26)
 - **term 추가** `포이카츠`: ko `포이카츠` / ja `ポイ活` / en `point activity` / zh `點數活動` / th `การสะสมแต้ม`
