@@ -162,6 +162,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | 파일 | 용도 | 사용 시점 |
 |------|------|----------|
 | `fetch_glossary.py` | 용어집 API 조회 → glossary.json | 1단계 Step 3 |
+| `fetch_comments.py` | Figma 코멘트 reply-aware 조회 (루트+답글 스레드, 자기 점검 로그) — **인라인 재구현 금지** | 1단계 코멘트 선별 모드 · 3단계 위키 Description |
 | `validate_translation.py` | 3단계 검증 수행 (P0/P1/P2) | 1단계 Step 5 |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
 | `patch_translation.py` | 키 단위 번역 패치 (지정 언어 셀만 교체·무결성 가드) | 키 단위 번역 패치 모드 (`md/translate.md`) |
@@ -273,7 +274,7 @@ cp templates/* .
 새 프로젝트에서 다음을 확인:
 - [ ] `CLAUDE.md` 파일 존재
 - [ ] `md/` 폴더에 7개 가이드 파일 존재
-- [ ] `scripts/` 폴더에 6개 Python 스크립트(fetch_glossary, validate_translation, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
+- [ ] `scripts/` 폴더에 7개 Python 스크립트(fetch_glossary, fetch_comments, validate_translation, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
 - [ ] `templates/` 폴더에 5개 템플릿 존재
 - [ ] Python 의존성 설치 완료 (`pip list | grep pandas`)
 
