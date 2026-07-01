@@ -91,9 +91,36 @@ Figma URL 입력
 ```
 
 **코멘트 선별 모드 예외 (1단계 전용):**
-- 사용자가 "Figma 코멘트(`xlt:`)로 표시한 문구만 번역" 요청 시
-- `(New)` 필터 대신 `xlt:` 코멘트가 가리키는 텍스트만 추출
+- 사용자가 "Figma 코멘트(`XLT`)로 표시한 문구만 번역" 요청 시
+- `(New)` 필터 대신 `XLT` 코멘트가 가리키는 텍스트만 추출
 - 이 모드는 **1단계에만** 적용되며 2·3단계 필터에는 영향 없음
+
+---
+
+## 🏢 담당 FE 팀 규칙 (UIT / LV — 화면 정책·XLT 적용 전 결정)
+
+라인넥스트 FE는 **UIT**·**LV** 2팀이며, **화면 정책 업데이트·XLT 적용 시 팀마다 규칙이 다릅니다.** 작업 대상의 담당 팀을 먼저 확정한 뒤 그 팀 규칙으로 XLT Key·변수 치환자를 적용합니다.
+
+### 팀 판별
+1. **위키에 UIT/LV 구분이 있으면** (Screen 섹션의 `<h4>UIT</h4>`/`<h4>LV</h4>` 하위 표 등) → 처리 화면/키가 **속한 영역의 팀 규칙을 그대로 적용** (사용자에게 묻지 않음)
+2. **구분이 없으면** → 피그마 화면을 위키에 업데이트할 때 **사용자에게 담당 팀(UIT/LV)을 질문**
+
+### 팀별 규칙
+
+| 팀 | XLT Key 프리픽스 | 변수 치환자 |
+|:--:|----------------|-----------|
+| **UIT** | **`UF_` 고정** | **`{{0}}`** (이중 중괄호) — 다중 `{{0}}`,`{{1}}`… |
+| **LV** | 프로젝트 약어 (`mini_guidekim_`, `KW_` 등) | **`{0}`** (단일 중괄호) — 다중 `{0}`,`{1}`… |
+
+### 사용자 확인 흐름 (구분이 없어 팀을 물은 경우)
+```
+1. 담당 팀(UIT/LV) 질문
+2. 선택된 팀의 규칙(프리픽스·치환자) 설명
+3. 해당 규칙을 적용할지 확인
+4. 답에 따라 이후 작업(XLT Key·번역·변수화·위키 반영) 진행
+```
+
+> 정본: `CLAUDE.md` '⛔ 담당 FE 팀 규칙' · 적용: `md/translate.md`(프리픽스·치환자), `md/wiki.md`(화면 정책 반영), `md/guide.md`(치환자 표기)
 
 ---
 
@@ -110,7 +137,7 @@ Figma 화면의 텍스트를 추출해 XLT Key를 부여하고 5개 언어로 �
 |------|------|------------|
 | **① (New) 전수** | Figma 페이지 URL | `(New)` 시작 프레임만 (`(x)` 제외) |
 | **② 단일 프레임** | Figma 프레임 URL + "이 프레임만 번역" | 지정한 **그 프레임 하나만** |
-| **③ 코멘트 선별** | "Figma 코멘트(`xlt:`)로 표시한 문구만" | `xlt:` 코멘트가 가리키는 텍스트만 |
+| **③ 코멘트 선별** | "Figma 코멘트(`XLT`)로 표시한 문구만" | `XLT` 코멘트가 가리키는 텍스트만 |
 
 **모드 무관 공통 절차**: Step 2~7 (XLT Key·번역·검증·엑셀) 동일 수행
 
@@ -344,11 +371,11 @@ Confluence 페이지 (갱신):
 
 ### Case 4: 코멘트 선별 번역 → 위키 업데이트
 
-**입력**: Figma URL + "Figma 코멘트(`xlt:`)로 표시한 문구만 번역"
+**입력**: Figma URL + "Figma 코멘트(`XLT`)로 표시한 문구만 번역"
 
 ```
 ① md/translate.md (모드: 코멘트 선별)
-   - 대상: xlt: 코멘트가 가리키는 텍스트만
+   - 대상: XLT 코멘트가 가리키는 텍스트만
    - 매칭 확인 단계 포함 (좌표 휴리스틱 → 사용자 승인)
    - 산출물: translation_extract.json, translation_data.json (선별분만)
 
@@ -415,19 +442,24 @@ Confluence 페이지 (갱신):
 프로젝트루트/
 ├── CLAUDE.md                    # 📘 Claude Code 워크플로우 가이드 (자동 로드)
 │
-├── md/                          # 📚 절차 가이드 (7개)
-│   ├── translate.md             #   🌐 1단계: 번역 절차
+├── md/                          # 📚 절차 가이드 (10개)
+│   ├── translate.md             #   🌐 1단계: 번역 절차 (+ 키 단위 번역 패치 모드)
 │   ├── prototype.md             #   🖥️  2단계: 프로토타입 절차
-│   ├── wiki.md                  #   📄 3단계: 위키 절차
+│   ├── wiki.md                  #   📄 3단계: 위키 절차 (+ 담당 팀 UIT/LV 판별)
 │   ├── guide.md                 #   📖 XLT 번역 규칙 (톤앤매너·용어집·치환자)
 │   ├── check.md                 #   ✅ 3단계 검증 체크리스트 (P0/P1/P2)
+│   ├── translation_validation_guide.md  # 🔎 의미 기반 번역 검증 방법론
+│   ├── landpress.md             #   📇 용어집(Landpress) 관리·조회
+│   ├── glossary-changelog.md    #   📝 용어집 버전 변경 이력
 │   ├── dropweb-guide.md         #   🚀 정적 웹사이트 배포 규격
 │   └── PRODUCTION_RULES.md      #   ⚠️  프로덕션 필수 규칙 (모든 단계 준수)
 │
 ├── scripts/                     # 🔧 자동화 스크립트
 │   ├── fetch_glossary.py        #   용어집 API 조회 → glossary.json
+│   ├── fetch_comments.py        #   Figma 코멘트 reply-aware 조회 (루트+답글)
 │   ├── validate_translation.py  #   3단계 검증 (P0 발견 시 exit 1)
 │   ├── export_to_xlt.py         #   XLT 업로드용 엑셀 생성
+│   ├── patch_translation.py     #   키 단위 번역 패치 (지정 언어 셀만 교체)
 │   ├── build_prototype_data.py  #   data.js/i18n.js 생성 + 무결성 검증
 │   ├── test_validation.py       #   회귀 테스트 (스크립트 수정 후 실행)
 │   ├── setup_new_project.sh     #   새 프로젝트 초기화
@@ -610,8 +642,10 @@ Claude가 처리할 데이터 양(텍스트·화면 수)과 예상 소요 시간
 | 파일 | 용도 | 사용 시점 |
 |------|------|----------|
 | `fetch_glossary.py` | 용어집 API 조회 → `glossary.json` | 1단계 Step 3 |
+| `fetch_comments.py` | Figma 코멘트 reply-aware 조회 (루트+답글 스레드) | 1단계 코멘트 선별 · 3단계 위키 Description |
 | `validate_translation.py` | 3단계 검증 (P0/P1/P2 분류) | 1단계 Step 5 |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
+| `patch_translation.py` | 키 단위 번역 패치 (지정 언어 셀만 교체·무결성 가드) | 키 단위 번역 패치 모드 |
 | `build_prototype_data.py` | `data.js`/`i18n.js` 생성 + 무결성 검증 | 2단계 Step 5 |
 | `setup_new_project.sh` | 새 프로젝트 초기화 (복사 + 폴더 + 검증) | 새 프로젝트 시작 |
 | `test_validation.py` | 엑셀 규격·검증 로직 회귀 테스트 | `scripts/` 수정 후 |
@@ -670,7 +704,7 @@ python3 scripts/build_prototype_data.py
 ```
 원본 프로젝트/
 ├── CLAUDE.md           ✅ 복사 (워크플로우 가이드)
-├── md/                 ✅ 복사 (절차 가이드 7개)
+├── md/                 ✅ 복사 (절차 가이드 10개)
 ├── scripts/            ✅ 복사 (자동화 스크립트 전체)
 ├── templates/          ✅ 복사 (프로토타입 템플릿 5개)
 └── .gitignore          ⚪ 복사 권장
@@ -721,11 +755,13 @@ Claude Code에서:
 
 ```
 ✅ CLAUDE.md 파일 존재
-✅ md/ 폴더에 7개 가이드 파일 존재
-   (translate, prototype, wiki, guide, check, dropweb-guide, PRODUCTION_RULES)
-✅ scripts/ 폴더에 7개 파일 존재
-   (fetch_glossary, validate_translation, export_to_xlt, build_prototype_data,
-    test_validation, setup_new_project.sh, requirements.txt)
+✅ md/ 폴더에 10개 가이드 파일 존재
+   (translate, prototype, wiki, guide, check, translation_validation_guide,
+    landpress, glossary-changelog, dropweb-guide, PRODUCTION_RULES)
+✅ scripts/ 폴더에 9개 파일 존재
+   (fetch_glossary, fetch_comments, validate_translation, export_to_xlt,
+    patch_translation, build_prototype_data, test_validation,
+    setup_new_project.sh, requirements.txt)
 ✅ templates/ 폴더에 5개 템플릿 존재
    (index.html, style.css, script.js, data.js, i18n.js)
 ✅ Python 의존성 설치 완료
