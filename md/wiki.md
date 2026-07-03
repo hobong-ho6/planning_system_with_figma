@@ -153,6 +153,8 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 **코멘트 조회 방법 (원본 최신성 — CLAUDE.md '캐시 금지 규칙' 준수):**
 
 > ⛔ **공용 페처 `scripts/fetch_comments.py`를 사용한다 — 코멘트 수집기를 인라인으로 재구현하지 않는다.** 답글(스레드)은 핀 좌표가 없어 `client_meta.node_id`가 비어 있으므로 **프레임 노드집합 필터(`nid in ids`)로는 절대 안 잡히고 `parent_id` 매칭으로만** 가져올 수 있다. 루트만 수집하는 인라인 구현은 답글을 통째로 누락시킨다(2026-06-30 실측 회귀: LIFF/Web JP LV 4개 프레임 답글 전건 누락). 권장 진입점 `fetch_threads(file_key, token, node_ids=프레임자손id집합)`는 루트를 `node_offset.y` 순으로 모으고 답글을 `parent_id`로 created_at 순 매칭하며, `log_self_check`로 **루트별 `attached replies: N`을 출력**해 누락을 가시화한다. `format_description(threads)`는 `1.`/`↳` 규칙대로 Description 문자열을 만든다. 아래 1·2는 그 동작의 명세(레퍼런스)다.
+>
+> **❌ 실제 재발한 안티패턴 (금지):** `fetch_comments_raw`(저수준)를 직접 import해 `for c in comments: if c.get('parent_id'): continue`로 루트만 거르는 것 — 이는 "인라인 재구현"과 동일하며 답글을 전부 버린다(2026-07-03 reward 프레임에서 XLT 키명이 답글에 있었는데 놓침). **좌표(x/y/node_id) 매칭·이미지 어노테이션이 필요해도 `fetch_comments_raw`로 가지 말 것** — `fetch_threads`가 반환하는 각 스레드 dict에 `id/node_id/x/y/message/created_at/replies`가 모두 들어 있어 매칭·어노테이션·Description·XLT 키 추출을 전부 그걸로 한다. raw 경로는 `log_self_check`(누락 가시화)도 우회한다. **XLT 마커 키명은 루트가 아니라 답글에 올 수 있으니**(`XLT - KEY`/`xlt key = KEY`) 각 스레드의 `replies`까지 반드시 읽는다.
 
 1. **`comments_data.json`이 있는 경우** — **같은 작업 실행에서 2단계가 방금 생성한 파일일 때만** 재사용한다 (`screenId`별 그룹핑 후 `offset.y` 오름차순 정렬). 이전 세션의 캐시이거나 Figma 코멘트가 변경됐을 수 있으면 재사용하지 말고 2번으로 새로 조회한다.
 2. **그 외(파일 없음·이전 run·원본 변경 가능) — 필수 (건너뛰기 금지)**: Figma REST API로 직접 새로 조회

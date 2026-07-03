@@ -27,7 +27,16 @@ API = "https://api.figma.com/v1/files/{file_key}/comments"
 
 
 def fetch_comments_raw(file_key: str, token: str) -> list:
-    """Figma REST에서 파일 전체 코멘트를 새로 조회한다(루트+답글 포함)."""
+    """Figma REST에서 파일 전체 코멘트를 새로 조회한다(루트+답글 포함).
+
+    ⚠️ 이 함수는 `fetch_threads`의 내부 조회용이다. **코멘트 수집·필터 용도로 직접
+    호출하지 말 것.** raw 리스트를 받아 `if c.get('parent_id'): continue` 식으로
+    루트만 거르면 답글(스레드)이 통째 누락된다 — 답글에 XLT 키명(`XLT - UF_x`,
+    `xlt key = ...`)·정책이 들어있어도 못 본다(2026-07-03 reward 프레임 실측 회귀).
+    좌표(x/y/node_id)·message·replies가 모두 필요하면 `fetch_threads`가 루트별로
+    그 전부를 반환하고 `log_self_check`로 누락까지 가시화하므로 **항상 fetch_threads를
+    쓴다.** (관련 규칙: md/wiki.md Step 3, md/translate.md 코멘트 선별 모드)
+    """
     r = requests.get(API.format(file_key=file_key),
                      headers={"X-Figma-Token": token}, timeout=15)
     r.raise_for_status()
