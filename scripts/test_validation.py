@@ -21,6 +21,7 @@ sys.path.insert(0, str(Path(__file__).parent))
 from export_to_xlt import create_xlt_excel
 from validate_translation import TranslationValidator
 from patch_translation import apply_translation_patch, load_rows_from_excel
+from check_gate_report import check_gate_report
 
 # 용어집 픽스처 (실제 API 응답과 동일한 구조)
 GLOSSARY = {
@@ -148,6 +149,39 @@ expect_error("미지 언어 차단", lambda: apply_translation_patch([dict(r) fo
 # 3-4) 엑셀 왕복 후 패치 (load_rows_from_excel)
 rt = load_rows_from_excel(filepath)
 check("엑셀 로드 행 수 일치", len(rt) == len(TEST_DATA))
+
+# --- 4. 컬럼 정렬 가드 (1g — md/translate.md 패치 모드 Step 2-1) ---
+print("\n[4] 컬럼 정렬 가드 검사")
+mis = [{"xlt_key": "KW_c", "ko_KR": "Ophthalmology", "en_US": "眼科",
+        "ja_JP": "안과", "zh_TW": "眼科", "th_TH": "จักษุ"}]  # ko=영어·en=한자·ja=한글 회전 어긋남
+expect_error("단일 언어(ja)만 패치 → 회전 어긋남 행에서 차단",
+             lambda: apply_translation_patch([dict(r) for r in mis],
+                     [{"xlt_key": "KW_c", "values": {"ja_JP": "眼科"}}]))
+rows_ok, _ = apply_translation_patch([dict(r) for r in mis],
+    [{"xlt_key": "KW_c", "values": {"ko_KR": "안과", "en_US": "Ophthalmology", "ja_JP": "眼科"}}])
+c = next(r for r in rows_ok if r["xlt_key"] == "KW_c")
+check("어긋난 컬럼 전부 realign 시 통과 + 정렬 정상",
+      c["ko_KR"] == "안과" and c["en_US"] == "Ophthalmology" and c["ja_JP"] == "眼科")
+try:
+    apply_translation_patch([dict(r) for r in mis],
+        [{"xlt_key": "KW_c", "values": {"ja_JP": "眼科"}}], allow_misaligned=True)
+    check("allow_misaligned=True 우회 허용", True)
+except ValueError:
+    check("allow_misaligned=True 우회 허용", False)
+
+# --- 5. 게이트 리포트 완결성 검사기 (1a·1c·1d) ---
+print("\n[5] 게이트 리포트 완결성 검사")
+complete = (
+    "# 번역 검증 리포트\n"
+    "## Executive Summary  P0 0건 P1 3건 P2 1건\n"
+    "## 1단계: 한국어 (원문 교정 완료, alias 기록)\n"
+    "## 2단계: 용어집\n## 3단계: 다른 언어\n"
+    "처리 판정: 오탐 3건, 실제 위반 0건. 전수 검토(전체 행) 완료.\n"
+    "## 추가 개선·제안 (권장)\n"
+)
+check("완결 리포트 → 누락 0건", check_gate_report(complete) == [])
+missing = check_gate_report("# 리포트\n자동 검증 P0 0건 P1 0건 P2 0건\n")
+check(f"불완전 리포트 → 누락 검출 ({len(missing)}건)", len(missing) >= 3)
 
 # --- 결과 ---
 print(f"\n{'='*40}")

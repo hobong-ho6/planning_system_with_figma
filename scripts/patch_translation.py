@@ -20,6 +20,8 @@
 import pandas as pd
 from pathlib import Path
 
+from validate_translation import TranslationValidator
+
 LANGS = ['ko_KR', 'en_US', 'ja_JP', 'zh_TW', 'th_TH']
 
 
@@ -36,13 +38,19 @@ def load_rows_from_excel(path: str) -> list:
     return rows
 
 
-def apply_translation_patch(rows: list, patches: list, *, allow_new: bool = False):
+def apply_translation_patch(rows: list, patches: list, *, allow_new: bool = False,
+                            allow_misaligned: bool = False):
     """
     rows: 현재 번역 행 목록
     patches: [{'xlt_key': str, 'values': {lang: newtext, ...}}, ...]  (values=최종 확정값, 포함 언어만 교체)
     allow_new: True면 없는 키를 신규 행으로 추가(전 언어 values 필수)
+    allow_misaligned: True면 컬럼 정렬 가드를 우회(의도적 예외 — 기본 False)
     반환: (updated_rows, changelog)  changelog=[(key, lang, before, after), ...]
-    예외: 키 없음(allow_new=False)·미지 언어·빈 값
+    예외: 키 없음(allow_new=False)·미지 언어·빈 값·컬럼 정렬 어긋남(1g 가드)
+
+    ⛔ 컬럼 정렬 가드(md/translate.md 패치 모드 Step 2-1): 패치 적용 후에도 대상 키 행의
+    언어 칸에 이질 문자체계(ja칸 한글·en칸 한자 등)가 남으면 ValueError로 차단한다.
+    "일본어만" 류 단일 언어 패치가 회전 어긋남 키의 다른 언어 원본을 덮어써 소실시키는 것을 막는다.
     """
     index = {r['xlt_key']: r for r in rows}
     changelog = []
@@ -73,6 +81,23 @@ def apply_translation_patch(rows: list, patches: list, *, allow_new: bool = Fals
             if str(before) != str(val):
                 row[lang] = str(val)
                 changelog.append((key, lang, before, str(val)))
+
+    # ⛔ 컬럼 정렬 가드 (1g): 패치 후에도 대상 행에 이질 문자체계가 남으면 차단
+    if not allow_misaligned:
+        problems = []
+        for p in patches:
+            row = index.get(p['xlt_key'])
+            if not row:
+                continue
+            for iss in TranslationValidator.foreign_script_issues(row):
+                problems.append(f"[{p['xlt_key']}] {iss['lang']}={iss['cell']!r} "
+                                f"(이질: {'/'.join(iss['foreign'])})")
+        if problems:
+            raise ValueError(
+                "컬럼 정렬 어긋남 — 패치 후에도 언어 칸에 이질 문자체계가 남아 있습니다.\n"
+                "단일 언어만 바꾸지 말고 어긋난 컬럼 전부를 정본(위키 다국어 표)으로 realign하세요"
+                " (md/translate.md 패치 모드 Step 2-1). 의도적 예외면 allow_misaligned=True.\n  "
+                + "\n  ".join(problems))
     return rows, changelog
 
 

@@ -45,6 +45,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
    - **(d-1) 용어집 보완 권장(필수)**: 검증 중 ⓐ 용어집(API)에 없는 도메인 용어가 반복 사용되거나, ⓑ 자동 검증기가 **정상 의역을 P1로 반복 오탐**하면(= 용어집 매핑이 좁다는 신호), 용어집 보완이 더 근본적 해결이다. **해당 용어 + 5개 언어 권장 표기를 사용자에게 "용어집 업데이트 권장"으로 안내**한다. 용어집은 **API 읽기 전용**이라 Claude가 직접 못 쓴다 — 사용자가 **Landpress CMS에 전체 JSON을 붙여넣어** 반영하므로, **전체 JSON 산출·전달 절차는 `md/landpress.md` 참조**(로컬 `glossary.json` 캐시 임의 수정 금지).
    - **(d-2) 추가 개선·제안 안내(필수)**: 검증 중 발견한 개선점 — 원문 명확화 필요(다의어 모호 `피부결과` 등), 표기 통일 정책(구분자 `･`/`・`·마침표·번체 정자), 일관성 개선 — 을 **임의 적용하지 말고 사용자에게 안내·권장**한다(P0이 아니면 사용자 결정 사안).
 4. **통과 기준**: **P0 = 0건**(자동 + 수동 모두)이어야 출력·위키 반영·엑셀 생성으로 진행. P1/P2는 각 건 처리 판정을 남기고 사용자 확인. (d) 권장 사항은 사용자 결정 전까지 임의 반영 금지.
+5. **리포트 완결성 강제 (완료 선언 직전 필수 실행 — 산출물 검사)**: 검증 리포트를 파일로 저장하고 **`python3 scripts/check_gate_report.py <리포트.md>` 실행 → exit 0(완결)** 을 확인한다. 3의 (a)~(d)·한국어 원문 교정·전수 점검 명시가 하나라도 빠지면 검사기가 **미완결로 차단**한다 — prose로만 있어 누락되던 것을 산출물 검사로 강제한다. exit 0 전에는 완료가 아니다.
 
 **적용 범위(예외 없음)**: 전수 추출·단일 프레임·코멘트 선별 모드, 그리고 **번역을 포함한 위키 업데이트(통합 작업)**. "위키만 빨리"·"XLT 몇 개만" 같은 부분 작업도 게이트를 건너뛰지 않는다.
 
@@ -187,7 +188,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 |------|------|----------|
 | `fetch_glossary.py` | 용어집 API 조회 → glossary.json | 1단계 Step 3 |
 | `fetch_comments.py` | Figma 코멘트 reply-aware 조회 (루트+답글 스레드, 자기 점검 로그) — **인라인 재구현 금지** | 1단계 코멘트 선별 모드 · 3단계 위키 Description |
-| `validate_translation.py` | 3단계 검증 수행 (P0/P1/P2) | 1단계 Step 5 |
+| `validate_translation.py` | 3단계 검증 수행 (P0/P1/P2, 컬럼별 이질 문자체계 검출 포함) | 1단계 Step 5 |
+| `check_gate_report.py` | 게이트 리포트 완결성 검사 (필수 요소 6종 — 완료 선언 직전 exit 0 확인) | 1단계 Step 5 게이트 |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
 | `patch_translation.py` | 키 단위 번역 패치 (지정 언어 셀만 교체·무결성 가드) | 키 단위 번역 패치 모드 (`md/translate.md`) |
 | `build_prototype_data.py` | data.js/i18n.js 생성 + 무결성 검증 (입력: prototype_input.json, translation_extract.json, translation_data.json, comments_data.json) | 2단계 Step 5 |
@@ -298,7 +300,7 @@ cp templates/* .
 새 프로젝트에서 다음을 확인:
 - [ ] `CLAUDE.md` 파일 존재
 - [ ] `md/` 폴더에 7개 가이드 파일 존재
-- [ ] `scripts/` 폴더에 7개 Python 스크립트(fetch_glossary, fetch_comments, validate_translation, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
+- [ ] `scripts/` 폴더에 8개 Python 스크립트(fetch_glossary, fetch_comments, validate_translation, check_gate_report, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
 - [ ] `templates/` 폴더에 5개 템플릿 존재
 - [ ] Python 의존성 설치 완료 (`pip list | grep pandas`)
 
