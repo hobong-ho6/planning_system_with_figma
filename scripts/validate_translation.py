@@ -12,6 +12,26 @@ from pathlib import Path
 from typing import Dict, List, Tuple
 
 class TranslationValidator:
+    # 각 언어 칸에서 '이질'로 취급하는 문자체계 (라틴/숫자/기호는 공용 허용)
+    # ja_JP·zh_TW는 한자(cjk)를 공유하므로 서로의 cjk는 이질로 보지 않는다.
+    FOREIGN_SCRIPTS = {
+        'en_US': ['hangul', 'kana', 'thai', 'cjk'],
+        'ja_JP': ['hangul', 'thai'],
+        'zh_TW': ['hangul', 'kana', 'thai'],
+        'th_TH': ['hangul', 'kana', 'cjk'],
+        'ko_KR': ['kana', 'thai'],   # cjk/latin-only는 아래 특례로 별도 처리
+    }
+
+    @staticmethod
+    def _scripts(s: str) -> dict:
+        """문자열에 포함된 문자체계 존재 여부."""
+        return {
+            'hangul': bool(re.search(r'[가-힣ᄀ-ᇿ㄰-㆏]', s)),
+            'kana':   bool(re.search(r'[぀-ヿㇰ-ㇿ]', s)),
+            'thai':   bool(re.search(r'[฀-๿]', s)),
+            'cjk':    bool(re.search(r'[㐀-䶿一-鿿豈-﫿]', s)),
+        }
+
     def __init__(self, excel_path: str, glossary_path: str = None):
         self.excel_path = Path(excel_path)
         self.glossary_path = Path(glossary_path) if glossary_path else None
@@ -232,14 +252,36 @@ class TranslationValidator:
                         'detail': f"{lang}: '/n' → '\\n' 수정 필요"
                     })
 
-            # 언어 혼입 검사 (간단 버전)
-            en_text = str(row.get('en_US', ''))
-            if re.search(r'[가-힣]', en_text):
-                self.issues['P0'].append({
-                    'key': key,
-                    'issue': '언어 혼입',
-                    'detail': f"en_US에 한글 포함: {en_text}"
-                })
+            # 언어 혼입 / 컬럼 정렬 검사 (컬럼별 이질 문자체계 검출)
+            # 각 언어 칸에 올 수 없는 문자체계가 있으면 P0(언어 혼입/컬럼 어긋남).
+            # 라틴·숫자·기호는 모든 칸에서 허용(브랜드·수치·placeholder). ja/zh는 한자(CJK) 공유.
+            # (2026-07 cat_eye류 회전 어긋남: ja칸 한글·en칸 한자·ko칸 영어가 안 잡히던 것 보강)
+            for lang in ['ko_KR', 'en_US', 'ja_JP', 'zh_TW', 'th_TH']:
+                cell = str(row.get(lang, ''))
+                if cell == '' or cell == 'nan':
+                    continue
+                sc = self._scripts(cell)
+                foreign = [name for name in self.FOREIGN_SCRIPTS.get(lang, []) if sc[name]]
+                if foreign:
+                    self.issues['P0'].append({
+                        'key': key,
+                        'issue': '언어 혼입',
+                        'detail': f"{lang} 칸에 {'/'.join(foreign)} 문자 포함(컬럼 어긋남 의심): {cell}"
+                    })
+                # ko_KR 특례: 한글이 전혀 없고 한자만 있으면 다른 언어 값 오배치(P0)
+                if lang == 'ko_KR' and sc['cjk'] and not sc['hangul']:
+                    self.issues['P0'].append({
+                        'key': key,
+                        'issue': '언어 혼입',
+                        'detail': f"ko_KR 칸에 한글 없이 한자만(다른 언어 오배치 의심): {cell}"
+                    })
+                # ko_KR 특례: 한글 없이 라틴 문자열만이면 영어/브랜드 오배치 의심(P1 — 브랜드 가능성)
+                if lang == 'ko_KR' and not sc['hangul'] and not sc['cjk'] and re.search(r'[A-Za-z]', cell):
+                    self.issues['P1'].append({
+                        'key': key,
+                        'issue': '언어 의심',
+                        'detail': f"ko_KR 칸에 한글 없이 라틴 문자열(영어 오배치 또는 브랜드 확인 필요): {cell}"
+                    })
 
         print(f"✓ 다국어 검증 완료")
 

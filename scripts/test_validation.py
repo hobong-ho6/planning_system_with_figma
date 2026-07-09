@@ -57,6 +57,9 @@ TEST_DATA = [
     # P1 외래어 음차 blocklist ('포이가츠') — 자동 검증이 구조적으로 못 잡던 패턴
     {"xlt_key": "KW_t_loan", "ko_KR": "포이가츠 미션으로 받기", "en_US": "Get with point missions",
      "ja_JP": "ポイ活ミッションで受け取る", "zh_TW": "透過點數任務領取", "th_TH": "รับผ่านภารกิจสะสมแต้ม"},
+    # P0 언어 혼입/컬럼 회전 어긋남 (2026-07 cat_eye류) — en칸에 한자, ja칸에 한글, ko칸에 영어
+    {"xlt_key": "KW_t_swap", "ko_KR": "Ophthalmology", "en_US": "眼科",
+     "ja_JP": "안과", "zh_TW": "眼科", "th_TH": "จักษุ"},
 ]
 
 failures = []
@@ -110,6 +113,8 @@ check("P0 빈칸: zh_TW 검출", has_issue(issues, "P0", "KW_t_p0", "빈칸"))
 check("P1 맞춤법: '되요' 검출", has_issue(issues, "P1", "KW_t_mix", "맞춤법"))
 check("P1 placeholder 불일치 검출", has_issue(issues, "P1", "KW_t_mix", "placeholder 불일치"))
 check("P1 외래어 음차 blocklist: '포이가츠' 검출", has_issue(issues, "P1", "KW_t_loan", "표기 오류"))
+check("P0 언어 혼입: 컬럼 회전 어긋남(en 한자·ja 한글) 검출", has_issue(issues, "P0", "KW_t_swap", "언어 혼입"))
+check("P1 언어 의심: ko 라틴-only(영어 오배치) 검출", has_issue(issues, "P1", "KW_t_swap", "언어 의심"))
 check("P2 마침표 스타일 검출", any(i["issue"] == "마침표 스타일" for i in issues["P2"]))
 
 # --- 3. 번역 패치 (md/translate.md 키 단위 번역 패치 모드) ---
