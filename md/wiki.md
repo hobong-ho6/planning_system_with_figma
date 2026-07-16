@@ -56,8 +56,10 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 
 사용자가 **위키 생성(신규 페이지 만들기)**을 요청하면 아래 규칙을 따른다.
 
-1. **참조 템플릿 (형태 기준)**: `https://wiki.workers-hub.com/pages/viewpage.action?pageId=4465962427` (pageId=`4465962427`) 페이지와 **같은 형태(구조·섹션 구성)**로 생성한다.
-   - 참조 페이지는 **생성 시점에 `confluence_get_page`(raw storage)로 원본에서 새로 조회**해 구조를 확인한다 — 이전 조회 결과 재사용 금지 (CLAUDE.md '⛔ 캐시 금지 규칙').
+1. **참조 템플릿 (형태 기준)**: **`templates/wiki_template.xml`** (raw storage XHTML 스냅샷)의 구조를 그대로 사용해 생성한다.
+   - 이 스냅샷은 원본 페이지 `https://wiki.workers-hub.com/pages/viewpage.action?pageId=4465962427` (2026-07-16, version 1)를 복사한 것이다. **원본 페이지는 사용자가 계속 편집하므로 생성 시점에 원본을 다시 조회하지 않는다** — 저장된 스냅샷이 템플릿 정본이다 (캐시 금지 규칙의 예외 — 사용자 지시로 스냅샷을 정본으로 고정).
+   - 구조: TOC 사이드바(Contents) + History 표(`Date | History | Jira Ticket | FE/BE 확인 | QA 확인 | PIC`, 확인 컬럼은 task 체크박스) + Related Docs 표(`Category | Document`).
+   - 템플릿 갱신은 사용자가 명시적으로 요청할 때만 원본을 재조회해 스냅샷을 교체한다.
 2. **페이지 타이틀**: **`Template`** 으로 지정한다.
 3. **생성 위치 (필수 — 사용자 확인)**: 위키를 생성할 위치(space·부모 페이지)는 **사용자에게 확인받은 뒤** 생성한다. 임의 위치에 생성하지 않는다.
 4. **토큰 우선 규칙 적용**: 위키 작업이므로 착수 전 Confluence(위키) 토큰을 먼저 요청·검증한다. Figma 화면 반영이 동반되면 Figma 토큰도 함께 요청한다 (CLAUDE.md '⛔ 토큰 우선 규칙').
