@@ -57,12 +57,16 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 사용자가 **위키 생성(신규 페이지 만들기)**을 요청하면 아래 규칙을 따른다.
 
 1. **참조 템플릿 (형태 기준)**: **`templates/wiki_template.xml`** (raw storage XHTML 스냅샷)의 구조를 그대로 사용해 생성한다.
-   - 이 스냅샷은 원본 페이지 `https://wiki.workers-hub.com/pages/viewpage.action?pageId=4465962427` (2026-07-16, version 1)를 복사한 것이다. **원본 페이지는 사용자가 계속 편집하므로 생성 시점에 원본을 다시 조회하지 않는다** — 저장된 스냅샷이 템플릿 정본이다 (캐시 금지 규칙의 예외 — 사용자 지시로 스냅샷을 정본으로 고정).
-   - 구조: TOC 사이드바(Contents) + History 표(`Date | History | Jira Ticket | FE/BE 확인 | QA 확인 | PIC`, 확인 컬럼은 task 체크박스) + Related Docs 표(`Category | Document`).
+   - 이 스냅샷은 `sample format` 페이지 `https://wiki.workers-hub.com/display/UNIFI/sample+format` (pageId=`4465964879`, 2026-07-16 version 1)를 복사한 것이다. **원본 페이지는 사용자가 계속 편집할 수 있으므로 생성 시점에 원본을 다시 조회하지 않는다** — 저장된 스냅샷이 템플릿 정본이다 (캐시 금지 규칙의 예외 — 사용자 지시로 스냅샷을 정본으로 고정).
+   - 구조: TOC 사이드바(Contents) + History 표(`Date | History | Jira Ticket | FE/BE 확인 | QA 확인 | PIC`, 확인 컬럼은 task 체크박스) + Related Docs 표(`Category | Document`) + 본문 섹션 `Background` / `Specification`(하위 `Policy`·`Flow`) / `Screen`.
    - 템플릿 갱신은 사용자가 명시적으로 요청할 때만 원본을 재조회해 스냅샷을 교체한다.
-2. **페이지 타이틀**: **`Template`** 으로 지정한다.
-3. **생성 위치 (필수 — 사용자 확인)**: 위키를 생성할 위치(space·부모 페이지)는 **사용자에게 확인받은 뒤** 생성한다. 임의 위치에 생성하지 않는다.
-4. **토큰 우선 규칙 적용**: 위키 작업이므로 착수 전 Confluence(위키) 토큰을 먼저 요청·검증한다. Figma 화면 반영이 동반되면 Figma 토큰도 함께 요청한다 (CLAUDE.md '⛔ 토큰 우선 규칙').
+2. **History 첫 행 자동 기입 (생성 시 필수)**: 템플릿의 History 첫 행(History 셀 = `문서생성`)에서
+   - `Date` = **생성 당일** (`YYYY-MM-DD`)
+   - `PIC` = **생성을 요청한 사람** — 대화에서 요청자를 알 수 있으면 그 이름, 불명확하면 사용자에게 확인한다 (`Claude 자동 생성`이 아니라 요청자 이름을 넣는다).
+   - 나머지 셀(Jira Ticket, FE/BE·QA 체크박스)은 템플릿 그대로 둔다.
+3. **페이지 타이틀**: **`Template`** 으로 지정한다.
+4. **생성 위치 (필수 — 사용자 확인)**: 위키를 생성할 위치(space·부모 페이지)는 **사용자에게 확인받은 뒤** 생성한다. 임의 위치에 생성하지 않는다.
+5. **토큰 우선 규칙 적용**: 위키 작업이므로 착수 전 Confluence(위키) 토큰을 먼저 요청·검증한다. Figma 화면 반영이 동반되면 Figma 토큰도 함께 요청한다 (CLAUDE.md '⛔ 토큰 우선 규칙').
 
 ---
 
