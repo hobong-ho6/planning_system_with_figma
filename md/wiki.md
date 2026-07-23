@@ -300,6 +300,8 @@ with urllib.request.urlopen(req) as r, open(out_path, "wb") as f:
 
 **② Python Pillow로 번호 원 오버레이 (입력: 4-A에서 받은 로컬 파일)**
 
+좌표는 **프레임 원점 기준 상대좌표(frame-relative)**를 넘긴다 — 이미지가 프레임 export이므로 `상대 = 절대 - 프레임 absoluteBoundingBox.{x,y}`. 원은 **항상 이미지 경계 안으로 clamp**해 잘리지 않게 한다.
+
 ```python
 # pip install Pillow (scripts/requirements.txt에 포함)
 from PIL import Image, ImageDraw, ImageFont
@@ -309,9 +311,10 @@ CIRCLE_R = 18    # 반지름(픽셀, scale=2 기준)
 RED   = (220, 53, 69, 255)
 WHITE = (255, 255, 255, 255)
 
-def annotate(in_path, comments, out_path):
-    img = Image.open(in_path)
-
+def annotate(in_path, points, out_path):
+    # points: [(no, rel_x, rel_y), ...]  — rel_*는 프레임-상대 좌표(px, scale 전)
+    img = Image.open(in_path).convert("RGBA")
+    W, H = img.size
     overlay = Image.new("RGBA", img.size, (0, 0, 0, 0))
     draw = ImageDraw.Draw(overlay)
     try:
@@ -320,21 +323,28 @@ def annotate(in_path, comments, out_path):
     except:
         font = ImageFont.load_default()
 
-    for i, (x, y, _) in enumerate(comments, 1):
-        px, py = int(x * SCALE), int(y * SCALE)
+    for no, rx, ry in points:
+        # ⛔ 경계 clamp — 원이 이미지 밖으로 잘리지 않게 [R+2, 변-R-2] 범위로 고정
+        px = min(max(int(rx * SCALE), CIRCLE_R + 2), W - CIRCLE_R - 2)
+        py = min(max(int(ry * SCALE), CIRCLE_R + 2), H - CIRCLE_R - 2)
         draw.ellipse([px-CIRCLE_R, py-CIRCLE_R, px+CIRCLE_R, py+CIRCLE_R],
                      fill=RED, outline=WHITE, width=2)
-        label = str(i)
+        label = str(no)
         bbox = draw.textbbox((0, 0), label, font=font)
         tw, th = bbox[2]-bbox[0], bbox[3]-bbox[1]
         draw.text((px - tw//2, py - th//2 - 1), label, fill=WHITE, font=font)
 
-    Image.alpha_composite(img.convert("RGBA"), overlay).convert("RGB").save(out_path)
+    Image.alpha_composite(img, overlay).convert("RGB").save(out_path)
 ```
 
-- `comments`는 y좌표 오름차순 정렬 후 전달 — 이미지 번호 = Description 정책 번호
-- 출력 파일명: `{프레임명_공백→언더스코어}.png` (원본을 덮어쓰지 말고 별도 파일로 저장 권장)
+**⛔ 번호·좌표 기준 (깔끔한 배치 규칙 — 준수):**
+- **정책 코멘트 모드(기본)**: `points`의 좌표는 **코멘트 핀 위치(frame-relative)**, `no`는 **Description 정책 번호**(y 오름차순). 이미지 ⓝ = Description 정책 번호.
+- **XLT 선별/단일 프레임 모드**: 코멘트 핀이 아니라 **매칭된 XLT 텍스트의 위치**에 번호를 단다 — 좌표는 **매칭 텍스트 bbox의 왼쪽 끝 x·세로 중앙 y**(`rel_x = text.x - frame.x`, `rel_y = text.y - frame.y + text.h/2`), `no`는 **그 화면 XLT 표의 No**(매칭 텍스트 y 오름차순). 이미지 ⓝ = **XLT No** 1:1. 이렇게 해야 문구가 조밀한 화면(수십 개)에서도 번호가 각 텍스트 줄 좌측에 정렬돼 깔끔하고, 핀이 없는 텍스트도 정확히 가리킨다.
+- 위키 Screen 안내 문구도 사용한 기준에 맞춘다("이미지의 번호 ⓝ는 아래 정책 번호와 1:1 대응" / XLT 모드는 "…XLT 표의 No와 1:1 대응").
+- 출력 파일명: `{프레임명_공백→언더스코어}.png`(원본을 덮어쓰지 말고 `assets/annotated/` 등 별도 폴더 권장)
 - 이미지가 너무 크면(413 에러) 50% 리사이즈 후 재시도: `img.resize((w//2, h//2), Image.LANCZOS)`
+
+**③ 기존 첨부 갱신(재첨부) 시 엔드포인트 주의:** 같은 파일명으로 `POST .../child/attachment`를 다시 호출하면 **400**이 난다(이 Confluence 버전). **기존 첨부를 새 버전으로 갱신할 때는** 첨부 ID를 조회한 뒤 **`POST {BASE}/rest/api/content/{pageId}/child/attachment/{attachmentId}/data`** 로 올린다(신규 최초 업로드만 `.../child/attachment`). 본문 `ri:filename`은 그대로 두면 최신 버전 이미지가 렌더된다.
 
 ---
 
