@@ -32,13 +32,15 @@
 - OA 메시지의 첨부 이미지는 **LINE Flex Message JSON(flex image)** 형태로 생성한다.
 - 이미지 **URI(https)는 Claude가 임의로 넣지 않고 사용자에게 문의**해 입력받는다(입력 전에는 `{{IMAGE_URL}}` 플레이스홀더로 둔다).
 - Flex 메시지의 텍스트 컴포넌트에는 규칙 2의 `{{변수이름}}`을 그대로 사용한다.
-- **⛔ 다국어 전량 첨부(필수)**: OA Flex JSON을 생성·첨부할 때는 **항상 5개 언어(ko_KR·en_US·ja_JP·zh_TW·th_TH) 전부**를 생성해 첨부한다. **KO만 첨부 금지.** 프레임당 한 파일에 5개 언어를 담거나(권장: `{ "ko_KR": {flex}, "en_US": {flex}, ... }`), 언어별 파일(`flex_{프레임}_{lang}.json`)로 나눠 5개 언어를 모두 첨부한다. 텍스트만 언어별로 치환하고 구조·`{{변수}}`·`{{IMAGE_URL}}`·`{{ACTION_URL}}`는 동일하게 유지한다.
+- **⛔ Flex 스펙 준수(필수)**: OA Flex JSON은 **`templates/flex_message_spec.json`**(LINE 공식 Flex Message bubble 스펙)의 구조·관례를 따른다 — `hero`(image, `size:full`·`aspectRatio`·`aspectMode:cover`·`action.uri`), `body`(vertical box + text 컴포넌트), `footer`(button `style:"link"`·`height:"sm"`). 산출물은 **bubble JSON**(스펙과 동일 레벨)로 낸다.
+- **⛔ 언어별 개별 파일(필수)**: OA Flex는 **언어별로 JSON 파일을 따로** 만든다 — 프레임당 5개 파일 `flex_{프레임}_{lang}.json`(ko_KR·en_US·ja_JP·zh_TW·th_TH). **한 파일에 5개 언어를 묶지 않는다.** 텍스트·버튼 label만 언어별 치환, 구조·`{{변수}}`·`{{IMAGE_URL}}`·`{{ACTION_URL}}`는 동일.
+- **⛔ Description 첨부(필수)**: 생성한 언어별 Flex JSON은 Confluence에 첨부하고, **해당 OA 화면의 Screen 표 Description 셀**에 언어별 다운로드 링크로 건다(intro 영역 아님). 5개 언어 링크를 그 화면 Description에 모두 표시한다.
 
 ---
 
-## Flex 메시지 JSON 기본 골격 (이미지 + 본문 + 버튼)
+## Flex 메시지 JSON 기본 골격 (스펙: `templates/flex_message_spec.json`)
 
-LINE Messaging API `flex` 메시지의 `contents`(bubble) 형식. 이미지는 `hero`, 문구는 `body`, CTA는 `footer`에 둔다.
+기준 스펙은 **`templates/flex_message_spec.json`**(LINE 공식 Brown Cafe bubble). 이미지는 `hero`(+`action.uri`), 문구는 `body`, CTA는 `footer`(button `style:"link"`·`height:"sm"`)에 둔다. OA 메시지에 맞춘 골격(스펙 준수):
 
 ```json
 {
@@ -48,33 +50,34 @@ LINE Messaging API `flex` 메시지의 `contents`(bubble) 형식. 이미지는 `
     "url": "{{IMAGE_URL}}",
     "size": "full",
     "aspectRatio": "20:13",
-    "aspectMode": "cover"
+    "aspectMode": "cover",
+    "action": { "type": "uri", "uri": "{{ACTION_URL}}" }
   },
   "body": {
     "type": "box",
     "layout": "vertical",
-    "spacing": "md",
     "contents": [
-      { "type": "text", "text": "친구초대 완료!", "weight": "bold", "size": "lg", "wrap": true },
-      { "type": "text", "text": "럭키볼 {{lucky_ball_count}}개가 지급되었어요", "wrap": true },
-      { "type": "text", "text": "* 당첨 보상은 즉시 지급됩니다. 최대 {{payout_minutes}}까지 소요됩니다.", "size": "sm", "color": "#888888", "wrap": true }
+      { "type": "text", "text": "초대친구 미션 완료!", "weight": "bold", "size": "xl", "wrap": true },
+      { "type": "text", "text": "럭키볼 1개가 지급되었어요", "wrap": true, "margin": "md" },
+      { "type": "text", "text": "* 당첨 보상은 즉시 지급됩니다. 최대 5분까지 소요됩니다.", "size": "sm", "color": "#999999", "wrap": true, "margin": "md" }
     ]
   },
   "footer": {
     "type": "box",
     "layout": "vertical",
+    "spacing": "sm",
     "contents": [
-      { "type": "button", "style": "primary",
+      { "type": "button", "style": "link", "height": "sm",
         "action": { "type": "uri", "label": "뽑으러 가기", "uri": "{{ACTION_URL}}" } }
-    ]
+    ],
+    "flex": 0
   }
 }
 ```
 
-- **언어별 산출(필수 5개 언어)**: 같은 골격에 각 언어 번역을 넣어 **ko_KR·en_US·ja_JP·zh_TW·th_TH 전부** 생성한다(`altText`·`text`·버튼 `label`을 언어별 치환). 프레임당 한 파일에 5개 언어를 묶는 것을 권장한다(규칙 3). KO만 내지 않는다.
-- **이미지 전용(flex image)** 만 필요하면 `hero`만 있는 bubble 또는 `type:"image"` 컴포넌트 단독으로 낸다.
+- **언어별 개별 파일(필수)**: `ko_KR·en_US·ja_JP·zh_TW·th_TH` 각각 **별도 파일** `flex_{프레임}_{lang}.json`으로 생성한다(한 파일에 묶지 않음, 규칙 3). `text`·버튼 `label`만 언어별 치환.
 - `url`·`uri`는 https 필수. 미입력 시 `{{IMAGE_URL}}`·`{{ACTION_URL}}` 플레이스홀더 유지 후 사용자에게 문의.
-- 산출물은 `oa/flex_{프레임명}.json` 등으로 저장하거나 위키 OA 행에 코드블록으로 첨부(사용자 선호 확인).
+- 산출물은 `oa/flex_{프레임}_{lang}.json`으로 저장하고 Confluence에 첨부한다.
 
 ---
 
@@ -84,7 +87,7 @@ LINE Messaging API `flex` 메시지의 `contents`(bubble) 형식. 이미지는 `
 - 컬럼: `Screen ID | Screen(이미지) | Description | 다국어 번역 (XLT 키 미부여)`
 - 번역 칸: 키 없는 `No | KR | JA | EN | TH | ZH-TW` 중첩표(규칙 1). 변수는 `{{이름}}`으로 표기(규칙 2).
 - 이미지: 번호 어노테이션(ⓝ↔No, 경계 clamp — `md/wiki.md` Step 4-B 규칙) 후 Confluence 첨부.
-- Flex JSON은 해당 OA 행에 코드블록으로 병기하거나 별도 첨부(사용자 확인).
+- **Flex JSON(언어별 5개)은 해당 화면 Description 셀에 첨부·링크**한다 — `Flex: [ko_KR] [en_US] [ja_JP] [zh_TW] [th_TH]` 형태 다운로드 링크(규칙 3). intro 영역이 아니라 화면별 Description에 둔다.
 - History에 변경 행 추가(PIC=`Claude 자동 생성`).
 
 ---
@@ -97,7 +100,7 @@ LINE Messaging API `flex` 메시지의 `contents`(bubble) 형식. 이미지는 `
 3. 한국어 원문 교정(게이트 1a) + 5개 언어 번역
 4. 변수 후보 제안 → 사용자에게 변수 이름 문의 → {{이름}} 적용(5개 언어)
 5. 번역 품질 게이트(P0=0 + 수동 3단계 + 리포트 + check_gate_report.py exit 0)
-6. 이미지 URI 사용자 문의 → Flex 메시지 JSON **5개 언어 전량** 생성·첨부({{IMAGE_URL}} 플레이스홀더)
+6. 이미지 URI 사용자 문의 → Flex 메시지 JSON을 **`templates/flex_message_spec.json` 스펙 준수 + 언어별 개별 파일(5개)** 로 생성({{IMAGE_URL}}·{{ACTION_URL}} 플레이스홀더) → Confluence 첨부 후 **각 화면 Description에 언어별 링크**
 7. 위키 OA 섹션 반영(키 없는 번역표 + 이미지 + Flex JSON) + History
    (XLT 엑셀·전역 키 표는 건드리지 않는다)
 ```
