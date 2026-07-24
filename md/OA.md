@@ -32,6 +32,7 @@
 - OA 메시지의 첨부 이미지는 **LINE Flex Message JSON(flex image)** 형태로 생성한다.
 - 이미지 **URI(https)는 Claude가 임의로 넣지 않고 사용자에게 문의**해 입력받는다(입력 전에는 `{{IMAGE_URL}}` 플레이스홀더로 둔다).
 - Flex 메시지의 텍스트 컴포넌트에는 규칙 2의 `{{변수이름}}`을 그대로 사용한다.
+- **⛔ 다국어 전량 첨부(필수)**: OA Flex JSON을 생성·첨부할 때는 **항상 5개 언어(ko_KR·en_US·ja_JP·zh_TW·th_TH) 전부**를 생성해 첨부한다. **KO만 첨부 금지.** 프레임당 한 파일에 5개 언어를 담거나(권장: `{ "ko_KR": {flex}, "en_US": {flex}, ... }`), 언어별 파일(`flex_{프레임}_{lang}.json`)로 나눠 5개 언어를 모두 첨부한다. 텍스트만 언어별로 치환하고 구조·`{{변수}}`·`{{IMAGE_URL}}`·`{{ACTION_URL}}`는 동일하게 유지한다.
 
 ---
 
@@ -70,7 +71,7 @@ LINE Messaging API `flex` 메시지의 `contents`(bubble) 형식. 이미지는 `
 }
 ```
 
-- **언어별 산출**: 5개 언어 각각에 대해 같은 골격에 해당 언어 번역을 넣어 생성한다(또는 `altText`·`text`만 언어별 치환). 어떤 언어를 기본 발송본으로 할지는 사용자 확인.
+- **언어별 산출(필수 5개 언어)**: 같은 골격에 각 언어 번역을 넣어 **ko_KR·en_US·ja_JP·zh_TW·th_TH 전부** 생성한다(`altText`·`text`·버튼 `label`을 언어별 치환). 프레임당 한 파일에 5개 언어를 묶는 것을 권장한다(규칙 3). KO만 내지 않는다.
 - **이미지 전용(flex image)** 만 필요하면 `hero`만 있는 bubble 또는 `type:"image"` 컴포넌트 단독으로 낸다.
 - `url`·`uri`는 https 필수. 미입력 시 `{{IMAGE_URL}}`·`{{ACTION_URL}}` 플레이스홀더 유지 후 사용자에게 문의.
 - 산출물은 `oa/flex_{프레임명}.json` 등으로 저장하거나 위키 OA 행에 코드블록으로 첨부(사용자 선호 확인).
@@ -96,7 +97,7 @@ LINE Messaging API `flex` 메시지의 `contents`(bubble) 형식. 이미지는 `
 3. 한국어 원문 교정(게이트 1a) + 5개 언어 번역
 4. 변수 후보 제안 → 사용자에게 변수 이름 문의 → {{이름}} 적용(5개 언어)
 5. 번역 품질 게이트(P0=0 + 수동 3단계 + 리포트 + check_gate_report.py exit 0)
-6. 이미지 URI 사용자 문의 → Flex 메시지 JSON 생성({{IMAGE_URL}} 플레이스홀더)
+6. 이미지 URI 사용자 문의 → Flex 메시지 JSON **5개 언어 전량** 생성·첨부({{IMAGE_URL}} 플레이스홀더)
 7. 위키 OA 섹션 반영(키 없는 번역표 + 이미지 + Flex JSON) + History
    (XLT 엑셀·전역 키 표는 건드리지 않는다)
 ```
