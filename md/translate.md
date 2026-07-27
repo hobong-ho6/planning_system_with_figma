@@ -146,6 +146,8 @@ def match(comment_pt, text_nodes, radius=60):   # radius(px)는 화면 밀도에
 ### Step 2: XLT Key 생성
 네이밍 규칙:
 - 프리픽스: **담당 FE 팀에 따라 결정** (CLAUDE.md '⛔ 담당 FE 팀 규칙' 준수) — **UIT 팀 = `UF_` 고정**, **LV 팀 = 프로젝트 약어**(예: `KW_` = Kaia Wallet, `mini_guidekim_`). 위키에 UIT/LV 구분이 있으면 해당 영역 팀 규칙을 따르고, 없으면 팀을 물어 규칙 설명·적용 확인 후 진행
+- **표기 규칙 (공식 룰 `[Rule]` pageId=4268282157)**: key는 프리픽스(`UF_`)를 제외하고 **모두 영문 소문자**(대문자 사용 금지), key 끝에 space를 넣지 않는다
+- **키 거버넌스 (공식 룰)**: key는 **FE 전달 후 변경/삭제하지 않는다** — 이슈가 있으면 FE와 논의 후 수정한다. 등록 직후의 잘못된 등록 정정은 허용(개발 진행 후 XLT 유실 최소화 목적)
 - 화면/기능 구분: `KW_home_`, `KW_terms_`, `KW_agg_`
 - 의미 있는 suffix: `_title`, `_desc`, `_btn`, `_label`
 - 예시: `KW_home_deposit`, `KW_terms_agree_all`
