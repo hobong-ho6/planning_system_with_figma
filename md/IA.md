@@ -15,6 +15,7 @@
 | 2026-07-27 | 비로그인 공개 화면 | unifi.me 직접 탐색 (모바일 뷰) | home·reward 공개 영역, login 게이트 확인 |
 | 2026-07-27 | 로그인 상태 전체 4탭 | 사용자 로그인 Chrome으로 직접 탐색 | asset(내 자산)·my(마이) 실측 확정, 실제 라우트 채집 |
 | 2026-07-27 | **제품 모드·분기 정책** | 위키 `[Master]` 3종( Unifi mini · Wallet Mode · Mission and Reward ) + 링크 스펙 페이지 분석 | **Unifi/Wallet Mode/Unifi mini 3모드, IP·로그인·approve 분기 축, 탭 노출 매트릭스 확정** |
+| 2026-07-27 | **주간 정기 점검 #1** (비로그인 + 로그인, KR IP) | unifi.me 직접 탐색(인앱 375px) + 사용자 Chrome 로그인 세션 + 공지사항 목록 | **Apps 메인/마켓·알림 목록·게임 미션 상세·은행송금(Sentbe)·NFT 목록 실측 승격**, 입금 **브릿지** 신설 확인, `/auth/sign-in`·`/payout`·푸터 라우트 채집, JPYC 이자·KAIA 부스트 티어 실측 |
 
 > ⚠️ 표시 = 아직 직접 진입 못 한 추정 영역(팝업·조건부 화면 등). 확인되는 대로 이 파일을 갱신한다.
 
@@ -37,7 +38,8 @@
 | 거래내역/알림 | 제공 | 이자 내역 제외 | 이자 내역 제외 |
 | SkyFlag | 미제공 | 미제공 | **제공** |
 | OA 친구추가 유도 | LIFF 접근 시 유도 | LIFF 접근 시 유도 | 없음 (통합 OA 검토) |
-| 결제 | 지갑 연결 | 지갑 연결 | **LINE IAP** (지갑 연결 없음) |
+| 결제 | 지갑 연결 | 지갑 연결 | **LINE IAP** (지갑 연결 없음) + **JPYC 결제**(2026-07-10 공지 도입) |
+| JPYC 이자 | **제공 (최대 연 5%)** — 2026-06-29 출시 | 미제공(이율 제거) | 미제공 |
 
 ### 0-1. 분기 축 (화면 분기를 만드는 조건 — Screen ID 세부 변형 판단용)
 
@@ -64,6 +66,9 @@
 - ⚠️ **라우트-화면명 엇갈림 주의**: `/my` = **내 자산** 화면, `/setting` = **마이** 화면. **Screen ID 주기능 어휘는 라우트가 아니라 화면 기준** — 내 자산 = `asset_`, 마이 = `my_`.
 - 교환(Swap) = `/apps/trade/swap` — **Apps 영역** (공식 룰 `apps_` 프리픽스, UF_ 미사용)
 - 홈 상단 자산 종류 탭(USDT/JPYC/IDRP). 지원 토큰: USDT·KAIA·JPYC·IDRP + NFT.
+- **로그인 게이트** = `/auth/sign-in?returnUrl={원래주소}` (실측 2026-07-27) — 미로그인 상태로 `/my`·`/setting` 진입 시 자동 리다이렉트. `/`·`/benefits/daily-mission`·`/apps`는 비로그인 열람 가능.
+- **⚠️ NFT는 asset이 아니라 Apps 영역** — 내 자산의 "보유 NFT" 진입 라우트가 `/apps/my-page/nfts`다(실측). 라우트 기준 `apps_` 프리픽스 대상(§2-4).
+- 외부 이탈 도메인: 은행송금 `unifi.sentbe.com` · 개발자 `developers.unifi.me` · 보안 감사 `contract-audit.unifi.me` · 고객센터 `contact.unifi.me` · 스테이블 코인 소개 `welcome.unifi.me` · 프로모션 `promotion.unifi.me`.
 
 ## 1. 주기능 (1레벨)
 
@@ -87,20 +92,24 @@
 
 ```
 home_main_01                      홈 메인 — 자산 요약 카드(USDT/JPYC/IDRP 탭·입금하기·플러스 모드 배너·누적 이자)
-home_boost_kaia_01                KAIA 부스트 상세 (/boost/kaia — 보유량 티어 1~3%)
+home_boost_kaia_01                KAIA 부스트 상세 (/boost/kaia — 티어 실측 300,000/400,000/500,000 KAIA = 1/2/3% · 플러스 모드 USDT에 적용·일 00:00 UTC+0 기준·최대 100,000 USDT까지)
 home_benefit_rate_01              역대급 이율 혜택 (Best Rate Benefits)
 home_benefit_referral_01          특별 레퍼럴 랭킹 혜택 (친구 초대하고 USDT 리워드 받기)
-home_guide_usdt_01                가이드 — USDT 알아보기
-home_guide_stable_01              가이드 — 스테이블 코인 경험 (Unifi 혜택 한눈에 보기)
-home_guide_wallet_01              가이드 — 비수탁 지갑 알아보기
-home_guide_interest_01            가이드 — 이자 운용 방법
-home_guide_summary_01             가이드 — 핵심만 쏙쏙 (Unifi로 수익 내는 방법)
+home_guide_usdt_01                가이드 — USDT 알아보기 (/doc/usdt)
+home_guide_stable_01              가이드 — 스테이블 코인 경험 (외부 welcome.unifi.me)
+home_guide_wallet_01              가이드 — 비수탁 지갑 알아보기 (/doc/wallet)
+home_guide_interest_01            가이드 — 이자 운용 방법 (/doc/trust)
+home_guide_summary_01             가이드 — 핵심만 쏙쏙 (/guide — Unifi로 수익 내는 방법)
 home_guide_transfer_01            가이드 — 자산 옮기기 (거래소별 입금 가이드)
-home_faq_01                       자주 묻는 질문
-home_notice_01                    공지사항 목록 (announcement)
-home_notice_detail_01             공지사항 상세
-home_notification_01              ⚠️ 알림 목록 (상단 벨)
+home_faq_01                       자주 묻는 질문 (/faq · 카테고리 쿼리 /faq?category=deposit)
+home_notice_01                    공지사항 목록 (/announcement)
+home_notice_detail_01             공지사항 상세 (/announcement/{uuid} · LIFF 진입 시 liff_id 쿼리)
+home_notification_01              알림 목록 (/notification — 상단 벨 · 필터 6종: 전체·안읽음·공지사항·계정/보안·예치·입출금) ※ 리워드 탭 헤더에도 동일 진입점
+home_term_01                      약관 (/term/TERMS_OF_SERVICE/{UNIFI|WALLET|AGGREGATOR})
+home_privacy_01                   개인정보 처리방침 (/term/PRIVACY_POLICY/{UNIFI|WALLET}) · 마케팅 (/term/MARKETING_POLICY/UNIFI)
 ```
+
+푸터 공통(전 탭): 약관 3종·개인정보 2종·마케팅 동의 · For Developers(developers.unifi.me) · 공지사항 · FAQ · **보안 감사 보고서**(contract-audit.unifi.me) · 고객센터(빠른 답변 받기·문의하기 contact.unifi.me) · SNS(X·Medium).
 
 ### 2-2. reward — 리워드 (실측 · 라우트 `/benefits/daily-mission` · Wallet Mode 미제공)
 
@@ -109,7 +118,8 @@ reward_main_01                    Rewards 메인 (리워드 USDT·럭키볼 개�
 reward_checkin_01                 출석 체크 (1~5일 연속 — 3·5일 럭키볼, 출석하기 버튼)
 reward_checkin_01_01              ⚠️ 출석 완료/럭키볼 획득 팝업
 reward_mission_game_01            게임 미션 (게임 3개 완료 → 럭키볼) ※ 1회성 미션 정책(시간 제한 없이 수령 — v5 정책)
-reward_mission_game_detail_01     ⚠️ 개별 게임 미션 상세 (Squishy Cat Jump·MERGE CAT·Tap Tap Jello·Hook & Gold·Rich Match·SODA MERGE 2048)
+reward_mission_game_detail_01     개별 게임 미션 상세 (/benefits/games/{uuid} — 게임 6종: Squishy Cat Jump·MERGE CAT·Tap Tap Jello·Hook & Gold·Rich Match·SODA MERGE 2048)
+                                  └ 구성(실측): 참여자 수·일일 미션 카운트다운 / 보상 수령(예: 30분 자유 이용권) / 세부 미션 진행도 3종 / 게임 소개·미리보기 / 공식 계정(Discord·Medium·X·Instagram) / FAQ / 플레이 버튼
 reward_luckyball_draw_01          ⚠️ 럭키볼 뽑기 (최대 500 USDT / mini는 JPYC)
 reward_luckyball_result_01_01     ⚠️ 뽑기 결과 팝업
 reward_history_01                 리워드 내역 ("리워드 0 USDT >" 진입점 · mini는 SkyFlag 리워드 미표시 안내)
@@ -128,18 +138,28 @@ asset_token_detail_01             토큰 상세 (/my/token/{컨트랙트주소} 
 asset_send_01                     송금하기 — 토큰 선택 (/transfer — "어떤 토큰을 보내시겠어요?" 전체/스테이블 코인)
 asset_send_02                     ⚠️ 송금 — 받는 사람/수량 입력 (공식 룰 예시 단계)
 asset_send_qr_01 / _01_01         ⚠️ QR 송금 / 그 위 다이얼로그 (공식 룰 예시)
-asset_deposit_01                  입금하기 (/deposit — QR·네트워크 선택(KAIA)·내 지갑주소 복사·토큰별(USDT/JPYC/IDRP) 거래소 입금 3단계 안내)
-asset_bank_01                     ⚠️ 은행송금 (버튼 실측 — 모달/조건부로 화면 미진입 · Sentbe 연동)
+asset_deposit_01                  입금하기 (/deposit — 네트워크(KAIA)·내 지갑주소 복사·카테고리 탭(스테이블 코인/다른 토큰)·토큰별(USDT/JPYC/IDRP) 거래소 입금 3단계 안내)
+asset_deposit_network_01          ⚠️ 지원 네트워크 안내 — **브릿지**(어떤 네트워크로 보내도 전액 도착 · "브릿지 출시 기념 수수료 무료 이벤트") · 입금 화면 상단 진입점 실측, 상세 화면 미진입
+asset_bank_01                     은행송금 — **외부 이탈**(unifi.sentbe.com/calculator?session_id=…&redirect_uri=https://www.unifi.me/payout&language=ko_kr)
+                                  └ Sentbe 화면(USDT→KRW 계산기·TripleA 라이선스·"인증하러 가기") = Unifi 화면 아님 → **Screen ID 부여 대상 아님**
+asset_payout_01                   ⚠️ 은행송금 복귀 화면 (/payout — Sentbe redirect_uri 대상, 미진입)
 asset_plus_mode_01                ⚠️ 플러스 모드 상세 (토큰 상세 내 진입점 실측)
-asset_nft_01                      ⚠️ 보유 NFT 목록
 ```
+
+> **NFT 목록은 asset이 아니라 Apps 영역** — 내 자산의 "보유 NFT"는 `/apps/my-page/nfts`로 이동한다(§2-4). 기존 `asset_nft_01` 어휘는 **`apps_mypage_nft_01`로 정정 제안**(사용자 확인 필요 — 아직 부여된 위키 없음).
 
 ### 2-4. apps — Apps 영역 (실측 · 라우트 `/apps/...` · Unifi 4탭 전용)
 
 ```
+apps_main_01                      Apps 메인 — Reward 서브탭 (/apps · **비로그인 열람 가능**)
+                                  └ 구성(실측): 앱 검색 / 수혜자 수·"최대 $1.2 리워드" / 시세 위젯(Binance KAIA·CoinMarketCap USDT·기준일) /
+                                    USDT Reward Missions · KAIA Reward Missions(외부 dapp 미션형 보상) / Editor's Pick / Explore Apps
+                                    (카테고리 8종: AI·CONTENT·DePIN·GAME·Payment·SOCIAL·SocialFi·ETC · 27 Apps · Popular 정렬 · 각 앱은 외부 dapp URL로 이탈)
+apps_market_01                    Apps 마켓 서브탭 (/apps/market — Buy/Sell · Drops: Live & Upcoming / Past / Now · NFT 드롭 카드(가격 KAIA·수량·판매율))
+apps_mypage_nft_01                나의 NFTs (/apps/my-page/nfts — 탭 3종: 전체·판매중·거래내역 / 빈 상태 "지갑에 보유하고 있는 NFT가 없어요")
+                                  ※ 진입점은 내 자산의 "보유 NFT" · `/apps/my-page` 단독 진입은 `/my`로 리다이렉트
 apps_trade_swap_01                교환하기 (/apps/trade/swap — From/To 토큰 선택·교환 · JP 미제공·mini 미제공)
 apps_trade_swap_confirm_01_01     ⚠️ 교환 확인 팝업 (예상 수수료)
-apps_main_01                      ⚠️ Apps 메인 (Mini dapp — 지갑 연결은 Unifi 지갑)
 ```
 
 ### 2-5. my — 마이/설정 (실측 · 라우트 `/setting`)
@@ -191,7 +211,7 @@ kpick_kr_block_01                 KR IP — 버튼 비노출 + 국가 서비스 
 ### 2-8. login / promo (실측)
 
 ```
-login_main_01                     소셜 로그인 선택 (Google/LINE/Naver/Kakao/Apple — mini는 LINE 단일)
+login_main_01                     소셜 로그인 선택 (/auth/sign-in?returnUrl=… — Google/LINE/Naver/Kakao/Apple · "Powered by LINE NEXT" · mini는 LINE 단일)
 login_terms_01                    ⚠️ 약관 동의 (가입 플로우 — Unifi는 어그리게이터 약관+approve 포함, Wallet/mini는 미제공)
 promo_luckyball_inviter_01        럭키볼 초대자 프로모션 페이지 (위키 작업 실측)
 promo_luckyball_invitee_01        럭키볼 피초대자 프로모션 페이지 (위키 작업 실측)
@@ -212,9 +232,14 @@ promo_goldenball_01               ⚠️ 황금럭키볼 프로모션 (mini 홈 
 
 ## 4. 미확정/후속 확인 사항
 
-- [ ] ⚠️ 항목 실측 (팝업·조건부: 뽑기 결과, 송금 2단계, 은행송금, 플러스 모드 상세, NFT 목록, Apps 메인, 알림 목록, 계정 탈퇴, 내 예약, 황금럭키볼)
+- [ ] ⚠️ 잔여 항목 실측 (팝업·조건부: 뽑기 결과, 송금 2단계·QR, 거래 상세, 플러스 모드 상세, 지원 네트워크(브릿지) 상세, `/payout`, 계정 탈퇴, 내 예약, 황금럭키볼)
+  - 2026-07-27 실측 승격: Apps 메인·마켓, 알림 목록, 게임 미션 상세, 은행송금(외부 Sentbe), NFT 목록
+  - 2026-07-27 미완: **로그인 상태 리워드 탭이 스켈레톤에서 진행되지 않아 로그인 분기 문구 미확인**(비로그인 구조로 갈음) — 다음 점검 시 재시도
+- [ ] **NFT 어휘 정정 승인 필요**: `asset_nft_01` → `apps_mypage_nft_01` (라우트 `/apps/my-page/nfts` 근거)
+- [ ] **Kaia CR(Contribution Reward) 미션 출시 추적** — 2026-07-20 공지 "Unifi에 USDT 예치 + Unifi 노드에 KAIA 위임". 위임/스테이킹 화면이 신설되면 트리 추가(어휘 후보 `asset_delegate_*` 또는 `home_boost_*`)
+- [ ] 입금 **브릿지**(멀티 네트워크 입금) 상세 화면 확인 — 2026-06-30 "브릿지 수수료 100% 지원" 공지·입금 화면 배너 근거
 - [ ] Wallet Mode·Unifi mini 실기기/실IP 실측 (현재 위키 스펙 근거 — US/UK/CA/SG IP·MINI app 진입 불가 환경)
-- [ ] `kpick_` 프리픽스 확정 (K-Pick 탭 주기능 어휘 — 기존 XLT는 UF_/mini_guidekim_)
+- [ ] `kpick_` 프리픽스 확정 (K-Pick 탭 주기능 어휘 — 기존 XLT는 UF_/mini_guidekim_) · **2026-07-10 공지로 mini K-Pick 탭 정식 출시 확인**(뷰티·쇼핑·트래블 + JPYC 결제)
 - [ ] 프로모션 프리픽스 `promo_` vs `event_` 확정 (현재 `promo_` 잠정)
 - [ ] Wallet Mode/mini 전용 변형 어휘(`_wallet`/`_mini` 접미 방식) 사용자 확정
 - [ ] 은행송금(Sentbe)·SkyFlag의 mini 연동 방식 확정 시 트리 갱신
