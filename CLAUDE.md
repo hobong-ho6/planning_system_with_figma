@@ -319,7 +319,7 @@ cp templates/* .
 
 새 프로젝트에서 다음을 확인:
 - [ ] `CLAUDE.md` 파일 존재
-- [ ] `md/` 폴더에 7개 가이드 파일 존재
+- [ ] `md/` 폴더에 가이드 파일 전체 존재 (목록은 위 '참조 가이드' 표 기준 — 개수는 계속 늘어남)
 - [ ] `scripts/` 폴더에 8개 Python 스크립트(fetch_glossary, fetch_comments, validate_translation, check_gate_report, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
 - [ ] `templates/` 폴더에 5개 템플릿 존재
 - [ ] Python 의존성 설치 완료 (`pip list | grep pandas`)

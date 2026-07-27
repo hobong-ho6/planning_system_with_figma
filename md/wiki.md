@@ -7,7 +7,7 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 
 ## ⛔ 시작 전 필수 확인 (없으면 진행 불가)
 
-> 🚨 **착수 전 최우선 — 토큰 먼저 요청.** 사용자 요청을 받으면 **맨 처음 행동**으로 Figma + Confluence(위키) 토큰을 요청하고, **두 토큰을 모두 받아 유효성을 검증한 뒤에만** 작업을 시작한다. 토큰을 받기 전에는 **토큰 없이 가능한 작업(위키 페이지 조회, Figma 구조·메타데이터 파싱, 범위·분량 파악 등)도 절대 진행하지 않는다** (CLAUDE.md '⛔ 토큰 우선 규칙' 참조).
+> 🚨 **토큰 먼저 — 규칙 정본은 CLAUDE.md '⛔ 토큰 우선 규칙', 요청·검증 절차는 아래 Step 0.** 두 토큰을 모두 받아 검증하기 전에는 어떤 사전 작업(위키 조회·구조 파싱·범위 파악 포함)도 하지 않는다.
 
 | 항목 | 확인 방법 | 없을 경우 |
 |------|-----------|-----------|
@@ -15,8 +15,6 @@ Figma에서 추출한 화면 정보와 다국어 번역 데이터를 Confluence 
 | Confluence Personal Access Token | **사용자에게 요청** (Confluence → 프로필 → 개인 액세스 토큰) | **작업 중단 — 먼저 요청·수신 후 착수** (부재가 확정된 경우에만 Step 4-B GitHub 스테이징으로 대체) |
 | Confluence 위키 페이지 URL | 사용자 제공 | 작업 중단 |
 | Figma 파일 URL | 사용자 제공 | 작업 중단 |
-
-> ⚠️ 토큰이 없는 상태에서 "일단 구조만 올리기" 또는 "토큰 없이 가능한 부분만 먼저" 금지 — 이미지와 코멘트가 누락된 불완전한 문서가 생성되고, 토큰 우선 규칙에도 위배된다.
 
 ## 사전 조건
 - Confluence 위키 페이지 URL 또는 Page ID
@@ -77,10 +75,7 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 1. **대상 위키에 UIT/LV 구분이 있으면** — Screen 섹션에 `<h4>UIT</h4>`/`<h4>LV</h4>` 하위 표가 있거나 명시적 팀 표기가 있으면 — 처리 화면/키가 **속한 영역의 팀 규칙을 그대로 적용**한다(묻지 않음). 예: `LIFF/Web - JP → UIT` 하위 화면은 UIT 규칙(`UF_`·`{{0}}`), `Unifi mini → LV` 하위는 LV 규칙(`{0}`).
 2. **구분이 없으면** — 사용자에게 **담당 팀이 UIT인지 LV인지 묻고**, 선택 시 **그 팀 규칙(프리픽스·치환자)을 설명**한 뒤 **적용 여부를 확인**받아 진행한다.
 
-| 팀 | XLT Key 프리픽스 | 변수 치환자 |
-|----|----------------|-----------|
-| UIT | `UF_` 고정 | `{{0}}` (이중) |
-| LV | 프로젝트 약어(`mini_guidekim_` 등) | `{0}` (단일) |
+(팀별 프리픽스·치환자 표는 CLAUDE.md '⛔ 담당 FE 팀 규칙'이 정본 — 여기 중복 기재하지 않음)
 
 ---
 
@@ -184,48 +179,17 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 > **❌ 실제 재발한 안티패턴 (금지):** `fetch_comments_raw`(저수준)를 직접 import해 `for c in comments: if c.get('parent_id'): continue`로 루트만 거르는 것 — 이는 "인라인 재구현"과 동일하며 답글을 전부 버린다(2026-07-03 reward 프레임에서 XLT 키명이 답글에 있었는데 놓침). **좌표(x/y/node_id) 매칭·이미지 어노테이션이 필요해도 `fetch_comments_raw`로 가지 말 것** — `fetch_threads`가 반환하는 각 스레드 dict에 `id/node_id/x/y/message/created_at/replies`가 모두 들어 있어 매칭·어노테이션·Description·XLT 키 추출을 전부 그걸로 한다. raw 경로는 `log_self_check`(누락 가시화)도 우회한다. **XLT 마커 키명은 루트가 아니라 답글에 올 수 있으니**(`XLT - KEY`/`xlt key = KEY`) 각 스레드의 `replies`까지 반드시 읽는다.
 
 1. **`comments_data.json`이 있는 경우** — **같은 작업 실행에서 2단계가 방금 생성한 파일일 때만** 재사용한다 (`screenId`별 그룹핑 후 `offset.y` 오름차순 정렬). 이전 세션의 캐시이거나 Figma 코멘트가 변경됐을 수 있으면 재사용하지 말고 2번으로 새로 조회한다.
-2. **그 외(파일 없음·이전 run·원본 변경 가능) — 필수 (건너뛰기 금지)**: Figma REST API로 직접 새로 조회
-   ```bash
-   curl -s -H "X-Figma-Token: $FIGMA_TOKEN" \
-     "https://api.figma.com/v1/files/{fileKey}/comments" \
-     | python3 -c "
-   import json, sys
-   from collections import defaultdict
-   d = json.loads(sys.stdin.buffer.read().decode('utf-8'))
-   comments = d.get('comments', [])
-
-   # 1차: 루트(좌표 있음 + 미해결) 수집
-   roots = {}                    # id -> 루트 정보
-   grouped = defaultdict(list)   # node_id -> [루트, ...]
-   for c in comments:
-       if c.get('parent_id'):    # 답글은 2차에서 처리
-           continue
-       meta = c.get('client_meta') or {}
-       node_id = meta.get('node_id', '')
-       y = (meta.get('node_offset') or {}).get('y', 0)
-       if node_id and c.get('message') and not c.get('resolved_at'):
-           root = {'id': c['id'], 'y': y, 'msg': c['message'].strip(), 'replies': []}
-           roots[c['id']] = root
-           grouped[node_id].append(root)
-
-   # 2차: 답글을 parent_id로 루트에 매칭 (created_at 오름차순)
-   for c in sorted(comments, key=lambda x: x.get('created_at', '')):
-       pid = c.get('parent_id')
-       if pid and pid in roots and c.get('message'):
-           roots[pid]['replies'].append(c['message'].strip())
-
-   # 출력: 루트(y 오름차순) → 그 아래 답글 본문
-   for nid, cs in grouped.items():
-       for root in sorted(cs, key=lambda x: x['y']):
-           print(nid, root['y'], root['msg'])
-           for r in root['replies']:
-               print(nid, '  ↳', r)
-   "
+2. **그 외(파일 없음·이전 run·원본 변경 가능) — 필수 (건너뛰기 금지)**: `scripts/fetch_comments.py`로 새로 조회한다 (인라인 재구현 금지 — 위 blockquote):
+   ```python
+   from scripts.fetch_comments import fetch_threads, format_description, log_self_check
+   threads = fetch_threads(file_key, token, node_ids=프레임자손id집합)
+   log_self_check(threads)              # 루트별 'attached replies: N' 출력 — 답글 누락 가시화
+   desc = format_description(threads)   # '1.' / '↳' 규칙의 Description 문자열
    ```
-   - 응답에서 `client_meta.node_id`로 프레임별 코멘트 그룹핑 (루트만)
-   - `node_offset.y` 오름차순 정렬
+   **동작 명세 (fetch_threads가 보장하는 것 — 검수 기준):**
+   - `client_meta.node_id`로 프레임별 루트 그룹핑, `node_offset.y` 오름차순 정렬
    - `resolved_at`이 있으면(truthy) 제외 — 루트가 제외되면 스레드 통째 제외
-   - **답글(`parent_id` 보유, 좌표 없음)은 `parent_id`로 루트에 매칭**해 `created_at` 시간순으로 루트 아래에 본문만 출력
+   - **답글(`parent_id` 보유, 좌표 없음)은 `parent_id`로 루트에 매칭**해 `created_at` 시간순으로 루트의 `replies`에 수집
 
 #### Screen 표 (XLT 컬럼 — `No | XLT Key | KR` 3컬럼)
 - **`No | XLT Key | KR`** 3컬럼으로 표시한다 (이미지와 함께 빠르게 텍스트 확인 용도).

@@ -192,10 +192,9 @@ curl -s "https://landpress-content.line-scdn.net/contents/v2/projects/wdmwbfuv10
 5. 번역 예외 항목 (USDT, IDRP 등) 원어 유지
 
 **변수(치환자) 후보 탐지·제안 (가변 값):**
-- 한국어 원문에서 런타임에 바뀔 수 있는 값(요율 `10%`, 건수 `1건`, 금액 `100만엔`, 기간 `7일` 등)을 탐지해 변수화를 **제안**한다 — 자동 적용 **절대 금지**, **변수화는 항상 사용자(PM) 확인을 받은 뒤에만 적용한다 (예외 없음)**.
+- 한국어 원문에서 런타임에 바뀔 수 있는 값(요율 `10%`, 건수 `1건`, 금액 `100만엔`, 기간 `7일` 등)을 탐지해 변수화를 **제안**한다 — 자동 적용 **절대 금지**, **변수화는 항상 사용자(PM) 확인을 받은 뒤에만 적용한다 (예외 없음)**. 치환자 표기는 위 4번(팀 규칙)을 따른다.
 - **날짜/시간 값 탐지 시 — `md/guide.md` §5-1 A 날짜 규칙을 적용해 제안한다 (공식 룰)**: ⓐ 문장 **중간**의 날짜 → `{{date}}`/`{{time}}` 변수 제안, ⓑ 문장 **끝**의 날짜(예: `점검 일시: YYYY-MM-DD HH:MM`) → 앞부분만 키 등록·날짜는 기획서 기재 제안, ⓒ 날짜 **단독** 표시 영역 → 키 미부여 제안. 날짜 포맷은 **태국 외 `YYYY-MM-DD` / 태국 `DD-MM-YYYY`** 고지.
 - **링크 문구 탐지 시 — §5-1 A URL 링크 규칙을 적용해 제안한다**: 문장 **일부**에만 링크 → `<a>텍스트</a>` 태그 + 연결 URL은 기획서 기재, 문장/단어 **전체**가 링크 → 태그 없이 기획서만. 어느 쪽인지 모호하면 사용자 확인.
-- **치환자 표기는 담당 FE 팀 규칙을 따른다 — UIT 팀 `{{0}}`(이중), LV 팀 `{0}`(단일). 작업 시작 시 팀을 판별(위키 UIT/LV 구분) 또는 사용자에게 물어 확인한 뒤 맞춘다** (CLAUDE.md '⛔ 담당 FE 팀 규칙').
 - 한 문장에 변수가 둘 이상이면 등장 순서대로 `{0}`, `{1}`… 부여. 5개 언어에 동일 인덱스로 넣고 위치만 어순에 맞게 조정.
 - 수량 변수는 언어별 단/복수(plural) 분기가 필요할 수 있다 → XLT `plurals` 시트와 연동.
 - "누적 +10,000건"처럼 마케팅 고정값일 수 있는 값은 단정하지 말고 제안만 한다. 확정 시 `{원문 → 변수형}` 매핑을 산출물에 보존.
@@ -383,38 +382,10 @@ curl -s "https://landpress-content.line-scdn.net/contents/v2/projects/wdmwbfuv10
 |------------|-------|------------|-------|-------|-------|-------|
 | (빈 값) | one | other | other | other | other | other |
 
-**생성 방법:**
-Python pandas 사용 (openpyxl 엔진):
+**생성 방법 — `scripts/export_to_xlt.py`가 정본이다 (인라인 재구현 금지):**
 ```python
-import pandas as pd
-from datetime import datetime
-import os
-
-# xlt 폴더 생성
-xlt_dir = 'xlt'
-os.makedirs(xlt_dir, exist_ok=True)
-
-# 번역 데이터를 DataFrame으로 변환
-df_props = pd.DataFrame(translation_data)
-
-# plurals 시트 데이터
-df_plurals = pd.DataFrame([{
-    'Unnamed: 0': None,
-    'en_US': 'one',
-    'Unnamed: 2': 'other',
-    'ko_KR': 'other',
-    'ja_JP': 'other',
-    'zh_TW': 'other',
-    'th_TH': 'other'
-}])
-
-# 엑셀 파일 생성
-filename = f"{xlt_dir}/xlt_output_{datetime.now().strftime('%Y%m%d%H%M%S')}.xlsx"
-with pd.ExcelWriter(filename, engine='openpyxl') as writer:
-    df_props.to_excel(writer, sheet_name='properties', index=False)
-    df_plurals.to_excel(writer, sheet_name='plurals', index=False)
-
-print(f"✓ XLT 엑셀 파일 생성: {filename}")
+from scripts.export_to_xlt import create_xlt_excel
+filepath = create_xlt_excel(translation_data, output_dir='xlt')  # 위 규격(properties+plurals)대로 생성
 ```
 
 **검증:**
