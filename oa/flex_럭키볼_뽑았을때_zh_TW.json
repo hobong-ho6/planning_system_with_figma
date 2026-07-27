@@ -2,14 +2,10 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "{{IMAGE_URL}}",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/e4183d7094cb4be08f1f9420adddccef.png?updatedAt=1779179421000",
     "size": "full",
     "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "uri": "{{ACTION_URL}}"
-    }
+    "aspectMode": "cover"
   },
   "body": {
     "type": "box",
@@ -19,16 +15,30 @@
         "type": "text",
         "text": "幸運球禮物開啟完成 🎁\n中獎 {{amount}}JPYC！",
         "weight": "bold",
-        "size": "xl",
+        "size": "lg",
         "wrap": true
       },
       {
-        "type": "text",
-        "text": "獎金 {{amount}}JPYC 已發放至 {{wallet_address}}。\n贈送幸運球給更多好友，\n提高抽中最高 50,000 日圓等值 JPYC 的機會！",
-        "size": "sm",
-        "color": "#999999",
-        "wrap": true,
-        "margin": "md"
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "獎金 {{amount}}JPYC 已發放至 {{wallet_address}}。",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "贈送幸運球給更多好友，\n提高抽中最高 50,000 日圓等值 JPYC 的機會！",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          }
+        ]
       }
     ]
   },
@@ -39,31 +49,26 @@
     "contents": [
       {
         "type": "button",
-        "style": "link",
+        "style": "primary",
+        "color": "#000000",
         "height": "sm",
         "action": {
           "type": "uri",
           "label": "前往邀請好友",
-          "uri": "{{ACTION_URL}}"
+          "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?utm_source=unifi_unifimini_home&utm_medium=cta&utm_campaign=unifi_luckyballreferral&utm_content=june_2026&utm_term=luckyballreferral&referral_code=1677_SUOAA"
         }
       },
       {
         "type": "button",
         "style": "link",
+        "color": "#000000",
         "height": "sm",
         "action": {
           "type": "uri",
           "label": "確認",
-          "uri": "{{ACTION_URL}}"
+          "uri": "https://miniapp.line.me/unifi/my/token/transaction?utm_source=unifi_unifimini_home&utm_medium=cta&utm_campaign=unifi_luckyballreferral&utm_content=june_2026&utm_term=luckyballreferral&referral_code=1677_SUOAB"
         }
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [],
-        "margin": "sm"
       }
-    ],
-    "flex": 0
+    ]
   }
 }

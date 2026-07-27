@@ -2,14 +2,10 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "{{IMAGE_URL}}",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/e4183d7094cb4be08f1f9420adddccef.png?updatedAt=1779179421000",
     "size": "full",
     "aspectRatio": "20:13",
-    "aspectMode": "cover",
-    "action": {
-      "type": "uri",
-      "uri": "{{ACTION_URL}}"
-    }
+    "aspectMode": "cover"
   },
   "body": {
     "type": "box",
@@ -17,18 +13,46 @@
     "contents": [
       {
         "type": "text",
-        "text": "럭키볼 선물 오픈 완료 🎁\n{{amount}}JPYC 당첨!",
+        "text": "가입 완료! 친구가 보낸 🎁\n럭키볼 선물 1개가 도착했어요.",
         "weight": "bold",
-        "size": "xl",
+        "size": "lg",
         "wrap": true
       },
       {
-        "type": "text",
-        "text": "당첨금 {{amount}}JPYC가 {{wallet_address}}로 지급되었습니다.이제 친구를 직접 초대해서\n럭키볼 선물을 더 받을 수 있어요!더 많은 친구에게 럭키볼을 선물하고, \n최대 50,000엔 상당 JPYC 당첨 기회 놓치지말아요.",
-        "size": "sm",
-        "color": "#999999",
-        "wrap": true,
-        "margin": "md"
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "이제 친구를 직접 초대해서\n럭키볼 선물을 더 받을 수 있어요!",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "더 많은 친구에게 럭키볼을 선물하고,\n최대 50,000엔 상당 JPYC 당첨 기회 놓치지말아요.",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "* 당첨 보상은 즉시 지급됩니다. 최대 5분까지 소요됩니다.",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "* 보상 지급일까지 Unifi LINE 공식계정 친구를 유지해야 JPYC를 받을 수 있습니다.",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          }
+        ]
       }
     ]
   },
@@ -39,31 +63,26 @@
     "contents": [
       {
         "type": "button",
-        "style": "link",
+        "style": "primary",
+        "color": "#000000",
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "친구 초대하기",
-          "uri": "{{ACTION_URL}}"
+          "label": "럭키볼 선물 오픈하기✨",
+          "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?utm_source=unifi_unifimini_home&utm_medium=cta&utm_campaign=unifi_luckyballreferral&utm_content=june_2026&utm_term=luckyballreferral&referral_code=1678_SUOAA"
         }
       },
       {
         "type": "button",
         "style": "link",
+        "color": "#000000",
         "height": "sm",
         "action": {
           "type": "uri",
           "label": "확인하기",
-          "uri": "{{ACTION_URL}}"
+          "uri": "https://miniapp.line.me/unifi/my/token/transaction?utm_source=unifi_unifimini_home&utm_medium=cta&utm_campaign=unifi_luckyballreferral&utm_content=june_2026&utm_term=luckyballreferral&referral_code=1678_SUOAB"
         }
-      },
-      {
-        "type": "box",
-        "layout": "vertical",
-        "contents": [],
-        "margin": "sm"
       }
-    ],
-    "flex": 0
+    ]
   }
 }
