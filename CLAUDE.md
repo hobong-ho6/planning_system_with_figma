@@ -145,7 +145,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 |------|------|
 | `md/guide.md` | XLT 번역 규칙 (톤앤매너, 용어집, 품질 체크리스트) — `md/translate.md` 수행 시 필수 참조 |
 | `md/check.md` | 3단계 번역 검증 + **누적 패턴 사전·자주 발견되는 함정·전수 수동 검토 체크리스트** (P0/P1/P2) — `md/translate.md` Step 5 및 번역 검증 시 필수 참조 |
-| `md/translation_validation_guide.md` | 의미 기반(semantic) 번역 검증 방법론 — ko_KR 기준 정확/주의/오류 3단계 판정, 언어별 중점 점검. `validate_translation.py`(정규식)와 상호 보완. 번역 검증 시 `md/check.md`와 함께 사용 |
+| `md/translation_validation_guide.md` | 의미 기반(semantic) 번역 검증 방법론 — ko_KR 기준 정확/주의/오류 3단계 판정, 언어별 중점 점검. `validate_translation.py`(정규식)와 상호 보완. 번역 검증 시 `md/check.md`와 함께 사용. **패턴 사전 정본은 check.md '실전 패턴 모음'(새 패턴은 거기에만 추가)** |
 | `md/landpress.md` | Landpress 용어집(`web3_xlt_json`) 관리·업데이트·**조회 표시** 방법 — API 읽기 전용, 갱신 시 **전체 JSON(순수 JSON만) 산출 → 사용자가 CMS에 붙여넣기**. 용어집 보완 권장(게이트 d-1) 시 + **사용자 용어집 조회 요청 시 표로 정리(§7)** 필수 참조 |
 | `md/glossary-changelog.md` | 용어집(`web3_xlt_json`) 버전별 변경 이력(git 추적) — 용어집 갱신 시마다 항목 추가 필수 |
 | `md/OA.md` | OA(LINE 공식계정) 메시지 규칙 — XLT 키 미부여(번역만)·변수 `{{이름}}`(사용자 정의)·첨부 이미지 Flex 메시지 JSON(URI 사용자 입력). OA 섹션 프레임 처리 시 필수 참조 |
