@@ -102,6 +102,7 @@ Figma 파일에서 화면별 텍스트 노드를 추출하고, 다국어 번역�
 **매칭 알고리즘 (코멘트 → 텍스트):**
 
 좌표는 **절대좌표로 환산**해 비교한다 — 코멘트의 `node_id`가 최상위 프레임이 아닌 중첩 컨테이너일 수 있어 `node_offset`이 화면-상대 좌표와 어긋날 수 있기 때문이다.
+- **⛔ 매칭뿐 아니라 y순 번호(통합 번호)·어노테이션 좌표도 반드시 이 환산 좌표를 쓴다** — `scripts/fetch_comments.py`의 `collect_node_boxes(frame_doc)` 결과를 `fetch_threads(..., node_boxes=, frame_origin=)`로 넘기면 스레드의 x/y가 프레임-상대로 정규화된다. 원값으로 번호를 매기면 하위 노드 앵커 핀이 엉뚱한 순번이 된다(2026-07-27 25034 실측 — `md/wiki.md` Step 3 '좌표 정규화' 규칙과 동일).
 - 코멘트 절대점 = `absoluteBoundingBox(node_id).{x,y}` + `node_offset.{x,y}`
 - 텍스트 절대 bbox = 각 TEXT 노드의 `absoluteBoundingBox`
 
