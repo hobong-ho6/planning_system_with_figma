@@ -36,7 +36,7 @@
   - **실값 출처**: 해당 OA 화면의 위키 Screen 표 **Description에 기입된 `IMAGE_URL`·`ACTION_URL`**(사용자 기입)을 매 실행 위키에서 새로 조회해 사용한다. 미기입이면 사용자에게 문의(그때까지만 플레이스홀더 유지).
 - **⛔ Flex 스펙 준수(필수)**: OA Flex JSON은 **`templates/flex_message_spec.json`**(LINE 공식 Flex Message bubble 스펙)의 구조·관례를 기반으로 하되, 아래 **동작 검증 구조(캠페인 확정형)** 를 따른다. 산출물은 **bubble JSON**(스펙과 동일 레벨)로 낸다.
 - **⛔ 언어별 개별 파일(필수)**: OA Flex는 **언어별로 JSON 파일을 따로** 만든다 — 프레임당 5개 파일 `flex_{프레임}_{lang}.json`(ko_KR·en_US·ja_JP·zh_TW·th_TH). **한 파일에 5개 언어를 묶지 않는다.** 텍스트·버튼 label만 언어별 치환, 구조·`{{변수}}`·URL 실값은 동일.
-- **⛔ Description 첨부(필수)**: 생성한 언어별 Flex JSON은 Confluence에 첨부하고, **해당 OA 화면의 Screen 표 Description 셀**에 언어별 다운로드 링크로 건다(intro 영역 아님). 5개 언어 링크를 그 화면 Description에 모두 표시한다. **기존 첨부 갱신은 같은 파일명 유지 + `POST .../child/attachment/{attachmentId}/data`**(파일명이 같으면 Description 링크가 최신본을 그대로 렌더).
+- **⛔ Description 첨부(필수) — zip 통합(2026-07-27 변경)**: 생성한 언어별 Flex JSON 5개는 **화면별로 하나의 zip(`flex_{프레임}_5lang.zip`)으로 묶어** Confluence에 첨부하고, **해당 OA 화면의 Screen 표 Description 셀**에 zip 다운로드 링크 1개로 건다(intro 영역 아님. 라벨 예: `전체 언어 다운로드 (ko·ja·en·th·zh)`). 언어별 JSON을 개별 링크로 나열하지 않는다 — 사용자가 하나씩 내려받는 불편을 없애기 위한 결정. 개별 JSON 파일 산출물(`oa/flex_{프레임}_{lang}.json`)은 그대로 생성·보관하고 zip으로만 묶는다. **기존 첨부 갱신은 같은 파일명 유지 + `POST .../child/attachment/{attachmentId}/data`**(파일명이 같으면 Description 링크가 최신본을 그대로 렌더).
 
 ---
 
@@ -113,8 +113,9 @@
 6. Flex JSON 생성 — **"동작 검증 구조(캠페인 확정형)" + URL 실값(위키 Description 기입값)** 적용,
    언어별 개별 파일 5개. URL 미기입 화면만 플레이스홀더 유지 후 사용자 문의.
    ko_KR 먼저 생성 → 사용자 시뮬레이터 렌더 확인 → 나머지 언어 일괄 생성(권장)
-7. Confluence 첨부(기존 첨부는 같은 파일명으로 POST .../child/attachment/{id}/data 갱신)
-   → 각 화면 Description에 언어별 링크 확인
+7. Confluence 첨부 — 화면별 5개 언어를 `flex_{프레임}_5lang.zip`으로 묶어 첨부
+   (기존 첨부는 같은 파일명으로 POST .../child/attachment/{id}/data 갱신)
+   → 각 화면 Description에 zip 링크 1개 확인
 8. 위키 OA 섹션 반영(키 없는 번역표 + 이미지 + Flex JSON) + History
    (XLT 엑셀·전역 키 표는 건드리지 않는다)
 ```
