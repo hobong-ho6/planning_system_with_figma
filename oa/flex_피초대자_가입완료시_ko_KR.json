@@ -1,0 +1,59 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "{{IMAGE_URL}}",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "{{ACTION_URL}}"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "초대한 친구가 가입을 완료했어요!\n🎁 럭키볼 선물 1개가 지급되었어요.",
+        "weight": "bold",
+        "size": "xl",
+        "wrap": true
+      },
+      {
+        "type": "text",
+        "text": "더 많은 친구에게 럭키볼을 선물하고, \n최대 50,000엔 상당 JPYC 당첨 기회를 높여보세요!\n* 당첨 보상은 즉시 지급됩니다. 최대 5분까지 소요됩니다.\n* 보상 지급일까지 Unifi LINE 공식계정 친구를 유지해야 JPYC를 받을 수 있습니다.",
+        "size": "sm",
+        "color": "#999999",
+        "wrap": true,
+        "margin": "md"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "럭키볼 선물 오픈하기✨",
+          "uri": "{{ACTION_URL}}"
+        }
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "margin": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}

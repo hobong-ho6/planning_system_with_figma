@@ -1,0 +1,59 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "{{IMAGE_URL}}",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "{{ACTION_URL}}"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "招待した友だちの登録が完了しました！\n🎁 ラッキーボールのプレゼントが1個支給されました。",
+        "weight": "bold",
+        "size": "xl",
+        "wrap": true
+      },
+      {
+        "type": "text",
+        "text": "もっと多くの友だちにラッキーボールをプレゼントして、\n最大50,000円相当のJPYC当選のチャンスを高めましょう！\n* 当選報酬は即時支払われます。最大5分ほどかかります。\n* 報酬支給日までUnifiのLINE公式アカウントの友だちを維持することでJPYCを受け取れます。",
+        "size": "sm",
+        "color": "#999999",
+        "wrap": true,
+        "margin": "md"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "ラッキーボールのプレゼントを開ける✨",
+          "uri": "{{ACTION_URL}}"
+        }
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "margin": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}

@@ -1,0 +1,257 @@
+{
+  "ko_KR": {
+    "type": "flex",
+    "altText": "Unifi 럭키볼 캠페인 알림",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "{{IMAGE_URL}}",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "친구 초대 완료!\n럭키볼 1개가 지급되었어요",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "* 당첨 보상은 즉시 지급됩니다. 최대 5분까지 소요됩니다.\n* 보상 지급일까지 Unifi LINE 공식계정 친구를 유지해야 JPYC를 받을 수 있습니다.",
+            "wrap": true,
+            "size": "sm",
+            "color": "#888888"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "뽑으러 가기",
+              "uri": "{{ACTION_URL}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "en_US": {
+    "type": "flex",
+    "altText": "Unifi Lucky Ball campaign notification",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "{{IMAGE_URL}}",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Friend invitation complete!\nOne Lucky Ball has been paid out",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "* Winning rewards are paid immediately. It may take up to 5 minutes.\n* You must keep Unifi's LINE official account as a friend until the reward payout date to receive JPYC.",
+            "wrap": true,
+            "size": "sm",
+            "color": "#888888"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "Go draw",
+              "uri": "{{ACTION_URL}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "ja_JP": {
+    "type": "flex",
+    "altText": "Unifi ラッキーボールキャンペーン通知",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "{{IMAGE_URL}}",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "友だち招待完了！\nラッキーボールが1個支払われました",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "* 当選報酬は即時支払われます。最大5分ほどかかります。\n* 報酬支給日までUnifiのLINE公式アカウントの友だちを維持することでJPYCを受け取れます。",
+            "wrap": true,
+            "size": "sm",
+            "color": "#888888"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "引きに行く",
+              "uri": "{{ACTION_URL}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "zh_TW": {
+    "type": "flex",
+    "altText": "Unifi 幸運球活動通知",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "{{IMAGE_URL}}",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "邀請好友完成！\n已發放 1 顆幸運球",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "* 中獎獎勵將立即發放，最多需 5 分鐘。\n* 須保留 Unifi LINE 官方帳號好友至獎勵發放日，方可領取 JPYC。",
+            "wrap": true,
+            "size": "sm",
+            "color": "#888888"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "前往抽獎",
+              "uri": "{{ACTION_URL}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "th_TH": {
+    "type": "flex",
+    "altText": "การแจ้งเตือนแคมเปญ Unifi Lucky Ball",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "{{IMAGE_URL}}",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "เชิญเพื่อนสำเร็จ!\nจ่ายลูกบอลนำโชค 1 ลูกให้แล้ว",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "* รางวัลจะจ่ายทันที อาจใช้เวลาสูงสุด 5 นาที\n* ต้องคงบัญชีทางการ LINE ของ Unifi เป็นเพื่อนจนถึงวันจ่ายรางวัลจึงจะรับ JPYC ได้",
+            "wrap": true,
+            "size": "sm",
+            "color": "#888888"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "ไปสุ่ม",
+              "uri": "{{ACTION_URL}}"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

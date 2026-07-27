@@ -1,0 +1,69 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "{{IMAGE_URL}}",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "{{ACTION_URL}}"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "럭키볼 선물 오픈 완료 🎁\n{{amount}}JPYC 당첨!",
+        "weight": "bold",
+        "size": "xl",
+        "wrap": true
+      },
+      {
+        "type": "text",
+        "text": "당첨금 {{amount}}JPYC가 {{wallet_address}}로 지급되었습니다.이제 친구를 직접 초대해서\n럭키볼 선물을 더 받을 수 있어요!더 많은 친구에게 럭키볼을 선물하고, \n최대 50,000엔 상당 JPYC 당첨 기회 놓치지말아요.",
+        "size": "sm",
+        "color": "#999999",
+        "wrap": true,
+        "margin": "md"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "친구 초대하기",
+          "uri": "{{ACTION_URL}}"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "확인하기",
+          "uri": "{{ACTION_URL}}"
+        }
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "margin": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}

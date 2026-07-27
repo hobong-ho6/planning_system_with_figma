@@ -1,0 +1,59 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "{{IMAGE_URL}}",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "{{ACTION_URL}}"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "受邀好友任務完成！\n已發放 1 顆幸運球",
+        "weight": "bold",
+        "size": "xl",
+        "wrap": true
+      },
+      {
+        "type": "text",
+        "text": "* 中獎獎勵將立即發放，最多需 5 分鐘。\n* 須保留 Unifi LINE 官方帳號好友至獎勵發放日，方可領取 JPYC。",
+        "size": "sm",
+        "color": "#999999",
+        "wrap": true,
+        "margin": "md"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "前往抽獎",
+          "uri": "{{ACTION_URL}}"
+        }
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "margin": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}

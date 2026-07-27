@@ -1,0 +1,302 @@
+{
+  "ko_KR": {
+    "type": "flex",
+    "altText": "Unifi 럭키볼 캠페인 알림",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "{{IMAGE_URL}}",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "가입 완료 당첨금\n{{amount}}JPYC 지급 완료",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "당첨금 {{amount}}JPYC가 {{wallet_address}}로 지급되었습니다.",
+            "wrap": true,
+            "size": "sm",
+            "color": "#888888"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "홈으로 가기",
+              "uri": "{{ACTION_URL}}"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "action": {
+              "type": "uri",
+              "label": "확인하기",
+              "uri": "{{ACTION_URL}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "en_US": {
+    "type": "flex",
+    "altText": "Unifi Lucky Ball campaign notification",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "{{IMAGE_URL}}",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Sign-up completion prize\n{{amount}}JPYC paid",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "A prize of {{amount}}JPYC has been paid to {{wallet_address}}.",
+            "wrap": true,
+            "size": "sm",
+            "color": "#888888"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "Go to home",
+              "uri": "{{ACTION_URL}}"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "action": {
+              "type": "uri",
+              "label": "Confirm",
+              "uri": "{{ACTION_URL}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "ja_JP": {
+    "type": "flex",
+    "altText": "Unifi ラッキーボールキャンペーン通知",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "{{IMAGE_URL}}",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "登録完了当選金\n{{amount}}JPYC支給完了",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "当選金{{amount}}JPYCが{{wallet_address}}に支払われました。",
+            "wrap": true,
+            "size": "sm",
+            "color": "#888888"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "ホームへ移動",
+              "uri": "{{ACTION_URL}}"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "action": {
+              "type": "uri",
+              "label": "確認する",
+              "uri": "{{ACTION_URL}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "zh_TW": {
+    "type": "flex",
+    "altText": "Unifi 幸運球活動通知",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "{{IMAGE_URL}}",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "註冊完成獎金\n{{amount}}JPYC 發放完成",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "獎金 {{amount}}JPYC 已發放至 {{wallet_address}}。",
+            "wrap": true,
+            "size": "sm",
+            "color": "#888888"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "前往首頁",
+              "uri": "{{ACTION_URL}}"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "action": {
+              "type": "uri",
+              "label": "確認",
+              "uri": "{{ACTION_URL}}"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "th_TH": {
+    "type": "flex",
+    "altText": "การแจ้งเตือนแคมเปญ Unifi Lucky Ball",
+    "contents": {
+      "type": "bubble",
+      "hero": {
+        "type": "image",
+        "url": "{{IMAGE_URL}}",
+        "size": "full",
+        "aspectRatio": "20:13",
+        "aspectMode": "cover"
+      },
+      "body": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "md",
+        "contents": [
+          {
+            "type": "text",
+            "text": "เงินรางวัลสมัครสำเร็จ\nจ่าย {{amount}}JPYC เสร็จสิ้น",
+            "wrap": true,
+            "weight": "bold",
+            "size": "xl"
+          },
+          {
+            "type": "text",
+            "text": "จ่ายเงินรางวัล {{amount}}JPYC ไปยัง {{wallet_address}} แล้ว",
+            "wrap": true,
+            "size": "sm",
+            "color": "#888888"
+          }
+        ]
+      },
+      "footer": {
+        "type": "box",
+        "layout": "vertical",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "button",
+            "style": "primary",
+            "action": {
+              "type": "uri",
+              "label": "ไปหน้าแรก",
+              "uri": "{{ACTION_URL}}"
+            }
+          },
+          {
+            "type": "button",
+            "style": "secondary",
+            "action": {
+              "type": "uri",
+              "label": "ยืนยัน",
+              "uri": "{{ACTION_URL}}"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

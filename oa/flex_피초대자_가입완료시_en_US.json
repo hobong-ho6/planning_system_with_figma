@@ -1,0 +1,59 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "{{IMAGE_URL}}",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover",
+    "action": {
+      "type": "uri",
+      "uri": "{{ACTION_URL}}"
+    }
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Your invited friend has completed sign-up!\n🎁 One Lucky Ball gift has been sent.",
+        "weight": "bold",
+        "size": "xl",
+        "wrap": true
+      },
+      {
+        "type": "text",
+        "text": "Gift Lucky Balls to more friends and\nboost your chance to win JPYC worth up to 50,000 JPY!\n* Winning rewards are paid immediately. It may take up to 5 minutes.\n* You must keep Unifi's LINE official account as a friend until the reward payout date to receive JPYC.",
+        "size": "sm",
+        "color": "#999999",
+        "wrap": true,
+        "margin": "md"
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "link",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "Open your Lucky Ball gift✨",
+          "uri": "{{ACTION_URL}}"
+        }
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "contents": [],
+        "margin": "sm"
+      }
+    ],
+    "flex": 0
+  }
+}
