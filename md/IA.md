@@ -3,7 +3,8 @@
 > **목적**: Screen ID(`주기능_부기능_세부기능_순번[_순번]`, 전부 소문자 — 공식 룰 `[Rule] 기획서 Screen ID & XLT Key 작성 가이드` pageId=4268282157) 부여 시 참조하는 **IA 단일 정본**.
 > **갱신 규칙**: 서비스 IA가 바뀌면 **이 파일만 갱신**한다 — Screen ID 어휘·트리를 다른 md에 중복 기재하지 않는다. `md/wiki.md`의 Screen ID 규칙은 이 파일을 참조만 한다.
 > **⛔ 적용 게이트**: 이 IA로 Screen ID를 부여할 때는 **반드시 제안 매핑 표(프레임명 → Screen ID)를 사용자에게 제시하고 검토·승인받은 뒤 진행**한다. 임의 확정 금지.
-> **소급 금지**: 기존 위키(예: 럭키볼 친구초대 캠페인 pageId=4479306980)의 프레임명 기반 Screen ID는 **그대로 유지**한다 — 새 규칙은 신규 부여분부터.
+> **소급 금지**: 기존 위키의 기존 표기 Screen ID는 **그대로 유지**한다 — 프레임명 기반(럭키볼 캠페인 pageId=4479306980)뿐 아니라 dot 표기(`Wallet.home` 등, [Screen]Wallet Mode)도 소급 전환하지 않는다. 새 규칙은 신규 부여분부터.
+> **🔄 정기 점검**: **매주 월요일 10:00** unifi.me를 직접 탐색(비로그인 + 로그인)해 메뉴·기능 변경을 확인하고 이 파일을 갱신한다(스케줄 등록됨). 로그인 영역은 브라우저에 로그인 세션이 있을 때만 실측 — 없으면 비로그인 범위만 점검하고 로그인 필요 항목을 리포트한다.
 
 ---
 
@@ -12,34 +13,77 @@
 | 날짜 | 범위 | 방법 | 비고 |
 |---|---|---|---|
 | 2026-07-27 | 비로그인 공개 화면 | unifi.me 직접 탐색 (모바일 뷰) | home·reward 공개 영역, login 게이트 확인 |
-| 2026-07-27 | **로그인 상태 전체 4탭** | 사용자 로그인 Chrome으로 직접 탐색 | **asset(내 자산)·my(마이) 실측 확정**, 실제 라우트 채집 |
+| 2026-07-27 | 로그인 상태 전체 4탭 | 사용자 로그인 Chrome으로 직접 탐색 | asset(내 자산)·my(마이) 실측 확정, 실제 라우트 채집 |
+| 2026-07-27 | **제품 모드·분기 정책** | 위키 `[Master]` 3종( Unifi mini · Wallet Mode · Mission and Reward ) + 링크 스펙 페이지 분석 | **Unifi/Wallet Mode/Unifi mini 3모드, IP·로그인·approve 분기 축, 탭 노출 매트릭스 확정** |
 
 > ⚠️ 표시 = 아직 직접 진입 못 한 추정 영역(팝업·조건부 화면 등). 확인되는 대로 이 파일을 갱신한다.
 
 ---
 
-## 0. 핵심 구조 요약 (실측)
+## 0. 제품 모드 — Unifi는 하나가 아니다 (위키 스펙 실측)
 
-- **하단 GNB 4탭 (한국어 라벨 / 실제 라우트)**: 홈 `/` · 리워드 `/benefits/daily-mission` · 내 자산 `/my` · 마이 `/setting`
-- ⚠️ **라우트-화면명 엇갈림 주의**: 라우트 `/my` = **내 자산** 화면, `/setting` = **마이** 화면이다. **Screen ID 주기능 어휘는 라우트가 아니라 화면(공식 룰 예시 `asset_send_01`) 기준**으로 쓴다 — 내 자산 = `asset_`, 마이 = `my_`. 라우트는 참고 정보.
-- **교환(Swap)은 Apps 영역**: 라우트 `/apps/trade/swap` — 공식 룰상 Apps 메뉴 문구는 XLT Key에 `apps_` 프리픽스(UF_ 아님). Screen ID 주기능도 `apps_` 사용을 기본으로 하되 부여 시 사용자 확인.
-- 홈 상단에 자산 종류 탭(USDT/JPYC/IDRP) 존재. 지원 토큰: USDT·KAIA·JPYC·IDRP + NFT.
+같은 unifi.me 서비스가 **접근 경로·approve(어그리게이터 약관)·접속 IP**에 따라 3개 모드로 분기된다. **Screen ID를 부여하기 전에 어느 모드의 화면인지 먼저 확정**한다.
+
+| 구분 | **Unifi (풀 모드)** | **Wallet Mode** | **Unifi mini (LINE MINI app)** |
+|---|---|---|---|
+| 진입 | Web/LIFF 주소 | Web/LIFF 주소 | **MINI app 주소** (miniapp.line.xxx) |
+| 조건 | approve 완료 + IP가 US/CA/UK/SG **아님** | approve **미완료** 또는 **IP = 미국·캐나다·영국·싱가포르** | LINE MINI 채널 (LINE 인증, 채널 동의 간소화) |
+| 기준 자산 | USDT (예치풀) | USDT (EOA 지갑) | **JPYC** 리워드 (소수점 2자리) |
+| GNB | **Home·Apps·Assets·My 4탭** | Home·Assets·My 3탭 | Home·Assets·My 3탭 |
+| 어그리게이터 약관/approve | 필수 (가입 시) | 미제공 (체크 안 함) | 미제공 (체크 안 함) |
+| 예치·이자 | 제공 | **이율 정보 전부 제거** (자산·자산상세) | 미제공 (예치금·이자 노출 불가, 이자 제거 ToS 별도) |
+| 교환(Swap) | **JP 미제공**, 그 외 제공 | 제공 | 미제공 |
+| 은행송금 | 제공 | 제공 | 검토 중 (Sentbe 연동 방식) |
+| 거래내역/알림 | 제공 | 이자 내역 제외 | 이자 내역 제외 |
+| SkyFlag | 미제공 | 미제공 | **제공** |
+| OA 친구추가 유도 | LIFF 접근 시 유도 | LIFF 접근 시 유도 | 없음 (통합 OA 검토) |
+| 결제 | 지갑 연결 | 지갑 연결 | **LINE IAP** (지갑 연결 없음) |
+
+### 0-1. 분기 축 (화면 분기를 만드는 조건 — Screen ID 세부 변형 판단용)
+
+1. **접근 경로**: Web / LIFF / MINI app 주소
+2. **approve 여부**: 완료 → Unifi, 미완료 → Wallet Mode
+3. **접속 IP**:
+   - US/CA/UK/SG → Wallet Mode 강제
+   - **KR IP** → Guide Kim(K-Pick) 일부 버튼 비노출 + "국가에서 서비스 불가" 안내 (실측: KR IP 화면)
+   - **JP** → K-Pick 탭 노출(JP Only), 교환 미제공
+4. **로그인 여부**: 비로그인 = 랜딩/로그인 게이트·"출석 체크" / 로그인 = 자산 요약·"매일 출석 체크"+카운트다운 등 문구·구성 분기
+5. **JPYC 보유 여부**(mini 홈 큐레이션 등 콘텐츠 조건)
+
+### 0-2. 탭 노출 매트릭스 (Guide Kim v1.1.0 스펙)
+
+| 탭/동선 | Unifi (LIFF/Web) | Wallet Mode | Unifi mini |
+|---|---|---|---|
+| K-Pick 탭 | **JP Only** 노출 | 미제공 | 노출 |
+| Reward 탭 | 노출 | **미제공** | 노출 |
+| Reward 내 Apps 이동 동선 | 노출 | (Apps 이동 동선만 제공) | **미제공** |
+
+### 0-3. 라우트 참고 (실측 · Unifi 풀 모드 기준)
+
+- 하단 GNB 4탭: 홈 `/` · 리워드 `/benefits/daily-mission` · 내 자산 `/my` · 마이 `/setting`
+- ⚠️ **라우트-화면명 엇갈림 주의**: `/my` = **내 자산** 화면, `/setting` = **마이** 화면. **Screen ID 주기능 어휘는 라우트가 아니라 화면 기준** — 내 자산 = `asset_`, 마이 = `my_`.
+- 교환(Swap) = `/apps/trade/swap` — **Apps 영역** (공식 룰 `apps_` 프리픽스, UF_ 미사용)
+- 홈 상단 자산 종류 탭(USDT/JPYC/IDRP). 지원 토큰: USDT·KAIA·JPYC·IDRP + NFT.
 
 ## 1. 주기능 (1레벨)
 
-| 주기능 | Screen ID 프리픽스 | 근거 (실측) |
-|---|---|---|
-| 홈 | `home_` | GNB 탭 1 (`/`) |
-| 리워드 | `reward_` | GNB 탭 2 (`/benefits/daily-mission`) |
-| 자산(내 자산) | `asset_` | GNB 탭 3 (`/my`) — 공식 룰 예시와 동일 |
-| 마이(설정) | `my_` | GNB 탭 4 (`/setting`) |
-| Apps | `apps_` | 교환 등 Apps 영역 (`/apps/...`) — 공식 룰 `apps_` 프리픽스 영역 |
-| 로그인/온보딩 | `login_` | 진입 게이트 (Google/LINE/Naver/Kakao/Apple) |
-| 프로모션/캠페인 | `promo_` | 캠페인 랜딩 (럭키볼 초대자/피초대자 — 위키 작업 실측) |
+| 주기능 | Screen ID 프리픽스 | 적용 모드 | 근거 |
+|---|---|---|---|
+| 홈 | `home_` | 전 모드 | GNB 탭 1 (`/`) 실측 |
+| 리워드 | `reward_` | Unifi·mini (Wallet Mode 미제공) | GNB 탭 2 (`/benefits/daily-mission`) 실측 |
+| 자산(내 자산) | `asset_` | 전 모드 | GNB 탭 3 (`/my`) 실측 — 공식 룰 예시와 동일 |
+| 마이(설정) | `my_` | 전 모드 | GNB 탭 4 (`/setting`) 실측 |
+| Apps | `apps_` | Unifi 전용 (4탭) | `/apps/...` 실측 — 공식 룰 `apps_` 프리픽스 영역 |
+| K-Pick (Guide Kim) | `kpick_` ⚠️잠정 | mini + LIFF/Web(JP Only) | Guide Kim v1.1.0 위키 — 프리픽스 확정 필요 (기존 XLT는 `UF_`/`mini_guidekim_`) |
+| 로그인/온보딩 | `login_` | 전 모드 | 진입 게이트 실측 (Google/LINE/Naver/Kakao/Apple — mini는 LINE 단일) |
+| 프로모션/캠페인 | `promo_` ⚠️잠정 | 캠페인별 | 럭키볼 초대자/피초대자·황금럭키볼 등 |
+| Wallet Mode 전용 변형 | 부기능/세부기능에 `wallet` 어휘 | Wallet Mode | 기존 위키 표기 `Wallet.home` 등 — 신규 부여 시 예: `home_main_wallet_01` (사용자 확인) |
 
 ## 2. 기능 트리 (부기능·세부기능)
 
-### home — 홈 (실측 · 라우트 `/`)
+> §2의 실측 트리는 **Unifi 풀 모드 · KR IP · 로그인 상태** 기준이다. Wallet Mode·mini는 §0 표의 제외 항목(이자·교환·Reward 탭 등)을 반영해 화면이 줄거나 문구가 달라진다(§2-6, §2-7).
+
+### 2-1. home — 홈 (실측 · 라우트 `/`)
 
 ```
 home_main_01                      홈 메인 — 자산 요약 카드(USDT/JPYC/IDRP 탭·입금하기·플러스 모드 배너·누적 이자)
@@ -58,45 +102,47 @@ home_notice_detail_01             공지사항 상세
 home_notification_01              ⚠️ 알림 목록 (상단 벨)
 ```
 
-### reward — 리워드 (실측 · 라우트 `/benefits/daily-mission`)
+### 2-2. reward — 리워드 (실측 · 라우트 `/benefits/daily-mission` · Wallet Mode 미제공)
 
 ```
 reward_main_01                    Rewards 메인 (리워드 USDT·럭키볼 개수 요약)
 reward_checkin_01                 출석 체크 (1~5일 연속 — 3·5일 럭키볼, 출석하기 버튼)
 reward_checkin_01_01              ⚠️ 출석 완료/럭키볼 획득 팝업
-reward_mission_game_01            게임 미션 (게임 3개 완료 → 럭키볼)
+reward_mission_game_01            게임 미션 (게임 3개 완료 → 럭키볼) ※ 1회성 미션 정책(시간 제한 없이 수령 — v5 정책)
 reward_mission_game_detail_01     ⚠️ 개별 게임 미션 상세 (Squishy Cat Jump·MERGE CAT·Tap Tap Jello·Hook & Gold·Rich Match·SODA MERGE 2048)
-reward_luckyball_draw_01          ⚠️ 럭키볼 뽑기 (최대 500 USDT)
+reward_luckyball_draw_01          ⚠️ 럭키볼 뽑기 (최대 500 USDT / mini는 JPYC)
 reward_luckyball_result_01_01     ⚠️ 뽑기 결과 팝업
-reward_history_01                 리워드 내역 ("리워드 0 USDT >" 진입점)
-reward_apps_01                    Apps 둘러보기
+reward_history_01                 리워드 내역 ("리워드 0 USDT >" 진입점 · mini는 SkyFlag 리워드 미표시 안내)
+reward_apps_01                    Apps 둘러보기 (mini 미제공 — §0-2)
 ```
 
-### asset — 내 자산 (실측 · 라우트 `/my`)
+정책 참고(위키 Mission and Reward 마스터): 출석·럭키볼 자격 = **9시 스냅샷 잔고**(USDT 00:00 UTC+0 / JPYC 09:00 UTC+9), TWA 용어 전면 제외(→평균잔고), 럭키볼 차등(USDT 100~1,000+ 최대 9개 / JPYC 5,000~50,000 1~3개), FDS(DA) 검증, Web 보상은 LINE ID 로그인만.
+
+### 2-3. asset — 내 자산 (실측 · 라우트 `/my`)
 
 ```
 asset_main_01                     내 자산 메인 — 나의 총 자산·액션 4종(송금하기/입금하기/교환하기/은행송금)·토큰 목록(USDT/KAIA/JPYC/IDRP)·보유 NFT
-asset_history_01                  거래내역 (/my/token/transaction — 필터: 기간·토큰·유형·정렬)
+asset_history_01                  거래내역 (/my/token/transaction — 필터: 기간·토큰·유형·정렬 · Wallet/mini는 이자 내역 제외)
 asset_history_detail_01           ⚠️ 거래 상세 (거래 ID·네트워크)
 asset_token_detail_01             토큰 상세 (/my/token/{컨트랙트주소} — 플러스 모드·Unifi 지갑·보내기/교환하기/은행송금·거래내역)
 asset_send_01                     송금하기 — 토큰 선택 (/transfer — "어떤 토큰을 보내시겠어요?" 전체/스테이블 코인)
 asset_send_02                     ⚠️ 송금 — 받는 사람/수량 입력 (공식 룰 예시 단계)
 asset_send_qr_01 / _01_01         ⚠️ QR 송금 / 그 위 다이얼로그 (공식 룰 예시)
 asset_deposit_01                  입금하기 (/deposit — QR·네트워크 선택(KAIA)·내 지갑주소 복사·토큰별(USDT/JPYC/IDRP) 거래소 입금 3단계 안내)
-asset_bank_01                     ⚠️ 은행송금 (버튼 실측 — 모달/조건부로 화면 미진입)
+asset_bank_01                     ⚠️ 은행송금 (버튼 실측 — 모달/조건부로 화면 미진입 · Sentbe 연동)
 asset_plus_mode_01                ⚠️ 플러스 모드 상세 (토큰 상세 내 진입점 실측)
 asset_nft_01                      ⚠️ 보유 NFT 목록
 ```
 
-### apps — Apps 영역 (실측 · 라우트 `/apps/...`)
+### 2-4. apps — Apps 영역 (실측 · 라우트 `/apps/...` · Unifi 4탭 전용)
 
 ```
-apps_trade_swap_01                교환하기 (/apps/trade/swap — From/To 토큰 선택·교환)
+apps_trade_swap_01                교환하기 (/apps/trade/swap — From/To 토큰 선택·교환 · JP 미제공·mini 미제공)
 apps_trade_swap_confirm_01_01     ⚠️ 교환 확인 팝업 (예상 수수료)
-apps_main_01                      ⚠️ Apps 메인 (리워드 탭 'Apps 둘러보기' 진입)
+apps_main_01                      ⚠️ Apps 메인 (Mini dapp — 지갑 연결은 Unifi 지갑)
 ```
 
-### my — 마이/설정 (실측 · 라우트 `/setting`)
+### 2-5. my — 마이/설정 (실측 · 라우트 `/setting`)
 
 ```
 my_main_01                        마이 메인 — 프로필 닉네임(편집)
@@ -111,33 +157,65 @@ my_help_faq_01                    고객 센터 — FAQ
 my_help_contact_01                고객 센터 — 문의하기
 my_info_license_01                Unifi 정보 — 오픈소스 라이선스
 my_logout_01_01                   로그아웃 (확인 팝업 ⚠️)
-my_withdraw_01                    ⚠️ 계정 탈퇴 ("계정을 닫히시려면 여기를 클릭하세요")
+my_withdraw_01                    ⚠️ 계정 탈퇴
 ```
 
-### login / promo (실측)
+### 2-6. Wallet Mode 전용 화면 (위키 [Screen]Wallet Mode 근거 — 기존 표기는 dot 형식, 소급 금지)
 
 ```
-login_main_01                     소셜 로그인 선택 (Google/LINE/Naver/Kakao/Apple)
-login_terms_01                    ⚠️ 약관 동의 (가입 플로우)
+(기존 위키 표기)                   (신규 부여 시 제안 어휘 — 사용자 확인 필요)
+Wallet.login                      login_main_wallet_01 — Wallet Mode 로그인 인트로 (UF_signin_intro_*_wallet_mode)
+Wallet.home                       home_main_wallet_01 — US/UK/CA/SG IP 홈 (USDT 리워드 롤링 배너·회원가입 유도·미션앤리워드 배너)
+Wallet.Signup.bottom              login_signup_bottom_wallet_01_01 — 회원가입 완료 바텀시트 (자산 채우기/미션 둘러보기)
+Walelt.Assets (위키 오타)          asset_main_wallet_01 — 이율 정보 전부 제거
+Walelt.Assets.Detail              asset_token_detail_wallet_01 — 이율 정보 전부 제거
+Wallet.Reward.Home                home_reward_wallet_01 — Wallet Mode 로그인 홈(미션앤리워드 구성 · LV)
+```
+
+### 2-7. Unifi mini / K-Pick (위키 Guide Kim·Unifi Mini 요구사항 근거)
+
+```
+(mini 변형 — 별도 화면이 있는 것만)
+login_signup_bottom_mini_01_01    MINI용 회원가입 바텀시트
+login_intro_custom_01             회원가입 전 커스텀 인트로 페이지 (UIT · Guide Kim v1.1.0)
+home_main_mini_01                 mini 홈 — 미션앤리워드 + SkyFlag + 프로모션 배너 구성 (JPYC 기준 · 로그인+JPYC 보유 시 클리닉/K-Pop 큐레이션)
+reward_checkin_daily_01           데일리 출석체크 (UF_dm_dc_* — 비로그인 '출석 체크'/로그인 '매일 출석 체크'+카운트다운)
+
+(K-Pick 탭 — Guide Kim · mini + LIFF/Web JP Only · ⚠️ 프리픽스 잠정 kpick_)
+kpick_main_01                     K-Pick 탭 메인 (카테고리 5종: 클리닉·뷰티체험·바우처·화장품·K-Pop · 가격 ¥ 고정·JP 단일)
+kpick_bridge_01                   Guide Kim 브릿지 화면 (LINE 앱 환경=IAB·Web=새 탭 · '내 예약' 경유 시 미노출)
+kpick_reservation_01              ⚠️ 내 예약 (진행 중 예약 툴팁·레드닷)
+kpick_kr_block_01                 KR IP — 버튼 비노출 + 국가 서비스 불가 안내 (실측: KR IP 화면)
+```
+
+### 2-8. login / promo (실측)
+
+```
+login_main_01                     소셜 로그인 선택 (Google/LINE/Naver/Kakao/Apple — mini는 LINE 단일)
+login_terms_01                    ⚠️ 약관 동의 (가입 플로우 — Unifi는 어그리게이터 약관+approve 포함, Wallet/mini는 미제공)
 promo_luckyball_inviter_01        럭키볼 초대자 프로모션 페이지 (위키 작업 실측)
 promo_luckyball_invitee_01        럭키볼 피초대자 프로모션 페이지 (위키 작업 실측)
+promo_goldenball_01               ⚠️ 황금럭키볼 프로모션 (mini 홈 배너 — 위키 근거)
 ```
 
 ---
 
 ## 3. Screen ID 부여 방법 (공식 룰 요약 + 이 IA 사용법)
 
-1. **구조**: `주기능_부기능_세부기능_01` 또는 `주기능_부기능_세부기능_추가세부기능_01`.
-   - 마지막 `_01` 추가 = 그 화면 위에 뜨는 다이얼로그/팝업 (해당 없으면 생략).
+1. **모드 먼저 확정**: 부여 대상 화면이 Unifi/Wallet Mode/Unifi mini 중 어디 것인지 §0 표로 판별한다. 모드 전용 변형 화면은 부기능/세부기능에 `wallet`/`mini` 어휘를 넣는 방식을 기본으로 하되 **사용자 확인**을 받는다.
+2. **구조**: `주기능_부기능_세부기능_01` 또는 `주기능_부기능_세부기능_추가세부기능_01`. 마지막 `_01` 추가 = 다이얼로그/팝업.
    - 예 (공식 룰): `asset` → `asset_send_01` → `asset_send_02` → `asset_send_qr_01` → `asset_send_qr_01_01`.
-2. **전부 소문자** — GA에서 page_name 파라미터로 쓰이므로 대문자 금지.
-3. **어휘 선택**: 주기능은 §1 표, 부기능·세부기능은 §2 트리에서 고른다. 트리에 없는 새 기능이면 **이 파일에 먼저 추가**(사용자 확인)하고 부여한다.
-4. **Apps 영역 판별**: 라우트가 `/apps/...`이거나 Apps 메뉴(구 Dapp Portal) 소속 화면이면 주기능 `apps_` (XLT Key도 `apps_` 프리픽스·UF_ 미사용 — 공식 룰).
-5. **⛔ 검토 게이트(필수)**: 부여 전 `{Figma 프레임명 → Screen ID}` 매핑 표를 사용자에게 제시 → 승인 후 위키 반영. 승인 없이 확정하지 않는다.
+3. **전부 소문자** — GA page_name 파라미터로 쓰이므로 대문자 금지 (기존 위키의 `Wallet.login` 식 dot 표기는 레거시 — 신규에 사용 금지).
+4. **어휘 선택**: 주기능은 §1 표, 부기능·세부기능은 §2 트리에서 고른다. 트리에 없는 새 기능이면 **이 파일에 먼저 추가**(사용자 확인)하고 부여한다.
+5. **Apps 영역 판별**: 라우트가 `/apps/...`이거나 Apps 메뉴(구 Dapp Portal) 소속 화면이면 주기능 `apps_` (XLT Key도 `apps_` 프리픽스·UF_ 미사용 — 공식 룰).
+6. **⛔ 검토 게이트(필수)**: 부여 전 `{Figma 프레임명 → Screen ID}` 매핑 표를 사용자에게 제시 → 승인 후 위키 반영. 승인 없이 확정하지 않는다.
 
 ## 4. 미확정/후속 확인 사항
 
-- [ ] ⚠️ 항목 실측 (팝업·조건부 화면: 뽑기 결과, 송금 2단계, 은행송금, 플러스 모드 상세, NFT 목록, Apps 메인, 알림 목록, 계정 탈퇴)
-- [ ] `login_terms_01` 등 가입 플로우 존재 여부 확인
+- [ ] ⚠️ 항목 실측 (팝업·조건부: 뽑기 결과, 송금 2단계, 은행송금, 플러스 모드 상세, NFT 목록, Apps 메인, 알림 목록, 계정 탈퇴, 내 예약, 황금럭키볼)
+- [ ] Wallet Mode·Unifi mini 실기기/실IP 실측 (현재 위키 스펙 근거 — US/UK/CA/SG IP·MINI app 진입 불가 환경)
+- [ ] `kpick_` 프리픽스 확정 (K-Pick 탭 주기능 어휘 — 기존 XLT는 UF_/mini_guidekim_)
 - [ ] 프로모션 프리픽스 `promo_` vs `event_` 확정 (현재 `promo_` 잠정)
-- [ ] 은행송금 기능의 진입 조건(JPYC 관련 여부) 확인
+- [ ] Wallet Mode/mini 전용 변형 어휘(`_wallet`/`_mini` 접미 방식) 사용자 확정
+- [ ] 은행송금(Sentbe)·SkyFlag의 mini 연동 방식 확정 시 트리 갱신
+- [ ] 매주 월 10:00 정기 점검 시 위 항목 재확인 + 신규 메뉴/기능 탐지
