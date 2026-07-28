@@ -184,6 +184,37 @@ class TranslationValidator:
         print(f"✓ 한국어 검증 완료: P0 {len(self.issues['P0']) - p0_before}건, "
               f"P1 {len(self.issues['P1']) - p1_before}건, P2 {len(self.issues['P2'])}건")
 
+    # en_US 용어 매칭에서 허용할 규칙 어미 (2026-07-28)
+    _EN_SUFFIXES = ('s', 'es', 'd', 'ed', 'ing')
+
+    @classmethod
+    def _term_in_text(cls, expected: str, text: str, lang: str) -> bool:
+        """용어집 등재값이 해당 언어 칸에 들어있는지 판정.
+
+        en_US만 **casefold(대소문자 무시) + 규칙 어미 허용**으로 느슨하게 본다 —
+        `초대→invite`가 문두 대문자 `Invite`나 활용형 `invited`/`friends`로 쓰였을 뿐인
+        정상 번역이 P1(용어 불일치)로 무더기 오탐되던 것을 없애기 위함이다
+        (2026-07-28 실측: 용어집 v3.6 4종 추가만으로 오탐 14건 증가).
+        다른 언어는 대소문자·굴절이 없어 기존 완전일치 부분문자열 비교를 유지한다.
+        판정을 **느슨하게만** 하므로 기존에 통과하던 건은 그대로 통과한다.
+        """
+        if lang != 'en_US':
+            return expected in text
+        e, t = expected.casefold().strip(), text.casefold()
+        if not e or e in t:
+            return True
+        head, sep, last = e.rpartition(' ')          # 다중 단어는 마지막 단어만 굴절 허용
+        variants = {last + s for s in cls._EN_SUFFIXES}
+        if last.endswith('y'):
+            variants.add(last[:-1] + 'ies')          # copy → copies
+        if last.endswith('e'):
+            variants.add(last[:-1] + 'ing')          # invite → inviting
+        for v in variants:
+            cand = head + sep + v if sep else v
+            if re.search(r'(?<![a-z])' + re.escape(cand) + r'(?![a-z])', t):
+                return True
+        return False
+
     def validate_step2_glossary(self):
         """2단계: 용어집 위반 검증"""
         print("\n=== 2단계: 용어집 검증 ===")
@@ -223,7 +254,7 @@ class TranslationValidator:
                         if lang == 'ko_KR':
                             continue
                         lang_text = str(row.get(lang, ''))
-                        if lang_text and correct_trans not in lang_text:
+                        if lang_text and not self._term_in_text(correct_trans, lang_text, lang):
                             self.issues['P1'].append({
                                 'key': key,
                                 'issue': '용어 불일치',
