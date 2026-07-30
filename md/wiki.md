@@ -58,13 +58,56 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
    - 이 스냅샷은 `sample format` 페이지 `https://wiki.workers-hub.com/display/UNIFI/sample+format` (pageId=`4465964879`, 2026-07-16 version 1)를 복사한 것이다. **원본 페이지는 사용자가 계속 편집할 수 있으므로 생성 시점에 원본을 다시 조회하지 않는다** — 저장된 스냅샷이 템플릿 정본이다 (캐시 금지 규칙의 예외 — 사용자 지시로 스냅샷을 정본으로 고정).
    - 구조: TOC 사이드바(Contents) + History 표(`Date | History | Jira Ticket | FE/BE 확인 | QA 확인 | PIC`, 확인 컬럼은 task 체크박스) + Related Docs 표(`Category | Document`) + 본문 섹션 `Background` / `Specification`(하위 `Policy`·`Flow`) / `Screen`.
    - 템플릿 갱신은 사용자가 명시적으로 요청할 때만 원본을 재조회해 스냅샷을 교체한다.
+   - **형제 문서 구조 준용 (템플릿보다 우선)**: 생성 위치의 **같은 부모 아래 형제 페이지들이 이미 일관된 변형 구조**를 쓰고 있으면(예: `Background` 섹션을 안 쓰고 `Schedule`을 쓰는 등) **그 구조를 따른다** — 같은 폴더 안에서 문서 형태가 갈리지 않는 것이 우선이다. 생성 전 형제 페이지 1건의 storage를 조회해 섹션 구성·표 컬럼을 확인한다. (2026-07-30 실측: `[Hogeun]` 하위는 `Background` 없이 `Contents/History/Related Docs/Schedule/Specification(Policy·Flow)/Screen` 구성이라 그 형태로 생성 — 사용자 확정.)
 2. **History 첫 행 자동 기입 (생성 시 필수)**: 템플릿의 History 첫 행(History 셀 = `문서생성`)에서
    - `Date` = **생성 당일** (`YYYY-MM-DD`)
    - `PIC` = **생성을 요청한 사람** — 대화에서 요청자를 알 수 있으면 그 이름, 불명확하면 사용자에게 확인한다 (`Claude 자동 생성`이 아니라 요청자 이름을 넣는다).
    - 나머지 셀(Jira Ticket, FE/BE·QA 체크박스)은 템플릿 그대로 둔다.
-3. **페이지 타이틀**: **`Template`** 으로 지정한다.
+3. **페이지 타이틀**: **사용자가 제목을 지정하면 그 제목을 그대로 쓴다**(오타가 의심되면 지적하고 확인받되, 사용자 확정 표기를 따른다). 제목 지시가 없을 때만 **`Template`** 으로 지정한다.
 4. **생성 위치 (필수 — 사용자 확인)**: 위키를 생성할 위치(space·부모 페이지)는 **사용자에게 확인받은 뒤** 생성한다. 임의 위치에 생성하지 않는다.
 5. **토큰 우선 규칙 적용**: 위키 작업이므로 착수 전 Confluence(위키) 토큰을 먼저 요청·검증한다. Figma 화면 반영이 동반되면 Figma 토큰도 함께 요청한다 (CLAUDE.md '⛔ 토큰 우선 규칙').
+6. **⛔ 동명 페이지 선확인 (생성 전 필수 — 중복 생성 방지)**: 생성 직전 **부모 페이지의 자식 목록**(`GET /rest/api/content/{parentId}/child/page?limit=50`)에서 **같은 제목이 이미 있는지 확인**한다. Confluence는 **같은 space에 동일 제목 페이지를 만들 수 없고**, 제목을 미묘하게 바꿔 만들면 중복 문서가 생겨 혼란해진다.
+   - 동명(또는 사실상 같은 문서로 보이는) 페이지가 있으면 **생성하지 않고 사용자에게 알린 뒤**, ⓐ 그 페이지 본문을 표준 템플릿으로 재구성할지 ⓑ 다른 제목으로 새로 만들지 확인받는다.
+   - **"재생성" 요청도 페이지 삭제·재생성이 아니라 본문 교체로 수행한다** — 페이지를 지우면 pageId·기존 이력·기존 링크가 끊긴다. 기존 History 행은 보존하고 새 행을 누적한다.
+   - 2026-07-30 실측: `Kaia Wallet > Unifi Mobile 전환 유도` 생성 요청 시 동명 페이지(pageId=4515188069)가 이미 있어 본문 재구성으로 처리(요청 제목엔 `Moilbe` 오타가 있었고 기존 페이지는 정상 표기였다).
+
+### 위키 생성 — Related Docs 작성 규칙 (사용자 확정 방식, 2026-07-30)
+
+**참조 링크는 Related Docs 표(`Category | Document`)에 Category별 한 행으로 넣는다.** 사용자가 이 방식을 확정했으므로 신규 생성 시 기본으로 적용한다.
+
+| Category | 대상 | 마크업 |
+|---|---|---|
+| `Ticket` | Jira 이슈 | `<a href="https://jira.workers-hub.com/browse/{KEY}">{KEY}</a>` |
+| `Design` | Figma 디자인 | `<a href="{figma_url}">Figma — {화면 맥락} ({node-id})</a>` — 라벨에 **무슨 화면인지 + node-id**를 병기해 링크만 보고 알 수 있게 한다 |
+| `PIA Review` | 개인정보 검토 티켓 | 티켓 링크와 동일 형식 |
+| `Discussion` | Slack 스레드 | `<a href="{slack_permalink}">Slack 스레드</a>` |
+| `Planning` / `Reference` | **같은 위키의 다른 페이지** | 외부 URL 대신 `<ac:link><ri:page ri:space-key="{SPACE}" ri:content-title="{제목}" /></ac:link>` — 제목이 바뀌어도 따라간다. `ri:space-key`는 **대상 페이지를 실제 조회해 확인**(추측 금지 — 4-C의 space-key 규칙과 동일) |
+
+- **URL 내 `&`는 `&amp;`로 이스케이프**한다(Figma URL의 `?node-id=…&t=…`). 안 하면 storage 파싱이 깨진다.
+- **⛔ Jira 티켓을 받으면 티켓을 조회해 부수 링크까지 확장한다(권장 — 실측 유용)**: `jira_get_issue`로 summary·status·description을 확인하고, **설명에 들어 있는 관련 링크(PIA Review 티켓·Slack 스레드·관련 이슈·Figma)를 Related Docs 행으로 추가**한다. 사용자가 티켓만 줘도 문서의 참조 맥락이 한 번에 갖춰진다. 티켓 제목·상태가 위키 제목과 어긋나면(오타 등) **지적해 보고**한다.
+- History 표의 `Jira Ticket` 컬럼에도 같은 티켓 링크를 넣는다.
+
+### 위키 생성 — Flow 섹션에 Figma 임베드 (사용자 확정 방식, 2026-07-30)
+
+**Figma 디자인 링크는 `Specification > Flow` 섹션에 widget 매크로로 임베드하고 `width`는 `1000`으로 고정한다.** 링크만 나열하는 것보다 문서 안에서 바로 화면을 볼 수 있어 사용자가 이 방식을 확정했다.
+
+```xml
+<h2>Flow</h2>
+<p><ac:structured-macro ac:name="widget" ac:schema-version="1">
+  <ac:parameter ac:name="width">1000</ac:parameter>
+  <ac:parameter ac:name="url"><ri:url ri:value="{figma_url}" /></ac:parameter>
+</ac:structured-macro></p>
+```
+
+- `width`는 **1000 고정**(사용자 지정값). 임의로 바꾸지 않는다.
+- `ri:value`의 Figma URL도 `&` → `&amp;` 이스케이프.
+- Related Docs의 `Design` 행과 **중복 기재해도 된다** — Related Docs는 참조 목록, Flow는 문서 내 열람용으로 역할이 다르다.
+- 임베드 대상은 **플로우/전체 흐름을 담은 Figma 노드**를 우선한다(개별 화면 프레임보다 흐름 캔버스).
+- **렌더 검증(필수)**: 생성 후 `GET ?expand=body.view`로 ⓐ `Unknown macro`·오류 문구가 없고 ⓑ 위젯이 실제 렌더되는지 확인한다(4-C 렌더 검증 규칙과 동일 등급).
+
+### 위키 생성 — 정보 없는 섹션 처리
+
+`Schedule`·`Policy`·`Screen` 등 **아직 내용이 없는 섹션은 골격만 남기고 비워 둔다** — 추측으로 채우지 않는다. `Schedule`은 `Design / Development / Release` 항목 골격 정도만 둔다. 사용자가 화면 반영까지 요청하면 그때 Step 3~5로 Screen 표를 채운다.
 
 ---
 
