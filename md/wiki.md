@@ -146,6 +146,14 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
   - 즉 정렬 키 = (행 그룹의 상단 y, 행 내부 x). 윗행을 왼쪽부터 끝까지 나열한 뒤 다음 행으로 내려간다.
   - 이 정렬은 **화면(표의 행) 순서에만** 적용된다. 화면 내부 코멘트 정책 번호(`1.`, `2.`, …)는 화면 내부 y좌표 기준이며 이 행 정렬과 별개다.
 
+#### ⛔ Screen 표 컬럼 구성 — 4컬럼 고정 (화면명 컬럼 신설 금지)
+
+**Screen 표는 `Screen ID | Screen(이미지) | Description | XLT` 4컬럼만 쓴다.** Screen ID가 화면 식별자이므로 **"화면명"·"프레임명" 같은 별도 컬럼을 만들지 않는다.**
+
+- ❌ `Screen ID | 화면명 | Screen | Description | XLT` (5컬럼) — **금지**. 2026-07-30 실측 위반: 구 규칙(Screen ID 셀 = Figma 프레임명)에서 신 규칙(구조화 ID)으로 넘어올 때 프레임명을 버리지 못해 별도 컬럼으로 남긴 사례(pageId=4394814893 신규 작성 시). 사용자 지적으로 4컬럼 교정.
+- **Figma 프레임명을 남기고 싶으면** Description 설명문 끝에 `(Figma: <code>프레임명</code>)`로만 병기한다 — 컬럼을 늘리지 않는다. Screen ID 셀에는 넣지 않는다(아래 node-id 병기 금지와 같은 취지).
+- **기존 페이지 편집 시**에는 그 페이지의 **현행 컬럼 구조를 그대로 따른다**(소급 변경 금지) — 컬럼을 임의로 늘리거나 줄이지 않는다.
+
 #### Screen 표 (Screen ID 컬럼) — 공식 룰 채택 (2026-07-27, `[Rule]` pageId=4268282157)
 - **Screen ID는 구조화 소문자 ID를 사용**한다: `주기능_부기능_세부기능_01` (+ 다이얼로그/팝업이면 `_01` 추가). GA page_name 파라미터로 쓰이므로 **전부 소문자**.
   - 예: `asset_send_01`, `asset_send_qr_01_01`, `reward_checkin_01`
@@ -360,6 +368,11 @@ curl -H "Authorization: Bearer {CONFLUENCE_PAT}" \
 
 - `<ri:attachment>`는 **같은 페이지에 첨부된 파일**을 참조 — 외부 URL·만료 없음, Confluence 서버에 영구 저장
 - `ri:filename`은 4-A/4-B에서 업로드한 로컬 파일명과 **정확히 일치**해야 한다
+- **⛔ `<ri:page>` 자식을 넣지 않는다 (첨부 "알 수 없는 첨부파일" 원인 1위)**: 위처럼 `<ri:attachment ri:filename="…" />` **단독**으로 쓰면 항상 "이 페이지의 첨부"로 해석돼 안전하다. `<ri:page ri:space-key="…" ri:content-title="…" />`를 넣으면 **그 space·제목의 페이지 첨부**를 찾으므로, space-key나 제목이 하나라도 어긋나면 렌더가 **"알 수 없는 첨부파일(Unknown Attachment)"** 로 깨진다(파일은 정상 업로드돼 있어도 그렇다).
+  - 2026-07-30 실측 위반: 신규 페이지(pageId=4394814893, space `UNIFI`)에 첨부를 넣으면서 그 페이지 Related Docs에 있던 **다른 스페이스 키 `LINENEXT`** 를 그대로 복사해 이미지 2종·엑셀 1종이 전부 깨졌다. 직전 작업(럭키볼, space `UNIFI`)의 마크업을 관성적으로 재사용한 것이 원인.
+  - **다른 페이지의 첨부를 참조해야 할 때만** `<ri:page>`를 쓰고, 그때는 `GET /rest/api/content/{pageId}?expand=space`로 **대상 페이지의 space key를 실제 조회해 확인**한다(Related Docs·본문에 보이는 다른 스페이스 키를 추측해 쓰지 않는다).
+  - **검증(필수)**: 첨부 참조를 넣은 뒤 `GET /rest/api/content/{pageId}?expand=body.view`로 렌더 결과를 받아 ⓐ `Unknown Attachment`·`알 수 없는 첨부` 문구가 없고 ⓑ `<img src="/download/attachments/{pageId}/…">`가 실제로 생성됐는지 확인한다. storage에 마크업이 들어간 것만으로는 렌더 성공을 보장하지 못한다.
+  - 엑셀 등 파일 링크(`<ac:link><ri:attachment …>`)도 **동일 규칙** — `<ri:page>` 없이 파일명만 쓴다.
 
 ---
 
@@ -428,7 +441,10 @@ git -C /tmp/repo_clone push origin main
 </ul>
 <hr/>
 <h1>Screen</h1>
-<p>Screen ID는 Figma 프레임 이름을 그대로 사용합니다. 이미지의 번호 ⓝ는 아래 정책 번호와 1:1 대응합니다.</p>
+<p>이미지의 번호 ⓝ는 아래 정책 번호와 1:1 대응합니다.</p>
+<!-- ⚠️ Screen ID는 위 '공식 룰 채택' 규칙대로 구조화 소문자 ID(주기능_부기능_세부기능_01)를 쓴다.
+     구 안내문("Screen ID는 Figma 프레임 이름을 그대로 사용")은 2026-07-27 공식 룰 채택으로 폐기됐다 —
+     기존 프레임명 기반 페이지만 소급 금지로 유지한다. 컬럼은 아래 4개 고정(화면명 컬럼 신설 금지). -->
 <table><tbody>
 <tr><th>Screen ID</th><th>Screen</th><th>Description</th><th>XLT</th></tr>
 
