@@ -23,7 +23,7 @@
   - 부모 페이지(신규 생성 위치): `3910828993` [Hogeun] (space `UNIFI`)
   - Figma 파일: GOCHAYBS7hIrmWRGNuJOKV (Web3)
   - 절차 문서: `CLAUDE.md`, `md/translate.md`, `md/wiki.md`, `md/OA.md`, `md/check.md`, `md/landpress.md`, `md/IA.md`
-  - 용어집: 라이브 **v3.9**(112 terms) / **v4.0(113) 산출·전달 완료 — 사용자 CMS 반영 대기** · 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
+  - 용어집: 라이브 **v4.0**(113 terms) — **2026-07-30 사용자 CMS 반영 완료**(API 실측 확인: version 4.0 · terminology 113개 · 신규 `프로필` 등재) · 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
   - 기획자 가이드: **`dropweb/web3_planning_v9.zip`** — **게시 대기**(v7·v8 대체 — IA 점검 #2 + 전체 IA 구조 인터랙티브 표). ⚠️ 최신본 판별은 파일명이 아니라 **푸터 내부 버전+용어집 임베드 버전+mtime**(md/landpress.md §5-1 0단계). `dropweb/`은 `.gitignore` 대상이라 git 미추적 — zip은 채팅 전달이 배포 경로
   - IA 주간 점검: 스케줄 태스크 `weekly-unifi-ia-check`(매주 월 10:00) — 대상 **프로덕션 + Beta(`unifi-web.line-apps-beta.com`, 릴리즈 예정 선반영) + Unifi mini Beta(`?liff_id=2008994547-GfGUdDxy` → `/benefits-mini`)**. 리포트 `reports/ia/`, IA 정본 `md/IA.md`, 매 회차 가이드 zip +1 발행
 - **토큰**: Figma PAT + Confluence PAT — **사용자가 매 세션 채팅으로 제공**(파일/코드에 하드코딩 금지). 착수 전 유효성 검증 필수.
@@ -49,7 +49,7 @@
 ## 다음 할 일
 
 ### 사용자 액션 대기 (Claude가 할 수 없음)
-- [ ] **P1**: 기획자 가이드 **`dropweb/web3_planning_v9.zip` 게시**(v7·v8 대체 — IA 점검 #2 + 전체 IA 구조 표) → 게시 후 용어집 탭에서 **v4.0 전체 JSON 복사 → Landpress CMS 반영**(라이브는 아직 v3.9). 편집 URL은 `md/landpress.md` §1. ⚠️ v7·v8은 게시하지 말 것(v9가 상위본).
+- [ ] **P1**: 기획자 가이드 **`dropweb/web3_planning_v9.zip` 게시**(v7·v8 대체 — IA 점검 #2 + 전체 IA 구조 표). ⚠️ v7·v8은 게시하지 말 것(v9가 상위본). ※ 용어집 CMS 반영은 **2026-07-30 완료**(라이브 v4.0) — v9의 임베드 용어집도 4.0이라 라이브와 일치하므로 이 게시는 가이드 내용 반영만 목적.
 - [ ] **P1**: **IA Screen ID 어휘 승인 3건**(`md/IA.md` §4) — ① 보유 NFT `asset_nft_01`→`apps_mypage_nft_01`(대기 결정 유지 중) ② 🆕 `/reward/…` 부스트·스테이킹 어휘(`reward_`가 리워드 탭과 충돌 — `reward_staking_kaia_01` vs 별도 `staking_` 신설) ③ 🆕 K-Pick `kpick_` 확정(GNB 승격+라우트 `/benefits` 겹침). **확정 전까지 해당 영역 Screen ID 부여 금지.**
 - [ ] **P1**: **`Mini - 일본`(65280-8215) NEXT Bay 배너 보상 단위 확인** — 화면 전체가 JPYC 기준인데 배너만 `최대 100 USDT`. 원문대로 반영했으나 의도 확인 필요(`gate_report_nextbay_mission_banner.md` d-3).
 - [ ] **P2**: Figma 원문 수정 요청(디자이너) — 위키와 어긋난 2곳(`친구 초대하고 둘 다 럭키볼 받기`·`친구 초대하고 럭키볼 받기` → `친구에게 JPYC 선물하기`), `terms_share_noti` 문구는 Figma에 아예 없음, 그 외 누적 오타. **`figma-source-issues` 에이전트로 전달 목록 생성 가능**.

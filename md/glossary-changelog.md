@@ -32,6 +32,7 @@
 ## 상세
 
 ### v4.0 (2026-07-30)
+- ✅ **라이브 반영 완료 (2026-07-30, 사용자 CMS 반영)** — API 실측 확인: `metadata.version` **4.0** · `total_terms` **113** · `terminology` 실제 항목 **113개**(일치) · 신규 `프로필` = `プロフィール` 등재 확인.
 - **term 추가** (1): `프로필` — en `profile`, ja `プロフィール`, zh `個人檔案`, th `โปรไฟล์`
 - 일관성 검증(landpress.md §5-3, 위키 정본 75키 전수 대조): `프로필` 포함 1행(`terms_share_noti`) **4개 언어 100% 일치**. 등재 후 검증기 재실행 결과 이 term 관련 신규 P1 **0건**.
 - 배경: `mini_luckyball_terms_share_noti` 신규 키 게이트(`gate_report_luckyball_terms_share_noti.md`) (d-1) 권장을 사용자가 채택(2026-07-30). LINE 연동 안내 문구에서 반복될 표현인데 미등재라 언어별 표기가 작업자 판단에 맡겨져 있었다.
