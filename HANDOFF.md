@@ -24,7 +24,7 @@
   - Figma 파일: GOCHAYBS7hIrmWRGNuJOKV (Web3)
   - 절차 문서: `CLAUDE.md`, `md/translate.md`, `md/wiki.md`, `md/OA.md`, `md/check.md`, `md/landpress.md`, `md/IA.md`
   - 용어집: 라이브 **v4.0**(113 terms) — **2026-07-30 사용자 CMS 반영 완료**(API 실측 확인: version 4.0 · terminology 113개 · 신규 `프로필` 등재) · 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
-  - 기획자 가이드: **`dropweb/web3_planning_v9.zip`** — **게시 대기**(v7·v8 대체 — IA 점검 #2 + 전체 IA 구조 인터랙티브 표). ⚠️ 최신본 판별은 파일명이 아니라 **푸터 내부 버전+용어집 임베드 버전+mtime**(md/landpress.md §5-1 0단계). `dropweb/`은 `.gitignore` 대상이라 git 미추적 — zip은 채팅 전달이 배포 경로
+  - 기획자 가이드: **`dropweb/web3_planning_v9.zip`** — ✅ **2026-07-30 게시 완료**(라이브 = v9 · 용어집 임베드 4.0 = 라이브 일치). 다음 발행은 v10. ⚠️ 최신본 판별은 파일명이 아니라 **푸터 내부 버전+용어집 임베드 버전+mtime**(md/landpress.md §5-1 0단계). `dropweb/`은 `.gitignore` 대상이라 git 미추적 — zip은 채팅 전달이 배포 경로
   - IA 주간 점검: 스케줄 태스크 `weekly-unifi-ia-check`(매주 월 10:00) — 대상 **프로덕션 + Beta(`unifi-web.line-apps-beta.com`, 릴리즈 예정 선반영) + Unifi mini Beta(`?liff_id=2008994547-GfGUdDxy` → `/benefits-mini`)**. 리포트 `reports/ia/`, IA 정본 `md/IA.md`, 매 회차 가이드 zip +1 발행
 - **토큰**: Figma PAT + Confluence PAT — **사용자가 매 세션 채팅으로 제공**(파일/코드에 하드코딩 금지). 착수 전 유효성 검증 필수.
 
@@ -42,6 +42,8 @@
 
 **2026-07-30 세션 #4 — IA 주간 점검 #2 (커밋 `837e2c6`)**: 스케줄 태스크 `weekly-unifi-ia-check`를 실행해 **프로덕션 + Beta + Unifi mini Beta**를 점검했다. ⓐ **`/reward/kaia` KAIA 스테이킹(위임)·Special Contribution Rewards 출시 실측** — #1에서 "공지 예고·화면 미출시"로 이월했던 Kaia CR 미션이 실제 출시(`/boost/kaia`는 `/reward/usdt`로 이전, 부스트 조건에 위임 KAIA 합산) ⓑ **Beta 환경을 상시 점검 범위로 도입** — Beta에 릴리즈 예정 내용이 먼저 들어오므로 매주 프로덕션과 대조(현재 차이: GNB 4탭→**5탭 K-Pick 승격**, 내 자산 액션 **송금하기·입금하기·은행송금 → 보내기·채우기·은행출금**) ⓒ **Unifi mini 최초 직접 실측**(`/benefits-mini` 계열 5종 — 그전까지 위키 스펙에만 의존) ⓓ IA.md `§0-0 점검 환경`·`§2-2-1 부스트·스테이킹` 신설 ⓔ 리포트 `reports/ia/ia_check_report_2026-07-30.md` + 가이드 **v8 → v9** 발행(v9에 「전체 IA 구조」 인터랙티브 표 신설 — 데이터는 `IA_DATA` 배열 한 곳, **`md/IA.md` 변경 시 함께 갱신하는 규칙**을 IA.md 머리말·스케줄 태스크에 신설).
 
+**2026-07-30 마감 상태**: 용어집 **라이브 v4.0**(사용자 CMS 반영, API 실측 확인) · 기획자 가이드 **v9 게시 완료** — 두 창구가 모두 최신이라 팀원이 보는 용어집·IA·절차가 저장소 정본과 일치한다. 다음 IA 점검(#3, 8/03)은 가이드 **v10**으로 발행한다.
+
 **⚠️ Beta 액션 라벨 개편은 XLT 파급이 크다** — `보내기`·`채우기`·`은행출금`이 프로덕션에 나가면 관련 키 문구가 일괄 영향받는다(용어집 v3.9~v4.0의 `보내기` ja 出金/出金元 개편과 같은 흐름). XLT 작업 시 **대상 환경(프로덕션/Beta)을 먼저 확정**할 것.
 
 ---
@@ -49,7 +51,6 @@
 ## 다음 할 일
 
 ### 사용자 액션 대기 (Claude가 할 수 없음)
-- [ ] **P1**: 기획자 가이드 **`dropweb/web3_planning_v9.zip` 게시**(v7·v8 대체 — IA 점검 #2 + 전체 IA 구조 표). ⚠️ v7·v8은 게시하지 말 것(v9가 상위본). ※ 용어집 CMS 반영은 **2026-07-30 완료**(라이브 v4.0) — v9의 임베드 용어집도 4.0이라 라이브와 일치하므로 이 게시는 가이드 내용 반영만 목적.
 - [ ] **P1**: **IA Screen ID 어휘 승인 3건**(`md/IA.md` §4) — ① 보유 NFT `asset_nft_01`→`apps_mypage_nft_01`(대기 결정 유지 중) ② 🆕 `/reward/…` 부스트·스테이킹 어휘(`reward_`가 리워드 탭과 충돌 — `reward_staking_kaia_01` vs 별도 `staking_` 신설) ③ 🆕 K-Pick `kpick_` 확정(GNB 승격+라우트 `/benefits` 겹침). **확정 전까지 해당 영역 Screen ID 부여 금지.**
 - [ ] **P1**: **`Mini - 일본`(65280-8215) NEXT Bay 배너 보상 단위 확인** — 화면 전체가 JPYC 기준인데 배너만 `최대 100 USDT`. 원문대로 반영했으나 의도 확인 필요(`gate_report_nextbay_mission_banner.md` d-3).
 - [ ] **P2**: Figma 원문 수정 요청(디자이너) — 위키와 어긋난 2곳(`친구 초대하고 둘 다 럭키볼 받기`·`친구 초대하고 럭키볼 받기` → `친구에게 JPYC 선물하기`), `terms_share_noti` 문구는 Figma에 아예 없음, 그 외 누적 오타. **`figma-source-issues` 에이전트로 전달 목록 생성 가능**.
