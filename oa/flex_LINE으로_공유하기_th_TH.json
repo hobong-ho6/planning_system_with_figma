@@ -1,0 +1,70 @@
+{
+ "type": "bubble",
+ "hero": {
+  "type": "image",
+  "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/4b7c1d3de41a46509fbefe483d37bbd5.png?updatedAt=1785205795000",
+  "size": "full",
+  "aspectRatio": "20:13",
+  "aspectMode": "cover"
+ },
+ "body": {
+  "type": "box",
+  "layout": "vertical",
+  "contents": [
+   {
+    "type": "text",
+    "text": "ของขวัญเงินเยนดิจิทัลจากเพื่อนมาถึงแล้ว!\nมาดูกันว่าลูกบอลนำโชคของคุณถูกรางวัลเท่าไร",
+    "weight": "bold",
+    "size": "lg",
+    "wrap": true
+   },
+   {
+    "type": "box",
+    "layout": "vertical",
+    "margin": "md",
+    "spacing": "sm",
+    "contents": [
+     {
+      "type": "text",
+      "text": "แค่สมัครก็รับได้ 100%\nอย่าพลาดโอกาสลุ้นรับ JPYC มูลค่าสูงสุด 50,000 เยน",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     },
+     {
+      "type": "text",
+      "text": "* รางวัลจะจ่ายทันที อาจใช้เวลาสูงสุด 5 นาที",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     },
+     {
+      "type": "text",
+      "text": "* ต้องคงบัญชีทางการ LINE ของ Unifi เป็นเพื่อนจนถึงวันจ่ายรางวัลจึงจะรับ JPYC ได้",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     }
+    ]
+   }
+  ]
+ },
+ "footer": {
+  "type": "box",
+  "layout": "vertical",
+  "spacing": "sm",
+  "contents": [
+   {
+    "type": "button",
+    "style": "primary",
+    "color": "#000000",
+    "height": "sm",
+    "action": {
+     "type": "uri",
+     "label": "เปิดของขวัญลูกบอลนำโชค",
+     "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?utm_source=unifi_unifimini_home&utm_medium=cta&utm_campaign=unifi_luckyballreferral&utm_content=june_2026&utm_term=luckyballreferral&referral_code=1679_SUOAA"
+    }
+   }
+  ]
+ }
+}

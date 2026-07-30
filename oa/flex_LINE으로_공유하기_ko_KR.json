@@ -1,0 +1,70 @@
+{
+ "type": "bubble",
+ "hero": {
+  "type": "image",
+  "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/4b7c1d3de41a46509fbefe483d37bbd5.png?updatedAt=1785205795000",
+  "size": "full",
+  "aspectRatio": "20:13",
+  "aspectMode": "cover"
+ },
+ "body": {
+  "type": "box",
+  "layout": "vertical",
+  "contents": [
+   {
+    "type": "text",
+    "text": "친구가 보낸 디지털 엔화 선물이 도착했어요!\n당첨된 럭키볼 금액을 확인해보세요.",
+    "weight": "bold",
+    "size": "lg",
+    "wrap": true
+   },
+   {
+    "type": "box",
+    "layout": "vertical",
+    "margin": "md",
+    "spacing": "sm",
+    "contents": [
+     {
+      "type": "text",
+      "text": "가입만 해도 100% 받을 수 있어요\n최대 50,000엔 상당 JPYC 당첨 기회 놓치지 마세요.",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     },
+     {
+      "type": "text",
+      "text": "* 당첨 보상은 즉시 지급됩니다. 최대 5분까지 소요됩니다.",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     },
+     {
+      "type": "text",
+      "text": "* 보상 지급일까지 Unifi LINE 공식계정 친구를 유지해야 JPYC를 받을 수 있습니다.",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     }
+    ]
+   }
+  ]
+ },
+ "footer": {
+  "type": "box",
+  "layout": "vertical",
+  "spacing": "sm",
+  "contents": [
+   {
+    "type": "button",
+    "style": "primary",
+    "color": "#000000",
+    "height": "sm",
+    "action": {
+     "type": "uri",
+     "label": "럭키볼 선물 열기",
+     "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?utm_source=unifi_unifimini_home&utm_medium=cta&utm_campaign=unifi_luckyballreferral&utm_content=june_2026&utm_term=luckyballreferral&referral_code=1679_SUOAA"
+    }
+   }
+  ]
+ }
+}

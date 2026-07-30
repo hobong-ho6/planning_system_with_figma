@@ -1,0 +1,70 @@
+{
+ "type": "bubble",
+ "hero": {
+  "type": "image",
+  "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/4b7c1d3de41a46509fbefe483d37bbd5.png?updatedAt=1785205795000",
+  "size": "full",
+  "aspectRatio": "20:13",
+  "aspectMode": "cover"
+ },
+ "body": {
+  "type": "box",
+  "layout": "vertical",
+  "contents": [
+   {
+    "type": "text",
+    "text": "好友送來的數位日圓禮物已送達！\n快來確認幸運球的中獎金額吧。",
+    "weight": "bold",
+    "size": "lg",
+    "wrap": true
+   },
+   {
+    "type": "box",
+    "layout": "vertical",
+    "margin": "md",
+    "spacing": "sm",
+    "contents": [
+     {
+      "type": "text",
+      "text": "只要註冊就 100% 可領取\n別錯過抽中最高 50,000 日圓等值 JPYC 的機會。",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     },
+     {
+      "type": "text",
+      "text": "* 中獎獎勵將立即發放，最多需 5 分鐘。",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     },
+     {
+      "type": "text",
+      "text": "* 須保留 Unifi LINE 官方帳號好友至獎勵發放日，方可領取 JPYC。",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     }
+    ]
+   }
+  ]
+ },
+ "footer": {
+  "type": "box",
+  "layout": "vertical",
+  "spacing": "sm",
+  "contents": [
+   {
+    "type": "button",
+    "style": "primary",
+    "color": "#000000",
+    "height": "sm",
+    "action": {
+     "type": "uri",
+     "label": "開啟幸運球禮物",
+     "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?utm_source=unifi_unifimini_home&utm_medium=cta&utm_campaign=unifi_luckyballreferral&utm_content=june_2026&utm_term=luckyballreferral&referral_code=1679_SUOAA"
+    }
+   }
+  ]
+ }
+}

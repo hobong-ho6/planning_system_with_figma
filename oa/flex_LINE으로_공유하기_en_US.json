@@ -1,0 +1,70 @@
+{
+ "type": "bubble",
+ "hero": {
+  "type": "image",
+  "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/4b7c1d3de41a46509fbefe483d37bbd5.png?updatedAt=1785205795000",
+  "size": "full",
+  "aspectRatio": "20:13",
+  "aspectMode": "cover"
+ },
+ "body": {
+  "type": "box",
+  "layout": "vertical",
+  "contents": [
+   {
+    "type": "text",
+    "text": "A digital yen gift from your friend has arrived!\nCheck how much your Lucky Ball won.",
+    "weight": "bold",
+    "size": "lg",
+    "wrap": true
+   },
+   {
+    "type": "box",
+    "layout": "vertical",
+    "margin": "md",
+    "spacing": "sm",
+    "contents": [
+     {
+      "type": "text",
+      "text": "Just sign up and you're 100% guaranteed to receive one\nDon't miss your chance to win JPYC worth up to 50,000 JPY.",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     },
+     {
+      "type": "text",
+      "text": "* Winning rewards are paid immediately. It may take up to 5 minutes.",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     },
+     {
+      "type": "text",
+      "text": "* You must keep Unifi's LINE official account as a friend until the reward payout date to receive JPYC.",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     }
+    ]
+   }
+  ]
+ },
+ "footer": {
+  "type": "box",
+  "layout": "vertical",
+  "spacing": "sm",
+  "contents": [
+   {
+    "type": "button",
+    "style": "primary",
+    "color": "#000000",
+    "height": "sm",
+    "action": {
+     "type": "uri",
+     "label": "Open your Lucky Ball gift",
+     "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?utm_source=unifi_unifimini_home&utm_medium=cta&utm_campaign=unifi_luckyballreferral&utm_content=june_2026&utm_term=luckyballreferral&referral_code=1679_SUOAA"
+    }
+   }
+  ]
+ }
+}

@@ -1,0 +1,70 @@
+{
+ "type": "bubble",
+ "hero": {
+  "type": "image",
+  "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/4b7c1d3de41a46509fbefe483d37bbd5.png?updatedAt=1785205795000",
+  "size": "full",
+  "aspectRatio": "20:13",
+  "aspectMode": "cover"
+ },
+ "body": {
+  "type": "box",
+  "layout": "vertical",
+  "contents": [
+   {
+    "type": "text",
+    "text": "友達からデジタル円JPYCのギフトが届きました！\nラッキーボールを開けて、当たった金額をチェックしよう！",
+    "weight": "bold",
+    "size": "lg",
+    "wrap": true
+   },
+   {
+    "type": "box",
+    "layout": "vertical",
+    "margin": "md",
+    "spacing": "sm",
+    "contents": [
+     {
+      "type": "text",
+      "text": "＼ 今なら新規登録でハズレなし！ ／\n最大50,000円相当のJPYCをゲットするチャンス！",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     },
+     {
+      "type": "text",
+      "text": "※当選特典は即時進呈されます（システム都合により反映まで最大5分ほどかかる場合があります）。",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     },
+     {
+      "type": "text",
+      "text": "※特典進呈完了まで、Unifi LINE公式アカウントをブロック・友達解除しないようご注意ください。",
+      "size": "sm",
+      "color": "#666666",
+      "wrap": true
+     }
+    ]
+   }
+  ]
+ },
+ "footer": {
+  "type": "box",
+  "layout": "vertical",
+  "spacing": "sm",
+  "contents": [
+   {
+    "type": "button",
+    "style": "primary",
+    "color": "#000000",
+    "height": "sm",
+    "action": {
+     "type": "uri",
+     "label": "今すぐラッキーボールを開ける",
+     "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?utm_source=unifi_unifimini_home&utm_medium=cta&utm_campaign=unifi_luckyballreferral&utm_content=june_2026&utm_term=luckyballreferral&referral_code=1679_SUOAA"
+    }
+   }
+  ]
+ }
+}
