@@ -33,3 +33,9 @@ wiki_image_urls.json
 prototype_input.json
 comments_raw.json
 wiki_screen_keys.json
+
+# 임시·대용량 로컬 자산 (2026-07-30)
+xlt_validation_temp.xlsx
+*_temp.xlsx
+Unifi_App_Screenshot.zip
+scripts/scripts/

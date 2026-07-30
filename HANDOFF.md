@@ -86,7 +86,7 @@
 - **이후 변화 / 주의**:
   - 위키는 세션 #2 이후에도 계속 편집돼 **현재 v103**. 내 v67 대비: `invite_mission` 정정 **유지**, orphan 8키 삭제 **유지**(`max20_desc` 재등장), **`invitee_mission`은 빠짐** → 사용자 결정으로 재추가 안 함.
   - 라이브 위키 버전이 하루에도 수십 회 오름(동시편집) → **PUT 직전 버전 재확인 필수**.
-  - 작업트리 미추적 파일 잔존: `Unifi_App_Screenshot.zip`, `scripts/scripts/`(중첩 오생성 의심), `xlt_validation_temp.xlsx` — 정리 여부 확인 필요.
+  - ~~작업트리 미추적 파일 잔존~~ → **2026-07-30 정리 완료**: `scripts/scripts/`(v2.4 오생성 캐시)·`xlt_validation_temp.xlsx`(82키 옛 검증본) 삭제, `Unifi_App_Screenshot.zip`(22MB 로컬 자산)은 유지하고 `.gitignore`에 등록.
 - **다음 세션 첫 작업**: 사용자 새 지시 대기. 착수 = 토큰 요청·검증 → 원본 새로 조회.
 
 ### 2026-07-24 — 세션 #1: 럭키볼 캠페인 위키 대량 구축·반복 업데이트
