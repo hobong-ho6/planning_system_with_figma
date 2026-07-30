@@ -273,6 +273,15 @@ for item in screen['items']:
   - 본문 링크(storage): `<ac:link><ri:attachment ri:filename="xlt_output_....xlsx" /><ac:plain-text-link-body><![CDATA[XLT 업로드 엑셀 다운로드]]></ac:plain-text-link-body></ac:link>`
   - 번역이 갱신될 때마다 **최신 엑셀로 재첨부**하고 본문 링크의 파일명을 갱신한다 (이전 첨부는 정리 권장).
 
+#### 전 프레임 정합성 감사 — `wiki-policy-auditor` 에이전트 (2026-07-30 신설)
+
+**여러 프레임을 가진 페이지에서 Description ↔ Figma 코멘트가 어긋났는지 점검**할 때는 `.claude/agents/wiki-policy-auditor.md`를 호출한다. 읽기 전용 감사자로 **발견 목록만 반환**하고, 수정은 메인이 직렬로 한다(위키는 버전 가드가 필요).
+
+- **호출 시점**: ⓐ 사용자가 "전체 점검/재검증"을 요청할 때 ⓑ 오래 편집된 페이지를 이어받을 때 ⓒ 한 프레임에서 누락을 발견해 **같은 유형이 다른 프레임에도 있는지** 확인할 때(36558 root 정책 누락이 그 사례)
+- 검출 코드: `MISSING_POLICY`·`MISSING_REPLY`·`MISSING_XLT_MARK`·`NUMBER_MISMATCH`·`COUNT_MISMATCH`·`XLT_NO_MISMATCH` + 판단 필요 `PARAPHRASED`
+- 에이전트는 `fetch_comments.py`의 `build_threads` + **좌표 정규화**를 반드시 쓰고, 위키는 `GET`만 한다(PUT/POST/DELETE·첨부 조작·Figma 코멘트 작성 금지)
+- 반환된 결함은 **기대값 전문이 포함**되므로 메인이 그대로 surgical 교체에 쓴다
+
 #### 대량 프레임 작업 — 읽기 전용 배치 수집 (`scripts/collect_frames.py`, 2026-07-30 신설)
 
 프레임이 여러 개면 Step 3~4의 **읽기 전용 부분**(노드 조회 → 좌표 정규화 → 코멘트 스레드 → 텍스트 매칭 → 이미지 다운로드·어노테이션 렌더)을 배치로 처리한다.
