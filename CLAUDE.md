@@ -212,6 +212,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `fetch_comments.py` | Figma 코멘트 reply-aware 조회 (루트+답글 스레드, 자기 점검 로그) — **인라인 재구현 금지** | 1단계 코멘트 선별 모드 · 3단계 위키 Description |
 | `validate_translation.py` | 3단계 검증 수행 (P0/P1/P2, 컬럼별 이질 문자체계 검출 포함) | 1단계 Step 5 |
 | `check_gate_report.py` | 게이트 리포트 완결성 검사 (필수 요소 6종 — 완료 선언 직전 exit 0 확인) | 1단계 Step 5 게이트 |
+| `check_wiki_storage.py` | 위키 storage/렌더 규칙 검사 (Screen 표 4컬럼·첨부 `ri:page` 금지·URL 이스케이프 / 렌더 `Unknown Attachment`) | 3단계 위키 PUT **직전 `pre`·직후 `post`** — exit 0 확인 |
+| `collect_frames.py` | 프레임 읽기 전용 배치 수집 (노드·코멘트 1회 조회 + 좌표 정규화 + 텍스트 매칭 + 어노테이션 렌더 → `frames.json`) | 3단계 Step 3~4 입력 생성 (프레임 다수 시) |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
 | `patch_translation.py` | 키 단위 번역 패치 (지정 언어 셀만 교체·무결성 가드) | 키 단위 번역 패치 모드 (`md/translate.md`) |
 | `build_prototype_data.py` | data.js/i18n.js 생성 + 무결성 검증 (입력: prototype_input.json, translation_extract.json, translation_data.json, comments_data.json) | 2단계 Step 5 |
@@ -322,7 +324,7 @@ cp templates/* .
 새 프로젝트에서 다음을 확인:
 - [ ] `CLAUDE.md` 파일 존재
 - [ ] `md/` 폴더에 가이드 파일 전체 존재 (목록은 위 '참조 가이드' 표 기준 — 개수는 계속 늘어남)
-- [ ] `scripts/` 폴더에 8개 Python 스크립트(fetch_glossary, fetch_comments, validate_translation, check_gate_report, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
+- [ ] `scripts/` 폴더에 10개 Python 스크립트(fetch_glossary, fetch_comments, validate_translation, check_gate_report, check_wiki_storage, collect_frames, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
 - [ ] `templates/` 폴더에 5개 템플릿 존재
 - [ ] Python 의존성 설치 완료 (`pip list | grep pandas`)
 

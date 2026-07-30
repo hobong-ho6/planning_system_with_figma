@@ -28,6 +28,8 @@ wiki_content.xhtml
 wiki_image_urls.json
 .claude/*
 !.claude/settings.json
+!.claude/agents/
+!.claude/agents/**
 prototype_input.json
 comments_raw.json
 wiki_screen_keys.json

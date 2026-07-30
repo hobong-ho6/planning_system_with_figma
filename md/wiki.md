@@ -191,7 +191,7 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 
 #### ⛔ Screen 표 컬럼 구성 — 4컬럼 고정 (화면명 컬럼 신설 금지)
 
-**Screen 표는 `Screen ID | Screen(이미지) | Description | XLT` 4컬럼만 쓴다.** Screen ID가 화면 식별자이므로 **"화면명"·"프레임명" 같은 별도 컬럼을 만들지 않는다.**
+**Screen 표는 `Screen ID | Screen(이미지) | Description | XLT` 4컬럼만 쓴다.** Screen ID가 화면 식별자이므로 **"화면명"·"프레임명" 같은 별도 컬럼을 만들지 않는다.** (이 규칙은 `scripts/check_wiki_storage.py pre`가 자동 검사한다 — PUT 전 exit 0 확인.)
 
 - ❌ `Screen ID | 화면명 | Screen | Description | XLT` (5컬럼) — **금지**. 2026-07-30 실측 위반: 구 규칙(Screen ID 셀 = Figma 프레임명)에서 신 규칙(구조화 ID)으로 넘어올 때 프레임명을 버리지 못해 별도 컬럼으로 남긴 사례(pageId=4394814893 신규 작성 시). 사용자 지적으로 4컬럼 교정.
 - **Figma 프레임명을 남기고 싶으면** Description 설명문 끝에 `(Figma: <code>프레임명</code>)`로만 병기한다 — 컬럼을 늘리지 않는다. Screen ID 셀에는 넣지 않는다(아래 node-id 병기 금지와 같은 취지).
@@ -272,6 +272,29 @@ for item in screen['items']:
   - 첨부 업로드: 이미지와 동일하게 `POST {BASE}/rest/api/content/{pageId}/child/attachment` (`-F "file=@....xlsx;type=application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"`)
   - 본문 링크(storage): `<ac:link><ri:attachment ri:filename="xlt_output_....xlsx" /><ac:plain-text-link-body><![CDATA[XLT 업로드 엑셀 다운로드]]></ac:plain-text-link-body></ac:link>`
   - 번역이 갱신될 때마다 **최신 엑셀로 재첨부**하고 본문 링크의 파일명을 갱신한다 (이전 첨부는 정리 권장).
+
+#### 대량 프레임 작업 — 읽기 전용 배치 수집 (`scripts/collect_frames.py`, 2026-07-30 신설)
+
+프레임이 여러 개면 Step 3~4의 **읽기 전용 부분**(노드 조회 → 좌표 정규화 → 코멘트 스레드 → 텍스트 매칭 → 이미지 다운로드·어노테이션 렌더)을 배치로 처리한다.
+
+```bash
+FIGMA_TOKEN=$PAT python3 scripts/collect_frames.py {fileKey} "{nodeId},{nodeId},..." --out assets/collected
+# → assets/collected/frames.json + raw_*.png + annotated_*.png
+```
+
+- **효율 근거**: Figma `/comments`는 **파일 전체**를 반환하므로 프레임마다 재호출하면 낭비다. 이 스크립트는 `/nodes`·`/comments`·`/images`를 **각 1회**만 호출한다(프레임 수와 무관).
+- 산출 `frames.json`의 `points[]`·`xlt_targets[]`는 4-B 배치 규칙(매칭 텍스트 좌측 10pt·정책은 핀 위치·정책=빨강/xlt=파랑·겹침 해소)을 이미 적용한 값이며, 어노테이션 이미지도 그 좌표로 렌더된다. **수동 처리와 픽셀 동일함을 실측 검증**(2026-07-30 NEXT Bay 2프레임).
+- **⚠️ 육안 검증은 대체되지 않는다** — 렌더 후 사람이 확인한다(4-B 규칙).
+
+**⛔ 서브에이전트 팬아웃 조건 (병렬화는 여기까지만)**
+
+| 구분 | 병렬 가능 | 이유 |
+|---|:---:|---|
+| 프레임 조회·이미지·어노테이션 렌더 | ✅ (프레임 8~10개 이상일 때만) | 프레임 간 독립. 그 아래는 `collect_frames.py` 단일 실행이 더 빠름(에이전트 기동·프롬프트 주입·취합 비용 > 이득) |
+| 번역(5개 언어)·게이트·위키 PUT·엑셀·커밋 | ❌ **직렬 고정** | 위키는 **라이브 버전 가드**가 필수(실측: 하루 40회+ 버전 상승 — 동시 PUT은 충돌·덮어쓰기) · 번역은 언어 간 일관성(개행·용어집·문장 연결)이 품질의 핵심 · 게이트 판정은 누적 오탐 이력에 의존 · `translation_data.json`·엑셀은 단일 소스 |
+
+- **토큰 격리(필수)**: 팬아웃하는 읽기 전용 에이전트에는 **Figma PAT만** 전달하고 **Confluence PAT는 주지 않는다**(쓰기 권한 격리). 시크릿이 여러 프롬프트로 복제되는 것을 최소화한다.
+- **산출물 계약**: 팬아웃 시에도 각 에이전트가 `collect_frames.py`를 호출해 **동일한 `frames.json` 스키마**로 반환하게 한다(형식이 갈리면 취합에서 비용이 더 든다).
 
 ### Step 4: 이미지 처리 — 모든 화면: 로컬 다운로드 → Confluence 직접 첨부
 
@@ -415,6 +438,17 @@ curl -H "Authorization: Bearer {CONFLUENCE_PAT}" \
   - 2026-07-30 실측 위반: 신규 페이지(pageId=4394814893, space `UNIFI`)에 첨부를 넣으면서 그 페이지 Related Docs에 있던 **다른 스페이스 키 `LINENEXT`** 를 그대로 복사해 이미지 2종·엑셀 1종이 전부 깨졌다. 직전 작업(럭키볼, space `UNIFI`)의 마크업을 관성적으로 재사용한 것이 원인.
   - **다른 페이지의 첨부를 참조해야 할 때만** `<ri:page>`를 쓰고, 그때는 `GET /rest/api/content/{pageId}?expand=space`로 **대상 페이지의 space key를 실제 조회해 확인**한다(Related Docs·본문에 보이는 다른 스페이스 키를 추측해 쓰지 않는다).
   - **검증(필수)**: 첨부 참조를 넣은 뒤 `GET /rest/api/content/{pageId}?expand=body.view`로 렌더 결과를 받아 ⓐ `Unknown Attachment`·`알 수 없는 첨부` 문구가 없고 ⓑ `<img src="/download/attachments/{pageId}/…">`가 실제로 생성됐는지 확인한다. storage에 마크업이 들어간 것만으로는 렌더 성공을 보장하지 못한다.
+  - **⛔ 산출물 검사로 강제 (2026-07-30 신설)**: 위 ⓐ·ⓑ와 Screen 표 4컬럼·URL 이스케이프는 **`scripts/check_wiki_storage.py`가 자동 검사**한다. PUT **직전** `pre`, PUT **직후** `post`를 실행해 **exit 0**을 확인한다 — prose 규칙만으로는 반복 위반이 났기 때문에 통과/실패 산출물로 바꿨다.
+
+```bash
+# PUT 직전: 보낼 storage 검사 (파일 또는 라이브)
+python3 scripts/check_wiki_storage.py pre --file /tmp/body.xml
+CONFLUENCE_PAT=$PAT python3 scripts/check_wiki_storage.py pre --page {pageId}
+# PUT 직후: 실제 렌더 검증
+CONFLUENCE_PAT=$PAT python3 scripts/check_wiki_storage.py post --page {pageId}
+```
+
+  - 다른 페이지 첨부를 **의도적으로** 참조할 때만 `--allow-ri-page`로 ⓑ 검사를 완화한다(그 경우에도 space key 실조회 확인은 필수).
   - 엑셀 등 파일 링크(`<ac:link><ri:attachment …>`)도 **동일 규칙** — `<ri:page>` 없이 파일명만 쓴다.
 
 ---

@@ -22,6 +22,7 @@ from export_to_xlt import create_xlt_excel
 from validate_translation import TranslationValidator
 from patch_translation import apply_translation_patch, load_rows_from_excel
 from check_gate_report import check_gate_report
+from check_wiki_storage import check_storage, check_render
 
 # 용어집 픽스처 (실제 API 응답과 동일한 구조)
 GLOSSARY = {
@@ -182,6 +183,42 @@ complete = (
 check("완결 리포트 → 누락 0건", check_gate_report(complete) == [])
 missing = check_gate_report("# 리포트\n자동 검증 P0 0건 P1 0건 P2 0건\n")
 check(f"불완전 리포트 → 누락 검출 ({len(missing)}건)", len(missing) >= 3)
+
+# --- 6. 위키 storage 규칙 검사기 (md/wiki.md Screen 표·첨부 참조) ---
+print("\n[6] 위키 storage 규칙 검사")
+
+# 2026-07-30 실측 위반 3종 재현 — 5컬럼(화면명) + 첨부 ri:page + URL raw &
+bad_storage = (
+    '<h2>Screen</h2><table><tbody>'
+    '<tr><th>Screen ID</th><th>화면명</th><th>Screen</th><th>Description</th><th>XLT</th></tr>'
+    '<tr><td>reward_main_01</td><td>GL_WEB,LIFF</td><td>'
+    '<ac:image><ri:attachment ri:filename="a.png">'
+    '<ri:page ri:space-key="LINENEXT" ri:content-title="T" /></ri:attachment></ac:image>'
+    '</td></tr></tbody></table>'
+    '<p><ri:url ri:value="https://www.figma.com/design/X?node-id=1-2&t=abc" /></p>'
+)
+v_bad = check_storage(bad_storage)
+check("5컬럼(화면명) 위반 검출", any("금지 컬럼" in v for v in v_bad))
+check("첨부 ri:page 위반 검출", any("ri:page" in v for v in v_bad))
+check("URL raw & 위반 검출", any("이스케이프" in v for v in v_bad))
+
+good_storage = (
+    '<h2>Screen</h2><table><tbody>'
+    '<tr><th>Screen ID</th><th>Screen</th><th>Description</th><th>XLT</th></tr>'
+    '<tr><td>reward_main_01</td><td><ac:image><ri:attachment ri:filename="a.png" /></ac:image></td></tr>'
+    '</tbody></table>'
+    '<p><ri:url ri:value="https://www.figma.com/design/X?node-id=1-2&amp;t=abc" /></p>'
+)
+check("정상 storage → 위반 0건", check_storage(good_storage) == [])
+check("--allow-ri-page 우회 시 ri:page 미검출",
+      not any("ri:page" in v for v in check_storage(bad_storage, allow_ri_page=True)))
+
+check("렌더 실패(Unknown Attachment) 검출",
+      len(check_render("<p>Unknown Attachment</p>", "123")) >= 1)
+check("정상 렌더 → 위반 0건",
+      check_render('<img src="/download/attachments/123/a.png?version=1" />', "123") == [])
+check("타 페이지 첨부 참조 검출",
+      len(check_render('<img src="/download/attachments/999/a.png" />', "123")) >= 1)
 
 # --- 결과 ---
 print(f"\n{'='*40}")
