@@ -15,7 +15,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - **순서**: ① `HANDOFF.md` 읽기 → ② `git status && git log --oneline -5`로 실제 상태 확인 — 핸드오프 기재와 다르면 **그 불일치를 먼저 보고** → ③ `git pull --rebase`(uncommitted 변경이 있으면 pull 전에 알린다) → ④ 한 줄 브리핑·착수 확인 → ⑤ 토큰 요청(아래 토큰 우선 규칙) → ⑥ 실제 작업.
 - **시점**: `HANDOFF.md`는 원격 조회가 아닌 **로컬 문서 읽기**이므로 토큰 우선 규칙의 "사전 탐색 금지"(Figma·Confluence 조회)에 해당하지 않는다 — 토큰 요청보다 먼저 읽는다.
-- **세션 종료 시**: 사용자가 "핸드오프 갱신"·"세션 정리"·"handoff"를 요청하면 `.claude/skills/handoff-update/SKILL.md`의 절차로 갱신하고 커밋·푸시한다. 작성 규칙 정본은 `HANDOFF.md` 머리말 주석이다.
+- **세션 종료 시**: 사용자가 "핸드오프 갱신"·"세션 정리"·"handoff"를 요청하면 `.claude/skills/handoff/SKILL.md`(정본 절차 — WIP 브랜치 보존·갱신 규칙·PC 간 충돌 완화)를 따라 갱신하고 커밋·푸시한다. 이 스킬의 세션 시작 절차는 위 순서와 동일하다.
 
 ### 이 저장소의 원칙
 
