@@ -24,7 +24,7 @@
   - Figma 파일: GOCHAYBS7hIrmWRGNuJOKV (Web3)
   - 절차 문서: `CLAUDE.md`, `md/translate.md`, `md/wiki.md`, `md/OA.md`, `md/check.md`, `md/landpress.md`, `md/IA.md`
   - 용어집: 라이브 **v4.0**(113 terms) — **2026-07-30 사용자 CMS 반영 완료**(API 실측 확인: version 4.0 · terminology 113개 · 신규 `프로필` 등재) · 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
-  - 기획자 가이드: **`dropweb/web3_planning_v9.zip`** — ✅ **2026-07-30 게시 완료**(라이브 = v9 · 용어집 임베드 4.0 = 라이브 일치). 다음 발행은 v10. ⚠️ 최신본 판별은 파일명이 아니라 **푸터 내부 버전+용어집 임베드 버전+mtime**(md/landpress.md §5-1 0단계). `dropweb/`은 `.gitignore` 대상이라 git 미추적 — zip은 채팅 전달이 배포 경로
+  - 기획자 가이드: **`dropweb/web3_planning_v10.zip`** — 2026-08-03 발행, **게시 대기**(라이브는 아직 v9). 용어집 임베드 4.0 = 라이브 일치. 다음 발행은 v11. ⚠️ 최신본 판별은 파일명이 아니라 **푸터 내부 버전+용어집 임베드 버전+mtime**(md/landpress.md §5-1 0단계). `dropweb/`은 `.gitignore` 대상이라 git 미추적 — zip은 채팅 전달이 배포 경로
   - IA 주간 점검: 스케줄 태스크 `weekly-unifi-ia-check`(매주 월 10:00) — 대상 **프로덕션 + Beta(`unifi-web.line-apps-beta.com`, 릴리즈 예정 선반영) + Unifi mini Beta(`?liff_id=2008994547-GfGUdDxy` → `/benefits-mini`)**. 리포트 `reports/ia/`, IA 정본 `md/IA.md`, 매 회차 가이드 zip +1 발행
 - **토큰**: Figma PAT + Confluence PAT — **사용자가 매 세션 채팅으로 제공**(파일/코드에 하드코딩 금지). 착수 전 유효성 검증 필수.
 
@@ -32,7 +32,7 @@
 
 ## 현재 상태
 
-> 마지막 갱신: 2026-07-30 (세션 #3)
+> 마지막 갱신: 2026-08-03 (세션 #5 — IA 주간 점검 #3)
 
 럭키볼 캠페인 위키(4479306980)는 **v147**, 전역 번역표 **75키**(LV 엑셀 75키·UIT 2키 첨부). 팀 **LV**(`mini_luckyball_`·`{0}`) 주. 이번 세션에 **신규 위키 3건**이 늘어 작업 대상이 4개 페이지가 됐다. 게이트(자동+수동 3단계+`check_gate_report.py` exit 0)는 여전히 모든 번역의 차단 조건이고, 리포트 누적 **45건**.
 
@@ -42,7 +42,13 @@
 
 **2026-07-30 세션 #4 — IA 주간 점검 #2 (커밋 `837e2c6`)**: 스케줄 태스크 `weekly-unifi-ia-check`를 실행해 **프로덕션 + Beta + Unifi mini Beta**를 점검했다. ⓐ **`/reward/kaia` KAIA 스테이킹(위임)·Special Contribution Rewards 출시 실측** — #1에서 "공지 예고·화면 미출시"로 이월했던 Kaia CR 미션이 실제 출시(`/boost/kaia`는 `/reward/usdt`로 이전, 부스트 조건에 위임 KAIA 합산) ⓑ **Beta 환경을 상시 점검 범위로 도입** — Beta에 릴리즈 예정 내용이 먼저 들어오므로 매주 프로덕션과 대조(현재 차이: GNB 4탭→**5탭 K-Pick 승격**, 내 자산 액션 **송금하기·입금하기·은행송금 → 보내기·채우기·은행출금**) ⓒ **Unifi mini 최초 직접 실측**(`/benefits-mini` 계열 5종 — 그전까지 위키 스펙에만 의존) ⓓ IA.md `§0-0 점검 환경`·`§2-2-1 부스트·스테이킹` 신설 ⓔ 리포트 `reports/ia/ia_check_report_2026-07-30.md` + 가이드 **v8 → v9** 발행(v9에 「전체 IA 구조」 인터랙티브 표 신설 — 데이터는 `IA_DATA` 배열 한 곳, **`md/IA.md` 변경 시 함께 갱신하는 규칙**을 IA.md 머리말·스케줄 태스크에 신설).
 
-**2026-07-30 마감 상태**: 용어집 **라이브 v4.0**(사용자 CMS 반영, API 실측 확인) · 기획자 가이드 **v9 게시 완료** — 두 창구가 모두 최신이라 팀원이 보는 용어집·IA·절차가 저장소 정본과 일치한다. 다음 IA 점검(#3, 8/03)은 가이드 **v10**으로 발행한다.
+**2026-08-03 세션 #5 — IA 주간 점검 #3 (커밋 `30a98b1`, origin 반영 완료)**: 프로덕션 + Beta + mini Beta 점검. ⓐ **🔴 미션앤리워드 Season 3(8/1~9/1) 개시로 럭키볼 정책 수치가 전면 교체** — 출석 라운드 반복(월 12/24개)·게임 미션 6종 중 3종 **데일리 리셋**(월 30개, 구 "1회성" 정책 폐기)·상금 **5티어**(500/20/5/1/0.02 USDT). **럭키볼 캠페인 위키·XLT에 구 수치("최대 9개" 등)가 남아 있으면 재검토 필요** ⓑ **IA 트리를 3축으로 재정리**(`md/IA.md` §0-0-1 신설) — **환경**(Web·LIFF·Wallet Mode·mini) × **사용자 상태**(로그인·비로그인) × **접속 IP**. 우선순위는 **IP가 환경을 덮어씀**(US·CA·UK·SG → 무조건 Wallet Mode). 라우트별 🟢/🟡/🔴 매트릭스 + 축 조합 실측 커버리지 표 포함 ⓒ **#2 이월 3건 해소** — MY쇼핑 = **외부 GuideKim 이탈**(Screen ID 부여 대상 아님, `kpick_myshopping_01` 제안 폐기) / mini GNB **Assets·My는 풀 모드 화면을 그대로 공유**(이자 표기·어그리게이터 약관까지) / 알림·거래내역 필터 실측 ⓓ 신설 — Beta **「외부 지갑 연결」**(내 자산 ⋮ 메뉴) · Apps **게임 프로모션 캐러셀**·27→30 Apps · mini **Special Missions** ⓔ 리포트 `reports/ia/ia_check_report_2026-08-03.md` + 가이드 **v10** 발행(IA_DATA 70행 갱신·#3 패널·이력 표 최신순 정렬, 브라우저 실동작 검증 완료).
+
+**🔧 서비스측 이슈(보고 대상)**: 로그인 상태 `/benefits/daily-mission`이 **3주 연속 스켈레톤 고착**(7/27 프로덕션 · 7/30·8/3 Beta). 8/3 실측 — 정적 자산·API 모두 **200**(`POST /unifi/v1/mission-users` 포함), **콘솔 에러 0건**인데 UI만 로딩 상태 → **프런트 렌더 이슈** 추정. 같은 라우트가 **비로그인에서는 정상 렌더**.
+
+**⚠️ 정책 충돌 2건(기획 확인 필요)**: ① mini Reward에 **「연 최대 5% 이자」 배너** 실측 — 위키 스펙 "mini 예치금·이자 노출 불가"와 어긋남 ② K-Pick이 **KR IP로 2주 연속 전체 열람** — 구 정책은 버튼 비노출 + 국가 서비스 불가 안내.
+
+**🌐 XLT 부수 발견**: 영문 UI에 한국어 원문 노출 2건 — mini 게임 미션 **"외부 게임 미션"**, 교환 하단 배너 **"지금 AlphaSec에서 KAIA 거래하면 즉시 수수료 0원!"**. XLT 키 부여 누락 여부 확인 권장.
 
 **⚠️ Beta 액션 라벨 개편은 XLT 파급이 크다** — `보내기`·`채우기`·`은행출금`이 프로덕션에 나가면 관련 키 문구가 일괄 영향받는다(용어집 v3.9~v4.0의 `보내기` ja 出金/出金元 개편과 같은 흐름). XLT 작업 시 **대상 환경(프로덕션/Beta)을 먼저 확정**할 것.
 
@@ -51,7 +57,13 @@
 ## 다음 할 일
 
 ### 사용자 액션 대기 (Claude가 할 수 없음)
-- [ ] **P1**: **IA Screen ID 어휘 승인 3건**(`md/IA.md` §4) — ① 보유 NFT `asset_nft_01`→`apps_mypage_nft_01`(대기 결정 유지 중) ② 🆕 `/reward/…` 부스트·스테이킹 어휘(`reward_`가 리워드 탭과 충돌 — `reward_staking_kaia_01` vs 별도 `staking_` 신설) ③ 🆕 K-Pick `kpick_` 확정(GNB 승격+라우트 `/benefits` 겹침). **확정 전까지 해당 영역 Screen ID 부여 금지.**
+- [ ] **P0**: **가이드 `dropweb/web3_planning_v10.zip` 드랍웹 게시** — 라이브가 아직 v9라 팀원이 보는 IA 구조도·리포트가 #2 시점에 머물러 있다. 게시 규격 `md/dropweb-guide.md`(게시는 사용자 몫).
+- [ ] **P1**: **IA Screen ID 어휘 승인 5건**(`md/IA.md` §4) — ① 보유 NFT `asset_nft_01`→`apps_mypage_nft_01`(대기 결정 유지 중) ② `/reward/…` 부스트·스테이킹 어휘(`reward_`가 리워드 탭과 충돌 — `reward_staking_kaia_01` vs 별도 `staking_` 신설) ③ K-Pick `kpick_` 확정(GNB 승격+라우트 `/benefits` 겹침) ④ 🆕 외부 지갑 연결 `asset_wallet_connect_01` ⑤ 🆕 **비로그인 변형 어휘 방식**(홈처럼 구성이 다른 화면에 `home_main_guest_01` 식 별도 ID를 줄지 / 환경 접미 `_wallet`·`_mini`와 표기 통일 여부). **확정 전까지 해당 영역 Screen ID 부여 금지.** ※ `kpick_myshopping_01` 제안은 외부 서비스로 확인돼 **폐기됨**.
+- [ ] **P1**: **미점검 축 조합 실측용 접근 수단 제공**(`md/IA.md` §0-0-1 커버리지 표) — 현재 실측은 **Web·mini × KR IP**뿐이고 **Wallet Mode·LIFF·JP는 전부 위키 스펙 근거**다.
+  ⓐ **프로덕션 로그인** — Chrome에서 `www.unifi.me` 로그인만 해두면 다음 회차 자동 커버(**Claude 직접 로그인 금지**). 이게 풀리면 `/my`·`/setting`·`/notification`·거래내역·NFT·**로그인 게임 미션 노출 여부**·브릿지 상세가 한꺼번에 해소된다
+  ⓑ Wallet Mode(US·CA·UK·SG IP) ⓒ LIFF 링크(LINE 앱) ⓓ JP IP ⓔ approve 미완료 계정 ⓕ mini 비로그인 ⓖ `draw-promotion` 내용(LINE 앱 전용 게이트)
+- [ ] **P1**: **Season 3 수치 반영 검토** — 럭키볼 캠페인 위키(4479306980)·미션앤리워드 관련 페이지에 구 럭키볼 수치가 남아 있는지 확인. IA 점검 범위 밖이라 이번에 위키는 건드리지 않았다.
+- [ ] **P2**: **정책 충돌 2건 기획 확인** — mini 이자 배너 노출 / K-Pick KR IP 정책. **P2**: XLT 한국어 원문 노출 2건 FE·디자이너 확인.
 - [ ] **P1**: **`Mini - 일본`(65280-8215) NEXT Bay 배너 보상 단위 확인** — 화면 전체가 JPYC 기준인데 배너만 `최대 100 USDT`. 원문대로 반영했으나 의도 확인 필요(`gate_report_nextbay_mission_banner.md` d-3).
 - [ ] **P2**: Figma 원문 수정 요청(디자이너) — 위키와 어긋난 2곳(`친구 초대하고 둘 다 럭키볼 받기`·`친구 초대하고 럭키볼 받기` → `친구에게 JPYC 선물하기`), `terms_share_noti` 문구는 Figma에 아예 없음, 그 외 누적 오타. **`figma-source-issues` 에이전트로 전달 목록 생성 가능**.
 - [ ] **P3**: 새 위키 `미션 유형 구분`(4515188588)의 **Figma 링크 전달 시** Related Docs `Design` 행 + Flow 임베드(width 1000) 추가.
@@ -98,6 +110,19 @@
 ---
 
 ## 최근 세션 기록
+
+### 2026-08-03 — 세션 #5: IA 주간 정기 점검 #3 (스케줄 태스크 `weekly-unifi-ia-check`)
+
+- **완료 (git 1커밋 `30a98b1`, origin 반영)**:
+  - **점검 범위**: 프로덕션 비로그인(인앱 375px) `/`·`/reward/kaia`·`/reward/usdt`·`/benefits/daily-mission`·`/benefits/games`(404)·`/apps`·`/apps/market`·`/announcement`+상세·`/my`→로그인 게이트 / Beta 로그인(Chrome) `/`·`/benefits`·`/benefits/daily-mission`·`/my`+⋮메뉴·`/setting`·`/transfer`·`/deposit`·`/notification`·`/apps/trade/swap`·`/my/token/transaction`·`/apps/my-page/nfts` / mini Beta `/benefits-mini`·`/daily-mission`·`/draw-promotion`·`/luckyball-invite`
+  - **`md/IA.md`**: 분석 이력 #3 행 · **§0-0-1 화면 변형 3축 신설**(환경×사용자 상태×IP + 로그인 매트릭스 + 커버리지 표) · §2-2 **Season 3 정책 블록** · §2-2-1 CR 분배 정책 전문·2R 진행 중 · §2-3 `asset_wallet_connect_01` 신설 · §2-4 캐러셀·30 Apps · §2-7 K-Pick/mini 전면 갱신(**`kpick_myshopping_01` 폐기**) · §4 승인 대기 ④⑤ 신설
+  - **리포트** `reports/ia/ia_check_report_2026-08-03.md`(신규 섹션: 5-1 3축 정리 / 6 미점검+필요 접근 수단 12항 / 6-1 해소된 이월 / 6-3 XLT 부수 발견)
+  - **가이드 v10**(v9 베이스, 0단계 판별로 최신본 확인 후) — `IA_DATA` 70행 갱신(로그인 필수/비로그인 차이를 부가표기에 반영) · #3 패널 추가 · 버전 3곳 · **업데이트 이력 표를 최신순으로 정렬**(기존엔 v1~v6 오름차순 + v9·v8·v7 뒤섞임) · 브라우저 실동작 검증(표 70행·필터 70→52·1뎁스 접기 70→57→70·태그 균형·용어집 임베드 파싱 OK)
+- **주의·교훈**:
+  - **비로그인 렌더는 로그인 상태의 근거가 되지 않는다** — 프로덕션 리워드 탭이 Chrome(ko)에서 정상 렌더돼 "로그인 해소"로 착각했으나, `/my`가 로그인 게이트로 튕겨 **프로덕션은 비로그인**임이 드러났다. 로그인 여부는 **`/my` 진입으로 먼저 확정**할 것.
+  - **점검 중 Beta 도메인 접근이 Chrome·인앱 모두 일시 차단**됐다가 새 탭 그룹 생성으로 복구. mini 하위 탐색 중 LINE 앱 유도 다이얼로그의 [OK]가 차단 대상 URL이라 클릭 실패 — 정상 동작.
+  - `.guide_preview/`는 검증용 임시 폴더로 만들고 **검증 후 즉시 삭제**했다(인앱 브라우저가 프로젝트 밖 파일은 정적 스냅샷으로만 열어 스크립트가 안 돌기 때문).
+- **다음 세션 첫 작업**: 사용자 새 지시 대기. IA 점검 #4는 **2026-08-10(월) 10:00** 자동 실행 → 가이드 **v11** 발행.
 
 ### 2026-07-30 — 세션 #3: 위키 4개 페이지 작업 + 규칙·도구·에이전트 체계 구축
 
@@ -166,7 +191,8 @@
 - **파이프라인**: [1] `md/translate.md`(추출·XLT키·5개언어) → [2] `md/prototype.md` → [3] `md/wiki.md`. 최근 세션은 단일 프레임/코멘트 선별 + 위키 Mode B, 그리고 **위키 신규 생성**(`md/wiki.md` '위키 생성 모드') 중심.
 - **게이트(필수)**: 한국어 원문 교정 → `python3 scripts/validate_translation.py`(P0=0) → `md/check.md` 3단계 **전수** 수동 → 게이트 리포트 → `python3 scripts/check_gate_report.py <리포트.md>` **exit 0**. 리포트 45건 누적. P1/P2는 이 데이터에서 **전건 오탐**(용어집 협소 매핑·부분문자열·조사 결합·마침표 정책) — 판정 유지.
 - **위키 편집(필수 절차)**: 라이브 재조회 → 균형 `<tr>` surgical 교체 → **버전 가드**(PUT 직전 재확인) → PUT → **`check_wiki_storage.py` pre/post exit 0**. 첨부 갱신은 `POST .../child/attachment/{id}/data`, 삭제는 `DELETE .../content/{attachmentId}`. History는 **같은 날 1행 병합**.
-- **핵심 산출물**: 위키 전역 번역표(75키)가 실질 정본 · `xlt/xlt_output_{LV,UIT}_20260727.xlsx` · `assets/annotated/*.png` · `oa/` · `gate_report_*.md`(45) · `reports/ia/` · `dropweb/web3_planning_v7.zip`(게시 대기)
+- **핵심 산출물**: 위키 전역 번역표(75키)가 실질 정본 · `xlt/xlt_output_{LV,UIT}_20260727.xlsx` · `assets/annotated/*.png` · `oa/` · `gate_report_*.md`(45) · `reports/ia/`(#1~#3) · `dropweb/web3_planning_v10.zip`(**게시 대기**, 라이브 v9)
+- **IA 점검 루틴**: 매주 월 10:00 자동 실행 → ① 직전 리포트 이월 확인 ② 프로덕션 비로그인 ③ **Beta·mini Beta**(릴리즈 예정 정본) ④ 로그인(가능할 때) ⑤ `md/IA.md` 갱신 ⑥ 리포트 발행(변경 없어도) ⑦ **가이드 zip +1**(`IA_DATA` 동기화 필수) ⑧ 커밋·푸시(`dropweb/`은 `git add` 금지) ⑨ zip·리포트 전달. **상태 변경 액션(위임·출석·뽑기·송금·지갑 연결) 절대 미실행, 직접 로그인 금지.**
 - **스크립트 10종**(`scripts/`): fetch_glossary · fetch_comments(**`build_threads`+`collect_node_boxes` 좌표 정규화 필수**) · validate_translation · check_gate_report · **check_wiki_storage** · **collect_frames** · export_to_xlt · patch_translation · build_prototype_data · test_validation(**scripts 수정 후 필수 실행**)
 - **에이전트 4종**(`.claude/agents/`): `translation-reviewer`(5키 이상·긴 문장·용어집 등재 전) · `glossary-guide-updater`(용어집 버전 상승 시 zip 갱신) · `wiki-policy-auditor`(전 프레임 정책 감사) · `figma-source-issues`(원문 오타 취합). **읽기 전용 3종 / 쓰기는 zip만**. 팬아웃은 8~10프레임 이상 읽기 단계에만.
 - **캐시 금지**: Figma 노드·코멘트, 위키 원문, 용어집 모두 **매 작업 원본 재조회**. 같은 run 안의 파이프라인 핸드오프만 예외.
