@@ -30,6 +30,8 @@ wiki_image_urls.json
 !.claude/settings.json
 !.claude/agents/
 !.claude/agents/**
+!.claude/skills/
+!.claude/skills/**
 prototype_input.json
 comments_raw.json
 wiki_screen_keys.json
