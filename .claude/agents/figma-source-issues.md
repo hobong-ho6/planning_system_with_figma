@@ -15,7 +15,7 @@ model: opus
 
 ## 입력
 
-- 스캔 대상: 기본 `gate_report_*.md` (프로젝트 루트) + `xlt/*_validation_report.md`는 제외(자동 검증 리포트라 원문 교정 정보가 없다)
+- 스캔 대상: 기본 `reports/gate/gate_report_*.md` + `xlt/*_validation_report.md`는 제외(자동 검증 리포트라 원문 교정 정보가 없다)
 - 선택: **Figma 잔존 확인 모드** — 호출자가 `FIGMA_TOKEN`과 fileKey를 주면, 취합한 항목이 **현재 Figma 원문에 아직 남아 있는지** 대조해 `잔존/수정됨/확인불가`로 표시한다. 토큰이 없으면 이 열을 `미확인`으로 둔다
 
 ## 절차
@@ -45,7 +45,7 @@ model: opus
 
 - **Figma 쓰기 금지** — 코멘트 작성·해결·텍스트 수정 금지. 잔존 확인은 `GET /v1/files/.../nodes`만
 - **위키 접근 금지** (이 작업에 필요 없다), Jira 접근 금지
-- `gate_report_*.md`·`md/**`·`translation_data.json`·`scripts/**` **수정 금지** — 너는 읽기만 한다
+- `reports/**`·`md/**`·`translation_data.json`·`scripts/**` **수정 금지** — 너는 읽기만 한다
 - **파일 생성 금지** — 결과를 그대로 반환한다(파일 저장은 메인이 판단)
 - git 명령 금지
 

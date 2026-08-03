@@ -51,7 +51,7 @@
 
 > 마지막 갱신: 2026-08-03 (세션 #5 — IA 주간 점검 #3)
 
-럭키볼 캠페인 위키(4479306980)는 **v147**, 전역 번역표 **75키**(LV 엑셀 75키·UIT 2키 첨부). 팀 **LV**(`mini_luckyball_`·`{0}`) 주. 이번 세션에 **신규 위키 3건**이 늘어 작업 대상이 4개 페이지가 됐다. 게이트(자동+수동 3단계+`check_gate_report.py` exit 0)는 여전히 모든 번역의 차단 조건이고, 리포트 누적 **45건**.
+럭키볼 캠페인 위키(4479306980)는 **v147**, 전역 번역표 **75키**(LV 엑셀 75키·UIT 2키 첨부). 팀 **LV**(`mini_luckyball_`·`{0}`) 주. 이번 세션에 **신규 위키 3건**이 늘어 작업 대상이 4개 페이지가 됐다. 게이트(자동+수동 3단계+`check_gate_report.py` exit 0)는 여전히 모든 번역의 차단 조건이고, 리포트 누적 **46건**(`reports/gate/`).
 
 **2026-07-30 세션 #3 요약**(git 12커밋, origin 최신 `3b28cbe`): ⓐ **럭키볼 위키 v103→v147** — 25034 어노테이션 전면 재정리(좌표 정규화)+유의사항 신규 8키, 문구 개편 4키·invite_banner·terms_share_noti 재번역(72→75키) ⓑ **신규 위키 3건** 작성(Screen ID 규격 첫 적용) ⓒ **규칙 4건 신설** — Screen 표 4컬럼 고정·첨부 `<ri:page>` 금지·위키 생성 규격(Related Docs/Flow 임베드/동명 확인)·가이드 zip 최신 판별 ⓓ **도구 2종**(`check_wiki_storage.py`·`collect_frames.py`) + **에이전트 4종** 신설 ⓔ **용어집 v4.0**(프로필 추가, 선물은 v3.6 중복으로 보류) ⓕ 가이드 **v7** 산출(동작 원리 섹션 신설).
 
@@ -81,7 +81,7 @@
   ⓑ Wallet Mode(US·CA·UK·SG IP) ⓒ LIFF 링크(LINE 앱) ⓓ JP IP ⓔ approve 미완료 계정 ⓕ mini 비로그인 ⓖ `draw-promotion` 내용(LINE 앱 전용 게이트)
 - [ ] **P1**: **Season 3 수치 반영 검토** — 럭키볼 캠페인 위키(4479306980)·미션앤리워드 관련 페이지에 구 럭키볼 수치가 남아 있는지 확인. IA 점검 범위 밖이라 이번에 위키는 건드리지 않았다.
 - [ ] **P2**: **정책 충돌 2건 기획 확인** — mini 이자 배너 노출 / K-Pick KR IP 정책. **P2**: XLT 한국어 원문 노출 2건 FE·디자이너 확인.
-- [ ] **P1**: **`Mini - 일본`(65280-8215) NEXT Bay 배너 보상 단위 확인** — 화면 전체가 JPYC 기준인데 배너만 `최대 100 USDT`. 원문대로 반영했으나 의도 확인 필요(`gate_report_nextbay_mission_banner.md` d-3).
+- [ ] **P1**: **`Mini - 일본`(65280-8215) NEXT Bay 배너 보상 단위 확인** — 화면 전체가 JPYC 기준인데 배너만 `최대 100 USDT`. 원문대로 반영했으나 의도 확인 필요(`reports/gate/gate_report_nextbay_mission_banner.md` d-3).
 - [ ] **P2**: Figma 원문 수정 요청(디자이너) — 위키와 어긋난 2곳(`친구 초대하고 둘 다 럭키볼 받기`·`친구 초대하고 럭키볼 받기` → `친구에게 JPYC 선물하기`), `terms_share_noti` 문구는 Figma에 아예 없음, 그 외 누적 오타. **`figma-source-issues` 에이전트로 전달 목록 생성 가능**.
 - [ ] **P3**: 새 위키 `미션 유형 구분`(4515188588)의 **Figma 링크 전달 시** Related Docs `Design` 행 + Flow 임베드(width 1000) 추가.
 
@@ -206,9 +206,9 @@
 ## 컨텍스트 노트
 
 - **파이프라인**: [1] `md/translate.md`(추출·XLT키·5개언어) → [2] `md/prototype.md` → [3] `md/wiki.md`. 최근 세션은 단일 프레임/코멘트 선별 + 위키 Mode B, 그리고 **위키 신규 생성**(`md/wiki.md` '위키 생성 모드') 중심.
-- **게이트(필수)**: 한국어 원문 교정 → `python3 scripts/validate_translation.py`(P0=0) → `md/check.md` 3단계 **전수** 수동 → 게이트 리포트 → `python3 scripts/check_gate_report.py <리포트.md>` **exit 0**. 리포트 45건 누적. P1/P2는 이 데이터에서 **전건 오탐**(용어집 협소 매핑·부분문자열·조사 결합·마침표 정책) — 판정 유지.
+- **게이트(필수)**: 한국어 원문 교정 → `python3 scripts/validate_translation.py`(P0=0) → `md/check.md` 3단계 **전수** 수동 → 게이트 리포트 → `python3 scripts/check_gate_report.py <리포트.md>` **exit 0**. 리포트 46건 누적(`reports/gate/`). P1/P2는 이 데이터에서 **전건 오탐**(용어집 협소 매핑·부분문자열·조사 결합·마침표 정책) — 판정 유지.
 - **위키 편집(필수 절차)**: 라이브 재조회 → 균형 `<tr>` surgical 교체 → **버전 가드**(PUT 직전 재확인) → PUT → **`check_wiki_storage.py` pre/post exit 0**. 첨부 갱신은 `POST .../child/attachment/{id}/data`, 삭제는 `DELETE .../content/{attachmentId}`. History는 **같은 날 1행 병합**.
-- **핵심 산출물**: 위키 전역 번역표(75키)가 실질 정본 · `xlt/xlt_output_{LV,UIT}_20260727.xlsx` · `assets/annotated/*.png` · `oa/` · `gate_report_*.md`(45) · `reports/ia/`(#1~#3) · `dropweb/web3_planning_v10.zip`(**게시 대기**, 라이브 v9)
+- **핵심 산출물**: 위키 전역 번역표(75키)가 실질 정본 · `xlt/xlt_output_{LV,UIT}_20260727.xlsx` · `assets/annotated/*.png` · `oa/` · `reports/gate/*.md`(46) · `reports/ia/`(#1~#3) · `dropweb/web3_planning_v10.zip`(**게시 대기**, 라이브 v9)
 - **IA 점검 루틴**: 매주 월 10:00 자동 실행 → ① 직전 리포트 이월 확인 ② 프로덕션 비로그인 ③ **Beta·mini Beta**(릴리즈 예정 정본) ④ 로그인(가능할 때) ⑤ `md/IA.md` 갱신 ⑥ 리포트 발행(변경 없어도) ⑦ **가이드 zip +1**(`IA_DATA` 동기화 필수) ⑧ 커밋·푸시(`dropweb/`은 `git add` 금지) ⑨ zip·리포트 전달. **상태 변경 액션(위임·출석·뽑기·송금·지갑 연결) 절대 미실행, 직접 로그인 금지.**
 - **스크립트 10종**(`scripts/`): fetch_glossary · fetch_comments(**`build_threads`+`collect_node_boxes` 좌표 정규화 필수**) · validate_translation · check_gate_report · **check_wiki_storage** · **collect_frames** · export_to_xlt · patch_translation · build_prototype_data · test_validation(**scripts 수정 후 필수 실행**)
 - **에이전트 4종**(`.claude/agents/`): `translation-reviewer`(5키 이상·긴 문장·용어집 등재 전) · `glossary-guide-updater`(용어집 버전 상승 시 zip 갱신) · `wiki-policy-auditor`(전 프레임 정책 감사) · `figma-source-issues`(원문 오타 취합). **읽기 전용 3종 / 쓰기는 zip만**. 팬아웃은 8~10프레임 이상 읽기 단계에만.
