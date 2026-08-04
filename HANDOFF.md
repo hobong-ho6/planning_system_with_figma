@@ -18,7 +18,10 @@
 - **한 줄 설명**: Figma 화면의 XLT 코멘트 문구를 5개 언어로 번역·검증하고 Confluence 위키에 화면/번역/이미지로 반영
 - **주요 경로/저장소**: `/Users/ad03230205/Documents/planning_system_with_figma` · GitHub `hobong-ho6/planning_system_with_figma` (branch main)
 - **관련 링크**:
-  - 작업 위키(주): https://wiki.workers-hub.com/pages/viewpage.action?pageId=4479306980 (럭키볼 친구에게 선물하기 캠페인) — **현재 v147** (2026-07-30)
+  - 작업 위키(주, 2026-08-04~): https://wiki.workers-hub.com/pages/viewpage.action?pageId=4541588845 (**JPYC 럭키볼 시즌 3**) — **현재 v16** · Screen UIT 2 + LV 11 프레임 · 번역표 43키 · `XLT 확인 필요 목록` 9건
+  - 럭키볼 친구에게 선물하기 캠페인: pageId 4479306980 — **v148**, 전역 번역표 75키(LV/UIT 엑셀 첨부)
+  - Mission and Reward 정책 + FAQ: pageId 4368569133 — FAQ 10문항 5개 언어(2026-07-29 신설, 미결정 6건은 '다음 할 일' P2)
+  - XLT 시스템 등록값(**값의 정본**): `~/Downloads/Dapp Portal_WEB BROWSER_v2.6.0_20260804143539.xlsx` (1,578키, git 미추적 — 세션마다 사용자에게 최신 export 요청)
   - 신규 위키 3건(2026-07-30): `4394814893` Next bay 미션앤리워드(v11) · `4515188069` Kaia Wallet > Unifi Mobile 전환 유도(v5) · `4515188588` 미션 유형 구분 (1회성·데일리·게임)(v1, 신규 생성)
   - 부모 페이지(신규 생성 위치): `3910828993` [Hogeun] (space `UNIFI`)
   - Figma 파일: GOCHAYBS7hIrmWRGNuJOKV (Web3)
@@ -49,31 +52,30 @@
 
 ## 현재 상태
 
-> 마지막 갱신: 2026-08-03 (세션 #5 — IA 주간 점검 #3)
+> 마지막 갱신: 2026-08-04 (세션 #6) · 작업 PC `AD03230205ui-iMac.local` · branch `main` · 마지막 커밋 `09e195e`
 
-럭키볼 캠페인 위키(4479306980)는 **v147**, 전역 번역표 **75키**(LV 엑셀 75키·UIT 2키 첨부). 팀 **LV**(`mini_luckyball_`·`{0}`) 주. 이번 세션에 **신규 위키 3건**이 늘어 작업 대상이 4개 페이지가 됐다. 게이트(자동+수동 3단계+`check_gate_report.py` exit 0)는 여전히 모든 번역의 차단 조건이고, 리포트 누적 **46건**(`reports/gate/`).
+**이번 세션의 주 작업 대상은 신규 위키 `JPYC 럭키볼 시즌 3`(pageId **4541588845**, 현재 **v16**)** 이다. 럭키볼 친구초대 캠페인(4479306980, v148·75키)은 이번 세션에 3키 패치만 하고 그대로 뒀다.
 
-**2026-07-30 세션 #3 요약**(git 12커밋, origin 최신 `3b28cbe`): ⓐ **럭키볼 위키 v103→v147** — 25034 어노테이션 전면 재정리(좌표 정규화)+유의사항 신규 8키, 문구 개편 4키·invite_banner·terms_share_noti 재번역(72→75키) ⓑ **신규 위키 3건** 작성(Screen ID 규격 첫 적용) ⓒ **규칙 4건 신설** — Screen 표 4컬럼 고정·첨부 `<ri:page>` 금지·위키 생성 규격(Related Docs/Flow 임베드/동명 확인)·가이드 zip 최신 판별 ⓓ **도구 2종**(`check_wiki_storage.py`·`collect_frames.py`) + **에이전트 4종** 신설 ⓔ **용어집 v4.0**(프로필 추가, 선물은 v3.6 중복으로 보류) ⓕ 가이드 **v7** 산출(동작 원리 섹션 신설).
+**시즌 3 페이지 구성**: `Screen` → **UIT**(프레임 2) + **LV**(`Promotion Page` 6 · `Promotion Page - Popup` 5) = **프레임 11개**, 어노테이션 이미지 13장, **다국어 번역표 43키**, 엑셀 2종(`xlt_output_season3_ALL_20260804.xlsx` 43키 · `..._UIT_...` 5키) + **`XLT 확인 필요 목록`**(남은 9건, 결정 열 비움).
 
-**이번 세션 실수 3건 → 전부 규칙·검사기로 전환**(같은 방식이 재발 방지의 정본): ① Screen 표를 5컬럼(화면명)으로 만듦 ② 첨부 `ri:space-key`에 다른 스페이스(`LINENEXT`)를 관성 복사해 이미지·엑셀이 "알 수 없는 첨부파일"로 깨짐 ③ **가이드 zip 최신본을 파일명·mtime으로 오판**(v4를 최신으로 착각, 실제는 v6) → "가이드가 4버전 밀렸다"는 오진 보고 + v5·v6 변경 빠진 zip 전달(게시 전 회수). ①②는 `check_wiki_storage.py`로, ③은 `md/landpress.md` §5-1 0단계로 차단.
+**⛔ 값의 정본이 바뀌었다 — XLT 시스템 export**: 사용자가 준 `Dapp Portal_WEB BROWSER_v2.6.0_20260804143539.xlsx`(1,578키)를 정본으로 채택했다. 기획 위키·Figma가 구버전인 항목이 다수 확인됨(문구 차이 7건, `md` 게이트 리포트 3차에 기록). **앞으로 기존 키 값을 참조할 때는 기획 문서보다 이 export를 우선**한다(파일은 `~/Downloads`, git 미추적).
 
-**2026-07-30 세션 #4 — IA 주간 점검 #2 (커밋 `837e2c6`)**: 스케줄 태스크 `weekly-unifi-ia-check`를 실행해 **프로덕션 + Beta + Unifi mini Beta**를 점검했다. ⓐ **`/reward/kaia` KAIA 스테이킹(위임)·Special Contribution Rewards 출시 실측** — #1에서 "공지 예고·화면 미출시"로 이월했던 Kaia CR 미션이 실제 출시(`/boost/kaia`는 `/reward/usdt`로 이전, 부스트 조건에 위임 KAIA 합산) ⓑ **Beta 환경을 상시 점검 범위로 도입** — Beta에 릴리즈 예정 내용이 먼저 들어오므로 매주 프로덕션과 대조(현재 차이: GNB 4탭→**5탭 K-Pick 승격**, 내 자산 액션 **송금하기·입금하기·은행송금 → 보내기·채우기·은행출금**) ⓒ **Unifi mini 최초 직접 실측**(`/benefits-mini` 계열 5종 — 그전까지 위키 스펙에만 의존) ⓓ IA.md `§0-0 점검 환경`·`§2-2-1 부스트·스테이킹` 신설 ⓔ 리포트 `reports/ia/ia_check_report_2026-07-30.md` + 가이드 **v8 → v9** 발행(v9에 「전체 IA 구조」 인터랙티브 표 신설 — 데이터는 `IA_DATA` 배열 한 곳, **`md/IA.md` 변경 시 함께 갱신하는 규칙**을 IA.md 머리말·스케줄 태스크에 신설).
+**규칙 3건 신설**(모두 커밋·푸시): ⓐ **Policy 섹션 = `구분 | 설명` 2열 표 1개**(`md/wiki.md`) ⓑ **`채널 팔로우`·`팔로우` → `공식 계정 친구 추가`** 5개 언어 정본 표기(`md/guide.md` §5-1 C + `md/check.md` 패턴 사전) — **용어집 등재는 보류**(실측 일치율 32%) ⓒ 게이트 리포트 저장 위치 `reports/gate/`.
 
-**2026-08-03 세션 #5 — IA 주간 점검 #3 (커밋 `30a98b1`, origin 반영 완료)**: 프로덕션 + Beta + mini Beta 점검. ⓐ **🔴 미션앤리워드 Season 3(8/1~9/1) 개시로 럭키볼 정책 수치가 전면 교체** — 출석 라운드 반복(월 12/24개)·게임 미션 6종 중 3종 **데일리 리셋**(월 30개, 구 "1회성" 정책 폐기)·상금 **5티어**(500/20/5/1/0.02 USDT). **럭키볼 캠페인 위키·XLT에 구 수치("최대 9개" 등)가 남아 있으면 재검토 필요** ⓑ **IA 트리를 3축으로 재정리**(`md/IA.md` §0-0-1 신설) — **환경**(Web·LIFF·Wallet Mode·mini) × **사용자 상태**(로그인·비로그인) × **접속 IP**. 우선순위는 **IP가 환경을 덮어씀**(US·CA·UK·SG → 무조건 Wallet Mode). 라우트별 🟢/🟡/🔴 매트릭스 + 축 조합 실측 커버리지 표 포함 ⓒ **#2 이월 3건 해소** — MY쇼핑 = **외부 GuideKim 이탈**(Screen ID 부여 대상 아님, `kpick_myshopping_01` 제안 폐기) / mini GNB **Assets·My는 풀 모드 화면을 그대로 공유**(이자 표기·어그리게이터 약관까지) / 알림·거래내역 필터 실측 ⓓ 신설 — Beta **「외부 지갑 연결」**(내 자산 ⋮ 메뉴) · Apps **게임 프로모션 캐러셀**·27→30 Apps · mini **Special Missions** ⓔ 리포트 `reports/ia/ia_check_report_2026-08-03.md` + 가이드 **v10** 발행(IA_DATA 70행 갱신·#3 패널·이력 표 최신순 정렬, 브라우저 실동작 검증 완료).
+**저장소 정리**: 루트 파일 **73 → 6개**, 크기 **45M → 28M**(구버전 가이드 zip 7개·용어집 과거 전달본 12건·임시 산출물 삭제, `assets/` 103장·23MB 스크린샷 zip 삭제 — 어노테이션 이미지는 **위키 첨부가 정본**, 재생성은 `scripts/collect_frames.py`). 게이트 리포트 46건을 `reports/gate/`로 이동(현재 **47건**).
 
-**🔧 서비스측 이슈(보고 대상)**: 로그인 상태 `/benefits/daily-mission`이 **3주 연속 스켈레톤 고착**(7/27 프로덕션 · 7/30·8/3 Beta). 8/3 실측 — 정적 자산·API 모두 **200**(`POST /unifi/v1/mission-users` 포함), **콘솔 에러 0건**인데 UI만 로딩 상태 → **프런트 렌더 이슈** 추정. 같은 라우트가 **비로그인에서는 정상 렌더**.
+**스킬·도구**: 핸드오프 스킬을 **`.claude/skills/handoff/`(git 추적) 하나로 단일화**(중복 `handoff-update` 삭제), `.gitignore`에 `.claude/skills/` 예외 추가 → PC 간 `git pull`로 공유. `collect_frames.py` **버그 수정** — Figma `/images`가 콜론 형식 키로 응답하는데 하이픈 형식으로 조회해 **어노테이션 이미지를 매번 조용히 건너뛰던 문제**(`e070ea4`).
 
-**⚠️ 정책 충돌 2건(기획 확인 필요)**: ① mini Reward에 **「연 최대 5% 이자」 배너** 실측 — 위키 스펙 "mini 예치금·이자 노출 불가"와 어긋남 ② K-Pick이 **KR IP로 2주 연속 전체 열람** — 구 정책은 버튼 비노출 + 국가 서비스 불가 안내.
-
-**🌐 XLT 부수 발견**: 영문 UI에 한국어 원문 노출 2건 — mini 게임 미션 **"외부 게임 미션"**, 교환 하단 배너 **"지금 AlphaSec에서 KAIA 거래하면 즉시 수수료 0원!"**. XLT 키 부여 누락 여부 확인 권장.
-
-**⚠️ Beta 액션 라벨 개편은 XLT 파급이 크다** — `보내기`·`채우기`·`은행출금`이 프로덕션에 나가면 관련 키 문구가 일괄 영향받는다(용어집 v3.9~v4.0의 `보내기` ja 出金/出金元 개편과 같은 흐름). XLT 작업 시 **대상 환경(프로덕션/Beta)을 먼저 확정**할 것.
+**캐리오버 이슈(이전 세션 발견, 미해결)**: ⓐ 로그인 `/benefits/daily-mission` **3주 연속 스켈레톤 고착**(API·자산 200, 콘솔 에러 0 → 프런트 렌더 이슈 추정) ⓑ 정책 충돌 2건 — mini 「연 최대 5% 이자」 배너 노출 / K-Pick KR IP 전체 열람 ⓒ 영문 UI에 한국어 원문 노출 2건(mini "외부 게임 미션", 교환 배너) ⓓ **Beta 액션 라벨 개편**(보내기·채우기·은행출금)이 프로덕션에 나가면 XLT 파급 큼 → 작업 시 대상 환경 먼저 확정.
 
 ---
 
 ## 다음 할 일
 
 ### 사용자 액션 대기 (Claude가 할 수 없음)
+- [ ] **P1**: **시즌 3 XLT 시스템 처리 9건**(위키 4541588845 `XLT 확인 필요 목록` = 정본 목록) — ⓐ **신규 등록 5키**(`unifi_promotion_jpyc_btn_oa`·`jpyc_btn_signup`·`jpyc_btn_invite`·`bottomsheet_signup_text3`·`bottomsheet_signup_btn`, 번역은 완료) ⓑ **값 갱신 2키**(`jpyc_info_oa_desc` 문구 변경 · `bottomsheet_signup_text2` — 시스템은 `{0}`·`{1}` 변수, 위키는 금액 하드코딩 → 변수화 검토) ⓒ **값 확인 2건**(`jpyc_info_signup` 이모지 export `??` · `UF_home_jpyc_banner_title` nbsp).
+- [ ] **P1**: **`팔로우` 표기 정리(ⓐ단계)** — XLT 시스템 문구를 `공식 계정 친구 추가`로 통일. 잔존: ko 3키 · ja `フォロー` 2 · ja `友達`→`友だち` 4 · **zh `關注`/`追蹤` 14** · th `ติดตาม` 5 · en `follow` 2. 규칙은 `md/guide.md` §5-1 C·`md/check.md`에 이미 반영. **정리 후 재측정해 용어집 v4.1 등재(ⓒ단계)** — Claude가 before/after 전달표를 만들어 줄 수 있음(미착수).
+- [ ] **P2**: **FAQ 페이지(pageId 4368569133) 미결정 6건** — 2026-07-29 작업분(그간 핸드오프 미기록). 5-A(예산 소진 시 보유 럭키볼 뽑기 불가) 정책 확정 · 3-A OA 발송 시각 표기 · 6-A User tier 기준 수치 공개 · 1-A 회차 기간 명시 · 정본 `16_Unifi FAQ`(3290350532) 이관 카테고리 · **시행 전 게시 금지**.
 - [ ] **P0**: **가이드 `dropweb/web3_planning_v10.zip` 드랍웹 게시** — 라이브가 아직 v9라 팀원이 보는 IA 구조도·리포트가 #2 시점에 머물러 있다. 게시 규격 `md/dropweb-guide.md`(게시는 사용자 몫).
 - [ ] **P1**: **IA Screen ID 어휘 승인 5건**(`md/IA.md` §4) — ① 보유 NFT `asset_nft_01`→`apps_mypage_nft_01`(대기 결정 유지 중) ② `/reward/…` 부스트·스테이킹 어휘(`reward_`가 리워드 탭과 충돌 — `reward_staking_kaia_01` vs 별도 `staking_` 신설) ③ K-Pick `kpick_` 확정(GNB 승격+라우트 `/benefits` 겹침) ④ 🆕 외부 지갑 연결 `asset_wallet_connect_01` ⑤ 🆕 **비로그인 변형 어휘 방식**(홈처럼 구성이 다른 화면에 `home_main_guest_01` 식 별도 ID를 줄지 / 환경 접미 `_wallet`·`_mini`와 표기 통일 여부). **확정 전까지 해당 영역 Screen ID 부여 금지.** ※ `kpick_myshopping_01` 제안은 외부 서비스로 확인돼 **폐기됨**.
 - [ ] **P1**: **미점검 축 조합 실측용 접근 수단 제공**(`md/IA.md` §0-0-1 커버리지 표) — 현재 실측은 **Web·mini × KR IP**뿐이고 **Wallet Mode·LIFF·JP는 전부 위키 스펙 근거**다.
@@ -105,6 +107,9 @@
 
 | 날짜 | 결정 | 이유 |
 |------|------|------|
+| 2026-08-04 | **기존 키 값의 정본 = XLT 시스템 export**(`Dapp Portal_WEB BROWSER v2.6.0`) — 기획 위키·Figma와 다르면 시스템 값 채택 | FE가 실제 사용하는 값. 실측에서 기획 문서가 구버전인 항목 7건 확인(`jpyc_btn1` 문구 전면 변경 등). 커밋 `b656873` |
+| 2026-08-04 | **`채널 팔로우`·`팔로우` → `공식 계정 친구 추가`** (5개 언어 정본 표기 규칙) · **용어집 등재는 보류** | 사용자 확정. 용어집 등재는 실측 일치율 32%(28키 중 19 불일치)로 landpress §4-3 미충족 → 규칙 문서로 강제 후 시스템 정리·재측정. 커밋 `4b186d6` |
+| 2026-08-04 | **핸드오프 스킬 단일화**(`.claude/skills/handoff/`, git 추적) + 게이트 리포트는 `reports/gate/` | 스킬이 계정 스코프·프로젝트에 중복 존재해 트리거 충돌. 스킬·에이전트는 저장소 커밋이 원칙(다른 PC 공유). 커밋 `e94cb50`·`05e8f12` |
 | 2026-08-04 | **Policy 섹션은 `구분 \| 설명` 2열 표 1개로 작성**(소제목·출처 링크·TBD 금지, 설명은 square 불릿 평서체, 행은 사용자 여정 순) | 사용자가 직접 쓴 럭키볼 캠페인(4479306980) Policy가 정본 포맷. Claude가 소제목+출처 병기 형태로 쓰자 사용자가 자기 포맷으로 통일 요청 → `md/wiki.md` 'Policy 섹션 작성 포맷'에 규칙화 |
 | 2026-07-30 | **Screen 표는 4컬럼 고정**(`Screen ID / Screen / Description / XLT`) — 화면명 컬럼 신설 금지 | Screen ID가 화면 식별자. 5컬럼으로 만든 실수를 사용자가 지적 → 규칙+`check_wiki_storage.py`로 강제. 기존 페이지는 현행 구조 유지 |
 | 2026-07-30 | **첨부 참조는 `<ri:attachment ri:filename>` 단독** — `<ri:page>` 금지 | space-key/제목이 한 글자만 어긋나도 "알 수 없는 첨부파일"로 깨진다(다른 스페이스 `LINENEXT` 관성 복사로 실제 발생). 타 페이지 참조 시에만 사용+space key 실조회 |
@@ -128,6 +133,20 @@
 ---
 
 ## 최근 세션 기록
+
+### 2026-08-04 — 세션 #6: 시즌 3 위키 신규 구축(프레임 13개·43키) + XLT 정본 전환 + 저장소·규칙 정리
+
+- **완료 (git 커밋 9건, origin 최신 위 '현재 상태'의 해시)**:
+  - **신규 위키 `JPYC 럭키볼 시즌 3`(4541588845)** 생성 → v16. Related Docs(UNIFY-9579·9577·Slack 2·기획 위키) · Policy(사용자 포맷으로 변환) · Screen **UIT 2 + LV 11 프레임** · 번역표 43키 · 엑셀 2종 · `XLT 확인 필요 목록`(9건)
+  - **XLT 시스템 export를 값 정본으로 전환** — 대기 12키 중 11키 확보, 문구 차이 7건 리스팅, nbsp 1키 정규화. 신규·변경 7키는 이 문서에서 번역(P0=0) + 한국어 원문 교정 3건(UINIFI→Unifi · 채널 팔로우→공식 계정 친구 추가 · JPYC 공백)
+  - **럭키볼 캠페인(4479306980)** 3키 패치(`event_period`·`terms_wallet_fixed`·`terms_jp_excluded`) 5개 언어 + 의도 정정 재번역 → v143, LV 엑셀 v17
+  - **엑셀 포맷 회귀 복구** — `plurals` 시트(A1:G2·`one/other`)를 깨서 XLT 업로드가 실패했다. 원인은 `export_to_xlt.create_xlt_excel`를 우회해 pandas로 직접 생성한 것 → **엑셀은 반드시 정본 스크립트로만 생성**
+  - **규칙 3건**(Policy 포맷 · 팔로우 표기 · 게이트 리포트 위치) · **스킬 단일화** · **`collect_frames` 이미지 누락 버그 수정** · **저장소 정리**(루트 73→6, 45M→28M)
+- **주의/배운 것**:
+  - 위키가 세션 중에도 사용자 편집으로 계속 올라간다(v4→v7→v10→v15) → **PUT 직전 라이브 rebase 필수**(이번에 매번 적용)
+  - `unifi_promotion_*` 키는 기획 문서에 **KR만** 있는 경우가 많다 → 4개 언어는 XLT export에서 확보해야 한다
+  - Figma 코멘트가 `xlt`만 적혀 키명이 없는 핀이 6개 있었다 → 역방향 KR 매칭으로 후보를 제시하고 사용자가 키를 확정하는 흐름이 잘 작동했다
+- **다음 세션 첫 작업**: 위키 `XLT 확인 필요 목록`의 결정 열 확인 → 시스템 등록·값 갱신 반영. 그 다음 `팔로우` 표기 정리 전달표(요청 시).
 
 ### 2026-08-03 — 세션 #5: IA 주간 정기 점검 #3 (스케줄 태스크 `weekly-unifi-ia-check`)
 
@@ -160,54 +179,24 @@
   - **가이드 zip 최신본 오판**(파일명·mtime만 봄) → "4버전 밀림" 오진 + v5·v6 빠진 zip 전달(게시 전 회수) → §5-1 0단계 신설. `glossary-guide-updater`의 잘못된 근거 서술도 정정
 - **다음 세션 첫 작업**: 사용자 새 지시 대기. 착수 = ① HANDOFF 확인 ② 토큰 요청·검증 ③ 원본 새로 조회. **위키 편집 시 `check_wiki_storage.py` pre/post 실행 필수.**
 
-### 2026-07-27 — 세션 #2: 용어집 v3 개편·IA 정본화·위키 문구 개편 + mission 키 정정
+### 2026-07-29 — (누락 보완 기록) Mission and Reward 정책 FAQ 신설 + 럭키볼 3키 패치
 
-- **완료 (git 28커밋, origin 최신 `f125d67`)**:
-  - **용어집 v2.6 → v3.5** (라이브 107 terms): v3.0 통합엑셀 69종 일괄 추가 → v3.1(Passcode·채우기) → v3.2(보내기 ja 出金) → v3.3(`거래 내역`→`거래내역` 붙여쓰기 정본) → v3.4(당첨) → v3.5(당첨금). 보류건 `glossary_pending_review_v3.md`.
-  - **IA 정본화**: `md/IA.md` 신설(제품 3모드 매트릭스·분기 축·탭 노출), 로그인 상태 실측 라우트, **주간 점검 리포트 도입**(`reports/ia/ia_check_report_2026-07-27.md`).
-  - **규칙 신설/강화**: dropweb 가이드 최신화 제안(`d44c875`), 날짜/URL 링크 룰(`d5b613b`), 코멘트 좌표 정규화·어노테이션 번호(`bf70e76`), 패턴 사전 일원화(check.md 정본, `8a78257`).
-  - **위키 문구 개편**: invite_banner '둘 다', `invite_banner_desc` 신규(v74), 초대자 화면 전체(25034) 전수 재확인(P0=0·P1=0), Unifi mini 리워드 컨펌(64314-8894) 신규 키, 25034·25423 개편(**미사용 18키 삭제**). 게이트 리포트 총 30건.
-  - **OA Flex**: 실값·동작 검증 구조 확정, 15건 재생성, **화면별 5개 언어 zip 통합**(`9aad167`).
-  - **mission 키 정정(이번 대화)**: 화면 정의에 없는 orphan 9키 번역표 삭제 + 노란 셀 2키 처리 — `invite_mission`을 "친구 초대 미션"으로 정정(재번역), `invitee_mission` 신규 추가, 하이라이트 제거. 위키 v65/66→v67, 게이트 P0=0·exit 0(`gate_report_luckyball_mission_keys.md`).
-- **이후 변화 / 주의**:
-  - 위키는 세션 #2 이후에도 계속 편집돼 **현재 v103**. 내 v67 대비: `invite_mission` 정정 **유지**, orphan 8키 삭제 **유지**(`max20_desc` 재등장), **`invitee_mission`은 빠짐** → 사용자 결정으로 재추가 안 함.
-  - 라이브 위키 버전이 하루에도 수십 회 오름(동시편집) → **PUT 직전 버전 재확인 필수**.
-  - ~~작업트리 미추적 파일 잔존~~ → **2026-07-30 정리 완료**: `scripts/scripts/`(v2.4 오생성 캐시)·`xlt_validation_temp.xlsx`(82키 옛 검증본) 삭제, `Unifi_App_Screenshot.zip`(22MB 로컬 자산)은 유지하고 `.gitignore`에 등록.
-- **다음 세션 첫 작업**: 사용자 새 지시 대기. 착수 = 토큰 요청·검증 → 원본 새로 조회.
-
-### 2026-07-24 — 세션 #1: 럭키볼 캠페인 위키 대량 구축·반복 업데이트
-
-- **완료 (위키 pageId 4479306980, v1→v35)**:
-  - LV 3개 h4 섹션(Unifi mini·초대자·피초대자) + OA 섹션 + UIT 1건 전면 구축, 전역 번역표 73키, XLT 엑셀 73행 첨부
-  - 프레임 추가/갱신 다수(코멘트 선별 모드, 이미지 ⓝ 어노테이션, Description 정책, 5개 언어 번역·게이트)
-  - **제거**: `초대자 화면 전체`는 40394 이미지로 교체했다가 사용자 요청으로 이전(정책 6핀) 이미지로 리버트 / `Unifi mini 미션완료(30266)` 화면·전용 키 삭제 / `OA친구 추가시(27094)` 화면·첨부(이미지+flex5) 삭제
-  - **교체(기존 행)**: 26224→42345, 25949→41690, 26511 개명(미션완료→가입완료), 26901·26901 타이틀 변경 등
-  - **OA**: 5개 프레임 × 5개 언어 Flex JSON(총 25건, `templates/flex_message_spec.json` 스펙 준수) 생성·첨부, 각 화면 Description에 언어별 링크
-  - **규칙 문서 커밋·푸시**: `md/OA.md` 신규(1b89c13·64e1f1f·ab133a6), `templates/flex_message_spec.json`, `md/wiki.md`·`md/translate.md` 어노테이션·팝업겹침 규칙(2a81173·a327cda), `md/glossary-changelog.md` v2.6(e453864). **origin/main 최신 = a327cda**
-  - **정정**: 36558 voucher_musinsa 오매칭 삭제·prize_won/payout_5min 정정, 36558 Description 정책 누락(선택시 창닫힘·초대자 페이지 이동) 보완
-  - History 15행 → 1행 병합
-- **진행 중 / 중단 지점**:
-  - `63468-39484 OA 추가` 요청은 사용자가 interrupt로 취소(이미 OA에 "피초대자 미션완료시"로 존재). 재요청 없으면 무시.
-  - 마지막 작업: 36558 Description 정책 3개로 정정 완료(v35). 열린 작업 없음.
-- **발견 / 배운 것**:
-  - 위키 편집은 **라이브 재조회 → 균형 `<tr>` 추출로 surgical 교체 → 버전 가드 → PUT**. Confluence가 에디터 저장 시 storage 정규화(div content-wrapper, ri:attachment 내 ri:page). 동시편집으로 버전이 자주 바뀜 → PUT 직전 버전 재확인 필수.
-  - 첨부 **갱신은 `POST .../child/attachment/{id}/data`**(같은 파일명 재-POST는 400). 파일명 유지하면 본문 `ri:filename` 참조 그대로 최신본 렌더. 삭제는 `DELETE .../content/{attachmentId}`(204).
-  - PUT 응답에 제어문자가 섞여 파이썬 파싱이 깨질 때가 있으나 **HTTP 200이면 성공**(재조회로 확인).
-- **다음 세션 첫 작업**:
-  - 사용자 새 지시 대기(대개 "Figma 프레임 URL + 정책/문구/화면 업데이트" 형태). 착수 = 토큰 요청·검증 → 해당 프레임 새로 조회.
-
----
+- 위키 **4368569133**(`Mission and Reward — 예산 관리·1회성 미션·럭키볼 팝업 정책`)에 **FAQ 섹션 신설** — 사내 정본 `16_Unifi FAQ`(3290350532)와 동일 스키마, Q&A **10건** ko 초안 → **5개 언어 번역**(위키 v38). 게이트 2건(`gate_report_luckyball_faq_ko.md`·`_5lang.md`) P0=0.
+- 럭키볼 캠페인 3키 패치·엑셀 포맷 복구는 세션 #6 항목과 이어짐(같은 대화에서 진행).
+- **미결정 6건은 위 '다음 할 일' P2로 이월**(정책 확정·게시 시점 등).
 
 ## 아카이브 요약
 
-(없음)
+- **2026-07-27 세션 #2**: 용어집 v2.6→v3.5 대개편(라이브 107 terms) · `md/IA.md` 정본 신설 + 주간 IA 점검 리포트 도입 · 럭키볼 위키 문구 개편(orphan 18키 삭제) · OA Flex 15건 재생성·화면별 zip 통합.
+- **2026-07-24 세션 #1**: 럭키볼 친구초대 캠페인 위키 대량 구축(v1→v35, 3개 LV 섹션+OA+UIT, 전역 번역표 73키) · `md/OA.md` 신설 · 어노테이션·팝업 겹침 규칙 신설 · History 같은 날 1행 병합 규칙 확립.
 
 ---
 
 ## 컨텍스트 노트
 
 - **파이프라인**: [1] `md/translate.md`(추출·XLT키·5개언어) → [2] `md/prototype.md` → [3] `md/wiki.md`. 최근 세션은 단일 프레임/코멘트 선별 + 위키 Mode B, 그리고 **위키 신규 생성**(`md/wiki.md` '위키 생성 모드') 중심.
-- **게이트(필수)**: 한국어 원문 교정 → `python3 scripts/validate_translation.py`(P0=0) → `md/check.md` 3단계 **전수** 수동 → 게이트 리포트 → `python3 scripts/check_gate_report.py <리포트.md>` **exit 0**. 리포트 46건 누적(`reports/gate/`). P1/P2는 이 데이터에서 **전건 오탐**(용어집 협소 매핑·부분문자열·조사 결합·마침표 정책) — 판정 유지.
+- **엑셀 생성은 반드시 `scripts/export_to_xlt.create_xlt_excel`로만** — pandas로 직접 시트를 만들면 `plurals` 고정 포맷(A1:G2·`one/other`·`Unnamed: 2`)이 깨져 **XLT System 업로드가 실패**한다(2026-08-04 실측·복구).
+- **게이트(필수)**: 한국어 원문 교정 → `python3 scripts/validate_translation.py`(P0=0) → `md/check.md` 3단계 **전수** 수동 → 게이트 리포트 → `python3 scripts/check_gate_report.py <리포트.md>` **exit 0**. 리포트 47건 누적(`reports/gate/`). P1/P2는 이 데이터에서 **전건 오탐**(용어집 협소 매핑·부분문자열·조사 결합·마침표 정책) — 판정 유지.
 - **위키 편집(필수 절차)**: 라이브 재조회 → 균형 `<tr>` surgical 교체 → **버전 가드**(PUT 직전 재확인) → PUT → **`check_wiki_storage.py` pre/post exit 0**. 첨부 갱신은 `POST .../child/attachment/{id}/data`, 삭제는 `DELETE .../content/{attachmentId}`. History는 **같은 날 1행 병합**.
 - **핵심 산출물**: 위키 전역 번역표(75키)가 실질 정본 · `xlt/xlt_output_{LV,UIT}_20260727.xlsx` · `oa/` · `reports/gate/*.md`(46) · `reports/ia/`(#1~#3) · `dropweb/web3_planning_v10.zip`(**게시 대기**, 라이브 v9)
 - **화면 이미지는 로컬에 보관하지 않는다**(2026-08-03 정리) — 어노테이션 이미지는 **위키 첨부가 정본**이고, `assets/`는 삭제했다. 재작업이 필요하면 `scripts/collect_frames.py`로 Figma에서 다시 수집·렌더한다(`assets/`는 실행 시 자동 생성).
