@@ -186,10 +186,13 @@ def collect(file_key: str, node_ids: list, out_dir: str = "assets/collected",
                  "texts": texts, "threads": threads,
                  "points": points, "xlt_targets": targets}
 
-        if with_image and nid in urls and urls[nid]:
+        # /images 응답 키는 콜론 형식(66022:111911)이라 하이픈 형식 node id로는 못 찾는다.
+        # Figma URL은 하이픈 형식을 주므로 두 형태 모두 조회한다(하이픈만 보면 이미지가 조용히 누락됨).
+        img_url = urls.get(nid) or urls.get(nid.replace("-", ":"))
+        if with_image and img_url:
             safe = nid.replace(":", "-")
             raw_p = out / f"raw_{safe}.png"
-            req = urllib.request.Request(urls[nid], headers={"User-Agent": "Mozilla/5.0"})
+            req = urllib.request.Request(img_url, headers={"User-Agent": "Mozilla/5.0"})
             raw_p.write_bytes(urllib.request.urlopen(req, timeout=180).read())
             ann_p = out / f"annotated_{safe}.png"
             overlaps = annotate(raw_p, points, ann_p, scale)
