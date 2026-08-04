@@ -485,6 +485,9 @@ Step 3. ✅ 변경 불필요
 | `피부결과 윤곽` → `피부결, 윤곽` | ⭐ | xlt_output |
 | `포)` → `포함)` (글자 누락) | ⭐ | Unifi WEB BROWSER |
 | 끝에 `\xa0` 잔존 | ⭐ | Unifi WEB BROWSER, sampleformat_UIT |
+| `채널 팔로우`·`팔로우` → **`공식 계정 친구 추가`** (2026-08-04 사용자 확정) | ⭐⭐ | XLT 시스템 v2.6.0 ko 3키(`mini_luckyball_reward_follow_rule`·`mypage_oa_add`·`unifi_promotion_caution_contents3`) |
+| `UINIFI` → `Unifi` (브랜드 표기 오타) | ⭐ | 시즌3 `bottomsheet_signup_text3` |
+| `JPYC선물` → `JPYC 선물` (통화 뒤 명사 붙임) | ⭐ | 시즌3 `bottomsheet_signup_btn` |
 
 ### 컬럼·구조 문제
 
@@ -507,6 +510,8 @@ Step 3. ✅ 변경 불필요
 | **`差別的に支給` → `段階的に支給`/`差等支給`** — '차별적' 부정 뉘앙스 (**심각**) | 의미 검증 사례 (구 validation_guide 부록) |
 | `自動消滅されます` → `自動消滅します` — 자동사 수동태 오용 | 의미 검증 사례 |
 | `500 USDT以상` → `以上` — 한자가 한글 `상`으로 입력된 IME 오타 | 의미 검증 사례 |
+| `フォロー` → **`友だち追加`** (공식 계정 친구 추가) | XLT 시스템 v2.6.0 2키 |
+| `友達`(한자) → **`友だち`**(히라가나 고정) | XLT 시스템 v2.6.0 4키(`ms_popup_oa_*`·`setting_add_features_oa_*`) |
 
 ### zh_TW 표기
 
@@ -522,6 +527,7 @@ Step 3. ✅ 변경 불필요
 | `存款` → `入金` — 단순 입금 행위 (存款=예금/저축) | 의미 검증 사례 |
 | `消失` → `失效`/`作廢` — 리워드/포인트 만료 | 의미 검증 사례 |
 | `100 USDT 以上：最多 5 個` → `100 USDT以上：最多5個` — 불필요 공백 제거 | 의미 검증 사례 |
+| `關注`·`追蹤` → **`加入 … 好友`** (공식 계정 친구 추가) | XLT 시스템 v2.6.0 **14키** — 팔로우 계열이 zh에 가장 많이 잔존 |
 
 ### th_TH 표기
 
@@ -532,6 +538,7 @@ Step 3. ✅ 변경 불필요
 | **용어 혼재 (최빈)**: `ลัคกี้บอล`(정확) / `ลักกี้บอล`(철자 오류) / `ลูกโชคดี`(직역) / `Lucky Ball`(미번역) → `ลัคกี้บอล` 통일 ※ 용어집 등재값은 `ลูกบอลนำโชค` — API 우선 | 의미 검증 사례 (구 validation_guide 부록) |
 | 태국어 문장에 영어 미번역 혼입 (`Lucky Ball` 잔존) | 의미 검증 사례 |
 | '차등' 개념 누락 — `ตามระดับ`/`แบบขั้นบันได` 생략돼 단순 '지급'으로 | 의미 검증 사례 |
+| `ติดตาม` → **`เพิ่ม … เป็นเพื่อน`**/`เพิ่มเพื่อน` (공식 계정 친구 추가) | XLT 시스템 v2.6.0 5키 |
 
 ### en_US 오타·표현
 
@@ -543,6 +550,7 @@ Step 3. ✅ 변경 불필요
 | 단수/복수 (`reward` vs `rewards`) · 관사 누락 (`a temporary network error`) | 의미 검증 사례 |
 | 공식 UI에 과한 구어체 (`You couldn't` → `Failed to`/`Unable to`) | 의미 검증 사례 |
 | `Distribution`(배포) vs `Payment`(지급) — '지급'은 Payment | 의미 검증 사례 |
+| `follow` → **`add … as a friend`**/`stay friends with …` (공식 계정 친구 추가) | XLT 시스템 v2.6.0 — `mypage_oa_add`·`mini_luckyball_reward_follow_rule` |
 
 ---
 
