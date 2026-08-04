@@ -461,3 +461,174 @@ P2 10건은 변동 없음(전건 마침표 정책 오탐, 판정 유지).
 그 밖에 삭제된 정보의 성격: 신규 등록 5키·값 갱신 17건은 XLT 등록·갱신으로 해소(사용자 판단) · mini 키 미부여 4건은 키 확정 후 등록 · Figma 원문 수정 요청 11건(참고 3)은 이 리포트 (1a)에 전문 보존 · `팔로우` 표기 정리 대상(참고 2)은 `md/guide.md` §5-1 C와 HANDOFF 추적 과제에 이미 정본으로 존재.
 
 번역 결과 자체는 변경하지 않았으므로 **자동/수동 검증은 부록 2 결과(P0 0 · P1 65 · P2 10, 전수 47키)를 그대로 승계**한다.
+
+---
+
+# 부록 4 — OA MSG 영역 신설 (v28)
+
+| 항목 | 값 |
+|---|---|
+| 라이브 버전 | v27 → **v28** |
+| 대상 | Figma `(OA)Reward Confirm` = `66048:116857` (페이지 `65923:2485` 직속 자식 18개 중 이름이 `(OA)`로 시작하는 유일 프레임 — 링크 없이 이름으로 특정, 이후 사용자 링크로 동일 노드 확인) |
+| 규칙 정본 | `md/OA.md` — XLT 키 미부여 · 변수 `{{이름}}` · Flex JSON |
+| 산출 | 키 없는 번역표 **5행 × 5개 언어 = 25셀** · 어노테이션 이미지 1장 |
+| 위상 | **`h3 OA MSG`**(UIT·LV와 동급, LV 블록 뒤) — OA는 FE 팀이 아니라 LINE OA 콘솔·Messaging API 발송이라 팀 프리픽스·`{0}` 치환자 규칙이 적용되지 않아 LV 하위에 두면 규칙이 잘못 상속된다 |
+
+## 수집
+
+Figma 코멘트 **0건**(핀 없음)이라 정책 문장을 만들 근거가 없다 — Description에 "발송 조건·시점 정책 미기재"로 명시하고 확정 시 추가하도록 남겼다. 프레임 텍스트 9개 중 채팅 크롬 4개(`9:41`·`Muro Tsuyoshi`·`Today`·`Aa`)를 제외한 **메시지 본문 5개**를 대상으로 삼았다. 어노테이션 ①~⑤는 좌표 기반으로 렌더(겹침 0)하고 **육안 검증** 완료.
+
+## (1a) 한국어 원문 교정 — Figma 원문 → OA 문구 alias
+
+| No | Figma 원문 | OA 반영 문구 | 교정 사유 |
+|---|---|---|---|
+| ① | `미션 당첨금 25JPYC 지급 완료!\n친구에게도 JPYC 선물해보세요!` | `미션 당첨금 {{amount}} JPYC 지급 완료!\n친구에게도 JPYC 선물해보세요!` | 금액 변수화 + `25JPYC` 붙임 → `{{amount}} JPYC`(guide §5-1 숫자+통화 한 칸) |
+| ② | `당첨금 25JPYC가 0x8442...7c8로 지급되었습니다.` | `당첨금 {{amount}} JPYC가 {{wallet_address}} 주소로 지급되었습니다.` | 금액·지갑 주소 변수화 + 붙임 해소. **`주소로` 삽입은 조사 결함 회피** — 아래 참조 |
+| ③ | `바로 이어서 친구에게도␣␣JPYC 선물할 수 있어요. 친구가 가입하고, UINIFI채널을 팔로우 하면 총 2개의 럭키볼이 추가 지급됩니다.` | 화면 키 `unifi_promotion_bottomsheet_signup_text3` 교정본 **재사용** | 이중공백 · `UINIFI`→`Unifi` · `채널을 팔로우 하면`→`LINE 공식 계정 친구 추가하면`(guide §5-1 C) |
+| ④ | `친구에게도 JPYC선물하기` | 화면 키 `unifi_promotion_bottomsheet_signup_btn` 교정본 **재사용** | `JPYC선물` → `JPYC 선물` |
+| ⑤ | `확인하기` | 동일 | 교정 없음 |
+
+> **② 조사 결함 — `주소로` 삽입 근거**: `{{wallet_address}}로`는 치환값 마지막 문자에 따라 `로`/`으로`가 갈린다. 0x 주소 말미는 16진수라 `…7c8`(팔→`로`) · `…7c3`(삼→`으로`) · `…7c0`(영→`으로`)처럼 **런타임에 절반 정도가 비문**이 된다. `{{wallet_address}} 주소로`로 명사를 한 개 넣어 조사를 고정했다. ja(`のアドレスに`) · en(`to`) · th(`ไปยัง`) · zh(`至`)는 조사 굴절이 없어 원문 구조 그대로다. **Figma 원문 수정 요청 항목**으로도 등재 대상이다.
+
+## 변수 (사용자 확정)
+
+| 변수 | 의미 | 등장 | 결정 근거 |
+|---|---|---|---|
+| `{{amount}}` | 당첨 지급 금액(JPYC 단위 숫자, Figma 예시 `25`) | ①·② | 기존 OA 산출물 관례 승계 — `oa/` 실측 `{{amount}}` 100회 사용 |
+| `{{wallet_address}}` | 마스킹 지갑 주소(Figma 예시 `0x8442...7c8`) | ② | 같은 근거 — `{{wallet_address}}` 45회 사용 |
+| ~~`총 2개`~~ | — | ③ | **변수화 안 함(사용자 확정)** — 시즌3 정책상 가입+공식 계정 친구 추가 = 2개 고정이고, 동일 문구의 화면 키 `bottomsheet_signup_text3`도 `총 2개`로 등록돼 있어 변수화하면 화면↔OA 표기가 어긋난다 |
+
+## (a) 자동 검증 — OA 5행
+
+검증 전용 임시 엑셀(`/tmp/oa_validation_temp.xlsx`, 더미 식별자 `OA_no_N`)로 실행했다. **OA는 XLT 키를 부여하지 않으므로 이 엑셀은 첨부·업로드하지 않는다**(`md/OA.md` 규칙 1).
+
+```
+P0 0건 | P1 12건 | P2 2건
+```
+
+## (b) 수동 3단계 — OA 5행 전수
+
+| 단계 | 발견 | 판정 |
+|---|---|---|
+| 1단계 한국어 | ① `25JPYC` 붙임 · ② 붙임 + 조사 결함 · ③ 이중공백·`UINIFI`·`팔로우` · ④ `JPYC선물` | 🔴 **전건 수정** (1a 표) |
+| 1단계 한국어 | `선물해보세요` 보조용언 붙여쓰기 | ✅ 유지 — 서비스 관례(`mini_luckyball_missions_promo` = `받아보세요`)와 일치 |
+| 2단계 용어집 | `당첨금`(en `prize`·ja `当選金`·th `เงินรางวัล`·zh `獎金`) · `미션` · `럭키볼`(ja `ラッキーボール`·th `ลูกบอลนำโชค`·zh `幸運球`) 준수 | ✅ 위반 0 |
+| 2단계 용어집 | 예외 패턴 `JPYC` 대문자 · zh 이형자·간체 · th 자산 동의어 | ✅ 위반 0 |
+| 3단계 다국어 | 변수 `{{amount}}`·`{{wallet_address}}` 5개 언어 보존·어순 조정 | ✅ 불일치 0 |
+| 3단계 다국어 | ⑤ `확인하기` — 기존 OA 3건(`OA친구_추가시`·`가입_완료시`·`럭키볼_뽑았을때`)의 두 번째 버튼과 동일 문구 | ✅ 기존 번역 **재사용**(ja `確認する`·en `Confirm`·th `ยืนยัน`·zh `確認`) — 화면 키 `animation_btn_ok`(`확인`/`OK`/`ตกลง`)와는 문구가 달라 구분 유지 |
+| 3단계 다국어 | ③·④ 문구가 화면 키와 동일 | ✅ 화면 번역 **재사용**(`md/OA.md` 규칙 1 "같은 문구=같은 번역") |
+| 기계 보조 | nbsp · 이중공백 · 숫자+통화 붙임 · `關注`/`ลักกี้บอล`/`フォロー`/`UINIFI`/`팔로우` · `{0}` 혼입 · 빈칸 | ✅ **위반 0** |
+
+## (c) 전건 처리 판정
+
+| 그룹 | 건수 | 판정 |
+|---|---|---|
+| `당첨` → en `win`/th `ถูกรางวัล`/zh `中獎` (①②) | 6 | **오탐** — `prize`·`เงินรางวัล`·`獎金`은 용어집 `당첨금` 등재값 그대로다. 검증기가 `당첨`을 부분일치로 잡은 것 |
+| `완료` → en `Complete`/th `เสร็จ` (①) | 2 | **오탐** — `has been paid`·`เรียบร้อยแล้ว`가 문맥상 정확 |
+| `가입` → en `Sign up` (③) | 1 | **오탐** — `signs up` 굴절(2단어 매칭 실패) |
+| `확인` 다의어 (⑤) | 3 | **확정 오탐 — 재제안 금지**(`md/check.md` 함정 2-1) |
+| P2 마침표 (①④) | 2 | **오탐** — ①은 느낌표 종결 문장, ④는 UI 버튼 라벨이라 마침표 없음이 정본(`md/check.md` B-7) |
+
+## (d) 추가 개선·제안
+
+- **(d-1)** 용어집 보완 권장은 변동 없음(3건 — `종료` zh `結尾`→`結束` · `포이카츠` en·th → `Poi-katsu` · `캠페인` 신규). OA에서 새로 필요한 등재 용어는 없다.
+- **(d-2) 🆕 16번**: Figma OA 원문 `0x8442...7c8로` — 변수화 시 조사(`로`/`으로`)가 런타임에 어긋난다. Figma 원문도 `0x8442...7c8 주소로`로 고쳐 화면·OA 표기를 맞추기를 권장.
+- **(d-2) 🆕 17번**: OA 프레임에 **Figma 코멘트가 0건**이라 발송 조건·시점 정책을 문서화할 수 없었다. 기존 럭키볼 캠페인 OA 4건은 코멘트로 정책이 기재돼 있었다 — 디자이너·기획 코멘트 추가 요청.
+
+## 통과 판정
+
+| 기준 | 결과 |
+|---|---|
+| 자동 P0 = 0 | ✅ 0건 |
+| 수동 P0 = 0 | ✅ 원문 교정 4건 반영 후 0건 |
+| P1/P2 전건 처리 판정 | ✅ P1 12 · P2 2 전건 오탐 판정 |
+| 한국어 원문 교정 · alias | ✅ 5행 alias 표 + 조사 결함 근거 명시 |
+| 전수 점검 | ✅ OA 5행 × 5개 언어 전수 |
+| 격리 검증 | ✅ 전역 번역표 **47키 유지** · OA 문구·`{{변수}}`가 전역 표·XLT 엑셀에 **유입 0건**(`md/OA.md` 규칙 1) |
+| 산출물 | ✅ `check_wiki_storage.py` pre/post exit 0 · 어노테이션 1장 첨부·렌더 정상 |
+
+> **미완 항목**: Flex 메시지 JSON은 `IMAGE_URL`·`ACTION_URL` 2개의 실값이 필요해 **다음 차수**로 넘겼다(사용자 결정 — 위키 섹션 먼저 생성). Description에 TBD 기입칸을 만들어 뒀고, 실값이 채워지면 언어별 5개 JSON + `flex_OA_Reward_Confirm_5lang.zip`을 생성해 같은 Description 셀에 첨부한다.
+
+---
+
+# 부록 5 — OA Flex 메시지 JSON 생성·첨부 (v31)
+
+사용자가 위키 OA Description의 URL 3개를 실값으로 채운 뒤 생성 요청. `md/OA.md` 규칙 3 + 「동작 검증 구조(캠페인 확정형)」로 산출했다.
+
+## 입력 — 위키 Description에서 읽은 URL 실값
+
+Description의 두 ACTION_URL은 브라우저 하이라이트 링크(`~:text=…` + 퍼센트 인코딩)로 붙어 있어 **디코딩해서 사용**했다.
+
+| 필드 | 실값 |
+|---|---|
+| `IMAGE_URL` | `https://vos.line-scdn.net/landpress-content-v2-…/e4183d7094cb4be08f1f9420adddccef.png?updatedAt=1779179421000` |
+| `ACTION_URL_1` (④) | `https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?…&referral_code=1677_SUOAA` |
+| `ACTION_URL_2` (⑤) | `https://miniapp.line.me/unifi/my/token/transaction?…&referral_code=1677_SUOAB` |
+
+## 산출물
+
+`oa/flex_OA_Reward_Confirm_{ko_KR,ja_JP,en_US,th_TH,zh_TW}.json` **5파일** → `oa/flex_OA_Reward_Confirm_5lang.zip`(5,093 bytes)로 묶어 Confluence 첨부(v1), Description에 다운로드 링크 1개(`전체 언어 다운로드 (ko·ja·en·th·zh)`).
+
+구조 매핑: hero = IMAGE_URL(action 미포함) · body 타이틀 = No 1 · body 하위 box = No 2·No 3(줄 단위 별도 text) · footer 버튼1 = No 4(`primary`) · 버튼2 = No 5(`link`).
+
+## 검증 (5파일 전수)
+
+| 항목 | 결과 |
+|---|---|
+| 플레이스홀더 잔존(`{{IMAGE_URL}}`·`{{ACTION_URL*}}`·`TBD`) | ✅ **0건** — 규칙 3의 렌더 거부 요인 없음 |
+| URL 필드 | ✅ 파일당 3/3, 전부 `https://` 실값 |
+| `hero`에 `action` 미포함 | ✅ |
+| 빈 `contents: []` box | ✅ 없음 |
+| 버튼 style `primary`/`link` 순서 | ✅ |
+| 변수 집합 | ✅ 5파일 모두 `{{amount}}`·`{{wallet_address}}`만 |
+| zip 내용 | ✅ 5파일 |
+| 전역 격리 | ✅ 전역 번역표 47키 유지 · OA 문구·변수 유입 0 |
+| storage/렌더 | ✅ `check_wiki_storage.py` pre/post exit 0 |
+
+번역값은 부록 4에서 게이트 통과한 것을 그대로 사용했다(변경 0) — 재검증 불필요.
+
+## (d-2) 🆕 18번 — utm·referral_code 재사용 주의
+
+기입된 두 ACTION_URL은 **럭키볼 친구초대 캠페인 OA(`flex_럭키볼_뽑았을때`)와 완전히 동일**하다 — `utm_campaign=unifi_luckyballreferral` · `utm_content=june_2026` · `referral_code=1677_SUOAA`/`1677_SUOAB`. 시즌3는 2026-08 캠페인이므로 ⓐ `utm_content=june_2026`이 시점과 어긋나고 ⓑ 같은 `referral_code`를 쓰면 **두 OA 메시지의 유입을 구분할 수 없다**. 마케팅 지표를 분리해야 하면 시즌3 전용 utm·referral_code로 교체 후 zip을 재생성하면 된다(파일명 동일 유지 → Description 링크 그대로 최신본 렌더).
+
+- **`md/OA.md` 확인 흐름 권장 미이행**: 규칙은 "ko_KR 1건 먼저 생성 → 사용자 시뮬레이터 확인 → 나머지 언어 일괄"이나, 구조가 이미 검증된 캠페인 확정형이고 URL이 실값이라 5개 언어를 한 번에 생성했다. ko_KR 전문을 대화에 제시했으므로 [Flex Message Simulator](https://developers.line.biz/flex-simulator/) 확인은 사후로 남는다.
+
+---
+
+# 부록 6 — OA ACTION_URL 갱신 반영 (v35, zip v2)
+
+사용자가 Description의 버튼 URL 2개를 **시즌3 전용으로 교체**한 뒤 재생성 요청. 부록 5의 (d-2) 18번(utm·referral_code 재사용 주의)이 **이 교체로 해소**됐다.
+
+| 필드 | before (부록 5) | after (현행) |
+|---|---|---|
+| `IMAGE_URL` | `…/e4183d7094cb…png?updatedAt=1779179421000` | **동일** |
+| `ACTION_URL_1` (④) | `…/benefits-mini/luckyball-invite?utm_campaign=unifi_luckyballreferral&utm_content=june_2026&referral_code=1677_SUOAA` | `…/benefits-mini/draw-promotion?eventId=019fc71c-cefd-7912-8f6f-fb02b6d90068&utm_source=unifi_oa_alarm&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1810_SUOJB` |
+| `ACTION_URL_2` (⑤) | `…/my/token/transaction?utm_…&referral_code=1677_SUOAB` | `https://miniapp.line.me/unifi/my/token/transaction` (쿼리 없는 순수 경로) |
+
+`utm_content`가 `june_2026` → `august_2026`, `utm_campaign`이 `unifi_luckyballreferral` → `unifi_luckyballwelcome`, `referral_code`가 다른 OA와 겹치던 `1677_*` → 전용 `1810_SUOJB`로 바뀌어 **지표 혼입 우려가 해소**됐다.
+
+## 파싱 주의 — Description의 URL 표기가 3가지로 섞여 있다
+
+| No | 위키 마크업 | 처리 |
+|---|---|---|
+| `IMAGE_URL` | `<a href="…">` 정상 링크 | 앵커 텍스트 사용 |
+| `ACTION_URL_1` | `<a href="…">` + 쿼리 구분자가 `&amp;`로 이스케이프 | HTML 엔티티 **언이스케이프** 필수 — 안 하면 `&amp;`가 URL에 그대로 들어가 LINE이 거부 |
+| `ACTION_URL_2` | `<span class="nolink">` (앵커 아님) | 앵커가 없을 때 태그 제거 후 평문 추출 |
+
+부록 5 시점에는 `~:text=` 브라우저 하이라이트 링크(퍼센트 인코딩)도 있었다. 추출기는 이제 **앵커 / `nolink` span / 평문 / `~:text=` / `&amp;`** 5가지를 모두 처리한다. 또한 구분자 앞 대시가 `—`(em dash)와 `-`(hyphen)로 섞여 있어 둘 다 허용한다.
+
+## 산출·검증
+
+- `oa/flex_OA_Reward_Confirm_{5개 언어}.json` 재생성 → `flex_OA_Reward_Confirm_5lang.zip`(5,277 bytes)
+- **같은 파일명으로 첨부 갱신**(`POST .../child/attachment/4541594811/data`) → **v2**. Description 링크는 수정 없이 최신본을 가리킨다(`md/OA.md` 규칙 3).
+- 무결성 5파일 전수: 플레이스홀더·`&amp;`·`~:text=` 잔존 **0** · URL 3/3 순서·값 일치 · `hero.action` 미포함 · 버튼 `primary`/`link` · 빈 `contents` 없음 · 변수 `{{amount}}`·`{{wallet_address}}`만
+- **라운드트립 검증**: 첨부를 다시 내려받아(HTTP 200, 5,277 bytes) zip 5파일의 URL 3개가 모두 반영됐음을 확인
+- `check_wiki_storage.py` pre/post exit 0 · History 행 추가
+
+번역값은 변경 없음(부록 4 게이트 결과 승계). **사용자가 Flex Message Simulator에서 동작 확인 완료.**
+
+## (d-2) 처리 현황 갱신
+
+- **18번(utm·referral_code 재사용) → ✅ 해소** (시즌3 전용 파라미터로 교체)
+- **🆕 19번**: ④ 버튼 라벨은 `친구에게도 JPYC 선물하기`인데 목적지가 `draw-promotion`(뽑기 프로모션)이다. `utm_campaign=unifi_luckyballwelcome`도 웰컴 캠페인 계열이라, 선물하기 랜딩이 `draw-promotion` 경로 안에 있는 구조인지 한 번 확인이 필요하다(의도된 것이면 조치 불필요).
+- **🆕 20번**: ⑤ `확인하기`는 쿼리가 전혀 없어 유입 추적이 안 된다. ④는 전용 `referral_code`가 있으므로, 지표를 맞추려면 ⑤에도 utm·referral_code를 붙이는 편이 일관적이다(의도적 제외면 조치 불필요).

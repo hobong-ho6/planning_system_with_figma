@@ -1,0 +1,74 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/e4183d7094cb4be08f1f9420adddccef.png?updatedAt=1779179421000",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "任務獎金 {{amount}} JPYC 發放完成！\n也把 JPYC 送給好友吧！",
+        "weight": "bold",
+        "size": "lg",
+        "wrap": true
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "獎金 {{amount}} JPYC 已發放至 {{wallet_address}}。",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "您可以接著把 JPYC 送給好友。好友完成註冊並加入 Unifi LINE 官方帳號好友後，將額外發放共 2 顆幸運球。",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "primary",
+        "color": "#000000",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "也送好友 JPYC",
+          "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/draw-promotion?eventId=019fc71c-cefd-7912-8f6f-fb02b6d90068&utm_source=unifi_oa_alarm&utm_medium=cta&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1810_SUOJB"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "color": "#000000",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "確認",
+          "uri": "https://miniapp.line.me/unifi/my/token/transaction"
+        }
+      }
+    ]
+  }
+}

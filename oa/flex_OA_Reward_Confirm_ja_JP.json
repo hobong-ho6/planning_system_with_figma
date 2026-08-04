@@ -1,0 +1,74 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/e4183d7094cb4be08f1f9420adddccef.png?updatedAt=1779179421000",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "ミッション当選金 {{amount}} JPYCの支給が完了しました！\n友だちにもJPYCをプレゼントしてみましょう！",
+        "weight": "bold",
+        "size": "lg",
+        "wrap": true
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "当選金 {{amount}} JPYCが{{wallet_address}}のアドレスに支給されました。",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "続けて友だちにもJPYCをプレゼントできます。友だちが登録し、Unifi LINE公式アカウントを友だち追加すると、合計2個のラッキーボールが追加で支給されます。",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "primary",
+        "color": "#000000",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "友だちにもJPYCをプレゼントする",
+          "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/draw-promotion?eventId=019fc71c-cefd-7912-8f6f-fb02b6d90068&utm_source=unifi_oa_alarm&utm_medium=cta&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1810_SUOJB"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "color": "#000000",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "確認する",
+          "uri": "https://miniapp.line.me/unifi/my/token/transaction"
+        }
+      }
+    ]
+  }
+}

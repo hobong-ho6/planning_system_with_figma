@@ -1,0 +1,74 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/e4183d7094cb4be08f1f9420adddccef.png?updatedAt=1779179421000",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "Your {{amount}} JPYC mission prize has been paid!\nGift JPYC to your friends too!",
+        "weight": "bold",
+        "size": "lg",
+        "wrap": true
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "Your {{amount}} JPYC prize has been paid to {{wallet_address}}.",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "You can gift JPYC to your friends right away. When your friend signs up and adds Unifi's LINE Official Account as a friend, you get 2 more Lucky Balls in total.",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "primary",
+        "color": "#000000",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "Gift JPYC to a friend",
+          "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/draw-promotion?eventId=019fc71c-cefd-7912-8f6f-fb02b6d90068&utm_source=unifi_oa_alarm&utm_medium=cta&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1810_SUOJB"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "color": "#000000",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "Confirm",
+          "uri": "https://miniapp.line.me/unifi/my/token/transaction"
+        }
+      }
+    ]
+  }
+}
