@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "미션 당첨금 {{amount}} JPYC 지급 완료!\n친구에게도 JPYC 선물해보세요!",
+        "text": "미션 당첨금 {{total_amount}} JPYC 지급 완료!\n친구에게도 JPYC 선물해보세요!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "당첨금 {{amount}} JPYC가 {{wallet_address}} 주소로 지급되었습니다.",
+            "text": "당첨금 {{total_amount}} JPYC가 {{wallet_address}} 주소로 지급되었습니다.",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -55,7 +55,7 @@
         "action": {
           "type": "uri",
           "label": "친구에게도 JPYC 선물하기",
-          "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?&utm_source=unifi_oa_alarm&utm_medium=cta&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1810_SUOJB"
+          "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?utm_source=unifi_oa_alarm&utm_medium=cta&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1810_SUOJB"
         }
       },
       {

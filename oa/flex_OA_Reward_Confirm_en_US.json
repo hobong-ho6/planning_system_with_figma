@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "Your {{amount}} JPYC mission prize has been paid!\nGift JPYC to your friends too!",
+        "text": "Your {{total_amount}} JPYC mission prize has been paid!\nGift JPYC to your friends too!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "Your {{amount}} JPYC prize has been paid to {{wallet_address}}.",
+            "text": "Your {{total_amount}} JPYC prize has been paid to {{wallet_address}}.",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -55,7 +55,7 @@
         "action": {
           "type": "uri",
           "label": "Gift JPYC to a friend",
-          "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?&utm_source=unifi_oa_alarm&utm_medium=cta&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1810_SUOJB"
+          "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?utm_source=unifi_oa_alarm&utm_medium=cta&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1810_SUOJB"
         }
       },
       {
