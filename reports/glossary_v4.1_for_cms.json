@@ -10,8 +10,8 @@
       "th_TH"
     ],
     "created_at": "2026-05-13T15:30:00+09:00",
-    "description": "v4.1: OA(LINE 공식계정) 메시지 전용 변수 영역 `oa_variables` 신설. 당첨금 총액 변수를 {{amount}} → {{total_amount}}로 확정하고 앞으로 {{total_amount}}를 쓴다(2026-08-05 사용자 확정, 시즌3 OA Reward Confirm 적용). OA는 XLT 키를 부여하지 않는 영역이라 화면 XLT의 인덱스 치환자({0}/{{0}})와 구분해 관리한다. terminology 113·exceptions 9는 v4.0에서 변경 없음. v4.0 누적본.",
-    "total_terms": 113,
+    "description": "v4.1: ⓐ OA(LINE 공식계정) 메시지 전용 변수 영역 `oa_variables` 신설 — 당첨금 총액 변수를 {{amount}} → {{total_amount}}로 확정하고 앞으로 {{total_amount}}를 쓴다(2026-08-05 사용자 확정). OA는 XLT 키를 부여하지 않는 영역이라 화면 XLT의 인덱스 치환자({0}/{{0}})와 구분해 관리한다. ⓑ 종료 zh_TW 교정: 結尾(글의 맺음말) → 結束 — 등재값 자체가 오역이었다. ⓒ 포이카츠 en_US·th_TH: point activity·การสะสมแต้ม → Poi-katsu — 실제 번역이 이미 음차 표기를 쓰고 있어 등재값을 실사용에 맞췄다(zh_TW 點數活動은 이번 범위 밖). ⓓ 캠페인 신규 등재(campaign/キャンペーン/แคมเปญ/活動). ⓑ~ⓓ 실측: P1 63 → 58건(-5), 신규 P1 0건. v4.0 누적본.",
+    "total_terms": 114,
     "last_updated": "2026-08-05",
     "total_exceptions": 9,
     "total_oa_variables": 2
@@ -353,7 +353,7 @@
       "ja_JP": "終了",
       "ko_KR": "종료",
       "th_TH": "สิ้นสุด",
-      "zh_TW": "結尾"
+      "zh_TW": "結束"
     },
     "지갑": {
       "en_US": "wallet",
@@ -685,10 +685,10 @@
       "zh_TW": "最低價格"
     },
     "포이카츠": {
-      "en_US": "point activity",
+      "en_US": "Poi-katsu",
       "ja_JP": "ポイ活",
       "ko_KR": "포이카츠",
-      "th_TH": "การสะสมแต้ม",
+      "th_TH": "Poi-katsu",
       "zh_TW": "點數活動"
     },
     "회원가입": {
@@ -935,6 +935,13 @@
       "ko_KR": "출금 (거래내역 유형 라벨)",
       "th_TH": "ส่งแล้ว",
       "zh_TW": "出金"
+    },
+    "캠페인": {
+      "en_US": "campaign",
+      "ja_JP": "キャンペーン",
+      "ko_KR": "캠페인",
+      "th_TH": "แคมเปญ",
+      "zh_TW": "活動"
     }
   },
   "oa_variables": [
