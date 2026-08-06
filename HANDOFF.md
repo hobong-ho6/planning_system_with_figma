@@ -30,8 +30,8 @@
   - 부모 페이지(신규 생성 위치): `3910828993` [Hogeun] (space `UNIFI`)
   - Figma 파일: `GOCHAYBS7hIrmWRGNuJOKV` (Web3) · 시즌3 페이지 `65923:2485`
   - 절차 문서: `CLAUDE.md`, `md/translate.md`, `md/wiki.md`, `md/OA.md`, `md/check.md`, `md/landpress.md`, `md/IA.md`
-  - 용어집: **라이브 v4.4**(115 terms · 9 exceptions · `oa_variables` 2 · **`deprecated_terms` 12종 + `context` 필드 4건**) — **2026-08-06 CMS 반영 완료**(API 조회로 확인). 붙여넣기용 보관본 `reports/glossary_v4.4_for_cms.json`. 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
-  - 기획자 가이드: **`dropweb/web3_planning_v18.zip`** — **라이브는 v16**(2026-08-06 사용자 게시 완료). **v17·v18은 전달 완료·게시 대기**이며 **v18만 게시**하면 v17 내용(용어집 v4.4 금지 목록)까지 포함된다. v18 변경점: **용어집 버전 이력(요약 표 + 카드 9장)을 접이식으로**. ⚠ 최신본 판별은 파일명이 아니라 **푸터 내부 버전+용어집 임베드 버전+mtime**(`md/landpress.md` §5-1 0단계). `dropweb/`은 `.gitignore` 대상이라 **채팅 전달이 유일한 배포 경로**
+  - 용어집: **라이브 v4.3**(115 terms · `deprecated_terms` 9종) — API 조회로 확인. **v4.4·v4.5는 CMS 반영 대기**(v4.5에 v4.4 누적 — **`reports/glossary_v4.5_for_cms.json` 하나만 붙여넣으면 된다**). v4.4=금지어 2종+`context` 필드 / v4.5=**`월렛`→`지갑`**. 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
+  - 기획자 가이드: **`dropweb/web3_planning_v19.zip`** — **라이브는 v16**(2026-08-06 게시 완료). **v17~v19 전달 완료·게시 대기**이며 **v19만 게시**하면 v17·v18 내용까지 포함된다. v18=용어집 이력 접이식 · v19=용어집 v4.5. ⚠ 최신본 판별은 파일명이 아니라 **푸터 내부 버전+용어집 임베드 버전+mtime**(`md/landpress.md` §5-1 0단계). `dropweb/`은 `.gitignore` 대상이라 **채팅 전달이 유일한 배포 경로**
   - IA 주간 점검: 스케줄 태스크 `weekly-unifi-ia-check`(매주 월 10:00) — 프로덕션 + Beta + mini Beta. 리포트 `reports/ia/`
 - **토큰**: Figma PAT + Confluence PAT — **사용자가 매 세션 채팅으로 제공**(파일/코드에 하드코딩 금지). 착수 전 유효성 검증 필수.
 
@@ -94,9 +94,9 @@
 ### 사용자 액션 대기 (Claude가 할 수 없음)
 - [x] ~~**P0**: 용어집 v4.1 CMS 붙여넣기~~ — **완료**(라이브는 그 뒤 v4.3까지 반영됨).
 - [ ] **P0**: **용어집 v4.4 CMS 붙여넣기** — 라이브는 **v4.3**(API 확인). 붙여넣을 전체 JSON은 `reports/glossary_v4.4_for_cms.json`(deprecated 12종 + `context` 필드 4건). API 읽기 전용이라 **사용자만 반영 가능**(`md/landpress.md`).
-- [x] ~~**P0**: 용어집 v4.4 CMS 반영~~ — **완료**(2026-08-06, API 조회로 라이브 v4.4 확인).
-- [x] ~~**P0**: 가이드 zip 갱신~~ — **완료**(v14~v18 갱신·전달, 라이브 **v16** 게시 완료).
-- [ ] **P0**: **가이드 `dropweb/web3_planning_v18.zip` 게시** — 라이브 v16 대비 **2단계**. **v18만 게시**하면 v17(용어집 v4.4 금지 목록) 내용도 포함된다. **게시는 사용자가 수행**한다.
+- [ ] **P0**: **용어집 v4.5 CMS 반영** — 라이브는 **v4.3**이고 **v4.4·v4.5가 대기**다. v4.5에 v4.4가 누적돼 있어 **`reports/glossary_v4.5_for_cms.json` 하나만** 붙여넣으면 된다. ⚠️ 2026-08-06 세션 #11이 「v4.4 반영 완료」로 잘못 기재했던 것을 정정한 항목이다(실제 확인한 건 v4.3 반영이었다).
+- [x] ~~**P0**: 가이드 zip 갱신~~ — **완료**(v14~v19 갱신·전달, 라이브 **v16** 게시 완료).
+- [ ] **P0**: **가이드 `dropweb/web3_planning_v19.zip` 게시** — 라이브 v16 대비 **3단계**. **v19만 게시**하면 v17·v18 내용도 포함된다. **게시는 사용자가 수행**한다.
 - [x] ~~**P1**: 시즌3 「꼭 확인해 주세요」 XLT 키 할당~~ — **완료**(2026-08-06 세션 #11). 유의사항 8건에 **재사용 6키 + 신규 5키** 부여, 번역표 57키.
 - [ ] **P1**: **신규 OA `(OA)mission complete` URL 변경 시 3곳 세트 갱신** — 현재 zip **v3**로 위키 Description URL과 5파일 URI가 **문자열 단위 일치**. `IMAGE_URL`·`ACTION_URL_1`이 또 바뀌면 **위키 표·JSON 5개·zip을 세트로** 갱신하고 재다운로드 라운드트립으로 대조한다(`md/OA.md` §3-1). 세션 #10에서만 **2회 갱신**이 발생했다.
 - [ ] **P2**: **Figma 코멘트 보완** — `(Promotion) info Case` 4번 핀에만 `xlt key = unifi_promotion_info_already_member` 답글이 없다(1~3번은 있음).
@@ -108,7 +108,7 @@
   ⓔ **OA ④ `referral_code=1810_SUOJB` 고정값** — 프로덕션 발송 시 전 수신자가 이 코드로 집계된다(빈 파라미터는 제거 완료)
 - [ ] **P1**: **시즌3 잔여 번역 개선 7건** (`gate_report_season3_decisions_8.md` §4-3 M-1·M-4~M-10) — ko `미션하고`(ⓑ 결정으로 **유보**) · ja/zh 당첨 어형 2종 분기 · th `100% 당첨` 3종 · th `공식 계정` 3종 · **개행 정책**(형제 키가 상반 처리) · zh `中獎率` 의미 변형 · zh 청유형에 `？`. **ko 변경은 XLT 시스템 등록값 갱신이 선행**되어야 한다.
 - [ ] **P1**: **`포이카츠` zh 결정** — 등재값 `點數活動` vs 실제 번역 `集點活動`(text8c)·`Poi-katsu 集點活動`(text8d)로 **zh 내부에서도 분기**. ⓐ 번역을 등재값에 맞추기 ⓑ 등재값을 `集點活動`으로 ⓒ en·th처럼 `Poi-katsu` 음차 통일 중 택일. (en·th는 v4.1에서 `Poi-katsu`로 확정됨)
-- [ ] **P1**: **XLT 시스템 구 표기 17키 정리** — 2026-08-06 export(1,596키) **실측**: **zh 9**(`關注` 8·`追蹤` 3, 최다) · **ko 7** · **ja 6**(`友達` 4 포함) · th 3 · en 2 (중복 제외 16키 + 파생). `mypage_oa_add`는 **5개 언어 전부**가 대상이고, `..._bottomsheet_oafollow_text2`와 `..._jpyc_bottomsheet_oafollow_text2`는 **문구가 동일**해 키 중복 정리 후보다. **용어집 v4.4 금지어 검사는 신규 유입만 막는다** — 기존 등록값 정리가 이 항목이다. 상세는 `md/glossary-changelog.md` v4.4 항목.
+- [ ] **P1**: **XLT 시스템 구 표기 17키 정리** — 2026-08-06 export(1,596키) **실측**: **zh 9**(`關注` 8·`追蹤` 3, 최다) · **ko 7** · **ja 6**(`友達` 4 포함) · th 3 · en 2 (중복 제외 16키 + 파생). `mypage_oa_add`는 **5개 언어 전부**가 대상이고, `..._bottomsheet_oafollow_text2`와 `..._jpyc_bottomsheet_oafollow_text2`는 **문구가 동일**해 키 중복 정리 후보다. **용어집 v4.4 금지어 검사는 신규 유입만 막는다** — 기존 등록값 정리가 이 항목이다. 상세는 `md/glossary-changelog.md` v4.4 항목. **추가로 ko `월렛` 13건**(v4.5 등재로 검출 가능해짐) — `launching_promotion_*` 6 · `oa_promotion*` 5 등 Dapp Portal 계열 구 문구.
 - [x] ~~**P1**: 시즌3 릴리즈 버전 확정 시 Lucky Ball 마스터 두 곳 갱신~~ — **완료**(2026-08-06 세션 #13). Release History 8행은 사용자가 이미 `[PL] Unifi v1.6.6`으로 채웠고 Summary 제목도 **`v1.6.6`으로 확정**(사용자 선택).
 - [ ] **P1**: **Next bay 릴리즈 버전 확정 시** Mission and Reward 마스터(`4368568387`) **Release History 9행 Version 칸**(현재 문서 제목만 있고 버전 없음) + **Summary 버전 9 제목 `[PL] Unifi (버전 미정)`** 두 곳 갱신. **2026-08-06 확인 결과 여전히 미확정**이라 `(버전 미정)` 유지가 맞다.
 - [ ] **P1**: **`[Plan] EN/UK/CA/SG 분기`(4244669494) 미확정 7건** — #6 서비스명 표기(`Unifi MINI`/`Unifi Mini`, 마케팅 시안 후) · #7 Wallet Mode 약관 별도 제공 · #8 공지사항 별도 운영 · #13 접속 IP 기준만으로 제한 · **#10·11·12는 택일**(SkyFlag·Sentbe 연동: unifi 도메인 하위 path / IAB·외부 브라우저 / 기존 채널 동의 허용). 배경 = 동일 기기에서 **IAB·LIFF·MINI가 세션 쿠키를 공유**해 한쪽 로그인/로그아웃이 전체에 영향. (#3·#4·#5는 완료)
@@ -210,7 +210,7 @@
 
 - 커밋 1건 `081c725` — `deprecated_terms` 신규 2종(ja `友達`→`友だち` · ko `공식계정`→`공식 계정`) + **`context` 필드 신설**(같은 셀에 지정 문자열이 있을 때만 구 표기로 판정 → zh `關注`/`追蹤`·th `ติดตาม`·en `follow` 오탐 8건 제거, en은 단어 경계 매칭)
 - 계기: 사용자가 **XLT export 전체(1,596키 · 2026-08-06)** 를 제공해 잔존 실태 검토 — v4.3 목록 21건 중 8건이 오탐이었고 잡아야 할 2종이 누락돼 있었다
-- ※ 상세는 `md/glossary-changelog.md` v4.4 항목 참조. **CMS 반영 완료**(2026-08-06, API로 라이브 v4.4 확인).
+- ※ 상세는 `md/glossary-changelog.md` v4.4 항목 참조. **CMS 반영 대기**(라이브 v4.3).
 
 ### 2026-08-05~06 — 세션 #11: 비실시간 추가 개선 + 시즌3 Promotion page + 용어집 v4.2·v4.3 (**HANDOFF 미갱신 — 커밋 로그 기준**)
 
