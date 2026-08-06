@@ -268,6 +268,31 @@ class TranslationValidator:
                                 'detail': f"{lang}: '{ko_term}' → '{correct_trans}' 권장"
                             })
 
+            # 구 표기(deprecated) 검사 — 용어집 `deprecated_terms` 영역 (2026-08-06 신설)
+            # terminology는 ko→5개 언어 정합만 보므로 ko 자체의 구 표기(`OA 팔로우` 등)를
+            # 잡지 못한다. 구(phrase)로 terminology에 등재하는 안은 A/B 실측에서
+            # P1 230→266(+36)으로 기각됐다. 금지→권장 매핑을 별도 영역으로 두고 여기서 검사한다.
+            for dep in self.glossary.get('deprecated_terms', []):
+                if not dep.get('active', True):
+                    continue
+                lang = dep.get('lang', 'ko_KR')
+                text = ko_text if lang == 'ko_KR' else str(row.get(lang, ''))
+                if not text or dep['pattern'] not in text:
+                    continue
+                # 최장일치 — 더 긴 금지 표현이 같은 자리에 걸리면 짧은 쪽은 건너뛴다
+                # (`OA 팔로우`가 잡혔으면 `팔로우`는 중복 보고하지 않는다)
+                if any(o is not dep and o.get('active', True)
+                       and o.get('lang', 'ko_KR') == lang
+                       and dep['pattern'] in o['pattern'] and dep['pattern'] != o['pattern']
+                       and o['pattern'] in text
+                       for o in self.glossary['deprecated_terms']):
+                    continue
+                self.issues['P1'].append({
+                    'key': key,
+                    'issue': '구 표기',
+                    'detail': f"{lang}: '{dep['pattern']}' → '{dep['recommend']}' 권장"
+                })
+
         print(f"✓ 용어집 검증 완료")
 
     def validate_step3_other_languages(self):
