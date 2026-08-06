@@ -18,17 +18,19 @@
 - **한 줄 설명**: Figma 화면의 XLT 코멘트 문구를 5개 언어로 번역·검증하고 Confluence 위키에 화면/번역/이미지로 반영
 - **주요 경로/저장소**: **PC마다 다르다** — `AL02359162.local`은 `/Users/user/Documents/planning_system_with_figma`, `AD03230205ui-iMac.local`은 `/Users/ad03230205/…`. GitHub `hobong-ho6/planning_system_with_figma` (branch main)
 - **관련 링크**:
-  - 작업 위키(주, 2026-08-04~): https://wiki.workers-hub.com/pages/viewpage.action?pageId=4541588845 (**JPYC 럭키볼 시즌 3**) — **현재 v52**(2026-08-06) · Screen UIT 2 + LV(mini 2 · Promotion Page 6 · Popup 4) + OA MSG **2** = **프레임 16개** · 번역표 **47키** · 엑셀 3종(ALL v14·LV v6·UIT v11) · OA Flex zip 2종(`Reward_Confirm` v4 · **`mission_complete` 신규**)
-  - **마스터 페이지 4종**(2026-08-05 Summary 정합 완료 — Release History 행 ↔ Summary 블록 1:1):
-    `4368569057` [Master] Lucky Ball Promotion(v8, 6↔6) · `4368568387` [Master] Mission and Reward(v16, 9↔9) · `4386238705` [Master] Unifi mini(v5, 3↔3) · `4386238738` [Master] Wallet Mode(v3, 2↔2)
-  - 럭키볼 친구에게 선물하기 캠페인: `4479306980` — v148, 전역 번역표 75키
+  - 작업 위키(주, 2026-08-04~): https://wiki.workers-hub.com/pages/viewpage.action?pageId=4541588845 (**JPYC 럭키볼 시즌 3**) — **현재 v63**(2026-08-06) · Screen UIT 2 + LV(mini 2 · Promotion Page 6 · Popup 4) + OA MSG **2** = **프레임 16개** · 번역표 47키 + `(Promotion) Promotion page` **신규 5키**(재사용 6키) · OA Flex zip 2종(`Reward_Confirm` v4 · `mission_complete` v3)
+  - **마스터 페이지 4종**(**2026-08-06 재정합 완료** — Release History 데이터 행 ↔ Summary `<h3>버전 N` 블록 1:1):
+    `4368569057` [Master] Lucky Ball Promotion(**v13, 8↔8**) · `4368568387` [Master] Mission and Reward(v16, 9↔9) · `4386238705` [Master] Unifi mini(**v9, 3↔3**) · `4386238738` [Master] Wallet Mode(v3, 2↔2)
+  - 럭키볼 친구에게 선물하기 캠페인: `4479306980` — v149, 전역 번역표 75키
+  - **비실시간 지급 2부작**(Lucky Ball 마스터 Release History 6·7행): `4541600637` 럭키볼 친구초대 프로모션 리워드 비실시간 지급 변경(v10, `[PL] Unifi v1.6.4.1`) · `4540065229` **…비실시간 지급 변경 후 추가 개선**(v10, `[PL] Unifi v1.6.6` — Jira 티켓 없음)
+  - `4479295382` **K-Pick 노출 정책**(v10) — mini 마스터 Release History 2행의 하위 문서. K-Pick 노출 조건의 **최신 정본**(②To-be)
   - Mission and Reward 정책 + FAQ: `4368569133` — v39, FAQ 10문항 5개 언어(미결정 6건은 '다음 할 일' P2)
-  - XLT 시스템 등록값(**값의 정본**): `~/Downloads/Dapp Portal_WEB BROWSER_v2.6.0_20260804143539.xlsx` (1,578키, git 미추적 — 세션마다 사용자에게 최신 export 요청)
+  - XLT 시스템 등록값(**값의 정본**): `~/Downloads/Dapp Portal_WEB BROWSER_v2.6.0_20260806154000.xlsx` (**1,596키 · 2026-08-06 export**, git 미추적 — 세션마다 사용자에게 최신 export 요청)
   - 기타 위키: `4394814893` Next bay 미션앤리워드(v12) · `4515188069` Kaia Wallet > Unifi Mobile 전환 유도 · `4515188588` 미션 유형 구분 · `4402623039` 7월 JPYC - 예치 골드럭키볼 · `4251435406` [Screen]Wallet Mode · `4244669494` [Plan] EN/UK/CA/SG 분기
   - 부모 페이지(신규 생성 위치): `3910828993` [Hogeun] (space `UNIFI`)
   - Figma 파일: `GOCHAYBS7hIrmWRGNuJOKV` (Web3) · 시즌3 페이지 `65923:2485`
   - 절차 문서: `CLAUDE.md`, `md/translate.md`, `md/wiki.md`, `md/OA.md`, `md/check.md`, `md/landpress.md`, `md/IA.md`
-  - 용어집: **라이브 v4.1**(114 terms · 9 exceptions · `oa_variables` 2종) — 2026-08-06 CMS 반영 확인 완료. 붙여넣기용 전체 JSON 보관본 `reports/glossary_v4.1_for_cms.json`. 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
+  - 용어집: **라이브 v4.3**(115 terms · 9 exceptions · `oa_variables` 2 · **`deprecated_terms` 9종**) — API 조회로 확인. **v4.4는 CMS 반영 대기**(deprecated 12종 + **`context` 필드 4건** — 같은 단어의 다른 뜻 오탐 제거). 붙여넣기용 보관본 `reports/glossary_v4.4_for_cms.json`. 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
   - 기획자 가이드: **`dropweb/web3_planning_v13.zip`** — 2026-08-05 발행, **게시 대기**(라이브는 아직 **v9** → 네 단계 밀림, v13에 v10~v12 내용 포함). **⛔ v11·v12는 폐기 — 게시 금지**(v12는 구 v4.1(113 terms) 임베드). ⚠ 최신본 판별은 파일명이 아니라 **푸터 내부 버전+용어집 임베드 버전+mtime**(`md/landpress.md` §5-1 0단계). `dropweb/`은 `.gitignore` 대상이라 **채팅 전달이 유일한 배포 경로**
   - IA 주간 점검: 스케줄 태스크 `weekly-unifi-ia-check`(매주 월 10:00) — 프로덕션 + Beta + mini Beta. 리포트 `reports/ia/`
 - **토큰**: Figma PAT + Confluence PAT — **사용자가 매 세션 채팅으로 제공**(파일/코드에 하드코딩 금지). 착수 전 유효성 검증 필수.
@@ -69,34 +71,30 @@
 
 ## 현재 상태
 
-> 마지막 갱신: 2026-08-06 (세션 #10) · 작업 PC **`AL02359162.local`**(세션 #8까지는 `AD03230205ui-iMac.local` — **PC가 바뀌었다**) · branch `main` · 세션 작업분 **`2d5f935`**(위키 반영) · `595ef15`(어노테이션 재렌더 + OA URL) · `b6b5f93`(OA URL `?&` 제거) · **핸드오프 본문 커밋 `fd5d30c`** — 그 뒤에 이 해시를 적는 **후속 커밋 1개가 HEAD**다(정상, 불일치 아님)
+> 마지막 갱신: 2026-08-06 (**세션 #13**) · 작업 PC **`AL02359162.local`** · branch `main` · HEAD **`081c725`**(= **병렬 세션 #12**의 용어집 v4.4 커밋) · **이번 세션은 위키 PUT만이라 로컬 커밋이 없다**(산출물이 원격 위키에만 존재)
 
-**진행 중 작업(WIP)**: **없음.** 작업 트리 clean, 미푸시 커밋 0건.
+**진행 중 작업(WIP)**: **없음.** 작업 트리 clean, 원격과 동기.
 
-**⚠️ 같은 시간대에 다른 세션이 병렬로 돌았다.** 세션 #10(시즌3 위키) 작업 중 원격에 `4bd7fa4`·`8827957`(비실시간 지급 위키 + 스크립트 개선)이 11:04~11:05에 들어왔다. **세션 #9는 HANDOFF를 갱신하지 않았다** — 그 내용은 아래 세션 기록에 커밋 로그 기준으로 요약해 둔다.
+**⚠️ 세션 #11·#12가 HANDOFF를 갱신하지 않았다** — 커밋 로그 기준으로 아래 세션 기록에 요약해 둔다. 세션 #13(이번) 착수 시 HANDOFF는 **5커밋 뒤처져 있었고**, 작업 중(15:44~15:46) 같은 PC의 **다른 세션이 용어집 v4.4를 편집·커밋**했다. **그 변경분은 손대지 않았다**(내 작업분이 아니므로 `git add` 대상에서 제외).
 
-**시즌3 위키를 v47 → v56으로 올렸다** — Figma 섹션 `Updated Fram`(66482-9678) 5프레임 + `(Promotion) info Case`. **핵심은 당첨금 지급 시점이 「즉시(최대 5분 내)」→「2주 이내」로 뒤집힌 것**이다(2026-08-05 확정을 번복).
-- **변경 2키** `unifi_promotion_info_signup_desc`·`unifi_promotion_bottomsheet_signup_text2` 5개 언어 재번역
-- **신규 1키** `unifi_promotion_info_already_member` — info Case에 4번째 케이스가 신설돼 부여(사용자 결정)
-- **삭제 1키** `mini_luckyball_already_member` — 사용자가 `(Promotion) Unifi Member`·`(Popup) Unifi member` 화면을 삭제해 orphan이 됨(승인 후 삭제). 「이미 회원」 안내는 신규 키로 **일원화**
-- **신규 OA** `(OA)mission complete` — Flex JSON 5개 언어 + zip 첨부(**v3**). 번역표 **47키**(48 → 47), 엑셀 ALL v14·LV v6·UIT v11
-- **어노테이션 4건 재렌더**(각 v3) — `collect_frames.py` 개선본(`4bd7fa4`)으로 핀이 글자를 덮지 않게 회피. **OA `ACTION_URL_1`은 2회 갱신**(`referral_code` `1813_SUOJG` + 빈 파라미터 `?&` 제거)돼 그때마다 JSON·zip을 맞추고 라운드트립 검증
+**이번 세션(#13) — 마스터 페이지 정합 2종 + 오타 1건, 전부 위키 반영:**
+- **`[Master] Lucky Ball Promotion` v12 → v13** — Release History **8행 ↔ Summary 7블록**으로 1블록 부족했다(사용자가 7행을 삽입해 번호가 밀린 것). **Summary 버전 7 신설**(`v1.6.6` / 비실시간 지급 변경 **후 추가 개선** — `4540065229` Policy 4항목 요약) + 기존 시즌3 블록을 **버전 8**로 이동 + 제목 `(버전 미정)` → **`v1.6.6` 확정**
+- **`[Master] Unifi mini` v7 → v9** — 이미 3↔3 정합이어서 **v6→v7 storage diff로 사용자의 직전 편집을 특정**했다(Release History 2행에 `K-Pick 노출 정책` 하위 링크 추가). Summary 버전 2의 `LIFF/Web(JP Only)` 구 서술을 갱신하고, 이어서 **K-Pick 노출 조건을 ①As-is → ②To-be 이력 형태로 재정리**(사용자 지시)
+- **`K-Pick 노출 정책` v9 → v10** — Policy 오타 `K-Pick 탭 내애` → **`내에`**
+- 3페이지 모두 **라이브 재조회 → 무결성 가드 → 버전 가드 → PUT → `check_wiki_storage.py` pre/post** 순서 준수
 
-**OA 2건은 병행 운영이다(사용자 확정)** — `(OA)mission complete`=**미션 완료 시** 발송(지급 예정 안내) / `(OA)Reward Confirm`=**당첨금이 실제 지급될 때** 발송(지급 완료 통보). 대체가 아니다.
+**용어집이 v4.1 → v4.3(라이브) → v4.4(대기)로 올라갔다.** 라이브는 API 조회로 **v4.3**(115 terms · `deprecated_terms` 9종) 확인. **v4.4가 CMS 반영 대기**이며 세 단계(v4.2·v4.3·v4.4)가 누적됐으므로 **가이드 zip 동반 갱신이 필수**다(`md/landpress.md` §5-1).
 
-**용어집 v4.1이 라이브에 반영됐다**(API 조회로 확인 — 114 terms · 9 exceptions · `oa_variables` 2종). 세션 #8의 P0 「CMS 붙여넣기」는 **완료**.
-
-**검증기 최장일치 개선(`4bd7fa4`)이 P1 오탐을 크게 줄였다** — 시즌3 47키 기준 P1 53건. 남은 `당첨` 19건은 ko에 `당첨금`이 아니라 `당첨`만 있는 행이라 최장일치와 무관한 별개 오탐이다.
-
-**캐리오버 이슈(미해결)**: ⓐ 로그인 `/benefits/daily-mission` 스켈레톤 고착 ⓑ 정책 충돌 2건(mini 이자 배너 / K-Pick KR IP) ⓒ 영문 UI에 한국어 원문 노출 2건 ⓓ Beta 액션 라벨 개편이 프로덕션에 나가면 XLT 파급 큼.
+**캐리오버 이슈(미해결)**: ⓐ 로그인 `/benefits/daily-mission` 스켈레톤 고착 ⓑ **정책 충돌 1건**(mini 이자 배너) — **K-Pick KR IP 건은 세션 #13에서 해소**(마스터에 ①→② 이력으로 최신성 명시) ⓒ 영문 UI에 한국어 원문 노출 2건 ⓓ Beta 액션 라벨 개편이 프로덕션에 나가면 XLT 파급 큼.
 
 ---
 
 ## 다음 할 일
 
 ### 사용자 액션 대기 (Claude가 할 수 없음)
-- [x] ~~**P0**: 용어집 v4.1 CMS 붙여넣기~~ — **완료**(2026-08-06 세션 #10에서 API 조회로 라이브 v4.1 확인).
-- [ ] **P0**: **가이드 `dropweb/web3_planning_v13.zip` 드랍웹 게시** — 라이브가 v9라 **네 단계** 밀려 있다(**2026-08-06 미확인** — 게시 여부 재확인 필요). **v13만 게시**하면 된다(v10~v12 내용 포함). **⛔ v11·v12는 폐기 — 게시 금지**. 게시 규격 `md/dropweb-guide.md`. **zip은 git 미추적이라 채팅 전달본이 유일한 사본**이다.
+- [x] ~~**P0**: 용어집 v4.1 CMS 붙여넣기~~ — **완료**(라이브는 그 뒤 v4.3까지 반영됨).
+- [ ] **P0**: **용어집 v4.4 CMS 붙여넣기** — 라이브는 **v4.3**(API 확인). 붙여넣을 전체 JSON은 `reports/glossary_v4.4_for_cms.json`(deprecated 12종 + `context` 필드 4건). API 읽기 전용이라 **사용자만 반영 가능**(`md/landpress.md`).
+- [ ] **P0**: **가이드 zip 갱신 + 드랍웹 게시** — 용어집이 **v4.1 → v4.4로 세 단계** 올랐으므로 **가이드 zip 동반 갱신이 "제안"이 아니라 필수**다(`md/landpress.md` §5-1 — 갱신 4곳: 이력 표·전체 용어 표·수치 표기·임베드 JSON). 현행 최신은 `dropweb/web3_planning_v13.zip`(라이브 v9 — **2026-08-06 미확인**). **⛔ v11·v12는 폐기 — 게시 금지**. **zip은 git 미추적이라 채팅 전달본이 유일한 사본**이고 **게시는 사용자가 수행**한다.
 - [ ] **P1**: **시즌3 「꼭 확인해 주세요」 콘텐츠 확정 시 XLT 키 할당 요청 예정**(사용자 명시) — 유의사항 8개 항목이 화면에 노출되는데 **전부 XLT 키 미부여**다. 확정 전까지 **화면 내 정책 충돌**(위쪽 `info_signup_desc`=「2주 이내」 vs 유의사항 5번=「즉시 지급」)을 **재보고하지 않는다**.
 - [ ] **P1**: **신규 OA `(OA)mission complete` URL 변경 시 3곳 세트 갱신** — 현재 zip **v3**로 위키 Description URL과 5파일 URI가 **문자열 단위 일치**. `IMAGE_URL`·`ACTION_URL_1`이 또 바뀌면 **위키 표·JSON 5개·zip을 세트로** 갱신하고 재다운로드 라운드트립으로 대조한다(`md/OA.md` §3-1). 세션 #10에서만 **2회 갱신**이 발생했다.
 - [ ] **P2**: **Figma 코멘트 보완** — `(Promotion) info Case` 4번 핀에만 `xlt key = unifi_promotion_info_already_member` 답글이 없다(1~3번은 있음).
@@ -109,17 +107,19 @@
 - [ ] **P1**: **시즌3 잔여 번역 개선 7건** (`gate_report_season3_decisions_8.md` §4-3 M-1·M-4~M-10) — ko `미션하고`(ⓑ 결정으로 **유보**) · ja/zh 당첨 어형 2종 분기 · th `100% 당첨` 3종 · th `공식 계정` 3종 · **개행 정책**(형제 키가 상반 처리) · zh `中獎率` 의미 변형 · zh 청유형에 `？`. **ko 변경은 XLT 시스템 등록값 갱신이 선행**되어야 한다.
 - [ ] **P1**: **`포이카츠` zh 결정** — 등재값 `點數活動` vs 실제 번역 `集點活動`(text8c)·`Poi-katsu 集點活動`(text8d)로 **zh 내부에서도 분기**. ⓐ 번역을 등재값에 맞추기 ⓑ 등재값을 `集點活動`으로 ⓒ en·th처럼 `Poi-katsu` 음차 통일 중 택일. (en·th는 v4.1에서 `Poi-katsu`로 확정됨)
 - [ ] **P1**: **`팔로우` 표기 정리(ⓐ단계)** — XLT 시스템 문구를 `공식 계정 친구 추가`로 통일. 잔존: ko 3키 · ja `フォロー` 2 · ja `友達`→`友だち` 4 · **zh `關注`/`追蹤` 14**(시즌3에서 2키는 정리됨) · th `ติดตาม` 5 · en `follow` 2. 정리 후 재측정해 용어집 등재(ⓒ단계).
-- [ ] **P1**: **시즌3 릴리즈 버전 확정 시** Lucky Ball 마스터 Release History 6행 Version 칸 + Summary 제목 `[PL] Unifi (버전 미정)` 두 곳 갱신. **Next bay(Mission and Reward 9행)도 동일**(현재 미확정).
+- [x] ~~**P1**: 시즌3 릴리즈 버전 확정 시 Lucky Ball 마스터 두 곳 갱신~~ — **완료**(2026-08-06 세션 #13). Release History 8행은 사용자가 이미 `[PL] Unifi v1.6.6`으로 채웠고 Summary 제목도 **`v1.6.6`으로 확정**(사용자 선택).
+- [ ] **P1**: **Next bay 릴리즈 버전 확정 시** Mission and Reward 마스터(`4368568387`) **Release History 9행 Version 칸**(현재 문서 제목만 있고 버전 없음) + **Summary 버전 9 제목 `[PL] Unifi (버전 미정)`** 두 곳 갱신. **2026-08-06 확인 결과 여전히 미확정**이라 `(버전 미정)` 유지가 맞다.
 - [ ] **P1**: **`[Plan] EN/UK/CA/SG 분기`(4244669494) 미확정 7건** — #6 서비스명 표기(`Unifi MINI`/`Unifi Mini`, 마케팅 시안 후) · #7 Wallet Mode 약관 별도 제공 · #8 공지사항 별도 운영 · #13 접속 IP 기준만으로 제한 · **#10·11·12는 택일**(SkyFlag·Sentbe 연동: unifi 도메인 하위 path / IAB·외부 브라우저 / 기존 채널 동의 허용). 배경 = 동일 기기에서 **IAB·LIFF·MINI가 세션 쿠키를 공유**해 한쪽 로그인/로그아웃이 전체에 영향. (#3·#4·#5는 완료)
 - [ ] **P2**: **FAQ 페이지(4368569133) 미결정 6건** — 5-A 예산 소진 시 뽑기 불가 정책 · 3-A OA 발송 시각 · 6-A User tier 수치 공개 · 1-A 회차 기간 명시 · 정본 `16_Unifi FAQ`(3290350532) 이관 카테고리 · **시행 전 게시 금지**.
 - [ ] **P1**: **IA Screen ID 어휘 승인 5건**(`md/IA.md` §4) — ① 보유 NFT `asset_nft_01`→`apps_mypage_nft_01` ② `/reward/…` 부스트·스테이킹 어휘 ③ K-Pick `kpick_` 확정 ④ 외부 지갑 연결 `asset_wallet_connect_01` ⑤ 비로그인 변형 어휘 방식. **확정 전까지 해당 영역 Screen ID 부여 금지.**
 - [ ] **P1**: **미점검 축 조합 실측용 접근 수단**(`md/IA.md` §0-0-1) — 실측은 Web·mini × KR IP뿐. ⓐ **프로덕션 로그인**(Chrome에서 `www.unifi.me` 로그인만 해두면 다음 회차 자동 커버, **Claude 직접 로그인 금지**) ⓑ Wallet Mode(US·CA·UK·SG IP) ⓒ LIFF 링크 ⓓ JP IP ⓔ approve 미완료 계정 ⓕ mini 비로그인 ⓖ `draw-promotion`.
 - [ ] **P1**: **`Mini - 일본`(65280-8215) NEXT Bay 배너 보상 단위** — 화면 전체가 JPYC인데 배너만 `최대 100 USDT`. Mission and Reward 마스터 버전 9에도 확인 항목으로 기재.
-- [ ] **P2**: 정책 충돌 2건(mini 이자 배너 / K-Pick KR IP) · XLT 한국어 원문 노출 2건 FE·디자이너 확인.
+- [ ] **P2**: 정책 충돌 **1건**(mini 이자 배너) · XLT 한국어 원문 노출 2건 FE·디자이너 확인. — **K-Pick KR IP 건은 종결**(아래 '사용자 결정으로 종결' 참조).
 - [ ] **P2**: **Figma 원문 수정 요청(디자이너)** — 누적 **19건**. ⓐ 시즌3 12건은 `gate_report_season3_screen_reconcile.md` (1a)에 전문 보존(`종료된 캠페인 입니다` 3곳 · `가입이 완료 됐어요!` · `UINIFI채널을 팔로우` · `JPYC선물하기` · nbsp · `최대 60만엔` · OA `0x8442...7c8로` 조사 결함 · OA 프레임 코멘트 0건 등) ⓑ **감사 신규 7건**은 `reports/audit/wiki_policy_audit_season3_2026-08-05.md` §3 — 키 구버전 2(`jpyc_btn1`→`jpyc_btn_signup` · `unifi_text8a`→`jpyc_unifi_text8a`) · **`팃`(한글 IME 켠 채 `xlt` 입력)** · mini Login x에 xlt 마커 추가 2 · **프레임명 `(Promotion)`→`(Popup)` 2**(`Has no DA Score`·`Abuser`) · `Has no DA Score` 정책 코멘트 보완. `figma-source-issues` 에이전트로 취합 가능.
 
 ### Claude 실행 대기 (승인 시 진행)
 - [ ] **P2**: **IA 구조도 화면 미리보기 검토** — 「전체 IA 구조」 표의 메뉴명 마우스 오버 시 화면 캡처. 검토점: 캡처 수집 방법 · **zip 용량**(현재 2.87MB) · 로그인·상태 변경 화면 대체 표기 · **촬영 일자 표기 + 갱신 주기**.
+- [ ] **P2**: **`md/wiki.md`에 「마스터 페이지 갱신」 절차 신설 여부** — 세션 #13에서 두 번 유용했던 방법을 규칙화할지 결정한다: ⓐ **정합 판정** = `Release History` 데이터 행 수(`<td class="numberingColumn">` 개수) vs Summary `<h3>버전 N` 블록 수, 앵커는 `<h1>Release History</h1>` ⓑ **이미 정합인데 "업데이트" 요청을 받으면** 라이브 storage와 **직전 버전(`?status=historical&version=N-1`)을 diff**해 사용자의 마지막 편집을 특정하고 그 편집이 요구하는 Summary 변경을 반영한다(mini는 이 방법으로 `K-Pick 노출 정책` 링크 추가를 찾아냈다) ⓒ 참조 문서가 **구·신으로 갈리면 같은 블록 안에서 ①As-is → ②To-be 이력**으로 배치한다. 현재 CLAUDE.md 컨텍스트 노트에 정합 규칙만 한 줄 있다.
 - [ ] **P2**: **`md/wiki.md:260` 규칙 vs 관행 정리** — 규칙은 순수 `xlt` 마커 루트도 Description에 `N. xlt`로 남기라고 하지만 시즌3 **16프레임 전부**가 생략하고 XLT 컬럼에만 번호를 둔다(번호 체계는 3자 정합). **ⓐ 관행을 정본화(규칙 수정, 권장)** vs ⓑ 규칙대로 30여 행 일괄 추가 — 택일 필요.
 - [x] ~~**P2**: 시즌3 어노테이션 이미지 4건 재렌더~~ — **완료**(2026-08-06, 각 v3). `info Case` 가림 해소 · Promotion page 18핀 육안 검증 통과.
 - [ ] **P3**: 용어집 `마켓플레이스`·`게임` 등재 검토 — `validate_translation.py` **최장일치는 `4bd7fa4`에서 적용됨**(P1 232→198 실측). 남은 오탐은 **단어 경계 미처리**(ko에 `당첨`만 있는 행에 `win` 강제 · `최대`→`Max` · `확인`→`check` 다의어)이며 이건 별개 개선이 필요하다.
@@ -130,6 +130,8 @@
 - 없음.
 
 ### 사용자 결정으로 종결(재작업 금지)
+- **K-Pick 노출 조건은 ①As-is → ②To-be 이력으로 기록한다**(2026-08-06 세션 #13, 사용자 지시) — `K-Pick 노출 정책`(`4479295382`)이 Guide Kim 통합 시점 정책보다 **나중에 확정된 최신 정본**이다. mini 마스터 버전 2 블록에서 **①**(JP IP만 노출 + KR IP 일부 버튼 비노출·국가 서비스 불가 안내) → **②**(JP IP **또는** KR IP + 언어 설정 non-KR로 확장)로 배치하고 **②가 ①을 대체**했음을 명시했다. 블록 말미에 떨어져 있던 KR IP 문장은 ①로 옮겼다. **「정책 충돌」로 재보고하지 않는다.**
+- **`K-Pick 노출 정책` 문서의 UIT 표 3컬럼은 그대로 둔다**(2026-08-06) — `check_wiki_storage.py pre`가 4컬럼 위반으로 잡지만 **편집 전부터 있던 기존 상태**이고(번역 없는 화면이라 XLT 컬럼 부재), `md/wiki.md`의 "기존 페이지는 현행 컬럼 구조를 따른다(소급 변경 금지)"가 우선한다. 이 페이지를 편집할 때는 **exit 0 대신 「편집 전/후 위반 목록 동일 = 신규 위반 0건」을 통과 근거**로 삼는다.
 - **Button Case 어노테이션 ⓝ⑤가 `unifi` 로고를 가리는 것은 문제없다**(2026-08-06 사용자 확정) — 로고가 TEXT 노드가 아니라 `collect_frames.py`의 텍스트-회피가 감지하지 못하는 케이스다. **도구 개선·재렌더를 재제안하지 않는다.**
 - **당첨금 지급 시점은 「2주 이내」다**(2026-08-06) — 2026-08-05의 「즉시 지급(최대 5분 내)」 확정을 **번복**한 것이며 `info_signup_desc`·`bottomsheet_signup_text2`에 반영 완료. 「즉시 지급」으로 되돌리자는 제안 금지.
 - **OA 2건은 병행 운영**(2026-08-06) — `(OA)mission complete`=미션 완료 시 / `(OA)Reward Confirm`=지급 시점. **대체 아님**. 기존 OA 삭제·통합 제안 금지.
@@ -153,6 +155,9 @@
 
 | 날짜 | 결정 | 이유 |
 |------|------|------|
+| 2026-08-06 | **마스터 Summary는 Release History를 따라간다** — 행이 삽입되면 Summary 블록 번호를 밀어 1:1을 복구한다 | 사용자가 Release History에 행을 삽입하는 것이 정상 흐름이고, Summary가 뒤늦게 따라간다. Lucky Ball은 **7행 삽입으로 8행↔7블록**이 됐고(세션 #10에서도 같은 패턴) 시즌3 블록을 버전 8로 옮겨 복구했다 |
+| 2026-08-06 | **이미 정합인 마스터에 "업데이트" 요청이 오면 직전 버전과 storage diff를 먼저 본다** | mini는 3↔3 정합이라 반영 대상이 안 보였는데, `?status=historical&version=6`과 diff해 **사용자가 방금 추가한 `K-Pick 노출 정책` 링크**를 특정했다. 추측하거나 되묻기보다 빠르고 정확하다 |
+| 2026-08-06 | **구·신 정책이 갈리면 같은 블록에 ①As-is → ②To-be 이력으로 배치**하고 최신 쪽을 명시 | 최신 정책만 남기면 왜 바뀌었는지가 사라지고, 구 서술을 그대로 두면 한 블록에서 상반돼 보인다(mini의 KR IP 차단 vs K-Pick 확장). 사용자 지시로 이력 형태 채택 |
 | 2026-08-05 | **용어집에 `oa_variables` 영역 신설**(스키마 확장 — 4번째 최상위 키) · `{{amount}}`→**`{{total_amount}}`** | OA는 XLT 키가 없어 **변수명이 정본으로 남지 않았고** 캠페인마다 이름을 다시 정하는 왕복이 반복됐다. 등재하면 문의 없이 재사용. `validate_translation.py`가 `terminology`/`exceptions`만 읽어 신규 키는 무해(실측). 커밋 `21fc1fa` |
 | 2026-08-05 | **용어집 등재 판정은 추정이 아니라 A/B 실측으로** | 2차 검토가 `캠페인` 등재를 "+3 신규 P1"로 추정해 보류를 권고했으나 **실측 0건**. 검증기는 **ko에 그 용어가 든 행만** 검사한다. 커밋 `fe67b80` |
 | 2026-08-05 | **위키 storage 정규식 파싱은 중첩표·리스트 마크업을 고려한다** | `<tr>(.*?)</tr>` 비탐욕 매칭이 XLT 셀의 중첩표에서 끊겨 **16프레임 XLT 컬럼이 전부 공란**으로 보였고, `<ol><li>` 자동 번호 소실로 "번호 누락" 오탐. **에이전트 3건이 동일 오판** |
@@ -183,6 +188,33 @@
 
 ## 최근 세션 기록
 
+### 2026-08-06 — 세션 #13: 마스터 페이지 2종 재정합 + K-Pick 노출 조건 이력화 (**로컬 커밋 없음 — 위키만**)
+
+- **완료 (위키 3페이지, git 커밋 0건)**:
+  - **`[Master] Lucky Ball Promotion` v12 → v13** — Release History **8행 ↔ Summary 7블록** 불일치 해소. **버전 7 신설**(`v1.6.6` / `4540065229` 비실시간 지급 변경 후 추가 개선 — 지급 예정·완료 리워드 분리 · 미션 완료 배너 2키를 FE가 이어 붙임 · 회원 진입 차단 팝업 제거(공유 키 2종 유지) · 회원 대상 홈 이동 버튼) + 시즌3 블록 **버전 8**로 이동 + 제목 **`v1.6.6` 확정**
+  - **`[Master] Unifi mini` v7 → v9** — ⓐ Summary 버전 2의 `LIFF/Web(JP Only)` 구 서술을 K-Pick 확장으로 갱신 ⓑ 이어서 **①As-is → ②To-be 이력으로 재정리**(사용자 지시). 블록 말미의 KR IP 문장을 ①로 이전해 **구·신 상반 해소**
+  - **`K-Pick 노출 정책` v9 → v10** — Policy 오타 `내애` → `내에`
+  - 남은 마스터 2종 **사전 점검** — Mission and Reward(v16) 9↔9 · Wallet Mode(v3) 2↔2 **모두 정합**, Next bay 9행은 버전 여전히 미확정
+- **주의/배운 것**:
+  - **정합인데 "업데이트" 요청이 오면 버전 diff가 답이다** — mini는 3↔3이라 대상이 안 보였는데 v6→v7 diff로 사용자의 직전 편집(`K-Pick 노출 정책` 링크 추가)을 특정했다.
+  - **가드가 내 문장에 걸릴 수도 있다** — `"(버전 미정)" not in b`가 **History 이력에 인용한 `<code>(버전 미정)</code>`** 을 잡았다. 이력 문장은 보존 대상이므로 가드를 "h3 제목 대상 + 전체 1건"으로 정교화했다. **전역 금지 가드는 이력 기록과 충돌한다.**
+  - **검사기 exit 1이 항상 내 잘못은 아니다** — K-Pick 문서의 UIT 표 3컬럼 위반은 **편집 전 라이브에도 동일**했다. `pre --page`로 편집 전 상태를 찍어 **신규 위반 0건**을 근거로 진행했다(소급 변경 금지 규칙 우선).
+  - **다른 세션의 uncommitted 변경은 커밋하지 않는다** — 작업 중 같은 PC의 다른 세션이 용어집 v4.4 파일 3개를 편집 중이었다. 핸드오프 스킬의 "WIP는 wip 브랜치로 보존"을 그대로 적용하면 **그 세션의 작업을 가로챈다**. 그대로 두고 보고만 했고, 그 세션이 스스로 `081c725`로 커밋했다.
+
+### 2026-08-06 — 세션 #12: 용어집 v4.4 (**병렬 세션 · HANDOFF 미갱신 — 커밋 로그 기준**)
+
+- 커밋 1건 `081c725` — `deprecated_terms` 신규 2종(ja `友達`→`友だち` · ko `공식계정`→`공식 계정`) + **`context` 필드 신설**(같은 셀에 지정 문자열이 있을 때만 구 표기로 판정 → zh `關注`/`追蹤`·th `ติดตาม`·en `follow` 오탐 8건 제거, en은 단어 경계 매칭)
+- 계기: 사용자가 **XLT export 전체(1,596키 · 2026-08-06)** 를 제공해 잔존 실태 검토 — v4.3 목록 21건 중 8건이 오탐이었고 잡아야 할 2종이 누락돼 있었다
+- ※ 상세는 `md/glossary-changelog.md` v4.4 항목 참조. **CMS 반영은 대기**(라이브 v4.3).
+
+### 2026-08-05~06 — 세션 #11: 비실시간 추가 개선 + 시즌3 Promotion page + 용어집 v4.2·v4.3 (**HANDOFF 미갱신 — 커밋 로그 기준**)
+
+- 커밋 4건 `d7a4a81`·`ff19c8a`·`d3602cd`·`ff14c25`
+- `4540065229` **비실시간 지급 추가 개선** 위키 — 게이트 3·4차(섹션 재조회로 프레임 교체·신규 발견 → 배너 키 `banner1`/`banner2` **분할**, 최종 5키)
+- 시즌3 `(Promotion) Promotion page` — 코멘트 29건 중 순수 `xlt` 11건 대상, **재사용 6키 + 신규 5키**(유의사항). 캠페인 위키와 문구 대조로 근사 4건은 기존 키 재사용 결정
+- **용어집 v4.2**(`지급 완료` 등재, 115 terms) · **v4.3**(**`deprecated_terms` 영역 신설** 9종 — 구 표기 금지 목록, `md/guide.md`·`validate_translation.py` 동반 갱신)
+- `collect_frames.py` 수정 — **핀 겹침 해소가 텍스트 회피를 되돌리던 문제**(우측이 막히면 아래로)
+
 ### 2026-08-06 — 세션 #10: 시즌3 `Updated Fram` 6프레임 — 지급 시점 「즉시」→「2주 이내」 (PC 변경)
 
 - **완료 (git 5커밋 `2d5f935`·`398e523`·`2912460`·`595ef15`·`b6b5f93`, 전부 푸시)**: 위키 **v47 → v56**(사용자 편집 v50·v53·v55 포함, 매 PUT 직전 rebase·버전 가드)
@@ -208,50 +240,11 @@
 - **`4bd7fa4` 도구 개선 2건** — `validate_translation.py` **용어집 최장일치**(P1 232→198, -34) · `collect_frames.py` **핀이 글자를 덮지 않게 회피**
 - ※ 상세는 각 커밋 메시지와 `reports/gate/gate_report_nonrealtime_*.md` 참조.
 
-### 2026-08-05 — 세션 #8: 시즌3 미결 8건 종결 + 전 프레임 정책 감사 + 용어집 v4.1(`oa_variables` 신설)
-
-- **완료 (git 4커밋 `143134d`·`3d6b708`·`21fc1fa`·`fe67b80`, 전부 푸시)**:
-  - **P2 3건 처리** — `Pillow`를 `requirements.txt`에 추가(문서는 이미 "포함"이라 적혀 있던 **문서-실제 불일치**) · **`md/wiki.md`에 「대상 프레임 지정 방식」 신설**(URL 없이 페이지/섹션+이름으로 특정, 동명 프레임 2개↑면 사용자 확인) · **전 16프레임 정책 감사**
-  - **시즌3 위키 v41 → v47** (사용자 편집 v46을 rebase로 보존) — 미결 8건 전부 결정 반영 + 추가 3건
-    - th 럭키볼 **5키 완전 통일** · en 단위 엔 환산 정정 · ja **소진/종료 어휘 분리**(`なくなりました`) · `skyflag_title` **en·ja 목적어 보충**
-    - **OA 변수 `{{amount}}` → `{{total_amount}}`**(위키 11곳 + Flex 5파일, zip v4) · ACTION_URL 빈 파라미터 제거
-    - 엑셀 3종 3회 재첨부(ALL v10→v12 · LV v2→v4 · UIT v7→v9)
-  - **용어집 v4.1 산출** — `oa_variables` 신설 + terminology 3건 병합(113→**114**). **A/B 실측 P1 63→58(-5), 신규 0건.** `md/OA.md` §2-1·`md/glossary-changelog.md` 동반 갱신. **가이드 v13**(v11·v12 폐기)
-  - 게이트 리포트 1건 + 부록 2개(`gate_report_season3_decisions_8.md`) · 감사 리포트 1건(`reports/audit/`) — 매 차수 P0=0 · `check_gate_report.py` exit 0 · `check_wiki_storage.py` pre/post exit 0
-- **주의/배운 것**:
-  - **에이전트 결과를 그대로 믿으면 안 된다** — ⓐ 감사 에이전트 3건이 **동일하게** "XLT 컬럼 전부 공란"으로 오판(원인은 내 파서의 중첩표 처리) ⓑ 번역 검토 에이전트가 `캠페인` 등재를 "+3 P1"로 추정했으나 **실측 0건** ⓒ `Poi-katsu`를 용어집 위반으로 올렸으나 **이미 등재 대기 항목**. **전부 실측·교차 확인으로 걷어냈다.**
-  - **전역 치환의 위험** — th 음차·`{{amount}}`를 전역 치환했으면 **History의 과거 변경 기록**을 훼손할 뻔했다. 구간 한정 + assert가 막았다.
-  - **셸 heredoc에 보이지 않는 문자를 리터럴로 넣지 말 것** — `\xa0`가 일반 공백으로 정규화돼 **nbsp 151건 오탐**. `'\xa0'` 이스케이프 + quoted heredoc으로 정정.
-  - 위키 URL 표기 **6번째 변형** — 한 URL이 **평문 + `<span>` 2조각으로 분할**. `<li>` 단위로 태그 제거 후 결합해 추출.
-- **다음 세션 첫 작업**: **P0 2건 확인**(용어집 CMS 반영 여부 · 가이드 v13 게시 여부). 착수 = ① HANDOFF ② Python 의존성 ③ 토큰 요청·검증 ④ 원본 새로 조회.
-
-### 2026-08-05 — 세션 #7: 시즌3 화면 전수 대조·mini·OA MSG 신설 + 마스터 4종 Summary + 가이드 v11
-
-- **완료 (git 3커밋 `602ee45`·`c20b332`·`0d90f48`, 전부 푸시)**:
-  - **시즌3 위키 v16 → v37** (사용자가 세션 중 v17·v19·v21·v23·v25·v30·v34·v36을 직접 편집 → **매 PUT 직전 rebase**로 대응)
-    - **화면 기준 전수 대조** — 사용자 확정 3건(`jpyc_info_signup` 이모지 🎉 · `info_end` 「종료된 캠페인입니다.」 · `bottomsheet_signup_text2` 금액 변수화) + 신규 발견 7건 = **10키 49셀** 5개 언어
-    - **수동으로 잡은 P0급 기존 결함 2건** — ja 치환자 `{0}}` 깨짐 · th `ในวันที่ !` 매달린 날짜
-    - **번역 수정 승인 5건 적용** — th `ลักกี้บอล`→`ลูกบอลนำโชค` 2키 · zh `關注`→`加入…好友` 2키 · `UF_home_jpyc_banner_jackpot` `{{1}}JPYC`→`{{1}} JPYC`
-    - **mini 영역 신설**(LV 첫 h4) — 프레임 2개(`66089-117041`·`66089-125866`), 어노테이션 2장(핀 4개, 육안 검증), 등록 키 3종 추가
-    - **OA MSG 영역 신설**(h3) — `(OA)Reward Confirm`(`66048-116857`), 키 없는 번역표 5행 + **Alt(altText) 1행**, 변수 `{{amount}}`·`{{wallet_address}}`, Flex JSON 5개 언어 + zip(URL 갱신으로 v2)
-    - **`XLT 확인 필요 목록` 섹션 삭제** — 26행 전부 시스템 등록/갱신 항목(사용자 결정)
-    - 번역표 43 → **47키**, 엑셀 **3종**(ALL·**LV 신규**·UIT), 분할 정합 `LV ∪ UIT == ALL` 검증
-  - **마스터 4종 Summary 정합** — Lucky Ball v8(버전 4·5·6) · Mission and Reward v16(버전 8·9) · **Unifi mini v5**·**Wallet Mode v3**(둘 다 Summary 신규 작성). 원본 7개 문서 Policy를 읽어 요약
-  - **가이드 v11** — 「이렇게 요청하세요」에 실제 요청 패턴 **7가지** + 예시 4종 + 체크리스트 3항목. `md/landpress.md` §5-1 0단계로 v10을 베이스 판별
-  - 게이트 리포트 1건에 **부록 3~7 누적**(`gate_report_season3_screen_reconcile.md`, 439줄+) — 매 차수 P0=0 · `check_gate_report.py` exit 0 · `check_wiki_storage.py` pre/post exit 0
-- **주의/배운 것**:
-  - **위키 Description의 URL 표기가 5가지로 섞인다** — 정상 앵커 / `&amp;` 이스케이프 / `<span class="nolink">` / `~:text=` 브라우저 하이라이트(퍼센트 인코딩) / 평문. 파서가 전부 처리해야 하고, `&amp;`를 안 풀면 LINE이 URL을 거부한다
-  - **변수화가 조사 결함을 만든다** — OA `{{wallet_address}}로`는 0x 주소 말미에 따라 `로`/`으로`가 갈려 런타임에 절반이 비문. `{{wallet_address}} 주소로`로 명사를 넣어 고정
-  - `md/OA.md` 규칙 1(격리) 검증을 매번 했다 — OA 문구·변수가 전역 번역표·XLT 엑셀에 유입 **0건**
-- **다음 세션 첫 작업**: 사용자 새 지시 대기. 착수 = ① HANDOFF 확인 ② **Python 의존성 확인**(환경 노트) ③ 토큰 요청·검증 ④ 원본 새로 조회.
-
-### 2026-08-04 — 세션 #6: 시즌 3 위키 신규 구축 + XLT 정본 전환 + 저장소·규칙 정리
-
-- **완료(9커밋)**: 신규 위키 `JPYC 럭키볼 시즌 3` 생성 → v16(프레임 13·번역표 43키·엑셀 2종·확인 목록 9건) · **XLT 시스템 export를 값 정본으로 전환**(대기 12키 중 11키 확보, 문구 차이 7건) · 럭키볼 캠페인 3키 패치 → v143 · **엑셀 포맷 회귀 복구**(`plurals` 시트를 깨뜨려 업로드 실패 → **엑셀은 반드시 `export_to_xlt.create_xlt_excel`로만 생성**) · 규칙 3건(Policy 포맷·팔로우 표기·게이트 리포트 위치) · 핸드오프 스킬 단일화 · `collect_frames` 이미지 누락 버그 수정 · 저장소 정리(루트 73→6, 45M→28M)
-- **배운 것**: 위키가 세션 중에도 사용자 편집으로 계속 올라간다 → **PUT 직전 라이브 rebase 필수** / `unifi_promotion_*` 키는 기획 문서에 KR만 있는 경우가 많아 4개 언어는 export에서 확보 / `xlt`만 적힌 코멘트는 역방향 KR 매칭으로 후보 제시 후 사용자가 키 확정
-
 ## 아카이브 요약
 
+- **2026-08-05 세션 #8**: 시즌3 미결 8건 종결 + 전 16프레임 정책 감사 + **용어집 v4.1**(`oa_variables` 신설, 113→114)(4커밋 `fe67b80`) — 위키 v41→v47, th 럭키볼 5키 통일·ja 소진/종료 어휘 분리·**OA `{{amount}}`→`{{total_amount}}`**(위키 11곳+Flex 5) · `md/wiki.md` 「대상 프레임 지정 방식」 신설 · 가이드 v13. **교훈: 에이전트 결과를 실측으로 걷어낼 것**(감사 3건이 동일 오판, 원인은 파서의 중첩표 처리) · **전역 치환은 History 이력을 훼손**하므로 구간 한정 + assert · heredoc에 `\xa0`를 리터럴로 넣으면 nbsp 151건 오탐.
+- **2026-08-05 세션 #7**: 시즌3 화면 전수 대조 + **mini·OA MSG 영역 신설** + **마스터 4종 Summary 최초 작성** + 가이드 v11(3커밋 `0d90f48`) — 위키 v16→v37(사용자 편집 8회를 매 PUT 직전 rebase로 보존), 10키 49셀, P0급 기존 결함 2건 수동 발견(ja `{0}}`·th 매달린 날짜), 번역표 43→47키·엑셀 3종(`LV ∪ UIT == ALL` 검증), `XLT 확인 필요 목록` 삭제. **교훈: 위키 URL 표기가 5~6가지로 섞인다**(`&amp;` 미해제 시 LINE이 URL 거부) · **변수화가 조사 결함을 만든다**(`{{wallet_address}}로` → ` 주소로`로 명사 삽입).
+- **2026-08-04 세션 #6**: 시즌3 위키 신규 구축(v16) + **XLT 시스템 export를 값 정본으로 전환** + 저장소 정리(9커밋) — 럭키볼 캠페인 v143, 규칙 3건(Policy 포맷·팔로우 표기·게이트 리포트 위치), 핸드오프 스킬 단일화, 루트 73→6·45M→28M. **교훈: PUT 직전 라이브 rebase 필수**(세션 중에도 사용자 편집이 올라온다) · **엑셀은 반드시 `export_to_xlt.create_xlt_excel`로만**(pandas 직접 생성이 `plurals` 포맷을 깨 업로드 실패).
 - **2026-08-03 세션 #5**: IA 주간 정기 점검 #3(1커밋 `30a98b1`) — `md/IA.md` §0-0-1 화면 변형 3축 신설(환경×사용자 상태×IP) · §2-2 Season 3 정책 블록 · `kpick_myshopping_01` 폐기 · 가이드 v10. **교훈: 비로그인 렌더는 로그인 상태의 근거가 아니다** — `/my` 진입으로 먼저 확정할 것.
 - **2026-07-30 세션 #3**: 위키 4개 페이지 + 규칙·도구·에이전트 체계 구축(12커밋 `3b28cbe`) — 럭키볼 위키 v103→v147 · 신규 위키 3건 · 용어집 v4.0(113) · **규칙 4건**(Screen 표 4컬럼·첨부 `ri:page` 금지·위키 생성 규격·zip 최신 판별) · **도구 2종**(`check_wiki_storage.py`·`collect_frames.py`) · **에이전트 4종** · 가이드 v7. 실수→규칙 전환: 5컬럼 관성 재사용 → 검사기로 강제.
 
@@ -267,8 +260,11 @@
 - **엑셀 생성은 반드시 `scripts/export_to_xlt.create_xlt_excel`로만** — pandas로 직접 만들면 `plurals` 고정 포맷(A1:G2·`one/other`·`Unnamed: 2`)이 깨져 **XLT System 업로드가 실패**한다(2026-08-04 실측).
 - **게이트(필수)**: 한국어 원문 교정 → `validate_translation.py <엑셀> scripts/glossary.json`(P0=0) → `md/check.md` 3단계 **전수** 수동 → `reports/gate/` 리포트 → `check_gate_report.py` **exit 0**. P1/P2는 이 데이터에서 **전건 오탐**(용어집 협소 매핑·부분문자열·조사 결합·마침표 정책) — 판정 유지.
 - **위키 편집(필수 절차)**: 라이브 재조회 → 균형 `<tr>` surgical 교체 → **버전 가드**(PUT 직전 재확인) → PUT → `check_wiki_storage.py` **pre/post exit 0**. 첨부 갱신은 `POST .../child/attachment/{id}/data`(**같은 파일명 유지 → 본문 링크 그대로 최신본**). History는 **같은 날 1행 병합**.
-- **마스터 페이지 정합 규칙**: `Release History` **데이터 행 수 = Summary `<h3>버전 N` 블록 수**. 검증 시 앵커는 `<h1>Release History</h1>`를 쓸 것(History 행 본문에 "Release History"가 들어가 오집계된 실측 있음). 릴리즈 버전 미확정이면 제목에 `[PL] Unifi (버전 미정)`.
-- **핵심 산출물**: 시즌3 위키 번역표 47키 · 럭키볼 캠페인 75키 · `xlt/xlt_output_season3_{ALL,LV,UIT}_20260804.xlsx` · `oa/flex_OA_Reward_Confirm_*`(5+zip v4) · `reports/gate/*.md`(49) · **`reports/audit/`(전 프레임 정책 감사)** · **`reports/glossary_v4.1_for_cms.json`(CMS 반영 대기)** · `reports/ia/`(#1~#3) · `dropweb/web3_planning_v13.zip`(**게시 대기**, 라이브 v9 · v11·v12 폐기)
+- **마스터 페이지 정합 규칙**: `Release History` **데이터 행 수(`<td class="numberingColumn">` 개수) = Summary `<h3>버전 N` 블록 수**. 검증 시 앵커는 `<h1>Release History</h1>`를 쓸 것(History 행 본문에 "Release History"가 들어가 오집계된 실측 있음). 릴리즈 버전 미확정이면 제목에 `[PL] Unifi (버전 미정)`.
+  - **행이 삽입되면 Summary 번호를 밀어 복구**한다(사용자가 행을 넣는 것이 정상 흐름 — 실측 2회).
+  - **이미 정합인데 "업데이트" 요청을 받으면** 라이브와 **직전 버전(`?status=historical&version=N-1`)을 diff**해 사용자의 마지막 편집을 특정한다(mini 실측).
+  - 참조 문서가 **구·신으로 갈리면 같은 블록에 ①As-is → ②To-be 이력**으로 배치하고 최신 쪽을 명시한다.
+- **핵심 산출물**: 시즌3 위키 번역표 47키 + Promotion page 신규 5키 · 럭키볼 캠페인 75키 · `xlt/xlt_output_season3_{ALL,LV,UIT}_20260804.xlsx` · `oa/flex_OA_Reward_Confirm_*`(5+zip v4) · `reports/gate/*.md`(**51**) · `reports/audit/`(전 프레임 정책 감사) · **`reports/glossary_v4.4_for_cms.json`(CMS 반영 대기 — 라이브 v4.3)** · `reports/ia/`(#1~#3) · `dropweb/web3_planning_v13.zip`(**게시 대기 + v4.4 반영 갱신 필요**, 라이브 v9 · v11·v12 폐기)
 - **OA 변수**: 용어집 `oa_variables`가 정본(`md/OA.md` §2-1) — **`{{total_amount}}`**(당첨금 총액) · `{{wallet_address}}`. 등재된 변수는 **사용자 문의 없이 재사용**하고, 새 의미만 이름을 묻는다. **altText에는 변수 사용 불가.**
 - **화면 이미지는 로컬에 보관하지 않는다** — 어노테이션 이미지는 **위키 첨부가 정본**. 재작업은 `scripts/collect_frames.py`(`assets/`는 실행 시 자동 생성, git 미추적).
 - **IA 점검 루틴**: 매주 월 10:00 자동 → 직전 리포트 이월 확인 → 프로덕션 비로그인 → Beta·mini Beta → 로그인(가능할 때) → `md/IA.md` 갱신 → 리포트 발행 → **가이드 zip +1** → 커밋·푸시(`dropweb/`은 `git add` 금지). **상태 변경 액션 절대 미실행, 직접 로그인 금지.**
