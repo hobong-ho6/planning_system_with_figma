@@ -247,9 +247,16 @@ class TranslationValidator:
                                 'detail': f"{lang}: '{expected}' 원어 유지 필요"
                             })
 
-            # 핵심 용어 번역 일관성 검사
+            # 핵심 용어 번역 일관성 검사 — 최장일치 우선 (2026-08-06)
+            # 짧은 용어가 긴 용어 안에 통째로 들어있으면 짧은 쪽은 검사하지 않는다.
+            # 예: ko `지급 완료된 리워드`에는 `완료`·`지급 완료`가 모두 걸려 정상 의역
+            # (`支給済み`)이 `완료→完了` 불일치로 오탐되던 문제(실측 P1 232→198, P0 불변).
+            # 같은 원인으로 `당첨금`(prize)이 `당첨`(win)으로 매칭되던 오탐도 해소된다.
+            matched = [t for t in terminology if t in ko_text]
+            effective = {t for t in matched
+                         if not any(t != other and t in other for other in matched)}
             for ko_term, translations in terminology.items():
-                if ko_term in ko_text:
+                if ko_term in effective:
                     for lang, correct_trans in translations.items():
                         if lang == 'ko_KR':
                             continue

@@ -109,6 +109,19 @@ def build_points(threads: list, texts: list, scale: int) -> tuple:
                             "kind": "xlt" if is_xlt else "policy+xlt_reply"})
         else:
             points.append([no, th["x"], th["y"], "red"])
+    # 텍스트 가림 회피 (2026-08-06) — 정책 코멘트는 Figma 원본 핀 좌표를 그대로 쓰므로
+    # 디자이너가 글자 위에 핀을 찍으면 렌더 시 그 글자를 덮는다(실측: 초대자 화면 66482-4551).
+    # 핀 원이 텍스트 박스에 닿으면 그 박스 좌측 밖으로, 좌측 여백이 모자라면 우측 밖으로 옮긴다.
+    r = CIRCLE_R / scale
+    for p in points:
+        for t in texts:
+            if not t["t"].strip():
+                continue
+            if (t["x"] - r < p[1] < t["x"] + t["w"] + r
+                    and t["y"] - r < p[2] < t["y"] + t["h"] + r):
+                left = t["x"] - 10
+                p[1] = left if left - r >= 0 else t["x"] + t["w"] + 10
+                break
     # 겹침 해소 — 뒤 번호를 우측으로 최소 이동
     need = 2 * CIRCLE_R / scale + 1
     for i in range(len(points)):
@@ -119,8 +132,8 @@ def build_points(threads: list, texts: list, scale: int) -> tuple:
     return points, targets
 
 
-def annotate(in_path: Path, points: list, out_path: Path, scale: int) -> list:
-    """번호 원 렌더. 반환: 남은 겹침 쌍(빈 리스트면 정상)."""
+def annotate(in_path: Path, points: list, out_path: Path, scale: int, texts: list = None) -> list:
+    """번호 원 렌더. 반환: 남은 겹침(핀끼리 쌍 + 핀이 덮은 텍스트, 빈 리스트면 정상)."""
     from PIL import Image, ImageDraw, ImageFont
     img = Image.open(in_path).convert("RGBA")
     W, H = img.size
@@ -141,8 +154,16 @@ def annotate(in_path: Path, points: list, out_path: Path, scale: int) -> list:
                 lb, fill=WHITE, font=font)
     Image.alpha_composite(img, ov).convert("RGB").save(out_path)
     need = 2 * CIRCLE_R / scale + 1
-    return [(a[0], b[0]) for i, a in enumerate(points) for b in points[i + 1:]
-            if ((a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2) ** 0.5 < need]
+    res = [(a[0], b[0]) for i, a in enumerate(points) for b in points[i + 1:]
+           if ((a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2) ** 0.5 < need]
+    # 핀이 글자를 덮는 경우도 보고한다 — 이전에는 핀끼리만 봐서 육안으로만 잡혔다.
+    r = CIRCLE_R / scale
+    if texts:
+        res += [(no, "text:" + t["t"][:12]) for no, rx, ry, _ in points for t in texts
+                if t["t"].strip()
+                and t["x"] - r < rx < t["x"] + t["w"] + r
+                and t["y"] - r < ry < t["y"] + t["h"] + r]
+    return res
 
 
 def collect(file_key: str, node_ids: list, out_dir: str = "assets/collected",
@@ -195,7 +216,7 @@ def collect(file_key: str, node_ids: list, out_dir: str = "assets/collected",
             req = urllib.request.Request(img_url, headers={"User-Agent": "Mozilla/5.0"})
             raw_p.write_bytes(urllib.request.urlopen(req, timeout=180).read())
             ann_p = out / f"annotated_{safe}.png"
-            overlaps = annotate(raw_p, points, ann_p, scale)
+            overlaps = annotate(raw_p, points, ann_p, scale, texts)
             entry["raw_image"] = str(raw_p)
             entry["annotated_image"] = str(ann_p)
             entry["overlaps"] = overlaps
