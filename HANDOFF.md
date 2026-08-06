@@ -31,7 +31,7 @@
   - Figma 파일: `GOCHAYBS7hIrmWRGNuJOKV` (Web3) · 시즌3 페이지 `65923:2485`
   - 절차 문서: `CLAUDE.md`, `md/translate.md`, `md/wiki.md`, `md/OA.md`, `md/check.md`, `md/landpress.md`, `md/IA.md`
   - 용어집: **라이브 v4.3**(115 terms · `deprecated_terms` 9종) — API 조회로 확인. **v4.4·v4.5는 CMS 반영 대기**(v4.5에 v4.4 누적 — **`reports/glossary_v4.5_for_cms.json` 하나만 붙여넣으면 된다**). v4.4=금지어 2종+`context` 필드 / v4.5=**`월렛`→`지갑`**. 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
-  - 기획자 가이드: **`dropweb/web3_planning_v19.zip`** — **라이브는 v16**(2026-08-06 게시 완료). **v17~v19 전달 완료·게시 대기**이며 **v19만 게시**하면 v17·v18 내용까지 포함된다. v18=용어집 이력 접이식 · v19=용어집 v4.5. ⚠ 최신본 판별은 파일명이 아니라 **푸터 내부 버전+용어집 임베드 버전+mtime**(`md/landpress.md` §5-1 0단계). `dropweb/`은 `.gitignore` 대상이라 **채팅 전달이 유일한 배포 경로**
+  - 기획자 가이드: **라이브 v19**(2026-08-06 게시 완료) — 산출물 `dropweb/web3_planning_v19.zip`. v17=용어집 v4.4 · v18=용어집 이력 접이식 · v19=용어집 v4.5. ⚠ 최신본 판별은 파일명이 아니라 **푸터 내부 버전+용어집 임베드 버전+mtime**(`md/landpress.md` §5-1 0단계). `dropweb/`은 `.gitignore` 대상이라 **채팅 전달이 유일한 배포 경로**
   - IA 주간 점검: 스케줄 태스크 `weekly-unifi-ia-check`(매주 월 10:00) — 프로덕션 + Beta + mini Beta. 리포트 `reports/ia/`
 - **토큰**: Figma PAT + Confluence PAT — **사용자가 매 세션 채팅으로 제공**(파일/코드에 하드코딩 금지). 착수 전 유효성 검증 필수.
 
@@ -93,12 +93,11 @@
 
 ### 사용자 액션 대기 (Claude가 할 수 없음)
 - [x] ~~**P0**: 용어집 v4.1 CMS 붙여넣기~~ — **완료**(라이브는 그 뒤 v4.3까지 반영됨).
-- [ ] **P0**: **용어집 v4.4 CMS 붙여넣기** — 라이브는 **v4.3**(API 확인). 붙여넣을 전체 JSON은 `reports/glossary_v4.4_for_cms.json`(deprecated 12종 + `context` 필드 4건). API 읽기 전용이라 **사용자만 반영 가능**(`md/landpress.md`).
-- [ ] **P0**: **용어집 v4.5 CMS 반영** — 라이브는 **v4.3**이고 **v4.4·v4.5가 대기**다. v4.5에 v4.4가 누적돼 있어 **`reports/glossary_v4.5_for_cms.json` 하나만** 붙여넣으면 된다. ⚠️ 2026-08-06 세션 #11이 「v4.4 반영 완료」로 잘못 기재했던 것을 정정한 항목이다(실제 확인한 건 v4.3 반영이었다).
+- [x] ~~**P0**: 용어집 v4.4·v4.5 CMS 반영~~ — **완료**(2026-08-06, API 조회로 라이브 **v4.5** 확인 — 115 terms · `deprecated_terms` **13종**(`월렛` 포함) · `context` 필드 4건). v4.5에 v4.2~v4.4가 누적 반영됐다.
 - [x] ~~**P0**: 가이드 zip 갱신~~ — **완료**(v14~v19 갱신·전달, 라이브 **v16** 게시 완료).
-- [ ] **P0**: **가이드 `dropweb/web3_planning_v19.zip` 게시** — 라이브 v16 대비 **3단계**. **v19만 게시**하면 v17·v18 내용도 포함된다. **게시는 사용자가 수행**한다.
+- [x] ~~**P0**: 가이드 v19 게시~~ — **완료**(2026-08-06, 사용자 게시). 라이브 v16 → **v19**.
 - [x] ~~**P1**: 시즌3 「꼭 확인해 주세요」 XLT 키 할당~~ — **완료**(2026-08-06 세션 #11). 유의사항 8건에 **재사용 6키 + 신규 5키** 부여, 번역표 57키.
-- [ ] **P1**: **신규 OA `(OA)mission complete` URL 변경 시 3곳 세트 갱신** — 현재 zip **v3**로 위키 Description URL과 5파일 URI가 **문자열 단위 일치**. `IMAGE_URL`·`ACTION_URL_1`이 또 바뀌면 **위키 표·JSON 5개·zip을 세트로** 갱신하고 재다운로드 라운드트립으로 대조한다(`md/OA.md` §3-1). 세션 #10에서만 **2회 갱신**이 발생했다.
+- [ ] **P1**: **신규 OA `(OA)mission complete` URL 변경 시 3곳 세트 갱신** — 현재 zip **v4**(`mission_complete`)·**v5**(`Reward_Confirm`)로 위키 Description URL과 5파일 URI가 **문자열 단위 일치**. `IMAGE_URL`·`ACTION_URL_1`이 또 바뀌면 **위키 표·JSON 5개·zip을 세트로** 갱신하고 재다운로드 라운드트립으로 대조한다(`md/OA.md` §3-1). 세션 #10에서만 **2회 갱신**이 발생했다.
 - [ ] **P2**: **Figma 코멘트 보완** — `(Promotion) info Case` 4번 핀에만 `xlt key = unifi_promotion_info_already_member` 답글이 없다(1~3번은 있음).
 - [ ] **P1**: **시즌3 감사 후속 — 위키 결함 1 + 확인 필요 5** (`reports/audit/wiki_policy_audit_season3_2026-08-05.md`)
   ⓐ `Reward Confirm Bottom Sheet` **요약문이 `회원가입 완료 후`인데 Figma·1번 정책은 `회원가입을 시작하고`** — 같은 셀에서 시점이 갈림(수정 승인 필요)
@@ -279,7 +278,7 @@
   - **행이 삽입되면 Summary 번호를 밀어 복구**한다(사용자가 행을 넣는 것이 정상 흐름 — 실측 2회).
   - **이미 정합인데 "업데이트" 요청을 받으면** 라이브와 **직전 버전(`?status=historical&version=N-1`)을 diff**해 사용자의 마지막 편집을 특정한다(mini 실측).
   - 참조 문서가 **구·신으로 갈리면 같은 블록에 ①As-is → ②To-be 이력**으로 배치하고 최신 쪽을 명시한다.
-- **핵심 산출물**: 시즌3 위키 번역표 47키 + Promotion page 신규 5키 · 럭키볼 캠페인 75키 · `xlt/xlt_output_season3_{ALL,LV,UIT}_20260804.xlsx` · `oa/flex_OA_Reward_Confirm_*`(5+zip v4) · `reports/gate/*.md`(**51**) · `reports/audit/`(전 프레임 정책 감사) · **`reports/glossary_v4.4_for_cms.json`(CMS 반영 대기 — 라이브 v4.3)** · `reports/ia/`(#1~#3) · `dropweb/web3_planning_v13.zip`(**게시 대기 + v4.4 반영 갱신 필요**, 라이브 v9 · v11·v12 폐기)
+- **핵심 산출물**(2026-08-06 기준): 시즌3 위키 **v76**·번역표 **57키** · 럭키볼 캠페인 75키 · `xlt/xlt_output_season3_{ALL,LV,UIT}_20260804.xlsx`(**ALL v19·LV v10·UIT v15**) · `oa/flex_OA_Reward_Confirm_*`(zip **v5**)·`oa/flex_OA_mission_complete_*`(zip **v4**) · `reports/gate/*.md` · `reports/audit/` · **`reports/glossary_v4.5_for_cms.json`(라이브 반영 완료)** · `reports/ia/` · **가이드 라이브 v19**
 - **OA 변수**: 용어집 `oa_variables`가 정본(`md/OA.md` §2-1) — **`{{total_amount}}`**(당첨금 총액) · `{{wallet_address}}`. 등재된 변수는 **사용자 문의 없이 재사용**하고, 새 의미만 이름을 묻는다. **altText에는 변수 사용 불가.**
 - **화면 이미지는 로컬에 보관하지 않는다** — 어노테이션 이미지는 **위키 첨부가 정본**. 재작업은 `scripts/collect_frames.py`(`assets/`는 실행 시 자동 생성, git 미추적).
 - **IA 점검 루틴**: 매주 월 10:00 자동 → 직전 리포트 이월 확인 → 프로덕션 비로그인 → Beta·mini Beta → 로그인(가능할 때) → `md/IA.md` 갱신 → 리포트 발행 → **가이드 zip +1** → 커밋·푸시(`dropweb/`은 `git add` 금지). **상태 변경 액션 절대 미실행, 직접 로그인 금지.**
