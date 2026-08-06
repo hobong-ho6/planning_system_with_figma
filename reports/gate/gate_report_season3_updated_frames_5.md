@@ -226,9 +226,9 @@ python3 scripts/validate_translation.py xlt/xlt_output_season3_ALL_20260806.xlsx
 
 **`md/OA.md` §3-1 3곳 세트 확인**: ⓐ 위키 Description URL(사용자 기입) ⓑ JSON 5개 ⓒ zip — 모두 동일 URL.
 
-### 미해결 2건 (보고만, 조치 없음)
+### 후속 2건 — 모두 종결
 
-1. **Button Case ⓝ⑤가 `unifi` 로고를 가린다** — 로고가 TEXT 노드가 아니라 벡터/이미지라 `collect_frames.py`의 텍스트-회피 로직이 감지하지 못한다. 도구는 `overlaps=없음`으로 통과시켰다. **도구 개선 후보**(회피 대상에 비텍스트 노드 bbox 포함).
+1. ~~Button Case ⓝ⑤가 `unifi` 로고를 가린다~~ → **사용자 결정으로 종결(2026-08-06): 문제없음.** 로고가 TEXT 노드가 아니라 `collect_frames.py`의 텍스트-회피가 감지하지 못하는 케이스이며, **도구 개선·재렌더를 재제안하지 않는다.** (도구의 `overlaps=없음`이 「가림 없음」을 보장하지 않는다는 점은 기록해 둔다 — 육안 검증이 최종 관문.)
 2. ~~갱신된 `ACTION_URL_1`에 빈 파라미터 `?&`가 다시 들어왔다~~ → **해소(5차 차수)**. 사용자가 위키 URL에서 `?&`를 제거(v55)했고, Flex JSON 5파일·zip을 그 값으로 다시 맞춰 첨부 갱신(**v3**)했다. 재다운로드 라운드트립으로 **위키 Description URL과 5파일 URI 완전 일치** 확인.
 
 **최종 `ACTION_URL_1`**: `…/luckyball-invite?utm_source=unifi_oa_alarm&utm_medium=cta&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1813_SUOJG`

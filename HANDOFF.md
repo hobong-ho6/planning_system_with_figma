@@ -69,17 +69,18 @@
 
 ## 현재 상태
 
-> 마지막 갱신: 2026-08-06 (세션 #10) · 작업 PC **`AL02359162.local`**(세션 #8까지는 `AD03230205ui-iMac.local` — **PC가 바뀌었다**) · branch `main` · 세션 작업분 **`2d5f935`**(위키 반영) · **핸드오프 본문 커밋 `398e523`** — 그 뒤에 이 해시를 적는 **후속 커밋 1개가 HEAD**다(정상, 불일치 아님)
+> 마지막 갱신: 2026-08-06 (세션 #10) · 작업 PC **`AL02359162.local`**(세션 #8까지는 `AD03230205ui-iMac.local` — **PC가 바뀌었다**) · branch `main` · 세션 작업분 **`2d5f935`**(위키 반영) · `595ef15`(어노테이션 재렌더 + OA URL) · `b6b5f93`(OA URL `?&` 제거)
 
 **진행 중 작업(WIP)**: **없음.** 작업 트리 clean, 미푸시 커밋 0건.
 
 **⚠️ 같은 시간대에 다른 세션이 병렬로 돌았다.** 세션 #10(시즌3 위키) 작업 중 원격에 `4bd7fa4`·`8827957`(비실시간 지급 위키 + 스크립트 개선)이 11:04~11:05에 들어왔다. **세션 #9는 HANDOFF를 갱신하지 않았다** — 그 내용은 아래 세션 기록에 커밋 로그 기준으로 요약해 둔다.
 
-**시즌3 위키를 v47 → v52로 올렸다** — Figma 섹션 `Updated Fram`(66482-9678) 5프레임 + `(Promotion) info Case`. **핵심은 당첨금 지급 시점이 「즉시(최대 5분 내)」→「2주 이내」로 뒤집힌 것**이다(2026-08-05 확정을 번복).
+**시즌3 위키를 v47 → v56으로 올렸다** — Figma 섹션 `Updated Fram`(66482-9678) 5프레임 + `(Promotion) info Case`. **핵심은 당첨금 지급 시점이 「즉시(최대 5분 내)」→「2주 이내」로 뒤집힌 것**이다(2026-08-05 확정을 번복).
 - **변경 2키** `unifi_promotion_info_signup_desc`·`unifi_promotion_bottomsheet_signup_text2` 5개 언어 재번역
 - **신규 1키** `unifi_promotion_info_already_member` — info Case에 4번째 케이스가 신설돼 부여(사용자 결정)
 - **삭제 1키** `mini_luckyball_already_member` — 사용자가 `(Promotion) Unifi Member`·`(Popup) Unifi member` 화면을 삭제해 orphan이 됨(승인 후 삭제). 「이미 회원」 안내는 신규 키로 **일원화**
-- **신규 OA** `(OA)mission complete` — Flex JSON 5개 언어 + zip 첨부. 번역표 **47키**(48 → 47), 엑셀 ALL v14·LV v6·UIT v11
+- **신규 OA** `(OA)mission complete` — Flex JSON 5개 언어 + zip 첨부(**v3**). 번역표 **47키**(48 → 47), 엑셀 ALL v14·LV v6·UIT v11
+- **어노테이션 4건 재렌더**(각 v3) — `collect_frames.py` 개선본(`4bd7fa4`)으로 핀이 글자를 덮지 않게 회피. **OA `ACTION_URL_1`은 2회 갱신**(`referral_code` `1813_SUOJG` + 빈 파라미터 `?&` 제거)돼 그때마다 JSON·zip을 맞추고 라운드트립 검증
 
 **OA 2건은 병행 운영이다(사용자 확정)** — `(OA)mission complete`=**미션 완료 시** 발송(지급 예정 안내) / `(OA)Reward Confirm`=**당첨금이 실제 지급될 때** 발송(지급 완료 통보). 대체가 아니다.
 
@@ -97,7 +98,7 @@
 - [x] ~~**P0**: 용어집 v4.1 CMS 붙여넣기~~ — **완료**(2026-08-06 세션 #10에서 API 조회로 라이브 v4.1 확인).
 - [ ] **P0**: **가이드 `dropweb/web3_planning_v13.zip` 드랍웹 게시** — 라이브가 v9라 **네 단계** 밀려 있다(**2026-08-06 미확인** — 게시 여부 재확인 필요). **v13만 게시**하면 된다(v10~v12 내용 포함). **⛔ v11·v12는 폐기 — 게시 금지**. 게시 규격 `md/dropweb-guide.md`. **zip은 git 미추적이라 채팅 전달본이 유일한 사본**이다.
 - [ ] **P1**: **시즌3 「꼭 확인해 주세요」 콘텐츠 확정 시 XLT 키 할당 요청 예정**(사용자 명시) — 유의사항 8개 항목이 화면에 노출되는데 **전부 XLT 키 미부여**다. 확정 전까지 **화면 내 정책 충돌**(위쪽 `info_signup_desc`=「2주 이내」 vs 유의사항 5번=「즉시 지급」)을 **재보고하지 않는다**.
-- [ ] **P1**: **신규 OA `(OA)mission complete` 후속** — Flex JSON·zip은 생성·첨부 완료. `IMAGE_URL`·`ACTION_URL_1`이 바뀌면 **위키 표·JSON 5개·zip 3곳을 세트로** 갱신해야 한다(`md/OA.md` §3-1).
+- [ ] **P1**: **신규 OA `(OA)mission complete` URL 변경 시 3곳 세트 갱신** — 현재 zip **v3**로 위키 Description URL과 5파일 URI가 **문자열 단위 일치**. `IMAGE_URL`·`ACTION_URL_1`이 또 바뀌면 **위키 표·JSON 5개·zip을 세트로** 갱신하고 재다운로드 라운드트립으로 대조한다(`md/OA.md` §3-1). 세션 #10에서만 **2회 갱신**이 발생했다.
 - [ ] **P2**: **Figma 코멘트 보완** — `(Promotion) info Case` 4번 핀에만 `xlt key = unifi_promotion_info_already_member` 답글이 없다(1~3번은 있음).
 - [ ] **P1**: **시즌3 감사 후속 — 위키 결함 1 + 확인 필요 5** (`reports/audit/wiki_policy_audit_season3_2026-08-05.md`)
   ⓐ `Reward Confirm Bottom Sheet` **요약문이 `회원가입 완료 후`인데 Figma·1번 정책은 `회원가입을 시작하고`** — 같은 셀에서 시점이 갈림(수정 승인 필요)
@@ -120,7 +121,7 @@
 ### Claude 실행 대기 (승인 시 진행)
 - [ ] **P2**: **IA 구조도 화면 미리보기 검토** — 「전체 IA 구조」 표의 메뉴명 마우스 오버 시 화면 캡처. 검토점: 캡처 수집 방법 · **zip 용량**(현재 2.87MB) · 로그인·상태 변경 화면 대체 표기 · **촬영 일자 표기 + 갱신 주기**.
 - [ ] **P2**: **`md/wiki.md:260` 규칙 vs 관행 정리** — 규칙은 순수 `xlt` 마커 루트도 Description에 `N. xlt`로 남기라고 하지만 시즌3 **16프레임 전부**가 생략하고 XLT 컬럼에만 번호를 둔다(번호 체계는 3자 정합). **ⓐ 관행을 정본화(규칙 수정, 권장)** vs ⓑ 규칙대로 30여 행 일괄 추가 — 택일 필요.
-- [ ] **P2**: **시즌3 어노테이션 이미지 4건 재렌더 검토** — 세션 #10에서 첨부한 어노테이션(Button Case·Promotion page·Reward Confirm·info Case)은 `collect_frames.py` **개선(`4bd7fa4`, 핀이 글자를 덮지 않게 회피) 직전 버전**으로 렌더됐다. `info Case` ⓝ가 글자를 가리는 것이 실측 확인됨. 재렌더 후 같은 파일명으로 재첨부하면 개선된다.
+- [x] ~~**P2**: 시즌3 어노테이션 이미지 4건 재렌더~~ — **완료**(2026-08-06, 각 v3). `info Case` 가림 해소 · Promotion page 18핀 육안 검증 통과.
 - [ ] **P3**: 용어집 `마켓플레이스`·`게임` 등재 검토 — `validate_translation.py` **최장일치는 `4bd7fa4`에서 적용됨**(P1 232→198 실측). 남은 오탐은 **단어 경계 미처리**(ko에 `당첨`만 있는 행에 `win` 강제 · `최대`→`Max` · `확인`→`check` 다의어)이며 이건 별개 개선이 필요하다.
 - [ ] **P3**: **`oa/` 기존 19파일의 `{{amount}}`** — v4.1에서 `{{total_amount}}`를 표준으로 확정했으나 과거 캠페인 산출물은 **소급하지 않기로 결정**(`md/OA.md` §2-1). 해당 캠페인을 재사용·수정할 때 함께 정리할지 결정 필요.
 - [ ] **잔여**: 용어집 v3.0 보류건 팀 검토 대기 — `glossary_pending_review_v3.md`.
@@ -129,6 +130,7 @@
 - 없음.
 
 ### 사용자 결정으로 종결(재작업 금지)
+- **Button Case 어노테이션 ⓝ⑤가 `unifi` 로고를 가리는 것은 문제없다**(2026-08-06 사용자 확정) — 로고가 TEXT 노드가 아니라 `collect_frames.py`의 텍스트-회피가 감지하지 못하는 케이스다. **도구 개선·재렌더를 재제안하지 않는다.**
 - **당첨금 지급 시점은 「2주 이내」다**(2026-08-06) — 2026-08-05의 「즉시 지급(최대 5분 내)」 확정을 **번복**한 것이며 `info_signup_desc`·`bottomsheet_signup_text2`에 반영 완료. 「즉시 지급」으로 되돌리자는 제안 금지.
 - **OA 2건은 병행 운영**(2026-08-06) — `(OA)mission complete`=미션 완료 시 / `(OA)Reward Confirm`=지급 시점. **대체 아님**. 기존 OA 삭제·통합 제안 금지.
 - **`(Promotion) Unifi Member`·`(Popup) Unifi member` 화면은 삭제됐다**(2026-08-06, 사용자) — 위키 행·첨부 2건·orphan 키 `mini_luckyball_already_member`까지 정리 완료. **복원·재추가 제안 금지.** 「이미 회원」은 `unifi_promotion_info_already_member` 단일 키.
@@ -183,17 +185,21 @@
 
 ### 2026-08-06 — 세션 #10: 시즌3 `Updated Fram` 6프레임 — 지급 시점 「즉시」→「2주 이내」 (PC 변경)
 
-- **완료 (git 1커밋 `2d5f935`, 푸시)**: 위키 **v47 → v52**(사용자 편집 v50 포함, 매 PUT 직전 rebase·버전 가드)
+- **완료 (git 5커밋 `2d5f935`·`398e523`·`2912460`·`595ef15`·`b6b5f93`, 전부 푸시)**: 위키 **v47 → v56**(사용자 편집 v50·v53·v55 포함, 매 PUT 직전 rebase·버전 가드)
   - **지급 시점 정책 번복 반영** — `info_signup_desc`·`bottomsheet_signup_text2` 2키 5개 언어. ja 초안 `当選報酬`를 용어집 정본 **`当選金`으로 교정**(형제 키와 어긋남)
   - **신규 키 1 / 삭제 키 1** — `unifi_promotion_info_already_member` 신설(info Case 4번째 케이스 신설에 대응) · orphan `mini_luckyball_already_member` 삭제. 번역표 47키 · 엑셀 3종 재첨부(ALL v14·LV v6·UIT v11)
   - **신규 OA `(OA)mission complete`** — 위키 행 + Alt 4개 언어 + **Flex JSON 5개 언어·zip**(URL 실값 반영, 재다운로드 라운드트립 5/5)
   - Description 갱신 2건(Button Case 정책 4 · info Case 정책 4 신설) · 어노테이션 4건 갱신 + 신규 1건 · 미참조 첨부 2건 삭제
-  - 게이트 리포트 1건(3차 차수까지 누적) — 매 차수 **P0=0** · `check_gate_report.py` exit 0 · `check_wiki_storage.py` pre/post exit 0
+  - **어노테이션 4건 재렌더**(각 v3) — `collect_frames.py` 개선본으로 핀-글자 가림 해소. Button Case ⓝ⑤ 로고 가림은 **사용자가 문제없다고 확정**
+  - **OA `ACTION_URL_1` 2회 갱신** — `referral_code` `1810_SUOJB`→`1813_SUOJG`, 이어서 빈 파라미터 `?&` 제거. 매번 JSON 5파일·zip을 맞추고 **재다운로드 라운드트립**으로 위키 URL과 대조(zip v3)
+  - 게이트 리포트 1건(**5차 차수까지 누적**) — 매 차수 **P0=0** · `check_gate_report.py` exit 0 · `check_wiki_storage.py` pre/post exit 0
 - **주의/배운 것**:
   - **작업 PC가 바뀌었다**(`AL02359162.local`). HANDOFF의 「주요 경로」가 구 PC 기준(`/Users/ad03230205/…`)이라 실제 경로(`/Users/user/…`)와 다르다 — 갱신함.
   - **세션이 병렬로 돌 수 있다** — 작업 중(11:04) 원격에 `4bd7fa4`·`8827957`이 들어왔다. `git fetch`만 하고 pull을 미루면 **개선된 도구를 모르고 구버전으로 산출물을 만든다**(어노테이션 4건이 그 사례 → P2로 이월).
   - **게이트 수치는 도구 버전에 매인다** — P1을 54로 보고했다가 최장일치 개선본 기준 **53**으로 정정했다. 리포트에 **검증기 커밋 해시를 명기**하도록 바꿨다.
   - **사용자 편집이 삭제일 수도 있다** — v50에서 `(Popup) Unifi member` 행이 함께 사라져 orphan 키가 생겼다. 첨부 미참조 목록 대조로 발견. **PUT 후 `본문 참조 = 첨부` 대조를 습관화**할 것.
+  - **OA URL은 한 세션에 여러 번 바뀐다** — 이번에 2회. 「구 문구 잔존 0건」만 보지 말고 **위키 Description 값과 JSON URI를 문자열 단위로 대조**하는 편이 확실하다(치환 누락·부분 반영을 잡는다).
+  - **도구의 `overlaps=없음`이 가림 없음을 뜻하지 않는다** — `collect_frames.py`는 TEXT 노드만 회피 대상으로 본다. 로고 같은 벡터·이미지는 감지하지 못하므로 **육안 검증이 여전히 최종 관문**이다.
 
 ### 2026-08-05~06 — 세션 #9: 비실시간 지급 위키 + 스크립트 오탐 개선 (**HANDOFF 미갱신 — 커밋 로그 기준 요약**)
 
