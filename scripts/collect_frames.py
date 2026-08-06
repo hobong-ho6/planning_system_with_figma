@@ -92,6 +92,17 @@ def match_text(texts: list, cx: float, cy: float):
     return best
 
 
+def hit_text(texts: list, x: float, y: float, r: float):
+    """(x,y) 중심 반지름 r의 핀 원이 덮는 텍스트. 없으면 None."""
+    for t in texts:
+        if not t["t"].strip():
+            continue
+        if (t["x"] - r < x < t["x"] + t["w"] + r
+                and t["y"] - r < y < t["y"] + t["h"] + r):
+            return t
+    return None
+
+
 def build_points(threads: list, texts: list, scale: int) -> tuple:
     """통합 번호 points[(no,x,y,color)] + xlt_targets[] 생성 (md/wiki.md 4-B 배치 규칙)."""
     points, targets = [], []
@@ -114,21 +125,23 @@ def build_points(threads: list, texts: list, scale: int) -> tuple:
     # 핀 원이 텍스트 박스에 닿으면 그 박스 좌측 밖으로, 좌측 여백이 모자라면 우측 밖으로 옮긴다.
     r = CIRCLE_R / scale
     for p in points:
-        for t in texts:
-            if not t["t"].strip():
-                continue
-            if (t["x"] - r < p[1] < t["x"] + t["w"] + r
-                    and t["y"] - r < p[2] < t["y"] + t["h"] + r):
-                left = t["x"] - 10
-                p[1] = left if left - r >= 0 else t["x"] + t["w"] + 10
-                break
-    # 겹침 해소 — 뒤 번호를 우측으로 최소 이동
+        t = hit_text(texts, p[1], p[2], r)
+        if t:
+            left = t["x"] - 10
+            p[1] = left if left - r >= 0 else t["x"] + t["w"] + 10
+    # 겹침 해소 — 뒤 번호를 최소 이동. 우측이 글자를 덮으면 아래로 비킨다.
+    # (2026-08-06: 우측으로만 밀던 탓에 위 회피가 되돌려져 다시 글자를 덮었다 —
+    #  실측 66505:19122 핀2가 `지급될 리워드`의 「지급」을 가림.)
     need = 2 * CIRCLE_R / scale + 1
     for i in range(len(points)):
         for j in range(i + 1, len(points)):
             dx, dy = points[j][1] - points[i][1], points[j][2] - points[i][2]
             if (dx * dx + dy * dy) ** 0.5 < need:
-                points[j][1] = points[i][1] + need + 2
+                nx = points[i][1] + need + 2
+                if hit_text(texts, nx, points[j][2], r):
+                    points[j][2] = points[i][2] + need + 2
+                else:
+                    points[j][1] = nx
     return points, targets
 
 
@@ -157,12 +170,12 @@ def annotate(in_path: Path, points: list, out_path: Path, scale: int, texts: lis
     res = [(a[0], b[0]) for i, a in enumerate(points) for b in points[i + 1:]
            if ((a[1] - b[1]) ** 2 + (a[2] - b[2]) ** 2) ** 0.5 < need]
     # 핀이 글자를 덮는 경우도 보고한다 — 이전에는 핀끼리만 봐서 육안으로만 잡혔다.
-    r = CIRCLE_R / scale
     if texts:
-        res += [(no, "text:" + t["t"][:12]) for no, rx, ry, _ in points for t in texts
-                if t["t"].strip()
-                and t["x"] - r < rx < t["x"] + t["w"] + r
-                and t["y"] - r < ry < t["y"] + t["h"] + r]
+        r = CIRCLE_R / scale
+        for no, rx, ry, _ in points:
+            t = hit_text(texts, rx, ry, r)
+            if t:
+                res.append((no, "text:" + t["t"][:12]))
     return res
 
 
