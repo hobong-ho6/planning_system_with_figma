@@ -229,7 +229,9 @@ python3 scripts/validate_translation.py xlt/xlt_output_season3_ALL_20260806.xlsx
 ### 미해결 2건 (보고만, 조치 없음)
 
 1. **Button Case ⓝ⑤가 `unifi` 로고를 가린다** — 로고가 TEXT 노드가 아니라 벡터/이미지라 `collect_frames.py`의 텍스트-회피 로직이 감지하지 못한다. 도구는 `overlaps=없음`으로 통과시켰다. **도구 개선 후보**(회피 대상에 비텍스트 노드 bbox 포함).
-2. **갱신된 `ACTION_URL_1`에 빈 파라미터 `?&`가 다시 들어왔다** — `…luckyball-invite?&utm_source=…`. 2026-08-05에 사용자가 제거했던 패턴이다(HANDOFF 기록). 동작에는 영향이 없어 **위키 기입값 그대로 JSON에 반영**했다. 제거를 원하면 위키 Description 수정 후 재요청 필요.
+2. ~~갱신된 `ACTION_URL_1`에 빈 파라미터 `?&`가 다시 들어왔다~~ → **해소(5차 차수)**. 사용자가 위키 URL에서 `?&`를 제거(v55)했고, Flex JSON 5파일·zip을 그 값으로 다시 맞춰 첨부 갱신(**v3**)했다. 재다운로드 라운드트립으로 **위키 Description URL과 5파일 URI 완전 일치** 확인.
+
+**최종 `ACTION_URL_1`**: `…/luckyball-invite?utm_source=unifi_oa_alarm&utm_medium=cta&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1813_SUOJG`
 
 ## 6. 통과 판정
 
