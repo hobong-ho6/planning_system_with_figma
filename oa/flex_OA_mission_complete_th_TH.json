@@ -1,0 +1,63 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/2fa7ce8141044e2dbff77a86136307b6.png?updatedAt=1779241283000",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "รางวัล {{total_amount}} JPYC ที่ได้รับจะจ่ายภายใน 2 สัปดาห์",
+        "weight": "bold",
+        "size": "lg",
+        "wrap": true
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "คุณสามารถมอบ JPYC ให้เพื่อนต่อได้ทันที เมื่อเพื่อนสมัครและเพิ่มเพื่อนบัญชีทางการ LINE ของ Unifi จะได้รับลูกบอลนำโชคเพิ่มรวม 2 ลูก",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "* กรุณาคงสถานะเพื่อนกับบัญชีทางการ LINE ของ Unifi เพื่อเข้าร่วมกิจกรรมอื่น",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "primary",
+        "color": "#000000",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "มอบ JPYC ให้เพื่อนด้วย",
+          "uri": "https://miniapp.line.me/2008994549-CGfrtgSs/benefits-mini/luckyball-invite?utm_source=unifi_oa_alarm&utm_medium=cta&utm_campaign=unifi_luckyballwelcome&utm_content=august_2026&utm_term=event22&referral_code=1810_SUOJB"
+        }
+      }
+    ]
+  }
+}
