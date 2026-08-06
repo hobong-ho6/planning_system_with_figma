@@ -217,6 +217,20 @@ python3 scripts/validate_translation.py xlt/xlt_output_season3_ALL_20260806.xlsx
 
 **History 이력 보존**: 삭제한 키 이름은 History 서술문에 2회 남아 있다(과거 변경 기록) — 이는 의도적 보존이며 값이 아니다.
 
+## 5-4. 4차 차수 — 어노테이션 재렌더 + OA URL 갱신 · 2026-08-06
+
+| # | 조치 | 결과 |
+|---|---|---|
+| 1 | **어노테이션 4건 재렌더** — `collect_frames.py` 개선본(`4bd7fa4`, 핀-글자 회피)으로 Button Case·Promotion page·Reward Confirm·info Case 재생성 → 같은 파일명 재첨부(각 **v3**) | **육안 검증**: ⓝ가 텍스트 좌측 밖으로 이동해 글자 가림 해소. Promotion page 18핀 전부 위→아래 증가·가림 0. 도구 `overlaps` 경고 2건(`text:TBD`·`text:확인`)은 육안 확인 결과 **비가시 텍스트/여백 배치라 무해** |
+| 2 | **OA `ACTION_URL_1` 갱신** — `referral_code` `1810_SUOJB` → **`1813_SUOJG`** | Flex JSON 5파일 URI 교체 → 같은 파일명 zip 재첨부(**v2**). **재다운로드 라운드트립 5/5** — 신규 코드 반영·구 코드 잔존 0 |
+
+**`md/OA.md` §3-1 3곳 세트 확인**: ⓐ 위키 Description URL(사용자 기입) ⓑ JSON 5개 ⓒ zip — 모두 동일 URL.
+
+### 미해결 2건 (보고만, 조치 없음)
+
+1. **Button Case ⓝ⑤가 `unifi` 로고를 가린다** — 로고가 TEXT 노드가 아니라 벡터/이미지라 `collect_frames.py`의 텍스트-회피 로직이 감지하지 못한다. 도구는 `overlaps=없음`으로 통과시켰다. **도구 개선 후보**(회피 대상에 비텍스트 노드 bbox 포함).
+2. **갱신된 `ACTION_URL_1`에 빈 파라미터 `?&`가 다시 들어왔다** — `…luckyball-invite?&utm_source=…`. 2026-08-05에 사용자가 제거했던 패턴이다(HANDOFF 기록). 동작에는 영향이 없어 **위키 기입값 그대로 JSON에 반영**했다. 제거를 원하면 위키 Description 수정 후 재요청 필요.
+
 ## 6. 통과 판정
 
 - **P0 = 0건**(자동 + 수동 전수) → ✅ 출력·위키 반영·엑셀 생성 진행 가능
