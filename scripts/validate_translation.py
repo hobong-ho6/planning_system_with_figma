@@ -277,7 +277,21 @@ class TranslationValidator:
                     continue
                 lang = dep.get('lang', 'ko_KR')
                 text = ko_text if lang == 'ko_KR' else str(row.get(lang, ''))
-                if not text or dep['pattern'] not in text:
+                if not text:
+                    continue
+                # en은 단어 경계로만 본다 — `follow the steps`의 follow는 잡되
+                # `following`·`follow-up` 같은 파생형까지 번지지 않게 한다
+                if lang == 'en_US':
+                    if not re.search(r'(?<![A-Za-z])' + re.escape(dep['pattern']) + r'(?![A-Za-z-])',
+                                     text, re.I):
+                        continue
+                elif dep['pattern'] not in text:
+                    continue
+                # context — 같은 셀에 이 중 하나가 있을 때만 구 표기로 본다 (2026-08-06)
+                # 같은 단어가 다른 뜻으로 쓰이는 것을 걸러낸다:
+                # zh `關注App`(관심 앱) · th `โปรดติดตาม`(기대해 주세요) · en `follow the steps`(~를 따르다)
+                ctx = dep.get('context')
+                if ctx and not any(c.lower() in text.lower() for c in ctx):
                     continue
                 # 최장일치 — 더 긴 금지 표현이 같은 자리에 걸리면 짧은 쪽은 건너뛴다
                 # (`OA 팔로우`가 잡혔으면 `팔로우`는 중복 보고하지 않는다)
