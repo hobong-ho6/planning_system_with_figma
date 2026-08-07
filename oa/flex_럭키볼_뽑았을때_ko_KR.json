@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "당첨금 {{amount}}JPYC가 {{wallet_address}}로 지급되었습니다.",
+            "text": "당첨금 {{amount}}JPYC가 {{wallet_address}}로 2주 이내로 지급될 예정입니다.",
             "size": "sm",
             "color": "#666666",
             "wrap": true

@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "A prize of {{amount}}JPYC has been paid to {{wallet_address}}.",
+            "text": "A prize of {{amount}}JPYC will be paid to {{wallet_address}} within 2 weeks.",
             "size": "sm",
             "color": "#666666",
             "wrap": true

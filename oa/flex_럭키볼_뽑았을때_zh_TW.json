@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "獎金 {{amount}}JPYC 已發放至 {{wallet_address}}。",
+            "text": "獎金 {{amount}}JPYC 將於 2 週內發放至 {{wallet_address}}。",
             "size": "sm",
             "color": "#666666",
             "wrap": true

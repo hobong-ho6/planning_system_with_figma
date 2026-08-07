@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "当選金{{amount}}JPYCが{{wallet_address}}に支給されました。",
+            "text": "当選金{{amount}}JPYCは{{wallet_address}}へ2週間以内に支給される予定です。",
             "size": "sm",
             "color": "#666666",
             "wrap": true
