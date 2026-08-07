@@ -93,7 +93,7 @@
   - **담당 팀이 UIT(`UF_*`) → LV(`mini_guidekim_*`)로 바뀐다** — FE 확인 필요
 - **가이드 v21 게시 완료**(사용자) — 용어집 v4.6 반영 + **본문 하드코딩 stale 3곳 정정**.
 
-**⚠️ 사용자 XLT 업로드가 1건 미반영이다(API 3회 확인).** `mini_luckyball_terms_existing_user` ko가 시스템에는 여전히 **`유저`**, 정본 엑셀은 **`사용자`**다. 나머지 8키는 일치. **`사용자` 교정 이전 버전 엑셀을 올린 것으로 추정**(미확인) — 재업로드가 필요하다.
+**⚠️ 사용자 XLT 업로드가 1건 미반영이었다(API 3회 확인).** `mini_luckyball_terms_existing_user` ko가 시스템에는 `유저`, 정본 엑셀은 `사용자`였다(나머지 8키는 일치 — `사용자` 교정 이전 버전을 올린 것으로 추정, 미확인). **이 건은 2026-08-07 생성한 수정 엑셀 `xlt/registry_fix/xlt_fix_DappPortal_20260807.xlsx`에 포함**돼 있고, 추적은 사용자 판단으로 이 문서에서 종료했다. **교훈만 남긴다 — 사용자가 「업로드했다」고 해도 API로 확인해야 한다.**
 
 **A/B 실측이 또 한 번 판단 근거가 됐다.** 용어집 등재 전 두 축(`terminology` / `deprecated_terms`)을 분리 측정 → 레지스트리 1,596키 P1 1,655→1,661(+6): **5건 실제 위반 · 1건 오탐**(`trade_swap_slippage_setting_custom_title` en — ko `사용자 설정`이 관용적으로 `Custom`. **재판정 금지**). 시즌3는 교정 후 P1 **67로 증감 0**.
 
@@ -104,17 +104,7 @@
 ## 다음 할 일
 
 ### 사용자 액션 대기 (Claude가 할 수 없음)
-- [ ] **🔴 P0**: **`mini_luckyball_terms_existing_user` XLT 재업로드** — 2026-08-07 사용자 업로드에서 **이 1건만 미반영**됐다(API 3회 확인, 전파 지연 아님). 시스템 ko = `…완료한 **유저**의 경우…` / 정본 엑셀 ko = `…완료한 **사용자**의 경우…`. 나머지 8키는 일치하므로 **`사용자` 교정 이전 버전 엑셀을 올린 것으로 추정**(미확인). → 위키 첨부 **`xlt_output_season3_ALL_20260804.xlsx`(ALL v22)** 또는 `LV_20260804.xlsx`(v13)를 **다시 내려받아** 업로드. 업로드 후 `fetch_xlt_registry.py`로 재확인.
-- [ ] **🔴 P0(최우선)**: **XLT 키 이름 손상 3건 조치** — 키 이름 자체가 깨져 **FE가 정상 키명으로 값을 못 가져온다**. 번역 품질이 아니라 **동작 문제**다. 문구 검증으로는 원리적으로 안 잡히고, 키 이름 전수 점검(제어문자·비ASCII·앞뒤 공백)으로만 나온다.
-  - `Dapp Portal` `"\xa0UF_home_jpyc_home_banner2"` — **앞에 nbsp(U+00A0)**. `Unifi`엔 정상 `UF_home_jpyc_home_banner2`가 같은 값으로 있다 → nbsp 제거해 재등록
-  - `Kaia Wallet` `"payment_history_\x08paymentstatus_title"` — **제어문자 U+0008(BACKSPACE)**
-  - `Kaia Wallet` `"payment_history_?paymentstatus_title"` — 키 이름에 `?`
-  - 뒤 둘은 **값까지 깨졌다**(정상 키 `payment_history_paymentstatus_title`가 따로 있고, 두 파손 키는 **ko↔en이 뒤바뀜**) → **삭제 대상**. ⚠️ 삭제 전 **FE 참조 여부 확인 필수**(`md/translate.md` 키 거버넌스).
 - [ ] **P2**: **용어집 예외 위반 — 정책 판단 5건** (확정 6건은 수정 엑셀에 반영 완료) — ⓐ `UF_common_error_404_desc` zh `URL`→`網址`(중국어 관용, zh 예외 허용 여부) ⓑ `UF_exchange_guide_subtitle` en이 ko와 **의미가 다른 문장**(재번역 문안 필요) ⓒ `UF_guide_reason_interest_desc3` en 문장 끊김·USDT 누락(재번역) ⓓ `UF_main_jpyc_guide_banner_title` en `Learn More`(버튼 의역 허용 여부) ⓔ `oa_promotion_popup_budget` th 2문장 중 1문장 누락(재번역). 상세·판정 근거는 `reports/gate/gate_report_xlt_registry_fix_2026-08-07.md` 2단계.
-- [ ] **P1**: **컬럼 어긋남 2건 수정** — ⓐ `Dapp Portal` `Minidapp_connect_signing_title`: **zh_TW 칸에 태국어가 그대로 복사**돼 중국어 번역이 없다. 게다가 **th 원문도 오타**(`เริ่มต้น`→`ริ่มต้น`, 첫 글자 `เ` 누락) — 두 언어 함께 수정. ⓑ `Unifi` `UF_promotion3_detail_caution_desc3`: **ja_JP 칸에 번체 중국어**(`獎勵將以 KAIA 統一發放`). 형제 키 `_desc1`은 ja가 정상이라 대비 분명. **재번역 문안이 필요**해 이번 수정 엑셀에 넣지 않았다.
-- [ ] **🔴 P0**: **XLT 수정 엑셀 2종 업로드** — `xlt/registry_fix/xlt_fix_DappPortal_20260807.xlsx`(25키·35셀) · `xlt_fix_Unifi_20260807.xlsx`(60키·60셀). 처리분: **nbsp 80셀** · **`유저`→`사용자` 8셀**(용어집 #14) · **예외 위반 확정 6셀**(USDT를 「미국 달러」로 번역한 th 3건 · ja JPYC/USDT 누락 3건) · **빈 값 1셀**(`app_detail_receive_done` en=`Received`). 게이트 **P0=0**(양쪽 exit 0) · `check_gate_report.py` exit 0 — `reports/gate/gate_report_xlt_registry_fix_2026-08-07.md`. ⚠️ 업로드 후 `fetch_xlt_registry.py`로 **재조회 검증**(nbsp 0·`유저` 0). 세션 #18에서 사용자 업로드 1건이 미반영된 실측이 있다.
-- [ ] **P2**: **`Kaia Wallet` `payment_bridge_jp_tos_*` 3키 확인(법무·기획)** — `特定商取引法に基づく表示`로 **5개 언어 전부 일본어**다. JP 전용 법정 고지라 의도된 것일 수 있으나 `続き`(다음) 버튼까지 전 언어 일본어인 건 과해 보인다.
-- [ ] **P1**: **`Dapp Portal`의 `UF_` 구값 사본 87키 정리 여부(FE·UIT 확인)** — `UF_`의 정본은 `Unifi`인데 `Dapp Portal`에도 244키가 있고 그중 87키가 값이 다르다(치환자 `{0}` 포함). ⓐ 이관 잔재라 삭제 가능 ⓑ 두 서비스가 각각 참조 중이라 둘 다 유지 필요 — **FE 확인 필요**. 확정 전까지 건드리지 않는다(`md/guide.md:228`).
 - [ ] **P1**: **시즌3 감사 후속 — 위키 결함 1 + 확인 필요 5** (`reports/audit/wiki_policy_audit_season3_2026-08-05.md`)
   ⓐ `Reward Confirm Bottom Sheet` **요약문이 `회원가입 완료 후`인데 Figma·1번 정책은 `회원가입을 시작하고`** — 같은 셀에서 시점이 갈림(수정 승인 필요)
   ⓑ `User status case` **No 4 키가 No 3과 완전 중복** — Figma는 `unifi_promotion_jpyc_info_btn1`, 위키는 `info_btn1`. **신규 등록 vs 재사용 결정이 미결**(`gate_report_season3_uit_5keys.md:245`)
@@ -133,11 +123,7 @@
 - [ ] **P1**: **IA Screen ID 어휘 승인 5건**(`md/IA.md` §4) — ① 보유 NFT `asset_nft_01`→`apps_mypage_nft_01` ② `/reward/…` 부스트·스테이킹 어휘 ③ K-Pick `kpick_` 확정 ④ 외부 지갑 연결 `asset_wallet_connect_01` ⑤ 비로그인 변형 어휘 방식. **확정 전까지 해당 영역 Screen ID 부여 금지.**
 - [ ] **P1**: **미점검 축 조합 실측용 접근 수단**(`md/IA.md` §0-0-1) — 실측은 Web·mini × KR IP뿐. ⓐ **프로덕션 로그인**(Chrome에서 `www.unifi.me` 로그인만 해두면 다음 회차 자동 커버, **Claude 직접 로그인 금지**) ⓑ Wallet Mode(US·CA·UK·SG IP) ⓒ LIFF 링크 ⓓ JP IP ⓔ approve 미완료 계정 ⓕ mini 비로그인 ⓖ `draw-promotion`.
 - [ ] **P1**: **`Mini - 일본`(65280-8215) NEXT Bay 배너 보상 단위** — 화면 전체가 JPYC인데 배너만 `최대 100 USDT`. Mission and Reward 마스터 버전 9에도 확인 항목으로 기재.
-- [ ] **P2**: **정책 충돌 1건(mini 이자 배너) · 영문 UI에 한국어 원문 노출 2건** — FE·디자이너 확인 대기. 「현재 상태」 캐리오버 ⓑⓒ와 같은 건이며, **「현재 상태」는 매 세션 덮어쓰므로 이 줄이 정본**이다. (K-Pick KR IP 건은 아래 '사용자 결정으로 종결' 참조 — 재보고 금지)
-- [ ] **P2**: **Figma 원문 수정 요청(디자이너)** — 누적 **19건**. ⓐ 시즌3 12건은 `gate_report_season3_screen_reconcile.md` (1a)에 전문 보존(`종료된 캠페인 입니다` 3곳 · `가입이 완료 됐어요!` · `UINIFI채널을 팔로우` · `JPYC선물하기` · nbsp · `최대 60만엔` · OA `0x8442...7c8로` 조사 결함 · OA 프레임 코멘트 0건 등) ⓑ **감사 신규 7건**은 `reports/audit/wiki_policy_audit_season3_2026-08-05.md` §3 — 키 구버전 2(`jpyc_btn1`→`jpyc_btn_signup` · `unifi_text8a`→`jpyc_unifi_text8a`) · **`팃`(한글 IME 켠 채 `xlt` 입력)** · mini Login x에 xlt 마커 추가 2 · **프레임명 `(Promotion)`→`(Popup)` 2**(`Has no DA Score`·`Abuser`) · `Has no DA Score` 정책 코멘트 보완. `figma-source-issues` 에이전트로 취합 가능. ⓒ **`(Promotion) info Case` 4번 핀에 `xlt key = unifi_promotion_info_already_member` 답글 추가**(1~3번은 있음).
 
-- [ ] **P1**: **「이미 회원」 키 3중 중복 정리** — 2026-08-07 `compare_wiki_xlt.py`가 자동 검출했다(위키 `4540065229` 대조). 시스템에 **거의 같은 문구가 3키**로 있다: `unifi_promotion_info_already_member`(`이미 Unifi 회원이시네요**.**`) · `mini_luckyball_already_member`(`…이시네요**!**`, 유사도 0.929 — **위키에서 [제거]로 표기됐는데 시스템엔 그대로 남아 있다**) · `mini_luckyball_already_member_go_home`(`…이시네요! - 홈으로 가기`, 앞 두 키의 **결합 문구**).
-  - 세션 #10은 `unifi_promotion_info_already_member` 단일 키로 일원화 종결, 세션 #11은 `_go_home`을 신설 — **두 세션이 서로 모르고 정했다**. ⓐ `_go_home`이 별개로 맞다 ⓑ FE가 두 키를 이어 붙이고 신규 키를 회수 중 택일 + `mini_luckyball_already_member` **삭제 여부**(FE 참조 확인 선행).
 - [ ] **P2**: **가이드 업데이트 이력 탭도 접이식 검토** — v18에서 **용어집 탭**만 접이식으로 바꿨다. 업데이트 이력 탭은 **카드 34장**으로 더 길다.
 
 - [ ] **P1**: **`mini_luckyball_invite_banner_desc` 서비스 간 값 분기 결정** — 2026-08-07 재확인 결과 **시스템에 두 값이 동시에 존재**한다: `Dapp Portal` = `럭키볼 1개에 최소 100 JPYC 당첨!`(시즌3 반영분) / `Unifi` = `럭키볼 1개에 최대 50,000 JPYC 당첨!`. 「최소 보장」↔「최대 상한」으로 **의미가 반대**인데 서비스마다 다르게 노출된다. 어느 쪽이 맞는지 + 다른 서비스도 맞출지 결정 필요.
@@ -154,7 +140,7 @@
 - **Button Case 어노테이션 ⓝ⑤가 `unifi` 로고를 가리는 것은 문제없다**(2026-08-06 사용자 확정) — 로고가 TEXT 노드가 아니라 `collect_frames.py`의 텍스트-회피가 감지하지 못하는 케이스다. **도구 개선·재렌더를 재제안하지 않는다.**
 - **당첨금 지급 시점은 「2주 이내」다**(2026-08-06) — 2026-08-05의 「즉시 지급(최대 5분 내)」 확정을 **번복**한 것이며 `info_signup_desc`·`bottomsheet_signup_text2`에 반영 완료. 「즉시 지급」으로 되돌리자는 제안 금지.
 - **OA 2건은 병행 운영**(2026-08-06) — `(OA)mission complete`=미션 완료 시 / `(OA)Reward Confirm`=지급 시점. **대체 아님**. 기존 OA 삭제·통합 제안 금지.
-- **`(Promotion) Unifi Member`·`(Popup) Unifi member` 화면은 삭제됐다**(2026-08-06, 사용자) — 위키 행·첨부 2건 정리 완료. **복원·재추가 제안 금지.** 「이미 회원」 문구는 `unifi_promotion_info_already_member` **신규 키로 일원화**(기존 팝업 키 재사용 아님 — 사용자 선택). ⚠️ 다만 `mini_luckyball_already_member`가 **시스템에는 아직 남아 있다** — 「다음 할 일」의 3중 중복 정리 항목이 정본이다.
+- **`(Promotion) Unifi Member`·`(Popup) Unifi member` 화면은 삭제됐다**(2026-08-06, 사용자) — 위키 행·첨부 2건 정리 완료. **복원·재추가 제안 금지.** 「이미 회원」 문구는 `unifi_promotion_info_already_member` **신규 키로 일원화**(기존 팝업 키 재사용 아님 — 사용자 선택). ⚠️ 다만 `mini_luckyball_already_member`가 **시스템에는 아직 남아 있다**(2026-08-07 API 실측). 「이미 회원」 문구가 `unifi_promotion_info_already_member`·`mini_luckyball_already_member`·`mini_luckyball_already_member_go_home` **3키로 중복**된 상태이며, 정리 여부는 **사용자 판단으로 미결 종결**했다(FE 참조 확인이 선행돼야 하고 이 문서에서 추적하지 않는다).
 - **OA `altText`에 변수를 쓸 수 없다**(2026-08-05) — 금액 삽입안은 **종결**. 이후 OA 작업에서 altText 변수화를 **재제안하지 않는다**. (부록 7의 "봉투 텍스트에서도 치환 가능" 서술은 무효)
 - **OA ⑤ `확인하기`는 유입 추적하지 않는다**(2026-08-05) — utm·referral_code 추가 제안 금지.
 - **`unifi_promotion_jpyc_info_oa_desc` 정본**(2026-08-06 사용자 최종) — `다양한 이벤트 소식을 가장 빠르게 받아볼 수 있는 Unifi의 LINE 공식 계정 친구를 유지해주세요.` 5개 언어 반영 완료. **이전 ⓐ안(`이후 연계해 참여할 수 있는…`)으로 되돌리자는 제안 금지.**
