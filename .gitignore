@@ -23,6 +23,7 @@ translation_*.md
 /data.js
 /i18n.js
 service-spec.md
+!xlt_audit_site/service-spec.md
 dropweb/
 comments_data.json
 generate_prototype_data.py
