@@ -11,6 +11,7 @@ md/xlt-verify.md 구현 — 검증 로직은 validate_translation.TranslationVal
 import argparse
 import json
 import sys
+import unicodedata
 from datetime import datetime
 from pathlib import Path
 
@@ -71,8 +72,32 @@ def build_proposals(issues: dict, registry: dict, glossary: dict) -> tuple:
     return proposals, review
 
 
+def check_key_names(entries: dict) -> list:
+    """키 **이름** 자체의 이상을 찾는다. [{key(repr), issues[]}]
+
+    ⛔ 문구 검증(1~3단계)은 키 이름을 보지 않는다 — 이름이 깨지면 FE가 정상 키명으로
+    값을 못 가져오는데도 번역 검사는 전부 통과한다. 2026-08-07 감사에서 별도 임시
+    스캔으로만 3건이 나왔고(`\\xa0UF_home_jpyc_home_banner2` · `payment_history_\\x08…`
+    · `payment_history_?…`), 그중 2건은 값까지 ko↔en이 뒤바뀐 중복 키였다.
+    """
+    out = []
+    for k in entries:
+        bad = []
+        if any(unicodedata.category(c) == 'Cc' for c in k):
+            bad.append('제어문자')
+        if any(ord(c) > 127 for c in k):
+            bad.append('비ASCII')
+        if k != k.strip() or ' ' in k:
+            bad.append('공백')
+        if '?' in k:
+            bad.append("'?' 포함")
+        if bad:
+            out.append({'key': repr(k), 'issues': bad})
+    return out
+
+
 def write_report(path: Path, registry: dict, glossary: dict, issues: dict,
-                 proposals: list, review: list):
+                 proposals: list, review: list, keyname: list = None):
     meta, gmeta = registry['metadata'], glossary['metadata']
     L = [f"# XLT 등록값 ↔ 용어집 검증 리포트\n",
          f"\n| 항목 | 값 |\n|---|---|\n",
@@ -86,6 +111,18 @@ def write_report(path: Path, registry: dict, glossary: dict, issues: dict,
         L.append(f"| {lv} | {len(issues[lv])}건 |\n")
     L.append(f"\n- **자동 치환 제안: {len(proposals)}건** (구 표기 — 사용자 확인 후 엑셀 생성)\n")
     L.append(f"- **검토 필요: {len(review)}건** (기계 치환 불가 — 사람이 판단)\n")
+    L.append(f"- **키 이름 이상: {len(keyname or [])}건** "
+             f"(⛔ 문구 검증이 원리적으로 못 잡는 부류 — FE가 정상 키명으로 값을 못 가져온다)\n")
+
+    L.append("\n## 0. 키 이름 이상 (최우선)\n\n")
+    if keyname:
+        L.append("| 키 이름(repr) | 문제 |\n|---|---|\n")
+        for k in keyname:
+            L.append(f"| `{k['key']}` | {' · '.join(k['issues'])} |\n")
+        L.append("\n> ⚠️ 삭제·재등록 전 **FE 참조 여부 확인 필수**(`md/translate.md` 키 거버넌스). "
+                 "정상 키가 따로 있으면 파손 키는 삭제 대상이다.\n")
+    else:
+        L.append("없음.\n")
 
     L.append("\n## 1. 자동 치환 제안 (구 표기)\n\n")
     if proposals:
@@ -164,11 +201,14 @@ def main():
     glossary = json.load(open(args.glossary, encoding='utf-8'))
     issues = run_validation(registry, args.glossary)
     proposals, review = build_proposals(issues, registry, glossary)
+    keyname = check_key_names(registry['entries'])
+    if keyname:
+        print(f"⚠️ 키 이름 이상 {len(keyname)}건: " + ', '.join(k['key'] for k in keyname[:3]))
 
     meta = registry['metadata']
     stamp = f"{meta['service'].replace(' ', '')}_{meta['version']}_{datetime.now().strftime('%Y%m%d')}"
     out = Path(args.out_dir)
-    write_report(out / f"xlt_glossary_report_{stamp}.md", registry, glossary, issues, proposals, review)
+    write_report(out / f"xlt_glossary_report_{stamp}.md", registry, glossary, issues, proposals, review, keyname)
     prop_path = out / f"xlt_fix_proposals_{stamp}.json"
     prop_path.write_text(json.dumps(
         {'metadata': {**meta, 'glossary_version': glossary['metadata']['version']},

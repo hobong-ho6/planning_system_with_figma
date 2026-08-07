@@ -61,13 +61,15 @@ for col in df.columns:
 ### 자동 검증 스크립트 실행
 
 ```bash
-python validate_translation.py {파일.xlsx} \
-  --sheet properties \
-  --key-column "Key ID" \
-  --glossary glossary.json \
-  --output report.md \
-  --json result.json
+python3 scripts/validate_translation.py <엑셀파일경로> [용어집경로]
+# 예: python3 scripts/validate_translation.py xlt/xlt_output_season3_ALL_20260804.xlsx scripts/glossary.json
 ```
+
+⛔ **CLI는 위치 인자 2개뿐이다**(`scripts/validate_translation.py:423-428`). `--sheet`·`--key-column`·`--glossary`·`--output`·`--json` 같은 **플래그는 존재하지 않는다** — 넣으면 첫 플래그가 엑셀 경로로 해석돼 실패한다.
+- 시트는 `properties` 고정, key 열은 **첫 컬럼**(헤더 공백) 고정이다.
+- **용어집은 두 번째 위치 인자로만** 받는다. 빠뜨리면 오류 없이 `"용어집이 로드되지 않음. 2단계 건너뜀"`으로 **조용히 통과**하니 반드시 붙인다.
+- 리포트는 `{엑셀명}_validation_report.md`로 **엑셀과 같은 폴더에 자동 저장**된다(`--output` 없음).
+- 종료코드: **P0가 1건이라도 있으면 1**, 없으면 0.
 
 자동 검증이 잡는 항목:
 - 빈칸, 언어 문자 혼입, placeholder/줄바꿈 불일치
@@ -723,3 +725,4 @@ expected = 'foo'      # 일반 공백
 | v3.2 | 2026-07-09 | 게이트 스킵 방지 강제화 — ① 게이트 리포트 완결성 검사기 `scripts/check_gate_report.py`(1a·1c·1d, 필수 요소 6종) 신설·완료 직전 실행 의무화, ② `patch_translation.py` 컬럼 정렬 가드(1g, `ValueError` 차단), ③ 검출기 `foreign_script_issues`로 단일화. 회귀 테스트 [4]·[5] 추가. |
 | v3.3 | 2026-07-28 | 용어집 매칭의 구조적 오탐 2종(en 대소문자·다의어) 함정 2-1 신설 — `확인` P1 10건·`홈` 등재 후보를 실측 검토해 **오탐 확정·재제안 금지**로 사용자 확정(럭키볼 63652-47034 작업). (d-1) 권장 전 P1 증감 계산 의무화. |
 | v3.4 | 2026-08-07 | **교차 오염 탐지 매트릭스 신설** — 언어 혼입 검사가 20개 조합 중 **15개만** 잡는다는 것을 실측으로 확정하고 사각지대 3종(ja↔zh 한자 공유 · 라틴 전면 허용 · ko 부분 영어)과 수동 보완법을 문서화. XLT 시스템 4,092키 전수 스윕에서 자동 검사를 통과한 **ja 칸 중국어 1건**(`UF_promotion3_detail_caution_desc3`)과 **번역 누락 후보 110건**을 이 방법으로 발견. 근거 `reports/audit/xlt_system_glossary_audit_2026-08-07.md` §4-2. |
+| v3.5 | 2026-08-07 | **사각지대 보완 2종을 검증기에 편입**(3단계) — ⓐ `ja_JP == zh_TW` 동일 셀(**CJK 5자 이상**만, 짧은 한자 표기는 우연 일치라 제외) → P1 `ja==zh 동일` ⓑ **일부 언어만 고유 문자 없음**(4개 전부 라틴이면 의도된 UI 라벨이라 제외) → P1 `번역 누락 의심`. **둘 다 P1**이다 — 방향을 판정하지 못해 P0으로 올리면 오탐이 게이트를 막는다. **A/B 실측(채택 근거)**: 보유 캠페인 엑셀 **9종 전체 신규 검출 0건**(P0·P1·P2 완전 불변 — 게이트 기준선 영향 없음), 레지스트리 전수에서만 Dapp Portal +59 · Kaia Wallet +36 검출. `test_validation.py` 전체 통과. |

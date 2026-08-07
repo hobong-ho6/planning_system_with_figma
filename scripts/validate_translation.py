@@ -371,6 +371,35 @@ class TranslationValidator:
                         'detail': f"ko_KR 칸에 한글 없이 라틴 문자열(영어 오배치 또는 브랜드 확인 필요): {ko_cell}"
                     })
 
+            # ── 교차 오염 사각지대 보완 2종 (2026-08-07, md/check.md v3.4)
+            # 위 문자체계 검사는 20개 교차 조합 중 15개만 잡는다. 못 잡는 두 부류를
+            # 내용 기반으로 보완한다. 둘 다 방향을 판정하지 못해 **P1(검토 필요)** 로 둔다 —
+            # P0으로 올리면 오탐이 게이트를 막는다.
+            # A/B 실측(채택 근거): 보유 캠페인 엑셀 9종 신규 검출 **0건**(P1 기준선 불변),
+            # 레지스트리 전수에서만 Dapp Portal +59 · Kaia +36 검출.
+
+            # ① ja↔zh 한자 상호 오염 — 두 언어가 CJK를 공유해 문자체계로는 구분 불가.
+            #    CJK 5자 이상만 본다(`約 {{0}}`·`通知`·`進行中` 같은 짧은 표기는 두 언어에서
+            #    실제로 같아 우연 일치다 — 실측 111건이 그 부류였다).
+            ja_c, zh_c = str(row.get('ja_JP', '') or ''), str(row.get('zh_TW', '') or '')
+            if ja_c and ja_c == zh_c and len(re.findall(r'[㐀-䶿一-鿿]', ja_c)) >= 5:
+                self.issues['P1'].append({
+                    'key': key, 'issue': 'ja==zh 동일',
+                    'detail': f"ja_JP·zh_TW가 완전히 동일(한자 공유로 문자체계 검사가 통과시킴 — 한쪽 오염 의심): {ja_c}"
+                })
+
+            # ② 일부 언어만 고유 문자 없음 = 번역 누락 후보.
+            #    ko/ja/th/zh **4개 전부** 라틴이면 의도된 미번역 UI 라벨(`Contract`·`Balance`)이라 제외.
+            native = {'ko_KR': r'[가-힣]', 'ja_JP': r'[぀-ヿ㐀-䶿一-鿿]',
+                      'th_TH': r'[฀-๿]', 'zh_TW': r'[㐀-䶿一-鿿]'}
+            missing = [l for l, pat in native.items()
+                       if str(row.get(l, '') or '').strip() and not re.search(pat, str(row[l]))]
+            if 0 < len(missing) < 4:
+                self.issues['P1'].append({
+                    'key': key, 'issue': '번역 누락 의심',
+                    'detail': f"{'/'.join(missing)} 칸에 해당 언어 고유 문자가 없다(미번역 또는 반대로 다른 언어의 과잉 번역 — 방향은 사람이 판단)"
+                })
+
         print(f"✓ 다국어 검증 완료")
 
     def generate_report(self) -> str:
