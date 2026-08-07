@@ -45,7 +45,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **원본 데이터(Figma·Confluence 등)는 작업할 때마다 항상 원본에서 새로 조회한다.** 디스크에 저장된 이전 조회 결과를 **원본 대신** 재사용하지 않는다 — 캐시는 최신 상태를 반영하지 못해 사라졌거나 바뀐 데이터로 잘못 작업할 수 있다.
 
-- **항상 새로 조회**: Figma 코멘트, Figma 노드/메타데이터, 발급 이미지 URL, 위키 페이지 원문, 용어집(API) 등은 작업 시작 시 원본에서 최신으로 가져온다. `comments_data.json` 등 캐시 파일을 원본 대신 신뢰하지 않는다.
+- **항상 새로 조회**: Figma 코멘트, Figma 노드/메타데이터, 발급 이미지 URL, 위키 페이지 원문, 용어집(API), **XLT 시스템 등록값(API)** 등은 작업 시작 시 원본에서 최신으로 가져온다. `comments_data.json`·`scripts/xlt_registry.json` 등 캐시 파일을 원본 대신 신뢰하지 않는다.
 - **허용 — 같은 run 핸드오프**: **같은 작업 실행 안에서** 앞 단계가 방금 생성한 산출물을 뒤 단계 입력으로 넘기는 것은 캐시가 아니라 파이프라인 핸드오프다(예: `translation_extract.json`→2단계 프로토타입, 같은 run의 `comments_data.json`→3단계 위키). 이는 허용한다.
 - **금지 — 묵은 캐시 재사용**: 이전 run·이전 세션에 저장된 파일이거나 그 사이 원본이 변경됐을 수 있으면 **재사용하지 말고 원본에서 다시 조회**한다.
 - 특히 **XLT 번역의 코멘트 선별**은 마커가 추가·해결·이동될 수 있으므로 매 실행 새로 조회한다 (`md/translate.md` 코멘트 선별 모드).
@@ -110,6 +110,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 **코멘트 선별 흐름**: Figma 코멘트 본문을 `XLT`로 시작하게 달면(대소문자·콜론 무관), [1] 번역에서 `(New)` 전수 추출 대신 그 코멘트가 가리키는 텍스트만 선별 추출·번역할 수 있다(`md/translate.md` 코멘트 선별 모드). 대상 선택자는 본문의 `XLT` 마커이며 위키 Description 번호는 사람이 교차 확인하는 라벨이다. **코멘트는 매 실행마다 Figma REST로 새로 조회한다(캐시·`comments_data.json` 미사용)** — 마커가 바뀔 수 있어 최신 상태로 선별해야 한다. 코멘트→텍스트 매칭 결과는 번역 전 사용자 확인을 거친다. 상세는 `md/translate.md` 참조.
 
+**XLT 시스템 등록값 검증 흐름(파이프라인과 별개)**: 1~3단계가 **새 문구를 시스템에 넣는** 흐름이라면, 이미 **등록된 값을 점검해 고치는** 흐름은 `md/xlt-verify.md`가 담당한다. `{서비스·디바이스·버전}` 확정(사용자 선택 필수) → `scripts/fetch_xlt_registry.py`로 등록값 조달 → `scripts/verify_xlt_glossary.py`로 용어집 대조 → 수정 제안 사용자 확인 → `--apply`로 업로드용 엑셀 생성 → **사용자가 시스템에 업로드**(쓰기 API 없음). 검증 로직은 `validate_translation.py`를 그대로 재사용한다. 같은 API를 1단계 **Step 2-1 유사 키 제안**에서도 쓴다(`md/translate.md`).
+
 **키 단위 번역 패치 흐름**: 이미 위키·엑셀에 반영된 번역에서 **특정 XLT Key의 일부 언어만** 바꿔야 할 때(부서 검토로 한국어가 바뀌어 전체/일부 재번역, 또는 특정 언어 최종본만 교체), Figma 추출 없이 **키·언어 단위로 외과적 갱신**한다. `{키 + 변경 문구 + 변경할/유지할 언어}`를 받아 → 게이트(변경분) → `scripts/patch_translation.py`로 지정 언어 셀만 교체(나머지 보존) → 엑셀 재생성·재첨부 + 위키 다국어 표·Screen XLT 외과적 갱신(라이브 rebase). 상세는 `md/translate.md` "키 단위 번역 패치 모드" 참조.
 
 ### ⚠️ 단계별 프레임 필터 규칙 (혼동 금지 — 필수 준수)
@@ -157,6 +159,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `md/glossary-changelog.md` | 용어집(`web3_xlt_json`) 버전별 변경 이력(git 추적) — 용어집 갱신 시마다 항목 추가 필수 |
 | `md/OA.md` | OA(LINE 공식계정) 메시지 규칙 — XLT 키 미부여(번역만)·변수 `{{이름}}`(사용자 정의)·첨부 이미지 Flex 메시지 JSON(URI 사용자 입력). OA 섹션 프레임 처리 시 필수 참조 |
 | `md/dropweb-guide.md` | 정적 웹사이트 배포 규격 — `md/prototype.md` 수행 시 필수 참조 |
+| `md/xlt-verify.md` | **XLT 시스템 등록값 검증 정본** — 읽기 API 명세(엔드포인트·인증 없음·서비스별 키스페이스 분리)·타겟 확정(서비스/디바이스/버전 사용자 선택)·용어집 대조·수정 제안·업로드 엑셀. **정기 검증 시 + 번역 Step 2-1 유사 키 제안 시 필수 참조** |
 | `md/IA.md` | Unifi(unifi.me) IA 분석 정본 — **Screen ID(`주기능_부기능_세부기능_01` 소문자) 부여 시 어휘 참조**. IA 변경 시 이 파일만 갱신. **⛔ Screen ID 부여는 매핑 표 사용자 검토·승인 후에만 진행** (기존 위키는 소급 전환 금지) |
 | `md/PRODUCTION_RULES.md` | ⚠️ 프로덕션 환경 필수 규칙 — **모든 단계에서 필수 준수** |
 
@@ -216,6 +219,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | 파일 | 용도 | 사용 시점 |
 |------|------|----------|
 | `fetch_glossary.py` | 용어집 API 조회 → glossary.json | 1단계 Step 3 |
+| `fetch_xlt_registry.py` | XLT 시스템 등록값 조회(타겟 프로브·버전 목록·5개 언어 pivot·유사 키 검색) — **읽기 전용** | 1단계 Step 2-1 · XLT 검증 Step 1 (`md/xlt-verify.md`) |
+| `verify_xlt_glossary.py` | 등록값 ↔ 용어집 대조 → 리포트 + 수정 제안, `--apply`로 업로드 엑셀 생성 | XLT 검증 Step 3·5 (`md/xlt-verify.md`) |
+| `compare_wiki_xlt.py` | 위키 페이지 XLT 키 ↔ 등록값 대조(동일/상이/**서비스 간 분기**/미등록 + 유사 키 추천) — ⛔ 레지스트리 병합 금지 | 위키 페이지 대조 모드 (`md/xlt-verify.md` §9) |
 | `fetch_comments.py` | Figma 코멘트 reply-aware 조회 (루트+답글 스레드, 자기 점검 로그) — **인라인 재구현 금지** | 1단계 코멘트 선별 모드 · 3단계 위키 Description |
 | `validate_translation.py` | 3단계 검증 수행 (P0/P1/P2, 컬럼별 이질 문자체계 검출 포함) | 1단계 Step 5 |
 | `check_gate_report.py` | 게이트 리포트 완결성 검사 (필수 요소 6종 — 완료 선언 직전 exit 0 확인) | 1단계 Step 5 게이트 |
@@ -290,6 +296,8 @@ templates/     ✅ 프로토타입 템플릿 전체
 - ❌ `assets/variants/*.png` — 프로젝트별 variant 이미지
 - ❌ `index.html`, `style.css`, `script.js`, `data.js`, `i18n.js` — 프로젝트별 프로토타입 코드 (templates/에서 생성)
 - ❌ `scripts/glossary.json` — 용어집 캐시 (자동 생성)
+- ❌ `scripts/xlt_registry.json` — XLT 등록값 캐시 (자동 생성)
+- ❌ `reports/xlt/*` — 프로젝트별 XLT 검증 리포트·수정 제안
 - ❌ `translation_*.json`, `translation_*.md` — 임시 파일
 
 ### 새 프로젝트 시작 순서
@@ -317,7 +325,7 @@ templates/     ✅ 프로토타입 템플릿 전체
 새 프로젝트에서 다음을 확인:
 - [ ] `CLAUDE.md` 파일 존재
 - [ ] `md/` 폴더에 가이드 파일 전체 존재 (목록은 위 '참조 가이드' 표 기준 — 개수는 계속 늘어남)
-- [ ] `scripts/` 폴더에 10개 Python 스크립트(fetch_glossary, fetch_comments, validate_translation, check_gate_report, check_wiki_storage, collect_frames, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
+- [ ] `scripts/` 폴더에 13개 Python 스크립트(fetch_glossary, fetch_xlt_registry, fetch_comments, validate_translation, verify_xlt_glossary, compare_wiki_xlt, check_gate_report, check_wiki_storage, collect_frames, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
 - [ ] `templates/` 폴더에 5개 템플릿 존재
 - [ ] `.claude/`에 `settings.json`(SessionStart 훅)·`skills/`·`agents/` 존재
 - [ ] Python 의존성 설치 완료 (`pip list | grep pandas`)

@@ -9,6 +9,8 @@ __pycache__/
 xlt/
 assets/
 scripts/glossary.json
+scripts/xlt_registry*.json
+reports/xlt/
 translation_*.json
 translation_*.md
 !md/translation_validation_guide.md
