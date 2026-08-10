@@ -34,8 +34,8 @@
   - Figma 파일: `GOCHAYBS7hIrmWRGNuJOKV` (Web3) · 시즌3 페이지 `65923:2485`
   - 절차 문서: `CLAUDE.md`, `md/translate.md`, `md/wiki.md`, `md/OA.md`, `md/check.md`, `md/landpress.md`, `md/IA.md`, **`md/xlt-verify.md`**(XLT 등록값 검증 — 세션 #17 신설)
   - 용어집: **라이브 v4.6** / **v4.7 CMS 반영 대기**(116 terms · `deprecated_terms` **14종**) — v4.7 = `포이카츠` zh `點數活動`→**`集點活動`**(실사용 0건인 등재값 교정) + metadata `total_deprecated_terms` 13→14 정정. 산출물 `reports/glossary_v4.7_for_cms.json`. 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
-  - 기획자 가이드: **라이브 v25**(2026-08-10 게시 완료 — v24 + 용어집 v4.7 병합본, **태그 `guide-v25`**). **⛔ 소스 정본은 git 추적 `guide/`다**(2026-08-10 신설, 커밋 `7d1bd3d`·`3075eb6`) — 최신 판별 = `git log -- guide/`, zip은 게시용 빌드 산출물(`.gitignore` 유지), 절차는 `md/landpress.md` §5-1 0단계(git 기반으로 전면 개정). 게시 확인 후 `git tag guide-vN`이 라이브 정본 표식이다.
-    - 버전 연혁: v25=v24+용어집 v4.7 병합 · v22~v24=IA #4 3회 발행 · v21=용어집 v4.6 · v20=「🧭 시스템 가이드」 탭 · v19=용어집 v4.5
+  - 기획자 가이드: **라이브 v26**(2026-08-10 게시 완료, **태그 `guide-v26`**) — v26=시스템 가이드 탭 ⑦ 가이드 버전 관리(git 정본·태그 규약) · v25=v24+용어집 v4.7 병합. **⛔ 소스 정본은 git 추적 `guide/`다**(2026-08-10 신설, 커밋 `7d1bd3d`·`3075eb6`) — 최신 판별 = `git log -- guide/`, zip은 게시용 빌드 산출물(`.gitignore` 유지), 절차는 `md/landpress.md` §5-1 0단계(git 기반으로 전면 개정). 게시 확인 후 `git tag guide-vN`이 라이브 정본 표식이다.
+    - 버전 연혁: v26=⑦ 버전 관리 규약 · v25=v24+용어집 v4.7 병합 · v22~v24=IA #4 3회 발행 · v21=용어집 v4.6 · v20=「🧭 시스템 가이드」 탭
   - IA 주간 점검: 스케줄 태스크 `weekly-unifi-ia-check`(매주 월 10:00) — 프로덕션 + Beta + mini Beta. 리포트 `reports/ia/`
 - **토큰**: Figma PAT + Confluence PAT — **사용자가 매 세션 채팅으로 제공**(파일/코드에 하드코딩 금지). 착수 전 유효성 검증 필수.
 
