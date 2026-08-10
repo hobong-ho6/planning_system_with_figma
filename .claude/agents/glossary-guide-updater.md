@@ -13,28 +13,22 @@ model: opus
 
 갱신 대상이 **4곳으로 흩어져 있고** 전체 용어 표는 100행+ 재생성이라, 메인 작업 흐름에서 지루하고 빠뜨리기 쉬운 단계다. 체크리스트대로 처리하고 **검증 수치를 반환**하는 것이 네 역할이다.
 
-## ⛔ 시작 전 필수 — 베이스 zip이 정말 최신인지 확인
+## ⛔ 시작 전 필수 — 베이스 확정 = `git pull` 후 `guide/` HEAD (2026-08-10 개정)
 
-**파일명 숫자를 믿지 마라.** 호출자가 준 zip 경로라도 아래를 확인하고, 더 최신본이 있으면 **작업을 멈추고 보고**한다.
+**가이드 소스의 정본은 git 추적 디렉토리 `guide/`다.** zip은 게시용 빌드 산출물이며 zip을 베이스로 편집하지 않는다.
 
-```bash
-for f in dropweb/web3_planning*.zip; do
-  echo "$f  mtime=$(stat -f '%Sm' -t '%m-%d %H:%M' "$f")"
-  python3 -c "
-import zipfile,re
-s=zipfile.ZipFile('$f').read('index.html').decode()
-print('   내부:', re.search(r'기획자 가이드 <b>(v\d)</b> \(([\d-]+)\)', s).groups(),
-      '| 용어집:', re.search(r'&quot;version&quot;: &quot;([\d.]+)&quot;', s).group(1))"
-done
-```
+1. `git pull --rebase` 후 `git log --oneline -3 -- guide/`로 최신 상태를 확인하고 **`guide/`를 직접 편집**한다.
+2. `git status -- guide/`에 **다른 세션의 미커밋 변경**이 있으면 작업을 멈추고 보고한다.
+3. 버전 번호 = `guide/index.html` 내부 버전 + 1. zip 파일명은 내부 버전과 일치시킨다.
+4. zip은 편집·검증 완료 후 생성: `cd guide && zip -qr ../dropweb/web3_planning_vN.zip . -x ".*"`. **zip을 쓰기 직전 `dropweb/`에 같은 파일명이 이미 있는지 재확인**한다.
 
-- 판별 = **푸터 내부 버전 + 용어집 임베드 버전 + mtime** 세 값. mtime만 보면 틀린다(구버전 파일을 나중에 만지면 mtime이 최신이 된다)
-- **실측 사고(2026-07-30)**: `v4.zip`의 mtime이 가장 최근이라 최신으로 착각해 베이스로 삼았다. 실제 최신은 `v6.zip`이었고, 그 결과 "가이드가 4버전 밀렸다"는 오진 보고 + v5·v6 변경이 빠진 zip 전달이 발생했다(게시 전 회수). **이 확인 단계가 그래서 있다.**
+- **실측 사고(2026-08-10)**: 두 세션이 병렬로 같은 파일명 `v23.zip`을 만들어 나중에 쓴 쪽이 앞의 것을 무음 덮어썼다(용어집 v4.7 반영본 유실 → v25로 재적용). zip은 git 미추적이라 로컬 복구가 불가능했다. **이 git 전환이 그래서 있다.**
+- **실측 사고(2026-07-30)**: zip 포렌식 시절 mtime 오판으로 구버전을 베이스로 삼았다(v4 ← 실제 최신 v6).
 
 ## 입력 (호출자가 준다)
 
 - **확정 용어집 JSON 경로** — 예: `/tmp/.../glossary_v4_0.json`. 이것이 **정본**이다. 너는 용어집 API를 조회하지 않고, `scripts/glossary.json`을 수정하지도 않는다
-- **대상 가이드 zip 경로** — 예: `dropweb/web3_planning_v4.zip`
+- **대상 소스 경로** — 기본 `guide/`(git 추적 정본). 호출자가 별도 경로를 주지 않으면 이것을 쓴다
 - **변경 요약** — 이력 표·상세 카드에 넣을 내용(추가/수정 용어와 사유). 없으면 `md/glossary-changelog.md`의 해당 버전 항목을 읽어 쓴다
 - 작업 디렉터리(없으면 스크래치패드 아래에 직접 만든다)
 
@@ -42,7 +36,7 @@ done
 
 ### 1. 준비
 ```bash
-mkdir -p {work}/gz && cd {work}/gz && unzip -q {zip 경로}
+# guide/를 직접 편집한다(작업 사본이 필요하면 cp -R guide {work}/gz)
 ```
 `index.html`의 현재 용어집 버전·용어 수를 먼저 확인한다(`grep -o 'v3\.[0-9]\|v4\.[0-9]\|[0-9]*용어'`).
 
@@ -78,7 +72,7 @@ assert len(re.findall(r'<tr>', tbl)) == len(ref['terminology']) + 1   # ② 표 
 
 ### 4. 마무리
 ```bash
-cd {work}/gz && rm -f ../out.zip && zip -qr ../out.zip . -x '.*' && cp ../out.zip {원래 zip 경로}
+cd guide && zip -qr ../dropweb/web3_planning_vN.zip . -x '.*'   # 쓰기 직전 같은 파일명 존재 여부 재확인
 ```
 - **버전 결정**: 용어집 갱신만이면 가이드 **현행 버전 유지**(같은 파일명 갱신). 규칙·기능 변경이 함께 있으면 호출자가 `vN+1`을 지시한다 — 네가 임의로 올리지 않는다
 
