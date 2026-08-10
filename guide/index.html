@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Figma → 다국어 위키 자동화 · 기획자 워크플로우 가이드</title>
+<title>Figma → 다국어 위키 자동화 · 기획자 워크플로우 가이드 v24</title>
 <meta name="description" content="Figma 화면과 위키 주소만으로 AI가 5개 언어 번역과 위키 문서를 자동으로 작성하는 워크플로우. 기획자를 위한 사용 가이드." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet" />
@@ -22,6 +22,8 @@
   }
 </script>
 <link rel="stylesheet" href="style.css" />
+<style>.ia-env{font-size:12px;padding:5px 12px;border-radius:999px;border:1px solid #cbd5e1;background:#fff;color:#475569}.ia-env:hover{border-color:#818cf8;color:#4338ca}.ia-env.is-on{background:#4f46e5;border-color:#4f46e5;color:#fff}#ia-table code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}</style>
+
 </head>
 <body class="font-sans text-ink bg-slate-50 antialiased">
 
@@ -37,7 +39,7 @@
       <li><a href="#clone" class="hover:text-brand-600">설치</a></li>
       <li><a href="#tokens" class="hover:text-brand-600">토큰</a></li>
       <li><a href="#flow" class="hover:text-brand-600">전체 흐름</a></li>
-      <li><a href="#new" class="hover:text-brand-600">새 기능</a></li>
+      <li><a href="#how" class="hover:text-brand-600">동작 원리</a></li>
       <li><a href="#modes" class="hover:text-brand-600">작업 모드</a></li>
       <li><a href="#teams" class="hover:text-brand-600">담당 팀</a></li>
       <li><a href="#gate" class="hover:text-brand-600">번역·검증</a></li>
@@ -51,7 +53,7 @@
     <li><a href="#clone" class="block py-1">프로젝트 받기</a></li>
     <li><a href="#tokens" class="block py-1">토큰 발급</a></li>
     <li><a href="#flow" class="block py-1">전체 흐름</a></li>
-    <li><a href="#new" class="block py-1">새 기능</a></li>
+    <li><a href="#how" class="block py-1">동작 원리</a></li>
     <li><a href="#modes" class="block py-1">작업 모드</a></li>
     <li><a href="#teams" class="block py-1">담당 팀</a></li>
     <li><a href="#gate" class="block py-1">번역·검증</a></li>
@@ -62,10 +64,23 @@
   </ul>
 </header>
 
+<!-- ===== 최상위 탭 ===== -->
+<div class="sticky top-16 z-40 bg-white border-b border-slate-200">
+  <div class="max-w-6xl mx-auto px-5 flex gap-1 overflow-x-auto">
+    <button class="toptab toptab-on" data-tab="tab-guide">📘 가이드</button>
+    <button class="toptab" data-tab="tab-updates">🕘 업데이트 이력</button>
+    <button class="toptab" data-tab="tab-glossary">📖 용어집 업데이트 이력</button>
+    <button class="toptab" data-tab="tab-iareport">🗺️ IA 점검 리포트</button>
+    <button class="toptab" data-tab="tab-system">🧭 시스템 가이드</button>
+  </div>
+</div>
+
+<div id="tab-guide">
+
 <!-- ===== HERO ===== -->
 <section class="relative overflow-hidden bg-gradient-to-b from-brand-50 to-slate-50">
   <div class="max-w-6xl mx-auto px-5 pt-16 pb-20 text-center">
-    <span class="inline-block mb-5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide">기획자를 위한 사용 가이드 · 개발 지식 불필요</span>
+    <span class="inline-block mb-5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide">기획자를 위한 사용 가이드 · 개발 지식 불필요 · <b>v24 (2026-08-10)</b></span>
     <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight text-ink">
       Figma 화면을 <span class="text-brand-600">5개 언어</span>로 번역하고<br class="hidden sm:block" />
       위키를 <span class="text-brand-600">자동으로</span> 채웁니다
@@ -78,8 +93,9 @@
       <span class="chip">📄 위키 문서 자동 작성</span>
       <span class="chip">🌐 5개 언어 번역 (한·영·일·중·태)</span>
       <span class="chip">✅ 품질 검증 게이트</span>
-      <span class="chip">📚 용어집 일관성 관리</span>
+      <span class="chip">📚 용어집 116 용어 (v4.6)</span>
       <span class="chip">🆕 위키 새 페이지 생성</span>
+      <span class="chip">🆔 Screen ID 공식 표준</span>
     </div>
     <div class="mt-9 flex flex-wrap justify-center gap-3">
       <a href="#flow" class="px-6 py-3 rounded-xl bg-brand-600 text-white font-semibold shadow-sm hover:bg-brand-700">전체 흐름 보기 ↓</a>
@@ -229,36 +245,66 @@ git pull</pre>
     </ol>
   </section>
 
-  <!-- ===== 새로 추가된 기능 (2026-07) ===== -->
-  <section id="new" class="py-14 scroll-mt-20">
-    <h2 class="sec-title">새로 추가된 기능 <span class="text-slate-400 font-normal text-lg">2026-07 업데이트</span></h2>
-    <p class="sec-sub">이 가이드 발행(7/1) 이후 추가된 기능입니다. <b>요청 방법은 기존과 동일</b>하고, 아래 기능들이 자동으로 함께 적용됩니다.</p>
-    <div class="grid sm:grid-cols-2 gap-4 mt-6">
-      <div class="card"><span class="badge badge-indigo">신규 · 위키 생성</span><h3 class="card-h mt-2">위키 새 페이지 만들기</h3><p class="card-p">기존 페이지 업데이트뿐 아니라 <b>새 위키 페이지를 표준 템플릿 구조로 생성</b>합니다. 생성 위치(상위 페이지 주소)와 타이틀만 주면 됩니다. 위치는 임의로 정하지 않고 <b>항상 확인</b>받습니다.</p>
-        <details class="ex"><summary>작업 예시 보기</summary><div class="ex-body"><table class="ex-table"><tbody>
-          <tr><th>생성 구조</th><td>Contents(목차) + History 표 + Related Docs 표 + Background · Specification(Policy/Flow) · Screen 섹션</td></tr>
-          <tr><th>History 컬럼</th><td>Date · History · Jira Ticket · FE/BE 확인 ☑ · QA 확인 ☑ · PIC</td></tr>
-          <tr><th>History 첫 행</th><td>"문서생성" 항목에 <b>Date = 생성한 날짜</b>, <b>PIC = 요청한 사람</b>이 자동으로 채워집니다</td></tr>
-          <tr><th>타이틀</th><td>기본값 <code>Template</code> — 원하는 이름을 주면 그 이름으로 생성</td></tr>
-        </tbody></table><p class="ex-cap">예: "[PL] Unifi v1.7.0" 하위에 "Next bay 미션앤리워드" 페이지를 템플릿 구조로 생성. 템플릿 원본은 저장소에 스냅샷으로 고정되어 있어 누가 원본을 고쳐도 같은 형태가 나옵니다.</p></div></details>
-      </div>
-      <div class="card"><span class="badge badge-indigo">코멘트 인식 강화</span><h3 class="card-h mt-2">답글에 단 XLT 키도 인식</h3><p class="card-p">Figma 코멘트의 <b>답글(스레드)까지 전부 수집</b>합니다. XLT 키 이름을 루트 코멘트가 아니라 <b>답글로 달아도</b> 놓치지 않고, 위키 Description에도 답글 내용이 <code>↳</code>로 함께 정리됩니다.</p>
-        <details class="ex"><summary>작업 예시 보기</summary><div class="ex-body"><pre class="ex-code">📌 루트 코멘트: XLT
-   ↳ 답글: XLT - mini_reward_tab_title  ← 이제 이것도 인식</pre><p class="ex-cap">과거 답글의 키 이름이 누락되던 사례(Reward 화면)를 계기로 수집기를 강화했습니다.</p></div></details>
-      </div>
-      <div class="card"><span class="badge badge-emerald">검증 강화</span><h3 class="card-h mt-2">검증 안전장치 3종 추가</h3><p class="card-p">품질 검증 게이트에 자동 안전장치가 추가됐습니다. 사람이 깜빡해도 <b>시스템이 완료 선언을 차단</b>합니다.</p>
-        <details class="ex"><summary>무엇이 추가됐나 보기</summary><div class="ex-body"><ul class="list">
-          <li><b>검증 리포트 완결성 자동 검사</b> — 리포트에 필수 항목(자동 결과·수동 체크표·건별 판정·개선 제안 등)이 하나라도 빠지면 작업 완료로 인정되지 않습니다.</li>
-          <li><b>언어 혼입·컬럼 밀림 자동 검출</b> — 번역표의 언어 칸이 옆으로 밀려 들어간(예: 일본어 칸에 태국어) 심각한 오류를 자동으로 잡습니다.</li>
-          <li><b>부분 수정 전 정렬 대조</b> — 특정 언어만 고치는 패치 전에 5개 언어 전체를 위키 정본과 대조해, 멀쩡한 원문이 지워지는 사고를 막습니다.</li>
-        </ul></div></details>
-      </div>
-      <div class="card"><span class="badge badge-emerald">위키 정돈</span><h3 class="card-h mt-2">History 같은 날짜 자동 병합</h3><p class="card-p">하루에 여러 번 위키를 업데이트해도 변경 이력(History) 표에 <b>같은 날짜 행은 하나로 합쳐</b> 항목만 목록으로 누적합니다. 표가 불필요하게 길어지지 않습니다.</p>
-        <details class="ex"><summary>작업 예시 보기</summary><div class="ex-body"><div class="ba">
-          <div class="ba-row"><span class="old">7/9 행 · 7/9 행 · 7/9 행 (3줄)</span><span class="arrow">→</span><span class="new">7/9 행 1줄 + 항목 3개 목록</span></div>
-          <div class="ba-row" style="font-size:.78rem;color:#64748b">기존 이력은 삭제하지 않고 누적만 합니다</div>
-        </div></div></details>
-      </div>
+
+  <!-- ===== 동작 원리 (v7) ===== -->
+  <section id="how" class="py-14 scroll-mt-20">
+    <h2 class="sec-title">동작 원리 <span class="text-slate-400 font-normal text-lg">이 시스템이 실제로 무엇을 하는가</span></h2>
+    <p class="sec-sub">요청 한 줄 뒤에서 무슨 일이 벌어지는지 알아두면, <b>무엇을 맡길 수 있고 무엇은 당신이 결정해야 하는지</b>가 분명해집니다. 개발 지식은 필요하지 않습니다.</p>
+
+    <div class="panel mt-6">
+      <h3 class="panel-h">① 세 가지 원본에서 읽고, 한 곳에 씁니다</h3>
+      <table class="ex-table mt-3"><tbody>
+        <tr><th>Figma</th><td>화면의 <b>텍스트</b>와 <b>코멘트</b>를 읽습니다. 코멘트가 곧 <b>화면 정책</b>이고, 본문이 <code>xlt</code>인 코멘트는 <b>"이 문구를 번역 대상으로 잡아라"</b>는 표시입니다</td></tr>
+        <tr><th>용어집(Landpress)</th><td>5개 언어 표준 표기의 기준입니다. <b>읽기만 가능</b>해서, 새 용어를 넣을 때는 AI가 전체 JSON을 만들어 드리고 <b>당신이 CMS에 붙여넣습니다</b></td></tr>
+        <tr><th>Jira</th><td>티켓 제목·상태·설명 속 관련 링크를 읽어 위키 문서의 참조 정보를 채웁니다</td></tr>
+        <tr><th>위키(Confluence)</th><td><b>유일한 쓰기 대상</b>입니다. 화면 표·정책·번역표·이미지·엑셀이 모두 여기 모입니다</td></tr>
+      </tbody></table>
+      <p class="ex-cap mt-2">⚠️ <b>원본은 매번 새로 읽습니다.</b> 이전에 읽어둔 걸 재사용하지 않기 때문에, 당신이 Figma 코멘트나 위키를 방금 고쳤어도 그 상태로 작업합니다.</p>
+    </div>
+
+    <div class="panel mt-6">
+      <h3 class="panel-h">② 번역은 "게이트"를 통과해야 밖으로 나갑니다</h3>
+      <p class="card-p">번역 결과는 <b>검사를 통과하기 전까지 위키·엑셀로 나가지 않습니다.</b> 순서는 이렇습니다.</p>
+      <table class="ex-table mt-3"><tbody>
+        <tr><th>1. 한국어 먼저 교정</th><td>원문의 오타·띄어쓰기·보이지 않는 공백을 먼저 정리합니다. 번역은 <b>교정된 한국어</b>를 기준으로 합니다(Figma 원본은 디자이너가 고쳐야 하므로 별도 목록으로 알려드립니다)</td></tr>
+        <tr><th>2. 자동 검사</th><td>빈칸·언어 혼입·변수 불일치·용어집 위반을 기계가 찾습니다. <b>여기서 통과하는 건 시작점일 뿐입니다</b></td></tr>
+        <tr><th>3. 사람 눈 검토</th><td>기계가 못 잡는 것 — 어색한 표현, 붙어버린 띄어쓰기, 애매한 단어 — 을 <b>전체 행</b>에서 한 줄씩 봅니다. 바뀐 것만 보지 않습니다</td></tr>
+        <tr><th>4. 리포트 제출</th><td>무엇을 어떻게 판정했는지 <b>근거를 남깁니다.</b> 리포트에 필수 항목이 빠지면 자동 검사기가 <b>"미완료"로 막습니다</b></td></tr>
+      </tbody></table>
+      <p class="ex-cap mt-2">🔴 <b>P0(치명)이 0건이어야</b> 다음 단계로 갑니다. P1·P2는 건마다 "실제 문제 / 오탐 / 정책상 유지"를 판정해 보고합니다.</p>
+    </div>
+
+    <div class="panel mt-6">
+      <h3 class="panel-h">③ 이미지 번호 ⓝ가 세 곳에서 같은 뜻입니다</h3>
+      <p class="card-p">화면 이미지의 <b>번호 원</b>, 정책 목록의 <b>번호</b>, 번역표의 <b>No</b>가 모두 같은 번호 체계입니다. 그래서 "3번 문구"라고 하면 이미지·정책·번역표에서 같은 곳을 가리킵니다.</p>
+      <table class="ex-table mt-3"><tbody>
+        <tr><th>번호 순서</th><td>화면 <b>위에서 아래로</b> 매깁니다. 코멘트가 화면 안쪽 요소에 달려 있어도 <b>실제 보이는 위치</b>를 기준으로 계산합니다</td></tr>
+        <tr><th>색 구분</th><td><b style="color:#dc3545">빨강 = 정책</b> · <b style="color:#0d6efd">파랑 = 번역 대상 문구</b></td></tr>
+        <tr><th>배치</th><td>번호가 글자를 가리지 않게 문구 왼쪽에 두고, 서로 <b>겹치지 않게</b> 자동 조정합니다</td></tr>
+      </tbody></table>
+    </div>
+
+    <div class="panel mt-6">
+      <h3 class="panel-h">④ 당신이 결정하는 지점 (AI가 임의로 넘어가지 않습니다)</h3>
+      <table class="ex-table mt-3"><tbody>
+        <tr><th>담당 FE 팀</th><td>위키에 UIT/LV 구분이 없으면 <b>반드시 물어봅니다</b> — 팀에 따라 키 이름과 변수 표기가 달라집니다</td></tr>
+        <tr><th>Screen ID</th><td>화면 이름표를 정할 때 <b>"프레임 → Screen ID" 표를 먼저 보여드리고 승인</b>을 받습니다</td></tr>
+        <tr><th>용어집 추가</th><td>새 용어 등재는 <b>제안만</b> 합니다. 당신이 승인해야 반영 절차로 넘어갑니다</td></tr>
+        <tr><th>문구 변경</th><td>위키에서 문구를 바꾸시면 <b>어느 키가 어떻게 바뀌었는지 표로 확인</b>받고 번역합니다</td></tr>
+        <tr><th>P1·P2 판정</th><td>치명적이지 않은 지적은 <b>임의로 고치지 않고</b> 판정과 함께 보고합니다</td></tr>
+        <tr><th>게시</th><td>이 가이드 사이트 게시와 용어집 CMS 반영은 <b>항상 당신이</b> 합니다</td></tr>
+      </tbody></table>
+    </div>
+
+    <div class="panel mt-6">
+      <h3 class="panel-h">⑤ 실수를 규칙으로 바꿉니다 (이 시스템이 나아지는 방식)</h3>
+      <p class="card-p">문제가 한 번 생기면 <b>"다음엔 조심"으로 끝내지 않고</b> 세 단계로 굳힙니다. 그래서 같은 실수가 두 번 나기 어렵습니다.</p>
+      <table class="ex-table mt-3"><tbody>
+        <tr><th>1) 규칙 문서에 기록</th><td>무엇이 왜 틀렸는지 <b>실측 사례와 함께</b> 적습니다</td></tr>
+        <tr><th>2) 검사기로 자동화</th><td>가능한 것은 <b>기계가 막도록</b> 만듭니다(검증 리포트 완결성·위키 마크업·엑셀 규격)</td></tr>
+        <tr><th>3) 회귀 테스트 추가</th><td>그 실수를 재현하는 테스트를 넣어 <b>나중에 되돌아가지 않게</b> 합니다</td></tr>
+      </tbody></table>
+      <p class="ex-cap mt-2">예: 첨부 이미지가 "알 수 없는 첨부파일"로 깨진 적이 있었고 → 규칙에 명시 → 위키 반영 전후 자동 검사 추가 → 테스트 8건 추가. 이제 같은 형태로는 통과되지 않습니다.</p>
     </div>
   </section>
 
@@ -381,7 +427,8 @@ git pull</pre>
       <li class="flow-step"><span class="flow-num">4</span><div><h3 class="flow-h">당신이 붙여넣기</h3><p class="flow-p">Landpress CMS에 JSON을 붙여넣어 반영합니다.</p></div></li>
       <li class="flow-step"><span class="flow-num">5</span><div><h3 class="flow-h">반영 확인 + 이력 기록</h3><p class="flow-p">AI가 재조회로 확인하고, 변경 이력을 별도 문서로 남깁니다.</p></div></li>
     </ol>
-    <p class="note note-slate mt-5">📝 용어집 원본은 Landpress에 있어 버전 관리가 어렵기 때문에, <b>"무엇을·언제·왜" 바꿨는지를 별도 변경 이력 문서</b>로 남겨 추적합니다. (예: v2.1 → v2.3)</p>
+    <p class="note note-slate mt-5">📝 용어집 원본은 Landpress에 있어 버전 관리가 어렵기 때문에, <b>"무엇을·언제·왜" 바꿨는지를 별도 변경 이력 문서</b>로 남겨 추적합니다. (현재 <b>v4.6 · 116 용어 + OA 변수 2종</b> — v2.1 → v2.6 → v3.0 → v3.5 → v3.9 → v4.0 → v4.3 → v4.6)</p>
+    <p class="note note-amber mt-3">🆕 <b>엑셀 일괄 추가도 가능합니다</b> — 용어 후보 엑셀을 주면 기존 용어집과 전수 대조해 깨끗한 항목만 반영하고, <b>값 충돌·오역 의심 항목은 보류 리포트로 분리</b>해 팀 검토 후 반영합니다(임의 반영 금지). 검토 결과를 나중에 주면 보류 리포트의 이력 그대로 이어서 처리합니다.</p>
   </section>
 
   <!-- ===== 확인 포인트 (핵심) ===== -->
@@ -398,6 +445,7 @@ git pull</pre>
         <div class="qcard"><h3 class="qcard-h">신규 일본어 / 용어집 잠정값</h3><p>새로 만든 일본어·임시 표기는 "네이티브/담당자 검토 권장"으로 알립니다.</p></div>
         <div class="qcard"><h3 class="qcard-h">표기 정책</h3><p>구분자(·/／), 마침표 사용, 번체 정자 등 통일 정책은 당신이 결정합니다.</p></div>
         <div class="qcard"><h3 class="qcard-h">담당 팀이 불분명할 때 (UIT/LV)</h3><p>위키에 UIT/LV 구분이 없으면 → "담당 팀이 UIT인가요, LV인가요?" (키 접두어·변수 표기가 팀마다 다름)</p></div>
+        <div class="qcard"><h3 class="qcard-h">Screen ID를 정할 때 <span class="tag-amber">🆕 필수</span></h3><p>공식 네이밍(<code>asset_send_01</code> 식)으로 부여하기 전, <b>"프레임명 → Screen ID" 매핑 표를 먼저 제시</b>합니다. 당신이 검토·승인해야만 위키에 반영됩니다 — 임의 확정 금지.</p></div>
       </div>
       <p class="mt-6 text-sm text-amber-900/80">⚠️ 답을 주기 전까지 위키·엑셀에 임의 반영하지 않습니다. 또한 여러 명이 같은 위키를 동시에 편집하면 충돌할 수 있어, AI는 항상 <b>최신본을 다시 받아</b> 반영합니다.</p>
     </div>
@@ -477,7 +525,7 @@ XLT 코멘트가 달린 문구만 5개 언어 번역해줘.</pre>
 위키·엑셀까지 업데이트해줘.</pre>
       </div>
       <div>
-        <h3 class="card-h mb-2">예시 3 · 위키 새 페이지 생성 <span class="tag-amber">🆕</span></h3>
+        <h3 class="card-h mb-2">예시 3 · 위키 새 페이지 생성</h3>
         <pre class="prompt">[위키 토큰 붙여넣기]
 
 위치: https://wiki.../[PL]+Unifi+v1.7.0
@@ -485,7 +533,69 @@ XLT 코멘트가 달린 문구만 5개 언어 번역해줘.</pre>
 
 위 위치에 위키 생성해줘.</pre>
       </div>
+      <div>
+        <h3 class="card-h mb-2">예시 4 · 용어집 일괄 추가 <span class="tag-amber">🆕</span></h3>
+        <pre class="prompt">[용어집 후보 엑셀 첨부]
+
+기존 용어집과 대조해서 검토하고
+추가할 것만 용어집 업데이트 절차 진행해줘.
+충돌하는 건 리포트로 정리해줘 — 팀 검토 후 반영할게.</pre>
+      </div>
+      <div>
+        <h3 class="card-h mb-2">예시 5 · 화면 기준으로 확인 목록 정리 <span class="tag-amber">🆕</span></h3>
+        <pre class="prompt">unifi_promotion_jpyc_info_signup 는
+  피그마의 이모지가 맞아 → 이모지 그대로 업데이트해
+unifi_promotion_info_end 는 문구를
+  "종료된 캠페인 입니다"로 업데이트했어
+unifi_promotion_bottomsheet_signup_text2 는 변수처리해야해
+
+화면에 기재된 기준으로 확인 필요 목록 업데이트하고
+다국어 번역 필요한 것들은 번역 진행</pre>
+      </div>
+      <div>
+        <h3 class="card-h mb-2">예시 6 · 새 영역 만들고 위치 지정 <span class="tag-amber">🆕</span></h3>
+        <pre class="prompt">https://figma.../node-id=66089-117041
+https://figma.../node-id=66089-125866
+https://wiki.../pageId=4541588845#...-LV
+
+여기에 mini 영역을 만들고 프레임 업데이트 하는데
+LV 영역 바로 아래에 위치하도록 생성</pre>
+      </div>
+      <div>
+        <h3 class="card-h mb-2">예시 7 · 위키에 값만 채워두고 반영 <span class="tag-amber">🆕</span></h3>
+        <pre class="prompt">OA MSG 링크 업데이트 했어 → OA MSG 생성해줘
+
+OA Alt 메시지 업데이트 해뒀어 → 다국어 번역해줘
+
+action url 을 모두 업데이트 했어
+  → 확인하고 json 업데이트 해줘</pre>
+      </div>
+      <div>
+        <h3 class="card-h mb-2">예시 8 · 판단 정정 · 정본 알려주기 <span class="tag-amber">🆕</span></h3>
+        <pre class="prompt">unifi_text8d 는 시스템에 3만엔으로 되어 있으니
+  3만엔으로 정정
+
+"JPYC 입금하는 방법"은 키가
+  unifi_promotion_jpyc_unifi_text8a 고
+"Unifi로 수익 내는 방법"은 키가
+  unifi_promotion_unifi_text8a 야</pre>
+      </div>
     </div>
+
+    <div class="mt-8 panel">
+      <h3 class="panel-h">💡 실제로 잘 통한 요청 방식 7가지 <span class="tag-amber">🆕 v11</span></h3>
+      <p class="card-p mt-2">아래는 실제 작업에서 <b>결과가 좋았던 요청 패턴</b>입니다. 문장을 다듬을 필요는 없고, <b>기준·범위·정본</b> 세 가지만 들어가면 충분합니다.</p>
+      <table class="ex-table mt-4"><tbody>
+        <tr><th style="width:23%">① 판정 기준을 한 줄로 못 박기</th><td>같은 문구가 <b>Figma·위키·XLT 시스템에서 서로 다를 때</b> 무엇을 따를지 정해 주면 되돌리는 일이 없습니다.<br/><code>"화면에 기재된 기준으로"</code> · <code>"시스템에 3만엔으로 되어 있으니 그걸로"</code><br/><span class="text-slate-500">기준이 없으면 AI가 한쪽을 골라 반영해버리고, 나중에 전부 되돌려야 합니다.</span></td></tr>
+        <tr><th>② 프레임 링크 대신 이름·섹션으로</th><td>프레임 주소를 하나씩 붙이지 않아도 됩니다. <b>페이지(또는 섹션) 주소 + 이름</b>만 주면 그 안에서 찾습니다.<br/><code>"여기에 OA MSG 영역 생성"</code> → 페이지에서 이름이 <code>(OA)</code>로 시작하는 프레임을 찾아냄<br/><span class="text-slate-500">⚠️ 같은 이름 프레임이 둘 이상이면 AI가 후보를 보여주고 물어봅니다. 확실히 하려면 링크가 가장 안전합니다.</span></td></tr>
+        <tr><th>③ 위키에 값을 먼저 써두고 알려주기</th><td>URL·원문처럼 <b>당신만 아는 값</b>은 위키 표에 직접 채워 두고 한 줄만 주면 됩니다.<br/><code>"링크 업데이트 했어 → 생성해줘"</code> · <code>"Alt 메시지 업데이트 해뒀어 → 다국어 번역해줘"</code><br/><span class="text-slate-500">AI가 위키를 다시 읽어 그 값으로 산출물을 만듭니다. 채팅에 길게 붙여넣지 않아도 됩니다.</span></td></tr>
+        <tr><th>④ 여러 키 지시를 한 번에 나열</th><td>키마다 <b>한 줄씩</b> 적어 주면 한 번에 처리합니다. 키 3개, 지시 3종류가 섞여 있어도 괜찮습니다.<br/><span class="text-slate-500">중간에 판단이 갈리는 항목만 골라 물어보고, 나머지는 그대로 진행합니다.</span></td></tr>
+        <tr><th>⑤ 틀렸으면 근거와 함께 정정</th><td>AI 판단이 틀렸을 때 <b>왜 틀렸는지</b>를 한 마디 붙이면 같은 실수가 반복되지 않고 관련 항목까지 함께 정리됩니다.<br/><code>"~는 키가 A고, ~는 키가 B야"</code> → 키를 잘못 묶은 것을 바로잡고 확인 목록도 정리<br/><span class="text-slate-500">근거 없이 "다시 해"만 주면 AI가 다른 곳을 고칠 수 있습니다.</span></td></tr>
+        <tr><th>⑥ 반영 전에 조사만 먼저</th><td>바꾸기 전에 <b>현황만</b> 보고 싶을 때 씁니다.<br/><code>"어떤 프레임들에서 겹치는지 확인"</code> → 문서를 고치지 않고 목록만 보고<br/><span class="text-slate-500">"확인"·"조사"라고 하면 반영하지 않습니다. 결과를 보고 결정한 뒤 반영을 지시하면 됩니다.</span></td></tr>
+        <tr><th>⑦ 확인 목록에 일괄 응답</th><td>AI가 만든 확인 목록은 <b>한 줄로 일괄 처리</b>할 수 있습니다.<br/><code>"승인 필요 5건은 권장값으로 적용"</code> · <code>"등록하면 되는 항목이니 관련 영역 모두 삭제"</code><br/><span class="text-slate-500">이유("~하면 되니까")를 붙이면 왜 지웠는지가 문서 이력에 남습니다.</span></td></tr>
+      </tbody></table>
+    </div>
+
     <div class="mt-8 panel">
       <h3 class="panel-h">✅ 좋은 결과를 위한 체크리스트</h3>
       <div class="grid sm:grid-cols-2 gap-x-8 gap-y-2 mt-4">
@@ -493,9 +603,13 @@ XLT 코멘트가 달린 문구만 5개 언어 번역해줘.</pre>
         <label class="check"><input type="checkbox" /> 어느 위키 페이지·섹션에 넣을지 알려줬다</label>
         <label class="check"><input type="checkbox" /> 번역 범위(전체/XLT만/특정 키)를 명확히 했다</label>
         <label class="check"><input type="checkbox" /> 담당 팀(UIT/LV)을 알려줬다 (위키에 구분이 없을 때)</label>
+        <label class="check"><input type="checkbox" /> Screen ID 매핑 표를 검토·승인했다 (새 규칙 적용 시)</label>
         <label class="check"><input type="checkbox" /> AI의 확인 질문에 결정해서 답했다</label>
         <label class="check"><input type="checkbox" /> 검증 리포트(P0=0)를 확인했다</label>
         <label class="check"><input type="checkbox" /> 용어집 변경 시 JSON을 Landpress에 붙여넣었다</label>
+        <label class="check"><input type="checkbox" /> 값이 서로 다를 때 <b>무엇이 정본인지</b> 알려줬다 (화면 / 시스템 등록값)</label>
+        <label class="check"><input type="checkbox" /> 위키에 값을 채워뒀다면 "업데이트해뒀다"고 알려줬다</label>
+        <label class="check"><input type="checkbox" /> 반영 없이 현황만 보려면 "확인"·"조사"라고 구분해 말했다</label>
       </div>
     </div>
   </section>
@@ -537,10 +651,2111 @@ XLT 코멘트가 달린 문구만 5개 언어 번역해줘.</pre>
   </section>
 
 </main>
+</div>
+
+<div id="tab-updates" class="hidden">
+<main class="max-w-6xl mx-auto px-5">
+  <!-- ===== 업데이트 이력 (버전별 신규 기능) ===== -->
+  <section id="new" class="py-14 scroll-mt-20">
+    <h2 class="sec-title">업데이트 이력 <span class="text-slate-400 font-normal text-lg">버전별 신규 기능 모아보기</span></h2>
+    <p class="sec-sub">위쪽 섹션들은 <b>전체 가이드(사용법)</b>이고, 이 섹션은 <b>버전별로 무엇이 추가됐는지</b>만 모아 보여줍니다. 요청 방법은 버전과 무관하게 동일하며, 새 기능은 자동으로 함께 적용됩니다.</p>
+    <div class="panel mt-6">
+      <h3 class="panel-h">버전 요약</h3>
+      <table class="ex-table mt-3"><tbody>
+        <tr><th><b>v24 · 2026-08-10</b></th><td><b>IA 주간 점검 #4 (로그인 보강 포함) — USDT PLUS 이율 5%→7%(최대 연 10%)·Unifi Pay Direct·액션 라벨 개편과 「외부 지갑 연결」 프로덕션 반영</b> — 내 자산 액션이 <b>보내기·채우기·교환하기·은행출금</b>으로 바뀌었습니다(구 라벨이 남은 문구는 교체 대상). 누적 이자 화면(<code>/interest/usdt</code>)이 새로 확인됐고, 리워드 스켈레톤은 <b>프로덕션 해소·Beta mini만 로그인에서도 고착</b>으로 정정됐습니다. <b>Beta 디버그 패널은 개발자 도구라 점검에 사용하지 않기로 확정</b>했습니다</td></tr><tr><th>v21 · 2026-08-07</th><td><b>용어집 v4.6 — 「사용자」 등재 + 「유저」 금지</b> — 같은 화면에서 <code>유저</code>·<code>사용자</code>가 섞여 쓰이던 것을 「사용자」로 통일했습니다. 용어집 탭의 금지 목록(14건)·전체 용어 표(116용어)·전체 JSON이 모두 최신입니다</td></tr><tr><th>v20 · 2026-08-07</th><td><b>「시스템 가이드」 탭 신설</b> — 문서 13개·스크립트 13개로 늘어난 시스템의 <b>전체 구조를 한 장으로</b> 정리했습니다. 3계층 구조 · 흐름 지도 6종 · <b>상황별 라우팅 표</b>(하려는 일 → 읽을 문서 → 갱신할 문서) · 4대 차단 게이트 · 문서/스크립트 지도 · 확장 규칙. “어떤 작업에 어떤 문서를 봐야 하는지”를 찾는 용도입니다 · <b>XLT 시스템 등록값 검증 신설</b> — 이미 등록된 문구가 용어집에 맞는지 시스템 전체를 읽어 점검하고, 수정 제안을 확인받아 업로드용 엑셀까지 만듭니다. 번역할 때 <b>비슷한 문구의 기존 키를 찾아 재사용을 제안</b>하는 기능도 함께 들어갔습니다</td></tr>
+        <tr><th>v19 · 2026-08-06</th><td><b>「월렛」도 검사 대상에 추가</b> — 「지갑」이 표준인데 「월렛」이라고 쓰면 검사에서 안 걸리던 사각지대를 막았습니다. 「팔로우」 때와 같은 원인이었습니다</td></tr><tr><th>v18 · 2026-08-06</th><td><b>용어집 버전 이력을 접이식으로</b> — 이력이 20개 버전까지 늘어 용어집 탭이 길어졌습니다. <b>버전 요약 표와 버전별 상세 카드를 한 번에 접고 펼치도록</b> 바꿔, 기본은 접힌 상태로 두고 필요할 때만 펼쳐 봅니다. 자주 보는 <b>구 표기 금지 목록</b>과 <b>전체 용어집</b>은 그대로 노출됩니다</td></tr><tr><th>v17 · 2026-08-06</th><td><b>구 표기 검사 정확도 개선</b>: 금지 목록에 <code>友達</code>·<code>공식계정</code>을 추가하고, <b>문맥 조건</b>을 넣어 같은 단어의 다른 뜻(관심 앱·기대해 주세요·~를 따르다)은 걸리지 않게 했습니다. XLT 시스템 전체 실측 <b>잘못된 경고 8건 → 0건</b></td></tr><tr><th>v16 · 2026-08-06</th><td><b>용어집 v4.3 — 구 표기 금지 목록 신설</b>: <code>OA 팔로우</code>·<code>OA 채널 추가</code> 등을 <b>Unifi LINE 공식 계정 친구 추가</b>로 통일하도록 금지 → 권장 매핑을 용어집에 넣었습니다. 용어집 탭에 <b>「구 표기 금지 목록」 표</b>가 추가됐고, 검증기가 각 언어를 검사해 경고합니다. 기존 번역에 새 경고는 생기지 않습니다(실측 230 → 230)</td></tr><tr><th>v15 · 2026-08-06</th><td><b>용어집 v4.2 (114 → 115용어)</b>: <code>지급 완료</code> 신규 등재 — 비실시간 일괄 지급 전환으로 「지급 완료된 리워드」가 상시 문구가 됐는데 등재값 <code>완료</code>만 있어 각 언어의 자연스러운 완료 표현이 경고로 잡혔습니다. 실측 <b>P1 197 → 193건(-4)</b>, 신규 경고 0건. <b>v14의 검증기 개선이 먼저 들어가야 효과가 나는 첫 사례</b>입니다</td></tr><tr><th>v14 · 2026-08-06</th><td><b>검증 경고(P1) 오탐 대폭 감소</b>: 용어집 대조가 <b>짧은 용어까지 중복으로 걸던 문제</b>를 고쳐 <code>지급 완료된 리워드</code>의 정상 번역이 「완료」 불일치로 잡히거나 <code>당첨금</code>이 <code>당첨</code>으로 잡히는 오탐이 사라졌습니다. 보유 번역 파일 8종 실측 <b>P1 232건 → 198건(-34, -15%)</b>, <b>P0는 0건 그대로</b> · <b>화면 이미지 번호가 글자를 가리지 않습니다</b>: 코멘트 핀이 문구 위에 찍혀 있으면 번호 원이 글자를 덮던 것을 <b>자동으로 글자 밖으로 비켜</b> 놓고, 가림이 남으면 도구가 스스로 경고합니다</td></tr><tr><th>v13 · 2026-08-05</th><td><b>용어집 v4.1 확대(113 → 114 용어)</b>: <b>종료 zh_TW 교정</b> <code>結尾</code>(글·이야기의 맺음말) → <code>結束</code> — 등재값 자체가 오역이었음 · <b>포이카츠 en_US·th_TH 음차 채택</b> <code>point activity</code>·<code>การสะสมแต้ม</code> → <code>Poi-katsu</code> · <b>캠페인 신규 등재</b>(campaign/キャンペーン/活動/แคมเปญ). 실측: 시즌3 47키 검증 <b>P1 63건 → 58건(-5), 신규 P1 0건</b></td></tr><tr><th>v12 · 2026-08-05</th><td><b>용어집 v4.1 — OA(LINE 공식계정) 메시지 변수 <code>oa_variables</code> 영역 신설</b>: <code>{{total_amount}}</code>(당첨금 총액)·<code>{{wallet_address}}</code>(지급 지갑 주소) 2종 등재, 당첨금 총액 변수를 <code>{{amount}}</code> → <code>{{total_amount}}</code>로 확정. 용어집 탭에 <b>OA 변수 표</b> 추가</td></tr><tr><th>v11 · 2026-08-05</th><td><b>「이렇게 요청하세요」 대폭 보강 — 실제 작업에서 결과가 좋았던 <b>요청 패턴 7가지</b> 신설(정본 지정·이름으로 프레임 찾기·위키에 값 먼저 쓰기·일괄 나열·근거 있는 정정·조사만 먼저·확인 목록 일괄 응답) · 요청 예시 4종 추가(화면 기준 확인 목록 정리 · 새 영역 위치 지정 · 위키 값 채워두고 반영 · 판단 정정) · 체크리스트 3항목 추가 · <b>프레임을 링크 없이 이름·섹션으로 지정</b>하는 방법 명문화</b></td></tr><tr><th>v10 · 2026-08-03</th><td>IA 주간 점검 #3 — 미션앤리워드 Season 3(8/1) 개시로 럭키볼 정책 수치 전면 교체 · IA 트리를 <b>환경 × 사용자 상태 × 접속 IP</b> 3축으로 재정리 · MY쇼핑 = 외부 GuideKim 확정(부여 대상 아님) · Beta 「외부 지갑 연결」 신설 · mini Reward Special Missions·이자 배너 실측 · 로그인 리워드 탭 3주 연속 로딩 실패 서비스측 보고 · 어휘 승인 대기 5건</td></tr>
+        <tr><th>v9 · 2026-07-30</th><td>IA 점검 리포트 탭에 「전체 IA 구조」 인터랙티브 표 추가 — 환경별(Web·LIFF·Wallet Mode·mini) 제공 여부와 1~3뎁스 화면 계층을 한 화면에서 필터·접기로 확인. md/IA.md가 바뀌면 이 표(IA_DATA)도 함께 갱신하는 규칙 신설</td></tr>
+        <tr><th>v8 · 2026-07-30</th><td>IA 주간 점검 #2 — KAIA 스테이킹(위임)·Special Contribution Rewards 출시 실측 · Beta 환경 상시 점검 도입(릴리즈 예정 내용 선반영) · Unifi mini 최초 직접 실측(<code>/benefits-mini</code> 계열) · Beta 액션 라벨 개편(보내기·채우기·은행출금) 확인 · Screen ID 어휘 승인 대기 3건</td></tr>
+        <tr><th>v7 · 2026-07-30</th><td>위키 새로 만들기 규격화(Related Docs 자동 정리·Flow에 Figma 임베드·동명 페이지 확인) · 품질 자동 검사 2종(위키 마크업·렌더) · 보조 에이전트 4종 도입(번역 2차 검토·용어집 가이드 갱신·위키 정합성 감사·원문 오타 취합) · 「동작 원리」 섹션 신설 · Screen 표 4컬럼 확정 · 용어집 v4.0(113용어)</td></tr>
+        <tr><th>v6 · 2026-07-29</th><td>FAQ 컨텐츠 작성 지원(정책 → 사용자 고지 Q&amp;A, 5개 언어) · 용어집 v3.7~v3.9 누적 반영(<code>{0} JPYC</code> 공백 · 공식 계정 zh · 변경 zh) · 키 단위 번역 패치 시 컬럼 정렬 전수 대조 상시 적용</td></tr>
+        <tr><th>v5 · 2026-07-28</th><td>용어집 갱신 시 이 가이드를 함께 갱신·전달하는 규칙 신설(가이드 페이지가 용어집 반영 창구) · 용어집 v3.6(111 용어, 친구초대 도메인 4종) · 등재 전 실사용 표기 전수 대조 절차 명문화</td></tr>
+        <tr><th>v4 · 2026-07-27</th><td>탭 구조 개편(가이드/업데이트 이력/용어집 업데이트 이력/IA 점검 리포트) · 용어집 이력 메뉴(현재 v3.5) · 주간 IA 자동 점검 + 주간 리포트 발행 · 패턴 사전 일원화 등 규칙 문서 정비 · 용어집 라이브 대조 검증 버튼 · 어노테이션 번호 자동 정리 규칙 상시 적용(좌표 정규화·겹침 0·색 구분·육안 검증)</td></tr>
+        <tr><th>v3 · 2026-07-27</th><td>Screen ID 공식 표준(확인 게이트) · XLT 공식 룰 통합(날짜/URL 포함) · 용어집 105 용어 확장 · 서비스 IA 실측</td></tr>
+        <tr><th>v2 · 2026-07-16</th><td>위키 새 페이지 생성 · 답글 XLT 키 인식 · 검증 안전장치 3종 · History 같은 날짜 병합</td></tr>
+        <tr><th>v1 · 2026-07-01</th><td>최초 발행 — Figma→번역→검증 게이트→위키 파이프라인, 용어집 관리, UIT/LV 팀 규칙</td></tr>
+      </tbody></table>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v16 <span class="text-slate-400 font-normal text-base">2026-08-06</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-emerald">용어집 v4.3 🆕</span><h3 class="card-h mt-2">「OA 팔로우」 같은 옛 표현을 자동으로 잡습니다</h3><p class="card-p">「LINE 공식 계정 친구 추가」는 <b>2026-08-04에 정본 표기로 확정</b>됐지만 규칙 문서에만 적혀 있어서, 실제로 <b>새 문구에 <code>OA 팔로우</code>가 그대로 들어가는 일</b>이 있었습니다. 이제 용어집에 <b>금지 → 권장 매핑</b>이 들어가 번역 검증에서 바로 걸립니다.</p><details class="ex"><summary>어떻게 쓰이나</summary><div class="ex-body"><table class="ex-table"><tbody><tr><th>상황</th><th>처리</th></tr><tr><td><b>새 문구·문구 변경</b></td><td>권장 표기를 <b>바로 적용</b>합니다</td></tr><tr><td>이미 시스템에 등록된 문구</td><td>임의로 바꾸지 않고 <b>보고만</b> 드립니다</td></tr><tr><td><b>의미가 모호할 때</b></td><td><b>확인을 요청드린 뒤</b> 권장 표기를 제안합니다</td></tr></tbody></table><p class="ex-cap">용어집 탭의 <b>「🚫 구 표기 금지 목록」</b> 표에서 전체를 볼 수 있습니다.</p></div></details></div>
+      <div class="card"><span class="badge badge-indigo">왜 이 방식인가</span><h3 class="card-h mt-2">용어집에 그냥 넣으면 오히려 경고가 늘었습니다</h3><p class="card-p">처음에는 「공식 계정 친구 추가」를 <b>일반 용어로 등재</b>하려 했는데, 실측해 보니 경고가 <b>230건 → 266건으로 36건 늘었습니다.</b> 일반 용어 등재는 <b>한국어에 그 말이 있을 때 다른 언어가 맞는지</b>만 보는 자리라, 문장마다 어순이 다른 긴 표현에는 맞지 않았습니다.</p><details class="ex"><summary>그래서 어떻게 했나</summary><div class="ex-body"><p>금지 표현을 <b>별도 목록</b>으로 두고, 검증기가 <b>각 언어 문장 안에 그 표현이 있는지</b>를 직접 보도록 했습니다. 결과는 <b>기존 번역에 새 경고 0건</b>(230 → 230), 옛 표현이 남은 파일에서는 <b>정확히 2건 검출</b>이었습니다.</p><p class="ex-cap">용어집에 넣어서 풀리는 문제와 도구를 고쳐야 풀리는 문제가 다르다는 점은 v14에서도 한 번 확인된 내용입니다.</p></div></details></div>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v15 <span class="text-slate-400 font-normal text-base">2026-08-06</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-emerald">용어집 v4.2 🆕</span><h3 class="card-h mt-2">「지급 완료」를 용어집에 넣었습니다</h3><p class="card-p">리워드 지급이 <b>실시간에서 비실시간(일괄) 지급</b>으로 바뀌면서 「지급 완료된 리워드」·「지급될 리워드」가 화면 상시 문구가 됐습니다. 그런데 용어집에는 <code>완료</code>만 있어서, 각 언어가 자연스럽게 옮긴 표현(<code>Paid</code>·<code>支給済み</code>·<code>จ่ายแล้ว</code>·<code>已發放</code>)이 전부 경고로 잡혔습니다. 이제 <code>지급 완료</code>가 등재돼 그대로 통과합니다.</p><details class="ex"><summary>왜 지금에서야 효과가 났나</summary><div class="ex-body"><p>같은 등재를 <b>두 번 실측했는데 결과가 달랐습니다.</b></p><table class="ex-table"><tbody><tr><th>시점</th><th>검증기</th><th>결과</th></tr><tr><td>v13까지</td><td>이전 방식</td><td>등재해도 <b>감소 0건</b></td></tr><tr><td>v14 이후</td><td>최장일치 적용</td><td><b>-4건</b></td></tr></tbody></table><p class="ex-cap">짧은 <code>완료</code>가 긴 <code>지급 완료</code> 안에 들어 있어도 따로 걸리던 문제를 v14에서 고쳤기 때문입니다. <b>용어집에 넣어서 풀리는 문제와 도구를 고쳐야 풀리는 문제는 다릅니다.</b></p></div></details></div>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v14 <span class="text-slate-400 font-normal text-base">2026-08-06</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-emerald">검증 정확도 🆕</span><h3 class="card-h mt-2">확인할 필요 없는 경고가 34건 줄었습니다</h3><p class="card-p">번역 검증기가 용어집과 대조할 때 <b>짧은 용어가 긴 용어 안에 들어 있어도 따로 걸리는</b> 문제가 있었습니다. 예를 들어 <code>지급 완료된 리워드</code>를 일본어 <code>支給済みリワード</code>로 자연스럽게 옮겨도, 그 안의 「완료」만 떼어 보고 <code>完了</code>가 아니라며 경고를 냈습니다. <code>당첨금</code>이 <code>당첨</code>으로 잡히던 것도 같은 원인입니다. 이제 <b>가장 긴 용어 하나만</b> 봅니다.</p><details class="ex"><summary>실측 결과 보기</summary><div class="ex-body"><table class="ex-table"><tbody><tr><th>대상</th><th>이전</th><th>이후</th></tr><tr><td>보유 번역 파일 8종 합계 P1</td><td>232건</td><td><b>198건 (-34)</b></td></tr><tr><td>럭키볼 친구초대 LV</td><td>96건</td><td>76건</td></tr><tr><td>비실시간 지급 LV</td><td>14건</td><td>2건</td></tr><tr><td><b>P0(반드시 고쳐야 할 오류)</b></td><td>0건</td><td><b>0건 (변화 없음)</b></td></tr></tbody></table><p class="ex-cap">경고를 <b>덜 까다롭게</b> 바꾼 것이 아니라 <b>같은 것을 두 번 세던 것</b>을 고친 것이라, 진짜 오류(P0)는 그대로 잡힙니다.</p></div></details></div>
+      <div class="card"><span class="badge badge-indigo">화면 이미지</span><h3 class="card-h mt-2">번호 원이 문구를 가리지 않습니다</h3><p class="card-p">위키에 올라가는 화면 이미지에는 정책 설명마다 <b>①②③ 번호 원</b>이 찍힙니다. 그동안 <b>Figma 코멘트 핀이 글자 위에 놓여 있으면</b> 번호 원이 그 글자를 그대로 덮어, 위키에서 문구를 읽을 수 없는 경우가 있었습니다(실측: 「지급완료된 리워드」의 <b>「급완」</b>이 가려짐). 이제 번호 원이 문구에 닿으면 <b>글자 왼쪽 밖으로 자동으로 비켜</b> 놓습니다. 왼쪽 여백이 없으면 오른쪽으로 갑니다.</p><details class="ex"><summary>기획자가 달라지는 점</summary><div class="ex-body"><p>Figma에서 <b>코멘트 핀 위치를 신경 써서 옮길 필요가 없습니다.</b> 문구 위에 편하게 찍어도 위키 이미지에서는 알아서 비켜 갑니다. 혹시 가림이 남으면 <b>도구가 스스로 경고</b>하므로 눈으로 일일이 확인하지 않아도 됩니다.</p></div></details></div>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v13 <span class="text-slate-400 font-normal text-base">2026-08-05</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-emerald">용어집 v4.1 확대 🆕</span><h3 class="card-h mt-2">용어 3건 손질 — 113 → 114 용어</h3><p class="card-p">실제 번역에 쓰이는 표기와 <b>용어집 등재값이 어긋나 검증기가 정상 번역을 오탐</b>하던 3건을 정리했습니다. <b>종료</b>의 중국어(번체)가 <code>結尾</code>(글·이야기의 맺음말)로 등재돼 있어 화면의 「종료」에 맞는 <code>結束</code>로 <b>교정</b>했고, <b>포이카츠</b>는 영어·태국어를 뜻풀이(<code>point activity</code>·<code>การสะสมแต้ม</code>) 대신 실제로 쓰는 음차 <code>Poi-katsu</code>로 맞췄습니다. <b>캠페인</b>은 앞으로 반복될 표현이라 새로 등재했습니다.</p><details class="ex"><summary>바뀐 값 보기</summary><div class="ex-body"><table class="ex-table"><tbody><tr><th>용어</th><th>언어</th><th>이전</th><th>확정</th></tr><tr><td>종료</td><td>zh_TW</td><td>結尾</td><td><b>結束</b></td></tr><tr><td>포이카츠</td><td>en_US</td><td>point activity</td><td><b>Poi-katsu</b></td></tr><tr><td>포이카츠</td><td>th_TH</td><td>การสะสมแต้ม</td><td><b>Poi-katsu</b></td></tr><tr><td>캠페인 <span class="tag-amber">신규</span></td><td>en/ja/zh/th</td><td>—</td><td><b>campaign / キャンペーン / 活動 / แคมเปญ</b></td></tr></tbody></table><p class="ex-cap">포이카츠 zh_TW(<code>點數活動</code>)는 이번 범위가 아니라 그대로 둡니다.</p></div></details></div>
+      <div class="card"><span class="badge badge-indigo">실측 효과</span><h3 class="card-h mt-2">경고 5건이 실제로 사라졌습니다</h3><p class="card-p">시즌3 47키를 다시 검증한 결과 <b>P1 63건 → 58건(-5건)</b>, <b>새로 생긴 경고는 0건</b>이었습니다. 해소된 5건은 <code>info_end</code>의 중국어 「종료」 1건과 <code>text8c</code>·<code>text8d</code>의 영어·태국어 「포이카츠」 4건입니다. <b>캠페인</b>은 해소 0·신규 0으로, 앞으로의 표기 흔들림을 막기 위한 <b>예방적 등재</b>입니다. 용어집을 손댈 때는 이렇게 <b>등재 전후 검증 수치를 실측</b>해 정상 번역에 새 오탐이 생기지 않는지 확인합니다.</p></div>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v12 <span class="text-slate-400 font-normal text-base">2026-08-05</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-emerald">용어집 v4.1 🆕</span><h3 class="card-h mt-2">OA 메시지 변수도 용어집에서 관리합니다</h3><p class="card-p">OA(LINE 공식계정) 메시지는 <b>XLT 키를 부여하지 않는 영역</b>이라, 지금까지 변수 이름이 어디에도 정본으로 남지 않았습니다. 그래서 캠페인마다 "이 변수 이름 뭐로 할까요"를 다시 정하는 왕복이 반복됐습니다. 이제 용어집에 <code>oa_variables</code> 영역이 생겨 <b>같은 의미에는 같은 이름을 문의 없이 재사용</b>합니다.</p><details class="ex"><summary>등재된 변수 2종 보기</summary><div class="ex-body"><table class="ex-table"><tbody><tr><th>변수</th><th>의미</th><th>예시</th></tr><tr><td><code>{{total_amount}}</code></td><td>지급된 당첨금 총액(JPYC 단위 숫자)</td><td><code>25</code></td></tr><tr><td><code>{{wallet_address}}</code></td><td>당첨금이 지급된 지갑 주소(마스킹)</td><td><code>0x8442...7c8</code></td></tr></tbody></table><p class="ex-cap">전체 목록은 <b>용어집 업데이트 이력</b> 탭의 「OA 메시지 변수」 표에서 볼 수 있습니다.</p></div></details></div>
+      <div class="card"><span class="badge badge-indigo">표기 확정</span><h3 class="card-h mt-2">당첨금 총액은 <code>{{total_amount}}</code>입니다</h3><p class="card-p">기존에 쓰던 <code>{{amount}}</code>는 <b>{{total_amount}}</b>로 확정됐습니다. 신규 작업에는 <code>{{amount}}</code>를 쓰지 않습니다. 숫자와 통화 코드 사이는 <b>한 칸 띄웁니다</b> — <code>{{total_amount}} JPYC</code>. 지갑 주소는 한국어 조사가 <code>로</code>/<code>으로</code>로 갈리므로 <code>{{wallet_address}} 주소로</code>처럼 <b>명사를 넣어 조사를 고정</b>합니다.</p></div>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v11 <span class="text-slate-400 font-normal text-base">2026-08-05</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-indigo">신규 · 요청법</span><h3 class="card-h mt-2">잘 통하는 요청 방식을 7가지로 정리했습니다</h3><p class="card-p">실제 작업에서 <b>결과가 좋았던 요청 문장</b>을 그대로 모아 「이렇게 요청하세요」에 넣었습니다. 핵심은 문장을 잘 쓰는 것이 아니라 <b>기준·범위·정본</b> 세 가지를 알려주는 것입니다. 특히 같은 문구가 Figma·위키·XLT 시스템에서 다를 때 <b>무엇을 따를지 한 줄로 정해 주면</b> 되돌리는 일이 없어집니다.</p><details class="ex"><summary>7가지 패턴 요약 보기</summary><div class="ex-body"><table class="ex-table"><tbody><tr><th>① 정본 지정</th><td>"화면에 기재된 기준으로" · "시스템에 3만엔으로 되어 있으니 그걸로"</td></tr><tr><th>② 이름으로 찾기</th><td>프레임 링크 없이 "여기에 OA MSG 영역 생성"</td></tr><tr><th>③ 위키에 먼저 쓰기</th><td>"링크 업데이트 했어 → 생성해줘"</td></tr><tr><th>④ 일괄 나열</th><td>키마다 한 줄씩, 지시 종류가 섞여도 한 번에</td></tr><tr><th>⑤ 근거 있는 정정</th><td>"~는 키가 A고, ~는 키가 B야"</td></tr><tr><th>⑥ 조사만 먼저</th><td>"어떤 프레임들에서 겹치는지 확인" (반영 안 함)</td></tr><tr><th>⑦ 일괄 응답</th><td>"승인 필요 5건은 권장값으로 적용"</td></tr></tbody></table></div></details></div>
+      <div class="card"><span class="badge badge-emerald">개선 · 프레임 지정</span><h3 class="card-h mt-2">프레임 주소를 하나씩 안 줘도 됩니다</h3><p class="card-p">지금까지는 프레임마다 Figma 주소를 붙여야 했습니다. 이제 <b>페이지 주소(또는 섹션 주소) + 프레임 이름</b>만 주면 그 안에서 찾습니다. 실제로 <b>"여기에 OA MSG 영역 생성"</b> 한 줄로 페이지에서 <code>(OA)</code>로 시작하는 프레임을 찾아 작업했습니다.</p><details class="ex"><summary>주의할 점</summary><div class="ex-body"><table class="ex-table"><tbody><tr><th>같은 이름이 둘 이상</th><td>후보를 보여주고 <b>어느 것인지 물어봅니다</b>. 한 파일 안에 같은 이름의 구버전 프레임이 남아 있는 경우가 실제로 있었습니다</td></tr><tr><th>이름이 바뀐 경우</th><td>매번 새로 조회하므로 최신 이름으로 찾습니다. <b>예전 이름</b>으로 말하면 못 찾습니다</td></tr><tr><th>가장 확실한 방법</th><td>링크를 주는 것입니다. 이름 지정은 <b>편의</b>이고, 애매하면 AI가 되묻습니다</td></tr></tbody></table></div></details></div>
+      <div class="card"><span class="badge badge-indigo">신규 · 위키에 값 먼저 쓰기</span><h3 class="card-h mt-2">긴 값은 채팅에 붙이지 말고 위키에 써두세요</h3><p class="card-p">이미지 주소·버튼 링크·원문 문구처럼 <b>당신만 아는 값</b>은 위키 표에 직접 채워 두고 <b>"업데이트해뒀어"</b> 한 마디만 주면 됩니다. AI가 위키를 다시 읽어 그 값으로 산출물을 만듭니다. 값이 바뀌면 같은 방식으로 다시 알려주면 되고, 파일 이름이 같으므로 <b>위키의 다운로드 링크는 그대로</b> 최신본을 가리킵니다.</p></div>
+      <div class="card"><span class="badge badge-slate">체크리스트</span><h3 class="card-h mt-2">확인 항목 3개 추가</h3><p class="card-p">「좋은 결과를 위한 체크리스트」에 <b>정본을 알려줬는가</b> · <b>위키에 값을 채워뒀다고 알려줬는가</b> · <b>반영 없이 현황만 볼 것인지 구분해 말했는가</b>를 추가했습니다.</p></div>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v7 <span class="text-slate-400 font-normal text-base">2026-07-30</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-indigo">신규 · 위키 만들기</span><h3 class="card-h mt-2">새 위키 문서, 요청 한 줄로</h3><p class="card-p"><b>부모 위키 주소 + Jira 티켓</b>만 주면 표준 문서가 만들어집니다. <b>Related Docs</b>에 티켓·디자인·PIA 검토·Slack 링크가 카테고리별로 정리되고, <b>Flow 섹션에는 Figma가 그대로 임베드</b>되어(가로 1000) 문서 안에서 화면을 볼 수 있습니다. 같은 제목 문서가 이미 있으면 <b>새로 만들지 않고 먼저 알려드립니다.</b></p><details class="ex"><summary>요청 예시·자동 처리 내용 보기</summary><div class="ex-body"><table class="ex-table"><tbody><tr><th>요청</th><td>"이 위키 하위에 문서 만들어줘 + 이 Jira 티켓 건이야" (+ 원하는 제목)</td></tr><tr><th>자동 처리</th><td>티켓을 열어 <b>설명 안의 관련 링크까지 찾아</b> Related Docs에 추가(PIA 검토 티켓·Slack 스레드 등) · 상위/하위 티켓 구분 표기 · 일정(목표 버전·마감일)을 Schedule에 채움</td></tr><tr><th>형태</th><td>같은 폴더의 다른 문서와 <b>같은 구조</b>로 맞춥니다(섹션 구성·표 컬럼)</td></tr><tr><th>비어 있는 칸</th><td>정보가 없는 Policy·Screen은 <b>추측으로 채우지 않고</b> 골격만 둡니다</td></tr></tbody></table></div></details></div>
+      <div class="card"><span class="badge badge-emerald">품질 · 자동 검사</span><h3 class="card-h mt-2">위키가 깨지는 것을 미리 잡습니다</h3><p class="card-p">위키에 반영하기 <b>직전과 직후</b> 자동 검사가 돌아갑니다. 첨부 이미지가 <b>"알 수 없는 첨부파일"로 깨지는 문제</b>, 표 구조가 규격과 어긋나는 문제, 링크 주소가 잘못 들어가는 문제를 <b>사람이 보기 전에</b> 차단합니다. 실제로 이런 실수가 있었고, 이제는 검사를 통과하지 못하면 반영이 진행되지 않습니다.</p></div>
+      <div class="card"><span class="badge badge-indigo">신규 · 보조 에이전트</span><h3 class="card-h mt-2">전담 검토자 4명이 붙었습니다</h3><p class="card-p">한 명(메인)이 다 하던 일을 <b>역할별 전담</b>으로 나눴습니다. 특히 <b>번역 2차 검토자</b>는 번역한 사람과 <b>분리된 시각</b>으로 다시 보기 때문에, 스스로 검토할 때 놓치던 것을 잡습니다.</p><details class="ex"><summary>4명이 각각 무엇을 하나</summary><div class="ex-body"><table class="ex-table"><tbody><tr><th>번역 2차 검토</th><td>번역을 <b>고치지 않고 판정만</b> — 실제 결함 / 확인 필요 / 문제없음 3분류. 오탐(정상인데 오류로 보이는 것) 유형을 미리 알고 있어 소음이 적습니다</td></tr><tr><th>위키 정합성 감사</th><td>Figma 코멘트와 위키에 적힌 정책을 <b>화면별로 하나씩 대조</b> — 빠진 정책·빠진 답글·번호 어긋남을 찾습니다(화면이 수십 개일 때 유용)</td></tr><tr><th>원문 오타 취합</th><td>지금까지 쌓인 검증 리포트 전체에서 <b>Figma 원본을 고쳐야 할 항목</b>만 모아 디자이너 전달용 목록으로 만듭니다. 눈에 안 보이는 공백·특수문자도 표시해 줍니다</td></tr><tr><th>용어집 가이드 갱신</th><td>용어집 버전이 오르면 <b>이 가이드의 용어집 탭</b>을 자동으로 최신화합니다</td></tr></tbody></table><p class="ex-cap">요청 방법은 그대로입니다 — 필요할 때 자동으로 붙습니다. "화면 전체 점검해줘", "디자이너에게 줄 오타 목록 만들어줘"처럼 <b>직접 부르셔도 됩니다.</b></p></div></details></div>
+      <div class="card"><span class="badge badge-emerald">규격 확정</span><h3 class="card-h mt-2">Screen 표는 4칸으로 고정</h3><p class="card-p"><b>Screen ID · 화면 · Description · XLT</b> 4칸입니다. Screen ID가 화면을 구분하는 이름이므로 <b>"화면명" 칸은 따로 만들지 않습니다.</b> Figma 프레임 이름이 필요하면 설명글에 함께 적습니다. 기존 문서는 <b>그대로 유지</b>합니다.</p></div>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v6 <span class="text-slate-400 font-normal text-base">2026-07-29</span></h3><div class="grid sm:grid-cols-2 gap-4 mt-4"><div class="card"><span class="badge badge-emerald">FAQ 🆕</span><h3 class="card-h mt-2">정책을 FAQ 문구로 정리해 드립니다</h3><p class="card-p">위키의 정책 표(예: <b>럭키볼 소비 기한·예산 소진</b>)를 주시면 <b>사용자에게 고지가 필요한 항목만</b> 골라 Q&amp;A 초안을 만들고, 사내 FAQ 정본과 <b>같은 표 형식</b>(Category·ko_KR·en_US·ja_JP·zh_TW·th_TH)으로 위키에 넣어 드립니다. 한국어 확정 후 <b>5개 언어 번역</b>까지 이어서 진행하며, 확정이 필요한 항목(시각 표기·기준 수치 공개 여부 등)은 별도로 정리해 드립니다.</p></div><div class="card"><span class="badge badge-indigo">용어집 v3.9</span><h3 class="card-h mt-2">변경 중국어(번체) 표기 교정</h3><p class="card-p"><code>변경</code>의 번체 값이 <b>更換</b>(물건·기기를 <b>교체</b>)으로 되어 있어, 정보·설정 변경 문맥에는 맞지 않았습니다. 실제 번역 3곳이 모두 <b>變更</b>을 쓰고 있어 등재값만 어긋나 검증에서 오탐이 나던 것을 바로잡았습니다.</p></div><div class="card"><span class="badge badge-slate">번역 패치</span><h3 class="card-h mt-2">키 몇 개만 문구가 바뀐 경우</h3><p class="card-p">위키 화면 정의의 한국어만 고쳐 두고 <b>"이 키들 다국어 반영해줘"</b>라고 요청하시면, 해당 키만 재번역해 <b>다국어 표·엑셀·History</b>를 함께 갱신합니다. 이때 대상 키의 <b>5개 언어 칸이 서로 어긋나지 않았는지 전수 대조</b>한 뒤에 적용하므로, 한 언어만 덮어써서 다른 언어 원본이 사라지는 일이 없습니다.</p></div></div><h3 class="text-xl font-bold text-ink mt-10">v5 <span class="text-slate-400 font-normal text-base">2026-07-28</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-emerald">용어집 🆕</span><h3 class="card-h mt-2">용어집을 이 가이드에서 반영합니다</h3><p class="card-p">이제 용어집을 갱신하면 <b>이 가이드도 같은 작업에서 함께 갱신</b>해 드립니다(용어집 탭의 이력 표·전체 용어 표·전체 JSON). 용어집 반영은 이 페이지의 <b>「최신 전체 JSON 보기 → 📋 JSON 복사」</b>에서 복사해 Landpress CMS에 붙여넣으시면 됩니다 — 별도 JSON 파일을 찾을 필요가 없습니다.</p></div>
+      <div class="card"><span class="badge badge-indigo">용어집 v3.6</span><h3 class="card-h mt-2">친구초대 도메인 4종 추가 (107 → 111)</h3><p class="card-p"><b>링크·친구·선물하기·초대</b>를 등재했습니다. 등재 전 사용 중인 문구를 <b>전수 대조</b>해 실사용 표기를 확인 — <code>선물하기</code>는 명사형(送禮·มอบของขวัญ)이 아니라 실제 쓰이는 동사형 <b>送·มอบ</b>로 교정해 넣었고, <code>초대</code>의 태국어는 <b>เชิญ/ชวน 혼용</b>이라 다수형으로 등재하되 다른 형태도 정상으로 허용합니다.</p></div>
+      <div class="card"><span class="badge badge-indigo">용어집 v3.8</span><h3 class="card-h mt-2">중국어(번체) 「공식 계정」 표기 교정</h3><p class="card-p">용어집의 <code>공식 계정</code> 중국어(번체) 값이 <b>公眾號</b>로 되어 있었는데, 이는 <b>WeChat(중국 대륙) 용어</b>입니다. LINE 대만의 공식 표기인 <b>官方帳號</b>로 바로잡았습니다. 실제 번역은 이미 전부 官方帳號였고 용어집만 어긋나 있어, 정상 번역이 오류로 잡히던 문제가 사라졌습니다.</p></div>
+      <div class="card"><span class="badge badge-emerald">표기 규칙 🆕</span><h3 class="card-h mt-2">숫자 + 통화는 한 칸 띄웁니다 — <code>{0} JPYC</code> · <code>50,000 JPYC</code></h3><p class="card-p">치환자든 고정 숫자든 뒤에 통화·단위가 붙으면 <b>공백 1칸</b>을 넣습니다(<code>{0}JPYC</code>·<code>50,000JPYC</code>·<code>1JPYC</code> 금지). 치환된 금액이 통화에 달라붙어 보이는 것을 막기 위한 규칙이라 <b>일본어·중국어도 동일하게 띄웁니다</b>. 용어집 v3.7에 <code>{0} JPYC</code>가 등재되어 있어, 붙여 쓴 문구가 들어오면 검증에서 걸립니다.</p></div>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v4 <span class="text-slate-400 font-normal text-base">2026-07-27</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-indigo">품질 · 상시 적용</span><h3 class="card-h mt-2">어노테이션 번호, 항상 깔끔하게</h3><p class="card-p">화면 이미지의 번호 ⓝ · Description 정책 번호 · XLT 표 No가 <b>항상 1:1로 일치</b>하도록 규칙이 강화됐습니다. 코멘트 핀이 화면 안쪽 하위 요소에 달려 있어도 <b>실제 화면 위치 기준으로 번호가 매겨지고</b>(좌표 정규화), 번호 원은 <b>글자를 가리지 않게 텍스트 왼쪽</b>에 서로 <b>겹치지 않게</b> 배치됩니다. <b>정책=빨강 · 번역(XLT) 마커=파랑</b>으로 구분되며, 렌더 후 육안 검증까지 매번 자동으로 수행됩니다.</p>
+        <details class="ex"><summary>무엇이 좋아졌나 보기</summary><div class="ex-body"><table class="ex-table"><tbody>
+          <tr><th>이전</th><td>핀이 하위 프레임에 달리면 화면 아래쪽 코멘트가 위쪽 번호를 차지하는 등 번호가 어긋날 수 있었고, 번호 원이 첫 글자를 가리거나 서로 겹치기도 했습니다.</td></tr>
+          <tr><th>이후</th><td>번호는 무조건 화면 위→아래 순서, 원은 텍스트 좌측 여백에 겹침 없이 배치, 색으로 정책/번역 구분. 실측 사례: 초대자 화면 전체(25034)에서 하단 유의사항 핀 7개가 상단 번호로 끼어들던 문제를 발견·수정했습니다.</td></tr>
+          <tr><th>요청 방법</th><td>달라지지 않습니다 — 평소처럼 프레임 URL + 위키 URL만 주시면 자동 적용됩니다.</td></tr>
+        </tbody></table></div></details>
+      </div>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v3 <span class="text-slate-400 font-normal text-base">2026-07-27</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-indigo">신규 · 공식 표준</span><h3 class="card-h mt-2">Screen ID 공식 네이밍 적용</h3><p class="card-p">사내 공식 룰에 맞춰 Screen ID를 <b><code>주기능_부기능_세부기능_01</code> 구조의 영문 소문자</b>로 부여합니다(GA page_name 연동). 어휘는 unifi.me 서비스를 직접 분석한 <b>IA 정본 문서(md/IA.md)</b>에서 고릅니다.</p>
+        <details class="ex"><summary>작업 예시 보기</summary><div class="ex-body"><table class="ex-table"><tbody>
+          <tr><th>구조</th><td><code>asset_send_01</code> → 팝업이면 <code>asset_send_01_01</code></td></tr>
+          <tr><th>어휘 정본</th><td>md/IA.md — 홈/리워드/자산/마이/Apps/로그인/프로모션 7개 주기능 + 기능 트리 (로그인 실측 완료)</td></tr>
+          <tr><th>기존 위키</th><td>소급 변경하지 않음 — 새로 부여하는 화면부터 적용</td></tr>
+        </tbody></table><p class="ex-cap">⛔ <b>확인 게이트</b>: Screen ID를 정할 때 AI가 임의 확정하지 않습니다 — 반드시 "프레임명 → Screen ID" 매핑 표를 먼저 보여주고, <b>당신이 검토·승인한 뒤에만</b> 위키에 반영합니다.</p></div></details>
+      </div>
+      <div class="card"><span class="badge badge-indigo">신규 · 공식 룰 통합</span><h3 class="card-h mt-2">XLT 작성 공식 룰 자동 적용</h3><p class="card-p">사내 <code>[Rule]</code> 위키 2건(Screen ID & XLT Key 작성 가이드 · XLT Value 작성 가이드)이 워크플로우 규칙에 통합됐습니다. 번역할 때 아래가 <b>자동으로 지켜집니다.</b></p>
+        <details class="ex"><summary>무엇이 적용되나 보기</summary><div class="ex-body"><ul class="list">
+          <li><b>금지 용어 자동 회피</b> — "앱스"→Apps, PIN→Passcode, Yield/APY→Rate, "월렛"→지갑, "원금 보장" 뉘앙스 금지 등</li>
+          <li><b>날짜/시간 변수 규칙</b> — 문장 중간이면 변수({{date}}), 끝이면 생략 가능, 단독 표시는 키 불필요 · 태국만 DD-MM-YYYY. <b>번역 중 날짜를 발견하면 자동으로 이 규칙대로 제안</b>하고, 검증 체크표에서도 점검합니다</li>
+          <li><b>URL 링크 규칙</b> — 문장 일부 링크는 <code>&lt;a&gt;텍스트&lt;/a&gt;</code> 태그 + URL은 기획서 기재, 전체 링크는 태그 없이 기획서만. <b>링크 문구 탐지 시 자동 제안·검증</b>됩니다</li>
+          <li><b>일본어·태국어 띄어쓰기</b> — JP는 숫자+단위 붙임, TH는 의미 단위만 띄움</li>
+          <li><b>키 거버넌스</b> — 키는 전부 소문자, FE 전달 후 변경/삭제 금지</li>
+          <li><b>한글·영어 혼용 금지, 줄임말 최소화</b> — "Gas Fee 확인" ✕, "Tx" ✕</li>
+        </ul></div></details>
+      </div>
+      <div class="card"><span class="badge badge-emerald">용어집 확장</span><h3 class="card-h mt-2">용어집 35 → 105 용어 (v3.1)</h3><p class="card-p">통합 용어집 엑셀을 기존 용어집과 <b>전수 대조</b>해 신규 70종을 일괄 반영했습니다. 값이 충돌하거나 오역이 의심되는 항목은 <b>임의로 넣지 않고 보류 리포트</b>로 분리해 팀 검토 후 반영합니다.</p>
+        <details class="ex"><summary>작업 예시 보기</summary><div class="ex-body"><ul class="list">
+          <li>엑셀 101행 ↔ 기존 35용어 대조 → 동일 27 제외 · 신규 69 반영(v3.0) · <b>충돌 4건 보류</b></li>
+          <li>팀 검토 결과 수령 → 채택 2건만 v3.1 반영 (간편 비밀번호=Passcode · 채우기=Receive)</li>
+          <li>잔여 보류 2건은 <b>보류 리포트 문서</b>로 추적 — 다음 검토 때 이력째 그대로 이어서 처리</li>
+        </ul><p class="ex-cap">모든 버전 변경은 changelog 문서(git)로 기록됩니다: v2.6 → v3.0 → v3.1</p></div></details>
+      </div>
+      <div class="card"><span class="badge badge-emerald">서비스 실측</span><h3 class="card-h mt-2">서비스 화면 직접 분석 (IA)</h3><p class="card-p">AI가 <b>unifi.me 실제 서비스를 브라우저로 직접 탐색</b>해 화면 구조(IA)를 분석했습니다. 로그인이 필요한 화면은 당신이 로그인한 브라우저로 함께 확인할 수 있습니다.</p>
+        <details class="ex"><summary>무엇을 알아냈나 보기</summary><div class="ex-body"><ul class="list">
+          <li>하단 4탭 실제 구조: 홈 <code>/</code> · 리워드 <code>/benefits/daily-mission</code> · 내 자산 <code>/my</code> · 마이 <code>/setting</code></li>
+          <li>교환(Swap)은 <b>Apps 영역</b>(<code>/apps/trade/swap</code>) — Screen ID·XLT 키 접두어가 달라지는 근거</li>
+          <li>결과는 <b>md/IA.md 한 파일</b>에만 기록 — IA가 바뀌면 이 파일만 갱신</li>
+        </ul></div></details>
+      </div>
+      <div class="card"><span class="badge badge-emerald">규칙 문서 정비</span><h3 class="card-h mt-2">오류 패턴 사전 일원화 + 규칙 문서 정리</h3><p class="card-p">번역 오류 패턴 사전이 <b>두 문서에서 따로 자라던 문제를 일원화</b>했습니다 — 이제 모든 패턴(일본어 差別的 금지, 중국어 差額/存款 오역, 태국어 용어 혼재 등)이 한곳(check.md)에 모여 <b>어떤 검증 절차로 진행해도 같은 사전으로 점검</b>됩니다. 함께 규칙 문서 전반의 낡은 정보·중복 서술도 정리했습니다.</p>
+        <details class="ex"><summary>무엇이 좋아졌나 보기</summary><div class="ex-body"><ul class="list">
+          <li><b>패턴 누락 방지</b> — 심각 오류 패턴(예: 일본어 '差別的' 부정 뉘앙스)이 한쪽 문서에만 있어 검증에서 빠질 수 있던 구조 해소. 새 패턴은 한곳에만 추가하는 규칙 명시</li>
+          <li><b>낡은 정보 정정</b> — 용어집 "25개" 등 하드코딩 숫자 제거(현재 105+), 용어집에 이미 등재된 용어를 "용어집 외"로 안내하던 표 정정</li>
+          <li><b>중복 축소</b> — 같은 규칙(팀 규칙·게이트·토큰)이 4~5개 문서에 반복되던 것을 정본 1곳+참조로 정리. 규칙이 바뀔 때 한곳만 고치면 되도록</li>
+        </ul></div></details>
+      </div>
+    </div>
+    <h3 class="text-xl font-bold text-ink mt-10">v2 <span class="text-slate-400 font-normal text-base">2026-07-16</span></h3>
+    <div class="grid sm:grid-cols-2 gap-4 mt-4">
+      <div class="card"><span class="badge badge-indigo">신규 · 위키 생성</span><h3 class="card-h mt-2">위키 새 페이지 만들기</h3><p class="card-p">기존 페이지 업데이트뿐 아니라 <b>새 위키 페이지를 표준 템플릿 구조로 생성</b>합니다. 생성 위치(상위 페이지 주소)와 타이틀만 주면 됩니다. 위치는 임의로 정하지 않고 <b>항상 확인</b>받습니다.</p>
+        <details class="ex"><summary>작업 예시 보기</summary><div class="ex-body"><table class="ex-table"><tbody>
+          <tr><th>생성 구조</th><td>Contents(목차) + History 표 + Related Docs 표 + Background · Specification(Policy/Flow) · Screen 섹션</td></tr>
+          <tr><th>History 컬럼</th><td>Date · History · Jira Ticket · FE/BE 확인 ☑ · QA 확인 ☑ · PIC</td></tr>
+          <tr><th>History 첫 행</th><td>"문서생성" 항목에 <b>Date = 생성한 날짜</b>, <b>PIC = 요청한 사람</b>이 자동으로 채워집니다</td></tr>
+          <tr><th>타이틀</th><td>기본값 <code>Template</code> — 원하는 이름을 주면 그 이름으로 생성</td></tr>
+        </tbody></table><p class="ex-cap">예: "[PL] Unifi v1.7.0" 하위에 "Next bay 미션앤리워드" 페이지를 템플릿 구조로 생성. 템플릿 원본은 저장소에 스냅샷으로 고정되어 있어 누가 원본을 고쳐도 같은 형태가 나옵니다.</p></div></details>
+      </div>
+      <div class="card"><span class="badge badge-indigo">코멘트 인식 강화</span><h3 class="card-h mt-2">답글에 단 XLT 키도 인식</h3><p class="card-p">Figma 코멘트의 <b>답글(스레드)까지 전부 수집</b>합니다. XLT 키 이름을 루트 코멘트가 아니라 <b>답글로 달아도</b> 놓치지 않고, 위키 Description에도 답글 내용이 <code>↳</code>로 함께 정리됩니다.</p>
+        <details class="ex"><summary>작업 예시 보기</summary><div class="ex-body"><pre class="ex-code">📌 루트 코멘트: XLT
+   ↳ 답글: XLT - mini_reward_tab_title  ← 이제 이것도 인식</pre><p class="ex-cap">과거 답글의 키 이름이 누락되던 사례(Reward 화면)를 계기로 수집기를 강화했습니다.</p></div></details>
+      </div>
+      <div class="card"><span class="badge badge-emerald">검증 강화</span><h3 class="card-h mt-2">검증 안전장치 3종 추가</h3><p class="card-p">품질 검증 게이트에 자동 안전장치가 추가됐습니다. 사람이 깜빡해도 <b>시스템이 완료 선언을 차단</b>합니다.</p>
+        <details class="ex"><summary>무엇이 추가됐나 보기</summary><div class="ex-body"><ul class="list">
+          <li><b>검증 리포트 완결성 자동 검사</b> — 리포트에 필수 항목(자동 결과·수동 체크표·건별 판정·개선 제안 등)이 하나라도 빠지면 작업 완료로 인정되지 않습니다.</li>
+          <li><b>언어 혼입·컬럼 밀림 자동 검출</b> — 번역표의 언어 칸이 옆으로 밀려 들어간(예: 일본어 칸에 태국어) 심각한 오류를 자동으로 잡습니다.</li>
+          <li><b>부분 수정 전 정렬 대조</b> — 특정 언어만 고치는 패치 전에 5개 언어 전체를 위키 정본과 대조해, 멀쩡한 원문이 지워지는 사고를 막습니다.</li>
+        </ul></div></details>
+      </div>
+      <div class="card"><span class="badge badge-emerald">위키 정돈</span><h3 class="card-h mt-2">History 같은 날짜 자동 병합</h3><p class="card-p">하루에 여러 번 위키를 업데이트해도 변경 이력(History) 표에 <b>같은 날짜 행은 하나로 합쳐</b> 항목만 목록으로 누적합니다. 표가 불필요하게 길어지지 않습니다.</p>
+        <details class="ex"><summary>작업 예시 보기</summary><div class="ex-body"><div class="ba">
+          <div class="ba-row"><span class="old">7/9 행 · 7/9 행 · 7/9 행 (3줄)</span><span class="arrow">→</span><span class="new">7/9 행 1줄 + 항목 3개 목록</span></div>
+          <div class="ba-row" style="font-size:.78rem;color:#64748b">기존 이력은 삭제하지 않고 누적만 합니다</div>
+        </div></div></details>
+      </div>
+    </div>
+
+    <h3 class="text-xl font-bold text-ink mt-10">v1 <span class="text-slate-400 font-normal text-base">2026-07-01 · 최초 발행</span></h3>
+    <div class="panel mt-4">
+      <p class="card-p">기본 파이프라인 발행 — 지금도 이 가이드 위쪽 섹션들이 그 사용법입니다.</p>
+      <ul class="list mt-3">
+        <li><b>Figma → 5개 언어 번역 → 위키 반영</b> 자동화 (XLT 코멘트 선별·새 프레임 추가·키 단위 패치·표기 통일 모드)</li>
+        <li><b>품질 검증 게이트</b> — 자동 검사 + 사람 검토, P0=0 통과 기준</li>
+        <li><b>용어집(Landpress) 관리</b> — 조회·보완 제안·전체 JSON 산출·변경 이력 기록</li>
+        <li><b>담당 FE 팀 규칙(UIT/LV)</b> — 키 접두어·변수 표기 자동 적용</li>
+      </ul>
+    </div>
+  </section>
+
+
+
+</main>
+</div>
+
+<div id="tab-glossary" class="hidden">
+<main class="max-w-6xl mx-auto px-5">
+  <section class="py-14">
+    <h2 class="sec-title">용어집(Landpress) 업데이트 이력 <span class="text-slate-400 font-normal text-lg">web3_xlt_json</span></h2>
+    <p class="sec-sub">번역 일관성의 기준인 용어집의 버전별 변경 기록입니다. 원본은 Landpress CMS(읽기 전용 API)에 있으며, 상세 이력은 저장소의 <code>md/glossary-changelog.md</code>로 추적합니다.</p>
+
+    <details class="foldpanel">
+      <summary>용어집 버전 이력 <span class="fold-sub">v2.1 → v4.6 · 23개 버전 · 버전별 상세 카드 9장 포함</span><span class="fold-pill"></span></summary>
+      <div class="foldpanel-body">
+        <table class="ex-table mt-3"><tbody>
+        <tr><th>버전</th><th>날짜</th><th>용어 수</th><th>변경 요약</th></tr>
+        <tr><td>v2.1</td><td>2026-05-13</td><td>25</td><td>초기 버전 (예외 8종: PIN·API·URL·Apple·Google·USDT·IDRP·JPYC)</td></tr>
+        <tr><td>v2.2</td><td>2026-06-26</td><td>29</td><td>미션·리워드·캐시백·회원가입 추가</td></tr>
+        <tr><td>v2.3</td><td>2026-06-26</td><td>30</td><td>포이카츠 추가 + Unifi mini 브랜드 예외 추가</td></tr>
+        <tr><td>v2.4</td><td>2026-06-30</td><td>33</td><td>혜택·인기·쇼핑 추가</td></tr>
+        <tr><td>v2.5</td><td>2026-07-16</td><td>34</td><td>채널 동의 추가</td></tr>
+        <tr><td>v2.6</td><td>2026-07-24</td><td>35</td><td>럭키볼 추가</td></tr>
+        <tr><td><b>v3.0</b></td><td>2026-07-27</td><td><b>104</b></td><td><b>통합 용어집 엑셀 v3 기반 신규 69종 일괄 추가</b> + 내 자산 zh 이형자 교정 (충돌 4건 보류)</td></tr>
+        <tr><td><b>v3.1</b></td><td>2026-07-27</td><td><b>105</b></td><td>1차 팀 검토 — 간편 비밀번호 en/th PIN→Passcode 교체, 채우기 추가</td></tr>
+        <tr><td>v3.2</td><td>2026-07-27</td><td>105</td><td>엑셀 v3_2 반영 — 보내기·보낸 사람 ja 出金/出金元 교체, 거래내역 변형 기각</td></tr>
+        <tr><td>v3.3</td><td>2026-07-27</td><td>105</td><td>거래 내역 → 거래내역 키 교체 — 서비스 표기 정본 붙여쓰기 확정</td></tr>
+        <tr><td>v3.4</td><td>2026-07-27</td><td>106</td><td>당첨(win/当選/中獎/ถูกรางวัล) 추가 — 럭키볼 도메인 반복 사용 (검증 오탐 감소)</td></tr>
+        <tr><td><b>v3.5</b></td><td>2026-07-27</td><td><b>107</b></td><td><b>당첨금(prize/当選金/獎金/เงินรางวัล) 추가</b> — 럭키볼 도메인 6행 일관 확인, 당첨 단독 매핑의 오탐 감소</td></tr><tr><td><b>v3.6</b></td><td>2026-07-28</td><td><b>111</b></td><td><b>친구초대 도메인 4종 추가</b> — 링크·친구·선물하기·초대. 등재 전 73키+OA 3문구 전수 대조로 실사용 표기 확인(선물하기는 동사형 送·มอบ로 교정, 초대 th는 เชิญ/ชวน 혼용 확인)</td></tr><tr><td><b>v3.7</b></td><td>2026-07-28</td><td><b>112</b></td><td><b>{0} JPYC 추가</b> — 치환자와 통화 사이 <b>공백 1칸</b>을 5개 언어 공통 정본으로 고정. 붙임 표기 <code>{0}JPYC</code>는 검증기가 P1로 검출</td></tr><tr><td><b>v3.8</b></td><td>2026-07-28</td><td><b>112</b></td><td><b>공식 계정 zh_TW 교정</b> — <code>公眾號</code>(WeChat 용어) → <code>官方帳號</code>(LINE 대만 공식 표기). 실제 번역은 이미 官方帳號라 등재값만 어긋나 오탐을 유발하던 것을 해소</td></tr><tr><td>v3.9</td><td>2026-07-29</td><td>112</td><td><b>변경 zh_TW 교정</b> — <code>更換</code>(물건·기기 교체) → <code>變更</code>(정보·설정 변경). 럭키볼 zh 번역 3곳이 이미 <b>變更</b>을 사용 중이라 등재값만 어긋나 오탐을 유발하던 것을 해소. 등재 전 LV·UIT 엑셀 76행 전수 대조(3/3 일치)</td></tr><tr><td><b>v4.0</b></td><td>2026-07-30</td><td><b>113</b></td><td><b>프로필(profile/プロフィール/個人檔案/โปรไฟล์) 추가</b> — LINE 연동 안내 문구 반복 사용 (선물은 기존 선물하기로 커버돼 보류)</td></tr><tr><td><b>v4.1</b></td><td>2026-08-05</td><td><b>114</b></td><td><b>ⓐ oa_variables 영역 신설(OA 변수 2종)</b> — <code>{{total_amount}}</code>(당첨금 총액)·<code>{{wallet_address}}</code>(지급 지갑 주소). 당첨금 총액 변수를 <code>{{amount}}</code> → <code>{{total_amount}}</code>로 확정. <b>ⓑ 종료 zh_TW 교정</b> — <code>結尾</code>(글·이야기의 맺음말) → <code>結束</code>. 등재값 자체가 오역이었음. <b>ⓒ 포이카츠 en_US·th_TH</b> — <code>point activity</code>·<code>การสะสมแต้ม</code> → <code>Poi-katsu</code>. 실제 번역이 이미 음차를 써 등재값을 실사용에 맞춤(zh_TW <code>點數活動</code>은 범위 밖). <b>ⓓ 캠페인 신규 등재</b>(campaign/キャンペーン/活動/แคมเปญ). ⓑ~ⓓ 실측: <b>P1 63 → 58건(-5), 신규 P1 0건</b>. 예외 9는 변경 없음</td></tr><tr><td><b>v4.2</b></td><td>2026-08-06</td><td><b>115</b></td><td><b>지급 완료 추가</b> — <code>Paid</code>/<code>支給済み</code>/<code>จ่ายแล้ว</code>/<code>已發放</code>. 비실시간 일괄 지급 전환으로 「지급 완료된 리워드」가 상시 문구가 됐는데, 등재값 <code>완료</code>만 있어 각 언어의 자연스러운 완료 표현이 경고로 잡혔습니다. <b>검증기 최장일치 개선(가이드 v14)이 먼저 들어가야 효과가 나는 첫 사례</b> — 개선 전에는 등재해도 경고가 줄지 않았습니다(실측). 실측 P1 197 → 193건(<b>-4</b>), 신규 경고 0건</td></tr><tr><td><b>v4.3</b></td><td>2026-08-06</td><td><b>115</b></td><td><b>구 표기 금지 목록 <code>deprecated_terms</code> 신설(9건)</b> — <code>OA 팔로우</code>·<code>OA 채널 추가</code>·<code>채널 팔로우</code> 등을 <b>Unifi LINE 공식 계정 친구 추가</b>로 통일하도록 <b>금지 → 권장 매핑</b>을 용어집에 정본화했습니다. ja <code>フォロー</code>·zh <code>關注</code>/<code>追蹤</code>·th <code>ติดตาม</code>도 포함. 검증기가 각 언어를 검사해 <b>「구 표기」 경고</b>를 냅니다. 용어 수는 그대로(115)이고 <b>기존 번역에 새 경고가 생기지 않습니다</b>(실측 230 → 230)</td></tr><tr><td><b>v4.4</b></td><td>2026-08-06</td><td><b>115</b></td><td><b>구 표기 금지 목록 보완(9 → 12건)</b> — <code>友達</code>→<code>友だち</code>, <code>공식계정</code>→<code>공식 계정</code> 추가. <b>문맥 조건을 넣어 오탐을 없앴습니다</b> — 중국어 <code>關注App</code>(관심 앱), 태국어 「기대해 주세요」, 영어 「~를 따르다」처럼 <b>같은 단어의 다른 뜻</b>은 이제 걸리지 않습니다. XLT 시스템 1,596키 실측 <b>오탐 8건 → 0건</b>, 실제 대상 <b>16키</b> 정확 검출</td></tr><tr><td><b>v4.5</b></td><td>2026-08-06</td><td><b>115</b></td><td><b>「월렛」 → 「지갑」 추가</b> — 규칙 문서에는 있었지만 용어집에 없어 <b>검사에서 걸리지 않던</b> 표기입니다. 일반 용어 등재(「지갑」)는 <b>한국어가 이미 「지갑」일 때만</b> 작동해서, 「월렛」이라고 쓰면 아예 대상에서 빠졌습니다. XLT 시스템 실측 <b>14건 검출</b>(오탐 0)</td></tr><tr><td><b>v4.6</b></td><td>2026-08-07</td><td><b>116</b></td><td><b>「사용자」 등재 + 「유저」 금지</b> — 같은 화면(시즌3 유의사항)에서 <code>유저</code>·<code>사용자</code>가 <b>섞여 쓰인 것</b>이 계기입니다. 「사용자」를 표준으로 등재하고 「유저」를 금지 목록에 넣었습니다. XLT 시스템 실측 <b>5건 검출</b>(오탐 1건 — <code>사용자 설정</code>은 영어로 <code>Custom</code>이 맞아 제외 판정)</td></tr>
+      </tbody></table>
+        <div class="grid sm:grid-cols-2 gap-4 mt-6">
+      <div class="card"><span class="badge badge-indigo">v3.0 · 대규모 확장</span><h3 class="card-h mt-2">35 → 104 용어 일괄 추가</h3><p class="card-p">통합 용어집 엑셀(101행)을 기존 용어집과 <b>전수 대조</b> — 동일 27건 제외, 신규 69건 반영. UI 라벨·거래/자산·이자/미션·설정 등 서비스 전 영역 커버. 값 충돌·오역 의심 4건은 <b>임의 반영하지 않고 보류 리포트로 분리</b>.</p></div>
+      <div class="card"><span class="badge badge-emerald">v3.1 · 팀 검토 1차</span><h3 class="card-h mt-2">Passcode 교체 · 채우기 추가</h3><p class="card-p">보류 4건 중 2건 채택 — <b>간편 비밀번호 = Passcode</b>(공식 룰 "PIN 금지" 정합, en·th 교체), <b>채우기 = Receive</b>(서비스 UI 확인). 나머지는 계속 검토.</p></div>
+      <div class="card"><span class="badge badge-emerald">v3.2 · 팀 검토 2차</span><h3 class="card-h mt-2">보내기 ja 出金 계열 통일</h3><p class="card-p">엑셀 v3_2 확정값으로 <b>보내기 ja 送金→出金, 보낸 사람 ja 送金元→出金元</b> 교체. <b>거래내역(붙여쓰기)은 기각</b> — 띄어쓰기 규칙에 맞는 "거래 내역" 유지. ⚠️ ja 出金이 보내기/꺼내기/출금 여러 키에 공통 사용됨 — 문맥 구분 필요 시 재검토.</p></div>
+      <div class="card"><span class="badge badge-emerald">v3.3 · 표기 정책 확정</span><h3 class="card-h mt-2">거래내역 붙여쓰기 확정</h3><p class="card-p"><b>거래 내역(띄어쓰기) → 거래내역(붙여쓰기)</b> 키 교체. 문법상 띄어쓰기가 표준이지만 <b>서비스 표기 정본을 붙여쓰기로 확정</b>(v3.2의 기각 결정 번복). 검증 시 거래내역을 띄어쓰기 오류로 오탐하지 않도록 유의.</p></div>
+      <div class="card"><span class="badge badge-emerald">v3.4–v3.5 · 럭키볼 도메인</span><h3 class="card-h mt-2">당첨 · 당첨금 추가</h3><p class="card-p">럭키볼 캠페인에서 반복 사용되는 <b>당첨(win/当選/中獎/ถูกรางวัล)</b>과 <b>당첨금(prize/当選金/獎金/เงินรางวัล)</b>을 등재. 당첨금은 추가 전 <b>사용 중인 6개 문구의 5개 언어 표기 일치를 전수 검증</b>한 뒤 반영 — 당첨 단독 매핑이 당첨금 문구를 오탐하던 것을 해소.</p></div>
+      <div class="card"><span class="badge badge-emerald">v4.0 · LINE 연동</span><h3 class="card-h mt-2">프로필 추가 · 선물은 보류</h3><p class="card-p"><b>프로필</b>(profile/プロフィール/個人檔案/โปรไฟล์) 등재 — LINE 프로필 노출 안내 문구에서 반복될 표현. 함께 검토한 <b>선물</b>은 v3.6 <b>선물하기</b>로 이미 커버되고, 별도 등재하면 zh·th에서 명사/동사 활용이 갈려 정상 번역에 새 오탐이 생김을 실측해 <b>보류</b>.</p></div>
+      <div class="card"><span class="badge badge-emerald">v4.1 · OA 변수</span><h3 class="card-h mt-2">OA 메시지 변수 2종 등재</h3><p class="card-p">OA(LINE 공식계정) 메시지는 <b>XLT 키를 부여하지 않아</b> 변수 이름이 정본으로 남지 않았고, 캠페인마다 이름을 다시 정하는 왕복이 반복됐습니다. 용어집에 <code>oa_variables</code> 영역을 새로 만들어 <b>{{total_amount}}</b>(지급된 당첨금 총액)와 <b>{{wallet_address}}</b>(지급 지갑 주소, 마스킹)를 등재했습니다. 기존 <code>{{amount}}</code>는 <b>{{total_amount}}</b>로 확정되어 신규 작업에는 쓰지 않습니다. 예외 9는 변경이 없습니다(용어는 아래 확대분 반영으로 114).</p></div>
+      <div class="card"><span class="badge badge-emerald">v4.1 · 용어 확대</span><h3 class="card-h mt-2">종료·포이카츠 교정 + 캠페인 등재 (113 → 114)</h3><p class="card-p"><b>종료 zh_TW</b>를 <code>結尾</code>(글·이야기의 맺음말) → <code>結束</code>로 교정했습니다 — 등재값 자체가 오역이라 화면의 「종료」와 맞지 않았습니다. <b>포이카츠 en_US·th_TH</b>는 뜻풀이(<code>point activity</code>·<code>การสะสมแต้ม</code>) 대신 실제 번역이 쓰는 음차 <code>Poi-katsu</code>로 맞췄습니다(zh_TW <code>點數活動</code>은 이번 범위 밖). <b>캠페인</b>(campaign/キャンペーン/活動/แคมเปญ)은 신규 등재. 반영 후 시즌3 47키 재검증에서 <b>P1 63 → 58건(-5), 신규 P1 0건</b> — 해소분은 <code>info_end</code> zh 1건 + <code>text8c</code>·<code>text8d</code> en·th 4건이며, 캠페인은 예방적 등재(해소 0·신규 0)입니다.</p></div>
+      <div class="card"><span class="badge badge-indigo">보류 관리</span><h3 class="card-h mt-2">잔여 보류 1건</h3><p class="card-p"><b>나중에 뽑기·더 뽑기의 zh/th</b> — 엑셀 값(稍後畫·วาด…)이 "그림 그리기"로 오역 의심(같은 엑셀의 뽑기=抽獎와 불일치). 교정안 제시 상태로 팀 확정 대기. 상세: <code>glossary_pending_review_v3.md</code></p></div>
+    </div>
+
+    
+
+
+      </div>
+    </details>
+
+    <div class="panel mt-6">
+      <h3 class="panel-h">🚫 구 표기 금지 목록 — v4.6 · 14건</h3><p class="sec-sub">아래 표현은 화면 문구에 쓰지 않습니다. <b>신규 문구·문구 변경</b>에서는 권장 표기를 바로 적용하고, 이미 XLT 시스템에 등록된 기존 문구는 임의로 바꾸지 않고 보고만 합니다. <b>의미가 모호하면 확인을 요청드린 뒤</b> 권장 표기 사용을 제안합니다.</p><table class="ex-table mt-3"><tbody><tr><th>쓰지 않음</th><th>언어</th><th>권장 표기</th><th>문맥 조건</th><th>이유</th></tr><tr><td><code>OA 팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>OA는 사내 약어이고 팔로우는 구 표기다. 화면 문구에 쓰지 않는다</td></tr><tr><td><code>OA 채널 추가</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>채널은 LINE 공식 계정의 구 명칭이다</td></tr><tr><td><code>채널 팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>2026-08-04 사용자 확정으로 대체된 표기</td></tr><tr><td><code>공식 계정 팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>유지 문맥이면 「공식 계정 친구를 유지」로 쓴다</td></tr><tr><td><code>팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>단독 사용도 금지. 더 긴 금지 표현이 먼저 매칭되면 이 항목은 건너뛴다</td></tr><tr><td><code>공식계정</code></td><td>ko_KR</td><td><b>공식 계정</b></td><td>—</td><td>붙여쓰기 오류. 용어집 등재값은 「공식 계정」이다</td></tr><tr><td><code>フォロー</code></td><td>ja_JP</td><td><b>友だち追加</b></td><td>—</td><td>LINE 일본 표기는 友だち追加다</td></tr><tr><td><code>友達</code></td><td>ja_JP</td><td><b>友だち</b></td><td>—</td><td>LINE 일본 공식 표기는 히라가나 友だち다. 한자 友達를 쓰지 않는다</td></tr><tr><td><code>關注</code></td><td>zh_TW</td><td><b>加入好友</b></td><td>LINE·官方帳號</td><td>關注는 웨이보·위챗 용어다. 「關注App(관심 앱)」 등 다른 문맥은 대상이 아니다</td></tr><tr><td><code>追蹤</code></td><td>zh_TW</td><td><b>加入好友</b></td><td>LINE·官方帳號</td><td>追蹤는 SNS 팔로우 용어다</td></tr><tr><td><code>ติดตาม</code></td><td>th_TH</td><td><b>เพิ่มเพื่อน</b></td><td>LINE·บัญชีทางการ</td><td>ติดตาม는 SNS 팔로우 용어다. 「기대해 주세요·기다려 주세요」 문맥은 대상이 아니다</td></tr><tr><td><code>follow</code></td><td>en_US</td><td><b>add as a friend</b></td><td>official·LINE</td><td>SNS 팔로우 의미일 때만. 「~를 따르다(follow the steps/policies)」는 대상이 아니다. 단어 경계로만 매칭한다</td></tr><tr><td><code>월렛</code></td><td>ko_KR</td><td><b>지갑</b></td><td>—</td><td>외래어 음차. 서비스 표기 정본은 「지갑」이다(용어집 terminology 등재값). md/guide.md §5-1 C</td></tr><tr><td><code>유저</code></td><td>ko_KR</td><td><b>사용자</b></td><td>—</td><td>외래어 음차. 서비스 표기 정본은 「사용자」다(용어집 terminology 등재값). 같은 화면에서 「유저」·「사용자」가 혼용된 실측(시즌3 유의사항)이 계기</td></tr></tbody></table><p class="ex-cap mt-2">번역 검증기가 이 목록으로 각 언어를 검사해 「구 표기」 경고를 냅니다. 더 긴 표현이 먼저 잡히면 그 안의 짧은 표현은 중복으로 보고하지 않습니다.</p><h3 class="panel-h">📋 전체 용어집 — v4.6 · 116용어 (가나다순)</h3>
+      <input id="glossarySearch" type="text" placeholder="🔍 용어 검색 (한국어·영어·일본어·중국어·태국어 아무 언어나)" class="mt-3 w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-500" />
+      <div style="max-height:480px;overflow:auto" class="mt-3 rounded-xl border border-slate-200">
+        <table class="ex-table" style="margin:0" id="glossaryTable"><tbody><tr><th>한국어</th><th>en_US</th><th>ja_JP</th><th>zh_TW</th><th>th_TH</th></tr><tr><td><b>{0} JPYC</b></td><td>{0} JPYC</td><td>{0} JPYC</td><td>{0} JPYC</td><td>{0} JPYC</td></tr><tr><td><b>가격</b></td><td>Price</td><td>価格</td><td>售價</td><td>ราคา</td></tr><tr><td><b>가입</b></td><td>Sign up</td><td>登録</td><td>註冊</td><td>สมัคร</td></tr><tr><td><b>간편 비밀번호</b></td><td>Passcode</td><td>簡単パスワード</td><td>簡易密碼</td><td>รหัสผ่านแบบง่าย</td></tr><tr><td><b>거래</b></td><td>transaction</td><td>取引</td><td>交易</td><td>ธุรกรรม</td></tr><tr><td><b>거래 ID</b></td><td>Transaction ID</td><td>取引ID</td><td>交易ID</td><td>รหัสธุรกรรม</td></tr><tr><td><b>거래 유형</b></td><td>Transaction Type</td><td>取引タイプ</td><td>交易類型</td><td>ประเภทธุรกรรม</td></tr><tr><td><b>거래내역</b></td><td>Transaction History</td><td>取引履歴</td><td>交易紀錄</td><td>ประวัติการทำธุรกรรม</td></tr><tr><td><b>결제</b></td><td>Payment</td><td>決済</td><td>結帳</td><td>การชำระเงิน</td></tr><tr><td><b>결제 페이백</b></td><td>Payment Payback</td><td>決済ペイバック</td><td>消費回饋</td><td>โบนัสการจ่าย</td></tr><tr><td><b>계속하기</b></td><td>Continue</td><td>続ける</td><td>繼續</td><td>ดำเนินการต่อ</td></tr><tr><td><b>계정</b></td><td>account</td><td>アカウント</td><td>帳號</td><td>บัญชี</td></tr><tr><td><b>공식 계정</b></td><td>Official account</td><td>公式アカウント</td><td>官方帳號</td><td>บัญชีทางการ</td></tr><tr><td><b>공유하기</b></td><td>Share</td><td>共有する</td><td>分享</td><td>แชร์</td></tr><tr><td><b>공지사항</b></td><td>Notices</td><td>お知らせ</td><td>公告事項</td><td>ประกาศ</td></tr><tr><td><b>과거순</b></td><td>Oldest</td><td>古い順</td><td>最舊</td><td>เก่าสุด</td></tr><tr><td><b>교환</b></td><td>swap</td><td>スワップ</td><td>交換</td><td>แลกเปลี่ยน</td></tr><tr><td><b>교환 입금</b></td><td>Swap Deposit</td><td>交換入金</td><td>交換存入</td><td>ฝากเข้า (แลกเปลี่ยน)</td></tr><tr><td><b>교환 출금</b></td><td>Swap Withdrawal</td><td>交換出金</td><td>交換提領</td><td>ถอนออก (แลกเปลี่ยน)</td></tr><tr><td><b>교환하기</b></td><td>Swap</td><td>交換</td><td>兌換</td><td>แลกเปลี่ยน</td></tr><tr><td><b>구매</b></td><td>Buy</td><td>購入</td><td>購買</td><td>ซื้อ</td></tr><tr><td><b>구매하기</b></td><td>Buy now</td><td>購入する</td><td>購買</td><td>ซื้อ</td></tr><tr><td><b>권한</b></td><td>permission</td><td>アクセス権限</td><td>權限</td><td>สิทธิ์การเข้าถึง</td></tr><tr><td><b>기본 이자</b></td><td>Base Interest</td><td>基本利息</td><td>基本利息</td><td>ดอกเบี้ยพื้นฐาน</td></tr><tr><td><b>꺼내기</b></td><td>Withdraw</td><td>出金</td><td>領回</td><td>ถอน</td></tr><tr><td><b>내 자산</b></td><td>Assets</td><td>資産</td><td>資產</td><td>สินทรัพย์</td></tr><tr><td><b>넣기</b></td><td>Deposit</td><td>入金</td><td>充值</td><td>ฝาก</td></tr><tr><td><b>네트워크</b></td><td>Network</td><td>ネットワーク</td><td>網路</td><td>เครือข่าย</td></tr><tr><td><b>네트워크 전환</b></td><td>Network Conversion</td><td>ネットワーク換算</td><td>網路轉換</td><td>การแปลงเครือข่าย</td></tr><tr><td><b>다음</b></td><td>Next</td><td>次へ</td><td>下一步</td><td>ต่อไป</td></tr><tr><td><b>다음 단계</b></td><td>Next Step</td><td>次のステップ</td><td>下一階段</td><td>ขั้นตอนถัดไป</td></tr><tr><td><b>당첨</b></td><td>win</td><td>当選</td><td>中獎</td><td>ถูกรางวัล</td></tr><tr><td><b>당첨금</b></td><td>prize</td><td>当選金</td><td>獎金</td><td>เงินรางวัล</td></tr><tr><td><b>더보기</b></td><td>View More</td><td>すべて見る</td><td>查看更多</td><td>ดูเพิ่มเติม</td></tr><tr><td><b>락업 자산</b></td><td>Locked Assets</td><td>ロックアップ資産</td><td>鎖定資產</td><td>สินทรัพย์ที่ถูกล็อคอัพ</td></tr><tr><td><b>럭키볼</b></td><td>Lucky Ball</td><td>ラッキーボール</td><td>幸運球</td><td>ลูกบอลนำโชค</td></tr><tr><td><b>로그아웃</b></td><td>log out</td><td>ログアウト</td><td>登出</td><td>ออกจากระบบ</td></tr><tr><td><b>로그아웃 안내</b></td><td>Logout notice</td><td>ログアウトのご案内</td><td>登出通知</td><td>แจ้งออกระบบ</td></tr><tr><td><b>로그인</b></td><td>log in</td><td>ログイン</td><td>登入</td><td>เข้าสู่ระบบ</td></tr><tr><td><b>리워드</b></td><td>reward</td><td>リワード</td><td>獎勵</td><td>รางวัล</td></tr><tr><td><b>리워드 지급</b></td><td>Reward Payment</td><td>リワード支給</td><td>獎勵發放</td><td>การจ่ายรางวัล</td></tr><tr><td><b>링크</b></td><td>link</td><td>リンク</td><td>連結</td><td>ลิงก์</td></tr><tr><td><b>마이</b></td><td>My</td><td>マイ</td><td>我的</td><td>ของฉัน</td></tr><tr><td><b>마켓</b></td><td>Market</td><td>マーケット</td><td>商店</td><td>ตลาด</td></tr><tr><td><b>메시지</b></td><td>Message</td><td>メッセージ</td><td>訊息</td><td>ข้อความ</td></tr><tr><td><b>문의하기</b></td><td>Help</td><td>お問い合わせ</td><td>回報問題</td><td>สอบถาม</td></tr><tr><td><b>미션</b></td><td>mission</td><td>ミッション</td><td>任務</td><td>ภารกิจ</td></tr><tr><td><b>받는 사람</b></td><td>To</td><td>宛先</td><td>收款方</td><td>ผู้รับ</td></tr><tr><td><b>변경</b></td><td>change</td><td>変更</td><td>變更</td><td>เปลี่ยน</td></tr><tr><td><b>보내기</b></td><td>Send</td><td>出金</td><td>轉帳</td><td>ส่ง</td></tr><tr><td><b>보낸 사람</b></td><td>Sender</td><td>出金元</td><td>轉帳人</td><td>ผู้ส่ง</td></tr><tr><td><b>보너스 미션</b></td><td>Bonus Missions</td><td>ボーナスミッション</td><td>紅利任務</td><td>มิชชันโบนัส</td></tr><tr><td><b>복구 비밀번호</b></td><td>Recovery Password</td><td>復旧パスワード</td><td>復原密碼</td><td>รหัสผ่านกู้คืน</td></tr><tr><td><b>복사</b></td><td>copy</td><td>コピー</td><td>複製</td><td>คัดลอก</td></tr><tr><td><b>부스트 이자</b></td><td>Boost Interest</td><td>ブースト利息</td><td>加速利息</td><td>ดอกเบี้ยบูสต์</td></tr><tr><td><b>비밀번호</b></td><td>password</td><td>パスワード</td><td>密碼</td><td>รหัสผ่าน</td></tr><tr><td><b>뽑기</b></td><td>Draw</td><td>抽選</td><td>抽獎</td><td>จับรางวัล</td></tr><tr><td><b>사용자</b></td><td>user</td><td>ユーザー</td><td>用戶</td><td>ผู้ใช้</td></tr><tr><td><b>선물하기</b></td><td>gift</td><td>プレゼント</td><td>送</td><td>มอบ</td></tr><tr><td><b>송금</b></td><td>send</td><td>送金</td><td>轉帳</td><td>ส่ง</td></tr><tr><td><b>쇼핑</b></td><td>shopping</td><td>ショッピング</td><td>購物</td><td>ช้อปปิ้ง</td></tr><tr><td><b>숫자</b></td><td>Number</td><td>数字</td><td>數字</td><td>ตัวเลข</td></tr><tr><td><b>시작하기</b></td><td>Start</td><td>開始</td><td>開始</td><td>เริ่มต้น</td></tr><tr><td><b>알림</b></td><td>Notification</td><td>通知</td><td>通知</td><td>การแจ้งเตือน</td></tr><tr><td><b>언어 설정</b></td><td>Language Settings</td><td>言語設定</td><td>語言設定</td><td>ตั้งค่าภาษา</td></tr><tr><td><b>여기서</b></td><td>here</td><td>こちらで</td><td>在這裡</td><td>ที่นี่</td></tr><tr><td><b>연결</b></td><td>connect</td><td>連携</td><td>連結</td><td>เชื่อมโยง</td></tr><tr><td><b>연결 계정</b></td><td>Linked account</td><td>連携アカウント</td><td>綁定帳號</td><td>บัญชีที่ผูกไว้</td></tr><tr><td><b>연결 해제</b></td><td>disconnect</td><td>連携を解除</td><td>解除連結</td><td>ตัดการเชื่อมโยง</td></tr><tr><td><b>연결하기</b></td><td>Connect</td><td>連携する</td><td>綁定</td><td>ผูก</td></tr><tr><td><b>연이율</b></td><td>annual rate</td><td>年利</td><td>年利率</td><td>อัตรา/ปี</td></tr><tr><td><b>예상 수수료</b></td><td>Estimated Fee</td><td>予想手数料</td><td>預估手續費</td><td>ค่าธรรมเนียมโดยประมาณ</td></tr><tr><td><b>예치</b></td><td>deposit</td><td>預入</td><td>存入</td><td>ฝาก</td></tr><tr><td><b>예치 이자</b></td><td>Deposit interest</td><td>預入利息</td><td>存入利息</td><td>ดอกเบี้ยจากการฝาก</td></tr><tr><td><b>완료</b></td><td>Complete</td><td>完了</td><td>完成</td><td>เสร็จ</td></tr><tr><td><b>외부지갑</b></td><td>External Wallet</td><td>外部ウォレット</td><td>外部錢包</td><td>กระเป๋าภายนอก</td></tr><tr><td><b>유의사항</b></td><td>Cautions</td><td>注意事項</td><td>注意事項</td><td>หมายเหตุ</td></tr><tr><td><b>이자</b></td><td>interest</td><td>利息</td><td>利息</td><td>ดอกเบี้ย</td></tr><tr><td><b>인기</b></td><td>popular</td><td>人気</td><td>人氣</td><td>ยอดนิยม</td></tr><tr><td><b>일일 미션</b></td><td>Daily Mission</td><td>毎日のミッション</td><td>每日任務</td><td>ภารกิจรายวัน</td></tr><tr><td><b>입금 (거래내역 유형 라벨)</b></td><td>Received</td><td>受取済</td><td>已接收</td><td>ได้รับแล้ว</td></tr><tr><td><b>자산</b></td><td>asset</td><td>資産</td><td>資產</td><td>สินทรัพย์</td></tr><tr><td><b>전체</b></td><td>All</td><td>すべて</td><td>全部</td><td>ทั้งหมด</td></tr><tr><td><b>전체보기</b></td><td>View All</td><td>すべて見る</td><td>全部查看</td><td>ดูทั้งหมด</td></tr><tr><td><b>종료</b></td><td>Ended</td><td>終了</td><td>結束</td><td>สิ้นสุด</td></tr><tr><td><b>지갑</b></td><td>wallet</td><td>ウォレット</td><td>錢包</td><td>กระเป๋า</td></tr><tr><td><b>지갑 주소</b></td><td>wallet address</td><td>ウォレットアドレス</td><td>錢包地址</td><td>ที่อยู่กระเป๋า</td></tr><tr><td><b>지급 완료</b></td><td>Paid</td><td>支給済み</td><td>已發放</td><td>จ่ายแล้ว</td></tr><tr><td><b>직접 입력</b></td><td>Custom</td><td>直接入力</td><td>直接輸入</td><td>กำหนดเอง</td></tr><tr><td><b>채널 동의</b></td><td>channel consent</td><td>チャネル同意</td><td>頻道同意</td><td>การยินยอมแชนแนล</td></tr><tr><td><b>채우기</b></td><td>Receive</td><td>受け取る</td><td>接收</td><td>รับ</td></tr><tr><td><b>초대</b></td><td>invite</td><td>招待</td><td>邀請</td><td>เชิญ</td></tr><tr><td><b>총 자산</b></td><td>Total Assets</td><td>総資産</td><td>總資產</td><td>สินทรัพย์ทั้งหมด</td></tr><tr><td><b>최근 사용</b></td><td>Recently used</td><td>最近使用</td><td>最近已使用</td><td>ใช้งานล่าสุด</td></tr><tr><td><b>최대</b></td><td>Max</td><td>最大</td><td>最多</td><td>สูงสุด</td></tr><tr><td><b>최신순</b></td><td>Newest</td><td>新しい順</td><td>最新</td><td>ล่าสุด</td></tr><tr><td><b>최저가격</b></td><td>Floor</td><td>最低価格</td><td>最低價格</td><td>ราคาต่ำสุด</td></tr><tr><td><b>출금</b></td><td>withdraw</td><td>出金</td><td>提領</td><td>ถอน</td></tr><tr><td><b>출금 (거래내역 유형 라벨)</b></td><td>Sent</td><td>出金</td><td>出金</td><td>ส่งแล้ว</td></tr><tr><td><b>취소</b></td><td>Cancel</td><td>キャンセル</td><td>取消</td><td>ยกเลิก</td></tr><tr><td><b>친구</b></td><td>friend</td><td>友だち</td><td>好友</td><td>เพื่อน</td></tr><tr><td><b>카메라</b></td><td>camera</td><td>カメラ</td><td>相機</td><td>กล้อง</td></tr><tr><td><b>캐시백</b></td><td>cashback</td><td>キャッシュバック</td><td>現金回饋</td><td>เงินคืน</td></tr><tr><td><b>캠페인</b></td><td>campaign</td><td>キャンペーン</td><td>活動</td><td>แคมเปญ</td></tr><tr><td><b>토큰</b></td><td>token</td><td>トークン</td><td>代幣</td><td>โทเค็น</td></tr><tr><td><b>토큰 교환</b></td><td>Token Swap</td><td>トークン交換</td><td>代幣兌換</td><td>แลกเปลี่ยนโทเค็น</td></tr><tr><td><b>통화 설정</b></td><td>Currency Settings</td><td>通貨設定</td><td>貨幣設定</td><td>ตั้งค่าสกุลเงิน</td></tr><tr><td><b>평균 잔고</b></td><td>average balance</td><td>平均残高</td><td>平均餘額</td><td>ยอดเงินคงเหลือเฉลี่ย</td></tr><tr><td><b>포이카츠</b></td><td>Poi-katsu</td><td>ポイ活</td><td>點數活動</td><td>Poi-katsu</td></tr><tr><td><b>프로필</b></td><td>profile</td><td>プロフィール</td><td>個人檔案</td><td>โปรไฟล์</td></tr><tr><td><b>플러스 이자</b></td><td>Plus Interest</td><td>プラス利息</td><td>Plus 利息</td><td>ดอกเบี้ยพลัส</td></tr><tr><td><b>플레이</b></td><td>Play</td><td>プレイ</td><td>遊戲</td><td>เล่น</td></tr><tr><td><b>혜택</b></td><td>perks</td><td>特典</td><td>優惠</td><td>สิทธิประโยชน์</td></tr><tr><td><b>홈으로 이동</b></td><td>Go to Home</td><td>ホームへ</td><td>前往首頁</td><td>ไปยังหน้าหลัก</td></tr><tr><td><b>확인</b></td><td>check</td><td>確認</td><td>查看</td><td>ตรวจสอบ</td></tr><tr><td><b>회원가입</b></td><td>sign up</td><td>会員登録</td><td>註冊</td><td>สมัครสมาชิก</td></tr></tbody></table>
+      </div>
+      <p class="ex-cap mt-2" id="glossaryCount">116개 용어 표시 중</p>
+
+      <h4 class="font-bold text-ink mt-6">번역 예외 (전 언어 원어 유지 — 9종)</h4>
+      <div class="mt-2 rounded-xl border border-slate-200 overflow-x-auto">
+        <table class="ex-table" style="margin:0"><tbody>
+          <tr><th>패턴</th><th>유형</th><th>표기(전 언어 동일)</th><th>비고</th></tr>
+          <tr><td><code>*PIN*</code></td><td>context</td><td>PIN</td><td>고유명사 - 그대로 유지</td></tr>
+          <tr><td><code>*API*</code></td><td>technical</td><td>API</td><td>기술용어 - 그대로 유지</td></tr>
+          <tr><td><code>*URL*</code></td><td>technical</td><td>URL</td><td>기술용어 - 그대로 유지</td></tr>
+          <tr><td><code>*Apple*</code></td><td>brand</td><td>Apple</td><td>브랜드명 - 그대로 유지</td></tr>
+          <tr><td><code>*Google*</code></td><td>brand</td><td>Google</td><td>브랜드명 - 그대로 유지</td></tr>
+          <tr><td><code>*USDT*</code></td><td>crypto</td><td>USDT</td><td>암호화폐 - 그대로 유지</td></tr>
+          <tr><td><code>*IDRP*</code></td><td>crypto</td><td>IDRP</td><td>암호화폐 - 그대로 유지</td></tr>
+          <tr><td><code>*JPYC*</code></td><td>crypto</td><td>JPYC</td><td>암호화폐 - 그대로 유지</td></tr>
+          <tr><td><code>*Unifi mini*</code></td><td>brand</td><td>Unifi mini</td><td>브랜드명 - 그대로 유지</td></tr>
+        </tbody></table>
+      </div>
+
+      <h4 class="font-bold text-ink mt-6">OA 메시지 변수 (<code>oa_variables</code> — 2종) <span class="tag-amber">🆕 v4.1</span></h4>
+      <p class="ex-cap mt-1">OA(LINE 공식계정) 메시지는 XLT 키를 부여하지 않는 영역이라, 변수 이름을 용어집에 등재해 캠페인마다 재사용합니다. 화면 XLT의 인덱스 치환자(<code>{0}</code>·<code>{{0}}</code>)와는 구분됩니다.</p>
+      <div class="mt-2 rounded-xl border border-slate-200 overflow-x-auto">
+        <table class="ex-table" style="margin:0"><tbody>
+          <tr><th>변수</th><th>의미</th><th>예시</th><th>대체 대상</th><th>비고</th></tr>
+          <tr><td><code>{{total_amount}}</code></td><td>사용자에게 지급된 당첨금 총액 (JPYC 단위 숫자)</td><td><code>25</code></td><td><code>{{amount}}</code></td><td>이전 표기 <code>{{amount}}</code>는 신규 작업에 쓰지 않습니다. 숫자와 통화 코드는 한 칸 띄웁니다 — <code>{{total_amount}} JPYC</code></td></tr>
+          <tr><td><code>{{wallet_address}}</code></td><td>당첨금이 지급된 지갑 주소 (마스킹 표기)</td><td><code>0x8442...7c8</code></td><td>—</td><td>한국어는 치환값 말미에 따라 조사가 <code>로</code>/<code>으로</code>로 갈리므로 <code>{{wallet_address}} 주소로</code>처럼 명사를 넣어 조사를 고정합니다</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="panel mt-6">
+      <h3 class="panel-h">🔗 원본 바로 확인 · 최신 JSON</h3>
+      <ul class="list mt-3">
+        <li><b>조회 API (읽기 전용)</b> — 클릭하면 현재 라이브 용어집 JSON을 브라우저에서 바로 확인:<br/>
+          <a class="ex-link" href="https://landpress-content.line-scdn.net/contents/v2/projects/wdmwbfuv10x39bukv58ocevp/collections/web3_xlt_json/item" target="_blank" rel="noopener">landpress-content.line-scdn.net/…/web3_xlt_json/item ↗</a></li>
+        <li><b>편집 (붙여넣기)</b> — 갱신 JSON을 반영하는 Landpress CMS 화면:<br/>
+          <a class="ex-link" href="https://landpress-content-v2.linecorp.com/projects/wdmwbfuv10x39bukv58ocevp/content/collections/web3_xlt_json/items?env=main" target="_blank" rel="noopener">landpress-content-v2.linecorp.com/…/web3_xlt_json/items ↗</a></li>
+      </ul>
+      <div class="mt-4 flex items-center gap-3 flex-wrap">
+        <button id="verifyGlossary" class="px-4 py-2 rounded-xl bg-emerald-600 text-white text-sm font-bold hover:bg-emerald-700">🔄 라이브 용어집과 일치 검증</button>
+        <span class="text-xs text-slate-500">API를 직접 호출해 이 페이지의 임베드 용어집과 대조합니다</span>
+      </div>
+      <div id="verifyResult" class="hidden mt-3 rounded-xl border p-4 text-sm"></div>
+      <details class="ex mt-4"><summary>최신 전체 JSON 보기 — v4.6 · 116 terms · 9 exceptions · 2 OA variables (2026-08-07)</summary>
+        <div class="ex-body">
+          <div class="flex items-center justify-between gap-3 mb-2">
+            <p class="ex-cap m-0">CMS에 그대로 붙여넣을 수 있는 전체 JSON입니다.</p>
+            <button id="copyGlossaryJson" class="px-3 py-1.5 rounded-lg bg-brand-600 text-white text-sm font-semibold hover:bg-brand-700 shrink-0">📋 JSON 복사</button>
+          </div>
+          <pre id="glossaryJsonData" class="ex-code" style="max-height:420px;overflow:auto">{
+  &quot;metadata&quot;: {
+    &quot;source&quot;: &quot;guide.md&quot;,
+    &quot;version&quot;: &quot;4.6&quot;,
+    &quot;languages&quot;: [
+      &quot;ko_KR&quot;,
+      &quot;en_US&quot;,
+      &quot;ja_JP&quot;,
+      &quot;zh_TW&quot;,
+      &quot;th_TH&quot;
+    ],
+    &quot;created_at&quot;: &quot;2026-05-13T15:30:00+09:00&quot;,
+    &quot;description&quot;: &quot;v4.6: terminology에 「사용자」 등재 + deprecated_terms에 ko 「유저」→「사용자」 추가(#14). 시즌3 유의사항 8키에서 existing_user는 「유저」, wallet_jp는 「사용자」로 같은 화면에서 표기가 갈린 것이 계기다(사용자 결정: 「사용자」로 통일). A/B 실측 — 레지스트리 1,596키 기준 P1 1,655→1,661(+6): 그중 5건이 ko 「유저」 실제 검출(mini_luckyball_terms_existing_user·unifi_promotion_jpyc_bonus_all_title·_bonus_gold_title·_caution_contents2·_reward_info1-1), 1건은 오탐(trade_swap_slippage_setting_custom_title en — ko 「사용자 설정」이 관용적으로 &#x27;Custom&#x27;이라 terminology 매칭이 걸린다. 재판정 금지). 시즌3 57키 기준 P1 67→68(+1, existing_user 실제 위반). zh는 번체 「用戶」가 정본(레지스트리 21키 사용, 간체 「用户」 0건). || v4.5: deprecated_terms에 ko 「월렛」→「지갑」 추가(13건). terminology에 「지갑」이 등재돼 있어도 ko가 「월렛」이면 매칭 자체가 안 돼 검사 대상 밖이었다 — 「팔로우」와 같은 구조적 사각지대이며 v4.3에서 deprecated_terms를 만들 때 함께 넣었어야 했다. md/guide.md §5-1 C에는 「비수탁 지갑: 월렛 → 지갑」 규칙이 문서로만 있었다. XLT 시스템 1,596키 실측: ko 「월렛」 14건 잔존(「지갑」은 79건 정본). v4.4 누적본. || v4.4: deprecated_terms 보완 — ⓐ 신규 2건(ja 友達→友だち · ko 공식계정→공식 계정) ⓑ context 필드 신설로 오탐 제거: zh 關注·追蹤, th ติดตาม, en follow는 같은 셀에 LINE·官方帳號·บัญชีทางการ·official 중 하나가 있을 때만 검출한다(關注App=관심 앱, โปรดติดตาม=기대해 주세요, follow the steps=~를 따르다 같은 다른 문맥을 걸러낸다). en은 단어 경계로만 매칭한다. XLT 시스템 export(v2.6.0 2026-08-06) 1,596키 실측: 보완 전 21키 검출 중 오탐 8건 → 보완 후 오탐 0건·실제 대상 17키 정확 검출. v4.3 누적본. || v4.3: deprecated_terms 영역 신설(스키마 확장 — 5번째 최상위 키). OA 팔로우·OA 채널 추가·채널 팔로우 등 구 표기를 Unifi LINE 공식 계정 친구 추가로 통일하도록 금지→권장 매핑을 정본화했다(2026-08-04 사용자 확정을 용어집에 반영). terminology에 구(phrase)로 등재하는 안은 A/B 실측에서 P1 230→266(+36)으로 부적합해 기각했다 — terminology는 ko→5개 언어 정합 검사용이라 ko 자체의 구 표기를 잡지 못한다. validate_translation.py가 이 영역을 읽어 각 언어 셀의 구 표기를 P1로 경고한다. 실측: 최신 엑셀 8종 기준 신규 검출 0건(현행 산출물은 이미 정본 표기) — 예방 장치. v4.2 누적본. || v4.2: 지급 완료 신규 등재(Paid/支給済み/จ่ายแล้ว/已發放) — 비실시간 일괄 지급 전환으로 「지급 완료된 리워드」 표현이 화면에 상시 노출되는데, 등재값 완료(Complete/完了/เสร็จ/完成)만 있어 각 언어의 완료상 의역(Paid·支給済み·จ่ายแล้ว·已發放)이 P1로 오탐됐다. 검증기 최장일치 개선(2026-08-06)으로 더 긴 지급 완료가 완료보다 우선 매칭되면서 등재 효과가 생겼다 — 개선 전에는 등재해도 P1이 줄지 않았다(A/B 실측 확인). 실측: 보유 엑셀 8종 P1 197 → 193건(-4), 신규 P1 0건, P0 0건 불변. v4.1 누적본. || v4.1: ⓐ OA(LINE 공식계정) 메시지 전용 변수 영역 `oa_variables` 신설 — 당첨금 총액 변수를 {{amount}} → {{total_amount}}로 확정하고 앞으로 {{total_amount}}를 쓴다(2026-08-05 사용자 확정). OA는 XLT 키를 부여하지 않는 영역이라 화면 XLT의 인덱스 치환자({0}/{{0}})와 구분해 관리한다. ⓑ 종료 zh_TW 교정: 結尾(글의 맺음말) → 結束 — 등재값 자체가 오역이었다. ⓒ 포이카츠 en_US·th_TH: point activity·การสะสมแต้ม → Poi-katsu — 실제 번역이 이미 음차 표기를 쓰고 있어 등재값을 실사용에 맞췄다(zh_TW 點數活動은 이번 범위 밖). ⓓ 캠페인 신규 등재(campaign/キャンペーン/แคมเปญ/活動). ⓑ~ⓓ 실측: P1 63 → 58건(-5), 신규 P1 0건. v4.0 누적본.&quot;,
+    &quot;total_terms&quot;: 116,
+    &quot;last_updated&quot;: &quot;2026-08-07&quot;,
+    &quot;total_exceptions&quot;: 9,
+    &quot;total_oa_variables&quot;: 2,
+    &quot;total_deprecated_terms&quot;: 13
+  },
+  &quot;exceptions&quot;: [
+    {
+      &quot;id&quot;: &quot;1&quot;,
+      &quot;note&quot;: &quot;고유명사 - 그대로 유지&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;*PIN*&quot;,
+      &quot;translations&quot;: {
+        &quot;en_US&quot;: &quot;PIN&quot;,
+        &quot;ja_JP&quot;: &quot;PIN&quot;,
+        &quot;ko_KR&quot;: &quot;PIN&quot;,
+        &quot;th_TH&quot;: &quot;PIN&quot;,
+        &quot;zh_TW&quot;: &quot;PIN&quot;
+      },
+      &quot;exception_type&quot;: &quot;context&quot;
+    },
+    {
+      &quot;id&quot;: &quot;2&quot;,
+      &quot;note&quot;: &quot;기술용어 - 그대로 유지&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;*API*&quot;,
+      &quot;translations&quot;: {
+        &quot;en_US&quot;: &quot;API&quot;,
+        &quot;ja_JP&quot;: &quot;API&quot;,
+        &quot;ko_KR&quot;: &quot;API&quot;,
+        &quot;th_TH&quot;: &quot;API&quot;,
+        &quot;zh_TW&quot;: &quot;API&quot;
+      },
+      &quot;exception_type&quot;: &quot;technical&quot;
+    },
+    {
+      &quot;id&quot;: &quot;3&quot;,
+      &quot;note&quot;: &quot;기술용어 - 그대로 유지&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;*URL*&quot;,
+      &quot;translations&quot;: {
+        &quot;en_US&quot;: &quot;URL&quot;,
+        &quot;ja_JP&quot;: &quot;URL&quot;,
+        &quot;ko_KR&quot;: &quot;URL&quot;,
+        &quot;th_TH&quot;: &quot;URL&quot;,
+        &quot;zh_TW&quot;: &quot;URL&quot;
+      },
+      &quot;exception_type&quot;: &quot;technical&quot;
+    },
+    {
+      &quot;id&quot;: &quot;4&quot;,
+      &quot;note&quot;: &quot;브랜드명 - 그대로 유지&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;*Apple*&quot;,
+      &quot;translations&quot;: {
+        &quot;en_US&quot;: &quot;Apple&quot;,
+        &quot;ja_JP&quot;: &quot;Apple&quot;,
+        &quot;ko_KR&quot;: &quot;Apple&quot;,
+        &quot;th_TH&quot;: &quot;Apple&quot;,
+        &quot;zh_TW&quot;: &quot;Apple&quot;
+      },
+      &quot;exception_type&quot;: &quot;brand&quot;
+    },
+    {
+      &quot;id&quot;: &quot;5&quot;,
+      &quot;note&quot;: &quot;브랜드명 - 그대로 유지&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;*Google*&quot;,
+      &quot;translations&quot;: {
+        &quot;en_US&quot;: &quot;Google&quot;,
+        &quot;ja_JP&quot;: &quot;Google&quot;,
+        &quot;ko_KR&quot;: &quot;Google&quot;,
+        &quot;th_TH&quot;: &quot;Google&quot;,
+        &quot;zh_TW&quot;: &quot;Google&quot;
+      },
+      &quot;exception_type&quot;: &quot;brand&quot;
+    },
+    {
+      &quot;id&quot;: &quot;6&quot;,
+      &quot;note&quot;: &quot;암호화폐 - 그대로 유지&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;*USDT*&quot;,
+      &quot;translations&quot;: {
+        &quot;en_US&quot;: &quot;USDT&quot;,
+        &quot;ja_JP&quot;: &quot;USDT&quot;,
+        &quot;ko_KR&quot;: &quot;USDT&quot;,
+        &quot;th_TH&quot;: &quot;USDT&quot;,
+        &quot;zh_TW&quot;: &quot;USDT&quot;
+      },
+      &quot;exception_type&quot;: &quot;crypto&quot;
+    },
+    {
+      &quot;id&quot;: &quot;7&quot;,
+      &quot;note&quot;: &quot;암호화폐 - 그대로 유지&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;*IDRP*&quot;,
+      &quot;translations&quot;: {
+        &quot;en_US&quot;: &quot;IDRP&quot;,
+        &quot;ja_JP&quot;: &quot;IDRP&quot;,
+        &quot;ko_KR&quot;: &quot;IDRP&quot;,
+        &quot;th_TH&quot;: &quot;IDRP&quot;,
+        &quot;zh_TW&quot;: &quot;IDRP&quot;
+      },
+      &quot;exception_type&quot;: &quot;crypto&quot;
+    },
+    {
+      &quot;id&quot;: &quot;8&quot;,
+      &quot;note&quot;: &quot;암호화폐 - 그대로 유지&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;*JPYC*&quot;,
+      &quot;translations&quot;: {
+        &quot;en_US&quot;: &quot;JPYC&quot;,
+        &quot;ja_JP&quot;: &quot;JPYC&quot;,
+        &quot;ko_KR&quot;: &quot;JPYC&quot;,
+        &quot;th_TH&quot;: &quot;JPYC&quot;,
+        &quot;zh_TW&quot;: &quot;JPYC&quot;
+      },
+      &quot;exception_type&quot;: &quot;crypto&quot;
+    },
+    {
+      &quot;id&quot;: &quot;9&quot;,
+      &quot;note&quot;: &quot;브랜드명 - 그대로 유지&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;*Unifi mini*&quot;,
+      &quot;translations&quot;: {
+        &quot;en_US&quot;: &quot;Unifi mini&quot;,
+        &quot;ja_JP&quot;: &quot;Unifi mini&quot;,
+        &quot;ko_KR&quot;: &quot;Unifi mini&quot;,
+        &quot;th_TH&quot;: &quot;Unifi mini&quot;,
+        &quot;zh_TW&quot;: &quot;Unifi mini&quot;
+      },
+      &quot;exception_type&quot;: &quot;brand&quot;
+    }
+  ],
+  &quot;terminology&quot;: {
+    &quot;가격&quot;: {
+      &quot;en_US&quot;: &quot;Price&quot;,
+      &quot;ja_JP&quot;: &quot;価格&quot;,
+      &quot;ko_KR&quot;: &quot;가격&quot;,
+      &quot;th_TH&quot;: &quot;ราคา&quot;,
+      &quot;zh_TW&quot;: &quot;售價&quot;
+    },
+    &quot;가입&quot;: {
+      &quot;en_US&quot;: &quot;Sign up&quot;,
+      &quot;ja_JP&quot;: &quot;登録&quot;,
+      &quot;ko_KR&quot;: &quot;가입&quot;,
+      &quot;th_TH&quot;: &quot;สมัคร&quot;,
+      &quot;zh_TW&quot;: &quot;註冊&quot;
+    },
+    &quot;거래&quot;: {
+      &quot;en_US&quot;: &quot;transaction&quot;,
+      &quot;ja_JP&quot;: &quot;取引&quot;,
+      &quot;ko_KR&quot;: &quot;거래&quot;,
+      &quot;th_TH&quot;: &quot;ธุรกรรม&quot;,
+      &quot;zh_TW&quot;: &quot;交易&quot;
+    },
+    &quot;결제&quot;: {
+      &quot;en_US&quot;: &quot;Payment&quot;,
+      &quot;ja_JP&quot;: &quot;決済&quot;,
+      &quot;ko_KR&quot;: &quot;결제&quot;,
+      &quot;th_TH&quot;: &quot;การชำระเงิน&quot;,
+      &quot;zh_TW&quot;: &quot;結帳&quot;
+    },
+    &quot;계정&quot;: {
+      &quot;en_US&quot;: &quot;account&quot;,
+      &quot;ja_JP&quot;: &quot;アカウント&quot;,
+      &quot;ko_KR&quot;: &quot;계정&quot;,
+      &quot;th_TH&quot;: &quot;บัญชี&quot;,
+      &quot;zh_TW&quot;: &quot;帳號&quot;
+    },
+    &quot;교환&quot;: {
+      &quot;en_US&quot;: &quot;swap&quot;,
+      &quot;ja_JP&quot;: &quot;スワップ&quot;,
+      &quot;ko_KR&quot;: &quot;교환&quot;,
+      &quot;th_TH&quot;: &quot;แลกเปลี่ยน&quot;,
+      &quot;zh_TW&quot;: &quot;交換&quot;
+    },
+    &quot;구매&quot;: {
+      &quot;en_US&quot;: &quot;Buy&quot;,
+      &quot;ja_JP&quot;: &quot;購入&quot;,
+      &quot;ko_KR&quot;: &quot;구매&quot;,
+      &quot;th_TH&quot;: &quot;ซื้อ&quot;,
+      &quot;zh_TW&quot;: &quot;購買&quot;
+    },
+    &quot;권한&quot;: {
+      &quot;en_US&quot;: &quot;permission&quot;,
+      &quot;ja_JP&quot;: &quot;アクセス権限&quot;,
+      &quot;ko_KR&quot;: &quot;권한&quot;,
+      &quot;th_TH&quot;: &quot;สิทธิ์การเข้าถึง&quot;,
+      &quot;zh_TW&quot;: &quot;權限&quot;
+    },
+    &quot;넣기&quot;: {
+      &quot;en_US&quot;: &quot;Deposit&quot;,
+      &quot;ja_JP&quot;: &quot;入金&quot;,
+      &quot;ko_KR&quot;: &quot;넣기&quot;,
+      &quot;th_TH&quot;: &quot;ฝาก&quot;,
+      &quot;zh_TW&quot;: &quot;充值&quot;
+    },
+    &quot;다음&quot;: {
+      &quot;en_US&quot;: &quot;Next&quot;,
+      &quot;ja_JP&quot;: &quot;次へ&quot;,
+      &quot;ko_KR&quot;: &quot;다음&quot;,
+      &quot;th_TH&quot;: &quot;ต่อไป&quot;,
+      &quot;zh_TW&quot;: &quot;下一步&quot;
+    },
+    &quot;당첨&quot;: {
+      &quot;en_US&quot;: &quot;win&quot;,
+      &quot;ja_JP&quot;: &quot;当選&quot;,
+      &quot;ko_KR&quot;: &quot;당첨&quot;,
+      &quot;th_TH&quot;: &quot;ถูกรางวัล&quot;,
+      &quot;zh_TW&quot;: &quot;中獎&quot;
+    },
+    &quot;링크&quot;: {
+      &quot;en_US&quot;: &quot;link&quot;,
+      &quot;ja_JP&quot;: &quot;リンク&quot;,
+      &quot;ko_KR&quot;: &quot;링크&quot;,
+      &quot;th_TH&quot;: &quot;ลิงก์&quot;,
+      &quot;zh_TW&quot;: &quot;連結&quot;
+    },
+    &quot;마이&quot;: {
+      &quot;en_US&quot;: &quot;My&quot;,
+      &quot;ja_JP&quot;: &quot;マイ&quot;,
+      &quot;ko_KR&quot;: &quot;마이&quot;,
+      &quot;th_TH&quot;: &quot;ของฉัน&quot;,
+      &quot;zh_TW&quot;: &quot;我的&quot;
+    },
+    &quot;마켓&quot;: {
+      &quot;en_US&quot;: &quot;Market&quot;,
+      &quot;ja_JP&quot;: &quot;マーケット&quot;,
+      &quot;ko_KR&quot;: &quot;마켓&quot;,
+      &quot;th_TH&quot;: &quot;ตลาด&quot;,
+      &quot;zh_TW&quot;: &quot;商店&quot;
+    },
+    &quot;미션&quot;: {
+      &quot;en_US&quot;: &quot;mission&quot;,
+      &quot;ja_JP&quot;: &quot;ミッション&quot;,
+      &quot;ko_KR&quot;: &quot;미션&quot;,
+      &quot;th_TH&quot;: &quot;ภารกิจ&quot;,
+      &quot;zh_TW&quot;: &quot;任務&quot;
+    },
+    &quot;변경&quot;: {
+      &quot;en_US&quot;: &quot;change&quot;,
+      &quot;ja_JP&quot;: &quot;変更&quot;,
+      &quot;ko_KR&quot;: &quot;변경&quot;,
+      &quot;th_TH&quot;: &quot;เปลี่ยน&quot;,
+      &quot;zh_TW&quot;: &quot;變更&quot;
+    },
+    &quot;복사&quot;: {
+      &quot;en_US&quot;: &quot;copy&quot;,
+      &quot;ja_JP&quot;: &quot;コピー&quot;,
+      &quot;ko_KR&quot;: &quot;복사&quot;,
+      &quot;th_TH&quot;: &quot;คัดลอก&quot;,
+      &quot;zh_TW&quot;: &quot;複製&quot;
+    },
+    &quot;뽑기&quot;: {
+      &quot;en_US&quot;: &quot;Draw&quot;,
+      &quot;ja_JP&quot;: &quot;抽選&quot;,
+      &quot;ko_KR&quot;: &quot;뽑기&quot;,
+      &quot;th_TH&quot;: &quot;จับรางวัล&quot;,
+      &quot;zh_TW&quot;: &quot;抽獎&quot;
+    },
+    &quot;송금&quot;: {
+      &quot;en_US&quot;: &quot;send&quot;,
+      &quot;ja_JP&quot;: &quot;送金&quot;,
+      &quot;ko_KR&quot;: &quot;송금&quot;,
+      &quot;th_TH&quot;: &quot;ส่ง&quot;,
+      &quot;zh_TW&quot;: &quot;轉帳&quot;
+    },
+    &quot;쇼핑&quot;: {
+      &quot;en_US&quot;: &quot;shopping&quot;,
+      &quot;ja_JP&quot;: &quot;ショッピング&quot;,
+      &quot;ko_KR&quot;: &quot;쇼핑&quot;,
+      &quot;th_TH&quot;: &quot;ช้อปปิ้ง&quot;,
+      &quot;zh_TW&quot;: &quot;購物&quot;
+    },
+    &quot;숫자&quot;: {
+      &quot;en_US&quot;: &quot;Number&quot;,
+      &quot;ja_JP&quot;: &quot;数字&quot;,
+      &quot;ko_KR&quot;: &quot;숫자&quot;,
+      &quot;th_TH&quot;: &quot;ตัวเลข&quot;,
+      &quot;zh_TW&quot;: &quot;數字&quot;
+    },
+    &quot;알림&quot;: {
+      &quot;en_US&quot;: &quot;Notification&quot;,
+      &quot;ja_JP&quot;: &quot;通知&quot;,
+      &quot;ko_KR&quot;: &quot;알림&quot;,
+      &quot;th_TH&quot;: &quot;การแจ้งเตือน&quot;,
+      &quot;zh_TW&quot;: &quot;通知&quot;
+    },
+    &quot;연결&quot;: {
+      &quot;en_US&quot;: &quot;connect&quot;,
+      &quot;ja_JP&quot;: &quot;連携&quot;,
+      &quot;ko_KR&quot;: &quot;연결&quot;,
+      &quot;th_TH&quot;: &quot;เชื่อมโยง&quot;,
+      &quot;zh_TW&quot;: &quot;連結&quot;
+    },
+    &quot;예치&quot;: {
+      &quot;en_US&quot;: &quot;deposit&quot;,
+      &quot;ja_JP&quot;: &quot;預入&quot;,
+      &quot;ko_KR&quot;: &quot;예치&quot;,
+      &quot;th_TH&quot;: &quot;ฝาก&quot;,
+      &quot;zh_TW&quot;: &quot;存入&quot;
+    },
+    &quot;완료&quot;: {
+      &quot;en_US&quot;: &quot;Complete&quot;,
+      &quot;ja_JP&quot;: &quot;完了&quot;,
+      &quot;ko_KR&quot;: &quot;완료&quot;,
+      &quot;th_TH&quot;: &quot;เสร็จ&quot;,
+      &quot;zh_TW&quot;: &quot;完成&quot;
+    },
+    &quot;이자&quot;: {
+      &quot;en_US&quot;: &quot;interest&quot;,
+      &quot;ja_JP&quot;: &quot;利息&quot;,
+      &quot;ko_KR&quot;: &quot;이자&quot;,
+      &quot;th_TH&quot;: &quot;ดอกเบี้ย&quot;,
+      &quot;zh_TW&quot;: &quot;利息&quot;
+    },
+    &quot;인기&quot;: {
+      &quot;en_US&quot;: &quot;popular&quot;,
+      &quot;ja_JP&quot;: &quot;人気&quot;,
+      &quot;ko_KR&quot;: &quot;인기&quot;,
+      &quot;th_TH&quot;: &quot;ยอดนิยม&quot;,
+      &quot;zh_TW&quot;: &quot;人氣&quot;
+    },
+    &quot;자산&quot;: {
+      &quot;en_US&quot;: &quot;asset&quot;,
+      &quot;ja_JP&quot;: &quot;資産&quot;,
+      &quot;ko_KR&quot;: &quot;자산&quot;,
+      &quot;th_TH&quot;: &quot;สินทรัพย์&quot;,
+      &quot;zh_TW&quot;: &quot;資產&quot;
+    },
+    &quot;전체&quot;: {
+      &quot;en_US&quot;: &quot;All&quot;,
+      &quot;ja_JP&quot;: &quot;すべて&quot;,
+      &quot;ko_KR&quot;: &quot;전체&quot;,
+      &quot;th_TH&quot;: &quot;ทั้งหมด&quot;,
+      &quot;zh_TW&quot;: &quot;全部&quot;
+    },
+    &quot;종료&quot;: {
+      &quot;en_US&quot;: &quot;Ended&quot;,
+      &quot;ja_JP&quot;: &quot;終了&quot;,
+      &quot;ko_KR&quot;: &quot;종료&quot;,
+      &quot;th_TH&quot;: &quot;สิ้นสุด&quot;,
+      &quot;zh_TW&quot;: &quot;結束&quot;
+    },
+    &quot;지갑&quot;: {
+      &quot;en_US&quot;: &quot;wallet&quot;,
+      &quot;ja_JP&quot;: &quot;ウォレット&quot;,
+      &quot;ko_KR&quot;: &quot;지갑&quot;,
+      &quot;th_TH&quot;: &quot;กระเป๋า&quot;,
+      &quot;zh_TW&quot;: &quot;錢包&quot;
+    },
+    &quot;초대&quot;: {
+      &quot;en_US&quot;: &quot;invite&quot;,
+      &quot;ja_JP&quot;: &quot;招待&quot;,
+      &quot;ko_KR&quot;: &quot;초대&quot;,
+      &quot;th_TH&quot;: &quot;เชิญ&quot;,
+      &quot;zh_TW&quot;: &quot;邀請&quot;
+    },
+    &quot;최대&quot;: {
+      &quot;en_US&quot;: &quot;Max&quot;,
+      &quot;ja_JP&quot;: &quot;最大&quot;,
+      &quot;ko_KR&quot;: &quot;최대&quot;,
+      &quot;th_TH&quot;: &quot;สูงสุด&quot;,
+      &quot;zh_TW&quot;: &quot;最多&quot;
+    },
+    &quot;출금&quot;: {
+      &quot;en_US&quot;: &quot;withdraw&quot;,
+      &quot;ja_JP&quot;: &quot;出金&quot;,
+      &quot;ko_KR&quot;: &quot;출금&quot;,
+      &quot;th_TH&quot;: &quot;ถอน&quot;,
+      &quot;zh_TW&quot;: &quot;提領&quot;
+    },
+    &quot;취소&quot;: {
+      &quot;en_US&quot;: &quot;Cancel&quot;,
+      &quot;ja_JP&quot;: &quot;キャンセル&quot;,
+      &quot;ko_KR&quot;: &quot;취소&quot;,
+      &quot;th_TH&quot;: &quot;ยกเลิก&quot;,
+      &quot;zh_TW&quot;: &quot;取消&quot;
+    },
+    &quot;친구&quot;: {
+      &quot;en_US&quot;: &quot;friend&quot;,
+      &quot;ja_JP&quot;: &quot;友だち&quot;,
+      &quot;ko_KR&quot;: &quot;친구&quot;,
+      &quot;th_TH&quot;: &quot;เพื่อน&quot;,
+      &quot;zh_TW&quot;: &quot;好友&quot;
+    },
+    &quot;토큰&quot;: {
+      &quot;en_US&quot;: &quot;token&quot;,
+      &quot;ja_JP&quot;: &quot;トークン&quot;,
+      &quot;ko_KR&quot;: &quot;토큰&quot;,
+      &quot;th_TH&quot;: &quot;โทเค็น&quot;,
+      &quot;zh_TW&quot;: &quot;代幣&quot;
+    },
+    &quot;혜택&quot;: {
+      &quot;en_US&quot;: &quot;perks&quot;,
+      &quot;ja_JP&quot;: &quot;特典&quot;,
+      &quot;ko_KR&quot;: &quot;혜택&quot;,
+      &quot;th_TH&quot;: &quot;สิทธิประโยชน์&quot;,
+      &quot;zh_TW&quot;: &quot;優惠&quot;
+    },
+    &quot;확인&quot;: {
+      &quot;en_US&quot;: &quot;check&quot;,
+      &quot;ja_JP&quot;: &quot;確認&quot;,
+      &quot;ko_KR&quot;: &quot;확인&quot;,
+      &quot;th_TH&quot;: &quot;ตรวจสอบ&quot;,
+      &quot;zh_TW&quot;: &quot;查看&quot;
+    },
+    &quot;{0} JPYC&quot;: {
+      &quot;en_US&quot;: &quot;{0} JPYC&quot;,
+      &quot;ja_JP&quot;: &quot;{0} JPYC&quot;,
+      &quot;ko_KR&quot;: &quot;{0} JPYC&quot;,
+      &quot;th_TH&quot;: &quot;{0} JPYC&quot;,
+      &quot;zh_TW&quot;: &quot;{0} JPYC&quot;
+    },
+    &quot;거래 ID&quot;: {
+      &quot;en_US&quot;: &quot;Transaction ID&quot;,
+      &quot;ja_JP&quot;: &quot;取引ID&quot;,
+      &quot;ko_KR&quot;: &quot;거래 ID&quot;,
+      &quot;th_TH&quot;: &quot;รหัสธุรกรรม&quot;,
+      &quot;zh_TW&quot;: &quot;交易ID&quot;
+    },
+    &quot;과거순&quot;: {
+      &quot;en_US&quot;: &quot;Oldest&quot;,
+      &quot;ja_JP&quot;: &quot;古い順&quot;,
+      &quot;ko_KR&quot;: &quot;과거순&quot;,
+      &quot;th_TH&quot;: &quot;เก่าสุด&quot;,
+      &quot;zh_TW&quot;: &quot;最舊&quot;
+    },
+    &quot;꺼내기&quot;: {
+      &quot;en_US&quot;: &quot;Withdraw&quot;,
+      &quot;ja_JP&quot;: &quot;出金&quot;,
+      &quot;ko_KR&quot;: &quot;꺼내기&quot;,
+      &quot;th_TH&quot;: &quot;ถอน&quot;,
+      &quot;zh_TW&quot;: &quot;領回&quot;
+    },
+    &quot;당첨금&quot;: {
+      &quot;en_US&quot;: &quot;prize&quot;,
+      &quot;ja_JP&quot;: &quot;当選金&quot;,
+      &quot;ko_KR&quot;: &quot;당첨금&quot;,
+      &quot;th_TH&quot;: &quot;เงินรางวัล&quot;,
+      &quot;zh_TW&quot;: &quot;獎金&quot;
+    },
+    &quot;더보기&quot;: {
+      &quot;en_US&quot;: &quot;View More&quot;,
+      &quot;ja_JP&quot;: &quot;すべて見る&quot;,
+      &quot;ko_KR&quot;: &quot;더보기&quot;,
+      &quot;th_TH&quot;: &quot;ดูเพิ่มเติม&quot;,
+      &quot;zh_TW&quot;: &quot;查看更多&quot;
+    },
+    &quot;럭키볼&quot;: {
+      &quot;en_US&quot;: &quot;Lucky Ball&quot;,
+      &quot;ja_JP&quot;: &quot;ラッキーボール&quot;,
+      &quot;ko_KR&quot;: &quot;럭키볼&quot;,
+      &quot;th_TH&quot;: &quot;ลูกบอลนำโชค&quot;,
+      &quot;zh_TW&quot;: &quot;幸運球&quot;
+    },
+    &quot;로그인&quot;: {
+      &quot;en_US&quot;: &quot;log in&quot;,
+      &quot;ja_JP&quot;: &quot;ログイン&quot;,
+      &quot;ko_KR&quot;: &quot;로그인&quot;,
+      &quot;th_TH&quot;: &quot;เข้าสู่ระบบ&quot;,
+      &quot;zh_TW&quot;: &quot;登入&quot;
+    },
+    &quot;리워드&quot;: {
+      &quot;en_US&quot;: &quot;reward&quot;,
+      &quot;ja_JP&quot;: &quot;リワード&quot;,
+      &quot;ko_KR&quot;: &quot;리워드&quot;,
+      &quot;th_TH&quot;: &quot;รางวัล&quot;,
+      &quot;zh_TW&quot;: &quot;獎勵&quot;
+    },
+    &quot;메시지&quot;: {
+      &quot;en_US&quot;: &quot;Message&quot;,
+      &quot;ja_JP&quot;: &quot;メッセージ&quot;,
+      &quot;ko_KR&quot;: &quot;메시지&quot;,
+      &quot;th_TH&quot;: &quot;ข้อความ&quot;,
+      &quot;zh_TW&quot;: &quot;訊息&quot;
+    },
+    &quot;보내기&quot;: {
+      &quot;en_US&quot;: &quot;Send&quot;,
+      &quot;ja_JP&quot;: &quot;出金&quot;,
+      &quot;ko_KR&quot;: &quot;보내기&quot;,
+      &quot;th_TH&quot;: &quot;ส่ง&quot;,
+      &quot;zh_TW&quot;: &quot;轉帳&quot;
+    },
+    &quot;여기서&quot;: {
+      &quot;en_US&quot;: &quot;here&quot;,
+      &quot;ja_JP&quot;: &quot;こちらで&quot;,
+      &quot;ko_KR&quot;: &quot;여기서&quot;,
+      &quot;th_TH&quot;: &quot;ที่นี่&quot;,
+      &quot;zh_TW&quot;: &quot;在這裡&quot;
+    },
+    &quot;연이율&quot;: {
+      &quot;en_US&quot;: &quot;annual rate&quot;,
+      &quot;ja_JP&quot;: &quot;年利&quot;,
+      &quot;ko_KR&quot;: &quot;연이율&quot;,
+      &quot;th_TH&quot;: &quot;อัตรา/ปี&quot;,
+      &quot;zh_TW&quot;: &quot;年利率&quot;
+    },
+    &quot;채우기&quot;: {
+      &quot;en_US&quot;: &quot;Receive&quot;,
+      &quot;ja_JP&quot;: &quot;受け取る&quot;,
+      &quot;ko_KR&quot;: &quot;채우기&quot;,
+      &quot;th_TH&quot;: &quot;รับ&quot;,
+      &quot;zh_TW&quot;: &quot;接收&quot;
+    },
+    &quot;최신순&quot;: {
+      &quot;en_US&quot;: &quot;Newest&quot;,
+      &quot;ja_JP&quot;: &quot;新しい順&quot;,
+      &quot;ko_KR&quot;: &quot;최신순&quot;,
+      &quot;th_TH&quot;: &quot;ล่าสุด&quot;,
+      &quot;zh_TW&quot;: &quot;最新&quot;
+    },
+    &quot;카메라&quot;: {
+      &quot;en_US&quot;: &quot;camera&quot;,
+      &quot;ja_JP&quot;: &quot;カメラ&quot;,
+      &quot;ko_KR&quot;: &quot;카메라&quot;,
+      &quot;th_TH&quot;: &quot;กล้อง&quot;,
+      &quot;zh_TW&quot;: &quot;相機&quot;
+    },
+    &quot;캐시백&quot;: {
+      &quot;en_US&quot;: &quot;cashback&quot;,
+      &quot;ja_JP&quot;: &quot;キャッシュバック&quot;,
+      &quot;ko_KR&quot;: &quot;캐시백&quot;,
+      &quot;th_TH&quot;: &quot;เงินคืน&quot;,
+      &quot;zh_TW&quot;: &quot;現金回饋&quot;
+    },
+    &quot;캠페인&quot;: {
+      &quot;en_US&quot;: &quot;campaign&quot;,
+      &quot;ja_JP&quot;: &quot;キャンペーン&quot;,
+      &quot;ko_KR&quot;: &quot;캠페인&quot;,
+      &quot;th_TH&quot;: &quot;แคมเปญ&quot;,
+      &quot;zh_TW&quot;: &quot;活動&quot;
+    },
+    &quot;프로필&quot;: {
+      &quot;en_US&quot;: &quot;profile&quot;,
+      &quot;ja_JP&quot;: &quot;プロフィール&quot;,
+      &quot;ko_KR&quot;: &quot;프로필&quot;,
+      &quot;th_TH&quot;: &quot;โปรไฟล์&quot;,
+      &quot;zh_TW&quot;: &quot;個人檔案&quot;
+    },
+    &quot;플레이&quot;: {
+      &quot;en_US&quot;: &quot;Play&quot;,
+      &quot;ja_JP&quot;: &quot;プレイ&quot;,
+      &quot;ko_KR&quot;: &quot;플레이&quot;,
+      &quot;th_TH&quot;: &quot;เล่น&quot;,
+      &quot;zh_TW&quot;: &quot;遊戲&quot;
+    },
+    &quot;내 자산&quot;: {
+      &quot;en_US&quot;: &quot;Assets&quot;,
+      &quot;ja_JP&quot;: &quot;資産&quot;,
+      &quot;ko_KR&quot;: &quot;내 자산&quot;,
+      &quot;th_TH&quot;: &quot;สินทรัพย์&quot;,
+      &quot;zh_TW&quot;: &quot;資產&quot;
+    },
+    &quot;총 자산&quot;: {
+      &quot;en_US&quot;: &quot;Total Assets&quot;,
+      &quot;ja_JP&quot;: &quot;総資産&quot;,
+      &quot;ko_KR&quot;: &quot;총 자산&quot;,
+      &quot;th_TH&quot;: &quot;สินทรัพย์ทั้งหมด&quot;,
+      &quot;zh_TW&quot;: &quot;總資產&quot;
+    },
+    &quot;거래내역&quot;: {
+      &quot;en_US&quot;: &quot;Transaction History&quot;,
+      &quot;ja_JP&quot;: &quot;取引履歴&quot;,
+      &quot;ko_KR&quot;: &quot;거래내역&quot;,
+      &quot;th_TH&quot;: &quot;ประวัติการทำธุรกรรม&quot;,
+      &quot;zh_TW&quot;: &quot;交易紀錄&quot;
+    },
+    &quot;계속하기&quot;: {
+      &quot;en_US&quot;: &quot;Continue&quot;,
+      &quot;ja_JP&quot;: &quot;続ける&quot;,
+      &quot;ko_KR&quot;: &quot;계속하기&quot;,
+      &quot;th_TH&quot;: &quot;ดำเนินการต่อ&quot;,
+      &quot;zh_TW&quot;: &quot;繼續&quot;
+    },
+    &quot;공유하기&quot;: {
+      &quot;en_US&quot;: &quot;Share&quot;,
+      &quot;ja_JP&quot;: &quot;共有する&quot;,
+      &quot;ko_KR&quot;: &quot;공유하기&quot;,
+      &quot;th_TH&quot;: &quot;แชร์&quot;,
+      &quot;zh_TW&quot;: &quot;分享&quot;
+    },
+    &quot;공지사항&quot;: {
+      &quot;en_US&quot;: &quot;Notices&quot;,
+      &quot;ja_JP&quot;: &quot;お知らせ&quot;,
+      &quot;ko_KR&quot;: &quot;공지사항&quot;,
+      &quot;th_TH&quot;: &quot;ประกาศ&quot;,
+      &quot;zh_TW&quot;: &quot;公告事項&quot;
+    },
+    &quot;교환하기&quot;: {
+      &quot;en_US&quot;: &quot;Swap&quot;,
+      &quot;ja_JP&quot;: &quot;交換&quot;,
+      &quot;ko_KR&quot;: &quot;교환하기&quot;,
+      &quot;th_TH&quot;: &quot;แลกเปลี่ยน&quot;,
+      &quot;zh_TW&quot;: &quot;兌換&quot;
+    },
+    &quot;구매하기&quot;: {
+      &quot;en_US&quot;: &quot;Buy now&quot;,
+      &quot;ja_JP&quot;: &quot;購入する&quot;,
+      &quot;ko_KR&quot;: &quot;구매하기&quot;,
+      &quot;th_TH&quot;: &quot;ซื้อ&quot;,
+      &quot;zh_TW&quot;: &quot;購買&quot;
+    },
+    &quot;네트워크&quot;: {
+      &quot;en_US&quot;: &quot;Network&quot;,
+      &quot;ja_JP&quot;: &quot;ネットワーク&quot;,
+      &quot;ko_KR&quot;: &quot;네트워크&quot;,
+      &quot;th_TH&quot;: &quot;เครือข่าย&quot;,
+      &quot;zh_TW&quot;: &quot;網路&quot;
+    },
+    &quot;로그아웃&quot;: {
+      &quot;en_US&quot;: &quot;log out&quot;,
+      &quot;ja_JP&quot;: &quot;ログアウト&quot;,
+      &quot;ko_KR&quot;: &quot;로그아웃&quot;,
+      &quot;th_TH&quot;: &quot;ออกจากระบบ&quot;,
+      &quot;zh_TW&quot;: &quot;登出&quot;
+    },
+    &quot;문의하기&quot;: {
+      &quot;en_US&quot;: &quot;Help&quot;,
+      &quot;ja_JP&quot;: &quot;お問い合わせ&quot;,
+      &quot;ko_KR&quot;: &quot;문의하기&quot;,
+      &quot;th_TH&quot;: &quot;สอบถาม&quot;,
+      &quot;zh_TW&quot;: &quot;回報問題&quot;
+    },
+    &quot;비밀번호&quot;: {
+      &quot;en_US&quot;: &quot;password&quot;,
+      &quot;ja_JP&quot;: &quot;パスワード&quot;,
+      &quot;ko_KR&quot;: &quot;비밀번호&quot;,
+      &quot;th_TH&quot;: &quot;รหัสผ่าน&quot;,
+      &quot;zh_TW&quot;: &quot;密碼&quot;
+    },
+    &quot;선물하기&quot;: {
+      &quot;en_US&quot;: &quot;gift&quot;,
+      &quot;ja_JP&quot;: &quot;プレゼント&quot;,
+      &quot;ko_KR&quot;: &quot;선물하기&quot;,
+      &quot;th_TH&quot;: &quot;มอบ&quot;,
+      &quot;zh_TW&quot;: &quot;送&quot;
+    },
+    &quot;시작하기&quot;: {
+      &quot;en_US&quot;: &quot;Start&quot;,
+      &quot;ja_JP&quot;: &quot;開始&quot;,
+      &quot;ko_KR&quot;: &quot;시작하기&quot;,
+      &quot;th_TH&quot;: &quot;เริ่มต้น&quot;,
+      &quot;zh_TW&quot;: &quot;開始&quot;
+    },
+    &quot;연결하기&quot;: {
+      &quot;en_US&quot;: &quot;Connect&quot;,
+      &quot;ja_JP&quot;: &quot;連携する&quot;,
+      &quot;ko_KR&quot;: &quot;연결하기&quot;,
+      &quot;th_TH&quot;: &quot;ผูก&quot;,
+      &quot;zh_TW&quot;: &quot;綁定&quot;
+    },
+    &quot;외부지갑&quot;: {
+      &quot;en_US&quot;: &quot;External Wallet&quot;,
+      &quot;ja_JP&quot;: &quot;外部ウォレット&quot;,
+      &quot;ko_KR&quot;: &quot;외부지갑&quot;,
+      &quot;th_TH&quot;: &quot;กระเป๋าภายนอก&quot;,
+      &quot;zh_TW&quot;: &quot;外部錢包&quot;
+    },
+    &quot;유의사항&quot;: {
+      &quot;en_US&quot;: &quot;Cautions&quot;,
+      &quot;ja_JP&quot;: &quot;注意事項&quot;,
+      &quot;ko_KR&quot;: &quot;유의사항&quot;,
+      &quot;th_TH&quot;: &quot;หมายเหตุ&quot;,
+      &quot;zh_TW&quot;: &quot;注意事項&quot;
+    },
+    &quot;전체보기&quot;: {
+      &quot;en_US&quot;: &quot;View All&quot;,
+      &quot;ja_JP&quot;: &quot;すべて見る&quot;,
+      &quot;ko_KR&quot;: &quot;전체보기&quot;,
+      &quot;th_TH&quot;: &quot;ดูทั้งหมด&quot;,
+      &quot;zh_TW&quot;: &quot;全部查看&quot;
+    },
+    &quot;최저가격&quot;: {
+      &quot;en_US&quot;: &quot;Floor&quot;,
+      &quot;ja_JP&quot;: &quot;最低価格&quot;,
+      &quot;ko_KR&quot;: &quot;최저가격&quot;,
+      &quot;th_TH&quot;: &quot;ราคาต่ำสุด&quot;,
+      &quot;zh_TW&quot;: &quot;最低價格&quot;
+    },
+    &quot;포이카츠&quot;: {
+      &quot;en_US&quot;: &quot;Poi-katsu&quot;,
+      &quot;ja_JP&quot;: &quot;ポイ活&quot;,
+      &quot;ko_KR&quot;: &quot;포이카츠&quot;,
+      &quot;th_TH&quot;: &quot;Poi-katsu&quot;,
+      &quot;zh_TW&quot;: &quot;點數活動&quot;
+    },
+    &quot;회원가입&quot;: {
+      &quot;en_US&quot;: &quot;sign up&quot;,
+      &quot;ja_JP&quot;: &quot;会員登録&quot;,
+      &quot;ko_KR&quot;: &quot;회원가입&quot;,
+      &quot;th_TH&quot;: &quot;สมัครสมาชิก&quot;,
+      &quot;zh_TW&quot;: &quot;註冊&quot;
+    },
+    &quot;거래 유형&quot;: {
+      &quot;en_US&quot;: &quot;Transaction Type&quot;,
+      &quot;ja_JP&quot;: &quot;取引タイプ&quot;,
+      &quot;ko_KR&quot;: &quot;거래 유형&quot;,
+      &quot;th_TH&quot;: &quot;ประเภทธุรกรรม&quot;,
+      &quot;zh_TW&quot;: &quot;交易類型&quot;
+    },
+    &quot;공식 계정&quot;: {
+      &quot;en_US&quot;: &quot;Official account&quot;,
+      &quot;ja_JP&quot;: &quot;公式アカウント&quot;,
+      &quot;ko_KR&quot;: &quot;공식 계정&quot;,
+      &quot;th_TH&quot;: &quot;บัญชีทางการ&quot;,
+      &quot;zh_TW&quot;: &quot;官方帳號&quot;
+    },
+    &quot;교환 입금&quot;: {
+      &quot;en_US&quot;: &quot;Swap Deposit&quot;,
+      &quot;ja_JP&quot;: &quot;交換入金&quot;,
+      &quot;ko_KR&quot;: &quot;교환 입금&quot;,
+      &quot;th_TH&quot;: &quot;ฝากเข้า (แลกเปลี่ยน)&quot;,
+      &quot;zh_TW&quot;: &quot;交換存入&quot;
+    },
+    &quot;교환 출금&quot;: {
+      &quot;en_US&quot;: &quot;Swap Withdrawal&quot;,
+      &quot;ja_JP&quot;: &quot;交換出金&quot;,
+      &quot;ko_KR&quot;: &quot;교환 출금&quot;,
+      &quot;th_TH&quot;: &quot;ถอนออก (แลกเปลี่ยน)&quot;,
+      &quot;zh_TW&quot;: &quot;交換提領&quot;
+    },
+    &quot;기본 이자&quot;: {
+      &quot;en_US&quot;: &quot;Base Interest&quot;,
+      &quot;ja_JP&quot;: &quot;基本利息&quot;,
+      &quot;ko_KR&quot;: &quot;기본 이자&quot;,
+      &quot;th_TH&quot;: &quot;ดอกเบี้ยพื้นฐาน&quot;,
+      &quot;zh_TW&quot;: &quot;基本利息&quot;
+    },
+    &quot;다음 단계&quot;: {
+      &quot;en_US&quot;: &quot;Next Step&quot;,
+      &quot;ja_JP&quot;: &quot;次のステップ&quot;,
+      &quot;ko_KR&quot;: &quot;다음 단계&quot;,
+      &quot;th_TH&quot;: &quot;ขั้นตอนถัดไป&quot;,
+      &quot;zh_TW&quot;: &quot;下一階段&quot;
+    },
+    &quot;락업 자산&quot;: {
+      &quot;en_US&quot;: &quot;Locked Assets&quot;,
+      &quot;ja_JP&quot;: &quot;ロックアップ資産&quot;,
+      &quot;ko_KR&quot;: &quot;락업 자산&quot;,
+      &quot;th_TH&quot;: &quot;สินทรัพย์ที่ถูกล็อคอัพ&quot;,
+      &quot;zh_TW&quot;: &quot;鎖定資產&quot;
+    },
+    &quot;받는 사람&quot;: {
+      &quot;en_US&quot;: &quot;To&quot;,
+      &quot;ja_JP&quot;: &quot;宛先&quot;,
+      &quot;ko_KR&quot;: &quot;받는 사람&quot;,
+      &quot;th_TH&quot;: &quot;ผู้รับ&quot;,
+      &quot;zh_TW&quot;: &quot;收款方&quot;
+    },
+    &quot;보낸 사람&quot;: {
+      &quot;en_US&quot;: &quot;Sender&quot;,
+      &quot;ja_JP&quot;: &quot;出金元&quot;,
+      &quot;ko_KR&quot;: &quot;보낸 사람&quot;,
+      &quot;th_TH&quot;: &quot;ผู้ส่ง&quot;,
+      &quot;zh_TW&quot;: &quot;轉帳人&quot;
+    },
+    &quot;언어 설정&quot;: {
+      &quot;en_US&quot;: &quot;Language Settings&quot;,
+      &quot;ja_JP&quot;: &quot;言語設定&quot;,
+      &quot;ko_KR&quot;: &quot;언어 설정&quot;,
+      &quot;th_TH&quot;: &quot;ตั้งค่าภาษา&quot;,
+      &quot;zh_TW&quot;: &quot;語言設定&quot;
+    },
+    &quot;연결 계정&quot;: {
+      &quot;en_US&quot;: &quot;Linked account&quot;,
+      &quot;ja_JP&quot;: &quot;連携アカウント&quot;,
+      &quot;ko_KR&quot;: &quot;연결 계정&quot;,
+      &quot;th_TH&quot;: &quot;บัญชีที่ผูกไว้&quot;,
+      &quot;zh_TW&quot;: &quot;綁定帳號&quot;
+    },
+    &quot;연결 해제&quot;: {
+      &quot;en_US&quot;: &quot;disconnect&quot;,
+      &quot;ja_JP&quot;: &quot;連携を解除&quot;,
+      &quot;ko_KR&quot;: &quot;연결 해제&quot;,
+      &quot;th_TH&quot;: &quot;ตัดการเชื่อมโยง&quot;,
+      &quot;zh_TW&quot;: &quot;解除連結&quot;
+    },
+    &quot;예치 이자&quot;: {
+      &quot;en_US&quot;: &quot;Deposit interest&quot;,
+      &quot;ja_JP&quot;: &quot;預入利息&quot;,
+      &quot;ko_KR&quot;: &quot;예치 이자&quot;,
+      &quot;th_TH&quot;: &quot;ดอกเบี้ยจากการฝาก&quot;,
+      &quot;zh_TW&quot;: &quot;存入利息&quot;
+    },
+    &quot;일일 미션&quot;: {
+      &quot;en_US&quot;: &quot;Daily Mission&quot;,
+      &quot;ja_JP&quot;: &quot;毎日のミッション&quot;,
+      &quot;ko_KR&quot;: &quot;일일 미션&quot;,
+      &quot;th_TH&quot;: &quot;ภารกิจรายวัน&quot;,
+      &quot;zh_TW&quot;: &quot;每日任務&quot;
+    },
+    &quot;지갑 주소&quot;: {
+      &quot;en_US&quot;: &quot;wallet address&quot;,
+      &quot;ja_JP&quot;: &quot;ウォレットアドレス&quot;,
+      &quot;ko_KR&quot;: &quot;지갑 주소&quot;,
+      &quot;th_TH&quot;: &quot;ที่อยู่กระเป๋า&quot;,
+      &quot;zh_TW&quot;: &quot;錢包地址&quot;
+    },
+    &quot;지급 완료&quot;: {
+      &quot;en_US&quot;: &quot;Paid&quot;,
+      &quot;ja_JP&quot;: &quot;支給済み&quot;,
+      &quot;ko_KR&quot;: &quot;지급 완료&quot;,
+      &quot;th_TH&quot;: &quot;จ่ายแล้ว&quot;,
+      &quot;zh_TW&quot;: &quot;已發放&quot;
+    },
+    &quot;직접 입력&quot;: {
+      &quot;en_US&quot;: &quot;Custom&quot;,
+      &quot;ja_JP&quot;: &quot;直接入力&quot;,
+      &quot;ko_KR&quot;: &quot;직접 입력&quot;,
+      &quot;th_TH&quot;: &quot;กำหนดเอง&quot;,
+      &quot;zh_TW&quot;: &quot;直接輸入&quot;
+    },
+    &quot;채널 동의&quot;: {
+      &quot;en_US&quot;: &quot;channel consent&quot;,
+      &quot;ja_JP&quot;: &quot;チャネル同意&quot;,
+      &quot;ko_KR&quot;: &quot;채널 동의&quot;,
+      &quot;th_TH&quot;: &quot;การยินยอมแชนแนล&quot;,
+      &quot;zh_TW&quot;: &quot;頻道同意&quot;
+    },
+    &quot;최근 사용&quot;: {
+      &quot;en_US&quot;: &quot;Recently used&quot;,
+      &quot;ja_JP&quot;: &quot;最近使用&quot;,
+      &quot;ko_KR&quot;: &quot;최근 사용&quot;,
+      &quot;th_TH&quot;: &quot;ใช้งานล่าสุด&quot;,
+      &quot;zh_TW&quot;: &quot;最近已使用&quot;
+    },
+    &quot;토큰 교환&quot;: {
+      &quot;en_US&quot;: &quot;Token Swap&quot;,
+      &quot;ja_JP&quot;: &quot;トークン交換&quot;,
+      &quot;ko_KR&quot;: &quot;토큰 교환&quot;,
+      &quot;th_TH&quot;: &quot;แลกเปลี่ยนโทเค็น&quot;,
+      &quot;zh_TW&quot;: &quot;代幣兌換&quot;
+    },
+    &quot;통화 설정&quot;: {
+      &quot;en_US&quot;: &quot;Currency Settings&quot;,
+      &quot;ja_JP&quot;: &quot;通貨設定&quot;,
+      &quot;ko_KR&quot;: &quot;통화 설정&quot;,
+      &quot;th_TH&quot;: &quot;ตั้งค่าสกุลเงิน&quot;,
+      &quot;zh_TW&quot;: &quot;貨幣設定&quot;
+    },
+    &quot;평균 잔고&quot;: {
+      &quot;en_US&quot;: &quot;average balance&quot;,
+      &quot;ja_JP&quot;: &quot;平均残高&quot;,
+      &quot;ko_KR&quot;: &quot;평균 잔고&quot;,
+      &quot;th_TH&quot;: &quot;ยอดเงินคงเหลือเฉลี่ย&quot;,
+      &quot;zh_TW&quot;: &quot;平均餘額&quot;
+    },
+    &quot;결제 페이백&quot;: {
+      &quot;en_US&quot;: &quot;Payment Payback&quot;,
+      &quot;ja_JP&quot;: &quot;決済ペイバック&quot;,
+      &quot;ko_KR&quot;: &quot;결제 페이백&quot;,
+      &quot;th_TH&quot;: &quot;โบนัสการจ่าย&quot;,
+      &quot;zh_TW&quot;: &quot;消費回饋&quot;
+    },
+    &quot;리워드 지급&quot;: {
+      &quot;en_US&quot;: &quot;Reward Payment&quot;,
+      &quot;ja_JP&quot;: &quot;リワード支給&quot;,
+      &quot;ko_KR&quot;: &quot;리워드 지급&quot;,
+      &quot;th_TH&quot;: &quot;การจ่ายรางวัล&quot;,
+      &quot;zh_TW&quot;: &quot;獎勵發放&quot;
+    },
+    &quot;보너스 미션&quot;: {
+      &quot;en_US&quot;: &quot;Bonus Missions&quot;,
+      &quot;ja_JP&quot;: &quot;ボーナスミッション&quot;,
+      &quot;ko_KR&quot;: &quot;보너스 미션&quot;,
+      &quot;th_TH&quot;: &quot;มิชชันโบนัส&quot;,
+      &quot;zh_TW&quot;: &quot;紅利任務&quot;
+    },
+    &quot;부스트 이자&quot;: {
+      &quot;en_US&quot;: &quot;Boost Interest&quot;,
+      &quot;ja_JP&quot;: &quot;ブースト利息&quot;,
+      &quot;ko_KR&quot;: &quot;부스트 이자&quot;,
+      &quot;th_TH&quot;: &quot;ดอกเบี้ยบูสต์&quot;,
+      &quot;zh_TW&quot;: &quot;加速利息&quot;
+    },
+    &quot;예상 수수료&quot;: {
+      &quot;en_US&quot;: &quot;Estimated Fee&quot;,
+      &quot;ja_JP&quot;: &quot;予想手数料&quot;,
+      &quot;ko_KR&quot;: &quot;예상 수수료&quot;,
+      &quot;th_TH&quot;: &quot;ค่าธรรมเนียมโดยประมาณ&quot;,
+      &quot;zh_TW&quot;: &quot;預估手續費&quot;
+    },
+    &quot;플러스 이자&quot;: {
+      &quot;en_US&quot;: &quot;Plus Interest&quot;,
+      &quot;ja_JP&quot;: &quot;プラス利息&quot;,
+      &quot;ko_KR&quot;: &quot;플러스 이자&quot;,
+      &quot;th_TH&quot;: &quot;ดอกเบี้ยพลัส&quot;,
+      &quot;zh_TW&quot;: &quot;Plus 利息&quot;
+    },
+    &quot;홈으로 이동&quot;: {
+      &quot;en_US&quot;: &quot;Go to Home&quot;,
+      &quot;ja_JP&quot;: &quot;ホームへ&quot;,
+      &quot;ko_KR&quot;: &quot;홈으로 이동&quot;,
+      &quot;th_TH&quot;: &quot;ไปยังหน้าหลัก&quot;,
+      &quot;zh_TW&quot;: &quot;前往首頁&quot;
+    },
+    &quot;간편 비밀번호&quot;: {
+      &quot;en_US&quot;: &quot;Passcode&quot;,
+      &quot;ja_JP&quot;: &quot;簡単パスワード&quot;,
+      &quot;ko_KR&quot;: &quot;간편 비밀번호&quot;,
+      &quot;th_TH&quot;: &quot;รหัสผ่านแบบง่าย&quot;,
+      &quot;zh_TW&quot;: &quot;簡易密碼&quot;
+    },
+    &quot;네트워크 전환&quot;: {
+      &quot;en_US&quot;: &quot;Network Conversion&quot;,
+      &quot;ja_JP&quot;: &quot;ネットワーク換算&quot;,
+      &quot;ko_KR&quot;: &quot;네트워크 전환&quot;,
+      &quot;th_TH&quot;: &quot;การแปลงเครือข่าย&quot;,
+      &quot;zh_TW&quot;: &quot;網路轉換&quot;
+    },
+    &quot;로그아웃 안내&quot;: {
+      &quot;en_US&quot;: &quot;Logout notice&quot;,
+      &quot;ja_JP&quot;: &quot;ログアウトのご案内&quot;,
+      &quot;ko_KR&quot;: &quot;로그아웃 안내&quot;,
+      &quot;th_TH&quot;: &quot;แจ้งออกระบบ&quot;,
+      &quot;zh_TW&quot;: &quot;登出通知&quot;
+    },
+    &quot;복구 비밀번호&quot;: {
+      &quot;en_US&quot;: &quot;Recovery Password&quot;,
+      &quot;ja_JP&quot;: &quot;復旧パスワード&quot;,
+      &quot;ko_KR&quot;: &quot;복구 비밀번호&quot;,
+      &quot;th_TH&quot;: &quot;รหัสผ่านกู้คืน&quot;,
+      &quot;zh_TW&quot;: &quot;復原密碼&quot;
+    },
+    &quot;입금 (거래내역 유형 라벨)&quot;: {
+      &quot;en_US&quot;: &quot;Received&quot;,
+      &quot;ja_JP&quot;: &quot;受取済&quot;,
+      &quot;ko_KR&quot;: &quot;입금 (거래내역 유형 라벨)&quot;,
+      &quot;th_TH&quot;: &quot;ได้รับแล้ว&quot;,
+      &quot;zh_TW&quot;: &quot;已接收&quot;
+    },
+    &quot;출금 (거래내역 유형 라벨)&quot;: {
+      &quot;en_US&quot;: &quot;Sent&quot;,
+      &quot;ja_JP&quot;: &quot;出金&quot;,
+      &quot;ko_KR&quot;: &quot;출금 (거래내역 유형 라벨)&quot;,
+      &quot;th_TH&quot;: &quot;ส่งแล้ว&quot;,
+      &quot;zh_TW&quot;: &quot;出金&quot;
+    },
+    &quot;사용자&quot;: {
+      &quot;en_US&quot;: &quot;user&quot;,
+      &quot;ja_JP&quot;: &quot;ユーザー&quot;,
+      &quot;ko_KR&quot;: &quot;사용자&quot;,
+      &quot;th_TH&quot;: &quot;ผู้ใช้&quot;,
+      &quot;zh_TW&quot;: &quot;用戶&quot;
+    }
+  },
+  &quot;oa_variables&quot;: [
+    {
+      &quot;id&quot;: &quot;1&quot;,
+      &quot;name&quot;: &quot;{{total_amount}}&quot;,
+      &quot;note&quot;: &quot;이전 표기 {{amount}}는 신규 작업에 쓰지 않는다. 숫자와 통화 코드는 한 칸 띄운다 — `{{total_amount}} JPYC`&quot;,
+      &quot;since&quot;: &quot;2026-08-05&quot;,
+      &quot;active&quot;: true,
+      &quot;example&quot;: &quot;25&quot;,
+      &quot;replaces&quot;: &quot;{{amount}}&quot;,
+      &quot;meaning_ko&quot;: &quot;사용자에게 지급된 당첨금 총액 (JPYC 단위 숫자)&quot;
+    },
+    {
+      &quot;id&quot;: &quot;2&quot;,
+      &quot;name&quot;: &quot;{{wallet_address}}&quot;,
+      &quot;note&quot;: &quot;한국어에서 치환값 말미에 따라 조사가 `로`/`으로`로 갈리므로 `{{wallet_address}} 주소로`처럼 명사를 넣어 조사를 고정한다&quot;,
+      &quot;since&quot;: &quot;2026-07-24&quot;,
+      &quot;active&quot;: true,
+      &quot;example&quot;: &quot;0x8442...7c8&quot;,
+      &quot;replaces&quot;: null,
+      &quot;meaning_ko&quot;: &quot;당첨금이 지급된 지갑 주소 (마스킹 표기)&quot;
+    }
+  ],
+  &quot;deprecated_terms&quot;: [
+    {
+      &quot;id&quot;: &quot;1&quot;,
+      &quot;lang&quot;: &quot;ko_KR&quot;,
+      &quot;note&quot;: &quot;OA는 사내 약어이고 팔로우는 구 표기다. 화면 문구에 쓰지 않는다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;OA 팔로우&quot;,
+      &quot;recommend&quot;: &quot;Unifi LINE 공식 계정 친구 추가&quot;
+    },
+    {
+      &quot;id&quot;: &quot;2&quot;,
+      &quot;lang&quot;: &quot;ko_KR&quot;,
+      &quot;note&quot;: &quot;채널은 LINE 공식 계정의 구 명칭이다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;OA 채널 추가&quot;,
+      &quot;recommend&quot;: &quot;Unifi LINE 공식 계정 친구 추가&quot;
+    },
+    {
+      &quot;id&quot;: &quot;3&quot;,
+      &quot;lang&quot;: &quot;ko_KR&quot;,
+      &quot;note&quot;: &quot;2026-08-04 사용자 확정으로 대체된 표기&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;채널 팔로우&quot;,
+      &quot;recommend&quot;: &quot;Unifi LINE 공식 계정 친구 추가&quot;
+    },
+    {
+      &quot;id&quot;: &quot;4&quot;,
+      &quot;lang&quot;: &quot;ko_KR&quot;,
+      &quot;note&quot;: &quot;유지 문맥이면 「공식 계정 친구를 유지」로 쓴다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;공식 계정 팔로우&quot;,
+      &quot;recommend&quot;: &quot;Unifi LINE 공식 계정 친구 추가&quot;
+    },
+    {
+      &quot;id&quot;: &quot;5&quot;,
+      &quot;lang&quot;: &quot;ko_KR&quot;,
+      &quot;note&quot;: &quot;단독 사용도 금지. 더 긴 금지 표현이 먼저 매칭되면 이 항목은 건너뛴다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;팔로우&quot;,
+      &quot;recommend&quot;: &quot;Unifi LINE 공식 계정 친구 추가&quot;
+    },
+    {
+      &quot;id&quot;: &quot;6&quot;,
+      &quot;lang&quot;: &quot;ko_KR&quot;,
+      &quot;note&quot;: &quot;붙여쓰기 오류. 용어집 등재값은 「공식 계정」이다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;공식계정&quot;,
+      &quot;recommend&quot;: &quot;공식 계정&quot;
+    },
+    {
+      &quot;id&quot;: &quot;7&quot;,
+      &quot;lang&quot;: &quot;ja_JP&quot;,
+      &quot;note&quot;: &quot;LINE 일본 표기는 友だち追加다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;フォロー&quot;,
+      &quot;recommend&quot;: &quot;友だち追加&quot;
+    },
+    {
+      &quot;id&quot;: &quot;8&quot;,
+      &quot;lang&quot;: &quot;ja_JP&quot;,
+      &quot;note&quot;: &quot;LINE 일본 공식 표기는 히라가나 友だち다. 한자 友達를 쓰지 않는다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;友達&quot;,
+      &quot;recommend&quot;: &quot;友だち&quot;
+    },
+    {
+      &quot;id&quot;: &quot;9&quot;,
+      &quot;lang&quot;: &quot;zh_TW&quot;,
+      &quot;note&quot;: &quot;關注는 웨이보·위챗 용어다. 「關注App(관심 앱)」 등 다른 문맥은 대상이 아니다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;context&quot;: [
+        &quot;LINE&quot;,
+        &quot;官方帳號&quot;
+      ],
+      &quot;pattern&quot;: &quot;關注&quot;,
+      &quot;recommend&quot;: &quot;加入好友&quot;
+    },
+    {
+      &quot;id&quot;: &quot;10&quot;,
+      &quot;lang&quot;: &quot;zh_TW&quot;,
+      &quot;note&quot;: &quot;追蹤는 SNS 팔로우 용어다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;context&quot;: [
+        &quot;LINE&quot;,
+        &quot;官方帳號&quot;
+      ],
+      &quot;pattern&quot;: &quot;追蹤&quot;,
+      &quot;recommend&quot;: &quot;加入好友&quot;
+    },
+    {
+      &quot;id&quot;: &quot;11&quot;,
+      &quot;lang&quot;: &quot;th_TH&quot;,
+      &quot;note&quot;: &quot;ติดตาม는 SNS 팔로우 용어다. 「기대해 주세요·기다려 주세요」 문맥은 대상이 아니다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;context&quot;: [
+        &quot;LINE&quot;,
+        &quot;บัญชีทางการ&quot;
+      ],
+      &quot;pattern&quot;: &quot;ติดตาม&quot;,
+      &quot;recommend&quot;: &quot;เพิ่มเพื่อน&quot;
+    },
+    {
+      &quot;id&quot;: &quot;12&quot;,
+      &quot;lang&quot;: &quot;en_US&quot;,
+      &quot;note&quot;: &quot;SNS 팔로우 의미일 때만. 「~를 따르다(follow the steps/policies)」는 대상이 아니다. 단어 경계로만 매칭한다&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;context&quot;: [
+        &quot;official&quot;,
+        &quot;LINE&quot;
+      ],
+      &quot;pattern&quot;: &quot;follow&quot;,
+      &quot;recommend&quot;: &quot;add as a friend&quot;
+    },
+    {
+      &quot;id&quot;: &quot;13&quot;,
+      &quot;lang&quot;: &quot;ko_KR&quot;,
+      &quot;note&quot;: &quot;외래어 음차. 서비스 표기 정본은 「지갑」이다(용어집 terminology 등재값). md/guide.md §5-1 C&quot;,
+      &quot;since&quot;: &quot;2026-08-06&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;월렛&quot;,
+      &quot;recommend&quot;: &quot;지갑&quot;
+    },
+    {
+      &quot;id&quot;: &quot;14&quot;,
+      &quot;lang&quot;: &quot;ko_KR&quot;,
+      &quot;active&quot;: true,
+      &quot;pattern&quot;: &quot;유저&quot;,
+      &quot;recommend&quot;: &quot;사용자&quot;,
+      &quot;since&quot;: &quot;2026-08-07&quot;,
+      &quot;note&quot;: &quot;외래어 음차. 서비스 표기 정본은 「사용자」다(terminology 등재값). 같은 화면에서 「유저」·「사용자」가 혼용된 실측(시즌3 유의사항 8건)이 계기&quot;
+    }
+  ]
+}</pre>
+        </div>
+      </details>
+    </div>
+
+    <p class="note note-slate mt-6">🔁 <b>업데이트 절차</b>: 후보 엑셀/용어 전달 → AI가 원본과 전수 대조 → 깨끗한 항목만 전체 JSON 산출 → <b>사용자가 Landpress CMS에 붙여넣기</b> → AI가 재조회로 반영 확인 + 이력 기록. 충돌 항목은 보류 리포트로 관리되어 다음 검토 때 이력째 이어집니다.</p>
+  </section>
+</main>
+</div>
+
+<div id="tab-iareport" class="hidden">
+<main class="max-w-6xl mx-auto px-5">
+  <section class="py-14">
+    <h2 class="sec-title">Unifi IA 주간 점검 리포트 <span class="text-slate-400 font-normal text-lg">매주 월요일 10:00 자동 실행</span></h2>
+    <p class="sec-sub">AI가 매주 unifi.me를 직접 탐색(비로그인+로그인)해 메뉴·기능 변경을 확인하고 IA 정본(<code>md/IA.md</code>)을 갱신합니다. 리포트 원본은 저장소 <code>reports/ia/</code>에 주차별로 발행됩니다. 점검은 조회·탐색만 수행하며 상태 변경 액션(송금·뽑기 등)은 실행하지 않습니다.</p>
+
+    <!-- ═══ 전체 IA 구조 (IA_DATA 갱신 지점 — md/IA.md 변경 시 함께 갱신) ═══ -->
+    <div class="panel mt-6" id="ia-structure">
+      <div class="flex items-center gap-2 flex-wrap"><span class="badge badge-indigo">전체 IA 구조</span><h3 class="panel-h">환경별 화면 계층 · 제공 여부</h3></div>
+      <p class="text-sm text-slate-500 mt-2">정본은 저장소 <code>md/IA.md</code>이고, 이 표는 그 내용을 환경 축으로 재구성한 것입니다. 환경 버튼으로 그 환경에 없는 화면을 걸러 보고, 1뎁스 행을 눌러 하위 화면을 접거나 펼 수 있습니다.</p>
+
+      <div class="flex flex-wrap items-center gap-2 mt-4">
+        <div class="flex flex-wrap gap-1" id="ia-envbtns">
+          <button class="ia-env is-on" data-env="-1">전체 보기</button>
+          <button class="ia-env" data-env="0">Web</button>
+          <button class="ia-env" data-env="1">LIFF</button>
+          <button class="ia-env" data-env="2">Wallet Mode</button>
+          <button class="ia-env" data-env="3">mini</button>
+        </div>
+        <label class="ml-auto flex items-center gap-2 text-sm text-slate-500">
+          <input id="ia-hide" type="checkbox" class="w-4 h-4 accent-brand-600" />
+          미제공 화면 숨기기
+        </label>
+      </div>
+
+      <div class="flex flex-wrap items-center gap-3 mt-3 text-xs text-slate-500">
+        <span><b class="text-emerald-700">●</b> 제공</span>
+        <span><b class="text-amber-700">◐</b> 조건부 · 축소</span>
+        <span><b class="text-slate-400">–</b> 미제공</span>
+        <span class="text-slate-400">기준 자산 — Web · LIFF USDT 예치풀 / Wallet USDT EOA 지갑 / mini JPYC</span>
+      </div>
+
+      <div class="mt-4 overflow-x-auto">
+        <table class="w-full text-sm border-collapse" id="ia-table">
+          <thead>
+            <tr class="text-left text-xs text-slate-500 border-b border-slate-300">
+              <th class="py-2 pr-3 font-medium">화면 계층</th>
+              <th class="py-2 px-2 font-medium text-center w-14">Web</th>
+              <th class="py-2 px-2 font-medium text-center w-14">LIFF</th>
+              <th class="py-2 px-2 font-medium text-center w-16">Wallet</th>
+              <th class="py-2 px-2 font-medium text-center w-14">mini</th>
+            </tr>
+          </thead>
+          <tbody id="ia-body"></tbody>
+        </table>
+      </div>
+      <p id="ia-count" class="text-xs text-slate-400 mt-3"></p>
+    </div>
+
+    <!-- ═══ 2026-08-10 (#4) ═══ -->
+    <div class="panel mt-6">
+      <div class="flex items-center gap-2 flex-wrap"><span class="badge badge-indigo">#4 · 2026-08-10</span><h3 class="panel-h">USDT PLUS 이율 5% → 7% (최대 연 10%) · 액션 라벨 개편과 「외부 지갑 연결」 프로덕션 반영 · Unifi Pay Direct 출시 · mini 출석 체크 신설</h3></div>
+      <table class="ex-table mt-4"><tbody>
+        <tr><th>점검 대상</th><td><b>프로덕션</b> + <b>Beta</b> + <b>Unifi mini Beta</b> — 비로그인 17개 라우트 순회 후, <b>같은 날 로그인 세션을 제공받아 로그인 영역 13개 라우트를 보강 점검</b></td></tr>
+        <tr><th>결과</th><td>IA.md 갱신 · 승인 대기 <b>5건</b>(⑥ 누적 이자 화면 신설) · 이월 <b>4건 해소</b>(게임 미션 복귀 · 액션 라벨 · 외부 지갑 연결 · 로그인 영역 전체)</td></tr>
+      </tbody></table>
+
+      <div class="mt-5 rounded-xl bg-rose-50 border border-rose-200 p-4">
+        <p class="text-sm font-bold text-rose-900">🔴 이율이 바뀌었습니다 — 문구에 남은 구 수치(PLUS 5% · 합산 8%)를 확인하세요</p>
+        <p class="text-sm text-rose-900/90 mt-1">8월 4일 공지로 <b>USDT PLUS 모드 연이율이 5% → 7%</b>로 올랐고 <b>8월 6일 00:00(UTC)부터 발효</b>됐습니다(BASIC 3% 유지, Boost 최대 3% 합산 시 <b>최대 연 10%</b>). 기존 PLUS 사용자는 <b>자동 적용</b>됩니다. 프로덕션 홈 히어로가 <b>"Up to 10% annual rate"</b>로, Beta 홈에는 <b>"연 7% 더 높아진 이자 혜택 받기"</b> 배너로 이미 교체됐습니다.</p>
+      </div>
+
+      <h4 class="font-bold text-ink mt-5">⚠️ → ✅ 실측 승격</h4>
+      <table class="ex-table mt-2"><tbody>
+        <tr><th>화면</th><th>라우트 · 위치</th><th>핵심 확인</th></tr>
+        <tr><td><b>mini 「매일 출석 체크」</b> 🆕</td><td><code>/benefits-mini/daily-mission</code></td><td>섹션 신설 — "3일 연속, 5일 연속 출석체크하고 럭키볼 받아요" · 1~5일 진행도 · CTA <b>"00:00:00 안에 출석하기"</b>. <b>지난 회차의 "mini는 출석 체크 없음" 기재를 정정</b>합니다</td></tr>
+        <tr><td><b>mini 럭키볼 친구 초대 — 비실시간 지급</b> 🆕</td><td><code>/benefits-mini/luckyball-invite</code></td><td><b>"당첨금은 뽑기 시점으로부터 2주 이내에 지급됩니다"</b> · <b>「지급될 리워드」 + 「지급 완료된 리워드」</b> 블록 신설 · 유의사항 6종(<b>일본 가입자 지갑 주소로만 지급</b> · 어뷰징 · 조기 종료 · <b>초대 시 LINE 프로필 이름 일부 노출</b>)</td></tr>
+        <tr><td><b>게임 미션 섹션 복귀</b> <span class="text-slate-400">#3 이월 해소</span></td><td><code>/benefits/daily-mission</code></td><td>8/3 미노출은 <b>Season 3 전환 중 일시 현상</b>으로 정리. 진행도 "1 game / 2 games(Lucky Ball 1) / 3 games" + 게임 6종 카드 <b>"Before proceeding with mission 0/N"</b></td></tr>
+        <tr><td><b>Unifi Pay Direct</b> 🆕</td><td>공지 8/5 · <b>파트너 콘솔</b></td><td>정산 지갑 등록 → 가맹점 결제 수령. <b>프로토콜 수수료 1%</b> · 런칭 이벤트 8/4~8/16(랭킹 1,000·500·300 USDT + 랜덤 5팀 50 USDT · 누적 2만 USDT↑ 시 최대 1,000 USDT 페이백). <b>지금은 B2B라 사용자 IA 밖</b> — 사용자 앱에 결제 화면이 생기면 편입 검토</td></tr>
+      </tbody></table>
+
+      <div class="mt-4 rounded-xl bg-rose-50 border border-rose-200 p-4">
+        <p class="text-sm font-bold text-rose-900">🔧 스켈레톤 이슈 — 로그인 점검으로 재현 조건이 뒤집혔습니다</p>
+        <table class="ex-table mt-3"><tbody>
+          <tr><th>대상</th><th>비로그인</th><th>로그인</th></tr>
+          <tr><td>프로덕션 <code>/benefits/daily-mission</code></td><td>✅ 정상</td><td><b>✅ 정상</b></td></tr>
+          <tr><td>Beta 웹 <code>/benefits/daily-mission</code></td><td><b>❌ 스켈레톤</b></td><td>✅ 정상</td></tr>
+          <tr><td><b>Beta mini</b> <code>/benefits-mini/daily-mission</code></td><td>❌ 스켈레톤</td><td><b>❌ 스켈레톤 (8초 후에도)</b></td></tr>
+        </tbody></table>
+        <p class="text-sm text-rose-900/90 mt-2"><b>프로덕션은 해소</b>됐습니다(7/27 재현은 더 이상 관측되지 않음). 남은 문제는 <b>Beta 한정</b>이고, 그중 <b>mini Reward 탭은 로그인 상태에서도 뜨지 않습니다</b> — 지금 작업 중인 럭키볼 캠페인의 핵심 화면이라 가장 먼저 확인할 대상입니다.</p>
+      </div>
+
+      <h4 class="font-bold text-ink mt-5">🔓 로그인 보강 — 프로덕션에 이미 나가 있던 변경 2건</h4>
+      <table class="ex-table mt-2"><tbody>
+        <tr><th>항목</th><th>결과</th></tr>
+        <tr><td><b>액션 라벨 개편</b></td><td><b>프로덕션 반영 완료</b> — 내 자산 액션이 <b>보내기 / 채우기 / 교환하기 / 은행출금</b>. 구 표기(송금하기·입금하기·은행송금)는 사라졌습니다. <b>구 라벨이 남은 XLT·위키 문구는 교체 대상</b>입니다</td></tr>
+        <tr><td><b>외부 지갑 연결</b></td><td><b>프로덕션 반영 완료</b> — 내 자산 헤더 ⋮ 메뉴의 한국어 「외부 지갑 연결」(메뉴 유일 항목). 연결 플로우는 상태 변경이라 미진입</td></tr>
+        <tr><td><b>🆕 누적 이자 화면</b></td><td><code>/interest/usdt</code> — 내 자산 USDT 카드의 "누적이자 …를 받았어요"로 진입. 연 3%(BASIC) 표기 + <b>「플러스 모드로 연 7%」·「부스트로 최대 연 3%」</b> 배너 + 이자 내역(3개월·최신순·전체). <b>어휘 승인 대기 ⑥ 신설</b></td></tr>
+        <tr><td>한국어 필터 라벨 확정</td><td>알림 <b>전체·안읽음·공지사항·계정/보안·예치·입출금</b> / 거래내역 <b>3개월·모든 토큰·전체·최신순</b> (기존 기재는 영문)</td></tr>
+        <tr><td>송금 안내 문구</td><td>프로덕션 정본 <b>"보내기 가능한 토큰만 표시되며, 락업/플러스 모드에 보관한 자산…"</b> — Beta 문구(<code>송금 가능</code>·<code>잠금</code>)와 어휘가 다릅니다</td></tr>
+      </tbody></table>
+
+      <div class="mt-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
+        <p class="text-sm font-bold text-slate-800">⛔ Beta 디버그 패널은 점검에 쓰지 않습니다 <span class="font-normal text-slate-500">2026-08-10 확정</span></p>
+        <p class="text-sm text-slate-700 mt-1">Beta 화면 좌측 톱니의 <b>「국가 모킹」·「알림 테스트」·「결제 가맹점 진입」</b>은 <b>개발자 도구</b>라 점검 수단으로 사용하지 않습니다. 국가 모킹으로 JP IP·Wallet Mode 화면을 실측 승격하는 방안도 <b>폐기</b>했습니다 — 이 축들은 <b>실제 접속 환경</b>(VPN·해외 IP·LIFF 링크·실기기 캡처)으로만 승격합니다. 다만 <b>「결제 가맹점 진입」 버튼이 존재한다는 사실</b>은 Unifi Pay의 사용자측 결제 화면이 Beta에 준비 중이라는 신호로만 기록해 둡니다(버튼은 누르지 않습니다).</p>
+      </div>
+
+      <div class="mt-4 rounded-xl bg-amber-50 border border-amber-200 p-4">
+        <p class="text-sm font-bold text-amber-900">🙋 사용자 승인 대기 — Screen ID 어휘 4건 (신규 없음)</p>
+        <p class="text-sm text-amber-900/90 mt-1">① 보유 NFT <code>asset_nft_01</code> → <code>apps_mypage_nft_01</code> · ② <code>/reward/…</code> 부스트·스테이킹 어휘(<code>reward_</code> 충돌) · ③ K-Pick <code>kpick_</code> 프리픽스 · ④ 외부 지갑 연결 <code>asset_wallet_connect_01</code>. <b>확정 전까지 해당 영역 Screen ID 부여 금지.</b><br><span class="text-amber-800">참고: Unifi Pay가 사용자 화면으로 들어오면 주기능 <code>pay_</code> 신설 여부를 결정해야 합니다(아직 제안 단계 아님).</span></p>
+      </div>
+
+      <div class="mt-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
+        <p class="text-sm font-bold text-slate-800">⬜ 이번 주는 로그인 점검을 하지 못했습니다 — 로그인만 해두시면 다음 회차에 자동 커버됩니다</p>
+        <p class="text-sm text-slate-700 mt-1">직전 3회차에 쓰던 <b>Beta 로그인 세션까지 만료</b>돼 <code>/my</code>·<code>/setting</code>·<code>/notification</code>·거래내역·송금·입금·교환·보유 NFT·<b>외부 지갑 연결 메뉴</b>·<b>mini 로그인 상태</b>를 확인하지 못했습니다. Chrome에서 <code>www.unifi.me</code>(또는 Beta)에 로그인해두시면 다음 점검에 포함됩니다 — <b>Claude는 직접 로그인하지 않습니다.</b> 그 밖의 이월: Wallet Mode(해외 IP) · LIFF(LINE 앱) · JP IP · approve 미완료 계정 · <code>draw-promotion</code> 내용 · 위임·외부 지갑 연결 플로우(상태 변경이라 의도적 미진입).</p>
+      </div>
+
+      <details class="ex mt-4"><summary>확인이 필요한 관찰 · 변경 없음 확인 · 다음 주 이월 항목 보기</summary><div class="ex-body">
+        <p class="ex-cap"><b>⚠️ 확인 필요</b>: ⓐ Beta 홈 「함께하면 더 큰 혜택, KAIA &amp; USDT」 부제가 <b>"최대 0% 보상에 특별 혜택까지!"</b>로 노출(프로덕션 4.2%) — 데이터 미로딩 시 0 폴백으로 보이며 FE 확인 권장 · ⓑ <b>K-뷰티 캐시백률이 환경별로 다름</b>(같은 시각 Web K-Pick 쥬베룩 5%·리쥬란 8%·포텐자 10% / mini 10%·10%·5%) — <b>캐시백 수치를 문서에 상수로 인용하지 마세요</b> · ⓒ <b>K-컬처 상품은 조회마다 로테이션</b>(BTS 팬투어 ↔ 홍대 댄스클래스 ↔ 걸그룹 스타일링) — 개별 상품 등장·소멸은 IA 변경이 아닙니다 · ⓓ mini 출석 체크에는 풀 모드와 달리 <b>"100 USDT 이상 예치" 조건 문구가 없습니다</b> · ⓔ mini 이자 배너(연 최대 5%)가 <b>2주 연속</b> 실측 — 위키 스펙("mini 이자 노출 불가")과 충돌</p>
+        <p class="ex-cap mt-2"><b>변경 없음</b>: 프로덕션 GNB 4탭 / Beta·mini 5탭 · 로그인 게이트(소셜 5종) · 부스트 티어 30만·40만·50만 = 1·2·3%와 100,000 USDT 한도 · <code>/reward/kaia</code> CR 정책 전문 · <b>Mission Check Period 2R(8.2~8.12) 진행 중</b> · Season 3 정책 문구 · <code>/apps</code> 구성(캐러셀 5종·미션 3건·Editor's Pick·카테고리 8종, <b>30 → 29 Apps</b>) · <code>/apps/market</code> 구조 · K-Pick 카테고리 4아이콘·바우처 12종 · <code>draw-promotion</code> LINE 앱 전용 게이트 · 푸터 구성</p>
+        <p class="ex-cap mt-2"><b>이월</b>: 로그인 영역 전체 · 프로덕션 로그인 스켈레톤 재현 여부 · mini 이자 정책 충돌 · <b>K-Pick KR IP 정책(3주 연속 전체 열람 — 구 정책 폐기 여부 확인)</b> · Beta 액션 라벨(보내기·채우기·은행출금) 프로덕션 반영 시점 · XLT 누락 의심 2건(mini "외부 게임 미션" · swap "AlphaSec" 한국어) · 입금 브릿지 상세 · 송금 2단계·QR · 거래 상세 · 플러스 모드 상세 · <code>/payout</code> · 계정 탈퇴</p>
+        <p class="ex-cap mt-2"><b>🧭 점검 팁(신규)</b>: Beta에 <code>?liff_id=…</code>로 한 번 들어가면 같은 탭에서 루트 <code>/</code>로 가도 계속 <code>/benefits-mini</code>로 리다이렉트됩니다. <b>Beta 웹 화면은 mini 진입 전에 먼저</b> 보세요.</p>
+      </div></details>
+    </div>
+
+    <!-- ═══ 2026-08-03 (#3) ═══ -->
+    <div class="panel mt-6">
+      <div class="flex items-center gap-2 flex-wrap"><span class="badge badge-indigo">#3 · 2026-08-03</span><h3 class="panel-h">미션앤리워드 Season 3 개시 — 럭키볼 정책 수치 전면 교체 · MY쇼핑 정체 확인</h3></div>
+      <table class="ex-table mt-4"><tbody>
+        <tr><th>점검 대상</th><td><b>프로덕션</b>(비로그인·KR IP) + <b>Beta</b>(로그인) + <b>Unifi mini Beta</b> — 라우트 20여 개 순회</td></tr>
+        <tr><th>결과</th><td>IA.md 갱신 · <b>§0-0-1(화면 변형 3축) 신설</b> · Season 3 정책 블록 신설 · 승인 대기 <b>5건</b>(④⑤ 신규) · #2 이월 3건 해소</td></tr>
+      </tbody></table>
+
+      <div class="mt-5 rounded-xl bg-rose-50 border border-rose-200 p-4">
+        <p class="text-sm font-bold text-rose-900">🔴 럭키볼 정책 수치가 전부 바뀌었습니다 — 기존 위키·XLT 문구 재확인 필요</p>
+        <p class="text-sm text-rose-900/90 mt-1">8월 1일자 공지로 <b>미션 &amp; 럭키볼 이벤트 Season 3</b>(8/1~9/1)가 시작되면서 출석·게임 미션의 지급 규칙과 상금 구조가 교체됐습니다. 럭키볼 캠페인 위키에 <b>구 수치("최대 9개" 등)</b>가 남아 있으면 Season 3 기준으로 검토하세요.</p>
+      </div>
+
+      <table class="ex-table mt-4"><tbody>
+        <tr><th>항목</th><th>이전</th><th>Season 3 (8/1~9/1)</th></tr>
+        <tr><td>출석 럭키볼</td><td>USDT 100~1,000+ 최대 9개</td><td><b>100 USDT↑</b> 라운드당 3일·5일 각 1개 → <b>월 최대 12개</b> / <b>1,000 USDT↑</b> 각 2개 → <b>월 최대 24개</b></td></tr>
+        <tr><td>출석 라운드</td><td>1~5일 단발</td><td><b>5일 완료 다음 날부터 새 라운드 시작</b> (반복)</td></tr>
+        <tr><td>게임 미션</td><td>3개 완료 · <b>1회성</b>(시간 제한 없이 수령)</td><td><b>6종 중 3종 매일</b> 완료 → 1개 · <b>매일 00:00 UTC+0 리셋</b> · 월 최대 30개</td></tr>
+        <tr><td>미수령 처리</td><td>명시 없음</td><td><b>당일 미수령 럭키볼은 리셋 시 소멸</b></td></tr>
+        <tr><td>럭키볼 상금</td><td>"최대 500 USDT"</td><td><b>5티어</b> — 500 / 20 / 5 / 1 / <b>0.02 USDT</b></td></tr>
+      </tbody></table>
+
+      <h4 class="font-bold text-ink mt-5">🧭 IA 트리를 3축으로 재정리했습니다 <span class="text-slate-400 font-normal text-sm">IA.md §0-0-1 신설</span></h4>
+      <p class="text-sm text-slate-600 mt-1">한 라우트가 곧 한 화면이 아닙니다. <b>① 환경</b>(Web · LIFF · Wallet Mode · mini) × <b>② 사용자 상태</b>(로그인 · 비로그인) × <b>③ 접속 IP</b>(KR · JP · US·CA·UK·SG) 조합이 화면 구성을 바꿉니다. <b>Screen ID를 부여하기 전 세 축의 값을 먼저 확정</b>하세요.</p>
+      <p class="note note-amber mt-3">⚠️ 우선순위: <b>③ IP가 US·CA·UK·SG면 ①을 덮어써 무조건 Wallet Mode</b> → ① mini면 기준 자산이 JPYC → ②는 그 위의 상태 분기. 현재 실측은 <b>Web·mini × KR IP</b> 조합뿐이고 <b>Wallet Mode·LIFF·JP는 전부 위키 스펙 근거</b>입니다.</p>
+
+      <h4 class="font-bold text-ink mt-5">⚠️ → ✅ 실측 승격 · 신설</h4>
+      <table class="ex-table mt-2"><tbody>
+        <tr><th>화면</th><th>라우트 · 위치</th><th>핵심 확인</th></tr>
+        <tr><td><b>MY쇼핑</b> <span class="text-slate-400">#2 이월 해소</span></td><td>K-Pick 헤더 우측</td><td><b>Unifi 화면이 아님</b> — 외부 GuideKim(<code>/me/orders</code>)으로 새 탭 이탈. <b>Screen ID 부여 대상 아님</b></td></tr>
+        <tr><td><b>외부 지갑 연결</b> 🆕</td><td>내 자산 헤더 <b>⋮ 메뉴</b> (Beta)</td><td>Connect External Wallet · 연결 자산은 <b>송금 대상에서 제외</b>됨(<code>/transfer</code> 안내문 신설)</td></tr>
+        <tr><td><b>Apps 게임 프로모션 캐러셀</b> 🆕</td><td><code>/apps</code> 최상단</td><td>5종 슬라이드 전부 외부 게임 이탈 · <b>27 → 30 Apps</b></td></tr>
+        <tr><td><b>mini Reward 탭</b></td><td><code>/benefits-mini/daily-mission</code></td><td>🆕 <b>Special Missions</b>(게임·광고·설문, 최대 ¥30,000) · Game mission · <b>출석 체크 없음</b> · ⚠️ <b>연 최대 5% 이자 배너</b>(mini 이자 미제공 스펙과 충돌)</td></tr>
+        <tr><td><b>mini Assets · My</b></td><td>mini GNB → <code>/my</code> · <code>/setting</code></td><td><b>풀 모드 화면을 그대로 공유</b> — 이율·누적이자 표기와 어그리게이터 약관까지 동일</td></tr>
+        <tr><td>CR 보상 분배 정책</td><td><code>/reward/kaia</code></td><td>6개월 분할 + <b>매월 수동 Claim</b> · 미분배분 <b>90일 후 소각</b> · 캡 5,000만 USDT · 1:10은 <b>예치 원금만</b> 산정</td></tr>
+      </tbody></table>
+
+      <div class="mt-4 rounded-xl bg-rose-50 border border-rose-200 p-4">
+        <p class="text-sm font-bold text-rose-900">🔧 서비스측 이슈 보고 — 로그인 리워드 탭 3주 연속 로딩 실패</p>
+        <p class="text-sm text-rose-900/90 mt-1">로그인 상태에서 <code>/benefits/daily-mission</code>이 <b>스켈레톤에서 벗어나지 않습니다</b>(7/27 프로덕션 · 7/30·8/3 Beta). 8/3 네트워크 실측 결과 <b>정적 자산·API 모두 200</b>(<code>POST /unifi/v1/mission-users</code> 포함)이고 <b>콘솔 에러 0건</b>인데 UI만 로딩 상태에 고착 — <b>프런트 렌더 이슈</b>로 보입니다. 같은 라우트가 <b>비로그인에서는 정상 렌더</b>됩니다.</p>
+      </div>
+
+      <div class="mt-4 rounded-xl bg-amber-50 border border-amber-200 p-4">
+        <p class="text-sm font-bold text-amber-900">🙋 사용자 승인 대기 — Screen ID 어휘 5건</p>
+        <p class="text-sm text-amber-900/90 mt-1">① 보유 NFT <code>asset_nft_01</code> → <code>apps_mypage_nft_01</code> · ② <code>/reward/…</code> 부스트·스테이킹 어휘(<code>reward_</code> 충돌) · ③ K-Pick <code>kpick_</code> 프리픽스 · <b>④ 🆕 외부 지갑 연결 <code>asset_wallet_connect_01</code></b> · <b>⑤ 🆕 비로그인 변형 어휘 방식</b>(홈처럼 구성이 다른 화면에 <code>home_main_guest_01</code> 식 별도 ID를 줄지). <b>확정 전까지 해당 영역 Screen ID 부여 금지.</b><br><span class="text-amber-800">해소: #2의 <code>kpick_myshopping_01</code> 제안은 <b>폐기</b>(외부 서비스라 부여 대상 아님).</span></p>
+      </div>
+
+      <div class="mt-4 rounded-xl bg-slate-50 border border-slate-200 p-4">
+        <p class="text-sm font-bold text-slate-800">⬜ 미점검 — 접근 수단이 있으면 다음 회차에 실측할 수 있습니다</p>
+        <p class="text-sm text-slate-700 mt-1"><b>프로덕션 로그인 전체</b>(Chrome에 Beta 세션만 있음 — 사용자가 <code>www.unifi.me</code>에 로그인해두면 자동 커버) · <b>Wallet Mode</b>(US·CA·UK·SG IP 필요) · <b>LIFF 환경</b>(LINE 앱 링크 필요) · <b>JP IP</b> · <b>approve 미완료 계정</b> · <b>mini 비로그인</b> · <code>draw-promotion</code> 내용(LINE 앱 전용 차단) · 위임·외부 지갑 연결 플로우(상태 변경이라 의도적 미진입).</p>
+      </div>
+
+      <details class="ex mt-4"><summary>변경 없음 확인 · XLT 부수 발견 · 다음 주 이월 항목 보기</summary><div class="ex-body">
+        <p class="ex-cap"><b>변경 없음</b>: 프로덕션 GNB 4탭 / Beta·mini 5탭 · 로그인 게이트(소셜 5종) · 부스트 티어 30만·40만·50만 = 1·2·3%와 100,000 USDT 한도 · Beta 내 자산 액션 4종(Send·Receive·Swap·Bank Withdraw) · Beta 마이 구성 전체 · <code>/apps/market</code> 구조 · 푸터 구성(mini는 어그리게이터 약관 없음 재확인) · Apps 카테고리 8종</p>
+        <p class="ex-cap mt-2"><b>🌐 XLT 부수 발견</b> — 영문 UI에 한국어 원문이 그대로 노출된 곳 2건: mini 게임 미션 항목 <b>"외부 게임 미션"</b> · 교환하기 하단 배너 <b>"지금 AlphaSec에서 KAIA 거래하면 즉시 수수료 0원!"</b>. XLT 키 부여 누락 여부 확인을 권장합니다.</p>
+        <p class="ex-cap mt-2"><b>이월</b>: 프로덕션 리워드 탭 <b>게임 미션 섹션 미노출</b> 원인(7/30 노출 → 8/3 미노출) · mini 홈 "100% 당첨 JPYC 럭키볼" 섹션 소멸 · <b>mini 이자 노출 정책 충돌</b> · K-Pick <b>KR IP 정책</b>(2주 연속 전체 열람) · Beta 액션 라벨의 프로덕션 반영 시점 · 입금 브릿지 상세 · 송금 2단계·QR · 거래 상세 · 플러스 모드 상세 · <code>/payout</code> · 계정 탈퇴</p>
+      </div></details>
+    </div>
+
+    <!-- ═══ 2026-07-30 (#2) ═══ -->
+    <div class="panel mt-6">
+      <div class="flex items-center gap-2 flex-wrap"><span class="badge badge-indigo">#2 · 2026-07-30</span><h3 class="panel-h">KAIA 스테이킹 출시 · Beta 환경 점검 도입 · Unifi mini 최초 실측</h3></div>
+      <table class="ex-table mt-4"><tbody>
+        <tr><th>점검 대상</th><td><b>프로덕션</b>(비로그인·KR IP) + <b>Beta</b>(로그인) + <b>Unifi mini Beta</b> — 이번 회차부터 Beta 상시 점검</td></tr>
+        <tr><th>결과</th><td>IA.md 갱신 · §0-0(점검 환경)·§2-2-1(부스트·스테이킹) 신설 · 승인 대기 3건 · #1 이월 항목 1건 해소</td></tr>
+      </tbody></table>
+
+      <div class="mt-5 rounded-xl bg-indigo-50 border border-indigo-200 p-4">
+        <p class="text-sm font-bold text-indigo-900">🆕 Beta 환경이 점검 범위에 들어왔습니다</p>
+        <p class="text-sm text-indigo-900/90 mt-1"><code>unifi-web.line-apps-beta.com</code>에는 <b>앞으로 릴리즈할 내용이 먼저 반영</b>됩니다. 앞으로 매주 프로덕션과 Beta를 함께 점검하고, 리포트·IA.md에 <b>"릴리즈 예정"으로 구분 표기</b>합니다. mini는 <code>?liff_id=…</code> 주소로 진입하며, <b>MINI app 없이 mini를 실측할 수 있는 유일한 창구</b>입니다.</p>
+      </div>
+
+      <h4 class="font-bold text-ink mt-5">🔴 최대 변경 — KAIA 스테이킹(위임) 출시 <span class="text-slate-400 font-normal text-sm">#1 이월 항목 해소</span></h4>
+      <table class="ex-table mt-2"><tbody>
+        <tr><th>화면</th><th>라우트</th><th>핵심 확인</th></tr>
+        <tr><td>KAIA Reward 탭 🆕</td><td><code>/reward/kaia</code></td><td>KAIA Staking 위임 연 최대 4.2% · Delegate · <b>Special Contribution Rewards</b>(10 USDT당 최대 0.449999 KAIA) · Mission Check Period(1R 7.23~8.2 진행 중 / 2R / 3R)</td></tr>
+        <tr><td>USDT Reward 탭</td><td><code>/reward/usdt</code> (구 <code>/boost/kaia</code>)</td><td>티어 30만/40만/50만 = 1/2/3% 유지 · <b>부스트 조건에 위임 KAIA 합산 신설</b>(Kaia Square 노드 위임분 동등 반영)</td></tr>
+      </tbody></table>
+      <p class="ex-cap mt-2">위임 정책: 자동 적립·개별 출금 불가 / 언디렐리게이트 후 <b>7일 쿨다운</b> 뒤 원금+보상 일괄 수령 / 쿨다운 종료 후 7일 미수령 시 <b>자동 재위임</b> / Kaia 네트워크 상황에 따라 보상 변동</p>
+
+      <h4 class="font-bold text-ink mt-5">⚡ Beta 전용 — 릴리즈 예정 (프로덕션 미반영)</h4>
+      <table class="ex-table mt-2"><tbody>
+        <tr><th>구분</th><th>프로덕션(현재)</th><th>Beta(릴리즈 예정)</th></tr>
+        <tr><td>GNB</td><td>4탭 — 홈·리워드·내 자산·마이</td><td><b>5탭 — 홈·K-Pick·리워드·내 자산·마이</b></td></tr>
+        <tr><td>내 자산 액션</td><td>송금하기 / 입금하기 / 은행송금</td><td><b>보내기 / 채우기 / 은행출금</b></td></tr>
+        <tr><td>홈 배너</td><td>Better Together(KAIA &amp; USDT)</td><td>+ 친구에게 JPYC 선물하기 · <b>결제 시 최대 15% 캐시백</b> · JPYC 연 최대 5%</td></tr>
+      </tbody></table>
+      <p class="note note-amber mt-3">⚠️ <b>액션 라벨 개편은 XLT 영향이 큽니다</b> — 용어집 v3.9~v4.0의 <code>보내기</code> ja 出金/出金元 개편과 같은 흐름입니다. XLT 작업 시 <b>대상 환경(프로덕션/Beta)을 먼저 확정</b>하세요.</p>
+
+      <details class="ex mt-4"><summary>K-Pick 탭 · Unifi mini 실측 상세 보기</summary><div class="ex-body">
+        <p class="ex-cap"><b>K-Pick 탭(Beta)</b> — 라우트 <code>/benefits</code>(리워드는 <code>/benefits/daily-mission</code>) · 서브탭 K-Pick | MY쇼핑 · <b>카테고리 5종 → 3종 개편</b>(K-뷰티·K-쇼핑·K-컬처) · 바우처(올리브영·다이소·CU·이마트, 캐시백 8~22%) · K-뷰티 스킨부스터(쥬베룩·리쥬란, 캐시백 10%) · 내 예약 · ⚠️ KR IP로도 전체 열람됨(구 정책은 비노출 — 확인 필요)</p>
+        <p class="ex-cap mt-2"><b>Unifi mini(Beta) 최초 실측</b> — <code>/benefits-mini</code>(홈: qr·noti / 내 예약 N건 / 데일리 미션하고 JPYC 받기 / 100% 당첨 JPYC 럭키볼) · <code>/benefits-mini/daily-mission</code> · <code>/draw-promotion</code> · <code>/luckyball-invite</code>(현재 위키 작업 중인 럭키볼 캠페인 실제 라우트) · <code>/curation/{uuid}</code> · mini 푸터에 <b>어그리게이터 약관 없음</b> 확인</p>
+      </div></details>
+
+      <div class="mt-4 rounded-xl bg-amber-50 border border-amber-200 p-4">
+        <p class="text-sm font-bold text-amber-900">🙋 사용자 승인 대기 — Screen ID 어휘 3건</p>
+        <p class="text-sm text-amber-900/90 mt-1">① 보유 NFT <code>asset_nft_01</code> → <code>apps_mypage_nft_01</code> (#1 제안 → <b>대기 결정 유지</b>) · ② 🆕 <code>/reward/…</code> 부스트·스테이킹 어휘 — <code>reward_</code>가 리워드 탭에 이미 쓰여 <b>충돌</b>(후보: <code>reward_staking_kaia_01</code> vs 별도 <code>staking_</code> 신설) · ③ 🆕 K-Pick <code>kpick_</code> 프리픽스 확정(GNB 승격 + 라우트 <code>/benefits</code> 겹침). <b>확정 전까지 해당 영역 Screen ID 부여 금지.</b></p>
+      </div>
+
+      <details class="ex mt-4"><summary>변경 없음 확인 · 다음 주 이월 항목 보기</summary><div class="ex-body">
+        <p class="ex-cap"><b>변경 없음</b>: 프로덕션 리워드 탭(출석·게임 6종·Apps 둘러보기) · <code>/apps</code>(27 Apps·카테고리 8종) · 부스트 티어 수치·한도 · 푸터 구성 · 프로덕션 GNB 4탭 라우트</p>
+        <p class="ex-cap mt-2"><b>이월</b>: ⚠️ <b>로그인 리워드 탭 로딩 실패 2주 연속</b>(프로덕션·Beta 모두 재현 — 다음에도 재현되면 서비스측 이슈로 보고) · MY쇼핑 서브탭 상세 · 위임 입력·확인(상태 변경이라 미진입) · Beta 액션 라벨의 프로덕션 반영 시점 추적 · K-Pick KR IP 정책 확인 · Wallet Mode 실측(IP 제약)</p>
+      </div></details>
+    </div>
+
+    <!-- ═══ 2026-07-27 (#1) ═══ -->
+    <div class="panel mt-6">
+      <div class="flex items-center gap-2 flex-wrap"><span class="badge badge-indigo">#1 · 2026-07-27</span><h3 class="panel-h">첫 정기 점검 — 실측 승격 5건 · 신설 확인 다수</h3></div>
+      <table class="ex-table mt-4"><tbody>
+        <tr><th>점검 대상</th><td>unifi.me (Unifi 풀 모드 · KR IP) — 비로그인 + 로그인 실측</td></tr>
+        <tr><th>결과</th><td>IA.md 갱신 (커밋 144002a) · 승인 대기 1건 · 다음 주 이월 항목 기록</td></tr>
+      </tbody></table>
+
+      <h4 class="font-bold text-ink mt-5">⚠️ 추정 → ✅ 실측 승격 5건</h4>
+      <table class="ex-table mt-2"><tbody>
+        <tr><th>화면</th><th>라우트</th><th>핵심 확인</th></tr>
+        <tr><td>Apps 메인</td><td><code>/apps</code></td><td>비로그인 열람 가능 · Reward/Market 서브탭 · 시세 위젯 · 카테고리 8종/27 Apps</td></tr>
+        <tr><td>Apps 마켓 🆕</td><td><code>/apps/market</code></td><td>Buy/Sell · NFT Drops(Live/Past) · KAIA 가격</td></tr>
+        <tr><td>알림 목록</td><td><code>/notification</code></td><td>필터 6종(전체·안읽음·공지·계정/보안·예치·입출금)</td></tr>
+        <tr><td>게임 미션 상세</td><td><code>/benefits/games/{uuid}</code></td><td>참여자·카운트다운·보상 수령·세부 미션 진행도·FAQ</td></tr>
+        <tr><td>은행송금</td><td>외부 <code>unifi.sentbe.com</code></td><td>외부 화면 = Screen ID 대상 아님 · 복귀 라우트 <code>/payout</code>만 Unifi</td></tr>
+      </tbody></table>
+
+      <details class="ex mt-4"><summary>신설·변경 사항 전체 보기</summary><div class="ex-body"><ul class="list">
+        <li><b>입금 화면 브릿지 신설</b> — 지원 네트워크 확인 + 수수료 무료 이벤트 배너 (공지 6/30 근거) → <code>asset_deposit_network_01</code> ⚠️ 신설</li>
+        <li><b>JPYC 이자 서비스 출시</b> (최대 연 5%, 공지 6/29) — 제품 모드 표에 JPYC 이자 행 신설 (풀 모드만 제공)</li>
+        <li><b>KAIA 부스트 티어 실측</b> — 30만/40만/50만 KAIA = 1/2/3% · 일 00:00 UTC+0 · 최대 100,000 USDT</li>
+        <li><b>mini K-Pick 정식 출시 + JPYC 결제 도입</b> (공지 7/10)</li>
+        <li><b>로그인 게이트 라우트 확정</b> — <code>/auth/sign-in?returnUrl=…</code> (/my·/setting 리다이렉트)</li>
+        <li>가이드·약관·개인정보·공지 라우트 채집, 푸터 공통 블록 기록, 레퍼럴 3차 캠페인 교체 확인 (공지 7/17)</li>
+      </ul></div></details>
+
+      <div class="mt-4 rounded-xl bg-amber-50 border border-amber-200 p-4">
+        <p class="text-sm font-bold text-amber-900">🙋 사용자 승인 대기 — Screen ID 어휘 정정 1건</p>
+        <p class="text-sm text-amber-900/90 mt-1">보유 NFT 목록: <code>asset_nft_01</code> → <b><code>apps_mypage_nft_01</code></b> 제안 (실측 라우트가 <code>/apps/my-page/nfts</code> = Apps 영역). 검토 게이트에 따라 제안만 기록 — 승인 시 확정.</p>
+      </div>
+
+      <details class="ex mt-4"><summary>변경 없음 확인 · 다음 주 이월 항목 보기</summary><div class="ex-body">
+        <p class="ex-cap"><b>변경 없음</b>: GNB 4탭 구성 · 마이/설정 전체 · 내 자산 구성(액션 4종·토큰 4종) · 거래내역 필터 · 교환 구조 · 리워드 구조 · 소셜 로그인 5종</p>
+        <p class="ex-cap mt-2"><b>이월</b>: 로그인 리워드 탭 문구(로딩 실패 재시도) · 송금 2단계/QR·거래 상세(진입 불가) · 뽑기 결과 등 상태 변경 화면(의도적 미진입) · Kaia CR 미션(공지 7/20 사전 안내 — 화면 미출시, 추적 등록) · Wallet Mode/mini 실측(IP·환경 제약)</p>
+      </div></details>
+    </div>
+
+    <p class="note note-slate mt-6">📅 다음 점검: 매주 월요일 10:00 자동 실행 (<code>weekly-unifi-ia-check</code>) — 새 리포트가 발행되면 이 탭에 주차별로 추가됩니다.</p>
+  </section>
+</main>
+</div>
+<script>
+/* IA_DATA — md/IA.md 갱신 시 이 배열만 고친다.
+   d: 뎁스(1~3) · n: 화면명 · r: 라우트/부가 표기 · e: [Web, LIFF, Wallet, mini] 제공도 1=제공 2=조건부 0=미제공 */
+var IA_DATA = [
+ [1,'홈','/ · 비로그인 열람 가능 (자산 카드 미노출)',1,1,1,1],
+ [2,'자산 요약 카드','USDT · JPYC · IDRP 탭',1,1,2,2],
+ [3,'누적 이자 · 플러스 모드 배너','basic 연 3% · plus 연 7% (2026-08-06 인상) · boost 최대 3% = 최대 연 10%',1,1,0,0],
+ [2,'USDT 부스트','/reward/usdt',1,1,0,0],
+ [3,'티어 30만 · 40만 · 50만 KAIA = 1 · 2 · 3%','',1,1,0,0],
+ [2,'KAIA 스테이킹','/reward/kaia',1,1,0,0],
+ [3,'staking rewards · delegate','연 최대 4.2%',1,1,0,0],
+ [3,'special contribution rewards · mission check period','10 USDT당 최대 0.449999 KAIA',1,1,0,0],
+ [2,'알림 목록','/notification · 로그인 필수 · 필터 6종 · 30일 보관',1,1,2,2],
+ [2,'공지사항','/announcement',1,1,1,1],
+ [3,'공지 상세','/{id} · LIFF는 liff_id 쿼리',1,1,1,1],
+ [2,'가이드','/doc/usdt · /doc/jpyc · /doc/wallet · /doc/trust · /guide',1,1,2,2],
+ [2,'FAQ','/faq',1,1,1,1],
+ [2,'OA 친구추가 유도','LIFF 접근 시',0,1,1,0],
+ [1,'K-Pick','/benefits',2,2,0,1],
+ [3,'Web · LIFF는 JP only · Beta에서 GNB 정식 탭 승격','',2,2,0,1],
+ [2,'카테고리 4종','K-뷰티 · K-쇼핑 · K-컬처 · 내 예약',2,2,0,1],
+ [2,'바우처','캐시백 8~22% · 올리브영 · 다이소 · CU · 이마트',2,2,0,1],
+ [2,'K-뷰티 시술','쥬베룩 · 리쥬란 · 포텐자 · 캐시백 5~10% (환경별 상이 · 상수 인용 금지)',2,2,0,1],
+ [2,'K-컬처 체험','퍼스널컬러 · 아이돌 메이크업 · BTS 팬투어 등 · 캐시백 7% · 상품 목록 로테이션',2,2,0,1],
+ [2,'내 예약','진행 중 예약 툴팁 · 레드닷',2,2,0,1],
+ [2,'MY쇼핑','외부 guidekim.me 이탈 · Unifi 화면 아님',2,2,0,2],
+ [2,'큐레이션 상세','/benefits-mini/curation/{id}',0,0,0,1],
+ [2,'브릿지 화면','/channel/bridge/…',2,1,0,1],
+ [1,'리워드','/benefits/daily-mission · mini /benefits-mini · 비로그인 열람 가능 (진행도 0)',1,1,0,1],
+ [2,'출석 체크','1~5일 연속 · 3 · 5일 럭키볼 · mini 「매일 출석 체크」 beta 신설 (2026-08-10 실측)',1,1,0,1],
+ [3,'출석 완료 · 럭키볼 획득 팝업','',1,1,0,1],
+ [2,'게임 미션','season 3 — 6종 중 3종 데일리 · 00:00 UTC+0 리셋',1,1,0,2],
+ [3,'게임 상세','/benefits/games/{id}',1,1,0,2],
+ [2,'럭키볼 뽑기','Web 최대 500 USDT (5티어) · mini 최대 50,000 JPYC',1,1,0,1],
+ [3,'뽑기 결과 팝업','',1,1,0,1],
+ [3,'럭키볼 친구 초대','/benefits-mini/luckyball-invite · 친구 20명 상한 · 비실시간 지급 (뽑기 후 2주 이내 · 지급될 · 지급 완료 리워드 표기)',0,2,0,1],
+ [3,'럭키볼 뽑기 프로모션','/benefits-mini/draw-promotion · LINE 앱 전용 게이트',0,0,0,1],
+ [2,'리워드 내역','',1,1,0,2],
+ [2,'Apps 둘러보기 동선','',1,1,2,0],
+ [2,'special missions','게임 · 광고 · 설문 · 최대 ¥30,000 즉시',0,0,0,1],
+ [2,'SkyFlag','mini 전용',0,0,0,1],
+ [1,'내 자산','/my · 로그인 필수 · mini도 이 화면을 그대로 공유 (beta 실측)',1,1,1,1],
+ [2,'외부 지갑 연결','헤더 ⋮ 메뉴 · 2026-08-10 프로덕션 반영 확인 · 보내기 대상에서 제외',1,1,0,2],
+ [2,'보내기','/transfer · 로그인 필수 · 라벨 개편 프로덕션 반영 (구 송금하기)',1,1,1,1],
+ [3,'받는 사람 · 수량 입력 → QR 송금','',1,1,1,1],
+ [2,'채우기','/deposit · 로그인 필수 · 라벨 개편 프로덕션 반영 (구 입금하기)',1,1,1,1],
+ [3,'지원 네트워크 · 브릿지','수수료 무료 이벤트',1,1,1,2],
+ [2,'교환','/apps/trade/swap · 로그인 필수',2,2,1,0],
+ [3,'Web · LIFF는 JP 미제공','',2,2,1,0],
+ [2,'은행출금','외부 unifi.sentbe.com · 라벨 개편 프로덕션 반영 (구 은행송금)',1,1,1,2],
+ [3,'복귀 화면','/payout',1,1,1,2],
+ [2,'누적 이자','/interest/usdt · 로그인 필수 · 2026-08-10 신규 · 이자 내역 필터 3종',1,1,0,2],
+ [2,'거래내역','/my/token/transaction · 로그인 필수 · 필터 4종 (3개월 · 모든 토큰 · 전체 · 최신순)',1,1,2,2],
+ [3,'거래 상세 · 이자 내역','Wallet · mini는 이자 제외',1,1,2,2],
+ [2,'토큰 상세','/my/token/{addr}',1,1,2,2],
+ [3,'플러스 모드 상세 · 이율 표기','',1,1,0,0],
+ [2,'보유 NFT','/apps/my-page/nfts · 로그인 필수',1,1,1,2],
+ [1,'마이','/setting · 로그인 필수 · mini도 이 화면을 공유',1,1,1,1],
+ [2,'인증 보안','이메일 · 패스키 · 간편 비밀번호',1,1,1,1],
+ [2,'지갑 개인 키 확인','',1,1,1,1],
+ [2,'언어 · 통화 설정','',1,1,1,1],
+ [2,'알림 설정','',1,1,1,1],
+ [2,'고객 센터','FAQ · 문의하기',1,1,1,1],
+ [2,'로그아웃 · 계정 탈퇴','',1,1,1,1],
+ [1,'Apps','/apps · GNB 아닌 독립 영역',1,1,2,0],
+ [2,'게임 프로모션 캐러셀','최상단 5종 · 외부 게임 이탈',1,1,2,0],
+ [2,'Reward 서브탭','미션형 보상 · 시세 위젯 · 비로그인 열람 가능',1,1,2,0],
+ [2,'Market 서브탭','/apps/market · NFT drops',1,1,2,0],
+ [2,'앱 카테고리 8종','29 apps · 외부 dapp 이탈',1,1,2,0],
+ [1,'로그인 온보딩','/auth/sign-in',1,1,1,1],
+ [2,'소셜 로그인','google · line · naver · kakao · apple',1,1,1,0],
+ [2,'LINE 단일 로그인','채널 동의 간소화',0,0,0,1],
+ [2,'어그리게이터 약관 approve','',1,1,0,0],
+ [2,'회원가입 완료 바텀시트','',1,1,1,1],
+ [2,'결제 수단','Web · LIFF · Wallet 지갑 연결 / mini LINE IAP + JPYC',1,1,1,2]
+];
+(function(){
+  var body=document.getElementById('ia-body'); if(!body) return;
+  var env=-1, hide=false, collapsed={};
+  var MARK={1:['●','text-emerald-700'],2:['◐','text-amber-700'],0:['–','text-slate-400']};
+  function render(){
+    body.innerHTML='';
+    var shown=0, group=null;
+    IA_DATA.forEach(function(row,i){
+      var d=row[0], name=row[1], route=row[2], vals=[row[3],row[4],row[5],row[6]];
+      if(d===1) group=i;
+      if(d>1 && collapsed[group]) return;
+      if(hide && env>=0 && vals[env]===0) return;
+      var tr=document.createElement('tr');
+      tr.className='border-b border-slate-100'+(d===1?' bg-slate-50 cursor-pointer':'');
+      var pad=d===1?'':(d===2?'pl-4':'pl-9');
+      var tone=d===1?'text-ink':(d===2?'text-slate-700':'text-slate-500 text-xs');
+      var dim=(env>=0&&vals[env]===0)?' opacity-40':'';
+      var caret=d===1?'<span class="inline-block w-3 text-slate-400">'+(collapsed[group]?'▸':'▾')+'</span> ':'';
+      var html='<td class="py-1.5 pr-3 '+pad+' '+tone+dim+'">'+caret+name+(route?' <code class="text-[11px] text-slate-400">'+route+'</code>':'')+'</td>';
+      vals.forEach(function(v,idx){
+        var m=MARK[v], on=(env<0||env===idx);
+        html+='<td class="py-1.5 px-2 text-center '+m[1]+(on?'':' opacity-25')+'">'+m[0]+'</td>';
+      });
+      tr.innerHTML=html;
+      if(d===1){ (function(g){ tr.addEventListener('click',function(){ collapsed[g]=!collapsed[g]; render(); }); })(i); }
+      body.appendChild(tr); shown++;
+    });
+    var c=document.getElementById('ia-count');
+    var names=['Web','LIFF','Wallet Mode','mini'];
+    c.textContent='표시 '+shown+'행 / 전체 '+IA_DATA.length+'행'+(env>=0?' · '+names[env]+' 기준':' · 전체 환경');
+  }
+  document.getElementById('ia-envbtns').addEventListener('click',function(e){
+    var b=e.target.closest('button[data-env]'); if(!b) return;
+    env=parseInt(b.dataset.env,10);
+    this.querySelectorAll('button').forEach(function(x){ x.classList.toggle('is-on', x===b); });
+    render();
+  });
+  document.getElementById('ia-hide').addEventListener('change',function(){ hide=this.checked; render(); });
+  render();
+})();
+</script>
+
+
+<div id="tab-system" class="hidden">
+<main class="max-w-6xl mx-auto px-5">
+
+  <section class="py-14">
+    <h2 class="sec-title">시스템 가이드 <span class="text-slate-400 font-normal text-lg">전체 구조 · 문서 지도</span></h2>
+    <p class="sec-sub">
+      이 시스템은 <b>규칙 문서(<code>md/</code>) 13개 + 자동화 스크립트 13개</b>로 되어 있고 계속 늘어나고 있습니다.
+      이 탭은 <b>“무엇이 어디에 적혀 있고, 어떤 상황에 무엇을 보고 무엇을 고쳐야 하는지”</b>를 한 장으로 정리한 지도입니다.
+      다른 탭이 <b>사용법</b>이라면 이 탭은 <b>구조</b>입니다.
+    </p>
+    <p class="note note-slate mt-5">
+      🧭 <b>가장 빨리 찾는 방법</b> — 아래 <b>③ 상황별 라우팅</b> 표에서 지금 하려는 일을 찾으면, 읽어야 할 문서와 <b>끝나고 갱신해야 할 문서</b>가 함께 나옵니다.
+      AI에게는 “<b>이 작업에 해당하는 md를 먼저 읽고 시작해줘</b>”라고 말하면 됩니다.
+    </p>
+  </section>
+
+  <!-- ═══ ① 3계층 ═══ -->
+  <section class="pb-14">
+    <h2 class="sec-title">① 3계층 구조 <span class="text-slate-400 font-normal text-lg">규칙 → 절차 → 실행</span></h2>
+    <p class="sec-sub">위 계층이 아래 계층을 <b>제약</b>합니다. 아래에서 위를 어길 수 없습니다.</p>
+
+    <div class="grid sm:grid-cols-3 gap-4 mt-6">
+      <div class="card">
+        <div class="card-ico">⛔</div>
+        <div class="card-h">1. 규칙 계층 — <code>CLAUDE.md</code></div>
+        <p class="card-p">모든 작업에 공통으로 걸리는 <b>차단 게이트</b>가 있는 곳. 예외가 없습니다.
+        “어떤 순서로, 무엇을 확인하고 시작하는가”를 정합니다. 하위 절차 문서와 충돌하면 <b>이쪽이 이깁니다</b>.</p>
+      </div>
+      <div class="card">
+        <div class="card-ico">📄</div>
+        <div class="card-h">2. 절차 계층 — <code>md/</code> 13개</div>
+        <p class="card-p">단계별로 “무엇을 어떤 순서로 하는가”. 각 문서는 <b>담당 영역이 하나</b>이고,
+        같은 내용을 두 곳에 쓰지 않습니다(정본 단일화). 새 절차가 생기면 <b>여기에 파일을 추가</b>합니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-ico">⚙️</div>
+        <div class="card-h">3. 실행 계층 — <code>scripts/</code> 13개</div>
+        <p class="card-p">사람이 매번 손으로 하면 틀리는 것을 코드로 고정한 부분(엑셀 규격·검증·조회).
+        <b>스크립트가 있으면 AI가 즉석에서 다시 만들지 않습니다</b> — 규격이 갈리는 것을 막기 위함입니다.</p>
+      </div>
+    </div>
+
+    <div class="panel mt-6">
+      <h3 class="panel-h">왜 이렇게 나눴나</h3>
+      <ul class="list mt-3">
+        <li><b>규칙을 절차에 섞으면 빠집니다.</b> “검증 생략 금지”가 문장으로만 있던 탓에 큰 작업 중 실제로 누락된 적이 있어, <b>산출물 검사(<code>check_gate_report.py</code>)로 강제</b>하도록 바꿨습니다.</li>
+        <li><b>절차를 코드에 섞으면 못 읽습니다.</b> 기획자가 규칙을 확인·수정할 수 있어야 하므로 판단 기준은 문서에, 반복 작업만 코드에 둡니다.</li>
+        <li><b>같은 내용을 두 곳에 쓰면 갈립니다.</b> 그래서 문서마다 <b>정본</b>을 정해 두고 다른 문서는 “참조”만 합니다.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ═══ ② 흐름 지도 ═══ -->
+  <section class="pb-14">
+    <h2 class="sec-title">② 흐름 지도 <span class="text-slate-400 font-normal text-lg">메인 1개 + 별도 5개</span></h2>
+    <p class="sec-sub">“Figma → 위키”만 있는 게 아닙니다. <b>목적이 다른 흐름 6개</b>가 있고, 각각 정본 문서가 다릅니다.</p>
+
+    <div class="panel mt-6">
+      <div class="flex items-center gap-2 flex-wrap"><span class="badge badge-indigo">메인 파이프라인</span><h3 class="panel-h">새 화면을 시스템에 넣는 흐름</h3></div>
+      <div class="ex-code mt-4">[1] 다국어 번역 + XLT Key 정의  →  [2] 프로토타입 생성  →  [3] 위키 업데이트
+     md/translate.md                 md/prototype.md        md/wiki.md</div>
+      <p class="note note-amber mt-4">⚠️ <b>단계마다 화면 필터가 다릅니다</b> — 1단계는 <code>(New)</code>로 시작하는 프레임만, 2단계는 <b>전체</b>, 3단계는 <code>Case</code>·<code>(x)</code> 제외.
+      한 단계의 필터를 다른 단계에 쓰면 화면·번역이 누락됩니다. 정본은 <code>CLAUDE.md</code> “단계별 프레임 필터 규칙”.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-4 mt-5">
+      <div class="card">
+        <div class="card-h">🔍 XLT 시스템 등록값 검증 <span class="badge badge-emerald">v20 신규</span></div>
+        <p class="card-p">메인 흐름이 <b>새 문구를 넣는</b> 것이라면, 이건 <b>이미 들어가 있는 값을 점검해 고치는</b> 흐름입니다.
+        시스템 전체를 읽어 용어집 위배를 찾고, 수정 제안을 확인받아 업로드용 엑셀을 만듭니다.</p>
+        <p class="card-p mt-2">정본 <code>md/xlt-verify.md</code></p>
+      </div>
+      <div class="card">
+        <div class="card-h">✏️ 키 단위 번역 패치</div>
+        <p class="card-p">이미 반영된 번역에서 <b>특정 키의 일부 언어만</b> 바꿉니다. 부서 검토로 한국어가 바뀌었거나, 특정 언어 최종본만 교체할 때.
+        Figma를 다시 읽지 않습니다.</p>
+        <p class="card-p mt-2">정본 <code>md/translate.md</code> “키 단위 번역 패치 모드”</p>
+      </div>
+      <div class="card">
+        <div class="card-h">📖 용어집 갱신</div>
+        <p class="card-p">용어집은 <b>읽기만</b> 가능해서 AI가 직접 쓸 수 없습니다. AI가 전체 JSON을 만들어 주고 <b>기획자가 Landpress CMS에 붙여넣습니다</b>.
+        버전이 오르면 <b>이 가이드 zip도 함께 갱신</b>됩니다(선택이 아니라 필수).</p>
+        <p class="card-p mt-2">정본 <code>md/landpress.md</code> · 이력 <code>md/glossary-changelog.md</code></p>
+      </div>
+      <div class="card">
+        <div class="card-h">💬 OA(LINE 공식계정) 메시지</div>
+        <p class="card-p">화면이 아니라 발송 메시지입니다. <b>XLT 키를 부여하지 않고</b> 번역만 하며, 변수는 <code>{{이름}}</code> 형태를 씁니다.
+        언어별 Flex 메시지 JSON을 만들어 전달합니다.</p>
+        <p class="card-p mt-2">정본 <code>md/OA.md</code></p>
+      </div>
+      <div class="card">
+        <div class="card-h">🗺️ IA 주간 점검</div>
+        <p class="card-p">매주 월요일 자동 실행. 실제 서비스를 탐색해 메뉴·기능 변경을 확인하고 IA 정본을 갱신합니다.
+        Screen ID 어휘의 출처이기도 합니다.</p>
+        <p class="card-p mt-2">정본 <code>md/IA.md</code> · 리포트 <code>reports/ia/</code></p>
+      </div>
+      <div class="card">
+        <div class="card-h">🌐 정적 사이트 배포</div>
+        <p class="card-p">프로토타입·리포트·이 가이드처럼 <b>웹으로 공유할 산출물</b>의 규격입니다.
+        ZIP으로 만들어 기획자가 DropWeb에 게시합니다(AI가 게시하지 않습니다).</p>
+        <p class="card-p mt-2">정본 <code>md/dropweb-guide.md</code></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ③ 상황별 라우팅 ═══ -->
+  <section class="pb-14">
+    <h2 class="sec-title">③ 상황별 라우팅 <span class="text-slate-400 font-normal text-lg">이럴 때 이 문서</span></h2>
+    <p class="sec-sub">가장 자주 쓰는 표입니다. <b>“읽을 문서”는 작업 전에</b>, <b>“갱신할 문서”는 작업이 끝난 뒤</b> 확인하세요.</p>
+
+    <div class="panel mt-6 overflow-x-auto">
+      <table class="ex-table">
+        <thead><tr><th style="min-width:15rem">하려는 일</th><th style="min-width:15rem">읽을 문서</th><th style="min-width:14rem">끝나고 갱신할 문서</th></tr></thead>
+        <tbody>
+          <tr><td><b>Figma 화면을 번역해 위키에 반영</b></td><td><code>CLAUDE.md</code> → <code>md/translate.md</code> → <code>md/guide.md</code> → <code>md/wiki.md</code></td><td>없음 (산출물만 생성)</td></tr>
+          <tr><td>프레임 하나만 빠르게 번역</td><td><code>md/translate.md</code> “단일 프레임 모드” → <code>md/wiki.md</code> Mode B</td><td>없음</td></tr>
+          <tr><td>Figma 코멘트(<code>XLT</code>)로 표시한 문구만 번역</td><td><code>md/translate.md</code> “코멘트 선별 모드”</td><td>없음</td></tr>
+          <tr><td>프로토타입(클릭 가능한 웹) 만들기</td><td><code>md/prototype.md</code> + <code>md/dropweb-guide.md</code></td><td><code>service-spec.md</code> (기능 바뀔 때마다)</td></tr>
+          <tr><td><b>번역 검증에서 이상한 경고가 반복됨</b></td><td><code>md/check.md</code>(패턴 사전) + <code>md/translation_validation_guide.md</code></td><td><code>md/check.md</code> “실전 패턴 모음”에 <b>새 패턴 추가</b></td></tr>
+          <tr><td>용어를 새로 표준화하고 싶음</td><td><code>md/landpress.md</code></td><td><code>md/glossary-changelog.md</code> + <b>이 가이드 zip</b>(필수 동반)</td></tr>
+          <tr><td><b>이미 등록된 문구가 용어집에 맞는지 점검</b></td><td><code>md/xlt-verify.md</code></td><td>없음 (리포트 생성)</td></tr>
+          <tr><td>위키에 적힌 XLT 키가 시스템과 같은지 확인</td><td><code>md/xlt-verify.md</code> §9 “위키 페이지 대조 모드”</td><td>없음</td></tr>
+          <tr><td>특정 키의 일본어만 최종본으로 교체</td><td><code>md/translate.md</code> “키 단위 번역 패치 모드”</td><td>없음</td></tr>
+          <tr><td>LINE 공식계정 발송 메시지 만들기</td><td><code>md/OA.md</code></td><td>없음</td></tr>
+          <tr><td>화면 식별자(Screen ID)를 새로 부여</td><td><code>md/IA.md</code> (어휘 참조)</td><td><code>md/IA.md</code> (새 어휘가 생기면)</td></tr>
+          <tr><td>서비스 메뉴·기능이 바뀐 걸 발견</td><td><code>md/IA.md</code></td><td><code>md/IA.md</code> (IA 정본은 이 파일만)</td></tr>
+          <tr><td><b>절차·규칙 자체를 바꾸고 싶음</b></td><td><code>CLAUDE.md</code> + 해당 <code>md/</code></td><td>해당 <code>md/</code> + <code>CLAUDE.md</code> 표 + <b>이 가이드 zip</b></td></tr>
+          <tr><td>새 절차 문서를 추가</td><td><code>CLAUDE.md</code> “md 폴더 관리 규칙”</td><td><code>md/</code>에 파일 생성 + <code>CLAUDE.md</code> “참조 가이드” 표에 한 줄</td></tr>
+          <tr><td>다른 PC·다음 세션으로 작업을 넘김</td><td><code>HANDOFF.md</code></td><td><code>HANDOFF.md</code> (“핸드오프 갱신”이라고 요청)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <p class="note note-amber mt-5">⚠️ <b>“읽을 문서”의 첫 칸이 <code>CLAUDE.md</code>인 이유</b> — 토큰·캐시·검증 게이트가 거기에 있습니다.
+    이걸 건너뛰면 검증 없이 결과가 나오거나, 오래된 데이터로 작업하게 됩니다. AI가 알아서 읽지만, 결과가 이상하면 <b>“CLAUDE.md 게이트 지켰어?”</b>라고 물어보세요.</p>
+  </section>
+
+  <!-- ═══ ④ 4대 게이트 ═══ -->
+  <section class="pb-14">
+    <h2 class="sec-title">④ 4대 차단 게이트 <span class="text-slate-400 font-normal text-lg">CLAUDE.md · 예외 없음</span></h2>
+    <p class="sec-sub">전부 “못 지나가게 막는” 규칙입니다. 하나라도 어기면 그 작업은 <b>완료가 아닙니다</b>.</p>
+
+    <div class="mt-6 grid gap-4">
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div>
+          <div class="flow-h">핸드오프 확인 <span class="badge badge-indigo">세션 시작</span></div>
+          <p class="flow-p">세션이 시작되면 <b>가장 먼저</b> <code>HANDOFF.md</code>를 읽어 지난 작업과 다음 할 일을 확인하고 한 줄로 보고합니다.
+          로컬에만 있는 것은 없는 것으로 봅니다 — 넘겨야 할 상태는 항상 문서 + Git에 남깁니다.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div>
+          <div class="flow-h">토큰 우선 <span class="badge badge-indigo">착수 전</span></div>
+          <p class="flow-p">토큰을 받기 <b>전에는 아무것도 시작하지 않습니다</b> — 분량 파악·Figma 구조 조회·위키 조회 전부 포함입니다.
+          “일단 가능한 것부터” 진행하는 것이 규칙 위반입니다.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div>
+          <div class="flow-h">캐시 금지 <span class="badge badge-indigo">매 실행</span></div>
+          <p class="flow-p">Figma 코멘트·위키 원문·용어집·<b>XLT 시스템 등록값</b>은 작업할 때마다 원본에서 새로 조회합니다.
+          이전에 저장된 파일을 원본 대신 쓰지 않습니다.</p>
+          <p class="note note-slate mt-3">📌 <b>실제로 겪은 일</b> — 2026-08-07 감사 도중 <b>XLT 키 하나가 삭제</b>돼 조회 결과가 1시간 만에 달라졌습니다. 캐시를 썼다면 없는 키로 작업했을 겁니다.</p>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div>
+          <div class="flow-h">번역 품질 게이트 <span class="badge badge-indigo">산출물 출력 전</span></div>
+          <p class="flow-p">번역을 화면·위키·엑셀로 내보내기 전에 ① 한국어 원문 교정 ② 자동 검증 + <b>전체 행 수동 검토</b>
+          ③ 검증 리포트 제시 ④ <b>P0 0건</b> ⑤ 리포트 완결성 검사 통과(<code>check_gate_report.py</code>)를 모두 거칩니다.</p>
+          <p class="note note-amber mt-3">⚠️ <b>자동 검사 P0=0은 “통과”가 아니라 시작점입니다.</b> 자동 도구는 표기 오염·띄어쓰기 누락·다의어 모호·어색한 표현을 구조적으로 못 잡습니다.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="panel mt-6">
+      <div class="flex items-center gap-2 flex-wrap"><span class="badge badge-amber" style="background:#fef3c7;color:#92400e">추가</span><h3 class="panel-h">담당 FE 팀 규칙 — UIT / LV</h3></div>
+      <p class="text-sm text-slate-500 mt-2">게이트는 아니지만 <b>틀리면 전부 다시 해야 하는</b> 갈림길입니다. 위키에 UIT/LV 구분이 있으면 그 팀 규칙을 그대로 쓰고, 없으면 <b>기획자에게 묻습니다</b>.</p>
+      <div class="overflow-x-auto mt-4">
+        <table class="ex-table">
+          <thead><tr><th>팀</th><th>XLT Key 프리픽스</th><th>변수 표기</th></tr></thead>
+          <tbody>
+            <tr><td><b>UIT</b></td><td><code>UF_</code> 고정</td><td><code>{{0}}</code> 이중 중괄호</td></tr>
+            <tr><td><b>LV</b></td><td>프로젝트 약어 (<code>mini_</code>·<code>KW_</code> 등)</td><td><code>{0}</code> 단일 중괄호</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ ⑤ 문서 지도 ═══ -->
+  <section class="pb-14">
+    <h2 class="sec-title">⑤ 문서 지도 <span class="text-slate-400 font-normal text-lg">md/ 13개 + 최상위 2개</span></h2>
+    <p class="sec-sub">각 문서가 <b>무엇의 정본인지</b>가 핵심입니다. 같은 주제를 두 문서에 쓰지 않으므로, 고칠 때는 <b>정본 한 곳만</b> 고칩니다.</p>
+
+    <div class="panel mt-6 overflow-x-auto">
+      <table class="ex-table">
+        <thead><tr><th style="min-width:12rem">문서</th><th style="min-width:16rem">담당 (이것의 정본)</th><th style="min-width:12rem">언제 갱신하나</th></tr></thead>
+        <tbody>
+          <tr><td><code>CLAUDE.md</code></td><td><b>최상위 규칙</b> — 4대 게이트 · 담당 팀 규칙 · 단계별 프레임 필터 · 파이프라인 개요 · 문서/스크립트 목록 표</td><td>규칙이 바뀔 때 · <b>문서·스크립트가 늘 때(표에 한 줄)</b></td></tr>
+          <tr><td><code>HANDOFF.md</code></td><td><b>세션 인수인계</b> — 현재 상태 · 다음 할 일 · 주요 결정 · 종결된 사안(재작업 금지 목록)</td><td>세션 종료 시 (“핸드오프 갱신”)</td></tr>
+          <tr><td><code>md/translate.md</code></td><td><b>1단계 번역</b> — 텍스트 추출 3모드 · XLT Key 생성 · <b>유사 키 제안</b> · 검증 · 엑셀 · 키 단위 패치</td><td>번역 절차·모드가 바뀔 때</td></tr>
+          <tr><td><code>md/prototype.md</code></td><td><b>2단계 프로토타입</b> — 프레임·인터랙션 수집, 뷰어 생성</td><td>프로토타입 구조가 바뀔 때</td></tr>
+          <tr><td><code>md/wiki.md</code></td><td><b>3단계 위키</b> — Screen 표 · Description · 이미지 첨부 · History</td><td>위키 규격이 바뀔 때</td></tr>
+          <tr><td><code>md/guide.md</code></td><td><b>번역 규칙</b> — 언어별 톤앤매너 · 용어집 적용 · 치환자·태그 보존 · 날짜·링크 규칙</td><td>번역 규칙이 바뀔 때</td></tr>
+          <tr><td><code>md/check.md</code></td><td><b>검증 패턴 사전</b> — 3단계 검증 절차 · 자주 발견되는 함정 · <b>교차 오염 탐지 매트릭스</b> · 자동 검사 사각지대</td><td><b>새 오류 패턴을 발견할 때마다</b> (누적 문서)</td></tr>
+          <tr><td><code>md/translation_validation_guide.md</code></td><td><b>의미 기반 검증 방법론</b> — 정확/주의/오류 3단계 판정, 언어별 중점</td><td>판정 방법론이 바뀔 때</td></tr>
+          <tr><td><code>md/xlt-verify.md</code> <span class="badge badge-emerald">v20 신규</span></td><td><b>XLT 시스템 등록값 검증</b> — 읽기 API 명세 · 타겟 확정 · 용어집 대조 · 수정 제안 · 위키 대조 모드</td><td>API·검증 절차가 바뀔 때</td></tr>
+          <tr><td><code>md/landpress.md</code></td><td><b>용어집 관리</b> — 조회·갱신 절차 · 전체 JSON 산출 · <b>가이드 zip 동반 갱신</b></td><td>용어집 운영 방식이 바뀔 때</td></tr>
+          <tr><td><code>md/glossary-changelog.md</code></td><td><b>용어집 변경 이력</b> — 버전별 무엇을·왜 바꿨는지</td><td><b>용어집 버전이 오를 때마다</b> (필수)</td></tr>
+          <tr><td><code>md/OA.md</code></td><td><b>OA 메시지 규칙</b> — 키 미부여 · 변수 표기 · Flex JSON</td><td>OA 규칙이 바뀔 때</td></tr>
+          <tr><td><code>md/IA.md</code></td><td><b>IA 정본</b> — 화면 계층 · Screen ID 어휘 · 제품 모드 매트릭스</td><td>서비스 IA가 바뀔 때 (<b>이 파일만</b>)</td></tr>
+          <tr><td><code>md/dropweb-guide.md</code></td><td><b>정적 사이트 배포 규격</b> — 폴더 구조 · 상대 경로 · ZIP 규칙 · <code>service-spec.md</code></td><td>배포 규격이 바뀔 때</td></tr>
+          <tr><td><code>md/PRODUCTION_RULES.md</code></td><td><b>프로덕션 6원칙</b> — 전체 데이터 처리 · 전 언어 · 전 화면 · 검증 필수 · 간소화 금지 · 사전 고지</td><td>거의 바뀌지 않음</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note note-slate mt-5">
+      🧩 <b>보조 도구도 저장소에 함께 있습니다</b> — 스킬 <code>handoff</code>(인수인계 절차) · 에이전트 4종
+      (<code>figma-source-issues</code> 디자이너 수정 요청 취합 · <code>translation-reviewer</code> 번역 2차 독립 검토 ·
+      <code>wiki-policy-auditor</code> 위키↔코멘트 정합 감사 · <code>glossary-guide-updater</code> 용어집 탭 갱신).
+      개인 PC에만 설치된 것에 의존하지 않고 <b>저장소에 커밋</b>하므로, <code>git pull</code>만 하면 다른 PC에서도 똑같이 동작합니다.
+    </div>
+  </section>
+
+  <!-- ═══ ⑥ 스크립트 지도 ═══ -->
+  <section class="pb-14">
+    <h2 class="sec-title">⑥ 스크립트 지도 <span class="text-slate-400 font-normal text-lg">scripts/ 13개</span></h2>
+    <p class="sec-sub">기획자가 직접 실행할 일은 거의 없습니다. 다만 <b>“이 작업엔 정해진 도구가 있다”</b>는 걸 알면,
+    AI가 즉석에서 다른 방식으로 처리하려 할 때 <b>“정해진 스크립트로 해줘”</b>라고 말할 수 있습니다.</p>
+
+    <div class="panel mt-6 overflow-x-auto">
+      <table class="ex-table">
+        <thead><tr><th style="min-width:13rem">스크립트</th><th style="min-width:16rem">하는 일</th><th style="min-width:10rem">쓰이는 단계</th></tr></thead>
+        <tbody>
+          <tr><td><code>fetch_glossary.py</code></td><td>용어집 최신본 조회</td><td>번역 · XLT 검증</td></tr>
+          <tr><td><code>fetch_xlt_registry.py</code> <span class="badge badge-emerald">신규</span></td><td>XLT 시스템 등록값 조회 · 유효 타겟 프로브 · <b>유사 키 검색</b></td><td>번역(유사 키 제안) · XLT 검증</td></tr>
+          <tr><td><code>verify_xlt_glossary.py</code> <span class="badge badge-emerald">신규</span></td><td>등록값 ↔ 용어집 대조 → 리포트·수정 제안 → 업로드 엑셀</td><td>XLT 검증</td></tr>
+          <tr><td><code>compare_wiki_xlt.py</code> <span class="badge badge-emerald">신규</span></td><td>위키의 XLT 키 ↔ 등록값 대조 + 재사용 가능한 유사 키 추천</td><td>위키 대조 모드</td></tr>
+          <tr><td><code>fetch_comments.py</code></td><td>Figma 코멘트 조회 (답글까지 포함)</td><td>코멘트 선별 번역 · 위키</td></tr>
+          <tr><td><code>collect_frames.py</code></td><td>프레임 일괄 수집 + 좌표 정규화 + 번호 어노테이션 이미지</td><td>위키</td></tr>
+          <tr><td><code>validate_translation.py</code></td><td><b>번역 자동 검증(P0/P1/P2)</b> — 모든 검증의 단일 출처</td><td>번역 · XLT 검증</td></tr>
+          <tr><td><code>check_gate_report.py</code></td><td>검증 리포트에 필수 항목이 다 있는지 <b>산출물로 검사</b></td><td>번역(완료 직전)</td></tr>
+          <tr><td><code>check_wiki_storage.py</code></td><td>위키 규격 검사 (표 컬럼 수 · 첨부 참조 방식 · 렌더 깨짐)</td><td>위키(반영 전·후)</td></tr>
+          <tr><td><code>export_to_xlt.py</code></td><td><b>XLT 업로드용 엑셀 생성</b> — 규격의 정본</td><td>번역 · XLT 검증</td></tr>
+          <tr><td><code>patch_translation.py</code></td><td>지정한 언어 칸만 교체 (나머지 보존 + 정렬 가드)</td><td>키 단위 패치</td></tr>
+          <tr><td><code>build_prototype_data.py</code></td><td>프로토타입 데이터 생성 + 무결성 검증</td><td>프로토타입</td></tr>
+          <tr><td><code>test_validation.py</code></td><td>엑셀 규격·검증 로직 회귀 테스트</td><td>스크립트 수정 후 (필수)</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ═══ ⑦ 확장 규칙 ═══ -->
+  <section class="pb-16">
+    <h2 class="sec-title">⑦ 시스템을 늘릴 때의 규칙 <span class="text-slate-400 font-normal text-lg">구조가 흐트러지지 않게</span></h2>
+    <p class="sec-sub">문서와 도구가 계속 늘어나므로, 늘리는 방식 자체에 규칙이 있습니다.</p>
+
+    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+      <div class="card">
+        <div class="card-h">📄 새 절차가 필요하면 <code>md/</code>에 추가</div>
+        <p class="card-p">프로젝트 루트에 가이드성 문서를 만들지 않습니다(<code>CLAUDE.md</code>·<code>README.md</code> 제외).
+        추가하면 <b><code>CLAUDE.md</code>의 “참조 가이드” 표에 한 줄</b>을 반드시 같이 넣습니다 — 그러지 않으면 아무도 그 문서를 찾지 못합니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-h">🎯 정본은 한 곳만</div>
+        <p class="card-p">같은 내용을 두 문서에 쓰지 않습니다. 다른 문서에서는 <b>“정본은 여기”</b>라고 참조만 합니다.
+        예: 검증 요건 자체는 <code>CLAUDE.md</code>, 수행 방법은 <code>md/check.md</code>.</p>
+      </div>
+      <div class="card">
+        <div class="card-h">⚙️ 반복되면 스크립트로</div>
+        <p class="card-p">사람이 매번 하면 틀리는 것(규격·대조·검사)은 코드로 고정하고, <b>문서에는 “이 스크립트가 정본”</b>이라고 적습니다.
+        스크립트를 고치면 <code>test_validation.py</code>를 반드시 돌립니다.</p>
+      </div>
+      <div class="card">
+        <div class="card-h">📣 규칙이 바뀌면 이 가이드도</div>
+        <p class="card-p">기획자가 요청하는 방식이나 결과물이 달라지는 변경이면 <b>이 가이드 업데이트를 제안</b>합니다.
+        <b>용어집 버전이 오를 때는 제안이 아니라 필수</b>로 함께 갱신됩니다 — 이 페이지의 용어집 탭이 기획자의 반영 창구이기 때문입니다.</p>
+      </div>
+    </div>
+
+    <div class="panel mt-6">
+      <h3 class="panel-h">이번 v20에서 늘어난 것</h3>
+      <p class="text-sm text-slate-500 mt-2">위 규칙을 실제로 적용한 예시입니다.</p>
+      <div class="overflow-x-auto mt-4">
+        <table class="ex-table">
+          <thead><tr><th>늘어난 것</th><th>따른 규칙</th></tr></thead>
+          <tbody>
+            <tr><td>새 흐름(XLT 등록값 검증) → <code>md/xlt-verify.md</code> 신설</td><td><b>새 절차는 <code>md/</code>에</b> + <code>CLAUDE.md</code> 표에 한 줄</td></tr>
+            <tr><td>스크립트 3개 추가 (조회 · 대조 · 위키 대조)</td><td><b>반복되면 스크립트로</b> + 검증 로직은 기존 <code>validate_translation.py</code> <b>재사용</b>(새로 만들지 않음)</td></tr>
+            <tr><td>번역 시점 <b>유사 키 제안</b> 규칙 → <code>md/translate.md</code> Step 2-1</td><td><b>정본은 한 곳</b> — API 명세는 <code>md/xlt-verify.md</code>, 번역 흐름에서의 사용법만 <code>translate.md</code>에</td></tr>
+            <tr><td>교차 오염 탐지 매트릭스 → <code>md/check.md</code> v3.4</td><td><b>새 오류 패턴은 패턴 사전에 누적</b></td></tr>
+            <tr><td>이 “시스템 가이드” 탭</td><td><b>규칙이 바뀌면 가이드도</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <p class="note note-slate mt-6">
+      📌 <b>이 탭을 언제 다시 보나</b> — ⓐ 오랜만에 작업을 다시 시작할 때 ⓑ 처음 보는 요청을 하려는데 어떤 문서가 걸리는지 모를 때
+      ⓒ AI가 “어느 문서를 따라야 하나요?”라고 물을 때 ⓓ 새 담당자에게 시스템을 설명할 때.
+    </p>
+  </section>
+
+</main>
+</div>
 
 <footer class="border-t border-slate-200 bg-white">
   <div class="max-w-6xl mx-auto px-5 py-8 text-sm text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
-    <p>Figma → 다국어 위키 자동화 워크플로우 · 기획자 가이드</p>
+    <p>Figma → 다국어 위키 자동화 워크플로우 · 기획자 가이드 <b>v24</b> (2026-08-10)</p>
     <p>핵심: <b class="text-slate-700">토큰 발급 → 요청 → AI 확인에 답하기 → 검증 통과 → 반영</b></p>
   </div>
 </footer>
@@ -548,5 +2763,107 @@ XLT 코멘트가 달린 문구만 5개 언어 번역해줘.</pre>
 <a href="#" id="toTop" class="fixed bottom-6 right-6 w-11 h-11 rounded-full bg-brand-600 text-white grid place-items-center shadow-lg opacity-0 pointer-events-none transition">↑</a>
 
 <script src="script.js"></script>
+
+<style>
+.toptab{padding:.8rem 1.1rem;font-size:.9rem;font-weight:600;color:#64748b;border-bottom:2px solid transparent;white-space:nowrap}
+.toptab:hover{color:#4f46e5}
+.toptab-on{color:#4338ca;border-bottom-color:#4f46e5}
+</style>
+<script>
+(function(){
+  var tabs=document.querySelectorAll('.toptab');
+  var panes={'tab-guide':document.getElementById('tab-guide'),'tab-updates':document.getElementById('tab-updates'),'tab-glossary':document.getElementById('tab-glossary'),'tab-iareport':document.getElementById('tab-iareport'),'tab-system':document.getElementById('tab-system')};
+  function show(id){
+    Object.keys(panes).forEach(function(k){panes[k].classList.toggle('hidden',k!==id);});
+    tabs.forEach(function(t){t.classList.toggle('toptab-on',t.dataset.tab===id);});
+    window.scrollTo(0,0);
+  }
+  tabs.forEach(function(t){t.addEventListener('click',function(){show(t.dataset.tab);});});
+  // 가이드 내비 앵커 클릭 시 가이드 탭으로 복귀
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(){
+      var el=document.querySelector(a.getAttribute('href'));
+      if(el && panes['tab-guide'].contains(el)) show('tab-guide');
+    });
+  });
+})();
+</script>
+
+
+<script>
+(function(){
+  var btn=document.getElementById('copyGlossaryJson');
+  if(!btn) return;
+  btn.addEventListener('click',function(){
+    var txt=document.getElementById('glossaryJsonData').textContent;
+    function done(){btn.textContent='✅ 복사됨';setTimeout(function(){btn.textContent='📋 JSON 복사';},2000);}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(txt).then(done,fallback);}else{fallback();}
+    function fallback(){var ta=document.createElement('textarea');ta.value=txt;document.body.appendChild(ta);ta.select();try{document.execCommand('copy');done();}catch(e){btn.textContent='❌ 복사 실패';}document.body.removeChild(ta);}
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var inp=document.getElementById('glossarySearch');
+  if(!inp) return;
+  var rows=Array.prototype.slice.call(document.querySelectorAll('#glossaryTable tr')).slice(1);
+  var cnt=document.getElementById('glossaryCount');
+  inp.addEventListener('input',function(){
+    var q=inp.value.trim().toLowerCase(), n=0;
+    rows.forEach(function(r){
+      var hit=!q||r.textContent.toLowerCase().indexOf(q)>-1;
+      r.style.display=hit?'':'none'; if(hit)n++;
+    });
+    cnt.textContent=n+'개 용어 표시 중'+(q?' (검색: "'+inp.value+'")':'');
+  });
+})();
+</script>
+
+<script>
+(function(){
+  var btn=document.getElementById('verifyGlossary');
+  if(!btn) return;
+  var box=document.getElementById('verifyResult');
+  var API='https://landpress-content.line-scdn.net/contents/v2/projects/wdmwbfuv10x39bukv58ocevp/collections/web3_xlt_json/item';
+  function show(cls,html){box.className='mt-3 rounded-xl border p-4 text-sm '+cls;box.classList.remove('hidden');box.innerHTML=html;}
+  function getEmbedded(){return JSON.parse(document.getElementById('glossaryJsonData').textContent);}
+  function compare(liveRaw){
+    var embedded=getEmbedded();
+    var live=(liveRaw.body&&liveRaw.body.exceptions)?liveRaw.body.exceptions:liveRaw;
+    var lm=live.metadata||{}, em=embedded.metadata||{};
+    var lt=live.terminology||{}, et=embedded.terminology||{};
+    var diffs=[];
+    if(String(lm.version)!==String(em.version)) diffs.push('버전: 라이브 v'+lm.version+' ↔ 페이지 v'+em.version);
+    Object.keys(lt).filter(function(k){return !(k in et);}).forEach(function(k){diffs.push('페이지에 없는 라이브 용어: '+k);});
+    Object.keys(et).filter(function(k){return !(k in lt);}).forEach(function(k){diffs.push('라이브에 없는 페이지 용어: '+k);});
+    Object.keys(et).forEach(function(k){ if(k in lt){ ['en_US','ja_JP','zh_TW','th_TH','ko_KR'].forEach(function(l){
+      if(String((lt[k]||{})[l]||'')!==String((et[k]||{})[l]||'')) diffs.push(k+' ('+l+'): 라이브 "'+(lt[k]||{})[l]+'" ↔ 페이지 "'+(et[k]||{})[l]+'"');});}});
+    if(!diffs.length){
+      show('bg-emerald-50 border-emerald-200 text-emerald-800','✅ <b>일치</b> — 라이브 용어집(v'+lm.version+' · '+Object.keys(lt).length+'용어)과 이 페이지의 임베드 용어집이 완전히 동일합니다. ('+new Date().toLocaleString()+' 검증)');
+    }else{
+      var listed=diffs.slice(0,20).map(function(x){return '<li>'+String(x).replace(/</g,'&lt;')+'</li>';}).join('');
+      show('bg-amber-50 border-amber-300 text-amber-900','⚠️ <b>차이 '+diffs.length+'건</b> — 용어집이 갱신됐거나 페이지가 구버전입니다. 가이드 업데이트를 요청하세요.<ul class="mt-2 list-disc pl-5">'+listed+'</ul>'+(diffs.length>20?'<p class="mt-1">… 외 '+(diffs.length-20)+'건</p>':''));
+    }
+  }
+  function manualUI(reason){
+    show('bg-slate-50 border-slate-200 text-slate-700',
+      '❌ 자동 호출 실패('+reason+') — 이 사이트에서는 브라우저가 외부 API 호출을 차단(CORS)합니다. <b>수동 대조</b>로 검증하세요:'+
+      '<ol class="mt-2 list-decimal pl-5"><li><a class="text-brand-600 font-semibold" href="'+API+'" target="_blank" rel="noopener">라이브 JSON 새 탭에서 열기 ↗</a></li>'+
+      '<li>전체 선택(Ctrl/⌘+A) → 복사 → 아래에 붙여넣기</li></ol>'+
+      '<textarea id="manualJson" class="mt-2 w-full h-28 p-2 rounded-lg border border-slate-300 font-mono text-xs" placeholder="라이브 JSON 붙여넣기"></textarea>'+
+      '<button id="manualCompare" class="mt-2 px-4 py-2 rounded-lg bg-brand-600 text-white text-sm font-semibold">붙여넣은 JSON과 대조</button>');
+    document.getElementById('manualCompare').addEventListener('click',function(){
+      try{compare(JSON.parse(document.getElementById('manualJson').value));}
+      catch(e){show('bg-red-50 border-red-200 text-red-800','붙여넣은 내용이 유효한 JSON이 아닙니다: '+e.message);}
+    });
+  }
+  btn.addEventListener('click',function(){
+    btn.disabled=true;btn.textContent='⏳ 대조 중…';
+    fetch(API,{cache:'no-store'}).then(function(r){if(!r.ok)throw new Error('HTTP '+r.status);return r.json();})
+    .then(compare).catch(function(e){manualUI(e.message);}).finally(function(){btn.disabled=false;btn.textContent='🔄 라이브 용어집과 일치 검증';});
+  });
+})();
+</script>
 </body>
 </html>

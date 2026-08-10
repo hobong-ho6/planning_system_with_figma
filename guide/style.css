@@ -142,3 +142,23 @@ details.ex>summary:hover{ background:#eef2ff; }
 
 /* to-top */
 #toTop.show{ opacity:1; pointer-events:auto; }
+
+/* 접이식 패널 — 길어진 이력(요약 표 + 버전별 카드)을 통째로 접는다 (2026-08-06) */
+details.foldpanel{ margin-top:1.5rem; border:1px solid #e2e8f0; border-radius:1.1rem; background:#fff;
+  box-shadow:0 1px 3px rgba(15,23,42,.04); overflow:hidden; }
+details.foldpanel>summary{ cursor:pointer; list-style:none; padding:1.15rem 1.5rem; font-weight:800;
+  color:var(--ink); font-size:1.1rem; display:flex; align-items:center; gap:.55rem; user-select:none;
+  flex-wrap:wrap; }
+details.foldpanel>summary::-webkit-details-marker{ display:none; }
+details.foldpanel>summary::before{ content:"▸"; color:var(--brand-600); font-size:1rem;
+  transition:transform .15s; }
+details.foldpanel[open]>summary::before{ transform:rotate(90deg); }
+details.foldpanel>summary:hover{ background:#f8fafc; }
+details.foldpanel[open]>summary{ border-bottom:1px solid #e2e8f0; }
+.fold-sub{ font-weight:600; font-size:.82rem; color:var(--slate-500); }
+.fold-pill{ margin-left:auto; font-weight:700; font-size:.75rem; color:var(--brand-700);
+  background:#eef2ff; border-radius:999px; padding:.2rem .6rem; }
+details.foldpanel>summary .fold-pill::after{ content:"펼쳐 보기"; }
+details.foldpanel[open]>summary .fold-pill::after{ content:"접기"; }
+.foldpanel-body{ padding:1.25rem 1.5rem 1.5rem; }
+.foldpanel-body>.grid:first-child{ margin-top:0; }
