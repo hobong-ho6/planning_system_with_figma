@@ -33,7 +33,7 @@
   - 부모 페이지(신규 생성 위치): `3910828993` [Hogeun] (space `UNIFI`)
   - Figma 파일: `GOCHAYBS7hIrmWRGNuJOKV` (Web3) · 시즌3 페이지 `65923:2485`
   - 절차 문서: `CLAUDE.md`, `md/translate.md`, `md/wiki.md`, `md/OA.md`, `md/check.md`, `md/landpress.md`, `md/IA.md`, **`md/xlt-verify.md`**(XLT 등록값 검증 — 세션 #17 신설)
-  - 용어집: **라이브 v4.6** / **v4.7 CMS 반영 대기**(116 terms · `deprecated_terms` **14종**) — v4.7 = `포이카츠` zh `點數活動`→**`集點活動`**(실사용 0건인 등재값 교정) + metadata `total_deprecated_terms` 13→14 정정. 산출물 `reports/glossary_v4.7_for_cms.json`. 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
+  - 용어집: **라이브 v4.7**(116 terms · `deprecated_terms` 14종) — 2026-08-10 사용자 CMS 반영, **API 재조회로 산출 JSON과 완전 동치 확인**. v4.7 = `포이카츠` zh `點數活動`→`集點活動` + metadata 수치 정정. 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
   - 기획자 가이드: **라이브 v26**(2026-08-10 게시 완료, **태그 `guide-v26`**) — v26=시스템 가이드 탭 ⑦ 가이드 버전 관리(git 정본·태그 규약) · v25=v24+용어집 v4.7 병합. **⛔ 소스 정본은 git 추적 `guide/`다**(2026-08-10 신설, 커밋 `7d1bd3d`·`3075eb6`) — 최신 판별 = `git log -- guide/`, zip은 게시용 빌드 산출물(`.gitignore` 유지), 절차는 `md/landpress.md` §5-1 0단계(git 기반으로 전면 개정). 게시 확인 후 `git tag guide-vN`이 라이브 정본 표식이다.
     - 버전 연혁: v26=⑦ 버전 관리 규약 · v25=v24+용어집 v4.7 병합 · v22~v24=IA #4 3회 발행 · v21=용어집 v4.6 · v20=「🧭 시스템 가이드」 탭
   - IA 주간 점검: 스케줄 태스크 `weekly-unifi-ia-check`(매주 월 10:00) — 프로덕션 + Beta + mini Beta. 리포트 `reports/ia/`
@@ -107,8 +107,7 @@
 ## 다음 할 일
 
 ### 사용자 액션 대기 (Claude가 할 수 없음)
-- [ ] **용어집 v4.7 CMS 반영** — `reports/glossary_v4.7_for_cms.json`을 Landpress에 붙여넣기(편집 URL은 `md/landpress.md` §1). 반영 후 `fetch_glossary.py` 재조회로 확인.
-- [ ] **XLT 수정 엑셀 업로드** — `xlt/registry_fix/xlt_fix_Unifi_20260810.xlsx`(**1키** — `UF_common_error_404_desc` zh `網址`→`URL`). 업로드 후 `fetch_xlt_registry.py`로 반영 확인(세션 #18에 미반영 실측 있음).
+- (추적 종료) **XLT 수정 엑셀 업로드는 사용자가 이후 수행** — `xlt/registry_fix/xlt_fix_Unifi_20260810.xlsx`(1키, zh `網址`→`URL`). 2026-08-10 사용자 결정으로 이 문서에서 추적하지 않는다. 업로드 시점에 `fetch_xlt_registry.py` 재조회 확인 권장(세션 #18 미반영 실측 전례).
 
 ### Claude 실행 대기 (승인 시 진행)
 - 없음. (v25 병합본은 2026-08-10 세션 #20 후속에서 **생성 완료** — 위 사용자 액션만 남음)
