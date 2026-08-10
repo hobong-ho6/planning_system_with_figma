@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Figma → 다국어 위키 자동화 · 기획자 워크플로우 가이드 v25</title>
+<title>Figma → 다국어 위키 자동화 · 기획자 워크플로우 가이드 v26</title>
 <meta name="description" content="Figma 화면과 위키 주소만으로 AI가 5개 언어 번역과 위키 문서를 자동으로 작성하는 워크플로우. 기획자를 위한 사용 가이드." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet" />
@@ -80,7 +80,7 @@
 <!-- ===== HERO ===== -->
 <section class="relative overflow-hidden bg-gradient-to-b from-brand-50 to-slate-50">
   <div class="max-w-6xl mx-auto px-5 pt-16 pb-20 text-center">
-    <span class="inline-block mb-5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide">기획자를 위한 사용 가이드 · 개발 지식 불필요 · <b>v25 (2026-08-10)</b></span>
+    <span class="inline-block mb-5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide">기획자를 위한 사용 가이드 · 개발 지식 불필요 · <b>v26 (2026-08-10)</b></span>
     <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight text-ink">
       Figma 화면을 <span class="text-brand-600">5개 언어</span>로 번역하고<br class="hidden sm:block" />
       위키를 <span class="text-brand-600">자동으로</span> 채웁니다
@@ -662,7 +662,7 @@ action url 을 모두 업데이트 했어
     <div class="panel mt-6">
       <h3 class="panel-h">버전 요약</h3>
       <table class="ex-table mt-3"><tbody>
-        <tr><th><b>v25 · 2026-08-10</b></th><td><b>용어집 v4.7 — 포이카츠 중국어(번체) 교정</b> — 등재값 <code>點數活動</code>이 XLT 시스템 전체(3,730키)에서 <b>실사용 0건</b>인 반면 실제 번역은 <code>集點活動</code>을 씁니다. 등재값 쪽이 실사용과 어긋난 경우라 등재값을 고쳤습니다(v4.1에서 영어·태국어만 맞추고 남겨둔 잔여분). 실측 <b>P1 −2건 · 신규 경고 0건</b>. <code>total_deprecated_terms</code> 수치 오류(13 → <b>14</b>)도 정정했습니다. 이 갱신은 당초 v23으로 만들어졌으나 <b>병렬 세션의 파일명 충돌로 유실</b>돼 v25로 재적용했습니다 — 이 사고를 계기로 가이드 소스를 <code>guide/</code>에서 git으로 관리합니다</td></tr><tr><th>v24 · 2026-08-10</th><td><b>IA 주간 점검 #4 (로그인 보강 포함) — USDT PLUS 이율 5%→7%(최대 연 10%)·Unifi Pay Direct·액션 라벨 개편과 「외부 지갑 연결」 프로덕션 반영</b> — 내 자산 액션이 <b>보내기·채우기·교환하기·은행출금</b>으로 바뀌었습니다(구 라벨이 남은 문구는 교체 대상). 누적 이자 화면(<code>/interest/usdt</code>)이 새로 확인됐고, 리워드 스켈레톤은 <b>프로덕션 해소·Beta mini만 로그인에서도 고착</b>으로 정정됐습니다. <b>Beta 디버그 패널은 개발자 도구라 점검에 사용하지 않기로 확정</b>했습니다</td></tr><tr><th>v21 · 2026-08-07</th><td><b>용어집 v4.6 — 「사용자」 등재 + 「유저」 금지</b> — 같은 화면에서 <code>유저</code>·<code>사용자</code>가 섞여 쓰이던 것을 「사용자」로 통일했습니다. 용어집 탭의 금지 목록(14건)·전체 용어 표(116용어)·전체 JSON이 모두 최신입니다</td></tr><tr><th>v20 · 2026-08-07</th><td><b>「시스템 가이드」 탭 신설</b> — 문서 13개·스크립트 13개로 늘어난 시스템의 <b>전체 구조를 한 장으로</b> 정리했습니다. 3계층 구조 · 흐름 지도 6종 · <b>상황별 라우팅 표</b>(하려는 일 → 읽을 문서 → 갱신할 문서) · 4대 차단 게이트 · 문서/스크립트 지도 · 확장 규칙. “어떤 작업에 어떤 문서를 봐야 하는지”를 찾는 용도입니다 · <b>XLT 시스템 등록값 검증 신설</b> — 이미 등록된 문구가 용어집에 맞는지 시스템 전체를 읽어 점검하고, 수정 제안을 확인받아 업로드용 엑셀까지 만듭니다. 번역할 때 <b>비슷한 문구의 기존 키를 찾아 재사용을 제안</b>하는 기능도 함께 들어갔습니다</td></tr>
+        <tr><th><b>v26 · 2026-08-10</b></th><td><b>「시스템 가이드」 탭에 ⑦ 가이드 버전 관리 신설</b> — 가이드 소스를 git 추적 <code>guide/</code>로 전환하고 게시본을 <code>guide-vN</code> 태그로 기록하는 규약을 문서화했습니다. 같은 날 두 세션이 같은 파일명 zip을 만들어 무음 덮어쓰기가 난 사고(v23 유실 → v25 복원)가 계기입니다. 기획자 액션은 하나 — <b>게시 완료를 알려주면 태그가 남습니다</b></td></tr><tr><th>v25 · 2026-08-10</th><td><b>용어집 v4.7 — 포이카츠 중국어(번체) 교정</b> — 등재값 <code>點數活動</code>이 XLT 시스템 전체(3,730키)에서 <b>실사용 0건</b>인 반면 실제 번역은 <code>集點活動</code>을 씁니다. 등재값 쪽이 실사용과 어긋난 경우라 등재값을 고쳤습니다(v4.1에서 영어·태국어만 맞추고 남겨둔 잔여분). 실측 <b>P1 −2건 · 신규 경고 0건</b>. <code>total_deprecated_terms</code> 수치 오류(13 → <b>14</b>)도 정정했습니다. 이 갱신은 당초 v23으로 만들어졌으나 <b>병렬 세션의 파일명 충돌로 유실</b>돼 v25로 재적용했습니다 — 이 사고를 계기로 가이드 소스를 <code>guide/</code>에서 git으로 관리합니다</td></tr><tr><th>v24 · 2026-08-10</th><td><b>IA 주간 점검 #4 (로그인 보강 포함) — USDT PLUS 이율 5%→7%(최대 연 10%)·Unifi Pay Direct·액션 라벨 개편과 「외부 지갑 연결」 프로덕션 반영</b> — 내 자산 액션이 <b>보내기·채우기·교환하기·은행출금</b>으로 바뀌었습니다(구 라벨이 남은 문구는 교체 대상). 누적 이자 화면(<code>/interest/usdt</code>)이 새로 확인됐고, 리워드 스켈레톤은 <b>프로덕션 해소·Beta mini만 로그인에서도 고착</b>으로 정정됐습니다. <b>Beta 디버그 패널은 개발자 도구라 점검에 사용하지 않기로 확정</b>했습니다</td></tr><tr><th>v21 · 2026-08-07</th><td><b>용어집 v4.6 — 「사용자」 등재 + 「유저」 금지</b> — 같은 화면에서 <code>유저</code>·<code>사용자</code>가 섞여 쓰이던 것을 「사용자」로 통일했습니다. 용어집 탭의 금지 목록(14건)·전체 용어 표(116용어)·전체 JSON이 모두 최신입니다</td></tr><tr><th>v20 · 2026-08-07</th><td><b>「시스템 가이드」 탭 신설</b> — 문서 13개·스크립트 13개로 늘어난 시스템의 <b>전체 구조를 한 장으로</b> 정리했습니다. 3계층 구조 · 흐름 지도 6종 · <b>상황별 라우팅 표</b>(하려는 일 → 읽을 문서 → 갱신할 문서) · 4대 차단 게이트 · 문서/스크립트 지도 · 확장 규칙. “어떤 작업에 어떤 문서를 봐야 하는지”를 찾는 용도입니다 · <b>XLT 시스템 등록값 검증 신설</b> — 이미 등록된 문구가 용어집에 맞는지 시스템 전체를 읽어 점검하고, 수정 제안을 확인받아 업로드용 엑셀까지 만듭니다. 번역할 때 <b>비슷한 문구의 기존 키를 찾아 재사용을 제안</b>하는 기능도 함께 들어갔습니다</td></tr>
         <tr><th>v19 · 2026-08-06</th><td><b>「월렛」도 검사 대상에 추가</b> — 「지갑」이 표준인데 「월렛」이라고 쓰면 검사에서 안 걸리던 사각지대를 막았습니다. 「팔로우」 때와 같은 원인이었습니다</td></tr><tr><th>v18 · 2026-08-06</th><td><b>용어집 버전 이력을 접이식으로</b> — 이력이 20개 버전까지 늘어 용어집 탭이 길어졌습니다. <b>버전 요약 표와 버전별 상세 카드를 한 번에 접고 펼치도록</b> 바꿔, 기본은 접힌 상태로 두고 필요할 때만 펼쳐 봅니다. 자주 보는 <b>구 표기 금지 목록</b>과 <b>전체 용어집</b>은 그대로 노출됩니다</td></tr><tr><th>v17 · 2026-08-06</th><td><b>구 표기 검사 정확도 개선</b>: 금지 목록에 <code>友達</code>·<code>공식계정</code>을 추가하고, <b>문맥 조건</b>을 넣어 같은 단어의 다른 뜻(관심 앱·기대해 주세요·~를 따르다)은 걸리지 않게 했습니다. XLT 시스템 전체 실측 <b>잘못된 경고 8건 → 0건</b></td></tr><tr><th>v16 · 2026-08-06</th><td><b>용어집 v4.3 — 구 표기 금지 목록 신설</b>: <code>OA 팔로우</code>·<code>OA 채널 추가</code> 등을 <b>Unifi LINE 공식 계정 친구 추가</b>로 통일하도록 금지 → 권장 매핑을 용어집에 넣었습니다. 용어집 탭에 <b>「구 표기 금지 목록」 표</b>가 추가됐고, 검증기가 각 언어를 검사해 경고합니다. 기존 번역에 새 경고는 생기지 않습니다(실측 230 → 230)</td></tr><tr><th>v15 · 2026-08-06</th><td><b>용어집 v4.2 (114 → 115용어)</b>: <code>지급 완료</code> 신규 등재 — 비실시간 일괄 지급 전환으로 「지급 완료된 리워드」가 상시 문구가 됐는데 등재값 <code>완료</code>만 있어 각 언어의 자연스러운 완료 표현이 경고로 잡혔습니다. 실측 <b>P1 197 → 193건(-4)</b>, 신규 경고 0건. <b>v14의 검증기 개선이 먼저 들어가야 효과가 나는 첫 사례</b>입니다</td></tr><tr><th>v14 · 2026-08-06</th><td><b>검증 경고(P1) 오탐 대폭 감소</b>: 용어집 대조가 <b>짧은 용어까지 중복으로 걸던 문제</b>를 고쳐 <code>지급 완료된 리워드</code>의 정상 번역이 「완료」 불일치로 잡히거나 <code>당첨금</code>이 <code>당첨</code>으로 잡히는 오탐이 사라졌습니다. 보유 번역 파일 8종 실측 <b>P1 232건 → 198건(-34, -15%)</b>, <b>P0는 0건 그대로</b> · <b>화면 이미지 번호가 글자를 가리지 않습니다</b>: 코멘트 핀이 문구 위에 찍혀 있으면 번호 원이 글자를 덮던 것을 <b>자동으로 글자 밖으로 비켜</b> 놓고, 가림이 남으면 도구가 스스로 경고합니다</td></tr><tr><th>v13 · 2026-08-05</th><td><b>용어집 v4.1 확대(113 → 114 용어)</b>: <b>종료 zh_TW 교정</b> <code>結尾</code>(글·이야기의 맺음말) → <code>結束</code> — 등재값 자체가 오역이었음 · <b>포이카츠 en_US·th_TH 음차 채택</b> <code>point activity</code>·<code>การสะสมแต้ม</code> → <code>Poi-katsu</code> · <b>캠페인 신규 등재</b>(campaign/キャンペーン/活動/แคมเปญ). 실측: 시즌3 47키 검증 <b>P1 63건 → 58건(-5), 신규 P1 0건</b></td></tr><tr><th>v12 · 2026-08-05</th><td><b>용어집 v4.1 — OA(LINE 공식계정) 메시지 변수 <code>oa_variables</code> 영역 신설</b>: <code>{{total_amount}}</code>(당첨금 총액)·<code>{{wallet_address}}</code>(지급 지갑 주소) 2종 등재, 당첨금 총액 변수를 <code>{{amount}}</code> → <code>{{total_amount}}</code>로 확정. 용어집 탭에 <b>OA 변수 표</b> 추가</td></tr><tr><th>v11 · 2026-08-05</th><td><b>「이렇게 요청하세요」 대폭 보강 — 실제 작업에서 결과가 좋았던 <b>요청 패턴 7가지</b> 신설(정본 지정·이름으로 프레임 찾기·위키에 값 먼저 쓰기·일괄 나열·근거 있는 정정·조사만 먼저·확인 목록 일괄 응답) · 요청 예시 4종 추가(화면 기준 확인 목록 정리 · 새 영역 위치 지정 · 위키 값 채워두고 반영 · 판단 정정) · 체크리스트 3항목 추가 · <b>프레임을 링크 없이 이름·섹션으로 지정</b>하는 방법 명문화</b></td></tr><tr><th>v10 · 2026-08-03</th><td>IA 주간 점검 #3 — 미션앤리워드 Season 3(8/1) 개시로 럭키볼 정책 수치 전면 교체 · IA 트리를 <b>환경 × 사용자 상태 × 접속 IP</b> 3축으로 재정리 · MY쇼핑 = 외부 GuideKim 확정(부여 대상 아님) · Beta 「외부 지갑 연결」 신설 · mini Reward Special Missions·이자 배너 실측 · 로그인 리워드 탭 3주 연속 로딩 실패 서비스측 보고 · 어휘 승인 대기 5건</td></tr>
         <tr><th>v9 · 2026-07-30</th><td>IA 점검 리포트 탭에 「전체 IA 구조」 인터랙티브 표 추가 — 환경별(Web·LIFF·Wallet Mode·mini) 제공 여부와 1~3뎁스 화면 계층을 한 화면에서 필터·접기로 확인. md/IA.md가 바뀌면 이 표(IA_DATA)도 함께 갱신하는 규칙 신설</td></tr>
         <tr><th>v8 · 2026-07-30</th><td>IA 주간 점검 #2 — KAIA 스테이킹(위임)·Special Contribution Rewards 출시 실측 · Beta 환경 상시 점검 도입(릴리즈 예정 내용 선반영) · Unifi mini 최초 직접 실측(<code>/benefits-mini</code> 계열) · Beta 액션 라벨 개편(보내기·채우기·은행출금) 확인 · Screen ID 어휘 승인 대기 3건</td></tr>
@@ -2727,6 +2727,31 @@ var IA_DATA = [
       </div>
     </div>
 
+    </section>
+
+  <!-- ═══ ⑦ 가이드 버전 관리 (v26 신설) ═══ -->
+  <section class="pb-14">
+    <h2 class="sec-title">⑦ 가이드 버전 관리 <span class="text-slate-400 font-normal text-lg">git 정본 · 태그 규약</span></h2>
+    <p class="sec-sub">이 가이드 사이트 자체가 어떻게 버전 관리되는지입니다. 여러 사람·여러 세션이 동시에 가이드를 갱신해도 <b>서로의 내용을 모르고 지우는 일이 없도록</b> 2026-08-10부터 git 기반으로 전환했습니다.</p>
+    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+      <div class="card"><span class="badge badge-indigo">정본</span><h3 class="card-h mt-2">소스는 저장소의 <code>guide/</code> 폴더입니다</h3><p class="card-p">zip 파일이 아니라 <b>git에 커밋된 <code>guide/</code> 소스가 정본</b>입니다. zip은 게시용으로 그때그때 만들어지는 산출물이라, 어떤 zip이 최신인지 파일명·수정시각으로 추적하던 방식은 폐지했습니다. 최신 여부는 <code>git log</code> 한 줄로 확인됩니다.</p></div>
+      <div class="card"><span class="badge badge-indigo">라이브 표식</span><h3 class="card-h mt-2">게시된 버전은 <code>guide-vN</code> 태그로 남습니다</h3><p class="card-p">드랍웹에 실제로 올라간 버전은 게시 확인 후 git 태그(<code>guide-v25</code>처럼)로 기록됩니다. <b>게시를 마치면 AI에게 "게시했다"고 알려주세요</b> — 그 시점에 태그가 남아, 다음 작업자가 "라이브에 뭐가 있는지"를 추측하지 않아도 됩니다.</p></div>
+      <div class="card"><span class="badge badge-amber">배경</span><h3 class="card-h mt-2">왜 바꿨나 — 같은 날 두 세션이 충돌했습니다</h3><p class="card-p">2026-08-10, 두 작업이 병렬로 같은 파일명(<code>v23.zip</code>)을 만들어 <b>나중에 저장한 쪽이 앞의 것을 조용히 덮어썼습니다</b>(용어집 v4.7 반영본 유실 → v25로 복원). git 전환 후에는 같은 상황이 <b>푸시 충돌로 드러나</b> 두 변경이 합쳐집니다 — 조용히 사라지는 경로가 없습니다.</p></div>
+      <div class="card"><span class="badge badge-indigo">기획자에게</span><h3 class="card-h mt-2">달라지는 것은 한 가지뿐입니다</h3><p class="card-p">가이드 갱신을 요청하는 방법은 그대로입니다. 다만 <b>게시 완료를 꼭 알려주세요</b> — 태그가 그때 남습니다. 갱신 요청이 여러 곳에서 동시에 나와도 각자의 내용이 최신 버전 위에 차례로 쌓입니다.</p></div>
+    </div>
+    <div class="panel mt-6">
+      <h3 class="panel-h">버전이 결정되는 규칙</h3>
+      <table class="ex-table mt-3"><tbody>
+        <tr><th>다음 버전 번호</th><td>현재 <code>guide/</code> 소스의 내부 버전 <b>+1</b> (zip 파일명 최댓값이 아님)</td></tr>
+        <tr><th>최신 소스 확인</th><td><code>git log -- guide/</code> — 커밋 이력이 곧 버전 이력</td></tr>
+        <tr><th>라이브 확인</th><td>최신 <code>guide-v*</code> 태그 — 게시 확인 시점에만 생성</td></tr>
+        <tr><th>작성 전 안전 확인</th><td>편집 시작 전·zip 생성 직전에 원격과 대조해, 뒤처져 있으면 pull 먼저 (절차: <code>md/landpress.md</code> §5-1 0단계)</td></tr>
+      </tbody></table>
+    </div>
+  </section>
+
+  <!-- ═══ 마무리 ═══ -->
+  <section class="pb-14">
     <div class="panel mt-6">
       <h3 class="panel-h">이번 v20에서 늘어난 것</h3>
       <p class="text-sm text-slate-500 mt-2">위 규칙을 실제로 적용한 예시입니다.</p>
@@ -2755,7 +2780,7 @@ var IA_DATA = [
 
 <footer class="border-t border-slate-200 bg-white">
   <div class="max-w-6xl mx-auto px-5 py-8 text-sm text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
-    <p>Figma → 다국어 위키 자동화 워크플로우 · 기획자 가이드 <b>v25</b> (2026-08-10)</p>
+    <p>Figma → 다국어 위키 자동화 워크플로우 · 기획자 가이드 <b>v26</b> (2026-08-10)</p>
     <p>핵심: <b class="text-slate-700">토큰 발급 → 요청 → AI 확인에 답하기 → 검증 통과 → 반영</b></p>
   </div>
 </footer>
