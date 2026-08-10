@@ -34,7 +34,7 @@
   - Figma 파일: `GOCHAYBS7hIrmWRGNuJOKV` (Web3) · 시즌3 페이지 `65923:2485`
   - 절차 문서: `CLAUDE.md`, `md/translate.md`, `md/wiki.md`, `md/OA.md`, `md/check.md`, `md/landpress.md`, `md/IA.md`, **`md/xlt-verify.md`**(XLT 등록값 검증 — 세션 #17 신설)
   - 용어집: **라이브 v4.6** / **v4.7 CMS 반영 대기**(116 terms · `deprecated_terms` **14종**) — v4.7 = `포이카츠` zh `點數活動`→**`集點活動`**(실사용 0건인 등재값 교정) + metadata `total_deprecated_terms` 13→14 정정. 산출물 `reports/glossary_v4.7_for_cms.json`. 이력 `md/glossary-changelog.md` · IA 정본 `md/IA.md`
-  - 기획자 가이드: **라이브 v22**(게시 완료 — IA #4) / **v25 게시 대기**(v24 + 용어집 v4.7 병합본, 채팅 전달 완료). **⛔ 소스 정본은 git 추적 `guide/`다**(2026-08-10 신설, 커밋 `7d1bd3d`·`3075eb6`) — 최신 판별 = `git log -- guide/`, zip은 게시용 빌드 산출물(`.gitignore` 유지), 절차는 `md/landpress.md` §5-1 0단계(git 기반으로 전면 개정). 게시 확인 후 `git tag guide-vN`이 라이브 정본 표식이다.
+  - 기획자 가이드: **라이브 v25**(2026-08-10 게시 완료 — v24 + 용어집 v4.7 병합본, **태그 `guide-v25`**). **⛔ 소스 정본은 git 추적 `guide/`다**(2026-08-10 신설, 커밋 `7d1bd3d`·`3075eb6`) — 최신 판별 = `git log -- guide/`, zip은 게시용 빌드 산출물(`.gitignore` 유지), 절차는 `md/landpress.md` §5-1 0단계(git 기반으로 전면 개정). 게시 확인 후 `git tag guide-vN`이 라이브 정본 표식이다.
     - 버전 연혁: v25=v24+용어집 v4.7 병합 · v22~v24=IA #4 3회 발행 · v21=용어집 v4.6 · v20=「🧭 시스템 가이드」 탭 · v19=용어집 v4.5
   - IA 주간 점검: 스케줄 태스크 `weekly-unifi-ia-check`(매주 월 10:00) — 프로덕션 + Beta + mini Beta. 리포트 `reports/ia/`
 - **토큰**: Figma PAT + Confluence PAT — **사용자가 매 세션 채팅으로 제공**(파일/코드에 하드코딩 금지). 착수 전 유효성 검증 필수.
@@ -108,7 +108,6 @@
 
 ### 사용자 액션 대기 (Claude가 할 수 없음)
 - [ ] **용어집 v4.7 CMS 반영** — `reports/glossary_v4.7_for_cms.json`을 Landpress에 붙여넣기(편집 URL은 `md/landpress.md` §1). 반영 후 `fetch_glossary.py` 재조회로 확인.
-- [ ] **기획자 가이드 v25 게시** — `dropweb/web3_planning_v25.zip`(채팅 전달 완료). **v24 + 용어집 v4.7 병합본**이라 이것 하나만 올리면 된다(v23·v24를 따로 올리지 말 것). 게시 확인해 주면 `git tag guide-v25`로 라이브 표식을 남긴다.
 - [ ] **XLT 수정 엑셀 업로드** — `xlt/registry_fix/xlt_fix_Unifi_20260810.xlsx`(**1키** — `UF_common_error_404_desc` zh `網址`→`URL`). 업로드 후 `fetch_xlt_registry.py`로 반영 확인(세션 #18에 미반영 실측 있음).
 
 ### Claude 실행 대기 (승인 시 진행)
