@@ -6,7 +6,8 @@
 
 - 정본 문서: `md/IA.md` (IA 분석 정본 — Screen ID 어휘 참조원)
 - 스케줄 태스크: `weekly-unifi-ia-check` (매주 월 10:00) — 프로덕션 + Beta + mini Beta
-- 리포트: `reports/ia/ia_check_report_YYYY-MM-DD.md` (**git 미추적**) — 최신 회차 `reports/ia/ia_check_report_2026-08-10.md`
+- 리포트: `reports/ia/ia_check_report_YYYY-MM-DD.md` — **git 추적**(4건, 다른 PC에서도 `git pull`로 받는다). 최신 회차 `reports/ia/ia_check_report_2026-08-10.md`
+  - ⚠️ 2026-08-20 실측 정정 — 이전 핸드오프에 「git 미추적」으로 적혀 있었으나 `.gitignore`는 `reports/xlt/`만 제외한다
 - 발행 경로: `md/IA.md` 갱신 → 리포트 발행 → **기획자 가이드 갱신**(`projects/glossary-guide.md`)
 
 ## 점검 루틴
