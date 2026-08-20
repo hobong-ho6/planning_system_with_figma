@@ -24,6 +24,12 @@ git diff --name-only origin/main...HEAD
 
 세 곳 다 해당하면 세 곳 다 쓴다. 절차 정본은 `.claude/skills/handoff/SKILL.md`.
 
+## 온보딩 (자동 판별)
+
+훅이 `handoff.person` · `user.email` · **이 PC의 hostname이 어느 `people/*.md`에 등록됐는지** · 저장소 커밋 author 이력을 보고 상태를 **A~E**로 판별해 주입한다. Claude는 그 상태의 조치만 수행하고, **판별로 알 수 있는 것은 묻지 않는다**(A는 질문 0개 / C는 1개 / D는 3개). 상태별 절차는 `.claude/skills/handoff/SKILL.md` 「온보딩」.
+
+새 사람이 합류하면 `people/{키}.md`(템플릿 복사) + `HANDOFF.md` 인덱스 담당자만 채우면 되고, 그 PC의 hostname을 PC 표에 적어두면 **다음부터 그 PC는 상태 A로 자동 인식**된다.
+
 ## 사람 식별 (필수 설정 — PC 2대 모두 동일하게)
 
 `people/{person}.md` 자동 선택과 커밋 author 식별에 쓴다. hostname은 식별자가 아니다(1인 2PC).
