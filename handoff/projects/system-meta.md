@@ -61,7 +61,7 @@
 - **원인** — `user.email`에서 딴 사람키(**추정**)를 `handoff.person`(**확정**)과 같은 권위로 썼다. `C` 분기 조건이 `not person`이라 **추정 키가 채워져 있으면 hostname 증거가 있어도 C가 걸리지 않고 E로 떨어진다**
 - **수정** — 증거 우선순위 5단계 도입(① 확정 키 → ② hostname 등록 파일 → ③ `user.email`이 본문에 있는 파일 → ④ 추정 키=파일명 일치 → ⑤ 신규 D). ②~④는 확정 키가 없을 때만 쓰이고, 추정 키가 어긋나면 **경고 + 새 파일 생성 금지 + 확인된 값으로 완성된 `handoff.person` 명령**을 준다
 - **검증** — hostname 위조 + `GIT_CONFIG_GLOBAL` 주입으로 **7시나리오 실측**: A · B · **C-1**(미설정+hostname, 원래 버그) · **C-2**(미설정+이메일+PC 미등록) · D · E. 사용자가 `handoff.person`을 설정한 뒤 실제 훅 재실행으로 **A 확인**
-- **동반 갱신** — `SKILL.md` 온보딩 표 4행 + 추정 키 주의 1줄 · `handoff/README.md` 판별 순서 · `HANDOFF.md` 인덱스 misc-wikis stale 1줄 · `people/hogeun.md` iMac 경로 확정·세팅 ✅ · **`lanes/README.md` 락 대상에 `.claude/**`(git 추적분) 추가** — 훅·스킬·에이전트·`settings.json`은 전 세션 동작을 바꾸는데 락 대상이 아니었다(기기별 `settings.local.json`·`launch.json`은 제외)
+- **동반 갱신** — `SKILL.md` 온보딩 표 4행 + 추정 키 주의 1줄 · `handoff/README.md` 판별 순서 · `HANDOFF.md` 인덱스 misc-wikis stale 1줄 · `people/hogeun.md` iMac 경로 확정·세팅 ✅ · **`lanes/README.md` 락 대상에 `.claude/**`(git 추적분) 추가** — 훅·스킬·에이전트·`settings.json`은 전 세션 동작을 바꾸는데 락 대상이 아니었다(기기별 `settings.local.json`·`launch.json`은 제외) · **`people/hogeun.md` 44→32줄 압축**(obsolete 「iMac 최초 세팅」 섹션 제거, 이메일은 훅 근거라 헤더로 이동·회귀 테스트) · **`_TEMPLATE.md`에 identity 줄·`git 세팅` 컬럼 추가** — 템플릿에 이메일 자리가 없어 **새 사람 파일은 훅 근거 ③이 동작하지 않았고**, `SKILL.md`가 지시하는 「세팅 열 ✅」의 컬럼 자체가 없었다
 - **배운 것**: **판별 신호에 「확정」과 「추정」이 섞이면 추정이 확정을 가린다** — 신호를 늘릴 때 우선순위와 출처 표시를 함께 넣어야 한다. 그리고 **훅이 낸 「조치」도 실측으로 검증해야 한다** — 이번엔 조치를 그대로 따르면 중복 파일이 생겼다
 
 ### 2026-08-20 — 온보딩 자동 판별(A~E) + 가이드 v30 (`e59bcb4`~)

@@ -1,6 +1,6 @@
 # hogeun
 
-> 사람키: `hogeun` (`git config --global handoff.person hogeun`) · PC 2대
+> 사람키: `hogeun` · git identity `Hogeun Kim <hogeun.kim.lnxt@gmail.com>` · `handoff.person=hogeun` — **PC 2대 동일**(규칙: `handoff/README.md` 「사람 식별」)
 > 담당 프로젝트: **활성 11종 전부** — `HANDOFF.md` 프로젝트 인덱스 참조
 
 ## PC
@@ -9,18 +9,6 @@
 |---|---|---|---|
 | `AL02359162.local` | `/Users/user/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 접속 시 XLT 읽기 API 사용 가능 |
 | `AD03230205ui-iMac.local` | `/Users/ad03230205/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 경로 실측 확인 · `handoff.person=hogeun` 확인 |
-
-### ⬜ iMac에서 처음 이어받을 때 (한 번만)
-
-```bash
-git pull --rebase
-```
-
-그다음 **본인 값으로** git identity를 넣는다 — 이 PC에서 쓰는 값과 **동일해야** `people/hogeun.md`가 자동으로 붙는다(`handoff/README.md` 「사람 식별」):
-
-- `user.name` = `Hogeun Kim` · `user.email` = `hogeun.kim.lnxt@gmail.com` · `handoff.person` = `hogeun`
-
-의존성이 없으면 `pip3 install --break-system-packages -r scripts/requirements.txt`. 세팅을 마치면 위 표의 세팅 열을 ✅로 바꾼다.
 
 ## 환경 복구
 
