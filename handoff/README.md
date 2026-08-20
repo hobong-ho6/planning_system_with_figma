@@ -42,7 +42,8 @@ git config --global user.email "<내 메일>"
 git config --global handoff.person <사람키>
 ```
 
-훅 판별 순서: `handoff.person` → `user.email`의 `@` 앞부분 → (없으면 사람 파일 주입 생략).
+훅 판별 순서(증거 우선): ① `handoff.person`(**확정**) → ② 이 hostname이 등록된 `people/*.md` → ③ `user.email`이 본문에 있는 `people/*.md` → ④ `user.email`의 `@` 앞부분이 파일명과 일치 → ⑤ 없으면 신규(D).
+**②~④는 `handoff.person`이 없을 때만 쓰이고, ④의 추정 키가 실제 파일명과 다르면 훅이 그 사실을 경고한다** — 추정 키로 새 사람 파일을 만들면 안 된다.
 
 ## 분할 금지
 

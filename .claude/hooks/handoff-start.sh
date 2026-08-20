@@ -8,20 +8,25 @@ set -uo pipefail
 DIR="${CLAUDE_PROJECT_DIR:-$PWD}"
 [ -f "$DIR/HANDOFF.md" ] || exit 0
 
+# 사람키는 `handoff.person`이 **확정값**이고, user.email에서 딴 것은 **추정값**이다.
+# 추정값을 확정값처럼 쓰면 실제 파일명과 어긋날 때 신원 판별이 깨진다(2026-08-20 실측).
 person="$(git -C "$DIR" config --get handoff.person 2>/dev/null || true)"
-src="handoff.person"
-if [ -z "$person" ]; then
-  email="$(git -C "$DIR" config --get user.email 2>/dev/null || true)"
-  person="${email%@*}"; src="user.email"
+email="$(git -C "$DIR" config --get user.email 2>/dev/null || true)"
+if [ -n "$person" ]; then
+  src="handoff.person"
+else
+  person="${email%@*}"
+  src="user.email"
+  [ -z "$person" ] && src="none"
 fi
-[ -z "$person" ] && src="none"
 host="$(hostname 2>/dev/null || echo '')"
 authors="$(git -C "$DIR" log --format='%an <%ae>' 2>/dev/null | sort | uniq -c | sort -rn | head -6 || true)"
 
-python3 - "$DIR" "$person" "$src" "$host" "$authors" <<'PY' || exit 0
+python3 - "$DIR" "$person" "$src" "$host" "$authors" "$email" <<'PY' || exit 0
 import glob, json, os, re, sys
 
-root, person, src, host, authors = sys.argv[1], sys.argv[2], sys.argv[3], sys.argv[4], sys.argv[5]
+root, person, src, host, authors, email = (sys.argv[1], sys.argv[2], sys.argv[3],
+                                           sys.argv[4], sys.argv[5], sys.argv[6])
 
 
 def read(path):
@@ -32,16 +37,20 @@ def read(path):
         return None
 
 
-# ── people 파일과 hostname 역인덱스
-people, host2person = {}, {}
+# ── people 파일 + 역인덱스 2종(hostname·이메일)
+HOSTPAT = r"`([A-Za-z0-9._-]+\.local|[A-Za-z0-9._-]*[Ii]Mac[A-Za-z0-9._-]*)`"
+MAILPAT = r"[\w.+-]+@[\w-]+\.[\w.]+"
+people, host2person, email2person = {}, {}, {}
 for p in glob.glob(os.path.join(root, "handoff/people/*.md")):
     name = os.path.basename(p)[:-3]
     if name.startswith("_"):
         continue
     body = read(p) or ""
     people[name] = body
-    for h in re.findall(r"`([A-Za-z0-9._-]+\.local|[A-Za-z0-9._-]*[Ii]Mac[A-Za-z0-9._-]*)`", body):
+    for h in re.findall(HOSTPAT, body):
         host2person.setdefault(h.lower(), name)
+    for e in re.findall(MAILPAT, body):
+        email2person.setdefault(e.lower(), name)
 
 projects = sorted(
     os.path.basename(p)[:-3] for p in glob.glob(os.path.join(root, "handoff/projects/*.md"))
@@ -52,26 +61,50 @@ owned = {}
 for m in re.finditer(r"^\| \[([\w-]+)\][^|]*\|\s*`?([\w.-]+)`?\s*\|", index, re.M):
     owned.setdefault(m.group(2), []).append(m.group(1))
 
-known = host2person.get(host.lower())
-mine = people.get(person) if person else None
+# ── 신원 해석: 확정값 우선, 없으면 증거로 역추적한다
+configured = bool(person) and src == "handoff.person"
+guess = "" if configured else person          # user.email에서 딴 추정 키
+by_host = host2person.get(host.lower()) if host else None
+by_mail = email2person.get(email.lower()) if email else None
+
+if configured:
+    resolved, evidence = person, "handoff.person(확정)"
+elif by_host:
+    resolved, evidence = by_host, f"이 PC가 `people/{by_host}.md`에 등록됨"
+elif by_mail:
+    resolved, evidence = by_mail, f"`{email}`이 `people/{by_mail}.md`에 있음"
+elif guess and guess in people:
+    resolved, evidence = guess, "user.email 앞부분이 파일명과 일치"
+else:
+    resolved, evidence = None, None
+
+mine = people.get(resolved) if resolved else None
 host_in_mine = bool(mine and host and host.lower() in mine.lower())
 
 # ── 상태 판정
-if person and mine and host_in_mine:
+if configured and mine and host_in_mine:
     state, todo = "A · 기존 사용자 · 등록된 PC", "추가 설정 없음. 사용자에게 설정을 묻지 말 것."
-elif person and mine:
+elif configured and mine:
     state, todo = ("B · 기존 사용자 · 새 PC", (
-        f"`handoff/people/{person}.md` PC 표에 이 PC(`{host}`)가 없다. "
+        f"`handoff/people/{resolved}.md` PC 표에 이 PC(`{host}`)가 없다. "
         "**저장소 경로 한 줄만 확인해 표에 추가**하고 세팅 열을 ✅로 바꾼다. 그 외는 묻지 않는다."))
-elif not person and known:
-    state, todo = (f"C · 설정 누락 · 이력 추정 «{known}»", (
-        f"이 PC(`{host}`)는 `handoff/people/{known}.md`에 등록돼 있다. "
-        f"→ **「{known} 님이신가요?」 한 번만 확인**하고, 맞으면 그 파일의 identity 값으로 "
-        "`git config --global user.name/user.email/handoff.person`을 안내한다(값을 임의로 넣지 말고 사용자 확인)."))
-elif person and not mine:
-    state, todo = (f"E · 사람키 «{person}» 있으나 파일 없음", (
-        f"`handoff/people/{person}.md`를 `_TEMPLATE.md`로 만든다. "
-        f"물어볼 것은 **이 PC 경로**와 **담당 프로젝트**뿐이다."))
+elif configured and not mine:
+    state, todo = (f"E · 사람키 «{resolved}» 있으나 파일 없음", (
+        f"`handoff/people/{resolved}.md`를 `_TEMPLATE.md`로 만든다. "
+        "물어볼 것은 **이 PC 경로**와 **담당 프로젝트**뿐이다."))
+elif resolved:
+    # handoff.person 미설정이지만 신원이 증거로 확인된 경우 — 새 파일을 만들면 안 된다
+    act = [f"이 PC의 신원은 **`{resolved}`**로 확인된다({evidence}).",
+           f"⛔ **`handoff/people/{resolved}.md`가 이미 있으므로 새 people 파일을 만들지 말 것.**"]
+    if guess and guess != resolved:
+        act.append(f"⚠️ user.email에서 딴 추정 키 «{guess}»는 실제 파일명과 다르다 — "
+                   f"«{guess}»로 파일을 만들면 사람 파일이 갈라진다.")
+    act.append("빠진 것은 `handoff.person` 한 줄뿐이다. 사용자에게 이 명령을 그대로 안내한다"
+               "(값은 파일에서 확인된 것이므로 플레이스홀더가 아니다):")
+    act.append(f"    git config --global handoff.person {resolved}")
+    if not host_in_mine:
+        act.append(f"이 PC(`{host}`)는 PC 표에 없다 — **저장소 경로 한 줄만** 함께 받아 표에 추가한다.")
+    state, todo = f"C · 설정 누락 · 신원 확인 «{resolved}»", " ".join(act)
 else:
     state, todo = "D · 신규 사용자(이력 없음)", (
         "온보딩이 필요하다. 물어볼 것 **3개만**: ① 사람키(짧은 영문 소문자) "
@@ -97,19 +130,21 @@ if lanes:
 else:
     out.append("점유 없음.")
 
-out += ["", f"==== ③ 내 환경 (handoff/people/{person}.md) ====" if person else "==== ③ 내 환경 ===="]
+out += ["", f"==== ③ 내 환경 (handoff/people/{resolved}.md) ====" if resolved else "==== ③ 내 환경 ===="]
 out.append(mine if mine else "(아직 없음 — ⑤ 온보딩 상태 참조)")
 
 out += ["", "==== ④ 프로젝트 파일 (본문 미주입 — 대상 확정 후 읽을 것) ===="]
 out.append(", ".join(projects) if projects else "없음.")
-if person and owned.get(person):
-    out.append(f"내 담당: {', '.join(owned[person])}")
+if resolved and owned.get(resolved):
+    out.append(f"내 담당: {', '.join(owned[resolved])}")
 
 out += ["", "==== ⑤ 온보딩 상태 (자동 판별) ====",
         f"상태: {state}",
-        f"사람키: {person or '(없음)'} (출처: {src}) · 이 PC: {host or '(불명)'}",
+        f"사람키: {resolved or '(미확인)'} (근거: {evidence or '없음'})"
+        + (f" · user.email 추정값: {guess}" if guess and guess != resolved else "")
+        + f" · 이 PC: {host or '(불명)'}",
         f"조치: {todo}"]
-if state.startswith(("C", "D")):
+if state.startswith("D"):
     out.append(f"등록된 사람: {', '.join(sorted(people)) or '없음'}")
     unowned = [p for p in projects if p not in sum(owned.values(), [])]
     if unowned:
