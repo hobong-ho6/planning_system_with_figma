@@ -32,7 +32,7 @@
 |---|---|---|---|---|
 | [season3](handoff/projects/season3.md) | `hogeun` | 위키 `4541588845` · 16프레임 · 58키 | 08-10 | 위키 v81 · 미결 0 · IA #4 수치 교체 대상 확인 필요 |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 4종 + K-Pick·FAQ | 08-06 | 4종 전부 History↔Summary 정합 |
-| [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 08-20 | **가이드 v28 게시 대기**(v27 철회) · 용어집 v4.8 revert 경위 미확인 |
+| [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 08-20 | 가이드 **v28 라이브**(태그) · 용어집 **v4.7**(v4.8 팀 합의 미도출로 철회) |
 | [xlt-registry](handoff/projects/xlt-registry.md) | `hogeun` | XLT 등록값 3서비스 4,092키 | 08-10 | API 정상 · 수정 엑셀 1건 업로드 대기(사용자) |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 08-10 | 점검 #4 완료 · 캐리오버 5건 이월 |
 | [nonrealtime](handoff/projects/nonrealtime.md) | `hogeun` | 위키 `4541600637`·`4540065229` | 08-06 | 2종 v10 · 마스터와 정합 |

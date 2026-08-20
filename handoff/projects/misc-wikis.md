@@ -21,7 +21,7 @@
 세션 #21(2026-08-10) 이후 HANDOFF가 갱신되지 않아, 아래는 **git·파일 존재만 확인**한 사실이다. 소관 세션이 담당자·결과를 이 파일 또는 새 프로젝트 파일에 기록해야 한다.
 
 - 커밋 `0438a74`(2026-08-12) — `mini_nextbay_mission_title` 3개 언어 축약(2줄 이내), Next bay 위키 v14
-- 커밋 `39303c1`(2026-08-12) → `3a5a4a3` **Revert**(2026-08-14) — 용어집 v4.8. 경위는 `projects/glossary-guide.md` 「다음 할 일」에서 추적
+- ~~커밋 `39303c1` → `3a5a4a3` Revert — 용어집 v4.8~~ **(해소)** 팀 내 합의 미도출로 철회 — `projects/glossary-guide.md` · `md/glossary-changelog.md` v4.8
 - **미추적 게이트 리포트 3건** (커밋되지 않은 상태 — 소관 세션 확인 필요)
   - `reports/gate/gate_report_apppush_permission_desc_2026-08-14.md`
   - `reports/gate/gate_report_ms_popup_twa_policy_2026-08-14.md`
