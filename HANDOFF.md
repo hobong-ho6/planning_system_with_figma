@@ -40,7 +40,7 @@
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 08-10 | 점검 #4 완료 · 캐리오버 5건 이월 |
 | [nonrealtime](handoff/projects/nonrealtime.md) | `hogeun` | 위키 `4541600637`·`4540065229` | 08-06 | 2종 v10 · 마스터와 정합 |
 | [luckyball-campaign](handoff/projects/luckyball-campaign.md) | `hogeun` | 위키 `4479306980` · 75키 | 08-07 | v151 · 미결 0 |
-| [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 7종 | 08-20 | **미추적 게이트 리포트 3건 소관 확인 필요** |
+| [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 7종 | 08-20 | 게이트 리포트 3건 이관 완료 · **대기 항목 없음** |
 
 ---
 

@@ -8,7 +8,7 @@
 | hostname | 저장소 경로 | git 세팅 | 비고 |
 |---|---|---|---|
 | `AL02359162.local` | `/Users/user/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 접속 시 XLT 읽기 API 사용 가능 |
-| `AD03230205ui-iMac.local` | `/Users/ad03230205/…` | ⬜ **미완료 — 최초 1회 필요** | (미확인) 경로 뒷부분 미기재 |
+| `AD03230205ui-iMac.local` | `/Users/ad03230205/Documents/planning_system_with_figma` | ⬜ **`handoff.person`만 미설정** (`user.name`·`user.email`은 완료) | 경로 실측 확인(2026-08-20) |
 
 ### ⬜ iMac에서 처음 이어받을 때 (한 번만)
 
