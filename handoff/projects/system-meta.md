@@ -25,13 +25,8 @@
 
 ## 다음 할 일
 
-**사용자 액션 2건 대기** (둘 다 인증 문제로 Claude가 진행 불가).
+**사용자 액션 1건 대기.**
 
-- **`dooboo` 플러그인 설치** — 사내 마켓플레이스 `https://git.linecorp.com/BlockchainLab/dooboo.git`
-  - ⛔ **블로커: 이 PC에 `git.linecorp.com` 인증이 없다**(실측 — SSH `Permission denied (publickey)` · osxkeychain에 자격증명 없음). **사용자가** HTTPS로 한 번 clone하거나 SSH 키를 등록해야 한다(`credential.helper=osxkeychain`이라 1회면 저장된다). git 인증은 Claude가 대신하지 않는다
-  - 인증 후: `claude plugin marketplace add <url> --scope project` → `claude plugin install dooboo@dooboo --scope project`
-  - **`--scope project`를 쓸 것** — `.claude/settings.json`(git 추적)의 `extraKnownMarketplaces`·`enabledPlugins`에 기록돼 **`git pull`만으로 다른 PC·팀에 전파**된다. `--scope user`는 `~/.claude/`에만 남아 다른 PC에서 없는 것과 같다(현재 `installed_plugins.json`의 `figma`·`swift-lsp`가 `/Users/user/…` 경로를 가리키는 것이 그 증상)
-  - 실측 확인(CLI **v2.1.235**): `--scope user|project|local` 플래그 · `extraKnownMarketplaces` · `enabledPlugins` · `/reload-plugins` **전부 존재**. ⚠️ `.claude/settings.json`은 **락 대상**이므로 편집 시 레인을 잡는다
 - **Figma MCP 인증 대기** — `plugin:figma:figma` 미인증이고 **비대화형 세션에서는 OAuth를 진행할 수 없다.** 대화형 `claude`에서 `/mcp`로 인증해야 한다. 그때까지는 **Figma REST + PAT로 폴백**한다(이번 세션의 4프레임 수집·어노테이션 렌더를 전부 REST로 처리 — 실측 문제없음)
 
 - (관측 대기) 활성 프로젝트가 **30개를 넘으면** 인덱스가 다시 무거워진다 → 그때 `handoff/INDEX.md` 분리 + 훅의 담당자별 필터 주입을 검토한다. 지금(11개) 하면 과설계
@@ -51,6 +46,8 @@
 ## ⛔ 사용자 결정으로 종결 (재작업·재제안 금지)
 
 - **`이름 <본인@example.com>` author로 푸시된 5커밋(`e1c127c`~`3215088`)은 그대로 둔다**(2026-08-20 사용자 결정) — `main`은 4명이 공유하는 브랜치라 히스토리 재작성 + force-push가 다른 PC·다른 사람의 로컬 `main`을 전부 어긋나게 만든다. author 메타데이터를 위해 감당할 리스크가 아니다. **재작성 제안 금지.** git config는 `Hogeun Kim <hogeun.kim.lnxt@gmail.com>`으로 정정 완료
+- **`dooboo` 플러그인 도입 폐기**(2026-08-20 사용자 결정) — 사내 마켓플레이스 `git.linecorp.com/BlockchainLab/dooboo.git`. 이 PC에 git 인증이 없어(SSH publickey 거부 · osxkeychain 미저장) 설치 전 단계에서 중단했고, **사용자가 인증을 폐기 결정**했다. 마켓플레이스는 **추가되지 않았다**(`known_marketplaces.json`에 `claude-plugins-official`만 · 정리할 로컬 상태 없음). **재설치·재제안 금지.**
+  - (재사용 가능한 실측) 다른 플러그인을 팀에 공유할 때는 `claude plugin {marketplace add,install} --scope project` — `.claude/settings.json`(git 추적)의 `extraKnownMarketplaces`·`enabledPlugins`에 기록돼 `git pull`로 전파된다. CLI **v2.1.235**에서 `--scope user|project|local`·`/reload-plugins` 존재 확인. `--scope user`는 `~/.claude/`에만 남는다
 - **사용자별 핸드오프 분할안 종결** — 위 3계층 결정으로 대체. 담당 영역이 실제로 갈리면 재검토할 수 있으나 현재 구조에서 재제안하지 않는다
 
 ## 세션 기록
