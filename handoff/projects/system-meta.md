@@ -1,6 +1,6 @@
 # system-meta — 핸드오프 구조 · 규칙 · 도구 자체
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-08-20 · 커밋 `e1c127c`~`cf44ac6`
+> 담당자: `hogeun` · 마지막 갱신: 2026-08-20 · 커밋 `e1c127c`~`9e524d7`
 
 ## 대상 / 경계
 
@@ -25,7 +25,14 @@
 
 ## 다음 할 일
 
-**대기 항목 없음.**
+**사용자 액션 2건 대기** (둘 다 인증 문제로 Claude가 진행 불가).
+
+- **`dooboo` 플러그인 설치** — 사내 마켓플레이스 `https://git.linecorp.com/BlockchainLab/dooboo.git`
+  - ⛔ **블로커: 이 PC에 `git.linecorp.com` 인증이 없다**(실측 — SSH `Permission denied (publickey)` · osxkeychain에 자격증명 없음). **사용자가** HTTPS로 한 번 clone하거나 SSH 키를 등록해야 한다(`credential.helper=osxkeychain`이라 1회면 저장된다). git 인증은 Claude가 대신하지 않는다
+  - 인증 후: `claude plugin marketplace add <url> --scope project` → `claude plugin install dooboo@dooboo --scope project`
+  - **`--scope project`를 쓸 것** — `.claude/settings.json`(git 추적)의 `extraKnownMarketplaces`·`enabledPlugins`에 기록돼 **`git pull`만으로 다른 PC·팀에 전파**된다. `--scope user`는 `~/.claude/`에만 남아 다른 PC에서 없는 것과 같다(현재 `installed_plugins.json`의 `figma`·`swift-lsp`가 `/Users/user/…` 경로를 가리키는 것이 그 증상)
+  - 실측 확인(CLI **v2.1.235**): `--scope user|project|local` 플래그 · `extraKnownMarketplaces` · `enabledPlugins` · `/reload-plugins` **전부 존재**. ⚠️ `.claude/settings.json`은 **락 대상**이므로 편집 시 레인을 잡는다
+- **Figma MCP 인증 대기** — `plugin:figma:figma` 미인증이고 **비대화형 세션에서는 OAuth를 진행할 수 없다.** 대화형 `claude`에서 `/mcp`로 인증해야 한다. 그때까지는 **Figma REST + PAT로 폴백**한다(이번 세션의 4프레임 수집·어노테이션 렌더를 전부 REST로 처리 — 실측 문제없음)
 
 - (관측 대기) 활성 프로젝트가 **30개를 넘으면** 인덱스가 다시 무거워진다 → 그때 `handoff/INDEX.md` 분리 + 훅의 담당자별 필터 주입을 검토한다. 지금(11개) 하면 과설계
 - (관측 대기) **한 프로젝트를 2명이 공동 담당**하면 그 파일의 「현재 상태」가 충돌 핫스팟이 된다 → 실제로 발생하면 세션 단위 블록으로 쪼갠다

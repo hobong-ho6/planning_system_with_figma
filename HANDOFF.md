@@ -30,7 +30,7 @@
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
-| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 08-20 | 3계층 · 온보딩 판별 **증거 우선순위로 수정**(7시나리오 실측) · 가이드 v30 |
+| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 08-20 | 온보딩 판별 **버그 수정**(7시나리오 실측) · 락 대상에 `.claude/**` · **플러그인·MCP 인증 2건 대기** |
 | [season3](handoff/projects/season3.md) | `hogeun` | 위키 `4541588845` · 16프레임 · 58키 | 08-10 | 위키 v81 · 미결 0 · IA #4 수치 교체 대상 확인 필요 |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 4종 + K-Pick·FAQ | 08-06 | 4종 전부 History↔Summary 정합 |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 08-20 | 가이드 **v30 라이브**(태그) · 용어집 **v4.7**(v4.8 철회 · 권장 5건 종결) |
