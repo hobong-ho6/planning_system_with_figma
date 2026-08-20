@@ -8,7 +8,9 @@ ls handoff/lanes/
 
 ## 락이 필요한 전역 자원 (이것만)
 
-`guide/` · `dropweb/*.zip` · 용어집 `web3_xlt_json` · `md/**` · `scripts/**` · `templates/**`
+`guide/` · `dropweb/*.zip` · 용어집 `web3_xlt_json` · `md/**` · `scripts/**` · `templates/**` · **`.claude/**`(git 추적분)**
+
+`.claude/`는 **훅(`hooks/`) · 스킬(`skills/`) · 에이전트(`agents/`) · `settings.json`** 만 대상이다 — 이 넷은 **모든 세션·모든 담당자의 동작을 바꾸고**, 깨지면 세션 시작 자체가 조용히 실패한다(2026-08-20 실측: 훅의 온보딩 판별 오류가 **중복 사람 파일 생성을 지시**했다 · 커밋 `d873ebf`). `settings.local.json`·`launch.json`은 **기기별 설정이라 git 제외**이므로 락 대상이 아니다.
 
 프로젝트 전용 자원(자기 위키 페이지·`xlt/` 엑셀·`reports/gate/`)은 담당자가 단일하므로 락 불필요.
 
