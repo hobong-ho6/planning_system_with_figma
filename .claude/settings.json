@@ -5,8 +5,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "jq -Rs '{hookSpecificOutput:{hookEventName:\"SessionStart\",additionalContext:(\"[HANDOFF.md — 세션 시작 자동 주입] 작업 착수 전 아래 핸드오프의 현재 상태·다음 할 일을 확인하고 한 줄 브리핑할 것.\\n\\n\"+.)}}' \"$CLAUDE_PROJECT_DIR/HANDOFF.md\" 2>/dev/null || true",
-            "statusMessage": "HANDOFF.md 읽는 중..."
+            "command": "bash \"$CLAUDE_PROJECT_DIR/.claude/hooks/handoff-start.sh\"",
+            "statusMessage": "핸드오프 계층 읽는 중..."
           }
         ]
       }
