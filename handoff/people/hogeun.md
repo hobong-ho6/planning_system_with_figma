@@ -5,10 +5,22 @@
 
 ## PC
 
-| hostname | 저장소 경로 | 비고 |
-|---|---|---|
-| `AL02359162.local` | `/Users/user/Documents/planning_system_with_figma` | 사내망 접속 시 XLT 읽기 API 사용 가능 |
-| `AD03230205ui-iMac.local` | `/Users/ad03230205/…` | (미확인) 경로 뒷부분 미기재 |
+| hostname | 저장소 경로 | git 세팅 | 비고 |
+|---|---|---|---|
+| `AL02359162.local` | `/Users/user/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 접속 시 XLT 읽기 API 사용 가능 |
+| `AD03230205ui-iMac.local` | `/Users/ad03230205/…` | ⬜ **미완료 — 최초 1회 필요** | (미확인) 경로 뒷부분 미기재 |
+
+### ⬜ iMac에서 처음 이어받을 때 (한 번만)
+
+```bash
+git pull --rebase
+```
+
+그다음 **본인 값으로** git identity를 넣는다 — 이 PC에서 쓰는 값과 **동일해야** `people/hogeun.md`가 자동으로 붙는다(`handoff/README.md` 「사람 식별」):
+
+- `user.name` = `Hogeun Kim` · `user.email` = `hogeun.kim.lnxt@gmail.com` · `handoff.person` = `hogeun`
+
+의존성이 없으면 `pip3 install --break-system-packages -r scripts/requirements.txt`. 세팅을 마치면 위 표의 세팅 열을 ✅로 바꾼다.
 
 ## 환경 복구
 

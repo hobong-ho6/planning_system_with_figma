@@ -29,13 +29,11 @@ git diff --name-only origin/main...HEAD
 `people/{person}.md` 자동 선택과 커밋 author 식별에 쓴다. hostname은 식별자가 아니다(1인 2PC).
 
 ```bash
-git config --global user.name "이름" && git config --global user.email "본인@example.com"
-```
-
-파일명이 메일 local-part와 다르면 명시한다(권장):
-
-```bash
-git config --global handoff.person hogeun
+# ⚠️ 아래 세 줄은 예시 값이다. 그대로 실행하지 말고 본인 값으로 바꿔 실행할 것
+# (2026-08-20에 예시 값이 그대로 실행돼 5커밋이 잘못된 author로 푸시된 전례)
+git config --global user.name "<내 이름>"
+git config --global user.email "<내 메일>"
+git config --global handoff.person <사람키>
 ```
 
 훅 판별 순서: `handoff.person` → `user.email`의 `@` 앞부분 → (없으면 사람 파일 주입 생략).
