@@ -1,7 +1,7 @@
 # hogeun
 
 > 사람키: `hogeun` (`git config --global handoff.person hogeun`) · PC 2대
-> 담당 프로젝트: **활성 8종 전부** — `HANDOFF.md` 프로젝트 인덱스 참조
+> 담당 프로젝트: **활성 11종 전부** — `HANDOFF.md` 프로젝트 인덱스 참조
 
 ## PC
 

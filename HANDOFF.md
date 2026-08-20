@@ -30,12 +30,13 @@
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
+| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 08-20 | **3계층 전환 완료**(주입 28KB → 8.7KB) · 대기 0 |
 | [season3](handoff/projects/season3.md) | `hogeun` | 위키 `4541588845` · 16프레임 · 58키 | 08-10 | 위키 v81 · 미결 0 · IA #4 수치 교체 대상 확인 필요 |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 4종 + K-Pick·FAQ | 08-06 | 4종 전부 History↔Summary 정합 |
-| [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 08-20 | 가이드 **v28 라이브**(태그) · 용어집 **v4.7**(v4.8 팀 합의 미도출로 철회) |
+| [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 08-20 | 가이드 **v28 라이브**(태그) · 용어집 **v4.7** · v4.8 철회 · 보완 권장 5건 종결 |
 | [xlt-registry](handoff/projects/xlt-registry.md) | `hogeun` | XLT 등록값 3서비스 4,092키 | 08-10 | API 정상 · 수정 엑셀 1건 업로드 대기(사용자) |
-| [unifi-app-xlt](handoff/projects/unifi-app-xlt.md) | `hogeun` | Unifi 앱(IPHONE) 엑셀 번역 2키 | 08-14 | P0=0 · **XLT 업로드 대기**(IPHONE 타겟 자동 확인 불가) |
-| [kaiawallet-transition](handoff/projects/kaiawallet-transition.md) | `hogeun` | 위키 `4515188069` · 4프레임 34키 | 08-20 | P0=0 · **위키 v12 반영 확인**(170셀 전건) · XLT 업로드 대기 |
+| [unifi-app-xlt](handoff/projects/unifi-app-xlt.md) | `hogeun` | Unifi 앱(IPHONE) 엑셀 번역 2키 | 08-20 | P0=0 · **잔여 전건 종결**(IPHONE 타겟은 API 조회 불가 — 구조적 한계) |
+| [kaiawallet-transition](handoff/projects/kaiawallet-transition.md) | `hogeun` | 위키 `4515188069` · 4프레임 34키 | 08-20 | 위키 **v12 반영 완료**(170셀 전건) · **잔여 전건 종결** |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 08-10 | 점검 #4 완료 · 캐리오버 5건 이월 |
 | [nonrealtime](handoff/projects/nonrealtime.md) | `hogeun` | 위키 `4541600637`·`4540065229` | 08-06 | 2종 v10 · 마스터와 정합 |
 | [luckyball-campaign](handoff/projects/luckyball-campaign.md) | `hogeun` | 위키 `4479306980` · 75키 | 08-07 | v151 · 미결 0 |
@@ -85,6 +86,7 @@
 
 | 날짜 | 결정 | 이유 |
 |---|---|---|
+| 2026-08-20 | **핸드오프를 3계층으로 분리**(공유 정본 + 프로젝트 + 사람 + 레인 락) · hostname 대신 `handoff.person`으로 담당자 식별 | 4명·8머신·다중 프로젝트에서 단일 파일은 매 세션 전문 주입되고 「현재 상태」 한 블록을 여러 세션이 경쟁한다. 사용자별 분할은 사고를 못 막는다 — 실제 덮어쓰기는 **같은 사람·같은 PC의 병렬 세션**이었다. 상세 `handoff/projects/system-meta.md`. 커밋 `e1c127c` |
 | 2026-08-10 | **원격 최신성 확인을 CLAUDE.md 규칙으로 승격** — 세션 시작뿐 아니라 **쓰기 직전·30분+ 경과 후**에도 `git fetch` + `rev-list` 대조 | 세션 시작 pull은 시간이 지나면 낡는다. 덮어쓰기 사고의 직접 원인이 「작업 시작 때만 확인」이었다. 캐시 금지 규칙의 git판. 커밋 `d95d9af` |
 | 2026-08-07 | **검증 로직은 `validate_translation.py` 단일 출처** — 새 검증기를 만들지 않고 입력을 엑셀 규격으로 변환해 넣는다 | 등급 의미가 갈리면 과거 게이트 리포트와 A/B 비교가 불가능해진다 |
 | 2026-08-05 | **판정은 추정이 아니라 A/B 실측으로** | 2차 검토가 추정으로 보류를 권고한 건이 실측 0건이었다. 검증기는 **ko에 그 용어가 든 행만** 검사한다 |
