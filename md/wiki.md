@@ -96,7 +96,10 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 | `Planning` / `Reference` | **같은 위키의 다른 페이지** | 외부 URL 대신 `<ac:link><ri:page ri:space-key="{SPACE}" ri:content-title="{제목}" /></ac:link>` — 제목이 바뀌어도 따라간다. `ri:space-key`는 **대상 페이지를 실제 조회해 확인**(추측 금지 — 4-C의 space-key 규칙과 동일) |
 
 - **URL 내 `&`는 `&amp;`로 이스케이프**한다(Figma URL의 `?node-id=…&t=…`). 안 하면 storage 파싱이 깨진다.
-- **⛔ Jira 티켓을 받으면 티켓을 조회해 부수 링크까지 확장한다(권장 — 실측 유용)**: `jira_get_issue`로 summary·status·description을 확인하고, **설명에 들어 있는 관련 링크(PIA Review 티켓·Slack 스레드·관련 이슈·Figma)를 Related Docs 행으로 추가**한다. 사용자가 티켓만 줘도 문서의 참조 맥락이 한 번에 갖춰진다. 티켓 제목·상태가 위키 제목과 어긋나면(오타 등) **지적해 보고**한다.
+- **⛔ Jira 티켓을 받으면 티켓을 조회해 부수 링크까지 확장한다(권장 — 실측 유용)**: summary·status·description **그리고 코멘트·첨부까지** 확인하고, 거기 들어 있는 **관련 링크(PIA Review 티켓·Slack 스레드·관련 이슈·Figma)를 Related Docs 행으로 추가**한다. 사용자가 티켓만 줘도 문서의 참조 맥락이 한 번에 갖춰진다. 티켓 제목·상태가 위키 제목과 어긋나면(오타 등) **지적해 보고**한다.
+  - ⚠️ **description만 보면 놓친다**(2026-08-21 실측) — `UNIFY-10118`의 **Figma 링크는 코멘트에만** 있었고 본문에는 「관련 화면 스크린샷 공유」라고만 적혀 있었다. 사용자가 「피그마 링크는 티켓에 있음」이라고 했는데 1차 조회에서 「없음」으로 잘못 보고했다. **`/issue/{KEY}/comment`와 `attachment` 필드를 항상 함께 본다.** `issuelinks`·`subtasks`도 링크 후보로 훑는다.
+  - **조회 수단**: `jira_get_issue`(MCP)가 있으면 그걸 쓰되 **MCP는 세션에 따라 끊긴다** — 그때는 REST로 폴백한다(`GET /rest/api/2/issue/{KEY}` · `GET /rest/api/2/issue/{KEY}/comment`). ⛔ **Jira는 Confluence PAT로 401** — 별도 **Jira PAT**를 사용자에게 요청한다(토큰 우선 규칙에 포함).
+  - **코멘트의 Figma가 본문보다 구체적일 수 있다** — `UNIFY-10118`은 코멘트의 Figma SECTION 이름(`K-Pick 상품 환산가 및 환율 정보 표기`)과 그 안의 텍스트(`환율 정보는 K픽 탭의 상품 목록에서만 노출`)가 티켓 본문보다 정확했고, **위키 제목·Policy의 근거가 됐다.** 노드를 조회해 이름·타입을 확인한다.
 - History 표의 `Jira Ticket` 컬럼에도 같은 티켓 링크를 넣는다.
 
 ### 위키 생성 — Flow 섹션에 Figma 임베드 (사용자 확정 방식, 2026-07-30)

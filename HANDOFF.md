@@ -78,7 +78,7 @@
 - **OA 변수**: 용어집 `oa_variables`가 정본(`md/OA.md` §2-1) — `{{total_amount}}`·`{{wallet_address}}`. 등재된 변수는 문의 없이 재사용, 새 의미만 이름을 묻는다. **altText에는 변수 사용 불가**
 - **담당 FE 팀**: LV(`unifi_promotion_`·`mini_`·`{0}`) / UIT(`UF_`·`{{0}}`) / **OA는 팀이 아님**(키 미부여·`{{이름}}`). 위키에 UIT/LV 구분이 없으면 사용자에게 질문
 - **Screen ID**: `md/IA.md` 어휘로 `주기능_부기능_세부기능_01`(소문자), **매핑 표 사용자 승인 후에만** 부여. 기존 프레임명 기반 페이지는 소급 금지
-- **Jira는 별도 PAT가 필요하다**(2026-08-21 실측) — Confluence PAT로 `jira.workers-hub.com`은 **401**이고 Jira MCP(`mcp__noahs-mcp-jira__*`)는 **세션에 따라 끊긴다**. REST는 `GET /rest/api/2/issue/{KEY}`. ⚠️ **description만 보면 안 된다** — `UNIFY-10118`은 **Figma 링크가 코멘트에 있었다**(`/issue/{KEY}/comment` · 첨부도 함께 확인). `md/wiki.md`의 티켓 확장 규칙은 description만 언급한다
+- **Jira는 별도 PAT가 필요하다**(2026-08-21 실측) — Confluence PAT로 `jira.workers-hub.com`은 **401**이고 Jira MCP(`mcp__noahs-mcp-jira__*`)는 **세션에 따라 끊긴다**. REST는 `GET /rest/api/2/issue/{KEY}`. ⚠️ **description만 보면 안 된다** — `UNIFY-10118`은 **Figma 링크가 코멘트에 있었다**(`/issue/{KEY}/comment` · 첨부도 함께 확인). **`md/wiki.md` 티켓 확장 규칙에 반영 완료**
 - **캐시 금지 실측**: 세션 #17 감사 도중 `UF_floating_jpyc_banner_title`이 **실제로 삭제**돼 1시간 만에 키 수가 2,131→2,130으로 바뀌었다. 원본 재조회는 형식이 아니다
 
 ---
