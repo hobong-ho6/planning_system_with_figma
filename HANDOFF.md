@@ -19,7 +19,7 @@
 
 - **프로젝트**: planning_system_with_figma — Figma → 다국어 번역(XLT) → Confluence 위키 파이프라인
 - **저장소**: GitHub `hobong-ho6/planning_system_with_figma` (branch `main`) · 로컬 경로는 PC마다 다르다 → `handoff/people/{나}.md`
-- **토큰**: Figma PAT + Confluence PAT — **사용자가 매 세션 채팅으로 제공**(파일·코드에 하드코딩 금지). 착수 전 유효성 검증 필수
+- **토큰**: Figma PAT + Confluence PAT — **사용자가 매 세션 채팅으로 제공**(파일·코드에 하드코딩 금지). 착수 전 유효성 검증 필수 · Jira 티켓 기반 작업이면 **Jira PAT도 별도로 필요**(Confluence PAT로는 401)
 
 ---
 
@@ -40,7 +40,7 @@
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 08-10 | 점검 #4 완료 · 캐리오버 5건 이월 |
 | [nonrealtime](handoff/projects/nonrealtime.md) | `hogeun` | 위키 `4541600637`·`4540065229` | 08-06 | 2종 v10 · 마스터와 정합 |
 | [luckyball-campaign](handoff/projects/luckyball-campaign.md) | `hogeun` | 위키 `4479306980` · 75키 | 08-07 | v151 · 미결 0 |
-| [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 7종 | 08-20 | 게이트 리포트 3건 이관 완료 · **대기 항목 없음** |
+| [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-21 | **`4620240898` 신규 생성**(UNIFY-10118, v2) · 정의 필요 4항목 추적 |
 
 ---
 
@@ -78,6 +78,7 @@
 - **OA 변수**: 용어집 `oa_variables`가 정본(`md/OA.md` §2-1) — `{{total_amount}}`·`{{wallet_address}}`. 등재된 변수는 문의 없이 재사용, 새 의미만 이름을 묻는다. **altText에는 변수 사용 불가**
 - **담당 FE 팀**: LV(`unifi_promotion_`·`mini_`·`{0}`) / UIT(`UF_`·`{{0}}`) / **OA는 팀이 아님**(키 미부여·`{{이름}}`). 위키에 UIT/LV 구분이 없으면 사용자에게 질문
 - **Screen ID**: `md/IA.md` 어휘로 `주기능_부기능_세부기능_01`(소문자), **매핑 표 사용자 승인 후에만** 부여. 기존 프레임명 기반 페이지는 소급 금지
+- **Jira는 별도 PAT가 필요하다**(2026-08-21 실측) — Confluence PAT로 `jira.workers-hub.com`은 **401**이고 Jira MCP(`mcp__noahs-mcp-jira__*`)는 **세션에 따라 끊긴다**. REST는 `GET /rest/api/2/issue/{KEY}`. ⚠️ **description만 보면 안 된다** — `UNIFY-10118`은 **Figma 링크가 코멘트에 있었다**(`/issue/{KEY}/comment` · 첨부도 함께 확인). `md/wiki.md`의 티켓 확장 규칙은 description만 언급한다
 - **캐시 금지 실측**: 세션 #17 감사 도중 `UF_floating_jpyc_banner_title`이 **실제로 삭제**돼 1시간 만에 키 수가 2,131→2,130으로 바뀌었다. 원본 재조회는 형식이 아니다
 
 ---
