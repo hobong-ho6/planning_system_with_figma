@@ -41,6 +41,7 @@
 | [nonrealtime](handoff/projects/nonrealtime.md) | `hogeun` | 위키 `4541600637`·`4540065229` | 08-06 | 2종 v10 · 마스터와 정합 |
 | [luckyball-campaign](handoff/projects/luckyball-campaign.md) | `hogeun` | 위키 `4479306980` · 75키 | 08-07 | v151 · 미결 0 |
 | [kpick-oa-consent](handoff/projects/kpick-oa-consent.md) | `hogeun` | 위키 `4637821100` · 1프레임 4키 | 08-24 | 위키 **v3 반영 완료**(P0=0) · 미결 3건 — **등록 서비스 확정(FE)** · History↔Policy 불일치 · `kpick_` 잠정 |
+| [guidekim-banner](handoff/projects/guidekim-banner.md) | `hogeun` | 위키 `4637821463` · 배너 2키 | 08-24 | 위키 **v11**(P0=0) · 🔴 **Unifi↔Dapp Portal 값 분기**(FE 확인 후 업로드) |
 | [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-21 | **`4620240898` 신규 생성**(UNIFY-10118, v2) · 정의 필요 4항목 추적 |
 
 ---
