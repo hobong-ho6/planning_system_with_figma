@@ -40,6 +40,7 @@
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 08-10 | 점검 #4 완료 · 캐리오버 5건 이월 |
 | [nonrealtime](handoff/projects/nonrealtime.md) | `hogeun` | 위키 `4541600637`·`4540065229` | 08-06 | 2종 v10 · 마스터와 정합 |
 | [luckyball-campaign](handoff/projects/luckyball-campaign.md) | `hogeun` | 위키 `4479306980` · 75키 | 08-07 | v151 · 미결 0 |
+| [kpick-oa-consent](handoff/projects/kpick-oa-consent.md) | `hogeun` | 위키 `4637821100` · 1프레임 4키 | 08-24 | 위키 **v3 반영 완료**(P0=0) · 미결 3건 — **등록 서비스 확정(FE)** · History↔Policy 불일치 · `kpick_` 잠정 |
 | [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-21 | **`4620240898` 신규 생성**(UNIFY-10118, v2) · 정의 필요 4항목 추적 |
 
 ---
@@ -77,6 +78,7 @@
 - **문자열 치환은 구간을 한정한다** — 전역 치환은 위키 History의 과거 이력을 훼손한다. 번역표/OA 영역 오프셋으로 한정 + assert
 - **OA 변수**: 용어집 `oa_variables`가 정본(`md/OA.md` §2-1) — `{{total_amount}}`·`{{wallet_address}}`. 등재된 변수는 문의 없이 재사용, 새 의미만 이름을 묻는다. **altText에는 변수 사용 불가**
 - **담당 FE 팀**: LV(`unifi_promotion_`·`mini_`·`{0}`) / UIT(`UF_`·`{{0}}`) / **OA는 팀이 아님**(키 미부여·`{{이름}}`). 위키에 UIT/LV 구분이 없으면 사용자에게 질문
+- **⚠️ 신규 키 프리픽스는 묻기 전에 선례를 실측한다**(2026-08-24 실측 · **`md/translate.md` Step 2-1 보강 대기**) — Step 2-1은 「신규 키 후보 **문구**마다 유사 키 검색」만 요구해 **네임스페이스 선례 조사가 규칙에 없다.** 문구가 전부 신규여도 **같은 기능 영역의 기존 프리픽스**는 있다: K-Pick 키가 전부 `mini_guidekim_kpick_*`인데 `mini_kpick_`을 선택지로 내밀어(선례 0건) 사용자가 정보 없이 결정 → 정정 후 재결정했다. 후보 제시 전 레지스트리에서 ⓐ 기능 키워드를 **키 이름으로** grep ⓑ 후보 프리픽스 정확 일치 건수를 세어 「선례 N건/0건」을 선택지에 담는다. 키는 **FE 전달 후 변경 불가**(공식 룰)라 등록 전이 유일한 기회다
 - **Screen ID**: `md/IA.md` 어휘로 `주기능_부기능_세부기능_01`(소문자), **매핑 표 사용자 승인 후에만** 부여. 기존 프레임명 기반 페이지는 소급 금지
 - **Jira는 별도 PAT가 필요하다**(2026-08-21 실측) — Confluence PAT로 `jira.workers-hub.com`은 **401**이고 Jira MCP(`mcp__noahs-mcp-jira__*`)는 **세션에 따라 끊긴다**. REST는 `GET /rest/api/2/issue/{KEY}`. ⚠️ **description만 보면 안 된다** — `UNIFY-10118`은 **Figma 링크가 코멘트에 있었다**(`/issue/{KEY}/comment` · 첨부도 함께 확인). **`md/wiki.md` 티켓 확장 규칙에 반영 완료**
 - **캐시 금지 실측**: 세션 #17 감사 도중 `UF_floating_jpyc_banner_title`이 **실제로 삭제**돼 1시간 만에 키 수가 2,131→2,130으로 바뀌었다. 원본 재조회는 형식이 아니다
