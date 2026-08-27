@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "ได้รับเงินคืน {{product_cashback}} คะแนนแล้ว!",
+        "text": "ได้รับเงินคืน {{product_cashback}} แล้ว!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "ตรวจสอบได้ทันทีในประวัติการสั่งซื้อ",
+            "text": "ตรวจสอบคะแนนที่ได้รับได้เลย",
             "size": "sm",
             "color": "#666666",
             "wrap": true

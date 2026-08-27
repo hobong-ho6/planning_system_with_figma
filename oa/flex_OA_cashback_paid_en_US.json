@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "{{product_cashback}} cashback points paid!",
+        "text": "{{product_cashback}} cashback paid!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "You can check them right away in your order history.",
+            "text": "Check the points you've earned.",
             "size": "sm",
             "color": "#666666",
             "wrap": true
