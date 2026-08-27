@@ -7,11 +7,11 @@
   "zh_TW": "購買完成！"
  },
  "oa_body": {
-  "ko_KR": "바우처를 확인하고 바로 사용해 보세요.",
-  "ja_JP": "バウチャー内容をご確認いただき、お早めにご利用ください。",
-  "en_US": "Check your voucher and start using it right away.",
-  "th_TH": "ตรวจสอบเวาเชอร์แล้วใช้ได้ทันที",
-  "zh_TW": "確認優惠券後即可立即使用。"
+  "ko_KR": "상품을 확인하고 바로 사용해 보세요.",
+  "ja_JP": "商品内容をご確認いただき、お早めにご利用ください。",
+  "en_US": "Check your product and start using it right away.",
+  "th_TH": "ตรวจสอบสินค้าแล้วใช้ได้ทันที",
+  "zh_TW": "確認商品後即可立即使用。"
  },
  "oa_btn": {
   "ko_KR": "Unifi에서 확인하기",
