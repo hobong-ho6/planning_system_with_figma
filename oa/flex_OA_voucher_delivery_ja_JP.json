@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "ご購入が完了しました！",
+        "text": "ご購入が完了しました。",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "バウチャーを確認して、すぐにご利用ください。",
+            "text": "バウチャー内容をご確認いただき、お早めにご利用ください。",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -47,7 +47,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "Unifiで確認する",
+          "label": "Unifiで確認",
           "uri": "{{product_guidekim_url}}"
         }
       }

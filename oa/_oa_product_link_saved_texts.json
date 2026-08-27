@@ -1,21 +1,21 @@
 {
  "oa2_title": {
   "ko_KR": "구매 링크를 저장했어요!",
-  "ja_JP": "購入リンクを保存しました！",
+  "ja_JP": "購入リンクを保存しました。",
   "en_US": "Purchase link saved!",
   "th_TH": "บันทึกลิงก์การซื้อแล้ว!",
   "zh_TW": "已儲存購買連結！"
  },
  "oa2_body": {
   "ko_KR": "필요할 때 언제든 바로 열어볼 수 있어요.",
-  "ja_JP": "必要なときに、いつでもすぐに開けます。",
+  "ja_JP": "必要なときに、いつでもすぐにご確認いただけます。",
   "en_US": "You can open it anytime you need it.",
   "th_TH": "เปิดดูได้ทันทีทุกเมื่อที่ต้องการ",
   "zh_TW": "隨時都能立即開啟查看。"
  },
  "oa2_btn": {
   "ko_KR": "Unifi에서 확인하기",
-  "ja_JP": "Unifiで確認する",
+  "ja_JP": "Unifiで確認",
   "en_US": "Check on Unifi",
   "th_TH": "ตรวจสอบใน Unifi",
   "zh_TW": "前往 Unifi 查看"

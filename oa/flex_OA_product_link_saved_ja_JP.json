@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "購入リンクを保存しました！",
+        "text": "購入リンクを保存しました。",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "必要なときに、いつでもすぐに開けます。",
+            "text": "必要なときに、いつでもすぐにご確認いただけます。",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -47,7 +47,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "Unifiで確認する",
+          "label": "Unifiで確認",
           "uri": "{{product_detail_url}}"
         }
       }

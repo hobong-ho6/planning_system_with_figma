@@ -1,21 +1,21 @@
 {
  "oa_title": {
   "ko_KR": "구매가 완료되었어요!",
-  "ja_JP": "ご購入が完了しました！",
+  "ja_JP": "ご購入が完了しました。",
   "en_US": "Purchase complete!",
   "th_TH": "ซื้อสำเร็จแล้ว!",
   "zh_TW": "購買完成！"
  },
  "oa_body": {
   "ko_KR": "바우처를 확인하고 바로 사용해 보세요.",
-  "ja_JP": "バウチャーを確認して、すぐにご利用ください。",
+  "ja_JP": "バウチャー内容をご確認いただき、お早めにご利用ください。",
   "en_US": "Check your voucher and start using it right away.",
   "th_TH": "ตรวจสอบเวาเชอร์แล้วใช้ได้ทันที",
   "zh_TW": "確認優惠券後即可立即使用。"
  },
  "oa_btn": {
   "ko_KR": "Unifi에서 확인하기",
-  "ja_JP": "Unifiで確認する",
+  "ja_JP": "Unifiで確認",
   "en_US": "Check on Unifi",
   "th_TH": "ตรวจสอบใน Unifi",
   "zh_TW": "前往 Unifi 查看"
