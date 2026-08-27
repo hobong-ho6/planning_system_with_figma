@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "{{product_cashback}} 캐시백이 지급되었어요!",
+        "text": "{{product_cashback}}P 캐시백이 지급되었어요!",
         "weight": "bold",
         "size": "lg",
         "wrap": true

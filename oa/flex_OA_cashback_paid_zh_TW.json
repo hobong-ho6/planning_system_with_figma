@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "{{product_cashback}} 現金回饋已發放！",
+        "text": "{{product_cashback}}P 現金回饋已發放！",
         "weight": "bold",
         "size": "lg",
         "wrap": true

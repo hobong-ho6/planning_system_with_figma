@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "{{product_cashback}} cashback paid!",
+        "text": "{{product_cashback}}P cashback paid!",
         "weight": "bold",
         "size": "lg",
         "wrap": true

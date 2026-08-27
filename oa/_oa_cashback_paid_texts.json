@@ -1,10 +1,10 @@
 {
  "oa3_title": {
-  "ko_KR": "{{product_cashback}} 캐시백이 지급되었어요!",
-  "ja_JP": "{{product_cashback}}のキャッシュバックが付与されました。",
-  "en_US": "{{product_cashback}} cashback paid!",
-  "th_TH": "ได้รับเงินคืน {{product_cashback}} แล้ว!",
-  "zh_TW": "{{product_cashback}} 現金回饋已發放！"
+  "ko_KR": "{{product_cashback}}P 캐시백이 지급되었어요!",
+  "ja_JP": "{{product_cashback}}Pのキャッシュバックが付与されました。",
+  "en_US": "{{product_cashback}}P cashback paid!",
+  "th_TH": "ได้รับเงินคืน {{product_cashback}}P แล้ว!",
+  "zh_TW": "{{product_cashback}}P 現金回饋已發放！"
  },
  "oa3_body": {
   "ko_KR": "적립된 포인트를 확인해 보세요.",

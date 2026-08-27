@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "{{product_cashback}}のキャッシュバックが付与されました。",
+        "text": "{{product_cashback}}Pのキャッシュバックが付与されました。",
         "weight": "bold",
         "size": "lg",
         "wrap": true

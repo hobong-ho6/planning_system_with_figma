@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "ได้รับเงินคืน {{product_cashback}} แล้ว!",
+        "text": "ได้รับเงินคืน {{product_cashback}}P แล้ว!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
