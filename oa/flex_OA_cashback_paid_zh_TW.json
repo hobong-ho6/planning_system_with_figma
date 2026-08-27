@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "{{product_cashback}} 現金回饋已發放！",
+        "text": "已發放 {{product_cashback}} 點現金回饋！",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "快來查看已累積的點數。",
+            "text": "可在訂單紀錄中立即查看。",
             "size": "sm",
             "color": "#666666",
             "wrap": true

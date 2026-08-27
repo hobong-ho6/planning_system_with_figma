@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "{{product_cashback}}のキャッシュバックが付与されました。",
+        "text": "キャッシュバック{{product_cashback}}ポイントが付与されました。",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "付与されたポイントをご確認ください。",
+            "text": "注文履歴からすぐにご確認いただけます。",
             "size": "sm",
             "color": "#666666",
             "wrap": true

@@ -21,10 +21,10 @@
   "zh_TW": "前往 Unifi 查看"
  },
  "oa_alttext": {
-  "ko_KR": "구매하신 바우처가 도착했어요.",
-  "ja_JP": "ご購入のバウチャーが届きました。",
-  "en_US": "Your voucher has arrived.",
-  "th_TH": "เวาเชอร์ของคุณมาถึงแล้ว",
-  "zh_TW": "您購買的優惠券已送達。"
+  "ko_KR": "구매하신 상품이 도착했어요.",
+  "ja_JP": "ご購入の商品が届きました。",
+  "en_US": "Your purchased product has arrived.",
+  "th_TH": "สินค้าที่คุณซื้อมาถึงแล้ว",
+  "zh_TW": "您購買的商品已送達。"
  }
 }

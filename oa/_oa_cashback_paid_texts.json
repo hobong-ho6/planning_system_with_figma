@@ -1,17 +1,17 @@
 {
  "oa3_title": {
-  "ko_KR": "{{product_cashback}} 캐시백이 지급되었어요!",
-  "ja_JP": "{{product_cashback}}のキャッシュバックが付与されました。",
-  "en_US": "{{product_cashback}} cashback paid!",
-  "th_TH": "ได้รับเงินคืน {{product_cashback}} แล้ว!",
-  "zh_TW": "{{product_cashback}} 現金回饋已發放！"
+  "ko_KR": "캐시백 {{product_cashback}} 포인트가 지급되었어요!",
+  "ja_JP": "キャッシュバック{{product_cashback}}ポイントが付与されました。",
+  "en_US": "{{product_cashback}} cashback points paid!",
+  "th_TH": "ได้รับเงินคืน {{product_cashback}} คะแนนแล้ว!",
+  "zh_TW": "已發放 {{product_cashback}} 點現金回饋！"
  },
  "oa3_body": {
-  "ko_KR": "적립된 포인트를 확인해 보세요.",
-  "ja_JP": "付与されたポイントをご確認ください。",
-  "en_US": "Check the points you've earned.",
-  "th_TH": "ตรวจสอบคะแนนที่ได้รับได้เลย",
-  "zh_TW": "快來查看已累積的點數。"
+  "ko_KR": "주문 내역에서 바로 확인할 수 있어요.",
+  "ja_JP": "注文履歴からすぐにご確認いただけます。",
+  "en_US": "You can check them right away in your order history.",
+  "th_TH": "ตรวจสอบได้ทันทีในประวัติการสั่งซื้อ",
+  "zh_TW": "可在訂單紀錄中立即查看。"
  },
  "oa3_btn": {
   "ko_KR": "Unifi에서 확인하기",
