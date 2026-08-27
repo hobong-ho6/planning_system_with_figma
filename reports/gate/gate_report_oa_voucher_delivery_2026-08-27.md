@@ -9,6 +9,11 @@
 - **검토 범위**: **전수 점검** — 4문구 × 5개 언어 = **20셀 전건**
 - **산출물**: `oa/flex_OA_voucher_delivery_{ko_KR,ja_JP,en_US,th_TH,zh_TW}.json` 5개 + `oa/flex_OA_voucher_delivery_5lang.zip`
 
+> **개정 이력 (2판, 2026-08-27)** — 변수명이 두 차례 바뀌어 최종본은 **`{{product_image_url}}`·`{{product_guidekim_url}}`**이다.
+> ① 초판 `{{voucher_image_url}}`·`{{voucher_detail_url}}` → ② `{{voucher_detail_url}}`을 `{{voucher_guidekim_url}}`로 변경(사용자) →
+> ③ **`voucher_` 접두를 전부 `product_`로 통일**(사용자). 같은 상품 이미지 변수를 찜하기 OA와 공유하기 위한 정리다.
+> 찜하기 OA는 별도 리포트 `gate_report_oa_product_link_saved_2026-08-27.md` 참조. **번역 문구는 변경 없음**(변수명만 변경).
+
 ---
 
 ## 0. 사용자 결정 3건
@@ -16,7 +21,7 @@
 | # | 결정 | 내용 |
 |---|---|---|
 | 1 | **안내 문구 개선** | 「구매 완료 + 즉시 사용」 방향 채택 (§1) |
-| 2 | **변수명** | Hero = **`{{voucher_image_url}}`** · 버튼 URL = **`{{voucher_detail_url}}`** |
+| 2 | **변수명** | Hero = **`{{product_image_url}}`** · 버튼 URL = **`{{product_guidekim_url}}`** *(2판 최종 — 위 개정 이력)* |
 | 3 | **목업 이미지** | 이번 작업에서는 **이미지 없이 진행** — 대화 첨부 이미지는 파일로 접근할 수 없고 로컬(Downloads·Desktop)에도 없었다 |
 
 ---
@@ -144,7 +149,7 @@ python3 scripts/validate_translation.py /tmp/oa_validate.xlsx scripts/glossary.j
 **충돌이 아니라 유형이 다르다** — 그 규칙은 **캠페인 확정형**(모든 수신자에게 같은 이미지·같은 링크)을 전제로 쓰였다. 이번 메시지는 **주문별로 상품 이미지와 바우처 상세 링크가 달라지는 동적 템플릿**이라 실값을 넣을 수 없다. Messaging API 발송 시 서버가 치환하는 것이 정상 동작이다.
 
 - **따라서 사용자 요청대로 변수를 유지했다.** 단 그 결과:
-  - ⚠️ **Flex Message Simulator에서 이 JSON은 그대로 렌더되지 않는다**(`{{voucher_image_url}}`이 https가 아니므로). 시뮬레이터로 확인하려면 **변수 자리에 샘플 URL을 임시로 넣어야** 한다.
+  - ⚠️ **Flex Message Simulator에서 이 JSON은 그대로 렌더되지 않는다**(`{{product_image_url}}`이 https가 아니므로). 시뮬레이터로 확인하려면 **변수 자리에 샘플 URL을 임시로 넣어야** 한다.
   - 발송 시스템이 `{{ }}` 치환을 지원하는지 **FE·서버 확인 필요**. LINE Messaging API 자체에는 이 치환 기능이 없으므로 **발송 전 애플리케이션 레벨에서 문자열 치환**이 전제된다.
 - → **`md/OA.md` 규칙 3에 「동적 템플릿형」 예외를 명시할 것을 권장**한다. 현재 문구대로면 다음 세션이 이 산출물을 「플레이스홀더 잔존 = 규칙 위반」으로 오판해 실값으로 바꿔버릴 수 있다.
 
@@ -152,8 +157,8 @@ python3 scripts/validate_translation.py /tmp/oa_validate.xlsx scripts/glossary.j
 
 | 변수 | 의미 | 예시 | 비고 |
 |---|---|---|---|
-| **`{{voucher_image_url}}`** | OA로 전송하는 바우처 상품 이미지 URL(Hero) | `https://…/oliveyoung_50000.png` | 주문 상품에 따라 달라진다. **Flex `hero.url`에 들어가므로 치환 후 https 실값이어야 한다** |
-| **`{{voucher_detail_url}}`** | 구매한 바우처 상세로 이동하는 링크(버튼 action) | `https://unifi…/voucher/{id}` | 주문·사용자별로 달라진다. **Flex `action.uri`에 들어간다** |
+| **`{{product_image_url}}`** | OA로 전송하는 바우처 상품 이미지 URL(Hero) | `https://…/oliveyoung_50000.png` | 주문 상품에 따라 달라진다. **Flex `hero.url`에 들어가므로 치환 후 https 실값이어야 한다** |
+| **`{{product_guidekim_url}}`** | 구매한 바우처 상세로 이동하는 링크(버튼 action) | `https://unifi…/voucher/{id}` | 주문·사용자별로 달라진다. **Flex `action.uri`에 들어간다** |
 
 기존 등재 2건(`{{total_amount}}`·`{{wallet_address}}`)과 같은 snake_case 의미명 규칙을 따랐다. 승인 시 `md/landpress.md` 절차로 전체 JSON을 산출해 전달하고, 버전이 오르면 **기획자 가이드 zip도 필수 동반 갱신**한다.
 
@@ -199,7 +204,7 @@ oa/flex_OA_voucher_delivery_5lang.zip   ← 위키 첨부
 
 **구조**(`md/OA.md` 동작 검증 구조 준수): `hero`(image · `size:full` · `aspectRatio:20:13` · `aspectMode:cover` · action 없음) + `body`(타이틀 text + 하위 box의 본문 text) + `footer`(주 버튼 `style:primary` · `color:#000000` · `height:sm`). **빈 `contents:[]` box 없음.**
 
-**검증**: 5파일 전부 ⓐ JSON 파싱 정상 ⓑ `type:bubble` ⓒ `hero.url` = `{{voucher_image_url}}` ⓓ `action.uri` = `{{voucher_detail_url}}` ⓔ 언어 혼입 0 ⓕ **zip 라운드트립 재검증**(압축 해제 후 5파일 전수 재확인 — `md/OA.md` 3-1 ⓒ).
+**검증**: 5파일 전부 ⓐ JSON 파싱 정상 ⓑ `type:bubble` ⓒ `hero.url` = `{{product_image_url}}` ⓓ `action.uri` = `{{product_guidekim_url}}` ⓔ 언어 혼입 0 ⓕ **zip 라운드트립 재검증**(압축 해제 후 5파일 전수 재확인 — `md/OA.md` 3-1 ⓒ).
 
 ### 위키
 

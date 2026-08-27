@@ -1,0 +1,30 @@
+{
+ "oa2_title": {
+  "ko_KR": "구매 링크를 저장했어요!",
+  "ja_JP": "購入リンクを保存しました！",
+  "en_US": "Purchase link saved!",
+  "th_TH": "บันทึกลิงก์การซื้อแล้ว!",
+  "zh_TW": "已儲存購買連結！"
+ },
+ "oa2_body": {
+  "ko_KR": "필요할 때 언제든 바로 열어볼 수 있어요.",
+  "ja_JP": "必要なときに、いつでもすぐに開けます。",
+  "en_US": "You can open it anytime you need it.",
+  "th_TH": "เปิดดูได้ทันทีทุกเมื่อที่ต้องการ",
+  "zh_TW": "隨時都能立即開啟查看。"
+ },
+ "oa2_btn": {
+  "ko_KR": "Unifi에서 확인하기",
+  "ja_JP": "Unifiで確認する",
+  "en_US": "Check on Unifi",
+  "th_TH": "ตรวจสอบใน Unifi",
+  "zh_TW": "前往 Unifi 查看"
+ },
+ "oa2_alttext": {
+  "ko_KR": "저장하신 구매 링크가 도착했어요.",
+  "ja_JP": "保存した購入リンクが届きました。",
+  "en_US": "Your saved purchase link has arrived.",
+  "th_TH": "ลิงก์การซื้อที่คุณบันทึกไว้มาถึงแล้ว",
+  "zh_TW": "您儲存的購買連結已送達。"
+ }
+}

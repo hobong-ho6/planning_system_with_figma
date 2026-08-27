@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "ซื้อสำเร็จแล้ว!",
+        "text": "購入リンクを保存しました！",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "ตรวจสอบเวาเชอร์แล้วใช้ได้ทันที",
+            "text": "必要なときに、いつでもすぐに開けます。",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -47,8 +47,8 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "ตรวจสอบใน Unifi",
-          "uri": "{{product_guidekim_url}}"
+          "label": "Unifiで確認する",
+          "uri": "{{product_detail_url}}"
         }
       }
     ]

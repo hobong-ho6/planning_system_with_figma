@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "ซื้อสำเร็จแล้ว!",
+        "text": "Purchase link saved!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "ตรวจสอบเวาเชอร์แล้วใช้ได้ทันที",
+            "text": "You can open it anytime you need it.",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -47,8 +47,8 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "ตรวจสอบใน Unifi",
-          "uri": "{{product_guidekim_url}}"
+          "label": "Check on Unifi",
+          "uri": "{{product_detail_url}}"
         }
       }
     ]

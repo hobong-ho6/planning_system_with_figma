@@ -2,7 +2,7 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "{{voucher_image_url}}",
+    "url": "{{product_image_url}}",
     "size": "full",
     "aspectRatio": "20:13",
     "aspectMode": "cover"
@@ -48,7 +48,7 @@
         "action": {
           "type": "uri",
           "label": "Unifi에서 확인하기",
-          "uri": "{{voucher_detail_url}}"
+          "uri": "{{product_guidekim_url}}"
         }
       }
     ]
