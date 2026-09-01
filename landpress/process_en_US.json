@@ -1,0 +1,24 @@
+{
+  "items": [
+    {
+      "step": 1,
+      "title": "Free LINE consultation and booking",
+      "description": "Consult about the treatment you want and book your visit."
+    },
+    {
+      "step": 2,
+      "title": "Clinic visit, consultation, and treatment",
+      "description": "Visit the clinic and decide whether to proceed and which treatment to receive."
+    },
+    {
+      "step": 3,
+      "title": "Pay on site after treatment",
+      "description": "No prepayment is required; you pay after the treatment."
+    },
+    {
+      "step": 4,
+      "title": "Get 15% cashback",
+      "description": "After payment is confirmed, you get 15% of the amount back in points."
+    }
+  ]
+}

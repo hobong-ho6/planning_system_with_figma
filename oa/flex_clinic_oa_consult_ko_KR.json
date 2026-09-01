@@ -1,0 +1,74 @@
+{
+  "type": "bubble",
+  "hero": {
+    "type": "image",
+    "url": "{{product_image_url}}",
+    "size": "full",
+    "aspectRatio": "20:13",
+    "aspectMode": "cover"
+  },
+  "body": {
+    "type": "box",
+    "layout": "vertical",
+    "contents": [
+      {
+        "type": "text",
+        "text": "상담 준비가 끝났어요!",
+        "wrap": true,
+        "weight": "bold",
+        "size": "lg"
+      },
+      {
+        "type": "box",
+        "layout": "vertical",
+        "margin": "md",
+        "spacing": "sm",
+        "contents": [
+          {
+            "type": "text",
+            "text": "병원 정보를 Unifi에서 확인할 수 있어요.",
+            "wrap": true,
+            "size": "sm",
+            "color": "#666666"
+          },
+          {
+            "type": "text",
+            "text": "자세히 알아보고 상담을 시작해 보세요.",
+            "wrap": true,
+            "size": "sm",
+            "color": "#666666"
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "type": "box",
+    "layout": "vertical",
+    "spacing": "sm",
+    "contents": [
+      {
+        "type": "button",
+        "style": "primary",
+        "color": "#000000",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "확인하기",
+          "uri": "{{product_detail_url}}"
+        }
+      },
+      {
+        "type": "button",
+        "style": "link",
+        "color": "#000000",
+        "height": "sm",
+        "action": {
+          "type": "uri",
+          "label": "더 많은 병원 둘러보기",
+          "uri": "https://miniapp.line.me/unifi/benefits-mini/k-pick/beauty"
+        }
+      }
+    ]
+  }
+}

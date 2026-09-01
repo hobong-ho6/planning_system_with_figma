@@ -1,0 +1,31 @@
+{
+  "items": [
+    {
+      "title": "쥬베룩 스킨·볼륨 1cc",
+      "description": "피부결·탄력 개선 콜라겐 부스터",
+      "price": {
+        "amount": 19999,
+        "currency": "JPY",
+        "from": true
+      }
+    },
+    {
+      "title": "리쥬란 힐러 2cc",
+      "description": "건조한 피부를 위한 스킨 부스터",
+      "price": {
+        "amount": 15900,
+        "currency": "JPY",
+        "from": true
+      }
+    },
+    {
+      "title": "포텐자",
+      "description": "모공·피부결 개선",
+      "price": {
+        "amount": 19999,
+        "currency": "JPY",
+        "from": true
+      }
+    }
+  ]
+}
