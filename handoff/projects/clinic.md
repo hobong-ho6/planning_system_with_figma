@@ -19,16 +19,13 @@
   - ⚠️ `(Unifi mini) 상세페이지` `69637:14698`는 **노드 삭제됨**(API `null`)
 - XLT: **Unifi**(정본) · 프리픽스 `UF_`(**UIT** · `{{0}}`) + `mini_guidekim_`(**LV** · `{0}`) 혼재 — 키를 사용자가 직접 기재해 프리픽스로 팀 판별
 - 엑셀: `xlt/xlt_clinic_screen_7keys_20260901.xlsx`(7키·**업로드 확인됨**) · `xlt/registry_fix/xlt_fix_main_faq_title_ja_1key_20260901.xlsx`(1키·**미반영**)
-  - ⭐ **`xlt_clinic_all_85keys_20260903.xlsx`(85키) = 업로드 정본** — 위키 첨부. 아래 개별 엑셀은 **전부 여기 흡수**됐다(따로 올리지 않는다)
-  - 2026-09-03 개별분(흡수됨): `xlt_output_20260903171314.xlsx`(8키) · `_175353`(3키) · `_182643`(2키) · `_205205`(1키) · `_212941`(19키). ⚠️ `xlt/`는 `.gitignore`라 위키 첨부·게이트 리포트가 정본
+  - ⭐ **`xlt_clinic_all_85keys_20260903.xlsx`(85키) = 업로드 정본** — 위키 첨부. 아래 개별 엑셀은 **전부 여기 흡수**됐다(따로 올리지 않는다) · 2026-09-03 개별분(흡수됨): `xlt_output_20260903171314.xlsx`(8키) · `_175353`(3키) · `_182643`(2키) · `_205205`(1키) · `_212941`(19키). ⚠️ `xlt/`는 `.gitignore`라 위키 첨부·게이트 리포트가 정본
 - **Landpress 읽기 API**(2026-09-03 확보 · 무인증) — 프로젝트 `n7nuefo6t491uc9cp863lgyq` · 컬렉션 `k_pick_clinic_product`(병원별) · `k_pick_clinic_common_info`(공통)
   `curl "https://landpress-content.line-scdn.net/contents/v2/projects/n7nuefo6t491uc9cp863lgyq/collections/{컬렉션}/items?page=1&limit=100"`
   CMS: `https://landpress-content-v2.linecorp.com/projects/n7nuefo6t491uc9cp863lgyq/content/collections/{컬렉션}/items/1`
-- Landpress 콘텐츠 JSON: `landpress/` **27파일**(+ 병원별 `product_{daprs,tiana,healingeye}_ko_KR.json` 3건 · 2026-09-03)
-- Landpress 콘텐츠 JSON(기존): `landpress/` **24파일** — 공통 4필드 × 5개 언어 + 병원별 3필드 × ko + **`voucher_ko_KR.json`**(추천 바우처 4종 · ko만)
+- Landpress 콘텐츠 JSON: `landpress/` **27파일**(+ 병원별 `product_{daprs,tiana,healingeye}_ko_KR.json` 3건 · 2026-09-03) · (기존 24파일 구성) 공통 4필드 × 5개 언어 + 병원별 3필드 × ko + **`voucher_ko_KR.json`**(추천 바우처 4종 · ko만)
 - 게이트 리포트: `reports/gate/gate_report_clinic_*.md` · `gate_report_landpress_clinic_4sections_2026-09-01.md`
-  - 2026-09-03 세션 #2: `gate_report_clinic_detail_improved_8keys_*` · `_oa_save_improved_3keys_*` · `_favorite_guide_2keys_*`
-  - 2026-09-03 세션 #3: `gate_report_clinic_service_no_price_menu_*` · `_bridge_rolling_banner_10keys_*` · `_mini_bridge_19keys_*` · **`_consolidated_85keys_*`**(전수 425셀) · `_hospital_products_*`(병원 3곳)
+  - 2026-09-03 세션 #2: `gate_report_clinic_detail_improved_8keys_*` · `_oa_save_improved_3keys_*` · `_favorite_guide_2keys_*` · 2026-09-03 세션 #3: `gate_report_clinic_service_no_price_menu_*` · `_bridge_rolling_banner_10keys_*` · `_mini_bridge_19keys_*` · **`_consolidated_85keys_*`**(전수 425셀) · `_hospital_products_*`(병원 3곳)
 
 ## 현재 상태
 
@@ -88,7 +85,6 @@
 | 2026-09-01 | **ja 「캐시백」은 `キャッシュバック`** (`還元` 미채택) | 등재값 실측 — 바우처 계열 **3/3**, Unifi 전체 **13:1**. `還元`은 guidekim mini 배지 2키뿐 |
 | 2026-09-01 | **`mini_guidekim_cat_eye` th = `จักษุวิทยา`** | `จักษุ`는 단독 사용이 어려운 결합형. 형제 키(치과 `ทันตกรรม` 등)는 전부 완전한 명사 |
 | 2026-09-01 | **엑셀 포함 기준 = 「Unifi 미등재」** | `mini_guidekim_cat_*` 3키는 Dapp Portal엔 있고 Unifi엔 없어 **7키 전량 포함** |
-
 | 2026-09-03 | **XLT 네임스페이스 `UF_clinic_mini_bridge_` 신설** — mini 브릿지 문구를 Web(`UF_clinic_bridge_`)과 분리. 롤링 배너 10키도 리네임 | 실측 — 기존 `UF_clinic_bridge_*` **10키가 전부 (Web) 브릿지 문구**였고 두 화면은 카피가 완전히 다르다(Web `좋은 후기로 주목받는…` / mini `한국 인기 클리닉 더 좋은 혜택과 함께`). 후보 선례 `UF_clinic_mini_bridge_` 0건 · `UF_mini_guidekim_bridge_` 3건(guidekim 상품 브릿지). **업로드 전이 유일한 정정 시점**이었다 |
 | 2026-09-03 | **코멘트 `xlt` 마커는 「본문에 `xlt` 한 줄이 독립적으로 있으면」으로 판정** | CLAUDE.md는 「`XLT`로 시작」인데 실제 코멘트에는 설명 뒤 **끝줄에 `xlt`** 를 단 것이 브릿지 mini 3건·개선 상세 1건 있었다. `collect_frames.py`는 「정확히 `xlt`」만 봐서 6건만 잡았다 — 규칙대로 10건을 대상에 넣고 핀 색을 재렌더했다 |
 | 2026-09-03 | **ja 캐시백은 `キャッシュバック`** — 프레임 원문 `還元特典`·`最大15%還元`을 교체 | 사용자 결정(2026-09-01 결정 준수). 재실측 **14:1**(`還元`은 `UF_mini_guidekim_cashback` 1건뿐). A/B: P1 10→8, 신규 0. Figma 원본 수정 요청 대상(`71417:16028`·`16029`) |
@@ -114,20 +110,12 @@
 ### 2026-09-03 — 세션 #3: 5프레임 반영 + 네임스페이스 정정 + 통합 엑셀 + LPC 하위 페이지 (v95→v107)
 
 - 완료: `상단 롤링 배너`(10키) · `(Unifi mini) 브릿지페이지`(9키+재사용 1) · 개선 상세 재조회 행 · 리뷰 2프레임 Screen 반영 · **통합 엑셀 85키** 첨부 · **LPC 정리 하위 페이지 `4686692164` 신설**(크롭 10장 + 실등록 JSON) · 게이트 4건 P0=0
-- 교훈 ⓐ **「어느 화면 소속인가」를 프리픽스 결정 전에 Web/mini까지 쪼개 확인한다** — 롤링 배너를 「브릿지 소속」까지만 보고 `UF_clinic_bridge_badge_*`로 부여했으나, 기존 `UF_clinic_bridge_*` 10키는 **전부 (Web) 브릿지 문구**였다. 두 프레임의 TEXT를 나란히 덤프(40 vs 88)해 카피가 전부 다름을 확인하고서야 드러났다. **업로드 전이라 리네임으로 복구**했다 — 키는 FE 전달 후 변경 불가
-- 교훈 ⓑ **도구의 판정 기준이 규칙과 다를 수 있다** — `collect_frames.py`의 xlt 마커는 「본문이 **정확히** `xlt`」여서 6건만 잡혔고, 실제로는 설명 뒤 끝줄에 `xlt`를 단 코멘트가 4건 더 있었다(`무료 상담`·`결제금 15% 캐시백`·`후기 더보기`·`Google 지도로 확인하기`). 도구 출력을 그대로 믿지 않고 **규칙 텍스트와 대조**한다
-- 교훈 ⓒ **정규식 파서가 매크로에 걸려 키를 조용히 누락한다** — 다국어 표를 `<tr><td><code>KEY</code></td>`로 뽑아 78키라고 보고했으나, 키 셀에 `status` 매크로가 붙은 **7키가 빠져** 실제는 85키였다. **셀 경계 깊이 추적 + 매크로 제거** 파서로 교체해야 한다(세션 #1 교훈 ⓔ의 재발)
-- 교훈 ⓓ **로컬 산출물보다 실등록값이 정본이다** — 사용자가 채팅으로 준 `menu` 구조가 두 번 갈렸는데(문자열 price → 오브젝트 price), **읽기 API 실측 결과 문자열**이었다. 로컬 8필드 중 6개는 일치했고 `menu`만 어긋났다. 추측하지 않고 **API로 조회**한다
-- 교훈 ⓔ **용어집 「실사용 0건」은 의미까지 확인해야 한다** — ja `すべて見る`를 3세션 연속 「0건」으로 적었으나 실측 **6건**이었다(전부 ko 「전체보기」). 건수만 세면 「등재값이 다른 뜻」이라는 진짜 문제를 놓친다
-- 교훈 ⓕ **사용자가 같은 페이지를 계속 편집한다** — 세션 중 v97·v105가 사용자 편집이었고(v105는 GA Event 정의 추가), PUT 직전 버전 가드로 3회 잡아냈다. 버전 가드 없이 올렸으면 GA 정의가 사라졌을 것이다
-- 교훈 ⓖ **Confluence `code` 매크로의 `language=json`은 이 인스턴스에서 미지원**이다 — 9개 블록이 전부 `Error rendering`이었고 `bash`는 정상이었다. 파라미터를 빼면 렌더된다. **`check_wiki_storage.py post`가 잡아줬다**
+- 교훈 ⓐⓑ **프리픽스는 Web/mini까지 쪼개 확인**(`UF_clinic_bridge_*` 10키가 전부 Web 문구 — 업로드 전 리네임으로 복구) · **도구 판정 기준을 규칙과 대조**(`collect_frames.py` xlt 마커가 「정확히 xlt」만 봐 끝줄 `xlt` 4건 누락)
+- 교훈 ⓒⓓⓔ **정규식이 `status` 매크로 셀을 조용히 빼먹는다**(78→실제 85키 · 셀 깊이 추적+매크로 제거 필요) · **로컬 산출물보다 실등록값 API가 정본**(`menu.price`는 문자열) · **용어집 「실사용 0건」은 의미까지 확인**(`すべて見る` 6건 전부 ko 「전체보기」 — 등재 의미 오류)
+- 교훈 ⓕⓖ **사용자가 같은 페이지를 계속 편집**(v97·v105) → PUT 직전 버전 가드 3회 · **`code` 매크로 `language=json` 미지원**(9블록 Error rendering · 파라미터 제거 · `check_wiki_storage.py post`가 잡음)
 
-### 2026-09-03 — 세션 #2: 개선 프레임 3개 반영 + 추천 바우처 Landpress 이관 (v86→v95) *(압축)*
+### 2026-09-01~03 — 세션 #1·#2: 위키 신설(v1→v86 · `88d4074`) → 개선 프레임 3개 반영 + 추천 바우처 Landpress 이관(v86→v95) *(압축)*
 
-- 완료: **Landpress `voucher` JSON 신설**(고정 4종 · 이미지 실물 대조로 액면가 검증) · 개선 프레임 3개 위키 반영 · 게이트 3건 P0=0 · 삭제된 `kpick_clinic_oa_msg_consult_01` 행 v91에서 복원
-- 교훈: **사용자가 같은 페이지를 동시에 편집한다** → PUT 직전 버전 가드(3회 rebase) · **`<tr class="">`를 정규식이 놓친다** → `r'<tr[\s>]|</tr\s*>'` · **오버레이 프레임은 코멘트 핀이 배경 텍스트로 오매칭**(2건) → 렌더 후 육안 검증만이 방어 · **정책 핀도 글자를 가린다** → 매칭 텍스트 좌측(mx-10) + 계단식 · **오탐 반복은 용어집 수정 신호** · **프레임 경계 밖 텍스트를 대상에 넣지 않는다**(`y >= frame.height` 필터)
+- 완료: 위키 신규 생성(Jira 2건) · 브릿지·상세·OA 3영역 · **62키 번역** · OA 2메시지 Flex JSON zip · 일본어 현지인 검수 · **Landpress 7필드 23파일 + `voucher` JSON**(고정 4종 · 실물 대조) · 상담·시술 과정 XLT 8키 제거 · 개선 프레임 3개 반영 · 삭제된 `kpick_clinic_oa_msg_consult_01` 행 v91에서 복원 · 게이트 P0=0
+- 교훈: 형제 문서 1건으로 템플릿을 일반화하지 않는다(정본 `3751027285`) · 어노테이션 번호 규칙에 예외 없음 · 변수화는 사용자 확인 후 · 검수 반영은 **정본 데이터 구조**에 넣고 전 산출물 재생성 · `<td>`·`<tr class="">` 비탐욕 정규식이 중첩표에서 끊긴다(**HTTP 400 3회**) → 깊이 추적 + `r'<tr[\s>]|</tr\s*>'` + 태그 균형 assert · 인라인 코멘트 마커 개수 전후 비교 · **사용자가 같은 페이지를 동시 편집** → PUT 직전 버전 가드 · 오버레이 프레임의 핀은 배경 텍스트로 오매칭 → 렌더 후 육안 검증 · 핀은 매칭 텍스트 좌측 계단식 · 프레임 경계 밖 텍스트 제외(`y >= frame.height`)
 
-### 2026-09-01 — 세션 #1: 위키 신설 → Landpress 이관 → 서식 원복 (v1→v86 · `88d4074`) *(압축)*
-
-- 완료: 위키 신규 생성(Jira 2건 기반) · 브릿지·상세·OA 3영역 반영 · **62키 번역** · OA 2메시지 Flex JSON zip · 일본어 현지인 검수 반영 · **Landpress 7필드 23파일** 신설 · 상담·시술 과정 XLT 8키 제거 + 번호 재산출 · Screen 표 서식 원복
-- 교훈: 형제 문서 1건만 보고 템플릿을 일반화하지 않는다(정본 `3751027285` 우선) · 어노테이션 번호 규칙에 예외를 만들지 않는다 · 변수화는 사용자 확인 후에만 · 검수 반영은 **정본 데이터 구조**에 넣고 전 산출물을 재생성한다 · `<td>` 비탐욕 매칭이 중첩표에서 끊겨 **HTTP 400 3회** → 깊이 추적 + PUT 직전 태그 균형 assert · 인라인 코멘트 마커(`ac:inline-comment-marker`) 개수를 편집 전후로 비교한다
