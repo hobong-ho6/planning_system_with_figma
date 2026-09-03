@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Figma → 다국어 위키 자동화 · 기획자 워크플로우 가이드 v32</title>
+<title>Figma → 다국어 위키 자동화 · 기획자 워크플로우 가이드 v33</title>
 <meta name="description" content="Figma 화면과 위키 주소만으로 AI가 5개 언어 번역과 위키 문서를 자동으로 작성하는 워크플로우. 기획자를 위한 사용 가이드." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet" />
@@ -41,7 +41,7 @@
       <li><a href="#flow" class="hover:text-brand-600">전체 흐름</a></li>
       <li><a href="#how" class="hover:text-brand-600">동작 원리</a></li>
       <li><a href="#modes" class="hover:text-brand-600">작업 모드</a></li>
-      <li><a href="#teams" class="hover:text-brand-600">담당 팀</a></li>
+      <li><a href="#teams" class="hover:text-brand-600">담당 팀</a><a href="#ga" class="hover:text-brand-600">GA Event</a></li>
       <li><a href="#gate" class="hover:text-brand-600">번역·검증</a></li>
       <li><a href="#glossary" class="hover:text-brand-600">용어집</a></li>
       <li><a href="#talk" class="hover:text-brand-600">확인 포인트</a></li>
@@ -81,7 +81,7 @@
 <!-- ===== HERO ===== -->
 <section class="relative overflow-hidden bg-gradient-to-b from-brand-50 to-slate-50">
   <div class="max-w-6xl mx-auto px-5 pt-16 pb-20 text-center">
-    <span class="inline-block mb-5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide">기획자를 위한 사용 가이드 · 개발 지식 불필요 · <b>v32 (2026-09-03)</b></span>
+    <span class="inline-block mb-5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide">기획자를 위한 사용 가이드 · 개발 지식 불필요 · <b>v33 (2026-09-03)</b></span>
     <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight text-ink">
       Figma 화면을 <span class="text-brand-600">5개 언어</span>로 번역하고<br class="hidden sm:block" />
       위키를 <span class="text-brand-600">자동으로</span> 채웁니다
@@ -431,6 +431,52 @@ git config --global handoff.person hong</pre>
     </div>
   </section>
 
+  <!-- ===== GA Event 정의 ===== -->
+  <section id="ga" class="py-14 scroll-mt-20">
+    <h2 class="sec-title">GA Event 정의 <span class="text-slate-400 font-normal text-lg">화면 정의서에 이벤트 표 넣기 · v32 신설</span></h2>
+    <p class="sec-sub">위키 업데이트를 요청할 때 <b>"GA event 추가"</b>라고 덧붙이면, Screen 표의 <code>XLT &amp; GA</code> 열(구 <code>XLT</code> 열)에 화면별 GA 이벤트 표가 함께 만들어집니다. 요청이 없으면 만들지 않습니다.</p>
+    <div class="grid sm:grid-cols-2 gap-4 mt-6">
+      <div class="card">
+        <span class="badge badge-indigo">view</span>
+        <h3 class="card-h mt-2">화면마다 1개 — 화면에 들어왔을 때</h3>
+        <ul class="list mt-2">
+          <li>이름 = <code>view_</code> + Screen ID (예: <code>view_kpick_clinic_oa_save_01_03</code>)</li>
+          <li>Screen ID가 한글이면 AI가 영문 이름을 <b>제안</b>하고 확인을 받습니다 (예: <code>view_clinic_mini_bridge</code>)</li>
+          <li><code>#</code> 열은 <code>-</code>, Parameter도 <code>-</code> — 화면은 Screen ID로 이미 구분되기 때문</li>
+        </ul>
+      </div>
+      <div class="card">
+        <span class="badge badge-emerald">click</span>
+        <h3 class="card-h mt-2">누를 수 있는 요소마다 — 자동 부여</h3>
+        <ul class="list mt-2">
+          <li>버튼·CTA·카드·탭·링크, 그리고 코멘트에 「선택 시 …」가 있는 요소</li>
+          <li>이름 = <code>click_</code> + 동작 (예: <code>click_copy_address</code>, <code>click_tab</code>)</li>
+          <li><b><code>#</code> 열 = 화면 이미지의 번호 ⓝ</b> — 어디를 눌렀을 때인지 바로 찾을 수 있습니다 (연속이면 <code>13~15</code>)</li>
+          <li>Parameter는 같은 이벤트가 여러 대상에서 날 때만 (예: <code>clinic_name</code>, <code>tab_name</code>)</li>
+        </ul>
+      </div>
+    </div>
+    <div class="mt-6 panel">
+      <h3 class="panel-h">표는 이렇게 들어갑니다</h3>
+      <p class="card-p mt-2">XLT 표(No · XLT Key · KR) 바로 아래에 <b>Event</b> 소제목과 3열 표가 붙습니다. 첫 행은 항상 view, 그 아래 click을 <code>#</code> 순서로.</p>
+      <table class="ex-table mt-3"><tbody>
+        <tr><th>#</th><th>Event Name</th><th>Parameter</th></tr>
+        <tr><td>-</td><td>view_clinic_detail</td><td>clinic_name</td></tr>
+        <tr><td>4</td><td>click_official_site</td><td>clinic_name</td></tr>
+        <tr><td>13~15</td><td>click_tab</td><td>tab_name</td></tr>
+        <tr><td>26</td><td>click_copy_address</td><td>clinic_name</td></tr>
+        <tr><td>37</td><td>click_faq</td><td>faq_id, clinic_name</td></tr>
+      </tbody></table>
+      <p class="ex-cap">클리닉 상세페이지 — <code>#4</code>는 화면 이미지 ④(공식 홈페이지 버튼), <code>#37</code>은 ㊲(자주 묻는 질문).</p>
+    </div>
+    <div class="grid sm:grid-cols-3 gap-4 mt-6">
+      <div class="card"><h3 class="card-h">🙋 반영 전에 확인합니다</h3><p class="card-p">화면별 초안 표를 먼저 보여 드리고, 한글 Screen ID의 제안 이름과 <code>#</code>이 <code>-</code>인 항목(코멘트가 없는 버튼)을 짚어 드립니다. 확인 후 위키에 들어갑니다.</p></div>
+      <div class="card"><h3 class="card-h">🔒 한 번 정한 이름은 유지</h3><p class="card-p">이미 위키에 있는 이벤트 이름은 XLT 키처럼 <b>바꾸지 않습니다</b>. 화면 번호가 다시 매겨지면 <code>#</code>만 따라 갱신합니다.</p></div>
+      <div class="card"><h3 class="card-h">📦 Landpress 목록은 <code>id</code>로</h3><p class="card-p">FAQ처럼 CMS(Landpress)에서 내려오는 항목은 문구 대신 <b>항목 <code>id</code></b>를 파라미터로 보냅니다(<code>faq_id</code>). JSON에 <code>id</code>가 없으면 AI가 5개 언어에 같은 값을 넣어 드립니다.</p></div>
+    </div>
+    <p class="note note-slate mt-5">📌 화면이 아닌 행 — 상단 롤링 배너 같은 구성 요소, OA 메시지 — 는 이벤트를 정의하지 않고 「정의 대상 아님」과 사유만 적습니다. 규칙 정본은 <code>md/GA.md</code>.</p>
+  </section>
+
   <!-- ===== 번역 + 검증 ===== -->
   <section id="gate" class="py-14 scroll-mt-20">
     <h2 class="sec-title">번역과 품질 검증 게이트</h2>
@@ -726,7 +772,8 @@ action url 을 모두 업데이트 했어
     <div class="panel mt-6">
       <h3 class="panel-h">버전 요약</h3>
       <table class="ex-table mt-3"><tbody>
-        <tr><th><b>v32 · 2026-09-03</b></th><td><b>GA Event 정의 기능 신설</b> — 위키 업데이트 때 "GA event 추가"라고 요청하면 Screen 표의 <code>XLT &amp; GA</code> 열(구 <code>XLT</code>)에 화면별 이벤트 표(<code>#</code> · Event Name · Parameter)를 만들어 줍니다. 화면마다 <code>view_</code> 이벤트 1개, 버튼·카드·탭 등 누를 수 있는 요소마다 <code>click_</code> 이벤트를 자동 부여하고 <code>#</code>에 화면 이미지의 번호를 적어 어디를 눌렀을 때인지 바로 찾을 수 있습니다. Landpress(LPC)에서 내려오는 목록(FAQ 등)은 항목에 <code>id</code>를 두고 그 값을 파라미터로 보내는 규칙을 함께 정했습니다. 클리닉 예약 동선 위키에 view 6·click 18 적용 완료. 규칙 정본 <code>md/GA.md</code></td></tr>
+        <tr><th><b>v33 · 2026-09-03</b></th><td><b>GA Event 안내 보강</b> — 가이드 탭에 「GA Event 정의」 전용 섹션(규칙·표 구조·요청 방법) 신설, 시스템 가이드 탭 문서 지도 3곳(흐름 카드·상황→문서 표·파일 표)에 <code>md/GA.md</code> 추가. v32에서 카드·예시만 있고 본문 섹션과 문서 지도가 빠져 있던 것을 보완</td></tr>
+        <tr><th>v32 · 2026-09-03</th><td><b>GA Event 정의 기능 신설</b> — 위키 업데이트 때 "GA event 추가"라고 요청하면 Screen 표의 <code>XLT &amp; GA</code> 열(구 <code>XLT</code>)에 화면별 이벤트 표(<code>#</code> · Event Name · Parameter)를 만들어 줍니다. 화면마다 <code>view_</code> 이벤트 1개, 버튼·카드·탭 등 누를 수 있는 요소마다 <code>click_</code> 이벤트를 자동 부여하고 <code>#</code>에 화면 이미지의 번호를 적어 어디를 눌렀을 때인지 바로 찾을 수 있습니다. Landpress(LPC)에서 내려오는 목록(FAQ 등)은 항목에 <code>id</code>를 두고 그 값을 파라미터로 보내는 규칙을 함께 정했습니다. 클리닉 예약 동선 위키에 view 6·click 18 적용 완료. 규칙 정본 <code>md/GA.md</code></td></tr>
         <tr><th>v31 · 2026-09-03</th><td><b>IA 주간 점검 #5 — Unifi Pay 오프라인 QR 결제 출시 · K-Pick 상품 상세가 Unifi 내부 화면으로 편입 · mini 홈 전면 개편 · Season 4 개시</b> — 홈 최상단에 <b>QR 결제 배너</b>가 생겼고 결제 화면(<code>/pay/…</code>)이 프로덕션·Beta 모두 라이브입니다(주기능 어휘 <b>승인 대기 ⑦</b>). 바우처 상품 상세 일부가 <b>외부 GuideKim에서 Unifi 내부 화면으로 옮겨져</b> #3의 "외부 이탈 확정" 판정이 부분 번복됐습니다(<b>승인 대기 ⑧</b>). mini 홈은 K-Pick형 커머스 화면으로 전면 교체됐고, <b>5주 묵은 리워드 스켈레톤 이슈가 완전히 해소</b>됐습니다. K-Pick의 KR IP 제한은 <b>프로덕션에서 유효</b>함이 확인돼 폐기 검토를 철회했습니다. 「전체 IA 구조」 표도 함께 갱신했습니다. 기획자 액션 <b>없음</b></td></tr><tr><th>v30 · 2026-08-20</th><td><b>「사용자 설정」은 이제 AI가 먼저 확인합니다</b> — 설정을 스스로 찾아 할 필요가 없습니다. 작업을 시작하면 AI가 <b>설정값·이 컴퓨터가 기존 기록에 있는지·지난 작업 이력</b>을 먼저 보고 <b>필요한 것만</b> 물어봅니다. 이미 설정을 마친 PC는 <b>질문 0개</b>, 같은 사람의 새 PC는 <b>경로 한 줄</b>, 처음 합류하는 분은 <b>세 가지</b>(짧은 영문 이름·이름/메일·담당할 작업)만 답하면 내 메모 파일과 담당 표시는 AI가 만들어 정리합니다. 「AI가 먼저 확인하는 것」 표 신설 · 직접 설정하는 절차는 그 아래로 이동. 기획자 액션 <b>없음</b></td></tr><tr><th>v29 · 2026-08-20</th><td><b>「시스템 가이드」 탭의 문서 지도에 인수인계 계층 반영</b> — 인수인계 문서가 한 덩어리에서 <b>공유 정본 + 작업 대상별 파일 + 사람별 PC 메모 + 공용 자원 점유 표시</b>로 나뉘었습니다. 기획자가 요청하는 방식은 그대로지만, 「지금 누가 무엇을 쓰고 있는지」가 보이므로 <b>같은 파일을 동시에 고쳐 덮어쓰는 사고</b>가 줄어듭니다. ⑤ 문서 지도에 3행 추가 · ② 흐름 지도의 세션 시작 설명과 ③ 라우팅 갱신 · ⑦ 확장 규칙에 「새 작업 대상」 카드 추가 · 「시스템 가이드」 탭에 <b>⑦이 두 개</b>였던 번호를 ⑦/⑧로 정정. 기획자 액션 <b>없음</b></td></tr><tr><th>v28 · 2026-08-20</th><td><b>「사용자 설정」 섹션 신설 — 받은 뒤 PC마다 한 번</b> — 여러 사람이 같은 저장소를 함께 쓰기 때문에 <code>사람키</code>를 한 번 넣어야 <b>누가 무엇을 했는지 기록에 남고</b>, 작업 시작 때 <b>내 PC 메모가 자동으로 함께 읽힙니다</b>. 컴퓨터 이름으로는 사람을 구분할 수 없어(한 사람이 PC 2대·한 PC를 여러 사람) 사람키를 <b>PC마다 같은 값</b>으로 넣습니다. 함께 <b>인수인계 문서가 3계층으로 분리</b>됐습니다 — 공유 정본 1개 + <b>작업 대상별 파일</b> + 사람별 PC 메모 + <b>공용 자원 점유 표시</b>(같은 파일을 두 사람이 동시에 고쳐 덮어쓰는 사고를 막습니다). 기획자 액션은 하나 — <b>「사용자 설정」의 세 줄을 PC마다 한 번 실행</b></td></tr><tr><th>v27 · 2026-08-12</th><td><b>(철회)</b> 용어집 v4.8 관련 갱신 — 반영이 되돌려져 <b>이 버전은 유효하지 않습니다</b>. 다음 유효 버전은 v28입니다</td></tr><tr><th>v26 · 2026-08-10</th><td><b>「시스템 가이드」 탭에 ⑦ 가이드 버전 관리 신설</b> — 가이드 소스를 git 추적 <code>guide/</code>로 전환하고 게시본을 <code>guide-vN</code> 태그로 기록하는 규약을 문서화했습니다. 같은 날 두 세션이 같은 파일명 zip을 만들어 무음 덮어쓰기가 난 사고(v23 유실 → v25 복원)가 계기입니다. 기획자 액션은 하나 — <b>게시 완료를 알려주면 태그가 남습니다</b></td></tr><tr><th>v25 · 2026-08-10</th><td><b>용어집 v4.7 — 포이카츠 중국어(번체) 교정</b> — 등재값 <code>點數活動</code>이 XLT 시스템 전체(3,730키)에서 <b>실사용 0건</b>인 반면 실제 번역은 <code>集點活動</code>을 씁니다. 등재값 쪽이 실사용과 어긋난 경우라 등재값을 고쳤습니다(v4.1에서 영어·태국어만 맞추고 남겨둔 잔여분). 실측 <b>P1 −2건 · 신규 경고 0건</b>. <code>total_deprecated_terms</code> 수치 오류(13 → <b>14</b>)도 정정했습니다. 이 갱신은 당초 v23으로 만들어졌으나 <b>병렬 세션의 파일명 충돌로 유실</b>돼 v25로 재적용했습니다 — 이 사고를 계기로 가이드 소스를 <code>guide/</code>에서 git으로 관리합니다</td></tr><tr><th>v24 · 2026-08-10</th><td><b>IA 주간 점검 #4 (로그인 보강 포함) — USDT PLUS 이율 5%→7%(최대 연 10%)·Unifi Pay Direct·액션 라벨 개편과 「외부 지갑 연결」 프로덕션 반영</b> — 내 자산 액션이 <b>보내기·채우기·교환하기·은행출금</b>으로 바뀌었습니다(구 라벨이 남은 문구는 교체 대상). 누적 이자 화면(<code>/interest/usdt</code>)이 새로 확인됐고, 리워드 스켈레톤은 <b>프로덕션 해소·Beta mini만 로그인에서도 고착</b>으로 정정됐습니다. <b>Beta 디버그 패널은 개발자 도구라 점검에 사용하지 않기로 확정</b>했습니다</td></tr><tr><th>v21 · 2026-08-07</th><td><b>용어집 v4.6 — 「사용자」 등재 + 「유저」 금지</b> — 같은 화면에서 <code>유저</code>·<code>사용자</code>가 섞여 쓰이던 것을 「사용자」로 통일했습니다. 용어집 탭의 금지 목록(14건)·전체 용어 표(116용어)·전체 JSON이 모두 최신입니다</td></tr><tr><th>v20 · 2026-08-07</th><td><b>「시스템 가이드」 탭 신설</b> — 문서 13개·스크립트 13개로 늘어난 시스템의 <b>전체 구조를 한 장으로</b> 정리했습니다. 3계층 구조 · 흐름 지도 6종 · <b>상황별 라우팅 표</b>(하려는 일 → 읽을 문서 → 갱신할 문서) · 4대 차단 게이트 · 문서/스크립트 지도 · 확장 규칙. “어떤 작업에 어떤 문서를 봐야 하는지”를 찾는 용도입니다 · <b>XLT 시스템 등록값 검증 신설</b> — 이미 등록된 문구가 용어집에 맞는지 시스템 전체를 읽어 점검하고, 수정 제안을 확인받아 업로드용 엑셀까지 만듭니다. 번역할 때 <b>비슷한 문구의 기존 키를 찾아 재사용을 제안</b>하는 기능도 함께 들어갔습니다</td></tr>
         <tr><th>v19 · 2026-08-06</th><td><b>「월렛」도 검사 대상에 추가</b> — 「지갑」이 표준인데 「월렛」이라고 쓰면 검사에서 안 걸리던 사각지대를 막았습니다. 「팔로우」 때와 같은 원인이었습니다</td></tr><tr><th>v18 · 2026-08-06</th><td><b>용어집 버전 이력을 접이식으로</b> — 이력이 20개 버전까지 늘어 용어집 탭이 길어졌습니다. <b>버전 요약 표와 버전별 상세 카드를 한 번에 접고 펼치도록</b> 바꿔, 기본은 접힌 상태로 두고 필요할 때만 펼쳐 봅니다. 자주 보는 <b>구 표기 금지 목록</b>과 <b>전체 용어집</b>은 그대로 노출됩니다</td></tr><tr><th>v17 · 2026-08-06</th><td><b>구 표기 검사 정확도 개선</b>: 금지 목록에 <code>友達</code>·<code>공식계정</code>을 추가하고, <b>문맥 조건</b>을 넣어 같은 단어의 다른 뜻(관심 앱·기대해 주세요·~를 따르다)은 걸리지 않게 했습니다. XLT 시스템 전체 실측 <b>잘못된 경고 8건 → 0건</b></td></tr><tr><th>v16 · 2026-08-06</th><td><b>용어집 v4.3 — 구 표기 금지 목록 신설</b>: <code>OA 팔로우</code>·<code>OA 채널 추가</code> 등을 <b>Unifi LINE 공식 계정 친구 추가</b>로 통일하도록 금지 → 권장 매핑을 용어집에 넣었습니다. 용어집 탭에 <b>「구 표기 금지 목록」 표</b>가 추가됐고, 검증기가 각 언어를 검사해 경고합니다. 기존 번역에 새 경고는 생기지 않습니다(실측 230 → 230)</td></tr><tr><th>v15 · 2026-08-06</th><td><b>용어집 v4.2 (114 → 115용어)</b>: <code>지급 완료</code> 신규 등재 — 비실시간 일괄 지급 전환으로 「지급 완료된 리워드」가 상시 문구가 됐는데 등재값 <code>완료</code>만 있어 각 언어의 자연스러운 완료 표현이 경고로 잡혔습니다. 실측 <b>P1 197 → 193건(-4)</b>, 신규 경고 0건. <b>v14의 검증기 개선이 먼저 들어가야 효과가 나는 첫 사례</b>입니다</td></tr><tr><th>v14 · 2026-08-06</th><td><b>검증 경고(P1) 오탐 대폭 감소</b>: 용어집 대조가 <b>짧은 용어까지 중복으로 걸던 문제</b>를 고쳐 <code>지급 완료된 리워드</code>의 정상 번역이 「완료」 불일치로 잡히거나 <code>당첨금</code>이 <code>당첨</code>으로 잡히는 오탐이 사라졌습니다. 보유 번역 파일 8종 실측 <b>P1 232건 → 198건(-34, -15%)</b>, <b>P0는 0건 그대로</b> · <b>화면 이미지 번호가 글자를 가리지 않습니다</b>: 코멘트 핀이 문구 위에 찍혀 있으면 번호 원이 글자를 덮던 것을 <b>자동으로 글자 밖으로 비켜</b> 놓고, 가림이 남으면 도구가 스스로 경고합니다</td></tr><tr><th>v13 · 2026-08-05</th><td><b>용어집 v4.1 확대(113 → 114 용어)</b>: <b>종료 zh_TW 교정</b> <code>結尾</code>(글·이야기의 맺음말) → <code>結束</code> — 등재값 자체가 오역이었음 · <b>포이카츠 en_US·th_TH 음차 채택</b> <code>point activity</code>·<code>การสะสมแต้ม</code> → <code>Poi-katsu</code> · <b>캠페인 신규 등재</b>(campaign/キャンペーン/活動/แคมเปญ). 실측: 시즌3 47키 검증 <b>P1 63건 → 58건(-5), 신규 P1 0건</b></td></tr><tr><th>v12 · 2026-08-05</th><td><b>용어집 v4.1 — OA(LINE 공식계정) 메시지 변수 <code>oa_variables</code> 영역 신설</b>: <code>{{total_amount}}</code>(당첨금 총액)·<code>{{wallet_address}}</code>(지급 지갑 주소) 2종 등재, 당첨금 총액 변수를 <code>{{amount}}</code> → <code>{{total_amount}}</code>로 확정. 용어집 탭에 <b>OA 변수 표</b> 추가</td></tr><tr><th>v11 · 2026-08-05</th><td><b>「이렇게 요청하세요」 대폭 보강 — 실제 작업에서 결과가 좋았던 <b>요청 패턴 7가지</b> 신설(정본 지정·이름으로 프레임 찾기·위키에 값 먼저 쓰기·일괄 나열·근거 있는 정정·조사만 먼저·확인 목록 일괄 응답) · 요청 예시 4종 추가(화면 기준 확인 목록 정리 · 새 영역 위치 지정 · 위키 값 채워두고 반영 · 판단 정정) · 체크리스트 3항목 추가 · <b>프레임을 링크 없이 이름·섹션으로 지정</b>하는 방법 명문화</b></td></tr><tr><th>v10 · 2026-08-03</th><td>IA 주간 점검 #3 — 미션앤리워드 Season 3(8/1) 개시로 럭키볼 정책 수치 전면 교체 · IA 트리를 <b>환경 × 사용자 상태 × 접속 IP</b> 3축으로 재정리 · MY쇼핑 = 외부 GuideKim 확정(부여 대상 아님) · Beta 「외부 지갑 연결」 신설 · mini Reward Special Missions·이자 배너 실측 · 로그인 리워드 탭 3주 연속 로딩 실패 서비스측 보고 · 어휘 승인 대기 5건</td></tr>
         <tr><th>v9 · 2026-07-30</th><td>IA 점검 리포트 탭에 「전체 IA 구조」 인터랙티브 표 추가 — 환경별(Web·LIFF·Wallet Mode·mini) 제공 여부와 1~3뎁스 화면 계층을 한 화면에서 필터·접기로 확인. md/IA.md가 바뀌면 이 표(IA_DATA)도 함께 갱신하는 규칙 신설</td></tr>
@@ -2679,6 +2726,12 @@ var IA_DATA = [
         <p class="card-p mt-2">정본 <code>md/OA.md</code></p>
       </div>
       <div class="card">
+        <div class="card-h">📊 GA Event 정의 <span class="badge badge-emerald">v32 신규</span></div>
+        <p class="card-p">위키 업데이트 때 <b>"GA event 추가"</b>를 요청하면 Screen 표 <code>XLT &amp; GA</code> 열에 화면별 이벤트 표를 만듭니다.
+        화면마다 <code>view_</code> 1개, 누를 수 있는 요소마다 <code>click_</code>(<code>#</code> = 화면 이미지 번호). Landpress 목록 항목은 <code>id</code>로 구분합니다.</p>
+        <p class="card-p mt-2">정본 <code>md/GA.md</code></p>
+      </div>
+      <div class="card">
         <div class="card-h">🗺️ IA 주간 점검</div>
         <p class="card-p">매주 월요일 자동 실행. 실제 서비스를 탐색해 메뉴·기능 변경을 확인하고 IA 정본을 갱신합니다.
         Screen ID 어휘의 출처이기도 합니다.</p>
@@ -2712,6 +2765,7 @@ var IA_DATA = [
           <tr><td>위키에 적힌 XLT 키가 시스템과 같은지 확인</td><td><code>md/xlt-verify.md</code> §9 “위키 페이지 대조 모드”</td><td>없음</td></tr>
           <tr><td>특정 키의 일본어만 최종본으로 교체</td><td><code>md/translate.md</code> “키 단위 번역 패치 모드”</td><td>없음</td></tr>
           <tr><td>LINE 공식계정 발송 메시지 만들기</td><td><code>md/OA.md</code></td><td>없음</td></tr>
+          <tr><td>화면 정의서에 GA 이벤트(view·click) 표 넣기</td><td><code>md/GA.md</code> (+ <code>md/wiki.md</code> Screen 표)</td><td>없음 (Landpress 목록에 <code>id</code>가 없으면 <code>landpress/*.json</code>)</td></tr>
           <tr><td>화면 식별자(Screen ID)를 새로 부여</td><td><code>md/IA.md</code> (어휘 참조)</td><td><code>md/IA.md</code> (새 어휘가 생기면)</td></tr>
           <tr><td>서비스 메뉴·기능이 바뀐 걸 발견</td><td><code>md/IA.md</code></td><td><code>md/IA.md</code> (IA 정본은 이 파일만)</td></tr>
           <tr><td><b>절차·규칙 자체를 바꾸고 싶음</b></td><td><code>CLAUDE.md</code> + 해당 <code>md/</code></td><td>해당 <code>md/</code> + <code>CLAUDE.md</code> 표 + <b>이 가이드 zip</b></td></tr>
@@ -2803,6 +2857,7 @@ var IA_DATA = [
           <tr><td><code>md/landpress.md</code></td><td><b>용어집 관리</b> — 조회·갱신 절차 · 전체 JSON 산출 · <b>가이드 zip 동반 갱신</b></td><td>용어집 운영 방식이 바뀔 때</td></tr>
           <tr><td><code>md/glossary-changelog.md</code></td><td><b>용어집 변경 이력</b> — 버전별 무엇을·왜 바꿨는지</td><td><b>용어집 버전이 오를 때마다</b> (필수)</td></tr>
           <tr><td><code>md/OA.md</code></td><td><b>OA 메시지 규칙</b> — 키 미부여 · 변수 표기 · Flex JSON</td><td>OA 규칙이 바뀔 때</td></tr>
+          <tr><td><code>md/GA.md</code> <span class="badge badge-emerald">v32 신규</span></td><td><b>GA Event 정의 규칙</b> — <code>XLT &amp; GA</code> 열 · view/click 명명 · <code>#</code>=어노테이션 번호 · Landpress 항목 <code>id</code> 파라미터</td><td>GA 이벤트 규칙이 바뀔 때</td></tr>
           <tr><td><code>md/IA.md</code></td><td><b>IA 정본</b> — 화면 계층 · Screen ID 어휘 · 제품 모드 매트릭스</td><td>서비스 IA가 바뀔 때 (<b>이 파일만</b>)</td></tr>
           <tr><td><code>md/dropweb-guide.md</code></td><td><b>정적 사이트 배포 규격</b> — 폴더 구조 · 상대 경로 · ZIP 규칙 · <code>service-spec.md</code></td><td>배포 규격이 바뀔 때</td></tr>
           <tr><td><code>md/PRODUCTION_RULES.md</code></td><td><b>프로덕션 6원칙</b> — 전체 데이터 처리 · 전 언어 · 전 화면 · 검증 필수 · 간소화 금지 · 사전 고지</td><td>거의 바뀌지 않음</td></tr>
@@ -2933,7 +2988,7 @@ var IA_DATA = [
 
 <footer class="border-t border-slate-200 bg-white">
   <div class="max-w-6xl mx-auto px-5 py-8 text-sm text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
-    <p>Figma → 다국어 위키 자동화 워크플로우 · 기획자 가이드 <b>v32</b> (2026-09-03)</p>
+    <p>Figma → 다국어 위키 자동화 워크플로우 · 기획자 가이드 <b>v33</b> (2026-09-03)</p>
     <p>핵심: <b class="text-slate-700">토큰 발급 → 요청 → AI 확인에 답하기 → 검증 통과 → 반영</b></p>
   </div>
 </footer>

@@ -43,7 +43,7 @@
 | [kpick-oa-consent](handoff/projects/kpick-oa-consent.md) | `hogeun` | 위키 `4637821100` · 1프레임 4키 | 08-24 | 위키 **v3 반영 완료**(P0=0) · 미결 3건 — **등록 서비스 확정(FE)** · History↔Policy 불일치 · `kpick_` 잠정 |
 | [guidekim-banner](handoff/projects/guidekim-banner.md) | `hogeun` | 위키 `4637821463` · 배너 2키 | 08-24 | 위키 **v11**(P0=0) · 🔴 **Unifi↔Dapp Portal 값 분기**(FE 확인 후 업로드) |
 | [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-28 | `4620240898` **v5**(정본 템플릿 구조 정합화) · 정의 필요 4항목 추적 |
-| [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` · 6화면 75키 + Landpress 8필드 | 09-03 | 위키 **v95** · 게이트 7건 P0=0 · 🔴 **XLT 업로드 13키 대기**(사용자) · Landpress 등록 대기 |
+| [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` + LPC 하위 `4686692164` · 10화면 85키 + Landpress 8필드 | 09-03 | 위키 **v107** · 게이트 11건 P0=0 · **통합 엑셀 85키**(단일 업로드 정본) · 🔴 **XLT 업로드 대기**(사용자) · LPC 실등록 조회로 결함 4건 발견 |
 | [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
 
 ---
@@ -70,7 +70,7 @@
 규칙 정본은 `CLAUDE.md`와 `md/`다. 아래는 **문서에 없는 실측·사각지대**만 남긴다.
 
 - **파이프라인**: [1] `md/translate.md` → [2] `md/prototype.md` → [3] `md/wiki.md`. 최근 작업은 **단일 프레임/코멘트 선별 + 위키 Mode B**, 위키 신규 생성, 마스터 Summary 취합 중심
-- **스크립트 실측 주의**(전체 표는 `CLAUDE.md`): `fetch_comments`는 **`fetch_threads`+`collect_node_boxes` 좌표 정규화 필수**(인라인 재구현 금지) · `collect_frames`는 **`Pillow` 필요** · `validate_translation`이 **모든 검증의 단일 출처** · `scripts/` 수정 후 **`test_validation.py` 필수 실행**
+- **스크립트 실측 주의**(전체 표는 `CLAUDE.md`): `fetch_comments`는 **`fetch_threads`+`collect_node_boxes` 좌표 정규화 필수**(인라인 재구현 금지) · `collect_frames`는 **`Pillow` 필요** · ⚠️ **`collect_frames`의 xlt 마커 판정은 「본문이 정확히 `xlt`」**여서 CLAUDE.md 규칙(「`XLT`로 시작」)보다 좁다 — 설명 뒤 끝줄에 `xlt`를 단 코멘트를 놓친다(2026-09-03 실측: 브릿지 mini에서 6건만 잡혀 실제 10건 중 4건 누락). **마커 집합은 규칙대로 직접 산정**하고 핀 색을 재렌더한다 · `validate_translation`이 **모든 검증의 단일 출처** · `scripts/` 수정 후 **`test_validation.py` 필수 실행**
 - **엑셀 생성은 반드시 `scripts/export_to_xlt.create_xlt_excel`로만** — pandas로 직접 만들면 `plurals` 고정 포맷(A1:G2·`one/other`·`Unnamed: 2`)이 깨져 **업로드가 실패**한다(2026-08-04 실측)
 - **검증기 사각지대**(`md/check.md` v3.4): 언어 혼입 검사는 문자체계 기반이라 **20조합 중 15개만** 잡는다. ❌ ja↔zh 한자 상호 오염 · ❌ 영어가 ko/ja/th/zh 칸에 · ❌ ko 칸의 부분 영어. **`P0=0`은 "이 검사가 볼 수 있는 범위에 문제 없음"이다.** 보완 스캔 코드는 `reports/audit/xlt_system_glossary_audit_2026-08-07.md` §8-1
 - **위키 편집**: 라이브 재조회 → 균형 `<tr>` surgical 교체 → **버전 가드**(PUT 직전 재확인) → PUT → `check_wiki_storage.py` **pre/post exit 0**. 첨부는 `POST .../child/attachment/{id}/data`(**같은 파일명 유지 → 본문 링크 그대로 최신본**). History는 같은 날 1행 병합
@@ -78,7 +78,7 @@
 - **어노테이션**: 이미지 ⓝ = Description 통합 번호 = XLT No 1:1 · **정책=빨강 / xlt=파랑** · 매칭 텍스트 좌측 10pt · 겹침 0 검증 · **렌더 후 육안 확인**(`overlaps=없음`은 TEXT 노드만 회피한 결과다). 코멘트가 없는 프레임은 좌표 기반으로 직접 핀을 렌더한다
 - **프레임 지정**: 링크 없이 **페이지/섹션 주소 + 프레임 이름**으로도 특정 가능(직속 자식 재조회 후 이름 필터). **동명 프레임 주의**(`(OA)Reward Confirm` 2개 등) — 후보가 둘 이상이면 사용자에게 확인
 - **⚠️ 프레임 텍스트 실측 함정 2종**(2026-08-24 kaiawallet 8프레임) — ⓐ `collect_frames`의 **코멘트→텍스트 좌표 매칭이 더미를 잡는다**: 박스가 겹치면 `cypress`(네트워크값)·`KLAY`(코인심볼)가 선택돼 **3건 오매칭**했고 **어노테이션 이미지 육안 확인으로만** 드러났다 → 매칭 결과는 번역 전 이미지와 대조한다 ⓑ **팝업 프레임의 배경은 구버전 화면일 수 있다**: 삭제된 문구가 노드로 살아 있어 「화면에 있으니 유지」로 오판한다 → **키 제거·유지 판정의 정본은 전체 페이지 프레임**이고 노드 존재만으로 판정하지 않는다
-- **Landpress 콘텐츠 JSON(`landpress/`) — XLT가 아닌 제3의 산출물 경로**(2026-09-01 신설) 가변 목록·병원별 데이터처럼 **XLT로 관리할 수 없는 문구**는 Landpress에 등록해 FE가 읽는다. 리스트형 필드는 `{"items":[…]}`, 오브젝트형은 필드 직접 노출 · 파일명 = `{필드}_{locale}.json` · 식별자는 API의 `uid`로 처리해 JSON에 넣지 않는다. **섹션 제목이 XLT에 있으면 JSON에서 빼고**, 없거나 병존 승인 시 `title`을 포함한다. ⚠️ **번역 게이트는 그대로 적용된다**(엑셀이 아니어도 화면 출력이므로) — 검증용 임시 엑셀을 만들어 `validate_translation.py`를 돌린다
+- **Landpress 콘텐츠 JSON(`landpress/`) — XLT가 아닌 제3의 산출물 경로**(2026-09-01 신설) 가변 목록·병원별 데이터처럼 **XLT로 관리할 수 없는 문구**는 Landpress에 등록해 FE가 읽는다. 리스트형 필드는 `{"items":[…]}`, 오브젝트형은 필드 직접 노출 · 파일명 = `{필드}_{locale}.json` · 식별자는 API의 `uid`로 처리해 JSON에 넣지 않는다. **섹션 제목이 XLT에 있으면 JSON에서 빼고**, 없거나 병존 승인 시 `title`을 포함한다. ⚠️ **번역 게이트는 그대로 적용된다**(엑셀이 아니어도 화면 출력이므로) — 검증용 임시 엑셀을 만들어 `validate_translation.py`를 돌린다. ⭐ **실등록값은 읽기 API로 직접 조회한다**(2026-09-03 신설) — `GET https://landpress-content.line-scdn.net/contents/v2/projects/{projectId}/collections/{collection}/items?page=1&limit=100` (무인증 · 응답 `{header, body:{total, items:[…]}}`). **로컬 `landpress/*.json`이 아니라 이 응답이 정본**이다 — 구조·값이 갈릴 수 있다(실측: `menu.price`가 로컬은 오브젝트, 실등록은 문자열)
 - **화면 이미지는 로컬에 보관하지 않는다** — 어노테이션 이미지는 **위키 첨부가 정본**. 재작업은 `scripts/collect_frames.py`(`assets/`는 실행 시 자동 생성·git 미추적)
 - **문자열 치환은 구간을 한정한다** — 전역 치환은 위키 History의 과거 이력을 훼손한다. 번역표/OA 영역 오프셋으로 한정 + assert
 - **OA 변수**: 용어집 `oa_variables`가 정본(`md/OA.md` §2-1) — `{{total_amount}}`·`{{wallet_address}}`. 등재된 변수는 문의 없이 재사용, 새 의미만 이름을 묻는다. **altText에는 변수 사용 불가**
@@ -86,6 +86,7 @@
 - **⚠️ 신규 키 프리픽스는 묻기 전에 선례를 실측한다**(2026-08-24 실측 · **`md/translate.md` Step 2-1 보강 대기**) — Step 2-1은 「신규 키 후보 **문구**마다 유사 키 검색」만 요구해 **네임스페이스 선례 조사가 규칙에 없다.** 문구가 전부 신규여도 **같은 기능 영역의 기존 프리픽스**는 있다: K-Pick 키가 전부 `mini_guidekim_kpick_*`인데 `mini_kpick_`을 선택지로 내밀어(선례 0건) 사용자가 정보 없이 결정 → 정정 후 재결정했다. 후보 제시 전 레지스트리에서 ⓐ 기능 키워드를 **키 이름으로** grep ⓑ 후보 프리픽스 정확 일치 건수를 세어 「선례 N건/0건」을 선택지에 담는다. 키는 **FE 전달 후 변경 불가**(공식 룰)라 등록 전이 유일한 기회다
 - **Screen ID**: `md/IA.md` 어휘로 `주기능_부기능_세부기능_01`(소문자), **매핑 표 사용자 승인 후에만** 부여. 기존 프레임명 기반 페이지는 소급 금지
 - **Jira는 별도 PAT가 필요하다**(2026-08-21 실측) — Confluence PAT로 `jira.workers-hub.com`은 **401**이고 Jira MCP(`mcp__noahs-mcp-jira__*`)는 **세션에 따라 끊긴다**. REST는 `GET /rest/api/2/issue/{KEY}`. ⚠️ **description만 보면 안 된다** — `UNIFY-10118`은 **Figma 링크가 코멘트에 있었다**(`/issue/{KEY}/comment` · 첨부도 함께 확인). **`md/wiki.md` 티켓 확장 규칙에 반영 완료**
+- **용어집 「실사용 0건」 판정은 의미까지 본다**(2026-09-03 정정) — ja `すべて見る`를 「실사용 0건」으로 3세션 기록했으나 Unifi v1.7.4 실측 **6건**이다. 다만 6건 전부 ko 「**전체보기**」 번역이고 ko 「더보기」는 `もっと見る` 5건이 정본이다. 즉 문제는 「실사용 없음」이 아니라 **「다른 뜻의 표현을 등재했다」**다. 건수만 세지 말고 **그 키의 ko가 무엇인지** 함께 확인한다
 - **캐시 금지 실측**: 세션 #17 감사 도중 `UF_floating_jpyc_banner_title`이 **실제로 삭제**돼 1시간 만에 키 수가 2,131→2,130으로 바뀌었다. 원본 재조회는 형식이 아니다
 
 ---

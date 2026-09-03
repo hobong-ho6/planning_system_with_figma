@@ -1,31 +1,25 @@
 {
+  "title": "피부 탄력과 처짐이 고민이라면",
+  "tag": [
+    "포텐자",
+    "리쥬란힐러",
+    "리프팅패키지"
+  ],
   "items": [
     {
-      "title": "쥬베룩 스킨·볼륨 1cc",
-      "description": "피부결·탄력 개선 콜라겐 부스터",
-      "price": {
-        "amount": 19999,
-        "currency": "JPY",
-        "from": true
-      }
+      "price": "¥19,999~",
+      "title": "쥬베룩 스킨･볼륨 1cc",
+      "description": "피부결･탄력 개선 콜라겐 부스터"
     },
     {
+      "price": "¥15,900~",
       "title": "리쥬란 힐러 2cc",
-      "description": "건조한 피부를 위한 스킨 부스터",
-      "price": {
-        "amount": 15900,
-        "currency": "JPY",
-        "from": true
-      }
+      "description": "건조한 피부를 위한 스킨 부스터"
     },
     {
+      "price": "¥19,999~",
       "title": "포텐자",
-      "description": "모공·피부결 개선",
-      "price": {
-        "amount": 19999,
-        "currency": "JPY",
-        "from": true
-      }
+      "description": "모공･피부결 개선"
     }
   ]
 }
