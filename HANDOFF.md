@@ -44,7 +44,7 @@
 | [guidekim-banner](handoff/projects/guidekim-banner.md) | `hogeun` | 위키 `4637821463` · 배너 2키 | 08-24 | 위키 **v11**(P0=0) · 🔴 **Unifi↔Dapp Portal 값 분기**(FE 확인 후 업로드) |
 | [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-28 | `4620240898` **v5**(정본 템플릿 구조 정합화) · 정의 필요 4항목 추적 |
 | [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` · 3영역 62키 + Landpress 7필드 | 09-01 | 위키 **v86** · 게이트 4건 P0=0 · 업로드 2건·Landpress 등록 대기(사용자) |
-| [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·v4 · 게이트 3건 P0=0 · **미결 9건**(원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
+| [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
 
 ---
 
