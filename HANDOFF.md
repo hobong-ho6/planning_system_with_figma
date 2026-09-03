@@ -32,7 +32,7 @@
 |---|---|---|---|---|
 | [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 08-20 | 온보딩 판별 **버그 수정**(7시나리오 실측) · 락 대상에 `.claude/**` · **미결 0**(플러그인·MCP 인증 폐기) |
 | [season3](handoff/projects/season3.md) | `hogeun` | 위키 `4541588845` · 16프레임 · 58키 | 08-10 | 위키 v81 · 미결 0 · IA #4 수치 교체 대상 확인 필요 |
-| [masters](handoff/projects/masters.md) | `hogeun` | 마스터 4종 + K-Pick·FAQ | 08-06 | 4종 전부 History↔Summary 정합 |
+| [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-03 | **[Master] K-Pick v3 신설**(Summary 8블록 · 8↔8) · 5종 전부 정합 |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 08-20 | 가이드 **v30 라이브**(태그) · 용어집 **v4.7**(v4.8 철회 · 권장 5건 종결) |
 | [xlt-registry](handoff/projects/xlt-registry.md) | `hogeun` | XLT 등록값 3서비스 4,092키 | 08-10 | API 정상 · 수정 엑셀 1건 업로드 대기(사용자) |
 | [unifi-app-xlt](handoff/projects/unifi-app-xlt.md) | `hogeun` | Unifi 앱(IPHONE) 엑셀 번역 2키 | 08-20 | P0=0 · **잔여 전건 종결**(IPHONE 타겟은 API 조회 불가 — 구조적 한계) |
