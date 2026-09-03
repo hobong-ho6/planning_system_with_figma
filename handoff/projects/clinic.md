@@ -1,12 +1,12 @@
 # clinic (클리닉 예약 동선 · K-뷰티 광고 퍼널)
 
-> 담당자: hogeun · 마지막 갱신: 2026-09-03 · 세션 #3(연장) · 마지막 커밋 `db25fd8`
+> 담당자: hogeun · 마지막 갱신: 2026-09-03 · 세션 #3(연장) · 마지막 커밋 `(표기 통일 커밋 후 기록)`
 > ⚠️ **병렬 세션 사고 2건 기록** — ⓐ `ff46985`(guide v33)에 이 프로젝트 스테이징(핸드오프·landpress·게이트 4건)이 함께 담겨 푸시됐다(내용 온전·메시지만 무관). ⓑ 위키 v109 PUT이 자동화 스크립트의 본문 파일 경로 미갱신으로 **직전 본문을 올려 v108 사용자 추가 1행이 일시 유실** → v110에서 신규 키로 복원, v108↔v109 전문 대조로 그 1행 외 영향 없음 확인
 
 ## 대상 / 링크
 
-- 위키: `4667512757` 「클리닉 예약 동선 개선」 — **현재 v112** (부모 `3910828993`)
-  - **하위 `4686692164` 「클리닉 LPC(Landpress) 관리 영역 정리」**(2026-09-03 신설 · **v9**) — LPC 영역 10곳의 컬렉션·필드·구조·**실등록 JSON** + 크롭 이미지 10장
+- 위키: `4667512757` 「클리닉 예약 동선 개선」 — **현재 v113** (부모 `3910828993`)
+  - **하위 `4686692164` 「클리닉 LPC(Landpress) 관리 영역 정리」**(2026-09-03 신설 · **v10**) — LPC 영역 10곳의 컬렉션·필드·구조·**실등록 JSON** + 크롭 이미지 10장
 - Jira: `UNIFY-10552`(특정상거래법 표기 링크) · `UNIFY-10554`(환율 안내·환불조건 동의) — ⚠️ **Jira는 별도 PAT 필요**
 - Figma: `GOCHAYBS7hIrmWRGNuJOKV`
   - `(Web) 브릿지 페이지` `69630:13293` — 코멘트 20건
@@ -26,7 +26,7 @@
 - **Landpress 병원별 item 3건 등록 완료**(2026-09-03) — `uid`: **`tiana-ps`**(item 11) · **`da-ps`**(item 1) · **`healing-eye`**(item 21). API 재조회로 **9필드 전건 일치** 확인(uid는 당일 `tiana`→`tiana-ps`·`healing`→`healing-eye`로 변경됨)
 - Landpress 콘텐츠 JSON: `landpress/` — **병원별 9파일**(`{bridge_info,detail_info,menu}_{da-ps,tiana-ps,healing-eye}_ko_KR.json` — **파일명 = CMS `uid`**) + `aftercare_ko_KR.json`(보류) · (기존 24파일 구성) 공통 4필드 × 5개 언어 + 병원별 3필드 × ko + **`voucher_ko_KR.json`**(추천 바우처 4종 · ko만)
 - 게이트 리포트: `reports/gate/gate_report_clinic_*.md` · `gate_report_landpress_clinic_4sections_2026-09-01.md`
-  - 2026-09-03 세션 #2: `gate_report_clinic_detail_improved_8keys_*` · `_oa_save_improved_3keys_*` · `_favorite_guide_2keys_*` · 2026-09-03 세션 #3: `gate_report_clinic_service_no_price_menu_*` · `_bridge_rolling_banner_10keys_*` · `_mini_bridge_19keys_*` · **`_consolidated_85keys_*`**(전수 425셀) · `_hospital_products_*`(병원 3곳) · `_aftercare_faq_*` · **`_review_verified_*`**(86키 전수 430셀 · 띄어쓰기 교정 후속 포함)
+  - 2026-09-03 세션 #2: `gate_report_clinic_detail_improved_8keys_*` · `_oa_save_improved_3keys_*` · `_favorite_guide_2keys_*` · 2026-09-03 세션 #3: `gate_report_clinic_service_no_price_menu_*` · `_bridge_rolling_banner_10keys_*` · `_mini_bridge_19keys_*` · **`_consolidated_85keys_*`**(전수 425셀) · `_hospital_products_*`(병원 3곳) · `_aftercare_faq_*` · **`_review_verified_*`**(86키 전수 430셀 · 띄어쓰기 교정 후속) · **`_unify_notation_*`**(표기 통일 5종)
 
 ## 현재 상태
 
@@ -48,8 +48,9 @@
 
 - [ ] **P0 XLT 업로드(사용자)** — **통합 엑셀 `xlt_clinic_all_86keys_20260903.xlsx` 1건만 올리면 된다**(86키 · 위키 첨부). 쓰기 API 없음. 세션 #2의 13키·`_faq_title` 1키 엑셀은 여기 흡수됐다
 - [ ] **P0 `menu.items[].description` 7건 빈 값** — 디에이 `프리미엄 리프트 PKG` 1 + 티아나 3 + 힐링안과 3. 위키 「병원 데이터」 표에 **설명 컬럼이 없어** 근거가 없다. **이미 빈 문자열로 등록된 상태**이므로 ⓐ 위키 표에 컬럼 추가 ⓑ 화면에서 `description` 생략 중 결정 필요
-- [ ] **P0 Landpress CMS 반영 대기 4건**(사용자) — ⓐ 힐링안과 `detail_info`(`https://www.healingeye.co.kr/` · 실측 200 OK) ⓑ 힐링안과 `menu`(`정밀검사` + `찾고 있다면`) ⓒ **디에이 `menu`**(`리쥬란 힐러`·`리프팅 패키지` 띄어쓰기) ⓓ 공통 `faq`(9항목). Landpress는 읽기 API만 있어 붙여넣기는 사용자가 수행 — 값은 `landpress/*_ko_KR.json`이 정본
-- [ ] **P1 「시력교정」 ↔ 「시력 교정」 표기 통일 여부** — `UF_clinic_bridge_cat_vision`·힐링안과 `bridge_info.review_summary`는 `시력교정`(붙여씀), `menu.title`은 `시력 교정`(띄어씀)이다. 의료 전문용어로 굳어진 표기라 **임의 교정하지 않았다** — 통일 지시 시 반영
+- [ ] **P0 Landpress CMS 반영 대기 5필드**(사용자) — ⓐ 힐링안과 `detail_info`(https) ⓑ 힐링안과 `menu`(`정밀검사`·`찾고 있다면`·`프리미엄 라식`) ⓒ 힐링안과 `bridge_info`(`시력 교정`) ⓓ 디에이 `menu`(`리쥬란 힐러`·`리프팅 패키지`·`프리미엄 리프트 패키지`) ⓔ 공통 `cautions`(`리뷰`)·`faq`(9항목 + `리뷰`). Landpress는 읽기 API만 있어 붙여넣기는 사용자가 수행 — `landpress/*_ko_KR.json`이 정본
+- [ ] **P1 `프리미엄 라식`·`프리미엄 리프트 패키지` 병원 확인** — 위키 「병원 데이터」 표 원문은 `프리미엄 LASIK`·`프리미엄 리프트 PKG`였고 표기 일관성으로 한글화했다. **병원 공식 상품명 확인 권장**(다르면 원문 복귀)
+- [ ] **P1 Figma 원본 수정 요청 누적 15건** — 표기 통일 5종 + `시술인증`·`리쥬란힐러`·`리프팅패키지`·`찾고있다면`·`라인 무료 상담`·`더보기 를`·`무료 LINE상담`·`還元特典`·`最大15%還元`·`편한 의사 소통`. `figma-source-issues` 에이전트로 화면별 목록을 뽑아 일괄 전달 권장
 - [ ] **P1 `aftercare` 신규 필드 보류**(사용자 결정) — 「시술 후 주의사항」 9항목(LINE 챗 원문 2,300자 → 1,150자 축약 · 수치 18개 전건 보존). ⛔ 내용이 **티아나 코수술 전용**인데 `common_info`는 공통 컬렉션이라 배치 부적합 — 다른 병원에 노출되면 의료적 오안내
 - [ ] **P1 병원별 단일본 3파일 정리** — 파일명 규칙은 **`{필드}_{uid}_{locale}.json`으로 확정**했다(CMS 편집 단위 = 필드). 다만 구 단일본 `menu_ko_KR.json`·`bridge_info_ko_KR.json`·`detail_info_ko_KR.json`이 남아 **데이터가 중복**된다(단일본은 티아나 `bridge_info` + 디에이 `menu`가 **섞인 실등록 초기값**). 삭제 여부 결정 필요
 - [ ] **P1 다국어는 베타 사이트 확인 후 진행**(2026-09-03 사용자 결정) — 두 컬렉션 모두 현재 ko만. 공통 4필드는 5개 언어 산출물 보유, 병원별 3필드 × 3곳은 ko만이라 번역 필요. `voucher`는 카드 아트가 일본어라 로케일 분기 결정 필요
@@ -92,6 +93,7 @@
 | 2026-09-03 | **띄어쓰기는 올바른 표기로 교정** — `시술인증`→`시술 인증` · `리쥬란힐러`→`리쥬란 힐러` · `리프팅패키지`→`리프팅 패키지` · `찾고있다면`→`찾고 있다면` | 사용자 지시. **시술 상품명은 관행상 붙여쓰기 유지**(`코성형`·`렌즈삽입술`·`정밀검사` 등) · `의사소통`은 한 단어(오탐) · `시력교정`은 전문용어라 미교정. Figma 원본 수정 요청 대상 4건 |
 | 2026-09-03 | **병원별 Landpress 파일명 = `{필드}_{uid}_{locale}.json`** · `uid`는 `tiana-ps`·`da-ps`·`healing-eye` | CMS는 필드를 하나씩 편집하므로(`?activeField=menu`) 필드 단위가 붙여넣기에 맞다. `uid`는 당일 `tiana`·`healing`에서 개명됐다 |
 | 2026-09-03 | **힐링안과 `menu.tag` 3번째는 `정밀검사`** (Figma 원문의 `라식` 중복 대신) · **homepage는 `https://www.healingeye.co.kr/`** | 사용자 결정 + 실측(`https` **200 OK** · `www` 없는 주소는 301 리다이렉트). Figma 원본 수정 요청 대상 |
+| 2026-09-03 | **표기 통일 5종** — `시력교정`→`시력 교정` · ko `후기`→**`리뷰`** · `Mini App`→`MINI App` · `프리미엄 LASIK`→`프리미엄 라식` · `프리미엄 리프트 PKG`→`프리미엄 리프트 패키지` · 병원명 붙여쓰기 | 사용자 지시. 「리뷰」를 고른 근거 = **4개 언어가 이미 전부 review 계열**이라 ko만 맞추면 번역이 한 셀도 안 바뀐다. 치환은 **Screen~병원데이터·다국어 구간 41곳에 한정**(History·법무 섹션 제외 — 전역 치환은 과거 이력을 훼손) |
 | 2026-09-03 | **`faq` 4 → 9항목** — 화면 구성 근거로 신규 5건(`japanese_consultation`·`booking_flow`·`cashback_usage`·`info_review_source`·`change_or_cancel`) | 사용자 승인. 5건 전부 화면·실등재값 근거가 있다(세션 #1의 「샘플」 답변과 다름). `items[].id`는 GA `faq_id` 파라미터와 연결 |
 
 ## ⛔ 사용자 결정으로 종결 (재작업·재제안 금지 — 이 프로젝트 한정)
