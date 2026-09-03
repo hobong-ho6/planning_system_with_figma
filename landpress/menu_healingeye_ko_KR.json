@@ -1,0 +1,37 @@
+{
+  "title": "안전한 시력 교정을 찾고있다면",
+  "tag": [
+    "라식",
+    "렌즈삽입술",
+    "라식"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 229000,
+        "currency": "JPY"
+      },
+      "title": "프리미엄 LASIK",
+      "description": ""
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 517000,
+        "currency": "JPY"
+      },
+      "title": "렌즈삽입술",
+      "description": ""
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 144000,
+        "currency": "JPY"
+      },
+      "title": "백내장",
+      "description": ""
+    }
+  ]
+}
