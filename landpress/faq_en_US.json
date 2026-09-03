@@ -1,18 +1,22 @@
 {
   "items": [
     {
+      "id": "price_same_as_local",
       "title": "Is the treatment price the same as for Korean customers?",
       "description": "You can receive treatment at the same price as Korean customers.\nNo extra fee applies because you are a foreign visitor, and you pay based on the same treatment price the clinic provides. However, if the treatment scope or options change after the consultation, the final payment amount may differ."
     },
     {
+      "id": "change_on_visit",
       "title": "Can I change the booked treatment when I visit?",
       "description": "After visiting the clinic, you may change the treatment or choose not to proceed after the consultation. If the treatment items change as a result, the final payment amount changes accordingly."
     },
     {
+      "id": "cashback_timing",
       "title": "When can I receive the cashback?",
       "description": "Once you pay on site after the treatment, you get 15% of the amount back in points after your payment is confirmed."
     },
     {
+      "id": "prepayment_required",
       "title": "Do I need to pay before booking?",
       "description": "No prepayment is required. You pay on site after finishing the consultation and treatment at the clinic."
     }

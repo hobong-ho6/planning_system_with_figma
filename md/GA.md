@@ -49,7 +49,7 @@
 
 | 항목 | 규칙 |
 |---|---|
-| 개수 | **화면(Screen 행)마다 정확히 1개**. 빠뜨리지 않는다 |
+| 개수 | **화면(Screen 행)마다 정확히 1개**. 빠뜨리지 않는다. 단 **화면이 아닌 행**(상단 롤링 배너 같은 구성 요소 · OA 메시지)은 정의 대상에서 제외하고 셀에 `GA Event 정의 대상 아님 — 사유`를 표기한다(2026-09-03 사용자 결정) |
 | `#` | `-` (특정 요소가 아니라 화면 진입 자체) |
 | Event Name | **`view_` + Screen ID**. 예: Screen ID `kpick_clinic_bridge_01` → `view_kpick_clinic_bridge_01` |
 | Parameter | `-` — 화면 식별은 GA `page_name`(= Screen ID)으로 이미 전달되므로 별도 파라미터를 지정하지 않는다. 사용자가 명시적으로 요청한 경우에만 추가 |
@@ -76,6 +76,7 @@
 | `#` 없음 | 어노테이션(코멘트)이 없는 버튼이면 `#`을 `-`로 두고, **사용자에게 해당 요소의 Figma 코멘트 추가를 권장**한다(번호가 생기면 정정) |
 | Event Name | **`click_` + 동작 대상**(영문 snake_case). 버튼 라벨·기능을 그대로 옮긴다. 예: `click_line_consult`, `click_copy_address`, `click_save`, `click_tab`, `click_clinic_card` |
 | Parameter | **같은 이벤트가 여러 대상에서 발생해 구분이 필요할 때만** 파라미터를 쓴다. 쉼표 구분 snake_case. 예: 목록 카드 → `clinic_name, list_position` · 탭 → `tab_name` · 엔티티 상세 → `clinic_name`, `voucher_name`, `display_name`. 구분이 필요 없으면 빈칸 |
+| Landpress 목록 항목 | 항목이 Landpress(LPC) JSON `items[]`에서 내려오면(FAQ·대표 시술 등) 파라미터는 **항목 고유 키 `{항목}_id`**(예: `faq_id`)로 보낸다 — 문구(`title`)는 언어별로 갈리고 순번(`index`)은 재정렬에 깨진다. JSON 항목에 `id`가 없으면 **영문 snake_case `id`를 5개 언어 파일에 동일하게 추가**하고, 그 값은 XLT 키처럼 등록 후 변경하지 않는다(2026-09-03 클리닉 FAQ `click_faq` 실측) |
 
 ### 4-3. 이름 규칙 (view·click 공통)
 - **소문자 영문 snake_case**, ASCII만. 한글·공백·하이픈 금지
