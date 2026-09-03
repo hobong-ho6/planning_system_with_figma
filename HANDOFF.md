@@ -33,17 +33,17 @@
 | [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 08-20 | 온보딩 판별 **버그 수정**(7시나리오 실측) · 락 대상에 `.claude/**` · **미결 0**(플러그인·MCP 인증 폐기) |
 | [season3](handoff/projects/season3.md) | `hogeun` | 위키 `4541588845` · 16프레임 · 58키 | 08-10 | 위키 v81 · 미결 0 · IA #4 수치 교체 대상 확인 필요 |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-03 | **[Master] K-Pick v3 신설**(Summary 8블록 · 8↔8) · 5종 전부 정합 |
-| [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 08-20 | 가이드 **v30 라이브**(태그) · 용어집 **v4.7**(v4.8 철회 · 권장 5건 종결) |
+| [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 09-03 | 가이드 **v33 라이브**(태그 · GA Event 안내) · **v31 소스 누락 복원** · 용어집 **v4.7** 유지 |
 | [xlt-registry](handoff/projects/xlt-registry.md) | `hogeun` | XLT 등록값 3서비스 4,092키 | 08-10 | API 정상 · 수정 엑셀 1건 업로드 대기(사용자) |
 | [unifi-app-xlt](handoff/projects/unifi-app-xlt.md) | `hogeun` | Unifi 앱(IPHONE) 엑셀 번역 2키 | 08-20 | P0=0 · **잔여 전건 종결**(IPHONE 타겟은 API 조회 불가 — 구조적 한계) |
 | [kaiawallet-transition](handoff/projects/kaiawallet-transition.md) | `hogeun` | 위키 `4515188069` · **8프레임 37키** | 08-24 | 위키 **v18**(8화면 재편 · 185셀 전건 · 14키 제거) · 용어집 보완 3건 대기 |
-| [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 **v31** · 로그인 2회 연속 미점검 |
+| [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 v31(⚠️ zip만 발행·소스 미커밋 → 09-03 복원 `b49b1a1`) · 로그인 2회 연속 미점검 |
 | [nonrealtime](handoff/projects/nonrealtime.md) | `hogeun` | 위키 `4541600637`·`4540065229` | 08-06 | 2종 v10 · 마스터와 정합 |
 | [luckyball-campaign](handoff/projects/luckyball-campaign.md) | `hogeun` | 위키 `4479306980` · 75키 | 08-07 | v151 · 미결 0 |
 | [kpick-oa-consent](handoff/projects/kpick-oa-consent.md) | `hogeun` | 위키 `4637821100` · 1프레임 4키 | 08-24 | 위키 **v3 반영 완료**(P0=0) · 미결 3건 — **등록 서비스 확정(FE)** · History↔Policy 불일치 · `kpick_` 잠정 |
 | [guidekim-banner](handoff/projects/guidekim-banner.md) | `hogeun` | 위키 `4637821463` · 배너 2키 | 08-24 | 위키 **v11**(P0=0) · 🔴 **Unifi↔Dapp Portal 값 분기**(FE 확인 후 업로드) |
 | [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-28 | `4620240898` **v5**(정본 템플릿 구조 정합화) · 정의 필요 4항목 추적 |
-| [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` + LPC 하위 `4686692164` · 10화면 85키 + Landpress 8필드 | 09-03 | 위키 **v107** · 게이트 11건 P0=0 · **통합 엑셀 85키**(단일 업로드 정본) · 🔴 **XLT 업로드 대기**(사용자) · LPC 실등록 조회로 결함 4건 발견 |
+| [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` + LPC 하위 `4686692164` · 10화면 85키 + Landpress 8필드 | 09-03 | 위키 **v107** · 게이트 11건 P0=0 · **통합 엑셀 85키**(단일 업로드 정본) · 🔴 **XLT 업로드 대기**(사용자) · LPC 실등록 조회로 결함 4건 발견 · **GA Event 정의**(view 6·click 18 · `XLT & GA` 열 · FAQ `items[].id` CMS 반영) |
 | [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
 
 ---
@@ -95,6 +95,8 @@
 
 | 날짜 | 결정 | 이유 |
 |---|---|---|
+| 2026-09-03 | **GA Event 정의 규칙 신설(`md/GA.md`)** — 위키 Screen 표 4열 `XLT`→**`XLT & GA`**(storage `&amp;` · 4컬럼 유지), `view_`+Screen ID 화면당 1개(Parameter `-`), `click_` 클릭 요소 자동 부여(`#`=어노테이션 번호), 화면이 아닌 행(배너·OA)은 「정의 대상 아님」 표기, Landpress 목록 항목은 `{항목}_id` 파라미터(JSON에 `id` 신설). **사용자가 「GA event 추가」를 요청한 경우에만** 적용 | 클리닉 위키에서 view 6·click 18로 실측(v103~v106). 기존 이벤트 이름은 XLT 키처럼 변경 금지, `#`만 재매핑 |
+| 2026-09-03 | **가이드 갱신 대상은 5곳**(본문 전용 섹션 · 시스템 가이드 문서 지도 3곳 · 이력 · 작업 모드 · 요청 예시+네비) — CLAUDE.md 「가이드 최신화 제안 규칙」 3-ⓐ에 명시 | GA.md를 v32에서 이력·모드·예시에만 넣어 **사용자가 본문·문서 지도 누락을 지적**, v33 재발행. 또 **v31이 zip만 발행되고 `guide/` 소스가 미커밋**이라 HEAD를 베이스로 쓰면 IA #5가 유실될 상황 — zip을 소스에 복원(`b49b1a1`) 후 진행. `§5-1` 0단계 「소스 정본은 guide/」는 **커밋까지 해야** 지켜진다 |
 | 2026-09-01 | **위키 신규 생성 시 형제 문서는 최소 2건 이상 대조한다** — 1건만 보고 구조를 일반화하지 않고, 어긋나면 **정본 템플릿(`3751027285`)이 우선** | 형제 `4620240898` 한 건만 확인해 Schedule 기반 구조로 새 페이지를 만들었고 정본과 달라 전면 재작성했다. `md/wiki.md` 「형제 문서 구조 준용」에 실측 오류 정정 반영 |
 | 2026-08-24 | **용어집 등재값과 XLT 시스템 등록값이 충돌하면 「같은 키스페이스 형제 키」를 정본으로 채택** — 등재값을 따르지 않고, 그 판정 근거를 게이트 리포트 (d-1)에 용어집 보완 권장으로 남긴다 | 용어집 「보내기」 ja `出金`·zh `轉帳`가 Kaia Wallet v1.4.3에서 **실사용 0건**이고 실제는 `送信`·`發送`이었다(형제 키 `send_asset_transaction_check_send_address` = `送信元`). 화면을 쓰는 사용자에게는 **같은 화면 안의 일관성**이 사전 정합보다 먼저다. v4.7 「포이카츠 zh 교정」과 동형 사례 |
 | 2026-08-20 | **핸드오프를 3계층으로 분리**(공유 정본 + 프로젝트 + 사람 + 레인 락) · hostname 대신 `handoff.person`으로 담당자 식별 | 4명·8머신·다중 프로젝트에서 단일 파일은 매 세션 전문 주입되고 「현재 상태」 한 블록을 여러 세션이 경쟁한다. 사용자별 분할은 사고를 못 막는다 — 실제 덮어쓰기는 **같은 사람·같은 PC의 병렬 세션**이었다. 상세 `handoff/projects/system-meta.md`. 커밋 `e1c127c` |
