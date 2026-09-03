@@ -23,7 +23,7 @@
 - **Landpress 읽기 API**(2026-09-03 확보 · 무인증) — 프로젝트 `n7nuefo6t491uc9cp863lgyq` · 컬렉션 `k_pick_clinic_product`(병원별) · `k_pick_clinic_common_info`(공통)
   `curl "https://landpress-content.line-scdn.net/contents/v2/projects/n7nuefo6t491uc9cp863lgyq/collections/{컬렉션}/items?page=1&limit=100"`
   CMS: `https://landpress-content-v2.linecorp.com/projects/n7nuefo6t491uc9cp863lgyq/content/collections/{컬렉션}/items/1`
-- **Landpress 병원별 item 3건 등록 완료**(2026-09-03) — `uid`: **`tiana`**(item 11) · **`da-ps`**(item 1) · **`healing`**(item 21). API 재조회로 **9필드 전건 일치** 확인
+- **Landpress 병원별 item 3건 등록 완료**(2026-09-03) — `uid`: **`tiana-ps`**(item 11) · **`da-ps`**(item 1) · **`healing-eye`**(item 21). API 재조회로 **9필드 전건 일치** 확인(uid는 당일 `tiana`→`tiana-ps`·`healing`→`healing-eye`로 변경됨)
 - Landpress 콘텐츠 JSON: `landpress/` — 병원별 9파일(`{bridge_info,detail_info,menu}_{daprs,tiana,healingeye}_ko_KR.json`) + `aftercare_ko_KR.json`(보류) · (기존 24파일 구성) 공통 4필드 × 5개 언어 + 병원별 3필드 × ko + **`voucher_ko_KR.json`**(추천 바우처 4종 · ko만)
 - 게이트 리포트: `reports/gate/gate_report_clinic_*.md` · `gate_report_landpress_clinic_4sections_2026-09-01.md`
   - 2026-09-03 세션 #2: `gate_report_clinic_detail_improved_8keys_*` · `_oa_save_improved_3keys_*` · `_favorite_guide_2keys_*` · 2026-09-03 세션 #3: `gate_report_clinic_service_no_price_menu_*` · `_bridge_rolling_banner_10keys_*` · `_mini_bridge_19keys_*` · **`_consolidated_85keys_*`**(전수 425셀) · `_hospital_products_*`(병원 3곳)
@@ -34,7 +34,7 @@
 
 세션 #3에서 5개 프레임을 반영했다 — `상단 롤링 배너`(신규 10키) · `(Unifi mini) 브릿지페이지`(신규 9키 + 재사용 1) · `(Unifi mini) 상세페이지 - 개선` 재조회 행(신규 0) · `전체 리뷰` · `개별리뷰`(둘 다 xlt 마커 0 → 화면·정책만). 게이트 **11건 누적 전부 P0=0** · `check_gate_report.py` exit 0 · `check_wiki_storage.py` pre/post exit 0.
 
-- **통합 엑셀 `xlt_clinic_all_85keys_20260903.xlsx`가 업로드 정본**이다 — 위키 다국어 표 전량. 구버전 첨부 2건(51키·1키)은 위키에서 「구버전」으로 표기. 업로드 시 **등재값 변경 3건**(`UF_clinic_detail_benefit_sub`·`UF_voucher_mini_certified` 5개 언어 · `UF_main_faq_title` ja) 전부 의도된 변경 · **신규 등록 29키**
+- **통합 엑셀 `xlt_clinic_all_86keys_20260903.xlsx`가 업로드 정본**이다(85키판 대체) — 위키 다국어 표 전량. 구버전 첨부 2건(51키·1키)은 위키에서 「구버전」으로 표기. 업로드 시 **등재값 변경 3건**(`UF_clinic_detail_benefit_sub`·`UF_voucher_mini_certified` 5개 언어 · `UF_main_faq_title` ja) 전부 의도된 변경 · **신규 등록 29키**
 - **XLT 네임스페이스 `UF_clinic_mini_bridge_` 신설** — 기존 `UF_clinic_bridge_*` 10키가 전부 **(Web) 브릿지 전용**임을 실측하고 mini와 분리했다. 롤링 배너 10키도 리네임(업로드 전이라 무영향)
 - **LPC 실등록값 조회로 결함 4건 발견** — ⓐ `k_pick_clinic_product`의 `locale`이 `en_US`인데 값은 한국어 ⓑ 병원 1건만 등록·`uid`=null(화면은 3곳) ⓒ 두 컬렉션 모두 다국어 미등록(로컬 5개 언어 20파일 대기) ⓓ `detail_info.homepage`가 `example.com` 플레이스홀더
 - 로컬 `landpress/` 8필드 중 **6개는 실등록값과 완전 일치**. `menu`는 실등록 `price`가 **문자열**이라 로컬을 실등록값으로 되돌렸고(`title`·`tag` 추가분 유지), `bridge_info`는 `title` 추가분이 미등록
@@ -45,11 +45,9 @@
 
 ## 다음 할 일
 
-- [ ] **P0 XLT 업로드(사용자)** — **통합 엑셀 `xlt_clinic_all_85keys_20260903.xlsx` 1건만 올리면 된다**(85키 · 위키 첨부). 쓰기 API 없음. 세션 #2의 13키·`_faq_title` 1키 엑셀은 여기 흡수됐다
+- [ ] **P0 XLT 업로드(사용자)** — **통합 엑셀 `xlt_clinic_all_86keys_20260903.xlsx` 1건만 올리면 된다**(86키 · 위키 첨부). 쓰기 API 없음. 세션 #2의 13키·`_faq_title` 1키 엑셀은 여기 흡수됐다
 - [ ] **P0 `menu.items[].description` 7건 빈 값** — 디에이 `프리미엄 리프트 PKG` 1 + 티아나 3 + 힐링안과 3. 위키 「병원 데이터」 표에 **설명 컬럼이 없어** 근거가 없다. **이미 빈 문자열로 등록된 상태**이므로 ⓐ 위키 표에 컬럼 추가 ⓑ 화면에서 `description` 생략 중 결정 필요
-- [ ] **P1 힐링안과 homepage가 `http://`** — 비보안 스킴(LINE IAB 차단 우려). 위키 「병원 데이터」 표 링크도 `http`다
-- [ ] **P1 힐링안과 `menu.tag` `라식` 중복** — `["라식","렌즈삽입술","라식"]`. Figma 원문 그대로이며 사용자 제공 이미지에는 3번째가 `정밀검사`다
-- [ ] **P1 `faq` 4→9항목 ko 반영 대기** — 화면 근거 기반 신규 5건(`japanese_consultation`·`booking_flow`·`cashback_usage`·`info_review_source`·`change_or_cancel`) 준비 완료. 실등록은 아직 4항목
+- [ ] **P0 Landpress CMS 반영 대기 3건**(사용자) — 힐링안과 `detail_info.homepage`(`https://www.healingeye.co.kr/` · 실측 200 OK) · 힐링안과 `menu.tag`(`정밀검사`) · 공통 `faq`(9항목). Landpress는 읽기 API만 있어 붙여넣기는 사용자가 수행
 - [ ] **P1 `aftercare` 신규 필드 보류**(사용자 결정) — 「시술 후 주의사항」 9항목(LINE 챗 원문 2,300자 → 1,150자 축약 · 수치 18개 전건 보존). ⛔ 내용이 **티아나 코수술 전용**인데 `common_info`는 공통 컬렉션이라 배치 부적합 — 다른 병원에 노출되면 의료적 오안내
 - [ ] **P1 병원 데이터 파일명 규칙 확정** — 병원이 3곳이 되며 `{필드}_{locale}.json` 규칙으로 담을 수 없어 **CMS item 단위 `product_{slug}_ko_KR.json`** 으로 만들었다. 기존 `menu_ko_KR.json`·`detail_info_ko_KR.json`(디에이 단일본)과 **데이터가 중복**된다 — 정리 필요. 아울러 3곳 등록에는 `uid` 매핑이 필요하다(현재 1건 `null`)
 - [ ] **P1 다국어는 베타 사이트 확인 후 진행**(2026-09-03 사용자 결정) — 두 컬렉션 모두 현재 ko만. 공통 4필드는 5개 언어 산출물 보유, 병원별 3필드 × 3곳은 ko만이라 번역 필요. `voucher`는 카드 아트가 일본어라 로케일 분기 결정 필요
