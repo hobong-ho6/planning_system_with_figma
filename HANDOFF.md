@@ -43,7 +43,7 @@
 | [kpick-oa-consent](handoff/projects/kpick-oa-consent.md) | `hogeun` | 위키 `4637821100` · 1프레임 4키 | 08-24 | 위키 **v3 반영 완료**(P0=0) · 미결 3건 — **등록 서비스 확정(FE)** · History↔Policy 불일치 · `kpick_` 잠정 |
 | [guidekim-banner](handoff/projects/guidekim-banner.md) | `hogeun` | 위키 `4637821463` · 배너 2키 | 08-24 | 위키 **v11**(P0=0) · 🔴 **Unifi↔Dapp Portal 값 분기**(FE 확인 후 업로드) |
 | [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-28 | `4620240898` **v5**(정본 템플릿 구조 정합화) · 정의 필요 4항목 추적 |
-| [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` + LPC 하위 `4686692164` · 10화면 85키 + Landpress 8필드 | 09-03 | 위키 **v107** · 게이트 11건 P0=0 · **통합 엑셀 85키**(단일 업로드 정본) · 🔴 **XLT 업로드 대기**(사용자) · LPC 실등록 조회로 결함 4건 발견 · **GA Event 정의**(view 6·click 18 · `XLT & GA` 열 · FAQ `items[].id` CMS 반영) |
+| [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` + LPC 하위 `4686692164` · 10화면 86키 + Landpress 9필드 | 09-03 | 위키 **v112** · LPC **v9** · 게이트 14건 P0=0 · **통합 엑셀 86키**(단일 업로드 정본) · 병원 3곳 `uid` 등록 완료 · **GA Event 정의**(view 6·click 18 · `XLT & GA` 열 · FAQ `items[].id` CMS 반영) · 🔴 **XLT 업로드 + Landpress 반영 4건 대기**(사용자) |
 | [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
 
 ---

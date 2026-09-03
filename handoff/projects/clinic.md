@@ -1,12 +1,12 @@
 # clinic (클리닉 예약 동선 · K-뷰티 광고 퍼널)
 
-> 담당자: hogeun · 마지막 갱신: 2026-09-03 · 세션 #4(GA) · 마지막 커밋 `954e0e4`
-> ⚠️ `ff46985`는 **병렬 세션의 guide v33 커밋**이다 — 그 세션이 내 스테이징(핸드오프·landpress·게이트 4건)을 함께 담아 푸시했다. 내용은 온전하나 **커밋 메시지가 이 프로젝트 작업을 설명하지 않는다**
+> 담당자: hogeun · 마지막 갱신: 2026-09-03 · 세션 #3(연장) · 마지막 커밋 `c66e5f1`
+> ⚠️ **병렬 세션 사고 2건 기록** — ⓐ `ff46985`(guide v33)에 이 프로젝트 스테이징(핸드오프·landpress·게이트 4건)이 함께 담겨 푸시됐다(내용 온전·메시지만 무관). ⓑ 위키 v109 PUT이 자동화 스크립트의 본문 파일 경로 미갱신으로 **직전 본문을 올려 v108 사용자 추가 1행이 일시 유실** → v110에서 신규 키로 복원, v108↔v109 전문 대조로 그 1행 외 영향 없음 확인
 
 ## 대상 / 링크
 
-- 위키: `4667512757` 「클리닉 예약 동선 개선」 — **현재 v107** (부모 `3910828993`)
-  - **하위 `4686692164` 「클리닉 LPC(Landpress) 관리 영역 정리」**(2026-09-03 신설 · v2) — LPC 영역 10곳의 컬렉션·필드·구조·**실등록 JSON** + 크롭 이미지 10장
+- 위키: `4667512757` 「클리닉 예약 동선 개선」 — **현재 v112** (부모 `3910828993`)
+  - **하위 `4686692164` 「클리닉 LPC(Landpress) 관리 영역 정리」**(2026-09-03 신설 · **v9**) — LPC 영역 10곳의 컬렉션·필드·구조·**실등록 JSON** + 크롭 이미지 10장
 - Jira: `UNIFY-10552`(특정상거래법 표기 링크) · `UNIFY-10554`(환율 안내·환불조건 동의) — ⚠️ **Jira는 별도 PAT 필요**
 - Figma: `GOCHAYBS7hIrmWRGNuJOKV`
   - `(Web) 브릿지 페이지` `69630:13293` — 코멘트 20건
@@ -19,25 +19,26 @@
   - ⚠️ `(Unifi mini) 상세페이지` `69637:14698`는 **노드 삭제됨**(API `null`)
 - XLT: **Unifi**(정본) · 프리픽스 `UF_`(**UIT** · `{{0}}`) + `mini_guidekim_`(**LV** · `{0}`) 혼재 — 키를 사용자가 직접 기재해 프리픽스로 팀 판별
 - 엑셀: `xlt/xlt_clinic_screen_7keys_20260901.xlsx`(7키·**업로드 확인됨**) · `xlt/registry_fix/xlt_fix_main_faq_title_ja_1key_20260901.xlsx`(1키·**미반영**)
-  - ⭐ **`xlt_clinic_all_85keys_20260903.xlsx`(85키) = 업로드 정본** — 위키 첨부. 아래 개별 엑셀은 **전부 여기 흡수**됐다(따로 올리지 않는다) · 2026-09-03 개별분(흡수됨): `xlt_output_20260903171314.xlsx`(8키) · `_175353`(3키) · `_182643`(2키) · `_205205`(1키) · `_212941`(19키). ⚠️ `xlt/`는 `.gitignore`라 위키 첨부·게이트 리포트가 정본
+  - ⭐ **`xlt_clinic_all_86keys_20260903.xlsx`(86키) = 업로드 정본** — 위키 첨부(같은 파일명으로 **첨부 v2 갱신** — 본문 링크 그대로 최신본). 개별 엑셀·85키판은 **전부 여기 흡수**됐다(따로 올리지 않는다). ⚠️ `xlt/`는 `.gitignore`라 위키 첨부·게이트 리포트가 정본
 - **Landpress 읽기 API**(2026-09-03 확보 · 무인증) — 프로젝트 `n7nuefo6t491uc9cp863lgyq` · 컬렉션 `k_pick_clinic_product`(병원별) · `k_pick_clinic_common_info`(공통)
   `curl "https://landpress-content.line-scdn.net/contents/v2/projects/n7nuefo6t491uc9cp863lgyq/collections/{컬렉션}/items?page=1&limit=100"`
   CMS: `https://landpress-content-v2.linecorp.com/projects/n7nuefo6t491uc9cp863lgyq/content/collections/{컬렉션}/items/1`
 - **Landpress 병원별 item 3건 등록 완료**(2026-09-03) — `uid`: **`tiana-ps`**(item 11) · **`da-ps`**(item 1) · **`healing-eye`**(item 21). API 재조회로 **9필드 전건 일치** 확인(uid는 당일 `tiana`→`tiana-ps`·`healing`→`healing-eye`로 변경됨)
-- Landpress 콘텐츠 JSON: `landpress/` — 병원별 9파일(`{bridge_info,detail_info,menu}_{daprs,tiana,healingeye}_ko_KR.json`) + `aftercare_ko_KR.json`(보류) · (기존 24파일 구성) 공통 4필드 × 5개 언어 + 병원별 3필드 × ko + **`voucher_ko_KR.json`**(추천 바우처 4종 · ko만)
+- Landpress 콘텐츠 JSON: `landpress/` — **병원별 9파일**(`{bridge_info,detail_info,menu}_{da-ps,tiana-ps,healing-eye}_ko_KR.json` — **파일명 = CMS `uid`**) + `aftercare_ko_KR.json`(보류) · (기존 24파일 구성) 공통 4필드 × 5개 언어 + 병원별 3필드 × ko + **`voucher_ko_KR.json`**(추천 바우처 4종 · ko만)
 - 게이트 리포트: `reports/gate/gate_report_clinic_*.md` · `gate_report_landpress_clinic_4sections_2026-09-01.md`
-  - 2026-09-03 세션 #2: `gate_report_clinic_detail_improved_8keys_*` · `_oa_save_improved_3keys_*` · `_favorite_guide_2keys_*` · 2026-09-03 세션 #3: `gate_report_clinic_service_no_price_menu_*` · `_bridge_rolling_banner_10keys_*` · `_mini_bridge_19keys_*` · **`_consolidated_85keys_*`**(전수 425셀) · `_hospital_products_*`(병원 3곳)
+  - 2026-09-03 세션 #2: `gate_report_clinic_detail_improved_8keys_*` · `_oa_save_improved_3keys_*` · `_favorite_guide_2keys_*` · 2026-09-03 세션 #3: `gate_report_clinic_service_no_price_menu_*` · `_bridge_rolling_banner_10keys_*` · `_mini_bridge_19keys_*` · **`_consolidated_85keys_*`**(전수 425셀) · `_hospital_products_*`(병원 3곳) · `_aftercare_faq_*` · **`_review_verified_*`**(86키 전수 430셀 · 띄어쓰기 교정 후속 포함)
 
 ## 현재 상태
 
-위키 **v107**(세션 중 v95→v107 · 사용자 직접 편집 v97·v105 포함). Screen 표 **10행**, 다국어 번역표 **85키**.
+위키 **v112**(세션 중 v95→v112 · 사용자 직접 편집 v97·v105·v108 + 병렬 GA 세션 v102·v103·v106 포함). Screen 표 **10행**, 다국어 번역표 **86키**.
 
 세션 #3에서 5개 프레임을 반영했다 — `상단 롤링 배너`(신규 10키) · `(Unifi mini) 브릿지페이지`(신규 9키 + 재사용 1) · `(Unifi mini) 상세페이지 - 개선` 재조회 행(신규 0) · `전체 리뷰` · `개별리뷰`(둘 다 xlt 마커 0 → 화면·정책만). 게이트 **11건 누적 전부 P0=0** · `check_gate_report.py` exit 0 · `check_wiki_storage.py` pre/post exit 0.
 
-- **통합 엑셀 `xlt_clinic_all_86keys_20260903.xlsx`가 업로드 정본**이다(85키판 대체) — 위키 다국어 표 전량. 구버전 첨부 2건(51키·1키)은 위키에서 「구버전」으로 표기. 업로드 시 **등재값 변경 3건**(`UF_clinic_detail_benefit_sub`·`UF_voucher_mini_certified` 5개 언어 · `UF_main_faq_title` ja) 전부 의도된 변경 · **신규 등록 29키**
+- **통합 엑셀 `xlt_clinic_all_86keys_20260903.xlsx`가 업로드 정본** — 위키 다국어 표 전량. 구버전 첨부 3건(51키·1키·85키)은 위키에서 「구버전」으로 표기. 업로드 시 **등재값 변경 3건**(`UF_clinic_detail_benefit_sub`·`UF_voucher_mini_certified` 5개 언어 · `UF_main_faq_title` ja) 전부 의도된 변경 · **신규 등록 29키**
 - **XLT 네임스페이스 `UF_clinic_mini_bridge_` 신설** — 기존 `UF_clinic_bridge_*` 10키가 전부 **(Web) 브릿지 전용**임을 실측하고 mini와 분리했다. 롤링 배너 10키도 리네임(업로드 전이라 무영향)
-- **LPC 실등록값 조회로 결함 4건 발견** — ⓐ `k_pick_clinic_product`의 `locale`이 `en_US`인데 값은 한국어 ⓑ 병원 1건만 등록·`uid`=null(화면은 3곳) ⓒ 두 컬렉션 모두 다국어 미등록(로컬 5개 언어 20파일 대기) ⓓ `detail_info.homepage`가 `example.com` 플레이스홀더
-- 로컬 `landpress/` 8필드 중 **6개는 실등록값과 완전 일치**. `menu`는 실등록 `price`가 **문자열**이라 로컬을 실등록값으로 되돌렸고(`title`·`tag` 추가분 유지), `bridge_info`는 `title` 추가분이 미등록
+- **LPC 실등록값 조회로 발견한 결함 4건 → 2건 해소** — ✅ 병원 3곳 등록·`uid` 부여 ✅ `homepage` 플레이스홀더 해소 / 🔴 잔존: `k_pick_clinic_product` **3건 모두 `locale`이 `en_US`인데 값은 한국어** · 다국어 미등록(베타 확인 후 진행)
+- **실등록 `menu.price`는 오브젝트** `{from, amount, currency}`다 — 2026-09-01 문자열(`"¥19,999~"`) → **09-03 13:12에 오브젝트로 전환**됐다. 구분자는 `·`(U+00B7) · `faq.items[].id` 필수. **로컬은 실등록 규격에 맞춰 재생성**했다
+- **병원별 등록값 9필드는 산출물과 완전 일치**(API 재조회 검증). 이후 교정분 4건은 반영 대기 — 「다음 할 일」 참조
 
 ## 진행 중 작업(WIP)
 
@@ -47,27 +48,24 @@
 
 - [ ] **P0 XLT 업로드(사용자)** — **통합 엑셀 `xlt_clinic_all_86keys_20260903.xlsx` 1건만 올리면 된다**(86키 · 위키 첨부). 쓰기 API 없음. 세션 #2의 13키·`_faq_title` 1키 엑셀은 여기 흡수됐다
 - [ ] **P0 `menu.items[].description` 7건 빈 값** — 디에이 `프리미엄 리프트 PKG` 1 + 티아나 3 + 힐링안과 3. 위키 「병원 데이터」 표에 **설명 컬럼이 없어** 근거가 없다. **이미 빈 문자열로 등록된 상태**이므로 ⓐ 위키 표에 컬럼 추가 ⓑ 화면에서 `description` 생략 중 결정 필요
-- [ ] **P0 Landpress CMS 반영 대기 3건**(사용자) — 힐링안과 `detail_info.homepage`(`https://www.healingeye.co.kr/` · 실측 200 OK) · 힐링안과 `menu.tag`(`정밀검사`) · 공통 `faq`(9항목). Landpress는 읽기 API만 있어 붙여넣기는 사용자가 수행
+- [ ] **P0 Landpress CMS 반영 대기 4건**(사용자) — ⓐ 힐링안과 `detail_info`(`https://www.healingeye.co.kr/` · 실측 200 OK) ⓑ 힐링안과 `menu`(`정밀검사` + `찾고 있다면`) ⓒ **디에이 `menu`**(`리쥬란 힐러`·`리프팅 패키지` 띄어쓰기) ⓓ 공통 `faq`(9항목). Landpress는 읽기 API만 있어 붙여넣기는 사용자가 수행 — 값은 `landpress/*_ko_KR.json`이 정본
+- [ ] **P1 「시력교정」 ↔ 「시력 교정」 표기 통일 여부** — `UF_clinic_bridge_cat_vision`·힐링안과 `bridge_info.review_summary`는 `시력교정`(붙여씀), `menu.title`은 `시력 교정`(띄어씀)이다. 의료 전문용어로 굳어진 표기라 **임의 교정하지 않았다** — 통일 지시 시 반영
 - [ ] **P1 `aftercare` 신규 필드 보류**(사용자 결정) — 「시술 후 주의사항」 9항목(LINE 챗 원문 2,300자 → 1,150자 축약 · 수치 18개 전건 보존). ⛔ 내용이 **티아나 코수술 전용**인데 `common_info`는 공통 컬렉션이라 배치 부적합 — 다른 병원에 노출되면 의료적 오안내
-- [ ] **P1 병원 데이터 파일명 규칙 확정** — 병원이 3곳이 되며 `{필드}_{locale}.json` 규칙으로 담을 수 없어 **CMS item 단위 `product_{slug}_ko_KR.json`** 으로 만들었다. 기존 `menu_ko_KR.json`·`detail_info_ko_KR.json`(디에이 단일본)과 **데이터가 중복**된다 — 정리 필요. 아울러 3곳 등록에는 `uid` 매핑이 필요하다(현재 1건 `null`)
+- [ ] **P1 병원별 단일본 3파일 정리** — 파일명 규칙은 **`{필드}_{uid}_{locale}.json`으로 확정**했다(CMS 편집 단위 = 필드). 다만 구 단일본 `menu_ko_KR.json`·`bridge_info_ko_KR.json`·`detail_info_ko_KR.json`이 남아 **데이터가 중복**된다(단일본은 티아나 `bridge_info` + 디에이 `menu`가 **섞인 실등록 초기값**). 삭제 여부 결정 필요
 - [ ] **P1 다국어는 베타 사이트 확인 후 진행**(2026-09-03 사용자 결정) — 두 컬렉션 모두 현재 ko만. 공통 4필드는 5개 언어 산출물 보유, 병원별 3필드 × 3곳은 ko만이라 번역 필요. `voucher`는 카드 아트가 일본어라 로케일 분기 결정 필요
 - [ ] **P1 `k_pick_clinic_product` 3건 모두 `locale`이 `en_US`인데 값은 한국어** — `primaryLocale`=true · `ko_KR` 항목 없음. 병원 3곳 등록 후에도 잔존. `common_info`는 `ko_KR`로 정상
 - [ ] **P1 `UF_clinic_detail_benefit_prefix` 구조** — `결제금액의` / `8% 캐시백 혜택`이 2개 텍스트로 분리돼 **en·th 조합 시 어순이 뒤집힌다**. 등재값 선례(`UF_clinic_bridge_card_cashback` = `결제금의 캐시백 {{0}}%`)처럼 **단일 키 병합** 권장 — FE·디자인 결정 필요
 - [ ] **P1 용어집 보완 5건(실측 근거 확보)** — ⓐ 혜택 en `perks`→**`benefit`**(29 vs 6 · **5세션 반복**) ⓑ 더보기 ja `すべて見る`→**`もっと見る`**(⚠️ **근거 정정**: `すべて見る`는 0건이 아니라 **6건**이나 전부 ko 「전체보기」 번역 · ko 「더보기」는 `もっと見る` 5건) ⓒ 더보기 zh `查看更多`→**`更多` 병기**(22 vs 5 · 문맥 분기) ⓓ 결제 zh `結帳`→**`付款` 병기**(25건 · `結帳`은 체크아웃 한정) ⓔ **교환 en `swap`·ja `スワップ` 문맥 분기** — 토큰 스왑 전용 등재값이 「포인트→JPYC 전환」에도 매칭돼 6건 오탐. ⛔ 버전 상승 시 **기획자 가이드 zip 동반 갱신 필수**
-- [ ] **P1 FAQ 답변 3건 기획 검토** — Figma에 답변이 1개만 있어 나머지 3건은 Claude가 정책 근거로 작성한 **샘플**. 확정 시 5개 언어 재생성
-- [ ] **P1 「더보기」가 LINE 클라이언트 UI** — 코치마크 문구가 가리키는 것은 Unifi 요소가 아니라 LINE 앱 상단 우측 메뉴다. **LINE 자체 UI의 언어별 실제 표기** 확인 후 맞출지 결정
-- [ ] **P1 CTA 「상담하기」 확인** — `kpick_clinic_oa_save_01_03`은 저장(찜) 플로우인데 CTA가 `LINE 친구 추가하고 상담하기`. 사용자가 Figma 그대로 확정했으나 「저장하기/링크 받기」 의도 여부 확인 권장
-- [ ] **P1 주석 삭제 법무 확인** — 개선판에서 `UF_clinic_oa_save_note`(`*친구 추가는 캐시백 등 혜택 안내 목적으로만 이용돼요.`)가 사라졌다. 개인정보 이용 목적 고지 성격
-- [ ] P2 **`menu.price` 구조** — 실등록값은 **문자열** `"¥19,999~"`로 확인됐다(2026-09-03 API 실측). 제안했던 `{amount, currency, from}` 오브젝트는 **미채택** — 채택 여부 FE 협의 필요(`from`이 예약어라 `is_from` 등 대안)
-- [ ] P2 **`voucher` JSON 미확정 3건** — ⓐ `price`(문자열)/`normalPriceJpy`(숫자) 비대칭 → `priceJpy` 추가로 완화했으나 통일 권장 ⓑ `targetUrl` 표기 불일치(`oliveyoung-` vs `olive-young-`) ⓒ `sortOrder` 채택 여부(현재는 배열 순서)
+- [x] ~~P2 `menu.price` 구조~~ — **오브젝트 `{from, amount, currency}`로 확정·등록됐다**(2026-09-03 13:12 실측). 잔여 논점: `from`이 예약어라 `is_from` 등 대안 검토는 FE 협의 사항으로 남는다
+- [ ] **P1 기획·법무 검토 3건** — ⓐ FAQ 답변 3건이 **Claude 작성 샘플**(Figma엔 1개만) — 확정 시 5개 언어 재생성 ⓑ `kpick_clinic_oa_save_01_03` CTA `LINE 친구 추가하고 상담하기` — 저장(찜) 플로우인데 「상담」이라 의도 확인 권장 ⓒ 개선판에서 `UF_clinic_oa_save_note`(친구 추가 목적 고지)가 삭제됐다 — 개인정보 이용 목적 고지 성격이라 **법무 확인**
+- [ ] P2 **`voucher` JSON 미확정 3건** — ⓐ `price`(문자열)/`normalPriceJpy`(숫자) 비대칭(`priceJpy` 추가로 완화) ⓑ `targetUrl` 표기 불일치(`oliveyoung-` vs `olive-young-`) ⓒ `sortOrder` 채택 여부 · 아울러 실등록에 `title`·`moreLabel`·`moreTargetUrl`이 추가돼 있다(2026-09-03 실측)
 - [ ] P2 **병원별 3필드 다국어 확장** — `bridge_info`·`detail_info`·`menu`는 ko만. tag가 자유 텍스트라 병원 수 × 5개 언어 발생 → ⓐ 사람 입력 ⓑ ko 폴백 결정 필요
-- [ ] P2 **`landpress/process`·`faq` 캐시백 15% ↔ 프레임 8%** — 사용자 결정으로 「8%는 이 프레임만」이라 미변경. 8% 확정 시 **2종 × 5개 언어** 갱신 필요. 위키 Policy에도 `20%` 2곳 잔존
+- [ ] P2 **캐시백률 3중 불일치** — `landpress/process`·`faq` **15%** ↔ 개선 프레임 **8%** ↔ 위키 Policy **20%**(2곳). 8% 확정 시 2종 × 5개 언어 갱신 필요(사용자 결정으로 「8%는 이 프레임만」이라 현재 미변경)
+- [ ] P2 **`UF_clinic_oa_*` 키 XLT 미등재 + 다국어 부재** — `_title`·`_desc`·`_desc_terms`·`_note`·`_btn`·`_agree_*`가 위키에만 있고, `_01_03` 외 기존 행은 5개 언어 번역 행이 없다
 - [x] ~~P2 GA Event 미정의~~ — **2026-09-03 세션 #4(GA)에서 정의**(v103·v106). `XLT`→`XLT & GA` 열, view 6·click 18(`#`=Description 번호), 롤링 배너·OA 3행 「정의 대상 아님」. **`click_faq`는 Landpress `faq.items[].id`(4건) 파라미터** — 5개 언어 JSON `id` 신설 + **CMS 반영 완료**(LPC 문서 v4). 상세-개선 XLT No 6 이후 +2 정정. 규칙 `md/GA.md`
 - [ ] P2 **`click_review_card` `#`이 `-`** — 개별리뷰 카드에 Figma 코멘트가 없다. 디자이너 코멘트 추가 후 번호 기입 · **FE 협의**: 이벤트 전송 + FAQ 펼침 시 `items[].id`를 `faq_id`로
+- [ ] **P1 코치마크 미결 3건** — ⓐ 즐겨찾기 배너와 **메시지 중복**(중복 노출 여부·최초 1회 등 조건 정의) ⓑ 키 네임스페이스 `UF_clinic_detail_favorite_guide_*` — mini 공통이면 `UF_mini_favorite_guide_*`가 맞다(FE 협의) ⓒ 문구의 「더보기」는 **Unifi가 아니라 LINE 클라이언트 상단 우측 메뉴**다 — LINE 자체 UI의 언어별 실제 표기 확인 후 맞출지 결정
 - [ ] P2 **Figma 원본 정리 5건** — 우상단 제목 `올리브영 1만원권`(→3만원권) · 좌상단 카드 이미지(1만→5만원권 아트) · `다이소 5만원권`(→3만원권) · `라인 무료 상담`(→`LINE`) · `더보기 를`(→`더보기를`) · **프레임 경계 밖 럭키드로우 유의사항 12건 잔존 노드**
-- [ ] P2 **코치마크 ↔ 배너 메시지 중복** — 즐겨찾기 배너와 코치마크가 같은 얘기를 한다. 중복 노출 여부·노출 조건(최초 1회 등) 정책 정의 권장
-- [ ] P2 **코치마크 키 네임스페이스** — `UF_clinic_detail_favorite_guide_*`로 부여. mini 공통이면 `UF_mini_favorite_guide_*`가 맞다 — FE 협의
-- [ ] P2 **`UF_clinic_oa_*` 키 전부 XLT 미등재 + 다국어 부재** — `_title`·`_desc`·`_desc_terms`·`_note`·`_btn`·`_agree_*`가 위키에만 있다. `_01_03` 외 기존 행들은 **5개 언어 번역 행이 없다**
 
 ## 주요 결정 사항 (이 프로젝트 한정)
 
@@ -83,17 +81,18 @@
 | 2026-09-01 | **Landpress 필드 7종 확정** — 공통 `cautions`·`change_cancel`·`process`·`faq` / 병원별 `bridge_info`·`detail_info`·`menu`. 리스트형은 `{"items":[…]}`, 오브젝트형은 필드 직접 노출 | 병원 식별자는 **API의 `uid`** 로 처리하므로 JSON에 넣지 않는다 |
 | 2026-09-01 | **`cautions`·`change_cancel`만 `title`을 JSON에 포함**, `process`·`faq`는 XLT 유지 | 타이틀 값은 등재값 `UF_voucher_detail_caution`·`_cancel` 5개 언어 재사용. 두 키는 Unifi에 살아 있어 **XLT와 JSON 양쪽 병존을 사용자가 승인** |
 | 2026-09-01 | **`tag`는 양쪽 모두 배열** (`bridge_info`·`detail_info`) · 값은 **자유 텍스트** | 같은 이름이 타입이 갈리면 FE 사고. 고정 코드(enum) 제안은 반려 |
-| 2026-09-01 | **캐시백률은 리터럴 `15%`** (치환자 미사용) | FE API 조달 불가 → **수기 텍스트 대응**으로 확정 |
-| 2026-09-01 | **`mini_guidekim_cat_dematology` ko = `피부과·성형외과`** | Figma 표기 기준. 위키 `피부과`·등재값 `피부·성형외과`와 3중 불일치였다 |
-| 2026-09-01 | **`UF_voucher_recommend_origin_price` = `정가 <span>{{0}}</span>`** — span이 **가격 변수만** 감싼다 | 첨부 화면에서 취소선이 `¥5,654`에만 걸려 있고 라벨엔 없다. 사용자 제안(`<span>정가 {{0}}</span>`)은 라벨까지 감싸 취소선이 번진다 |
+| 2026-09-01 | **번역값·규격 결정 5건(압축)** — ⓐ `mini_guidekim_cat_dematology` ko=`피부과·성형외과`(Figma 기준 · 3중 불일치 해소) ⓑ `UF_voucher_recommend_origin_price`=`정가 <span>{{0}}</span>`(span이 **가격 변수만** 감싼다 — 라벨까지 감싸면 취소선이 번진다) ⓒ `mini_guidekim_cat_eye` th=`จักษุวิทยา`(`จักษุ`는 결합형이라 단독 불가) ⓓ 엑셀 포함 기준 = **「Unifi 미등재」**(`mini_guidekim_cat_*` 3키는 Dapp Portal에만 있어 7키 전량 포함) ⓔ **캐시백률은 리터럴 `15%`**(FE API 조달 불가 → 수기 텍스트) | 상세 근거는 세션 #1 게이트 리포트 |
 | 2026-09-01 | **ja 「캐시백」은 `キャッシュバック`** (`還元` 미채택) | 등재값 실측 — 바우처 계열 **3/3**, Unifi 전체 **13:1**. `還元`은 guidekim mini 배지 2키뿐 |
-| 2026-09-01 | **`mini_guidekim_cat_eye` th = `จักษุวิทยา`** | `จักษุ`는 단독 사용이 어려운 결합형. 형제 키(치과 `ทันตกรรม` 등)는 전부 완전한 명사 |
-| 2026-09-01 | **엑셀 포함 기준 = 「Unifi 미등재」** | `mini_guidekim_cat_*` 3키는 Dapp Portal엔 있고 Unifi엔 없어 **7키 전량 포함** |
 | 2026-09-03 | **XLT 네임스페이스 `UF_clinic_mini_bridge_` 신설** — mini 브릿지 문구를 Web(`UF_clinic_bridge_`)과 분리. 롤링 배너 10키도 리네임 | 실측 — 기존 `UF_clinic_bridge_*` **10키가 전부 (Web) 브릿지 문구**였고 두 화면은 카피가 완전히 다르다(Web `좋은 후기로 주목받는…` / mini `한국 인기 클리닉 더 좋은 혜택과 함께`). 후보 선례 `UF_clinic_mini_bridge_` 0건 · `UF_mini_guidekim_bridge_` 3건(guidekim 상품 브릿지). **업로드 전이 유일한 정정 시점**이었다 |
 | 2026-09-03 | **코멘트 `xlt` 마커는 「본문에 `xlt` 한 줄이 독립적으로 있으면」으로 판정** | CLAUDE.md는 「`XLT`로 시작」인데 실제 코멘트에는 설명 뒤 **끝줄에 `xlt`** 를 단 것이 브릿지 mini 3건·개선 상세 1건 있었다. `collect_frames.py`는 「정확히 `xlt`」만 봐서 6건만 잡았다 — 규칙대로 10건을 대상에 넣고 핀 색을 재렌더했다 |
 | 2026-09-03 | **ja 캐시백은 `キャッシュバック`** — 프레임 원문 `還元特典`·`最大15%還元`을 교체 | 사용자 결정(2026-09-01 결정 준수). 재실측 **14:1**(`還元`은 `UF_mini_guidekim_cashback` 1건뿐). A/B: P1 10→8, 신규 0. Figma 원본 수정 요청 대상(`71417:16028`·`16029`) |
 | 2026-09-03 | **`(Unifi mini) 상세페이지 - 개선`을 새 Screen 행으로 재추가**(신규 키 0) | 사용자 결정. 같은 프레임이 2행이 되지만 코멘트 42→44건 재조회본을 별도로 남긴다 |
 | 2026-09-03 | **리뷰 2프레임은 `xlt` 마커가 없어 키 부여 0** — 화면·정책만 반영 | 사용자 결정(코멘트 선별 모드). `영수증 인증`·`VIP`·`공식 홈페이지`는 「키 부여 검토 대상」으로 위키에 남겼다 |
+| 2026-09-03 | **브릿지 「시술 인증」은 별도 키** — `UF_clinic_mini_bridge_review_verified` 신설, 기존 `UF_clinic_detail_review_verified`(`영수증 인증`)는 유지 | 한 키에 두 문구였고 **Figma 원문도 실제로 다르다**(브릿지 `71241-9154` y=17372 `시술인증` / 상세·리뷰 `영수증 인증`). 어휘는 형제 키 어형 승계 — 「시술」 등재 실측 **11/11 만장일치**(`施術`·`treatment`·`ทรีตเมนต์`·`療程`) |
+| 2026-09-03 | **띄어쓰기는 올바른 표기로 교정** — `시술인증`→`시술 인증` · `리쥬란힐러`→`리쥬란 힐러` · `리프팅패키지`→`리프팅 패키지` · `찾고있다면`→`찾고 있다면` | 사용자 지시. **시술 상품명은 관행상 붙여쓰기 유지**(`코성형`·`렌즈삽입술`·`정밀검사` 등) · `의사소통`은 한 단어(오탐) · `시력교정`은 전문용어라 미교정. Figma 원본 수정 요청 대상 4건 |
+| 2026-09-03 | **병원별 Landpress 파일명 = `{필드}_{uid}_{locale}.json`** · `uid`는 `tiana-ps`·`da-ps`·`healing-eye` | CMS는 필드를 하나씩 편집하므로(`?activeField=menu`) 필드 단위가 붙여넣기에 맞다. `uid`는 당일 `tiana`·`healing`에서 개명됐다 |
+| 2026-09-03 | **힐링안과 `menu.tag` 3번째는 `정밀검사`** (Figma 원문의 `라식` 중복 대신) · **homepage는 `https://www.healingeye.co.kr/`** | 사용자 결정 + 실측(`https` **200 OK** · `www` 없는 주소는 301 리다이렉트). Figma 원본 수정 요청 대상 |
+| 2026-09-03 | **`faq` 4 → 9항목** — 화면 구성 근거로 신규 5건(`japanese_consultation`·`booking_flow`·`cashback_usage`·`info_review_source`·`change_or_cancel`) | 사용자 승인. 5건 전부 화면·실등재값 근거가 있다(세션 #1의 「샘플」 답변과 다름). `items[].id`는 GA `faq_id` 파라미터와 연결 |
 
 ## ⛔ 사용자 결정으로 종결 (재작업·재제안 금지 — 이 프로젝트 한정)
 
@@ -117,6 +116,10 @@
 - 교훈 ⓐⓑ **프리픽스는 Web/mini까지 쪼개 확인**(`UF_clinic_bridge_*` 10키가 전부 Web 문구 — 업로드 전 리네임으로 복구) · **도구 판정 기준을 규칙과 대조**(`collect_frames.py` xlt 마커가 「정확히 xlt」만 봐 끝줄 `xlt` 4건 누락)
 - 교훈 ⓒⓓⓔ **정규식이 `status` 매크로 셀을 조용히 빼먹는다**(78→실제 85키 · 셀 깊이 추적+매크로 제거 필요) · **로컬 산출물보다 실등록값 API가 정본**(`menu.price`는 문자열) · **용어집 「실사용 0건」은 의미까지 확인**(`すべて見る` 6건 전부 ko 「전체보기」 — 등재 의미 오류)
 - 교훈 ⓕⓖ **사용자가 같은 페이지를 계속 편집**(v97·v105) → PUT 직전 버전 가드 3회 · **`code` 매크로 `language=json` 미지원**(9블록 Error rendering · 파라미터 제거 · `check_wiki_storage.py post`가 잡음)
+- **(연장분 v107→v112)** LPC 하위 페이지 신설·병원 3곳 등록 검증(`uid` 매핑)·`faq` 9항목·`aftercare` 축약본(보류)·브릿지 「시술 인증」 별도 키·띄어쓰기 교정 4건 · 통합 엑셀 85→**86키** · 게이트 3건 추가(누적 14건 P0=0)
+- 🔴 교훈 ⓗ **본문 생성과 PUT을 다른 파일로 나누면 조용히 구버전을 올린다** — `put.py`가 읽는 본문 경로를 외부 `sed`로 갈아끼우는 방식이었고, **실패한 첫 시도의 명령 체인에 `sed`가 있어 실행되지 않은 채** 재시도해 v109에 직전 본문이 올라갔다(사용자 추가 1행 유실 → v110 복원). **생성 직후 같은 프로세스에서 버전 가드 후 PUT**하도록 바꿨다. 검사기(`check_wiki_storage.py`)는 규격만 보므로 이 사고를 못 잡는다 — 유실은 **v108↔v109 전문 대조**로만 드러났다
+- 교훈 ⓘ **실등록값은 세션 중에도 바뀐다** — `menu.price`가 문자열→오브젝트로, `faq`에 `id`가, `voucher`에 `title`·`moreLabel`이 추가됐고 `uid`도 개명됐다(07:50·12:56·13:12·13:59·14:00). **쓰기 직전마다 재조회**해야 규격이 맞는다
+- 교훈 ⓙ **자체 점검 스크립트의 리터럴도 검증 대상이다** — nbsp·U+2028을 셸 heredoc에 그대로 넣었더니 일반 공백으로 정규화돼 **전 파일이 「이상 있음」으로 오탐**했다. 이스케이프(`\u00a0`·`\u2028`)로 쓰고, JSON은 **파일 텍스트가 아니라 파싱한 문자열 값**을 검사한다(인덴트 2칸을 「이중 공백」으로 오판)
 
 ### 2026-09-01~03 — 세션 #1·#2: 위키 신설(v1→v86 · `88d4074`) → 개선 프레임 3개 반영 + 추천 바우처 Landpress 이관(v86→v95) *(압축)*
 
