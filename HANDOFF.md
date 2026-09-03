@@ -37,7 +37,7 @@
 | [xlt-registry](handoff/projects/xlt-registry.md) | `hogeun` | XLT 등록값 3서비스 4,092키 | 08-10 | API 정상 · 수정 엑셀 1건 업로드 대기(사용자) |
 | [unifi-app-xlt](handoff/projects/unifi-app-xlt.md) | `hogeun` | Unifi 앱(IPHONE) 엑셀 번역 2키 | 08-20 | P0=0 · **잔여 전건 종결**(IPHONE 타겟은 API 조회 불가 — 구조적 한계) |
 | [kaiawallet-transition](handoff/projects/kaiawallet-transition.md) | `hogeun` | 위키 `4515188069` · **8프레임 37키** | 08-24 | 위키 **v18**(8화면 재편 · 185셀 전건 · 14키 제거) · 용어집 보완 3건 대기 |
-| [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 08-10 | 점검 #4 완료 · 캐리오버 5건 이월 |
+| [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 **v31** · 로그인 2회 연속 미점검 |
 | [nonrealtime](handoff/projects/nonrealtime.md) | `hogeun` | 위키 `4541600637`·`4540065229` | 08-06 | 2종 v10 · 마스터와 정합 |
 | [luckyball-campaign](handoff/projects/luckyball-campaign.md) | `hogeun` | 위키 `4479306980` · 75키 | 08-07 | v151 · 미결 0 |
 | [kpick-oa-consent](handoff/projects/kpick-oa-consent.md) | `hogeun` | 위키 `4637821100` · 1프레임 4키 | 08-24 | 위키 **v3 반영 완료**(P0=0) · 미결 3건 — **등록 서비스 확정(FE)** · History↔Policy 불일치 · `kpick_` 잠정 |
