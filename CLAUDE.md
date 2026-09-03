@@ -175,6 +175,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `md/OA.md` | OA(LINE 공식계정) 메시지 규칙 — XLT 키 미부여(번역만)·변수 `{{이름}}`(사용자 정의)·첨부 이미지 Flex 메시지 JSON(URI 사용자 입력). OA 섹션 프레임 처리 시 필수 참조 |
 | `md/dropweb-guide.md` | 정적 웹사이트 배포 규격 — `md/prototype.md` 수행 시 필수 참조 |
 | `md/xlt-verify.md` | **XLT 시스템 등록값 검증 정본** — 읽기 API 명세(엔드포인트·인증 없음·서비스별 키스페이스 분리)·타겟 확정(서비스/디바이스/버전 사용자 선택)·용어집 대조·수정 제안·업로드 엑셀. **정기 검증 시 + 번역 Step 2-1 유사 키 제안 시 필수 참조** |
+| `md/GA.md` | GA Event 정의 규칙 — Screen 표 4열 `XLT & GA`(storage `&amp;`) · XLT 중첩표 아래 `# \| Event Name \| Parameter` 표 · `view_`+Screen ID 화면당 1개(Parameter `-`) · `click_` 클릭 요소 자동 부여(`#`=어노테이션 번호). **위키 업데이트에서 사용자가 GA event 추가를 요청한 경우에만** 적용 |
 | `md/IA.md` | Unifi(unifi.me) IA 분석 정본 — **Screen ID(`주기능_부기능_세부기능_01` 소문자) 부여 시 어휘 참조**. IA 변경 시 이 파일만 갱신. **⛔ Screen ID 부여는 매핑 표 사용자 검토·승인 후에만 진행** (기존 위키는 소급 전환 금지) |
 | `md/PRODUCTION_RULES.md` | ⚠️ 프로덕션 환경 필수 규칙 — **모든 단계에서 필수 준수** |
 

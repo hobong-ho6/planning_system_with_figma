@@ -236,7 +236,9 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 
 #### ⛔ Screen 표 컬럼 구성 — 4컬럼 고정 (화면명 컬럼 신설 금지)
 
-**Screen 표는 `Screen ID | Screen(이미지) | Description | XLT` 4컬럼만 쓴다.** Screen ID가 화면 식별자이므로 **"화면명"·"프레임명" 같은 별도 컬럼을 만들지 않는다.** (이 규칙은 `scripts/check_wiki_storage.py pre`가 자동 검사한다 — PUT 전 exit 0 확인.)
+**Screen 표는 `Screen ID | Screen(이미지) | Description | XLT & GA` 4컬럼만 쓴다.** Screen ID가 화면 식별자이므로 **"화면명"·"프레임명" 같은 별도 컬럼을 만들지 않는다.** (이 규칙은 `scripts/check_wiki_storage.py pre`가 자동 검사한다 — PUT 전 exit 0 확인.)
+
+- **4번째 열 이름은 `XLT & GA`**(storage: `<th>XLT &amp; GA</th>`, 2026-09-03 정정). GA Event 표는 이 셀 안 XLT 중첩표 아래에 넣는다 — 별도 5번째 열 금지. 사용자가 GA Event 추가를 요청한 경우의 정의 규칙은 **`md/GA.md`**. 기존 페이지의 `XLT` 헤더는 GA Event를 추가하는 작업에서 정정한다(그 외 편집은 소급 금지).
 
 - ❌ `Screen ID | 화면명 | Screen | Description | XLT` (5컬럼) — **금지**. 2026-07-30 실측 위반: 구 규칙(Screen ID 셀 = Figma 프레임명)에서 신 규칙(구조화 ID)으로 넘어올 때 프레임명을 버리지 못해 별도 컬럼으로 남긴 사례(pageId=4394814893 신규 작성 시). 사용자 지적으로 4컬럼 교정.
 - **Figma 프레임명을 남기고 싶으면** Description 설명문 끝에 `(Figma: <code>프레임명</code>)`로만 병기한다 — 컬럼을 늘리지 않는다. Screen ID 셀에는 넣지 않는다(아래 node-id 병기 금지와 같은 취지).
@@ -292,8 +294,9 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
    - `resolved_at`이 있으면(truthy) 제외 — 루트가 제외되면 스레드 통째 제외
    - **답글(`parent_id` 보유, 좌표 없음)은 `parent_id`로 루트에 매칭**해 `created_at` 시간순으로 루트의 `replies`에 수집
 
-#### Screen 표 (XLT 컬럼 — `No | XLT Key | KR` 3컬럼)
+#### Screen 표 (XLT & GA 컬럼 — XLT 중첩표 `No | XLT Key | KR` 3컬럼 + GA Event 표)
 - **`No | XLT Key | KR`** 3컬럼으로 표시한다 (이미지와 함께 빠르게 텍스트 확인 용도).
+- **GA Event 추가 요청이 있으면** 이 중첩표 아래에 `<h5>Event</h5>` + `# | Event Name | Parameter` 표를 추가한다(`view_` 화면당 1개 필수 · `click_` 클릭 요소 자동 부여 · `#`=어노테이션 번호). 규칙·템플릿은 `md/GA.md`.
 - **`No` = 그 XLT 텍스트를 가리키는 Description 정책 코멘트 번호**(이미지의 빨강 원 ⓝ 번호)다 — 표의 텍스트가 이미지 어디에 있는지 바로 찾도록 연결한다.
   - **도출**: 화면의 미해결 루트 코멘트를 y좌표 순으로 번호화(= Description 정책 번호)한 뒤, 각 코멘트가 가리키는 텍스트를 매칭(좌표 포함/최근접 — `md/translate.md` '코멘트→텍스트 매칭 알고리즘')하고, **그 텍스트의 XLT 행에 해당 코멘트 번호**를 부여한다.
   - 한 텍스트에 여러 코멘트가 대응하면 **최솟값(가장 위/먼저)** 을 쓴다. 코멘트가 가리키지 않는 텍스트는 `No`를 빈칸으로 둔다.
@@ -580,14 +583,16 @@ git -C /tmp/repo_clone push origin main
      구 안내문("Screen ID는 Figma 프레임 이름을 그대로 사용")은 2026-07-27 공식 룰 채택으로 폐기됐다 —
      기존 프레임명 기반 페이지만 소급 금지로 유지한다. 컬럼은 아래 4개 고정(화면명 컬럼 신설 금지). -->
 <table><tbody>
-<tr><th>Screen ID</th><th>Screen</th><th>Description</th><th>XLT</th></tr>
+<tr><th>Screen ID</th><th>Screen</th><th>Description</th><th>XLT &amp; GA</th></tr>
 
 <!-- 코멘트(정책)가 있는 화면: 번호 어노테이션 이미지(Confluence 첨부) + 번호별 정책 -->
 <tr>
   <td>(New) 자산 전송 팝업</td>
   <td><ac:image ac:width="300"><ri:attachment ri:filename="{frame_name}.png"/></ac:image></td>
   <td><p>화면 설명 1~2문장.</p><p><strong>정책</strong><br/>1. 상단 정책 내용<br/>&nbsp;&nbsp;↳ 첫 번째 답글 본문<br/>&nbsp;&nbsp;↳ 두 번째 답글 본문<br/>2. 다음 정책 내용</p></td>
-  <td><table><tbody><tr><th>No</th><th>XLT Key</th><th>KR</th></tr><tr><td>9</td><td>KW_...</td><td>한국어</td></tr></tbody></table></td>
+  <td><table><tbody><tr><th>No</th><th>XLT Key</th><th>KR</th></tr><tr><td>9</td><td>KW_...</td><td>한국어</td></tr></tbody></table>
+  <!-- GA Event 추가 요청 시에만 (md/GA.md): -->
+  <h5>Event</h5><table><tbody><tr><th>#</th><th>Event Name</th><th>Parameter</th></tr><tr><td>-</td><td>view_{screen_id}</td><td>-</td></tr><tr><td>9</td><td>click_{대상}</td><td></td></tr></tbody></table></td>
 </tr>
 
 <!-- 코멘트(정책)가 있는 화면 (Confluence PAT 없을 때 fallback): GitHub 임시 URL -->
@@ -701,9 +706,9 @@ curl -s -H "Authorization: Bearer $CONFLUENCE_PAT" \
    단일 프레임 번역 후 위키 업데이트 시, 아래 **두 표를 모두** 갱신한다.
 
    **(A) 화면 설명 표(Screen 표) — 그 프레임 행 1개 추가/갱신**
-   - 컬럼: `Screen ID`(프레임 이름) | `Screen`(이미지) | `Description` | `XLT`
+   - 컬럼: `Screen ID`(프레임 이름) | `Screen`(이미지) | `Description` | `XLT & GA`
    - **Description**: 그 프레임의 코멘트(스레드 답글 포함)를 화면 내 y좌표 상단부터 번호 매긴 목록(댓글 기준 정책)으로 삽입 (Step 3 규칙)
-   - **XLT 열**: 그 프레임을 번역한 경우 해당 화면의 `XLT Key | KR` 중첩표를 채운다 (화면별 키 도출은 Step 3 'XLT 컬럼' 절차 참조). 번역하지 않았으면 `-`
+   - **XLT & GA 열**: 그 프레임을 번역한 경우 해당 화면의 `XLT Key | KR` 중첩표를 채운다 (화면별 키 도출은 Step 3 'XLT & GA 컬럼' 절차 참조). 번역하지 않았으면 `-`. GA Event 추가 요청이 있으면 그 아래 Event 표를 넣는다(`md/GA.md`)
 
    **(B) 페이지의 다국어 번역(XLT Full Translation) 모음 표 — 그 프레임 문구 행 추가/병합**
    - 그 프레임에서 도출한 문구(키)들을 `XLT Key | KR | JA | EN | TH | ZH-TW` 행으로 모음 표에 **추가/병합**한다

@@ -6,7 +6,7 @@ Confluence storage 규칙 위반 검사기 (md/wiki.md Screen 표·첨부 참조
 ⛔ 위키 PUT **직전**(pre)과 PUT **직후**(post) 두 번 실행한다. prose 규칙으로만 있던
 마크업 규칙을 통과/실패 산출물로 바꿔, 아래 실측 재발 사례를 차단한다:
 
-  ⓐ Screen 표를 5컬럼(Screen ID | 화면명 | Screen | Description | XLT)으로 만든 위반
+  ⓐ Screen 표를 5컬럼(Screen ID | 화면명 | Screen | Description | XLT & GA)으로 만든 위반
      — Screen ID가 화면 식별자이므로 화면명 컬럼은 금지 (2026-07-30 pageId=4394814893)
   ⓑ 첨부 참조에 <ri:page>를 넣어 다른 스페이스 키(LINENEXT)를 가리켜
      이미지·엑셀이 "알 수 없는 첨부파일"로 깨진 위반 (2026-07-30 같은 페이지)
@@ -80,7 +80,7 @@ def check_storage(storage: str, allow_ri_page: bool = False) -> list:
                 f"(현재: {joined}) · md/wiki.md 'Screen 표 컬럼 구성'")
         elif cells[0] == "Screen ID" and len(cells) != 4:
             violations.append(
-                f"[Screen 표] 컬럼 수 {len(cells)} — 'Screen ID | Screen | Description | XLT' 4컬럼 고정 "
+                f"[Screen 표] 컬럼 수 {len(cells)} — 'Screen ID | Screen | Description | XLT & GA' 4컬럼 고정 "
                 f"(현재: {joined})")
 
     # ⓑ 첨부 참조에 <ri:page> 금지
