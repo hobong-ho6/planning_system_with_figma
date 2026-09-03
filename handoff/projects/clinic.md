@@ -1,6 +1,7 @@
 # clinic (클리닉 예약 동선 · K-뷰티 광고 퍼널)
 
-> 담당자: hogeun · 마지막 갱신: 2026-09-03 · 세션 #3 · 마지막 커밋 `(세션 #3 커밋 후 기록)`
+> 담당자: hogeun · 마지막 갱신: 2026-09-03 · 세션 #3 · 마지막 커밋 `ff46985`
+> ⚠️ `ff46985`는 **병렬 세션의 guide v33 커밋**이다 — 그 세션이 내 스테이징(핸드오프·landpress·게이트 4건)을 함께 담아 푸시했다. 내용은 온전하나 **커밋 메시지가 이 프로젝트 작업을 설명하지 않는다**
 
 ## 대상 / 링크
 
@@ -23,10 +24,11 @@
 - **Landpress 읽기 API**(2026-09-03 확보 · 무인증) — 프로젝트 `n7nuefo6t491uc9cp863lgyq` · 컬렉션 `k_pick_clinic_product`(병원별) · `k_pick_clinic_common_info`(공통)
   `curl "https://landpress-content.line-scdn.net/contents/v2/projects/n7nuefo6t491uc9cp863lgyq/collections/{컬렉션}/items?page=1&limit=100"`
   CMS: `https://landpress-content-v2.linecorp.com/projects/n7nuefo6t491uc9cp863lgyq/content/collections/{컬렉션}/items/1`
-- Landpress 콘텐츠 JSON: `landpress/` **24파일** — 공통 4필드 × 5개 언어 + 병원별 3필드 × ko + **`voucher_ko_KR.json`**(추천 바우처 4종 · ko만)
+- Landpress 콘텐츠 JSON: `landpress/` **27파일**(+ 병원별 `product_{daprs,tiana,healingeye}_ko_KR.json` 3건 · 2026-09-03)
+- Landpress 콘텐츠 JSON(기존): `landpress/` **24파일** — 공통 4필드 × 5개 언어 + 병원별 3필드 × ko + **`voucher_ko_KR.json`**(추천 바우처 4종 · ko만)
 - 게이트 리포트: `reports/gate/gate_report_clinic_*.md` · `gate_report_landpress_clinic_4sections_2026-09-01.md`
   - 2026-09-03 세션 #2: `gate_report_clinic_detail_improved_8keys_*` · `_oa_save_improved_3keys_*` · `_favorite_guide_2keys_*`
-  - 2026-09-03 세션 #3: `gate_report_clinic_service_no_price_menu_*` · `_bridge_rolling_banner_10keys_*` · `_mini_bridge_19keys_*` · **`_consolidated_85keys_*`**(전수 425셀)
+  - 2026-09-03 세션 #3: `gate_report_clinic_service_no_price_menu_*` · `_bridge_rolling_banner_10keys_*` · `_mini_bridge_19keys_*` · **`_consolidated_85keys_*`**(전수 425셀) · `_hospital_products_*`(병원 3곳)
 
 ## 현재 상태
 
@@ -46,6 +48,8 @@
 ## 다음 할 일
 
 - [ ] **P0 XLT 업로드(사용자)** — **통합 엑셀 `xlt_clinic_all_85keys_20260903.xlsx` 1건만 올리면 된다**(85키 · 위키 첨부). 쓰기 API 없음. 세션 #2의 13키·`_faq_title` 1키 엑셀은 여기 흡수됐다
+- [ ] **P0 병원별 `product_*` 등록 전 해소 2건** — ⓐ `description` **7건이 빈 값**이다(위키 「병원 데이터」 표에 설명 컬럼이 없다 — 카드가 비어 보인다) ⓑ 힐링안과 홈페이지가 **`http://`**(비보안 · LINE IAB 차단 우려). **빈 문자열 그대로 등록 금지**
+- [ ] **P1 병원 데이터 파일명 규칙 확정** — 병원이 3곳이 되며 `{필드}_{locale}.json` 규칙으로 담을 수 없어 **CMS item 단위 `product_{slug}_ko_KR.json`** 으로 만들었다. 기존 `menu_ko_KR.json`·`detail_info_ko_KR.json`(디에이 단일본)과 **데이터가 중복**된다 — 정리 필요. 아울러 3곳 등록에는 `uid` 매핑이 필요하다(현재 1건 `null`)
 - [ ] **P1 Landpress 등록(사용자)** — 실등록 결함 4건(위 「현재 상태」 ⓐ~ⓓ) + 미등록 추가분 2건(`menu.title`·`menu.tag` / `bridge_info.title`) + 다국어 20파일. `voucher_ko_KR.json`은 ko만(카드 아트가 일본어라 로케일 분기 결정 필요)
 - [ ] **P1 `UF_clinic_detail_benefit_prefix` 구조** — `결제금액의` / `8% 캐시백 혜택`이 2개 텍스트로 분리돼 **en·th 조합 시 어순이 뒤집힌다**. 등재값 선례(`UF_clinic_bridge_card_cashback` = `결제금의 캐시백 {{0}}%`)처럼 **단일 키 병합** 권장 — FE·디자인 결정 필요
 - [ ] **P1 용어집 보완 5건(실측 근거 확보)** — ⓐ 혜택 en `perks`→**`benefit`**(29 vs 6 · **5세션 반복**) ⓑ 더보기 ja `すべて見る`→**`もっと見る`**(⚠️ **근거 정정**: `すべて見る`는 0건이 아니라 **6건**이나 전부 ko 「전체보기」 번역 · ko 「더보기」는 `もっと見る` 5건) ⓒ 더보기 zh `查看更多`→**`更多` 병기**(22 vs 5 · 문맥 분기) ⓓ 결제 zh `結帳`→**`付款` 병기**(25건 · `結帳`은 체크아웃 한정) ⓔ **교환 en `swap`·ja `スワップ` 문맥 분기** — 토큰 스왑 전용 등재값이 「포인트→JPYC 전환」에도 매칭돼 6건 오탐. ⛔ 버전 상승 시 **기획자 가이드 zip 동반 갱신 필수**
