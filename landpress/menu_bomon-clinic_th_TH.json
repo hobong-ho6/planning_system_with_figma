@@ -1,0 +1,37 @@
+{
+  "title": "หากกังวลเรื่องความกระชับและความเปล่งปลั่ง",
+  "tag": [
+    "Ulthera Prime",
+    "Thermage FLX",
+    "Rejuran Healer"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 391000,
+        "currency": "JPY"
+      },
+      "title": "Ulthera Prime",
+      "description": "เซ็ตยกกระชับที่รวมกับ Onda 80KJ"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 690000,
+        "currency": "JPY"
+      },
+      "title": "Thermage FLX",
+      "description": "เซ็ตยกกระชับที่รวมกับ Ulthera Prime และ Rituo"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 149000,
+        "currency": "JPY"
+      },
+      "title": "Rejuran Healer",
+      "description": "เซ็ตสกินบูสเตอร์ที่รวมกับ Rituo และ Dermashine"
+    }
+  ]
+}

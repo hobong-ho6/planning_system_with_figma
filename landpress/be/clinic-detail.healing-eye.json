@@ -106,7 +106,7 @@
     {
       "name": {
         "ko-KR": "스마일라식 · 라섹 · ICL 렌즈삽입술",
-        "ja-JP": "スマイルラシック · ラセック · ICLレンズ挿入術",
+        "ja-JP": "スマイルラシック · ラシック · ICLレンズ挿入術",
         "en-US": "SMILE LASIK · LASEK · ICL Lens Implantation",
         "th-TH": "SMILE LASIK · LASEK · การฝังเลนส์ ICL",
         "zh-TW": "SMILE LASIK · LASEK · ICL晶體植入術"
@@ -402,6 +402,31 @@
       "thumbnailUrl": "https://unifi-apps.line-scdn.net/0hhtLzklWYN1txAyt_0lxIDCtWOSodci5OCDUlIxdXLzsfZm5fFmQ9bSJoaBUpSDFeJBExbx9gLhADT3hdEhV7RgtjYQAuWHBsKBI6QyF8KTgXSC9lBgV8Vh9zNTs5MjY",
       "targetUrl": "https://unifi.me/k-pick/clinic/tiana-ps",
       "detailJsonPath": "clinic-detail.tiana-ps.json"
+    },
+    {
+      "externalId": "content:bomon-clinic",
+      "slug": "bomon-clinic",
+      "name": {
+        "ko-KR": "청담봄온의원",
+        "ja-JP": "チョンダムボムオン医院",
+        "en-US": "Cheongdam Bom-on Clinic",
+        "th-TH": "คลินิกชอนดัม บมอน",
+        "zh-TW": "清潭 Bom-on 醫院"
+      },
+      "region": {
+        "ko-KR": "서울시 강남구",
+        "ja-JP": "ソウル江南区",
+        "en-US": "Gangnam-gu, Seoul",
+        "th-TH": "เขตคังนัม กรุงโซล",
+        "zh-TW": "首爾江南區"
+      },
+      "clinicType": "DERMATOLOGY",
+      "rating": "4.9",
+      "reviewCount": 29,
+      "cashbackRate": 10,
+      "thumbnailUrl": "https://unifi-apps.line-scdn.net/0haujPu1wcPlpXKSJ-9CRBDRN8MCs7WCdPLh8sIjF9Jjo5TGdeME40QCleKwIlZTFfNCQyQwRsPBYYcjJtDQ43QypCYQsceSVZDk44bwd_KzoxYTBnDUZwQhR7JhEmQ3FwGw",
+      "targetUrl": "https://unifi.me/k-pick/clinic/bomon-clinic",
+      "detailJsonPath": "clinic-detail.bomon-clinic.json"
     }
   ]
 }

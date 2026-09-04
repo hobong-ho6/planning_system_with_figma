@@ -306,6 +306,19 @@
       "thumbnailUrl": "https://unifi-apps.line-scdn.net/0hhtLzklWYN1txAyt_0lxIDCtWOSodci5OCDUlIxdXLzsfZm5fFmQ9bSJoaBUpSDFeJBExbx9gLhADT3hdEhV7RgtjYQAuWHBsKBI6QyF8KTgXSC9lBgV8Vh9zNTs5MjY",
       "targetUrl": "https://unifi.me/k-pick/clinic/tiana-ps",
       "detailJsonPath": "clinic-detail.tiana-ps.json"
+    },
+    {
+      "externalId": "content:bomon-clinic",
+      "slug": "bomon-clinic",
+      "name": "คลินิกชอนดัม บมอน",
+      "region": "เขตคังนัม กรุงโซล",
+      "clinicType": "DERMATOLOGY",
+      "rating": "4.9",
+      "reviewCount": 29,
+      "cashbackRate": 10,
+      "thumbnailUrl": "https://unifi-apps.line-scdn.net/0haujPu1wcPlpXKSJ-9CRBDRN8MCs7WCdPLh8sIjF9Jjo5TGdeME40QCleKwIlZTFfNCQyQwRsPBYYcjJtDQ43QypCYQsceSVZDk44bwd_KzoxYTBnDUZwQhR7JhEmQ3FwGw",
+      "targetUrl": "https://unifi.me/k-pick/clinic/bomon-clinic",
+      "detailJsonPath": "clinic-detail.bomon-clinic.json"
     }
   ]
 }

@@ -1,0 +1,410 @@
+{
+  "version": "2026-09-04",
+  "generatedAt": "2026-09-04T08:09:43.320974563Z",
+  "externalId": "content:bomon-clinic",
+  "slug": "bomon-clinic",
+  "name": {
+    "ko-KR": "청담봄온의원",
+    "ja-JP": "チョンダムボムオン医院",
+    "en-US": "Cheongdam Bom-on Clinic",
+    "th-TH": "คลินิกชอนดัม บมอน",
+    "zh-TW": "清潭 Bom-on 醫院"
+  },
+  "region": {
+    "ko-KR": "서울시 강남구",
+    "ja-JP": "ソウル江南区",
+    "en-US": "Gangnam-gu, Seoul",
+    "th-TH": "เขตคังนัม กรุงโซล",
+    "zh-TW": "首爾江南區"
+  },
+  "clinicType": "DERMATOLOGY",
+  "rating": "4.9",
+  "reviewCount": 29,
+  "cashbackRate": 10,
+  "tags": [
+    {
+      "ko-KR": "150평 규모",
+      "ja-JP": "150坪規模",
+      "en-US": "150-pyeong (≈495㎡) facility",
+      "th-TH": "พื้นที่ขนาด 150 พยอง",
+      "zh-TW": "150坪規模"
+    },
+    {
+      "ko-KR": "호텔식 프라이빗",
+      "ja-JP": "ホテルのようなプライベート",
+      "en-US": "Hotel-style privacy",
+      "th-TH": "ความเป็นส่วนตัวสไตล์โรงแรม",
+      "zh-TW": "飯店式私人空間"
+    },
+    {
+      "ko-KR": "원장 직접 설계",
+      "ja-JP": "院長が直接設計",
+      "en-US": "Personally designed by the director",
+      "th-TH": "ออกแบบโดยผู้อำนวยการเอง",
+      "zh-TW": "院長親自設計"
+    },
+    {
+      "ko-KR": "10년 이상 임상 경험",
+      "ja-JP": "丁寧なカウンセリング",
+      "en-US": "10+ years of clinical experience",
+      "th-TH": "ประสบการณ์ทางคลินิกกว่า 10 ปี",
+      "zh-TW": "逾10年臨床經驗"
+    }
+  ],
+  "images": [
+    "https://unifi-apps.line-scdn.net/0haujPu1wcPlpXKSJ-9CRBDRN8MCs7WCdPLh8sIjF9Jjo5TGdeME40QCleKwIlZTFfNCQyQwRsPBYYcjJtDQ43QypCYQsceSVZDk44bwd_KzoxYTBnDUZwQhR7JhEmQ3FwGw",
+    "https://unifi-apps.line-scdn.net/0h64qndKjpaRtMF3U_7wAWTBZCZ2ogZnAONSF7YypDcXsicjAfK3BuARxgaXgYVyslLw55LzJCalA-WyYdLwElBjZ3P0ATTC4sFQZkAxxod34IWGsyBREiFiJna3sEJmg",
+    "https://unifi-apps.line-scdn.net/0haPRO1SODPn9vNiJbzCtBKDVjMA4DRydqFgAsBwliJh8BU2d7CFE5TDxJIzMdYnlBCCcxSi9BYzQdenF5DCByYhVWaCQwbXlINiczZz9JIzM3ZTBWJjB1cgFGPB8nBz8",
+    "https://unifi-apps.line-scdn.net/0h0oVHb5Ozb0BrMXNkyE0QFzFkYTEHQHZVEgd9OA1ldyAFVDZEDFZpdDtWcgw_dWFFDApgdE1kMQsZfSBGCCcjXRFRORs0aih3MiBiWDtOcSINWGNpIjckTQVBbSAjAG4",
+    "https://unifi-apps.line-scdn.net/0hp6woWWHpLxlKFjM96SVQTg5DIWgmZzYMMyA9YSxCN3kkc3YdLXElA21yc3kBWTQfADEjKjBuOlYVTSMuEDEmADd9cEgBRjQaE3EpLBpAOnksWTEwEAxhAQlEN1I7fGAzBg"
+  ],
+  "officialUrl": "https://guidekim.me/hospital/bomon-clinic",
+  "oaFollowUrl": "https://line.me/R/ti/p/@018doill",
+  "recommendPoints": [
+    {
+      "ko-KR": "150평 규모",
+      "ja-JP": "150坪規模",
+      "en-US": "150-pyeong (≈495㎡) facility",
+      "th-TH": "พื้นที่ขนาด 150 พยอง",
+      "zh-TW": "150坪規模"
+    },
+    {
+      "ko-KR": "호텔식 프라이빗",
+      "ja-JP": "ホテルのようなプライベート",
+      "en-US": "Hotel-style privacy",
+      "th-TH": "ความเป็นส่วนตัวสไตล์โรงแรม",
+      "zh-TW": "飯店式私人空間"
+    },
+    {
+      "ko-KR": "원장 직접 설계",
+      "ja-JP": "院長が直接設計",
+      "en-US": "Personally designed by the director",
+      "th-TH": "ออกแบบโดยผู้อำนวยการเอง",
+      "zh-TW": "院長親自設計"
+    },
+    {
+      "ko-KR": "10년 이상 임상 경험",
+      "ja-JP": "丁寧なカウンセリング",
+      "en-US": "10+ years of clinical experience",
+      "th-TH": "ประสบการณ์ทางคลินิกกว่า 10 ปี",
+      "zh-TW": "逾10年臨床經驗"
+    }
+  ],
+  "services": [
+    {
+      "name": {
+        "ko-KR": "울쎄라 프라임 · 써마지FLX · 리쥬란 힐러",
+        "ja-JP": "ウルセラプライム · サーマジFLX · リジュランヒーラー",
+        "en-US": "Ulthera Prime · Thermage FLX · Rejuran Healer",
+        "th-TH": "Ulthera Prime · Thermage FLX · Rejuran Healer",
+        "zh-TW": "Ulthera Prime · Thermage FLX · Rejuran Healer"
+      },
+      "description": {
+        "ko-KR": "",
+        "ja-JP": "",
+        "en-US": "",
+        "th-TH": "",
+        "zh-TW": ""
+      }
+    }
+  ],
+  "location": {
+    "address": {
+      "ko-KR": "서울 강남구 도산대로 318 SB타워 4층",
+      "ja-JP": "ソウル江南区島山大路318 SBタワー4階",
+      "en-US": "4F, SB Tower, 318 Dosan-daero, Gangnam-gu, Seoul",
+      "th-TH": "ชั้น 4 อาคาร SB เลขที่ 318 ถนนโดซานแดโร เขตคังนัม กรุงโซล",
+      "zh-TW": "首爾江南區島山大路318號 SB大樓4樓"
+    },
+    "naverMapUrl": "https://naver.me/FIfH6bCF",
+    "googleMapUrl": "https://www.google.com/maps/search/?api=1&query=%EC%B2%AD%EB%8B%B4%EB%B4%84%EC%98%A8%EC%9D%98%EC%9B%90%20%EC%84%9C%EC%9A%B8%20%EA%B0%95%EB%82%A8%EA%B5%AC%20%EB%8F%84%EC%82%B0%EB%8C%80%EB%A1%9C%20318%20%EC%B2%AD%EB%8B%B4%EB%B4%84%EC%98%A8%EC%9D%98%EC%9B%90",
+    "mapEmbedHtml": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3164.401405762428!2d127.03635299999999!3d37.522034!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357ca1e57d84fce1%3A0x200db5fb91fad1a4!2z7LKt64u067SE7Jio7J2Y7JuQIENoZW9uZ2RhbSBCb21vbiBEZXJtYXRvbG9neSBjbGluaWMgfCDpn5PlnIsgQk9NT07nmq7ohprnp5E!5e0!3m2!1sko!2skr!4v1782182333107!5m2!1sko!2skr\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+  },
+  "reviews": [
+    {
+      "id": "8b8d6f93-0a6d-4176-84e8-c9edecb52258",
+      "authorName": "Sさん",
+      "rating": 5,
+      "body": "50代です。夫が「韓国の皮膚科がすごく良かった」と勧めてくれて、でも最初は海外で肌に何かするのが少し怖くて、日本のクリニックとも迷いました。\n決め手はカンナムオンニの口コミでした。清潭ボモンクリニックは専門医が肌の状態を見て一つひとつ調整してくれるとあって、実際その通りだったんです。ピコレーザーでシミを取りつつ、ボトックスもほんの少し。「今はここまでで十分」と、足し算を勧めてこない姿勢に安心しました。\nこの歳になると、強く勧められると断りづらいものですが、そういう居心地の悪さが一切なかった。会計は来院時に普通のカード払いで、ガイドキムで認証しておいた分が後日ポイントで戻ってきたのも、無駄がなくてありがたかったです😊",
+      "source": "SEED",
+      "createdAt": "2026-07-08T04:02:00Z"
+    },
+    {
+      "id": "38afb6e0-1664-401e-8642-07c2e3eb3cc7",
+      "authorName": "Wang ****",
+      "rating": 5,
+      "body": "フレンドリーで手術も細心の注意を払ってください。院長の相談も入念でスタッフの方も親切で次回もまた訪れたいです！",
+      "source": "GOOGLE",
+      "createdAt": "2026-07-07T07:03:35Z"
+    },
+    {
+      "id": "31fe3fa3-ea4d-4fb3-867d-9589be7a909e",
+      "authorName": "G****",
+      "rating": 5,
+      "body": "アメリカでレビューで探してきましたが、元帳はとても丁寧で率直に相談してくれてとても良かったです他のスタッフもとても親切で入念にして一人部屋でケアを最初から最後まで責任を持ってくださって信頼が行きましたありがとうございます\n\n私が受けた施術はウルセラ、サマージ、シェンディエム、ボトックス、リジュランであり、本物のヒントもいただき、他の工場型という本当に違うことを感じて来年にまた韓国に来たらまた来ようとお勧めします",
+      "source": "GOOGLE",
+      "createdAt": "2026-07-04T06:19:00Z"
+    },
+    {
+      "id": "21f518ae-49ca-42f7-891e-0f1b7c344281",
+      "authorName": "Cindy ****",
+      "rating": 5,
+      "body": "チタンが来るリフティングエランセを受けたが、それは良かった。みんなとても親切で、先生がとても細かく説明してくれてとても良かったです。",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-29T05:27:53Z"
+    },
+    {
+      "id": "7118ae0b-f87d-456d-b1fa-0dbac578d519",
+      "authorName": "運****",
+      "rating": 5,
+      "body": "今日はオンダのボディトリートメントを受けました。施術者の技術は素晴らしく、ピアスもとても綺麗に仕上がりました。次回も必ず来ます。",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-26T06:11:41Z"
+    },
+    {
+      "id": "ce3121a5-ba73-4a41-91d0-6c29527cf87f",
+      "authorName": "Yu ****",
+      "rating": 5,
+      "body": "クリニックの医師とスタッフは皆、非常にプロフェッショナルで親切です。ぜひ今日、スキンケアを受けてみることを強くお勧めします。",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-19T11:50:42Z"
+    },
+    {
+      "id": "3e4a813c-5a87-4911-a1de-22763c4d6e51",
+      "authorName": "Kerensa ****",
+      "rating": 5,
+      "body": "サービスは素晴らしく、施術も快適で、医師と通訳の方がとても分かりやすく説明してくれました。👍🏻 ウルセラピーは本当におすすめです。",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-19T11:49:49Z"
+    },
+    {
+      "id": "319c74b5-5112-4f00-b6b0-cb74ee82299f",
+      "authorName": "Percila ****",
+      "rating": 5,
+      "body": "チタンリフトの効果は非常に顕著で、すぐに改善が見られました👍 施術方法は素晴らしく、痛みも全くありませんでした。",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-16T08:16:42Z"
+    },
+    {
+      "id": "e5e08de2-4c21-4189-820d-b9944b787d00",
+      "authorName": "Mさん",
+      "rating": 4,
+      "body": "旅行前のツヤ出しに水光注射とLDMの鎮静ケア。施術直後から肌がうるうるで、その日の夜ごはんも気分よく行けた✨ キャンペーンで見つけたクリニックだったけど、日本語で希望を伝えられてスムーズでした😊",
+      "source": "SEED",
+      "createdAt": "2026-06-15T10:24:00Z"
+    },
+    {
+      "id": "4e16b7d4-b7e2-440d-842d-c274c1829dc1",
+      "authorName": "Hyewon",
+      "rating": 5,
+      "body": "久しぶりに再訪問してウルセラタッチアップ進行しました リフティングを一度するので見逃せませんでしたㅠ現れると言うとまた期待になりますね！ありがとう♥",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-13T02:51:42Z"
+    },
+    {
+      "id": "063396a2-1e45-4e41-a8f6-ae5a91a388d5",
+      "authorName": "H. Lee",
+      "rating": 5,
+      "body": "今日泣かないで受けてきました 施術前に室長相談から院長1:1相談まで入念に進んでくれましたが二人相談含めて40分以上かかりました最近はこう詳しく説明してくれる病院が珍しいようで印象的でした\n\n今、肌の状態から施術過程、効果と注意事項まで一つ一つ丁寧にご案内いただき、施術前の不安も多く減って信頼が行きました。\n\n病院に訪れた時、外国人のお客様がかなりいらっしゃって多少賑わう感じはあったが…。 。それだけ多くの方が訪れるところだと思いました…。 ㅎㅎ比較的静かな雰囲気が欲しいなら、夕方の時間帯や朝早く予約をお勧めします。\n\n麻酔クリームを塗って進行しましたが痛みが全くない施術ではありませんでしたが、それでも思ったよりはたまらなく、元帳が中間中間状態を確認していただき安定感が大きくなりました。\n\nまだ施術直後で目立つ変化が現れたわけではありませんが、腫れやあざはほとんどなく、まさに日常生活が可能なほどでした泣いてしまう時間が経つにつれて徐々に効果が現れるとしても今後の変化がさらに期待されます！",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-13T01:43:28Z"
+    },
+    {
+      "id": "420e1fc4-90f4-4e68-a526-be8b5bf63607",
+      "authorName": "Y. Lee",
+      "rating": 5,
+      "body": "ウルセラ受けてきましたが、ここはアクティベーションNFCも直接確認できました。",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-13T01:33:02Z"
+    },
+    {
+      "id": "e53f1dfe-2e8d-44f0-9c6a-1aee5bb94f4d",
+      "authorName": "S. Yoo",
+      "rating": 5,
+      "body": "泣かない施術を受けてきました！\n精神のない病院とは違ってプライベートで暖かい雰囲気でした！元帳スタッフの皆さん、親切で\n皮膚科定着できずにいましたが、今は清潭春温に定着すると思います！最高!!",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-13T01:27:59Z"
+    },
+    {
+      "id": "581c3e97-7ca6-460a-941e-71e5a599b571",
+      "authorName": "H. Min",
+      "rating": 5,
+      "body": "清潭春温議員でリジュラン施術を受けてきました！\n初めてなので少し緊張していましたが、院長が相談を本当に慎重にしてくれて、私の肌の状態を一つ一つ見ながら説明してくれて安心になりました。\n\nリジュランが肌の中の再生を助けて肌の改善や弾力、小しわの緩和に役立つと詳しく教えてくださって施術前にとても期待されていましたㅎㅎ\n\n施術する時も顔全体をただ速くする感じではなく、一汗一汗丁寧に置いてくださる感じなのでとても丁寧で丁寧であると感じました！\nおかげで施術を受けながら大変不安なく楽に頂けましたし、施術後は肌が全体的にもう少し健康になる感じがして肌のキメも良くなりそうで満足度が高かったです！\n\n全体的に相談から施術まで本当に入念に進んでくださって信仰が行き、また訪問します😊",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-13T01:22:24Z"
+    },
+    {
+      "id": "dea9a207-88a8-4879-b66a-9b49b23d59ad",
+      "authorName": "wow ****",
+      "rating": 5,
+      "body": "病院施設がとても良くてすっきりして利用できて良かったしサービスは素晴らしいです すっきりとスタイリッシュな雰囲気です。きちんとケアされる感じで中心繁華街にとって信頼でき、信頼が行きます。工場式病院のように大まかなものではなく、一人一人の患者に入念に集中してくれる病院です。個々のオーダーメイドだから、院長がどの部分が不足しているのか見てくださってその部分中心に施術してくれて施術効果が期待になります。とても満足しています。",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-13T01:18:31Z"
+    },
+    {
+      "id": "35b1607a-4fce-4a86-878a-4fe3182e027d",
+      "authorName": "Kim ****",
+      "rating": 5,
+      "body": "一度病院がとてもきれいで高級感があります〜室長もとても親切で元帳も説明してくれて信じています〜泣いてしまいましたが痛いと思って心配していましたが、施術を受けたときはみんな親切にしてくれて痛いかもしれませんがよろしくお願いします〜〜",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-13T01:12:03Z"
+    },
+    {
+      "id": "1a6ec370-366b-42cd-bcbc-fd47bff9c645",
+      "authorName": "consort ****",
+      "rating": 5,
+      "body": "リフティング施術の知り合いが訪れたのに相談が本当に入念にしてよかったです。私の肌の状態に合わせて説明してくれて無理に勧める感じがなくて信頼が行きました。ウルセラと熱心な施術を受けましたが、時間が経つにつれてリフティング効果がますます見える感じで満足しています。スタッフの方々も親切で病院もスッキリして楽に施術を受けられました。リフティングお悩みの方におすすめです！",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-13T01:05:34Z"
+    },
+    {
+      "id": "986ed9e4-a3a6-4d78-838e-6ce3d5ce585e",
+      "authorName": "Moli ****",
+      "rating": 5,
+      "body": "今日はウルセラピー、オンダフェイシャルスリミング、スキンブースタートリートメントを受けました。雰囲気も良く、先生もとても優しく丁寧でした。流れ作業のようなクリニックではなく、温かい雰囲気でした。唯一の難点は値段が少し高いことですが、全体的にはとても満足しています。効果が出るのが楽しみです！",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-05T10:03:30Z"
+    },
+    {
+      "id": "bbd4f095-898a-47da-b0a6-884abdb3377b",
+      "authorName": "雨****",
+      "rating": 5,
+      "body": "クリニックの雰囲気はとても良く、院長先生や看護師さんたちは皆とても優しく😍、技術も素晴らしいです🫧",
+      "source": "GOOGLE",
+      "createdAt": "2026-06-01T08:47:18Z"
+    },
+    {
+      "id": "f2fefb89-e430-4bd5-84fb-54f171b3d53b",
+      "authorName": "代****",
+      "rating": 5,
+      "body": "翌年、再びクリニックを訪れ、チタンリフト、超音波治療、ボトックス注射を受けました。どちらの施術も大満足でした！親切な通訳の方と看護師さんのおかげで、とても安心して受けることができました。本当におすすめです！🥰",
+      "source": "GOOGLE",
+      "createdAt": "2026-05-28T10:13:09Z"
+    },
+    {
+      "id": "198c36a3-64c8-409c-831b-25b2fe37f0cb",
+      "authorName": "ふじ",
+      "rating": 5,
+      "body": "リスクを避けたかったので、安全面を軸にチョンダムボムオン医院を選びました。医師の説明が丁寧という評判、院内の落ち着いた雰囲気、どちらも信頼につながる要素でした。GuideKim経由にしたのは、通訳無料+JPYC決済で10%還元という条件が理由。相談金額が大きくなるほどこの10%が効いてきて、戻ったJPYCは次の渡韓でそのまま使えるので実質的に積み立て感覚。同じ相談内容なら迷わずGuideKim経由をおすすめします。",
+      "source": "SEED",
+      "createdAt": "2026-05-28T01:52:00Z"
+    },
+    {
+      "id": "0db817f0-f747-4d5f-9147-6a2e0e472f83",
+      "authorName": "Yu ****",
+      "rating": 5,
+      "body": "今日はオンダボトックスと脂肪減少注射を受けました。とても気に入りました。施術はとても快適で、雰囲気も素晴らしかったです。",
+      "source": "GOOGLE",
+      "createdAt": "2026-05-23T07:26:18Z"
+    },
+    {
+      "id": "2c56c8f1-2b8e-4abf-a47d-7bf11fe60117",
+      "authorName": "Kelly ****",
+      "rating": 5,
+      "body": "韓国の美容クリニックは初めてでした。\n\nこのクリニックをおすすめします。先生はとても親切で丁寧でした。\n\n今日は韓国式ボトックス注射と脂肪吸引、そしてオンダ注射を受けました。担当の先生が予算内で最適な施術を提案してくださり、費用を抑えることができました。さらに、筋肉マッサージとボトックスの飲み込みも無料でしていただきました。\n\nこのクリニックは本当におすすめです。雰囲気も素晴らしく、よくある流れ作業のようなクリニックとは全く違います。最高です！",
+      "source": "GOOGLE",
+      "createdAt": "2026-05-23T04:08:09Z"
+    },
+    {
+      "id": "d38e0cb1-0807-4099-80d8-de31c5163189",
+      "authorName": "すず",
+      "rating": 5,
+      "body": "そもそも病院のインスタに直接連絡する予定だったんですが、言語面の心配があってGuideKim経由に切り替え。結果的にこっちが正解でした。LINEでレーザーの相談のことを相談すると、その日のうちに費用の目安と予約可能日を教えてもらえて、当日は通訳さんが全部同行してくれる。無料っておかしいレベル😂 JPYCで払うと10%が戻ってくるから、実質もっと安い。戻ったJPYCは次回の楽しみに取っておきます✨",
+      "source": "SEED",
+      "createdAt": "2026-05-21T03:00:00Z"
+    },
+    {
+      "id": "71763740-7fef-459e-8c70-4760b7f1eca1",
+      "authorName": "Yさん",
+      "rating": 5,
+      "body": "男で美容皮膚科に行くのは、ちょっと勇気がいりました。でも韓国で施術した友達に「気にしすぎだよ」と背中を押されて。ニキビ跡と毛穴がずっと悩みだったんです。\n行ってみたら杞憂でした。公式ラインの日本語相談もコーディネーターさんも日本語対応で、男一人でも気まずさがなかった。ポテンツァのニードル出力とカートリッジを僕の肌に合わせて細かく調整してくれて、先生の説明も的確。数回で毛穴が引き締まってきて、来てよかったです👍",
+      "source": "SEED",
+      "createdAt": "2026-05-15T06:02:00Z"
+    },
+    {
+      "id": "5ba152d3-8204-424f-99c0-7424fe8e14f8",
+      "authorName": "Kさん",
+      "rating": 5,
+      "body": "同じようにフェイスラインのたるみで悩んでる人がいたら、そっと教えたいところです。韓国によく行く姉に勧められて清潭ボモンクリニックへ。カンナムオンニで調べると、ウルセラもサーマージもインモードFORMAも揃っていて、専門医が直接診てくれるんです。\nウルセラとFORMAを受けたら、ダウンタイムがほぼなくて、その足で明洞で買い物できたのには驚きました。カウンセリングが丁寧で、盛りすぎない提案をしてくれるので、40代でも無理なく続けられそうだなと感じています😊",
+      "source": "SEED",
+      "createdAt": "2026-05-12T02:33:00Z"
+    },
+    {
+      "id": "ff5ad4aa-31e3-427e-8d50-a996a1bfab59",
+      "authorName": "Aさん",
+      "rating": 4,
+      "body": "回を重ねるごとに肌がワントーン明るくなって、頬のシミもそばかすも薄くなってきました。ダブルピコを受けたんですが、先生が「シミは1回では難しいから何回か通ってね」と正直に言ってくれて、かえって信頼できたんです。\nきっかけはXで見たガイドキムの投稿で、免税還付が終わっても最大15%キャッシュバックと知って。ちょうどカンナムオンニで評判を調べていた清潭ボモンクリニックだったので、これは行こうと。しかもダブルピコが₩93,000、日本の半額ほどで驚きました。会計は現地でカード、認証しておいた分は後から戻ってきました😊",
+      "source": "SEED",
+      "createdAt": "2026-05-01T02:07:00Z"
+    },
+    {
+      "id": "ad297e74-4293-46ac-956b-4e34733eb1e8",
+      "authorName": "ほのか",
+      "rating": 5,
+      "body": "GuideKimを経由するとクリニックごとに違うペイバック率が適用されるようで、チョンダムボムオン医院は10%。せっかく同じ場所に行くなら経由した方が得と判断して予約しました。予約時の決済もなく、身軽。カウンセリング当日は日本語の通訳さんが同席してくれて、医師とのやり取りに不安がなかったのが良かったです。院内が少し混んでいて待ち時間が発生したので星は1つ調整。LINEの担当さんが後で見積もりを整理して送ってくれる細かい配慮が印象に残りました。",
+      "source": "SEED",
+      "createdAt": "2026-04-09T03:00:00Z"
+    },
+    {
+      "id": "f2b822d0-d88c-4a2f-82bd-079224da215b",
+      "authorName": "つわぶき",
+      "rating": 4,
+      "body": "はじめての相談ということもあり緊張していましたが、担当医のカウンセリングが丁寧というチョンダムボムオン医院の特徴が決め手になりました。GuideKimの担当さんが事前に費用感や不明点を代わりに整理してくれたおかげで、当日はスムーズに相談を進められました。連絡の初期対応が少しだけ遅かったので星は控えめですが、内容自体は丁寧で信頼できます。JPYCの10%還元も、金額が大きくなるほど嬉しいポイントでした。",
+      "source": "SEED",
+      "createdAt": "2026-02-05T13:19:00Z"
+    }
+  ],
+  "vouchers": [],
+  "similarClinics": [
+    {
+      "externalId": "content:healing-eye",
+      "slug": "healing-eye",
+      "name": {
+        "ko-KR": "힐링안과",
+        "ja-JP": "ヒーリング眼科",
+        "en-US": "Healing Eye Clinic",
+        "th-TH": "คลินิกตา Healing",
+        "zh-TW": "Healing眼科"
+      },
+      "region": {
+        "ko-KR": "서울시 강남구",
+        "ja-JP": "ソウル江南区",
+        "en-US": "Gangnam-gu, Seoul",
+        "th-TH": "เขตคังนัม กรุงโซล",
+        "zh-TW": "首爾江南區"
+      },
+      "clinicType": "OPHTHALMOLOGY",
+      "rating": "4.7",
+      "reviewCount": 31,
+      "cashbackRate": 15,
+      "thumbnailUrl": "https://unifi-apps.line-scdn.net/0hm9k5rP1uMhZWTC4y9TtNQQwZPGc6PSsDL3ogbjAYKnY4KWsSMSt_Ii8ZN3MOCyoSE0J4JS9MLl0kAH0QNVp-CywsZE0JF3UhD10_DgYzLHQgDHY8H0p5Gzg8MHYefTM",
+      "targetUrl": "https://unifi.me/k-pick/clinic/healing-eye",
+      "detailJsonPath": "clinic-detail.healing-eye.json"
+    },
+    {
+      "externalId": "content:tiana-ps",
+      "slug": "tiana-ps",
+      "name": {
+        "ko-KR": "티아나성형외과",
+        "ja-JP": "ティアナ美容外科",
+        "en-US": "Tiana Plastic Surgery",
+        "th-TH": "คลินิกศัลยกรรม Tiana",
+        "zh-TW": "Tiana整形外科"
+      },
+      "region": {
+        "ko-KR": "서울시 강남구",
+        "ja-JP": "ソウル江南区",
+        "en-US": "Gangnam-gu, Seoul",
+        "th-TH": "เขตคังนัม กรุงโซล",
+        "zh-TW": "首爾江南區"
+      },
+      "clinicType": "DERMATOLOGY",
+      "rating": "4.6",
+      "reviewCount": 10,
+      "cashbackRate": 15,
+      "thumbnailUrl": "https://unifi-apps.line-scdn.net/0hhtLzklWYN1txAyt_0lxIDCtWOSodci5OCDUlIxdXLzsfZm5fFmQ9bSJoaBUpSDFeJBExbx9gLhADT3hdEhV7RgtjYQAuWHBsKBI6QyF8KTgXSC9lBgV8Vh9zNTs5MjY",
+      "targetUrl": "https://unifi.me/k-pick/clinic/tiana-ps",
+      "detailJsonPath": "clinic-detail.tiana-ps.json"
+    }
+  ]
+}

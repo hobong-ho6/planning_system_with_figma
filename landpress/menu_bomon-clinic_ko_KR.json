@@ -1,0 +1,37 @@
+{
+  "title": "피부 탄력과 윤기가 고민이라면",
+  "tag": [
+    "울쎄라 프라임",
+    "써마지FLX",
+    "리쥬란 힐러"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 391000,
+        "currency": "JPY"
+      },
+      "title": "울쎄라 프라임",
+      "description": "온다 80KJ와 함께 받는 리프팅 조합"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 690000,
+        "currency": "JPY"
+      },
+      "title": "써마지FLX",
+      "description": "울쎄라 프라임·리투오와 함께 받는 리프팅 조합"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 149000,
+        "currency": "JPY"
+      },
+      "title": "리쥬란 힐러",
+      "description": "리투오·더마샤인과 함께 받는 스킨부스터 조합"
+    }
+  ]
+}

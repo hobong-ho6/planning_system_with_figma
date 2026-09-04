@@ -232,6 +232,31 @@
       "thumbnailUrl": "https://unifi-apps.line-scdn.net/0hm9k5rP1uMhZWTC4y9TtNQQwZPGc6PSsDL3ogbjAYKnY4KWsSMSt_Ii8ZN3MOCyoSE0J4JS9MLl0kAH0QNVp-CywsZE0JF3UhD10_DgYzLHQgDHY8H0p5Gzg8MHYefTM",
       "targetUrl": "https://unifi.me/k-pick/clinic/healing-eye",
       "detailJsonPath": "clinic-detail.healing-eye.json"
+    },
+    {
+      "externalId": "content:bomon-clinic",
+      "slug": "bomon-clinic",
+      "name": {
+        "ko-KR": "청담봄온의원",
+        "ja-JP": "チョンダムボムオン医院",
+        "en-US": "Cheongdam Bom-on Clinic",
+        "th-TH": "คลินิกชอนดัม บมอน",
+        "zh-TW": "清潭 Bom-on 醫院"
+      },
+      "region": {
+        "ko-KR": "서울시 강남구",
+        "ja-JP": "ソウル江南区",
+        "en-US": "Gangnam-gu, Seoul",
+        "th-TH": "เขตคังนัม กรุงโซล",
+        "zh-TW": "首爾江南區"
+      },
+      "clinicType": "DERMATOLOGY",
+      "rating": "4.9",
+      "reviewCount": 29,
+      "cashbackRate": 10,
+      "thumbnailUrl": "https://unifi-apps.line-scdn.net/0haujPu1wcPlpXKSJ-9CRBDRN8MCs7WCdPLh8sIjF9Jjo5TGdeME40QCleKwIlZTFfNCQyQwRsPBYYcjJtDQ43QypCYQsceSVZDk44bwd_KzoxYTBnDUZwQhR7JhEmQ3FwGw",
+      "targetUrl": "https://unifi.me/k-pick/clinic/bomon-clinic",
+      "detailJsonPath": "clinic-detail.bomon-clinic.json"
     }
   ]
 }

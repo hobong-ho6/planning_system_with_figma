@@ -1,0 +1,37 @@
+{
+  "title": "If firmness and radiance are your concern",
+  "tag": [
+    "Ulthera Prime",
+    "Thermage FLX",
+    "Rejuran Healer"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 391000,
+        "currency": "JPY"
+      },
+      "title": "Ulthera Prime",
+      "description": "A lifting set combined with Onda 80KJ"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 690000,
+        "currency": "JPY"
+      },
+      "title": "Thermage FLX",
+      "description": "A lifting set combined with Ulthera Prime and Rituo"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 149000,
+        "currency": "JPY"
+      },
+      "title": "Rejuran Healer",
+      "description": "A skin booster set combined with Rituo and Dermashine"
+    }
+  ]
+}

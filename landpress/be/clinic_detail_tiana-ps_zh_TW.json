@@ -148,6 +148,19 @@
       "thumbnailUrl": "https://unifi-apps.line-scdn.net/0hm9k5rP1uMhZWTC4y9TtNQQwZPGc6PSsDL3ogbjAYKnY4KWsSMSt_Ii8ZN3MOCyoSE0J4JS9MLl0kAH0QNVp-CywsZE0JF3UhD10_DgYzLHQgDHY8H0p5Gzg8MHYefTM",
       "targetUrl": "https://unifi.me/k-pick/clinic/healing-eye",
       "detailJsonPath": "clinic-detail.healing-eye.json"
+    },
+    {
+      "externalId": "content:bomon-clinic",
+      "slug": "bomon-clinic",
+      "name": "清潭 Bom-on 醫院",
+      "region": "首爾江南區",
+      "clinicType": "DERMATOLOGY",
+      "rating": "4.9",
+      "reviewCount": 29,
+      "cashbackRate": 10,
+      "thumbnailUrl": "https://unifi-apps.line-scdn.net/0haujPu1wcPlpXKSJ-9CRBDRN8MCs7WCdPLh8sIjF9Jjo5TGdeME40QCleKwIlZTFfNCQyQwRsPBYYcjJtDQ43QypCYQsceSVZDk44bwd_KzoxYTBnDUZwQhR7JhEmQ3FwGw",
+      "targetUrl": "https://unifi.me/k-pick/clinic/bomon-clinic",
+      "detailJsonPath": "clinic-detail.bomon-clinic.json"
     }
   ]
 }
