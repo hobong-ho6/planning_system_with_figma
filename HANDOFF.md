@@ -43,7 +43,7 @@
 | [kpick-oa-consent](handoff/projects/kpick-oa-consent.md) | `hogeun` | 위키 `4637821100` · 1프레임 4키 | 08-24 | 위키 **v3 반영 완료**(P0=0) · 미결 3건 — **등록 서비스 확정(FE)** · History↔Policy 불일치 · `kpick_` 잠정 |
 | [guidekim-banner](handoff/projects/guidekim-banner.md) | `hogeun` | 위키 `4637821463` · 배너 2키 | 08-24 | 위키 **v11**(P0=0) · 🔴 **Unifi↔Dapp Portal 값 분기**(FE 확인 후 업로드) |
 | [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-28 | `4620240898` **v5**(정본 템플릿 구조 정합화) · 정의 필요 4항목 추적 |
-| [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` + 하위 LPC `4686692164`·일본어 검수 `4685320765` | 09-04 | 위키 **v129** · LPC v15 · 게이트 **21건 P0=0** · **청담봄온 추가**(병원 3곳) · **`clinic_info` Landpress 이관** · 라이브 **60/60** · 🔴 봄온 부가세·스키마 미결 |
+| [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` + 하위 LPC `4686692164`·일본어 검수 `4685320765` | 09-04 | 위키 v129 · LPC **v16** · 게이트 22건 P0=0 · 병원 3곳(`da-ps` 비공개 확정) · **real ↔ beta 85/85 동일** · **미결 전부 종결 — 새 요청 대기** |
 | [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
 
 ---
