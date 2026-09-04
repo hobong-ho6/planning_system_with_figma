@@ -1,13 +1,14 @@
 # glossary-guide — 용어집 + 기획자 가이드 (⚠️ 전역 자원 · 락 필요)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-03 · 커밋 `954e0e4` · 라이브 태그 **`guide-v33`**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-04 · 커밋 `b28d2a4` · 라이브 태그 **`guide-v33`**
 > ⚠️ 이 자원은 **모든 프로젝트가 공유**한다. 편집 전 `handoff/lanes/`에 락 파일을 만들 것(`handoff/lanes/README.md`).
 
 ## 대상 / 링크
 
 - 용어집: Landpress `web3_xlt_json` — **API 읽기 전용**, 갱신은 전체 JSON을 **사용자가 CMS에 붙여넣기**
-  - 라이브 **v4.7**(116 terms · `deprecated_terms` 14종) — 2026-08-10 사용자 CMS 반영, **API 재조회로 산출 JSON과 완전 동치 확인**
-  - v4.7 내용: `포이카츠` zh `點數活動`→`集點活動` + metadata 수치 정정(13→14)
+  - 라이브 **v4.7**(116 terms · 9 exceptions · `deprecated_terms` 14종) — 2026-09-04 API 재조회로 확인
+  - 🔴 **v4.9 산출 완료 · CMS 반영 대기**(2026-09-04) — `reports/glossary_v4.9_full.json`(**117 terms · 11 exceptions · 19 deprecated**). `LINE MINI App` 브랜드 예외 2건 + `Mini App`→`MINI App` 금지 4건 + terminology 5건 교정 + `리뷰` 등재 + ko `후기`→`리뷰` 금지. **A/B 등재값 2,461키: P0·P2 불변 · P1 2,437→2,357(−80)**
+  - ⚠️ **4.8은 재사용 금지 번호** — 2026-08-12 시도 후 revert(팀 합의 미도출). 그래서 4.7 다음이 **4.9**다
   - 이력 정본: `md/glossary-changelog.md` · 절차 정본: `md/landpress.md`
   - 커밋된 산출 JSON: `reports/glossary_v4.7_for_cms.json`(라이브 반영본과 동치 확인)
 - 기획자 가이드: 라이브 **v33**(2026-09-03 게시 완료, 태그 **`guide-v33`** · `guide-v32`도 태그됨 · **v31은 태그 없음** — zip만 발행·소스 미커밋이라 게시 여부 미확인)
@@ -24,7 +25,8 @@
 
 ## 현재 상태
 
-- **용어집 라이브 = v4.7** — 2026-08-20 API 실측(`version=4.7 · terms=116 · deprecated=14`). 가이드 v28의 임베드 JSON과 **동치 확인**.
+- **용어집 라이브 = v4.7** · **v4.9 반영 대기**(2026-09-04 산출). 가이드 v33 zip의 임베드 JSON은 이미 **v4.9**이고 `reports/glossary_v4.9_full.json`과 **완전 동치**(에이전트 검증 8종 PASS) — 사용자가 가이드 용어집 탭에서 복사해 CMS에 붙여넣으면 반영된다
+- **v4.9 근거**: `LINE MINI App`은 LINE Developers **공식 문서 1차 출처**로 확정(`Mini App` 미사용) · terminology 5건은 **등재 실사용 실측**(교환 ja 48:5 · 혜택 en 18:6 · 결제 zh 26:3 등) · **교환 en `swap`은 반려**(`exchange`가 A/B P1 +24 악화)
 - **v4.8은 철회됐다 — 팀 내 합의 미도출**(사용자 확인 2026-08-20). `39303c1`(「마켓플레이스」 등재 + 「NEXT Bay」 예외) → `3a5a4a3` revert. ⚠️ **재추진은 팀 합의 후에만** — 합의 없이 같은 등재를 재제안하지 않는다. 상세 `md/glossary-changelog.md` v4.8
 - **가이드 라이브 = v33**(2026-09-03 게시 완료, 태그 `guide-v33`). ⚠️ **v31은 `guide/`에 커밋되지 않은 채 zip으로만 발행**됐었다(ia-monitor 세션 #22) — 09-03 GA 세션이 zip을 소스로 복원(`b49b1a1`)한 뒤 v32·v33을 쌓았다. **zip을 만들었으면 같은 커밋에 `guide/`를 넣는다**(§5-1 0단계 4항)
 
@@ -34,7 +36,9 @@
 
 ## 다음 할 일
 
-**대기 항목 없음.**
+- [ ] 🔴 **P0 용어집 v4.9 CMS 반영(사용자)** — `reports/glossary_v4.9_full.json` 전체를 [CMS 편집 화면](https://landpress-content-v2.linecorp.com/projects/wdmwbfuv10x39bukv58ocevp/content/collections/web3_xlt_json/items?env=main)에 붙여넣기. 가이드 용어집 탭에서 복사해도 동일
+- [ ] 🔴 **P0 가이드 v33 zip 재게시(사용자)** — `dropweb/web3_planning_v33.zip`(2,903,843 bytes · 임베드 v4.9). **같은 버전 번호로 내용만 교체**했다(§5-1 「용어집 갱신만이면 현행 버전 갱신」) — 게시 확인 후 태그는 이미 `guide-v33`이 있어 **재태그 불필요**
+- [ ] P1 **가이드 업데이트 이력 탭 미기재** — 과거엔 용어집 갱신마다 가이드 버전을 올려 이력 카드를 남겼다(v25=용어집 v4.7 · v21=v4.6). 이번엔 v33 유지라 카드가 없다 — 관례를 바꿀지 결정 필요
 
 - (완료) v30 게시 → 태그 `guide-v30` 기록
 - (완료) v29 게시 → 태그 `guide-v29` 기록
