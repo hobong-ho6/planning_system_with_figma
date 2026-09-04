@@ -138,3 +138,42 @@
 | 전수 점검 | ✅ 86키 전건 + Landpress 전 필드 |
 
 → **검증 완료.** 🔴 **사용자 액션 2건 남음** — XLT 7키 재업로드 · Landpress 5필드 반영.
+
+---
+
+## (5) 후속 — `MINI App` 표기 LINE 공식 문서 확인 (2026-09-04)
+
+### 확인 결과: **`LINE MINI App`이 공식 표기** (`MINI` 전부 대문자)
+
+LINE Developers 공식 문서를 직접 조회해 확인했다.
+
+| 출처 | 확인 내용 |
+|---|---|
+| [LINE MINI App \| LINE Developers](https://developers.line.biz/en/docs/line-mini-app/) | 문서 제목 `LINE MINI App | LINE Developers` · 메인 헤딩 `LINE MINI App` · 내비게이션 `LINE MINI App API reference`·`LINE MINI App development guidelines` · 본문 `LINE MINI App icon specifications`·`LINE MINI App authorization flow` — **제목·헤딩·링크·본문 전건 동일** |
+| [Introducing LINE MINI App](https://developers.line.biz/en/docs/line-mini-app/discover/introduction/) | 제품 정의 `LINE MINI App is a web application that runs on LINE.` · **`Mini App`(소문자 `ini`) 표기는 단 한 번도 사용되지 않는다** |
+| 검색 교차 확인 (developers.line.biz 한정) | `LINE MINI App Policy` · `LINE MINI App icon specifications and guidelines` · `LINE Developers Console Guide for LINE MINI App` 등 **전 문서가 동일 표기** |
+
+※ 한국어 문서(`/ko/`)와 인증 가이드라인 페이지는 **HTTP 403**으로 직접 조회하지 못했다 — 영문 문서와 검색 결과로 교차 확인했다.
+
+**결론**: 2026-09-03 표기 통일에서 `Mini App` → `MINI App`으로 고른 방향이 **공식 근거로 확정**됐다. 당시 근거는 등재값 `UF_voucher_mini_certified`(5개 언어 `MINI App`)뿐이었는데, 이제 1차 출처가 확보됐다.
+
+### 전수 재점검 (표기 현황)
+
+| 위치 | `MINI App` | 잔존 `Mini App` | 판정 |
+|---|---|---|---|
+| 위키 `4667512757` | 24건 | 6건 | ✅ **전부 서술문 인용**(History·「확인 필요」의 「`Mini App`은 쓰지 않는다」·「`Mini App`→`MINI App`」) — 실제 값은 0건 |
+| 위키 `4686692164`(LPC) | 5건 | 3건 | ✅ 동일 — 전부 서술문 |
+| `landpress/*.json` | 0건 | **0건** | ✅ 이 문자열이 없다(전수 스캔) |
+| **XLT 등재값** | `UF_voucher_mini_certified` 1키 | 🔴 **`UF_clinic_mini_bridge_badge_certified_desc` 5개 언어** | **7키 재업로드로 해소** |
+
+### 교정 1건 (표기 통일의 누락분)
+
+2026-09-03 표기 통일에서 `<td>Mini App</td>`(표 셀) 패턴만 치환해 **Screen Description 서술 1건을 놓쳤다** — `xlt · 배지3 설명 — Mini App`. 이번에 `MINI App`으로 교정했다.
+
+**교훈**: 같은 문구가 **표 셀·Description 서술·다국어 표** 세 곳에 나타나므로, 값 치환은 **태그를 포함한 좁은 패턴**이 아니라 **문자열 자체**로 하되 구간(History·법무 제외)으로 한정해야 한다.
+
+### 반영
+
+위키 `4667512757` **v114 → v115**(Description 값 교정 + 「확인 필요」 항목을 **해소·출처 기록**으로 교체 + History 병합) · LPC `4686692164` **v11 → v12**(확인 필요 항목 추가). `check_wiki_storage.py post` 양쪽 exit 0.
+
+**XLT 재업로드 대상은 변동 없다** — 기존 7키 엑셀(`xlt_clinic_unify_fix_7keys_20260904.xlsx`)에 `_badge_certified_desc` 5개 언어가 이미 `MINI App`으로 들어 있다.
