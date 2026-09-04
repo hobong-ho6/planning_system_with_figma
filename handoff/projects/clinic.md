@@ -1,6 +1,6 @@
 # clinic (클리닉 예약 동선 · K-뷰티 광고 퍼널)
 
-> 담당자: hogeun · 마지막 갱신: 2026-09-04 · 세션 #4 · 마지막 커밋 `891180c`
+> 담당자: hogeun · 마지막 갱신: 2026-09-04 · 세션 #4 · 마지막 커밋 `(커밋 후 기록)`
 > ⚠️ **병렬 세션 사고 2건 기록** — ⓐ `ff46985`(guide v33)에 이 프로젝트 스테이징(핸드오프·landpress·게이트 4건)이 함께 담겨 푸시됐다(내용 온전·메시지만 무관). ⓑ 위키 v109 PUT이 자동화 스크립트의 본문 파일 경로 미갱신으로 **직전 본문을 올려 v108 사용자 추가 1행이 일시 유실** → v110에서 신규 키로 복원, v108↔v109 전문 대조로 그 1행 외 영향 없음 확인
 
 ## 대상 / 링크
@@ -21,6 +21,7 @@
 - 엑셀: `xlt/xlt_clinic_screen_7keys_20260901.xlsx`(7키·**업로드 확인됨**) · `xlt/registry_fix/xlt_fix_main_faq_title_ja_1key_20260901.xlsx`(1키·**미반영**)
   - ⭐ **`xlt_clinic_all_86keys_20260903.xlsx`(86키) = 업로드 정본** — 위키 첨부(같은 파일명으로 **첨부 v2 갱신** — 본문 링크 그대로 최신본). 개별 엑셀·85키판은 **전부 여기 흡수**됐다(따로 올리지 않는다). ⚠️ `xlt/`는 `.gitignore`라 위키 첨부·게이트 리포트가 정본
 - **Landpress 읽기 API**(2026-09-03 확보 · 무인증) — 프로젝트 `n7nuefo6t491uc9cp863lgyq` · 컬렉션 `k_pick_clinic_product`(병원별) · `k_pick_clinic_common_info`(공통)
+  🔴 **`?locale=ko_KR` 필수** — 없으면 `primaryLocale`(**`en_US`**) 항목만 나온다. 로케일별 item id가 다르다 — **en_US 1·11·21 ↔ ko_KR 2·12·22**. CMS URL의 `?_locale=`과 이름이 다르며 `_locale=`은 API에서 무시된다
   `curl "https://landpress-content.line-scdn.net/contents/v2/projects/n7nuefo6t491uc9cp863lgyq/collections/{컬렉션}/items?page=1&limit=100"`
   CMS: `https://landpress-content-v2.linecorp.com/projects/n7nuefo6t491uc9cp863lgyq/content/collections/{컬렉션}/items/1`
 - **Landpress 병원별 item 3건 등록 완료**(2026-09-03) — `uid`: **`tiana-ps`**(item 11) · **`da-ps`**(item 1) · **`healing-eye`**(item 21). API 재조회로 **9필드 전건 일치** 확인(uid는 당일 `tiana`→`tiana-ps`·`healing`→`healing-eye`로 변경됨)
@@ -47,10 +48,11 @@
 ## 다음 할 일
 
 - [x] ~~P0 XLT 업로드~~ — **2026-09-04 완료 확인**(레지스트리 v1.7.4→**v1.7.5** · 2,431→**2,461키** · 86키 전건 등재)
-- [ ] 🔴 **P0 XLT 7키 재업로드(사용자)** — 업로드분이 **표기 통일 이전 값**이라 **7키 12셀**이 어긋난다. `xlt_clinic_unify_fix_7keys_20260904.xlsx`(위키 첨부 **v2**) 1건만 올리면 된다 — ko 6곳 + `_detail_review_source` **ja**(`口コミ`→`レビュー`) + `_badge_certified_desc` 5개 언어. 용어집 v4.9 기준 **P0=0 · P1 5 · P2 2 전건 오탐**
+- [x] ~~P0 XLT 7키 재업로드~~ — **2026-09-04 완료 확인**(위키 86키 × 5개 언어 430셀 전건 대조 · 상이 0)
+- [x] ~~P0 Landpress 반영 5필드~~ — **2026-09-04 완료 확인**(`?locale=ko_KR` 조회 · 공통 5 + 병원별 9 = **14필드 전건 일치**)
+- [ ] 🔴 **P1 `k_pick_clinic_product`의 en_US 항목(id 1·11·21)에 한국어 구값이 남아 있다** — ko_KR 항목(2·12·22)은 최신인데 primaryLocale인 en_US가 **표기 통일 이전 한국어**다(`리쥬란힐러`·`프리미엄 LASIK`·`http://` 등). FE가 non-ko 로케일에서 이걸 서빙하면 **구 문구가 노출**된다. 다국어 확장 시 en_US에 실제 영어를 넣거나, 그전까지는 ko 폴백 정책을 확정해야 한다
 - [ ] **P0 `menu.items[].description` 7건 빈 값** — 디에이 `프리미엄 리프트 PKG` 1 + 티아나 3 + 힐링안과 3. 위키 「병원 데이터」 표에 **설명 컬럼이 없어** 근거가 없다. **이미 빈 문자열로 등록된 상태**이므로 ⓐ 위키 표에 컬럼 추가 ⓑ 화면에서 `description` 생략 중 결정 필요
 - [x] ~~공통 `faq` 9항목 반영~~ — **2026-09-04 완료 확인**(`updatedAt` 09-03 14:36 · `id` 9건 일치)
-- [ ] 🔴 **P0 Landpress 반영 대기 5필드**(사용자 · 2026-09-04 재조회 기준) — ⓐ 공통 `cautions`(`후기`→`리뷰`) ⓑ `da-ps` `menu`(`리쥬란 힐러`·`리프팅 패키지`·`프리미엄 리프트 패키지`) ⓒ `healing-eye` `detail_info`(https) ⓓ `healing-eye` `menu`(`정밀검사`·`찾고 있다면`·`프리미엄 라식`) ⓔ `healing-eye` `bridge_info`(`시력 교정`). `tiana-ps`는 정합. 읽기 API만 있어 붙여넣기는 사용자가 수행 — `landpress/*_ko_KR.json`이 정본
 - [ ] **P1 `aftercare` 신규 필드 보류**(사용자 결정) — 「시술 후 주의사항」 9항목(LINE 챗 원문 2,300자 → 1,150자 축약 · 수치 18개 전건 보존). ⛔ 내용이 **티아나 코수술 전용**인데 `common_info`는 공통 컬렉션이라 배치 부적합 — 다른 병원에 노출되면 의료적 오안내
 - [ ] **P1 병원별 단일본 3파일 정리** — 파일명 규칙은 **`{필드}_{uid}_{locale}.json`으로 확정**했다(CMS 편집 단위 = 필드). 다만 구 단일본 `menu_ko_KR.json`·`bridge_info_ko_KR.json`·`detail_info_ko_KR.json`이 남아 **데이터가 중복**된다(단일본은 티아나 `bridge_info` + 디에이 `menu`가 **섞인 실등록 초기값**). 삭제 여부 결정 필요
 - [ ] **P1 다국어는 베타 사이트 확인 후 진행**(2026-09-03 사용자 결정) — 두 컬렉션 모두 현재 ko만. 공통 4필드는 5개 언어 산출물 보유, 병원별 3필드 × 3곳은 ko만이라 번역 필요. `voucher`는 카드 아트가 일본어라 로케일 분기 결정 필요
