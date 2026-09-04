@@ -1,0 +1,47 @@
+{
+  "title": "เวาเชอร์ที่น่าซื้อคู่กัน",
+  "moreLabel": "ดูเวาเชอร์เพิ่มเติม",
+  "moreTargetUrl": "https://miniapp.line.me/unifi/benefits-mini/k-pick/shopping",
+  "items": [
+    {
+      "name": "เวาเชอร์ Olive Young 50,000 วอน",
+      "image": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/8b85c5593f9d437b81dee556cc44d80b.png?updatedAt=1788420343000",
+      "cashbackRate": 5,
+      "discountRate": 10,
+      "normalPriceJpy": 5820,
+      "price": "¥5,238",
+      "priceJpy": 5238,
+      "targetUrl": "https://guidekim.me/bizcon/oliveyoung-mobile-gift-card-50000won"
+    },
+    {
+      "name": "เวาเชอร์ Olive Young 30,000 วอน",
+      "image": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/53bd368abe5c4c1d8ae8b9a90256f54e.png?updatedAt=1788420340000",
+      "cashbackRate": 5,
+      "discountRate": 10,
+      "normalPriceJpy": 3492,
+      "price": "¥3,143",
+      "priceJpy": 3143,
+      "targetUrl": "https://guidekim.me/bizcon/olive-young-mobile-gift-card-30000won"
+    },
+    {
+      "name": "เวาเชอร์ Daiso 10,000 วอน",
+      "image": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/07bbd02e64d44ced9e85d2ccbc69b88f.png?updatedAt=1788420327000",
+      "cashbackRate": 5,
+      "discountRate": 10,
+      "normalPriceJpy": 1164,
+      "price": "¥1,048",
+      "priceJpy": 1048,
+      "targetUrl": "https://guidekim.me/bizcon/daiso-mobile-gift-card-10k-won"
+    },
+    {
+      "name": "เวาเชอร์ Daiso 30,000 วอน",
+      "image": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/27c1086a53b94d70b04974f71a07995a.png?updatedAt=1788420329000",
+      "cashbackRate": 5,
+      "discountRate": 10,
+      "normalPriceJpy": 3492,
+      "price": "¥3,143",
+      "priceJpy": 3143,
+      "targetUrl": "https://guidekim.me/bizcon/daiso-mobile-gift-card-30000won"
+    }
+  ]
+}

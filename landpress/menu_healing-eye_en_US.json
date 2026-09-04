@@ -1,0 +1,37 @@
+{
+  "title": "If you are considering vision correction",
+  "tag": [
+    "SMILE LASIK",
+    "Lens Implantation",
+    "LASEK"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 229000,
+        "currency": "JPY"
+      },
+      "title": "SMILE LASIK",
+      "description": "Laser vision correction with a minimal corneal incision"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 517000,
+        "currency": "JPY"
+      },
+      "title": "Lens Implantation",
+      "description": "Vision correction that places a lens inside the eye without reshaping the cornea"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 144000,
+        "currency": "JPY"
+      },
+      "title": "LASEK",
+      "description": "Laser vision correction performed on the corneal surface"
+    }
+  ]
+}

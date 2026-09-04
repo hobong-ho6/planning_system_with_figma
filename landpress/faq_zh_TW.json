@@ -13,12 +13,37 @@
     {
       "id": "cashback_timing",
       "title": "現金回饋什麼時候可以領取？",
-      "description": "療程結束後於現場付款，確認付款後將以點數返還消費金額的 15%。"
+      "description": "療程結束後於現場付款，確認付款後將依一定比例以點數返還。現金回饋比例因診所而異，可於各診所頁面查看。"
     },
     {
       "id": "prepayment_required",
       "title": "預約前需要付款嗎？",
       "description": "無需預先付款。在診所完成諮詢與療程後，於現場付款即可。"
+    },
+    {
+      "id": "japanese_consultation",
+      "title": "可以用日語諮詢嗎？",
+      "description": "可以。透過 LINE 諮詢即可獲得日語說明，不必擔心語言溝通問題。"
+    },
+    {
+      "id": "booking_flow",
+      "title": "預約如何進行？",
+      "description": "先透過 LINE 免費諮詢討論想要的療程並預約到院日期。到院諮詢後決定是否進行療程及療程項目，療程結束後於現場付款即可獲得現金回饋點數。"
+    },
+    {
+      "id": "cashback_usage",
+      "title": "領取的現金回饋點數可以用在哪裡？",
+      "description": "可以用點數購買優惠券或旅遊商品，也可以將點數交換為 JPYC。"
+    },
+    {
+      "id": "info_review_source",
+      "title": "診所資訊與評論由何處提供？",
+      "description": "診所與療程資訊依各醫療機構提供的內容說明，評論則來自登錄於 GuideKim 的實際使用者評論。診所預約串接服務同樣透過 GuideKim 提供。"
+    },
+    {
+      "id": "change_or_cancel",
+      "title": "可以變更或取消預約嗎？",
+      "description": "需要變更日期或取消時，請透過諮詢時使用的 LINE 聯繫即可辦理變更與取消。若未事先聯繫即取消或遲到，可能依診所規定限制使用。"
     }
   ]
 }

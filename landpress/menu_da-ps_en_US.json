@@ -1,0 +1,37 @@
+{
+  "title": "If skin elasticity and sagging are your concern",
+  "tag": [
+    "Potenza",
+    "Rejuran Healer",
+    "Lifting Package"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 40000,
+        "currency": "JPY"
+      },
+      "title": "Potenza",
+      "description": "Potenza treatment by medical staff experienced in skin boosters"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 18000,
+        "currency": "JPY"
+      },
+      "title": "Rejuran Healer",
+      "description": "Medical staff experienced in Rejuran treatments"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 194000,
+        "currency": "JPY"
+      },
+      "title": "Premium Lift Package",
+      "description": ""
+    }
+  ]
+}

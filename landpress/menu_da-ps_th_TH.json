@@ -1,0 +1,37 @@
+{
+  "title": "หากกังวลเรื่องความยืดหยุ่นของผิวและผิวหย่อนคล้อย",
+  "tag": [
+    "Potenza",
+    "Rejuran Healer",
+    "แพ็กเกจยกกระชับ"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 40000,
+        "currency": "JPY"
+      },
+      "title": "Potenza",
+      "description": "หัตถการ Potenza โดยทีมแพทย์ที่มีประสบการณ์สกินบูสเตอร์"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 18000,
+        "currency": "JPY"
+      },
+      "title": "Rejuran Healer",
+      "description": "ทีมแพทย์ที่มีประสบการณ์หัตถการ Rejuran"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 194000,
+        "currency": "JPY"
+      },
+      "title": "Premium Lift Package",
+      "description": ""
+    }
+  ]
+}

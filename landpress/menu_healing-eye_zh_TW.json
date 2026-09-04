@@ -1,0 +1,37 @@
+{
+  "title": "如果正在考慮視力矯正",
+  "tag": [
+    "SMILE LASIK",
+    "晶體植入術",
+    "LASEK"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 229000,
+        "currency": "JPY"
+      },
+      "title": "SMILE LASIK",
+      "description": "以最小角膜切口進行的雷射視力矯正"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 517000,
+        "currency": "JPY"
+      },
+      "title": "晶體植入術",
+      "description": "不削切角膜、於眼內植入鏡片的視力矯正"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 144000,
+        "currency": "JPY"
+      },
+      "title": "LASEK",
+      "description": "於角膜表面進行的雷射視力矯正"
+    }
+  ]
+}

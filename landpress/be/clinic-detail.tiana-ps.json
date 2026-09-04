@@ -1,0 +1,237 @@
+{
+  "version": "2026-08-31",
+  "generatedAt": "2026-08-31T00:00:00Z",
+  "externalId": "content:tiana-ps",
+  "slug": "tiana-ps",
+  "name": {
+    "ko-KR": "티아나성형외과",
+    "ja-JP": "ティアナ美容外科",
+    "en-US": "Tiana Plastic Surgery",
+    "th-TH": "คลินิกศัลยกรรม Tiana",
+    "zh-TW": "Tiana整形外科"
+  },
+  "region": {
+    "ko-KR": "서울시 강남구",
+    "ja-JP": "ソウル江南区",
+    "en-US": "Gangnam-gu, Seoul",
+    "th-TH": "เขตคังนัม กรุงโซล",
+    "zh-TW": "首爾江南區"
+  },
+  "clinicType": "DERMATOLOGY",
+  "rating": "4.6",
+  "reviewCount": 10,
+  "cashbackRate": 15,
+  "tags": [
+    {
+      "ko-KR": "3D-CT 정밀 진단",
+      "ja-JP": "3D-CT精密診断",
+      "en-US": "3D-CT precision diagnosis",
+      "th-TH": "การวินิจฉัยแม่นยำด้วย 3D-CT",
+      "zh-TW": "3D-CT精密診斷"
+    },
+    {
+      "ko-KR": "1:1 진료",
+      "ja-JP": "1:1診療",
+      "en-US": "One-on-one care",
+      "th-TH": "การดูแลแบบ 1:1",
+      "zh-TW": "1對1診療"
+    },
+    {
+      "ko-KR": "의료진 상담 후 시술",
+      "ja-JP": "カウンセリング後に施術",
+      "en-US": "Treatment after consultation with medical staff",
+      "th-TH": "หัตถการหลังปรึกษาแพทย์",
+      "zh-TW": "經醫療團隊諮詢後施術"
+    },
+    {
+      "ko-KR": "일본어 상담 가능",
+      "ja-JP": "日本語で相談可能",
+      "en-US": "Japanese consultation available",
+      "th-TH": "ปรึกษาภาษาญี่ปุ่นได้",
+      "zh-TW": "可日語諮詢"
+    }
+  ],
+  "images": [
+    "https://unifi-apps.line-scdn.net/0hhtLzklWYN1txAyt_0lxIDCtWOSodci5OCDUlIxdXLzsfZm5fFmQ9bSJoaBUpSDFeJBExbx9gLhADT3hdEhV7RgtjYQAuWHBsKBI6QyF8KTgXSC9lBgV8Vh9zNTs5MjY",
+    "https://unifi-apps.line-scdn.net/0h3d9lJ8CJbEsEFXBvp0ITHF5AYjpoZHVefSN-M2JBdCtqcDVPY3JoRiN-bCkrTihhZw8nU0dUMgB2WSNNZwMgVn51OhBbTit8XQRhU1RqcihyWWJhTRMnRmplbitMJG0",
+    "https://unifi-apps.line-scdn.net/0hWxuu6i80CFdIDBRz62V3ABJZBiYkfRFCMToaLy5YEDcmaVFTL2sMWjJ3DxhmPBR9KDMcYRRzVxw6QEdRKxpESjJsXgwXV09gER0FTxhzFjIDYU5TPwpDWiZ8CjcAPQk",
+    "https://unifi-apps.line-scdn.net/0hrFRui1GpLWlvDDFNzGBSPjVZIxgDfTR8Fjo_EQlYNQkBaXRtCGspXC93ODI3QGlXOgpicywNOCIdQGJvDBphdBVsezIwV2peNh0gcT9zMwwnaSpXGApmZAF8LwknPSw",
+    "https://unifi-apps.line-scdn.net/0h5SuaJoLBanxIGHZY6ysVKwxNZA0kaXNpMS54BC5MchwmfTN4L39gZm5RaR86W2lWKBYkZQhofRwHQ2ZLEj9jZTVzNS0DSHF_EX9sSRhOfxwuVC9CEiwkZAtKcjc5ciVWBA",
+    "https://unifi-apps.line-scdn.net/0hjG5msar8NWgIFClMq25KP1JBOxlkZSx9cSInEG5ALQhmcWxsb3MzcltNLyRAXzNsNgkiXnFKbiN6WHpuawJ5dXJ0YzNXT3JfUQU4cFhrKwomeXFufxJ-ZWZkNwhAJTQ",
+    "https://unifi-apps.line-scdn.net/0hlCOKfGlCM2xyMi9I0WhMOzZnPR0eQyp5CwQhFBRmKwwcV2poFVU5dTF7JQ86Wy1oODc_WQtwaCAXaT9bKBU6dQ9ZbD05YihvK1U1WSJkJgwDCjZRKCh9dDFgKycDWHxGPg",
+    "https://unifi-apps.line-scdn.net/0hdQ1RsLQSO34MKydarwxEKVZ-NQ9gWiJrdR0pBmp_Ix5iTmJ6a0x3cE9iJTBHG31XWTIqS1x-PDV-Z3R4bz13Y3ZLbSVTcHxJVTo2ZlxUJjFXEnx7ey1wc2JbOR5EGjo",
+    "https://unifi-apps.line-scdn.net/0hIaaim0AiFk5cEApq_zJpGQZFGD8wYQ9bJSYENjpEDi4ydU9KO3dYVHp0SBYtX1FkPHYYeiZgAwUuXFlIPwZaUyZwQBUDS1F5BQEbVgxvCwEXWxRwKxZdQzJgFC4UIRc",
+    "https://unifi-apps.line-scdn.net/0h_CVuOnbxAGxrDBxIyCJ_Oy9ZDh0HfRl5EjoSFA1YGAwFaVloDGsKdTt7Fg8wQEVSVAJKWihkFiAOVwxbMSsJdRZnXz0gXBtvMmsGWTtaFQwNWwFRMThOdCheGCcaZk9GJw",
+    "https://unifi-apps.line-scdn.net/0h7aCUdwIJaE5-LHRq3QwXGSR5Zj8SXXFbBxp6Nhh4cC4QSTFKGUskejJfaBZQHWlnNzoiej5XawUMYCdIHTokUwRMPhUhdy95Jz1lVi5TdQE1WXVmNyojQxBcai42HWk",
+    "https://unifi-apps.line-scdn.net/0hWEgc9_bsCGpaGhRO-XB3PQBPBhs2axF_IywaEjxOEAo0f1FuPX1HcyN9EiUrLgtUZAMccBZhEiEoVkdsOQxEdyB6XjEFQU9dAwsFcgplFg8Rcw5DExxDZzRqCgoSKwk",
+    "https://unifi-apps.line-scdn.net/0hOFBo9pntEGl_FgxN3ABvPjtDHhgTZwl8BiACERlCCAkRc0ltGHEacCNtEgkrQR5vHxsBcwViSzIgTRxeJTEZcAJ9Tzg0RgtqJnEWXC9ABQkNQVdqNTJecTxEBiIOfF9DMw",
+    "https://unifi-apps.line-scdn.net/0hIJvY_bLIFmVLIApB6A9pMhF1GBQnUQ9wMhYEHS10DgUlRU9hLEdYU21iSj45cxBPAUZafyVASi45bFljKDZaeDFAQD4Ue1FSEjEbfRtfCyoAGVBhPCZdaCVQFAUDERc",
+    "https://unifi-apps.line-scdn.net/0hombzBVJ_MEJfAyxm_F1PFRtWPjMzcilXJjUiOjlXKCIxZmlGOGQ6WCFrbxkHRDZBFRI2THhgNgwAWDx1BSQ5WyJobxMUUytBBmQ2dw9VJSIuOndBPBl-WhxRKAkuaX9oEw"
+  ],
+  "officialUrl": "https://www.tiana.co.kr/",
+  "oaFollowUrl": "https://line.me/R/ti/p/@627whnda",
+  "recommendPoints": [
+    {
+      "ko-KR": "3D-CT 정밀 진단",
+      "ja-JP": "3D-CT精密診断",
+      "en-US": "3D-CT precision diagnosis",
+      "th-TH": "การวินิจฉัยแม่นยำด้วย 3D-CT",
+      "zh-TW": "3D-CT精密診斷"
+    },
+    {
+      "ko-KR": "1:1 진료",
+      "ja-JP": "1:1診療",
+      "en-US": "One-on-one care",
+      "th-TH": "การดูแลแบบ 1:1",
+      "zh-TW": "1對1診療"
+    },
+    {
+      "ko-KR": "의료진 상담 후 시술",
+      "ja-JP": "カウンセリング後に施術",
+      "en-US": "Treatment after consultation with medical staff",
+      "th-TH": "หัตถการหลังปรึกษาแพทย์",
+      "zh-TW": "經醫療團隊諮詢後施術"
+    },
+    {
+      "ko-KR": "일본어 상담 가능",
+      "ja-JP": "日本語で相談可能",
+      "en-US": "Japanese consultation available",
+      "th-TH": "ปรึกษาภาษาญี่ปุ่นได้",
+      "zh-TW": "可日語諮詢"
+    }
+  ],
+  "services": [
+    {
+      "name": {
+        "ko-KR": "코·눈 성형(재수술)",
+        "ja-JP": "鼻・目形成(再手術)",
+        "en-US": "Nose · Eye Surgery (Revision)",
+        "th-TH": "ศัลยกรรมจมูก·ตา (แก้ไข)",
+        "zh-TW": "鼻・眼整形(修復手術)"
+      },
+      "description": "",
+      "price": null
+    }
+  ],
+  "location": {
+    "address": {
+      "ko-KR": "서울특별시 강남구 봉은사로 108 글라스톤빌딩 13층 (신논현역 4번 출구) Tel 02-552-7744",
+      "ja-JP": "ソウル特別市江南区奉恩寺路108 グラストンビル13階（新論峴駅4番出口）Tel 02-552-7744",
+      "en-US": "13F, Glaston Building, 108 Bongeunsa-ro, Gangnam-gu, Seoul (Sinnonhyeon Station Exit 4) Tel 02-552-7744",
+      "th-TH": "ชั้น 13 อาคาร Glaston เลขที่ 108 ถนนบงอึนซา เขตคังนัม กรุงโซล (สถานีชินนนฮยอน ทางออก 4) Tel 02-552-7744",
+      "zh-TW": "首爾特別市江南區奉恩寺路108號 Glaston大樓13樓（新論峴站4號出口）Tel 02-552-7744"
+    },
+    "naverMapUrl": "https://naver.me/FXwWl9cS",
+    "googleMapUrl": "https://maps.app.goo.gl/E8sbyoocGSukL7RP7",
+    "mapEmbedHtml": "<iframe src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3165.1429141078256!2d127.02299557645823!3d37.504547327679255!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xaf41bd52b4b5fa53%3A0x1865cdb8907e6cbd!2z7Yuw7JWE64KY7ISx7ZiV7Jm46rO87J2Y7JuQIFRpYW5hcGxhc3RpY3N1cmdlcnkgfCB8IOmfk-WbveODhuOCo-OCouODiuaVtOW9ouWkluenkSB8IOmfk-WbvSDpvLvmlbTlvaI!5e0!3m2!1sko!2skr!4v1782274846147!5m2!1sko!2skr\" width=\"600\" height=\"450\" style=\"border:0;\" allowfullscreen=\"\" loading=\"lazy\" referrerpolicy=\"no-referrer-when-downgrade\"></iframe>"
+  },
+  "reviews": [
+    {
+      "id": "a890a643-71ad-4b2a-8c9d-34c77ae0b0e8",
+      "authorName": "Mさん",
+      "rating": 5,
+      "body": "同じように小鼻の広がりが気になり出した方に、そっと教えたい病院です。姉に相談したら『韓国で鼻をやった友達がいる』とティアナを教えてくれて。カンナムオンニでも鼻専門で症例が多く、公式LINEで日本語相談。小鼻縮小と、鼻先を少しシャープにする鼻尖形成をお願いしました。この歳だと失敗が怖いけれど、院長先生が『切りすぎない、自然な範囲で』と何度も確認してくれて、安心して任せられました。大げさじゃなく、でも確実に鼻の存在感がすっきり。韓国によく行くので、来院して普通に払うだけで施術代の一部が後から戻るのも、ありがたい仕組みです😊",
+      "source": "SEED",
+      "createdAt": "2026-07-06T13:58:00Z"
+    },
+    {
+      "id": "5dc86362-471f-4eb8-ba48-6f25f4635100",
+      "authorName": "まりーごーるど",
+      "rating": 5,
+      "body": "自分で予約しても同じでしょ?と思ってたけど、まったくそんなことなかった。相談はLINEで完結、日本語での対応も丁寧で、来院日も通訳さん付き。決済はJPYCにすれば15%が戻るし、これタックスリファンドとは別なのがビックリ🤯 戻ったJPYCは次回の韓国旅行でそのまま使える設計、賢い。友達にも「経由しないの?」って全員に聞いてます。",
+      "source": "SEED",
+      "createdAt": "2026-06-15T03:00:00Z"
+    },
+    {
+      "id": "1f2a1b76-ade4-47a9-a3ee-050ff727e186",
+      "authorName": "Aさん",
+      "rating": 4,
+      "body": "鼻が短くて鼻先が上向きなのがずっと悩みで、鼻中隔延長をお願いしました。ティアナは、鼻整形のブログを読み漁ってたときに何度も名前が出てきた鼻専門のクリニック。無理な勧誘もなく、必要な施術だけ丁寧に説明してくれて。鼻先が下がって横顔が上品に…！鏡を見るたび嬉しい☺️ 施術代の一部が後日ポイントで戻るのも地味に得した気分です📩",
+      "source": "SEED",
+      "createdAt": "2026-06-05T06:24:00Z"
+    },
+    {
+      "id": "d7214f4c-0bcf-4bc2-a393-a421354ab113",
+      "authorName": "なでしこ",
+      "rating": 5,
+      "body": "リスクを避けたかったので、安全面を軸にティアナ整形外科を選びました。医師の説明が丁寧という評判、院内の落ち着いた雰囲気、どちらも信頼につながる要素でした。GuideKim経由にしたのは、通訳無料+JPYC決済で15%還元という条件が理由。相談金額が大きくなるほどこの15%が効いてきて、戻ったJPYCは次の渡韓でそのまま使えるので実質的に積み立て感覚。同じ相談内容なら迷わずGuideKim経由をおすすめします。",
+      "source": "SEED",
+      "createdAt": "2026-05-28T01:52:00Z"
+    },
+    {
+      "id": "6365d3c1-946a-42e2-8c9a-f776a5ad2d0b",
+      "authorName": "Tさん",
+      "rating": 4,
+      "body": "男の鼻の整形って情報が本当に少なくて、YouTubeの症例をひたすら漁ってティアナにたどり着きました。鼻専門というのが決め手です。ワシ鼻をシリコンプロテーゼと軟骨で整えてもらったら、横顔のラインがまっすぐになったのに、友人には整形だと気づかれない。やりすぎない自然な仕上がりで、専門クリニックに任せて正解でした👍",
+      "source": "SEED",
+      "createdAt": "2026-05-26T02:47:00Z"
+    },
+    {
+      "id": "e439b3f9-2d37-4839-a5f6-e93ed966859c",
+      "authorName": "Kさん",
+      "rating": 4,
+      "body": "数年前に日本で受けた鼻の手術がうまくいかず、鼻先が不自然に上を向いて、人前で笑うのが嫌でした…。修正は難しいと聞いていたので、韓国も含めて相当調べたんです。でも、その不安は解けました。\n仲の良い友人が『韓国で鼻の修正をした』と教えてくれて、カンナムオンニでティアナに辿り着きました。他院修正の症例が多く、公式LINEに日本語で相談すると通訳の方も同席。院長先生が『前の癒着をこう剥がして、耳の軟骨で作り直す』と細かく説明してくれて、この時点で信頼できました。仕上がりは正直、理想以上でした。前より腫れも少なく、術後もLINEで毎日みたいに経過を診てくれて😊\n免税還付が終わると聞いてがっかりしてたけど、ガイドキム経由なら施術代が最大15%キャッシュバックされると知って、それも後押しになりました。病院代は来院時に普通に払うだけで、変な負担は一切なかったです。",
+      "source": "SEED",
+      "createdAt": "2026-05-21T03:24:00Z"
+    },
+    {
+      "id": "4331889f-7cb6-47d5-9be2-1bdadfb77c95",
+      "authorName": "きなこ",
+      "rating": 5,
+      "body": "そもそも病院のインスタに直接連絡する予定だったんですが、言語面の心配があってGuideKim経由に切り替え。結果的にこっちが正解でした。LINEでバストの相談のことを相談すると、その日のうちに費用の目安と予約可能日を教えてもらえて、当日は通訳さんが全部同行してくれる。無料っておかしいレベル😂 JPYCで払うと15%が戻ってくるから、実質もっと安い。戻ったJPYCは次回の楽しみに取っておきます✨",
+      "source": "SEED",
+      "createdAt": "2026-05-21T03:00:00Z"
+    },
+    {
+      "id": "1d153e73-7019-4343-83c5-f47aa62a740a",
+      "authorName": "Yさん",
+      "rating": 5,
+      "body": "正面から見ても横から見ても、団子っぽさが消えたのにバレない。仕上がりに、思わず見入りました。\nずっと団子鼻がコンプレックスで、鼻尖形成をどこで受けるか半年悩んで。Xでガイドキムの投稿を見かけ、そこからカンナムオンニで鼻専門のティアナを知りました。院長先生が鼻だけをずっと診てきた専門医で、『盛りすぎない、いかにも整形にしない』方向で提案してくれて安心。作った感のない自然な鼻先になりました🥹 会計は来院日にカードで、会計の一部が後日ポイントバックされるのも嬉しい✨",
+      "source": "SEED",
+      "createdAt": "2026-05-12T05:02:00Z"
+    },
+    {
+      "id": "cbb08a43-722b-46e8-a6c0-ec328331f74b",
+      "authorName": "ひまわり",
+      "rating": 5,
+      "body": "GuideKimを経由するとクリニックごとに違うペイバック率が適用されるようで、ティアナ整形外科は15%。せっかく同じ場所に行くなら経由した方が得と判断して予約しました。予約時の決済もなく、身軽。カウンセリング当日は日本語の通訳さんが同席してくれて、医師とのやり取りに不安がなかったのが良かったです。院内が少し混んでいて待ち時間が発生したので星は1つ調整。LINEの担当さんが後で見積もりを整理して送ってくれる細かい配慮が印象に残りました。",
+      "source": "SEED",
+      "createdAt": "2026-04-09T03:00:00Z"
+    },
+    {
+      "id": "82c2fb38-b68a-492f-a1ed-8a13096df3ad",
+      "authorName": "あおい",
+      "rating": 4,
+      "body": "はじめての相談ということもあり緊張していましたが、担当医のカウンセリングが丁寧というティアナ整形外科の特徴が決め手になりました。GuideKimの担当さんが事前に費用感や不明点を代わりに整理してくれたおかげで、当日はスムーズに相談を進められました。連絡の初期対応が少しだけ遅かったので星は控えめですが、内容自体は丁寧で信頼できます。JPYCの15%還元も、金額が大きくなるほど嬉しいポイントでした。",
+      "source": "SEED",
+      "createdAt": "2026-02-05T13:19:00Z"
+    }
+  ],
+  "similarClinics": [
+    {
+      "externalId": "content:healing-eye",
+      "slug": "healing-eye",
+      "name": {
+        "ko-KR": "힐링안과",
+        "ja-JP": "ヒーリング眼科",
+        "en-US": "Healing Eye Clinic",
+        "th-TH": "คลินิกตา Healing",
+        "zh-TW": "Healing眼科"
+      },
+      "region": {
+        "ko-KR": "서울시 강남구",
+        "ja-JP": "ソウル江南区",
+        "en-US": "Gangnam-gu, Seoul",
+        "th-TH": "เขตคังนัม กรุงโซล",
+        "zh-TW": "首爾江南區"
+      },
+      "clinicType": "OPHTHALMOLOGY",
+      "rating": "4.7",
+      "reviewCount": 31,
+      "cashbackRate": 15,
+      "thumbnailUrl": "https://unifi-apps.line-scdn.net/0hm9k5rP1uMhZWTC4y9TtNQQwZPGc6PSsDL3ogbjAYKnY4KWsSMSt_Ii8ZN3MOCyoSE0J4JS9MLl0kAH0QNVp-CywsZE0JF3UhD10_DgYzLHQgDHY8H0p5Gzg8MHYefTM",
+      "targetUrl": "https://unifi.me/k-pick/clinic/healing-eye",
+      "detailJsonPath": "clinic-detail.healing-eye.json"
+    }
+  ]
+}

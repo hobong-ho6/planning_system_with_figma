@@ -1,0 +1,37 @@
+{
+  "title": "肌のハリとたるみが気になるなら",
+  "tag": [
+    "ポテンツァ",
+    "リジュランヒーラー",
+    "リフティングパッケージ"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 40000,
+        "currency": "JPY"
+      },
+      "title": "ポテンツァ",
+      "description": "スキンブースター経験が豊富な医療スタッフによるポテンツァ施術"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 18000,
+        "currency": "JPY"
+      },
+      "title": "リジュランヒーラー",
+      "description": "リジュラン施術の経験が豊富な医療スタッフ"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 194000,
+        "currency": "JPY"
+      },
+      "title": "プレミアムリフトパッケージ",
+      "description": ""
+    }
+  ]
+}

@@ -1,0 +1,37 @@
+{
+  "title": "หากกำลังพิจารณาการแก้ไขสายตา",
+  "tag": [
+    "SMILE LASIK",
+    "การฝังเลนส์",
+    "LASEK"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 229000,
+        "currency": "JPY"
+      },
+      "title": "SMILE LASIK",
+      "description": "การแก้ไขสายตาด้วยเลเซอร์ผ่านแผลกระจกตาขนาดเล็ก"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 517000,
+        "currency": "JPY"
+      },
+      "title": "การฝังเลนส์",
+      "description": "การแก้ไขสายตาด้วยการใส่เลนส์ในดวงตาโดยไม่ต้องเจียกระจกตา"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 144000,
+        "currency": "JPY"
+      },
+      "title": "LASEK",
+      "description": "การแก้ไขสายตาด้วยเลเซอร์บนผิวกระจกตา"
+    }
+  ]
+}

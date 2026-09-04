@@ -13,12 +13,37 @@
     {
       "id": "cashback_timing",
       "title": "When can I receive the cashback?",
-      "description": "Once you pay on site after the treatment, you get 15% of the amount back in points after your payment is confirmed."
+      "description": "Once you pay on site after the treatment, you get a percentage of the amount back in points after your payment is confirmed. The cashback rate varies by clinic and is shown on each clinic's page."
     },
     {
       "id": "prepayment_required",
       "title": "Do I need to pay before booking?",
       "description": "No prepayment is required. You pay on site after finishing the consultation and treatment at the clinic."
+    },
+    {
+      "id": "japanese_consultation",
+      "title": "Can I have a consultation in Japanese?",
+      "description": "Yes. Just reach out on LINE and you will be guided in Japanese, so you can go ahead without worrying about the language."
+    },
+    {
+      "id": "booking_flow",
+      "title": "How does booking work?",
+      "description": "Discuss the treatment you want in a free LINE consultation and book your visit date. At the clinic, you decide after the consultation whether to proceed and which treatment to receive, then pay on site after the treatment to receive cashback points."
+    },
+    {
+      "id": "cashback_usage",
+      "title": "Where can I use the cashback points I receive?",
+      "description": "You can use points to buy vouchers and travel products, and you can also swap points for JPYC."
+    },
+    {
+      "id": "info_review_source",
+      "title": "Where do the clinic information and reviews come from?",
+      "description": "Clinic and treatment information is based on details provided by each medical institution, and reviews are based on actual user reviews registered with GuideKim. The clinic booking service is also provided through GuideKim."
+    },
+    {
+      "id": "change_or_cancel",
+      "title": "Can I change or cancel my booking?",
+      "description": "If you need to change the date or cancel, just message the LINE account you consulted with and we can make the change or cancellation. If you cancel without notice or arrive late, your use of the service may be restricted under the clinic's policy."
     }
   ]
 }

@@ -1,0 +1,37 @@
+{
+  "title": "視力矯正でお悩みなら",
+  "tag": [
+    "スマイルラシック",
+    "レンズ挿入術",
+    "ラシック"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 229000,
+        "currency": "JPY"
+      },
+      "title": "スマイルラシック",
+      "description": "角膜を最小限に切開するレーザー視力矯正"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 517000,
+        "currency": "JPY"
+      },
+      "title": "レンズ挿入術",
+      "description": "角膜を削らず眼内にレンズを挿入する視力矯正"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 144000,
+        "currency": "JPY"
+      },
+      "title": "ラシック",
+      "description": "角膜表面を用いるレーザー視力矯正"
+    }
+  ]
+}

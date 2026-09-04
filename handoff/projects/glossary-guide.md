@@ -1,13 +1,15 @@
 # glossary-guide — 용어집 + 기획자 가이드 (⚠️ 전역 자원 · 락 필요)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-04 · 커밋 `1ed138f` · 라이브 태그 **`guide-v33`**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-04 · 커밋 `(이 커밋)` · 라이브 태그 **`guide-v33.3`**
 > ⚠️ 이 자원은 **모든 프로젝트가 공유**한다. 편집 전 `handoff/lanes/`에 락 파일을 만들 것(`handoff/lanes/README.md`).
 
 ## 대상 / 링크
 
 - 용어집: Landpress `web3_xlt_json` — **API 읽기 전용**, 갱신은 전체 JSON을 **사용자가 CMS에 붙여넣기**
-  - 라이브 **v4.9**(2026-09-04 사용자 CMS 반영 완료 · **API 재조회로 산출 JSON과 완전 동치 확인**) — **117 terms · 11 exceptions · 19 deprecated · 2 OA variables**
-  - v4.9 내용: `reports/glossary_v4.9_full.json`. `LINE MINI App` 브랜드 예외 2건 + `Mini App`→`MINI App` 금지 4건 + terminology 5건 교정 + `리뷰` 등재 + ko `후기`→`리뷰` 금지. **A/B 등재값 2,461키: P0·P2 불변 · P1 2,437→2,357(−80)**
+  - 라이브 **v5.1**(2026-09-04 사용자 CMS 반영 완료 · **API 재조회로 산출 JSON과 완전 동치 확인**) — **117 terms · 11 exceptions · 20 deprecated · 2 OA variables**
+  - **v5.0**: 캐시백 ja `キャッシュバック`→**`還元`** + deprecated #20 신설. XLT **17키 재업로드 동반**. A/B(2,461키): 용어집만 P1 2350→2383(+33) · **17키 업로드 후 2349(−1)** · P0·P2 불변. ⚠️ 등재 실사용은 `キャッシュバック` 17 : `還元` 1이었고 **실측 다수를 사용자 결정으로 뒤집은 건**이다
+  - **v5.1**: 실사용 **0건** 등재값 2건 교정 — 가격 zh `售價`→**`價格`**(실측 9:0) · 유의사항 th `หมายเหตุ`→**`ข้อควรระวัง`**(2:0). A/B **P1 2350→2339(−11)** · 신규 P1 0
+  - 정본 JSON: `reports/glossary_v5.0_full.json` · `reports/glossary_v5.1_full.json`
   - ⚠️ **4.8은 재사용 금지 번호** — 2026-08-12 시도 후 revert(팀 합의 미도출). 그래서 4.7 다음이 **4.9**다
   - 이력 정본: `md/glossary-changelog.md` · 절차 정본: `md/landpress.md`
   - 커밋된 산출 JSON: `reports/glossary_v4.7_for_cms.json`(라이브 반영본과 동치 확인)

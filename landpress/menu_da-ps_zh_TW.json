@@ -1,0 +1,37 @@
+{
+  "title": "如果在意肌膚彈性與鬆弛",
+  "tag": [
+    "Potenza",
+    "Rejuran Healer",
+    "拉提套組"
+  ],
+  "items": [
+    {
+      "price": {
+        "from": true,
+        "amount": 40000,
+        "currency": "JPY"
+      },
+      "title": "Potenza",
+      "description": "由具豐富皮膚增強劑經驗的醫療團隊執行的 Potenza 療程"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 18000,
+        "currency": "JPY"
+      },
+      "title": "Rejuran Healer",
+      "description": "具豐富 Rejuran 療程經驗的醫療團隊"
+    },
+    {
+      "price": {
+        "from": true,
+        "amount": 194000,
+        "currency": "JPY"
+      },
+      "title": "Premium Lift Package",
+      "description": ""
+    }
+  ]
+}

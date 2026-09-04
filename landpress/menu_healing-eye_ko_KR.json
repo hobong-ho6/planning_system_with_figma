@@ -1,9 +1,9 @@
 {
-  "title": "안전한 시력 교정을 찾고 있다면",
+  "title": "시력 교정을 고민하고 있다면",
   "tag": [
-    "라식",
+    "스마일라식",
     "렌즈삽입술",
-    "정밀검사"
+    "라섹"
   ],
   "items": [
     {
@@ -12,8 +12,8 @@
         "amount": 229000,
         "currency": "JPY"
       },
-      "title": "프리미엄 라식",
-      "description": ""
+      "title": "스마일라식",
+      "description": "각막을 최소 절개하는 레이저 시력 교정"
     },
     {
       "price": {
@@ -22,7 +22,7 @@
         "currency": "JPY"
       },
       "title": "렌즈삽입술",
-      "description": ""
+      "description": "각막을 깎지 않고 눈 안에 렌즈를 넣는 시력 교정"
     },
     {
       "price": {
@@ -30,8 +30,8 @@
         "amount": 144000,
         "currency": "JPY"
       },
-      "title": "백내장",
-      "description": ""
+      "title": "라섹",
+      "description": "각막 표면을 이용하는 레이저 시력 교정"
     }
   ]
 }
