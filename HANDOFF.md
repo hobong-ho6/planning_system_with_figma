@@ -26,20 +26,16 @@
 ## 프로젝트 인덱스
 
 > 활성 프로젝트만 올린다. 종료된 것은 `handoff/projects/_archive/`로 옮기고 이 표에서 지운다.
+> **2026-09-04 종결 5건** — `season3`·`luckyball-campaign`·`nonrealtime`·`xlt-registry`·`unifi-app-xlt`를 `_archive/`로 옮겼다(전부 「미결 없음/전건 종결」 명시 · 08-20 이후 활동 없음). 재개가 필요하면 아카이브에서 되돌린다.
 > 담당자는 `git config --global handoff.person` 값과 같은 문자열을 쓴다(`handoff/README.md` 「사람 식별」).
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
 | [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 08-20 | 온보딩 판별 **버그 수정**(7시나리오 실측) · 락 대상에 `.claude/**` · **미결 0**(플러그인·MCP 인증 폐기) |
-| [season3](handoff/projects/season3.md) | `hogeun` | 위키 `4541588845` · 16프레임 · 58키 | 08-10 | 위키 v81 · 미결 0 · IA #4 수치 교체 대상 확인 필요 |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-03 | **[Master] K-Pick v3 신설**(Summary 8블록 · 8↔8) · 5종 전부 정합 |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 09-04 | 용어집 **v5.1 라이브**(캐시백 ja `還元` + 실사용 0건 등재값 2건 교정) · 가이드 v33 · 태그 **`guide-v33.3`** |
-| [xlt-registry](handoff/projects/xlt-registry.md) | `hogeun` | XLT 등록값 3서비스 4,092키 | 08-10 | API 정상 · 수정 엑셀 1건 업로드 대기(사용자) |
-| [unifi-app-xlt](handoff/projects/unifi-app-xlt.md) | `hogeun` | Unifi 앱(IPHONE) 엑셀 번역 2키 | 08-20 | P0=0 · **잔여 전건 종결**(IPHONE 타겟은 API 조회 불가 — 구조적 한계) |
 | [kaiawallet-transition](handoff/projects/kaiawallet-transition.md) | `hogeun` | 위키 `4515188069` · **8프레임 37키** | 08-24 | 위키 **v18**(8화면 재편 · 185셀 전건 · 14키 제거) · 용어집 보완 3건 대기 |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 v31(⚠️ zip만 발행·소스 미커밋 → 09-03 복원 `b49b1a1`) · 로그인 2회 연속 미점검 |
-| [nonrealtime](handoff/projects/nonrealtime.md) | `hogeun` | 위키 `4541600637`·`4540065229` | 08-06 | 2종 v10 · 마스터와 정합 |
-| [luckyball-campaign](handoff/projects/luckyball-campaign.md) | `hogeun` | 위키 `4479306980` · 75키 | 08-07 | v151 · 미결 0 |
 | [kpick-oa-consent](handoff/projects/kpick-oa-consent.md) | `hogeun` | 위키 `4637821100` · 1프레임 4키 | 08-24 | 위키 **v3 반영 완료**(P0=0) · 미결 3건 — **등록 서비스 확정(FE)** · History↔Policy 불일치 · `kpick_` 잠정 |
 | [guidekim-banner](handoff/projects/guidekim-banner.md) | `hogeun` | 위키 `4637821463` · 배너 2키 | 08-24 | 위키 **v11**(P0=0) · 🔴 **Unifi↔Dapp Portal 값 분기**(FE 확인 후 업로드) |
 | [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-28 | `4620240898` **v5**(정본 템플릿 구조 정합화) · 정의 필요 4항목 추적 |
