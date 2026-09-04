@@ -177,3 +177,75 @@ LINE Developers 공식 문서를 직접 조회해 확인했다.
 위키 `4667512757` **v114 → v115**(Description 값 교정 + 「확인 필요」 항목을 **해소·출처 기록**으로 교체 + History 병합) · LPC `4686692164` **v11 → v12**(확인 필요 항목 추가). `check_wiki_storage.py post` 양쪽 exit 0.
 
 **XLT 재업로드 대상은 변동 없다** — 기존 7키 엑셀(`xlt_clinic_unify_fix_7keys_20260904.xlsx`)에 `_badge_certified_desc` 5개 언어가 이미 `MINI App`으로 들어 있다.
+
+---
+
+## (6) 후속 — 용어집 v4.9 반영 확인 + ja `口コミ` → `レビュー` 교정 (2026-09-04)
+
+### 용어집 v4.9 CMS 반영 확인
+
+사용자가 반영한 뒤 API 재조회로 검증했다.
+
+| 항목 | 라이브 | 산출본(`reports/glossary_v4.9_full.json`) |
+|---|---|---|
+| version | **4.9** | 4.9 |
+| terminology | **117** | 117 |
+| exceptions | **11** | 11 |
+| deprecated_terms | **19** | 19 |
+| oa_variables | 2 | 2 |
+
+**전 영역(`metadata`·`terminology`·`exceptions`·`deprecated_terms`·`oa_variables`) 완전 동치** ✅
+
+**반영 효과 실측**: 등재값 전체 2,461키 **P1 2,437 → 2,357(−80)** · P0 102 · P2 534 불변 — 산출 시 예측과 정확히 일치. 클리닉 통합 86키는 P1 59 → **55**.
+
+### 신규 발견 1건 — `리뷰` 등재가 잡아낸 실제 위반
+
+`리뷰`를 등재하자 클리닉 파일에서 3건이 잡혔고, 판정하면 **오탐 2 + 실제 위반 1**이다.
+
+| 키 | 지적 | 판정 |
+|---|---|---|
+| `UF_clinic_bridge_title` ja `高評価` · zh `好評` | `レビュー`/`評論` 미포함 | **오탐** — 「좋은 리뷰로 주목받는」의 자연 의역(고평가·호평)이라 명사 「리뷰」와 1:1 대응이 아니다 |
+| **`UF_clinic_detail_review_source` ja `口コミ`** | `レビュー` 미포함 | 🔴 **실제 일관성 위반** — 실측 ja `レビュー` **8건** vs `口コミ` **1건**(이 키뿐). 같은 「GuideKim에 등록된 리뷰」 문맥의 `UF_clinic_mini_bridge_section_review_note`도 `レビュー`다 |
+
+→ **사용자 승인으로 `口コミ` → `レビュー` 교정**. 위키 `4667512757` **v115 → v116**.
+
+### 재업로드 엑셀 재생성 — **키 수는 7 그대로, 12셀**
+
+`UF_clinic_detail_review_source`는 **이미 7키 목록에 있었으므로**(ko `후기`→`리뷰` 교정분) 키가 8이 되지 않고 **ja 셀 1개가 늘었다**.
+
+| 키 | 상이 언어 |
+|---|---|
+| `UF_clinic_bridge_cat_vision` | ko |
+| `UF_clinic_bridge_title` | ko |
+| **`UF_clinic_detail_review_source`** | **ko + ja** ← ja 추가 |
+| `UF_clinic_mini_bridge_badge_certified_desc` | ko·ja·en·th·zh (5) |
+| `UF_clinic_mini_bridge_review_more` | ko |
+| `UF_clinic_mini_bridge_section_review` | ko |
+| `UF_clinic_mini_bridge_section_review_note` | ko |
+| **합계** | **7키 · 12셀** |
+
+산출물 `xlt/registry_fix/xlt_output_20260904102203.xlsx` → 위키 첨부 `xlt_clinic_unify_fix_7keys_20260904.xlsx` **v2** 갱신(같은 파일명이라 본문 링크 그대로).
+
+### 자동 검증 (용어집 v4.9 기준)
+
+| 심각도 | 건수 | 판정 |
+|---|---|---|
+| 🔴 **P0** | **0건** | — |
+| 🟡 P1 | 5건 | **전건 오탐** |
+| 🟢 P2 | 2건 | **전건 오탐** |
+
+| # | 지적 | 판정 근거 |
+|---|---|---|
+| 1~2 | `_bridge_title` ja·zh 「리뷰」 | 의역(`高評価`·`好評`) — 위 표 참조 |
+| 3 | `_review_more` en 「더보기」→`View More` | 실측 `See more` 4 vs `View more` 3 · 「더보기」 완전일치 키 en = `See more` |
+| 4 | `_review_more` th 「더보기」→`ดูเพิ่มเติม` | 채택값 `ดูรีวิวเพิ่มเติม`에 권장 어형이 **분절 포함**(연속 문자열만 보는 검증기 한계) |
+| 5 | `_badge_certified_desc` ko 라틴 `MINI App` | LINE 공식 브랜드 표기 — 5개 언어 동일이 정상 |
+| P2 1~2 | 마침표 | 문장형이라 정상(등재 선례 `UF_clinic_detail_notice_1~3` 동형) |
+
+### ⚠️ 앞선 (5)절 수치 정정
+
+(5)절에서 「7키 재업로드 엑셀 P1 4 → 1 · P2 2 → 0」이라고 적었으나 **잘못된 측정**이다. 그 시점에 `xlt/registry_fix/xlt_output_20260904092250.xlsx`가 **이미 삭제돼 있어**(`xlt/`는 `.gitignore`라 git 복구 불가) `glob(...)[-1]`이 **`xlt_fix_main_faq_title_ja_1key_20260901.xlsx`(1키 파일)** 를 집었다.
+
+**정정**: 재업로드 엑셀의 용어집 v4.9 기준 실제 수치는 **P0 0 · P1 5 · P2 2(전건 오탐)** 이다. 위 표가 정본이다.
+
+**교훈**: `glob(...)[-1]`처럼 **암묵적 파일 선택**을 검증에 쓰지 않는다 — 대상 경로를 명시하고, 파일이 없으면 조용히 다른 파일을 잡는 대신 **실패하게** 한다.
