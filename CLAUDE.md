@@ -177,6 +177,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `md/xlt-verify.md` | **XLT 시스템 등록값 검증 정본** — 읽기 API 명세(엔드포인트·인증 없음·서비스별 키스페이스 분리)·타겟 확정(서비스/디바이스/버전 사용자 선택)·용어집 대조·수정 제안·업로드 엑셀. **정기 검증 시 + 번역 Step 2-1 유사 키 제안 시 필수 참조** |
 | `md/GA.md` | GA Event 정의 규칙 — Screen 표 4열 `XLT & GA`(storage `&amp;`) · XLT 중첩표 아래 `# \| Event Name \| Parameter` 표 · `view_`+Screen ID 화면당 1개(Parameter `-`) · `click_` 클릭 요소 자동 부여(`#`=어노테이션 번호). **위키 업데이트에서 사용자가 GA event 추가를 요청한 경우에만** 적용 |
 | `md/IA.md` | Unifi(unifi.me) IA 분석 정본 — **Screen ID(`주기능_부기능_세부기능_01` 소문자) 부여 시 어휘 참조**. IA 변경 시 이 파일만 갱신. **⛔ Screen ID 부여는 매핑 표 사용자 검토·승인 후에만 진행** (기존 위키는 소급 전환 금지) |
+| `md/ia-check.md` | **IA 정기 점검 절차 정본** — 점검 범위(프로덕션·Beta·mini)·주간 리포트 형식·**가이드 사이트 갱신 절차**(베이스 확정·`IA_DATA` 동기화·버전 표기·재압축·검증 4항목)·제약. 스케줄 태스크 `weekly-unifi-ia-check`는 이 문서를 읽어 수행하는 트리거일 뿐이다(2026-09-07 개인 프로필 → 저장소 이전) |
 | `md/PRODUCTION_RULES.md` | ⚠️ 프로덕션 환경 필수 규칙 — **모든 단계에서 필수 준수** |
 
 ### 실행 규칙
