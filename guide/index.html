@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Figma → 다국어 위키 자동화 · 기획자 워크플로우 가이드 v33</title>
+<title>Figma → 다국어 위키 자동화 · 기획자 워크플로우 가이드 v34</title>
 <meta name="description" content="Figma 화면과 위키 주소만으로 AI가 5개 언어 번역과 위키 문서를 자동으로 작성하는 워크플로우. 기획자를 위한 사용 가이드." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet" />
@@ -83,7 +83,7 @@
 <!-- ===== HERO ===== -->
 <section class="relative overflow-hidden bg-gradient-to-b from-brand-50 to-slate-50">
   <div class="max-w-6xl mx-auto px-5 pt-16 pb-20 text-center">
-    <span class="inline-block mb-5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide">기획자를 위한 사용 가이드 · 개발 지식 불필요 · <b>v33 (2026-09-03)</b></span>
+    <span class="inline-block mb-5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide">기획자를 위한 사용 가이드 · 개발 지식 불필요 · <b>v34 (2026-09-07)</b></span>
     <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight text-ink">
       Figma 화면을 <span class="text-brand-600">5개 언어</span>로 번역하고<br class="hidden sm:block" />
       위키를 <span class="text-brand-600">자동으로</span> 채웁니다
@@ -774,7 +774,8 @@ action url 을 모두 업데이트 했어
     <div class="panel mt-6">
       <h3 class="panel-h">버전 요약</h3>
       <table class="ex-table mt-3"><tbody>
-        <tr><th><b>v33 · 2026-09-03</b></th><td><b>GA Event 안내 보강</b> — 가이드 탭에 「GA Event 정의」 전용 섹션(규칙·표 구조·요청 방법) 신설, 시스템 가이드 탭 문서 지도 3곳(흐름 카드·상황→문서 표·파일 표)에 <code>md/GA.md</code> 추가. v32에서 카드·예시만 있고 본문 섹션과 문서 지도가 빠져 있던 것을 보완</td></tr>
+        <tr><th><b>v34 · 2026-09-07</b></th><td><b>IA 주간 점검 #6 — 마이 설정에 「Preferred Stable」 신설 · 로그인 홈 전면 개편 · K-Pick 2단 구조 재편 · 클리닉 섹션 신설 · 로그인 영역 전체 점검</b> — 사용자가 <b>기준 스테이블코인을 직접 고를 수 있게</b> 되면서 홈 자산 카드 순서·히어로 이율·가이드 구성이 그 설정에 따라 갈립니다(<b>승인 대기 ⑨</b> 신설 — 화면 변형 축이 하나 늘었습니다). 로그인 홈은 <b>토큰별 3카드 + 프로모션 모달 + 헤더 [pay]·[QR]·[알림] 3아이콘</b>으로 개편돼 비로그인 홈과 다른 화면이 됐고, 지난 회차 이월이던 <b>「Pay」 버튼이 로그인 전용임이 확인</b>됐습니다. K-Pick은 <b>허브 + 카테고리 목록 2단</b>으로 재편되고 K-뷰티에 <b>클리닉 섹션(19곳)</b>이 신설됐습니다(<b>승인 대기 ⑩</b>). 상품 상세에 <b>구매 CTA·체크아웃 라우트·특정상거래법 표기</b>가 붙었습니다(<b>승인 대기 ⑪</b>). 입금 <b>브릿지 배너는 제거</b>됐고 swap 「AlphaSec」 한국어 노출은 <b>해소</b>됐습니다. 다만 <b>mini 리워드 스켈레톤이 재발</b>했습니다. 「전체 IA 구조」 표도 함께 갱신했습니다. 기획자 액션 <b>없음</b></td></tr>
+        <tr><th>v33 · 2026-09-03</th><td><b>GA Event 안내 보강</b> — 가이드 탭에 「GA Event 정의」 전용 섹션(규칙·표 구조·요청 방법) 신설, 시스템 가이드 탭 문서 지도 3곳(흐름 카드·상황→문서 표·파일 표)에 <code>md/GA.md</code> 추가. v32에서 카드·예시만 있고 본문 섹션과 문서 지도가 빠져 있던 것을 보완</td></tr>
         <tr><th>v32 · 2026-09-03</th><td><b>GA Event 정의 기능 신설</b> — 위키 업데이트 때 "GA event 추가"라고 요청하면 Screen 표의 <code>XLT &amp; GA</code> 열(구 <code>XLT</code>)에 화면별 이벤트 표(<code>#</code> · Event Name · Parameter)를 만들어 줍니다. 화면마다 <code>view_</code> 이벤트 1개, 버튼·카드·탭 등 누를 수 있는 요소마다 <code>click_</code> 이벤트를 자동 부여하고 <code>#</code>에 화면 이미지의 번호를 적어 어디를 눌렀을 때인지 바로 찾을 수 있습니다. Landpress(LPC)에서 내려오는 목록(FAQ 등)은 항목에 <code>id</code>를 두고 그 값을 파라미터로 보내는 규칙을 함께 정했습니다. 클리닉 예약 동선 위키에 view 6·click 18 적용 완료. 규칙 정본 <code>md/GA.md</code></td></tr>
         <tr><th>v31 · 2026-09-03</th><td><b>IA 주간 점검 #5 — Unifi Pay 오프라인 QR 결제 출시 · K-Pick 상품 상세가 Unifi 내부 화면으로 편입 · mini 홈 전면 개편 · Season 4 개시</b> — 홈 최상단에 <b>QR 결제 배너</b>가 생겼고 결제 화면(<code>/pay/…</code>)이 프로덕션·Beta 모두 라이브입니다(주기능 어휘 <b>승인 대기 ⑦</b>). 바우처 상품 상세 일부가 <b>외부 GuideKim에서 Unifi 내부 화면으로 옮겨져</b> #3의 "외부 이탈 확정" 판정이 부분 번복됐습니다(<b>승인 대기 ⑧</b>). mini 홈은 K-Pick형 커머스 화면으로 전면 교체됐고, <b>5주 묵은 리워드 스켈레톤 이슈가 완전히 해소</b>됐습니다. K-Pick의 KR IP 제한은 <b>프로덕션에서 유효</b>함이 확인돼 폐기 검토를 철회했습니다. 「전체 IA 구조」 표도 함께 갱신했습니다. 기획자 액션 <b>없음</b></td></tr><tr><th>v30 · 2026-08-20</th><td><b>「사용자 설정」은 이제 AI가 먼저 확인합니다</b> — 설정을 스스로 찾아 할 필요가 없습니다. 작업을 시작하면 AI가 <b>설정값·이 컴퓨터가 기존 기록에 있는지·지난 작업 이력</b>을 먼저 보고 <b>필요한 것만</b> 물어봅니다. 이미 설정을 마친 PC는 <b>질문 0개</b>, 같은 사람의 새 PC는 <b>경로 한 줄</b>, 처음 합류하는 분은 <b>세 가지</b>(짧은 영문 이름·이름/메일·담당할 작업)만 답하면 내 메모 파일과 담당 표시는 AI가 만들어 정리합니다. 「AI가 먼저 확인하는 것」 표 신설 · 직접 설정하는 절차는 그 아래로 이동. 기획자 액션 <b>없음</b></td></tr><tr><th>v29 · 2026-08-20</th><td><b>「시스템 가이드」 탭의 문서 지도에 인수인계 계층 반영</b> — 인수인계 문서가 한 덩어리에서 <b>공유 정본 + 작업 대상별 파일 + 사람별 PC 메모 + 공용 자원 점유 표시</b>로 나뉘었습니다. 기획자가 요청하는 방식은 그대로지만, 「지금 누가 무엇을 쓰고 있는지」가 보이므로 <b>같은 파일을 동시에 고쳐 덮어쓰는 사고</b>가 줄어듭니다. ⑤ 문서 지도에 3행 추가 · ② 흐름 지도의 세션 시작 설명과 ③ 라우팅 갱신 · ⑦ 확장 규칙에 「새 작업 대상」 카드 추가 · 「시스템 가이드」 탭에 <b>⑦이 두 개</b>였던 번호를 ⑦/⑧로 정정. 기획자 액션 <b>없음</b></td></tr><tr><th>v28 · 2026-08-20</th><td><b>「사용자 설정」 섹션 신설 — 받은 뒤 PC마다 한 번</b> — 여러 사람이 같은 저장소를 함께 쓰기 때문에 <code>사람키</code>를 한 번 넣어야 <b>누가 무엇을 했는지 기록에 남고</b>, 작업 시작 때 <b>내 PC 메모가 자동으로 함께 읽힙니다</b>. 컴퓨터 이름으로는 사람을 구분할 수 없어(한 사람이 PC 2대·한 PC를 여러 사람) 사람키를 <b>PC마다 같은 값</b>으로 넣습니다. 함께 <b>인수인계 문서가 3계층으로 분리</b>됐습니다 — 공유 정본 1개 + <b>작업 대상별 파일</b> + 사람별 PC 메모 + <b>공용 자원 점유 표시</b>(같은 파일을 두 사람이 동시에 고쳐 덮어쓰는 사고를 막습니다). 기획자 액션은 하나 — <b>「사용자 설정」의 세 줄을 PC마다 한 번 실행</b></td></tr><tr><th>v27 · 2026-08-12</th><td><b>(철회)</b> 용어집 v4.8 관련 갱신 — 반영이 되돌려져 <b>이 버전은 유효하지 않습니다</b>. 다음 유효 버전은 v28입니다</td></tr><tr><th>v26 · 2026-08-10</th><td><b>「시스템 가이드」 탭에 ⑦ 가이드 버전 관리 신설</b> — 가이드 소스를 git 추적 <code>guide/</code>로 전환하고 게시본을 <code>guide-vN</code> 태그로 기록하는 규약을 문서화했습니다. 같은 날 두 세션이 같은 파일명 zip을 만들어 무음 덮어쓰기가 난 사고(v23 유실 → v25 복원)가 계기입니다. 기획자 액션은 하나 — <b>게시 완료를 알려주면 태그가 남습니다</b></td></tr><tr><th>v25 · 2026-08-10</th><td><b>용어집 v4.7 — 포이카츠 중국어(번체) 교정</b> — 등재값 <code>點數活動</code>이 XLT 시스템 전체(3,730키)에서 <b>실사용 0건</b>인 반면 실제 번역은 <code>集點活動</code>을 씁니다. 등재값 쪽이 실사용과 어긋난 경우라 등재값을 고쳤습니다(v4.1에서 영어·태국어만 맞추고 남겨둔 잔여분). 실측 <b>P1 −2건 · 신규 경고 0건</b>. <code>total_deprecated_terms</code> 수치 오류(13 → <b>14</b>)도 정정했습니다. 이 갱신은 당초 v23으로 만들어졌으나 <b>병렬 세션의 파일명 충돌로 유실</b>돼 v25로 재적용했습니다 — 이 사고를 계기로 가이드 소스를 <code>guide/</code>에서 git으로 관리합니다</td></tr><tr><th>v24 · 2026-08-10</th><td><b>IA 주간 점검 #4 (로그인 보강 포함) — USDT PLUS 이율 5%→7%(최대 연 10%)·Unifi Pay Direct·액션 라벨 개편과 「외부 지갑 연결」 프로덕션 반영</b> — 내 자산 액션이 <b>보내기·채우기·교환하기·은행출금</b>으로 바뀌었습니다(구 라벨이 남은 문구는 교체 대상). 누적 이자 화면(<code>/interest/usdt</code>)이 새로 확인됐고, 리워드 스켈레톤은 <b>프로덕션 해소·Beta mini만 로그인에서도 고착</b>으로 정정됐습니다. <b>Beta 디버그 패널은 개발자 도구라 점검에 사용하지 않기로 확정</b>했습니다</td></tr><tr><th>v21 · 2026-08-07</th><td><b>용어집 v4.6 — 「사용자」 등재 + 「유저」 금지</b> — 같은 화면에서 <code>유저</code>·<code>사용자</code>가 섞여 쓰이던 것을 「사용자」로 통일했습니다. 용어집 탭의 금지 목록(14건)·전체 용어 표(116용어)·전체 JSON이 모두 최신입니다</td></tr><tr><th>v20 · 2026-08-07</th><td><b>「시스템 가이드」 탭 신설</b> — 문서 13개·스크립트 13개로 늘어난 시스템의 <b>전체 구조를 한 장으로</b> 정리했습니다. 3계층 구조 · 흐름 지도 6종 · <b>상황별 라우팅 표</b>(하려는 일 → 읽을 문서 → 갱신할 문서) · 4대 차단 게이트 · 문서/스크립트 지도 · 확장 규칙. “어떤 작업에 어떤 문서를 봐야 하는지”를 찾는 용도입니다 · <b>XLT 시스템 등록값 검증 신설</b> — 이미 등록된 문구가 용어집에 맞는지 시스템 전체를 읽어 점검하고, 수정 제안을 확인받아 업로드용 엑셀까지 만듭니다. 번역할 때 <b>비슷한 문구의 기존 키를 찾아 재사용을 제안</b>하는 기능도 함께 들어갔습니다</td></tr>
         <tr><th>v19 · 2026-08-06</th><td><b>「월렛」도 검사 대상에 추가</b> — 「지갑」이 표준인데 「월렛」이라고 쓰면 검사에서 안 걸리던 사각지대를 막았습니다. 「팔로우」 때와 같은 원인이었습니다</td></tr><tr><th>v18 · 2026-08-06</th><td><b>용어집 버전 이력을 접이식으로</b> — 이력이 20개 버전까지 늘어 용어집 탭이 길어졌습니다. <b>버전 요약 표와 버전별 상세 카드를 한 번에 접고 펼치도록</b> 바꿔, 기본은 접힌 상태로 두고 필요할 때만 펼쳐 봅니다. 자주 보는 <b>구 표기 금지 목록</b>과 <b>전체 용어집</b>은 그대로 노출됩니다</td></tr><tr><th>v17 · 2026-08-06</th><td><b>구 표기 검사 정확도 개선</b>: 금지 목록에 <code>友達</code>·<code>공식계정</code>을 추가하고, <b>문맥 조건</b>을 넣어 같은 단어의 다른 뜻(관심 앱·기대해 주세요·~를 따르다)은 걸리지 않게 했습니다. XLT 시스템 전체 실측 <b>잘못된 경고 8건 → 0건</b></td></tr><tr><th>v16 · 2026-08-06</th><td><b>용어집 v4.3 — 구 표기 금지 목록 신설</b>: <code>OA 팔로우</code>·<code>OA 채널 추가</code> 등을 <b>Unifi LINE 공식 계정 친구 추가</b>로 통일하도록 금지 → 권장 매핑을 용어집에 넣었습니다. 용어집 탭에 <b>「구 표기 금지 목록」 표</b>가 추가됐고, 검증기가 각 언어를 검사해 경고합니다. 기존 번역에 새 경고는 생기지 않습니다(실측 230 → 230)</td></tr><tr><th>v15 · 2026-08-06</th><td><b>용어집 v4.2 (114 → 115용어)</b>: <code>지급 완료</code> 신규 등재 — 비실시간 일괄 지급 전환으로 「지급 완료된 리워드」가 상시 문구가 됐는데 등재값 <code>완료</code>만 있어 각 언어의 자연스러운 완료 표현이 경고로 잡혔습니다. 실측 <b>P1 197 → 193건(-4)</b>, 신규 경고 0건. <b>v14의 검증기 개선이 먼저 들어가야 효과가 나는 첫 사례</b>입니다</td></tr><tr><th>v14 · 2026-08-06</th><td><b>검증 경고(P1) 오탐 대폭 감소</b>: 용어집 대조가 <b>짧은 용어까지 중복으로 걸던 문제</b>를 고쳐 <code>지급 완료된 리워드</code>의 정상 번역이 「완료」 불일치로 잡히거나 <code>당첨금</code>이 <code>당첨</code>으로 잡히는 오탐이 사라졌습니다. 보유 번역 파일 8종 실측 <b>P1 232건 → 198건(-34, -15%)</b>, <b>P0는 0건 그대로</b> · <b>화면 이미지 번호가 글자를 가리지 않습니다</b>: 코멘트 핀이 문구 위에 찍혀 있으면 번호 원이 글자를 덮던 것을 <b>자동으로 글자 밖으로 비켜</b> 놓고, 가림이 남으면 도구가 스스로 경고합니다</td></tr><tr><th>v13 · 2026-08-05</th><td><b>용어집 v4.1 확대(113 → 114 용어)</b>: <b>종료 zh_TW 교정</b> <code>結尾</code>(글·이야기의 맺음말) → <code>結束</code> — 등재값 자체가 오역이었음 · <b>포이카츠 en_US·th_TH 음차 채택</b> <code>point activity</code>·<code>การสะสมแต้ม</code> → <code>Poi-katsu</code> · <b>캠페인 신규 등재</b>(campaign/キャンペーン/活動/แคมเปญ). 실측: 시즌3 47키 검증 <b>P1 63건 → 58건(-5), 신규 P1 0건</b></td></tr><tr><th>v12 · 2026-08-05</th><td><b>용어집 v4.1 — OA(LINE 공식계정) 메시지 변수 <code>oa_variables</code> 영역 신설</b>: <code>{{total_amount}}</code>(당첨금 총액)·<code>{{wallet_address}}</code>(지급 지갑 주소) 2종 등재, 당첨금 총액 변수를 <code>{{amount}}</code> → <code>{{total_amount}}</code>로 확정. 용어집 탭에 <b>OA 변수 표</b> 추가</td></tr><tr><th>v11 · 2026-08-05</th><td><b>「이렇게 요청하세요」 대폭 보강 — 실제 작업에서 결과가 좋았던 <b>요청 패턴 7가지</b> 신설(정본 지정·이름으로 프레임 찾기·위키에 값 먼저 쓰기·일괄 나열·근거 있는 정정·조사만 먼저·확인 목록 일괄 응답) · 요청 예시 4종 추가(화면 기준 확인 목록 정리 · 새 영역 위치 지정 · 위키 값 채워두고 반영 · 판단 정정) · 체크리스트 3항목 추가 · <b>프레임을 링크 없이 이름·섹션으로 지정</b>하는 방법 명문화</b></td></tr><tr><th>v10 · 2026-08-03</th><td>IA 주간 점검 #3 — 미션앤리워드 Season 3(8/1) 개시로 럭키볼 정책 수치 전면 교체 · IA 트리를 <b>환경 × 사용자 상태 × 접속 IP</b> 3축으로 재정리 · MY쇼핑 = 외부 GuideKim 확정(부여 대상 아님) · Beta 「외부 지갑 연결」 신설 · mini Reward Special Missions·이자 배너 실측 · 로그인 리워드 탭 3주 연속 로딩 실패 서비스측 보고 · 어휘 승인 대기 5건</td></tr>
@@ -2325,6 +2326,75 @@ action url 을 모두 업데이트 했어
       <p id="ia-count" class="text-xs text-slate-400 mt-3"></p>
     </div>
 
+    <!-- ═══ 2026-09-07 (#6) ═══ -->
+    <div class="panel mt-6">
+      <div class="flex items-center gap-2 flex-wrap"><span class="badge badge-indigo">#6 · 2026-09-07</span><h3 class="panel-h">마이 설정에 「Preferred Stable」 신설 · 로그인 홈 전면 개편 · K-Pick 2단 구조 재편 · K-뷰티에 클리닉 섹션 신설</h3></div>
+      <table class="ex-table mt-4"><tbody>
+        <tr><th>점검 대상</th><td><b>프로덕션</b>(비로그인 + <b>로그인</b>) + <b>Beta</b>(로그인) + <b>Unifi mini Beta</b>(로그인) — 라우트 <b>40여 개</b> 순회. 사용자가 점검 중 Chrome에 로그인해 주셔서 <b>지난 회차 최대 이월 항목인 로그인 영역 전체를 점검</b>했습니다</td></tr>
+        <tr><th>결과</th><td>IA.md 갱신 · 승인 대기 <b>11건</b>(⑨ Preferred Stable · ⑩ 클리닉 · ⑪ 체크아웃 신설) · 이월 <b>4건 해소</b> · <b>1건 재발</b>(mini 리워드 스켈레톤)</td></tr>
+      </tbody></table>
+
+      <div class="mt-5 rounded-xl bg-rose-50 border border-rose-200 p-4">
+        <p class="text-sm font-bold text-rose-900">🔴 「Preferred Stable」 설정이 생겼습니다 — 같은 화면이 사용자마다 다르게 보입니다</p>
+        <p class="text-sm text-rose-900/90 mt-1">마이(<code>/setting</code>) › <b>Display</b>에 <b>기준 스테이블코인을 고르는 항목</b>이 신설됐습니다(값 JPYC · USDT · IDRP). <b>단순 설정이 아닙니다</b> — 이 값에 따라 <b>홈 자산 카드의 순서·기본 탭</b>, <b>홈 히어로 이율 수치</b>(USDT 기준 「최대 연 10%」 vs JPYC 기준 「최대 연 2%」), <b>가이드 카드 구성</b>(「Learn about JPYC」 노출)이 달라집니다.<br>➡️ <b>기획 문서에서 「Beta라서 JPYC 기준」이라고 적어 온 부분은 재해석이 필요합니다</b> — 환경이 아니라 <b>사용자 설정</b>이 기준 자산을 바꿉니다. IA의 화면 변형 축에 <b>「기준 스테이블 설정」을 새 축으로 추가</b>했고, 어휘는 <b>승인 대기 ⑨</b>입니다.</p>
+      </div>
+
+      <div class="mt-4 rounded-xl bg-rose-50 border border-rose-200 p-4">
+        <p class="text-sm font-bold text-rose-900">🔴 로그인 홈과 비로그인 홈은 이제 다른 화면입니다 — 「Pay」 버튼 위치도 확인됐습니다</p>
+        <p class="text-sm text-rose-900/90 mt-1">로그인하면 <b>헤더에 [pay] · [QR] · [알림] 아이콘 3종</b>이 생기고(비로그인에는 <b>셋 다 없습니다</b>), 본문 최상단이 <b>토큰별 자산 3카드</b>(JPYC · USDT · IDRP — 카드마다 [Deposit]과 유도 문구)로 바뀌며 진입 시 <b>플러스 모드 프로모션 모달</b>이 뜹니다. 반대로 <b>비로그인 전용</b>인 QR 결제 히어로 배너·「최대 연 10%」 히어로·「Get more interest」 섹션은 <b>로그인 홈에 없습니다</b>.<br>지난 회차에 "가이드가 말하는 홈 상단 「Pay」 버튼을 못 찾았다"고 이월했던 항목은 <b>로그인 전용 헤더 아이콘</b>으로 확인됐습니다([QR] 아이콘은 입금 화면 바로가기입니다). ➡️ 홈에 별도 Screen ID를 줄지(<b>승인 대기 ⑤</b>) 판단 근거가 결정적으로 강해졌습니다.</p>
+      </div>
+
+      <div class="mt-4 rounded-xl bg-rose-50 border border-rose-200 p-4">
+        <p class="text-sm font-bold text-rose-900">🔴 K-Pick이 「허브 + 카테고리 목록」 2단으로 나뉘고, K-뷰티에 클리닉 섹션이 생겼습니다</p>
+        <p class="text-sm text-rose-900/90 mt-1">K-Pick 탭(<code>/benefits</code>)과 mini 홈(<code>/benefits-mini</code>)에서 <b>바우처 12종·스킨부스터·K-컬처 카탈로그가 전부 빠지고</b> 배너 + 카테고리 4아이콘 + JPYC 가이드만 남았습니다. <b>소멸이 아니라 이관</b>입니다 — 카탈로그는 카테고리 목록(<code>/benefits/k-pick/{beauty·shopping·pop}</code>)이 담당하게 됐습니다. mini 홈과 K-Pick 탭은 이제 <b>완전히 같은 화면</b>이라 중복 판단이 시급합니다.<br>그리고 <b>K-뷰티 목록 안에 「클리닉」 섹션이 신설</b>됐습니다 — 필터 4종(전체 · 피부·미용외과 · 치과 · 안과), <b>클리닉 19곳</b>(청담봄온·DA미용외과·레디피부과·원데이치과·힐링안과 등), 카드마다 평점·리뷰 수·시술 태그·<b>[문의하기]</b>·<b>결제액 5~15% 캐시백</b>. <b>위키에서 다뤄 온 클리닉이 실제 라이브 카탈로그에 올라왔습니다</b>(어휘 <b>승인 대기 ⑩</b>).</p>
+      </div>
+
+      <h4 class="font-bold text-ink mt-5">⚠️ 추정 → ✅ 실측 승격 (로그인 점검으로 확인)</h4>
+      <table class="ex-table mt-2"><tbody>
+        <tr><th>화면</th><th>라우트</th><th>핵심 확인</th></tr>
+        <tr><td><b>QR 스캔 화면</b></td><td><code>/pay/qr/mpm</code></td><td>「Scan QR for offline payment」 · 진입 즉시 <b>카메라 권한 다이얼로그</b>([Grant Access]·[Cancel]). <b>권한 미허용·결제 미실행</b> — 스캔 이후 금액 입력 단계는 여전히 미실측</td></tr>
+        <tr><td><b>입금하기</b></td><td><code>/deposit</code></td><td>❌ <b>브릿지 배너가 제거</b>됐습니다(#4에서 "클릭이 안 된다"고 이월했던 항목 종결). 안내가 <b>KAIA 단일 네트워크</b>로 정리되고 JPYC은 <b>jpyc.co.jp 외부 구매 유도 2단계</b>로 바뀌었습니다</td></tr>
+        <tr><td><b>교환하기</b></td><td><code>/apps/trade/swap</code></td><td>✅ 「AlphaSec」 배너가 <b>영문으로 정상 번역</b>됐습니다 — #3의 한국어 그대로 노출(번역 누락 의심) 건 <b>종결</b></td></tr>
+        <tr><td><b>내 자산</b></td><td><code>/my</code></td><td>액션 영문 라벨 <b>Send · Deposit · Swap · Bank Withdraw</b> · 케밥 메뉴 <b>Connect External Wallet</b> · 🆕 <b>JPYC 카드에 「Max 2%」 배지가 프로덕션 반영</b> · 누적 이자 진입점이 <b>「Total Interest」 인라인 표기</b>로 변경</td></tr>
+        <tr><td><b>mini 내 자산</b></td><td>mini <code>/my</code></td><td>✅ 액션이 <b>取引履歴 · 出金 · 入金 · 銀行出金</b>으로 <b>Swap이 없습니다</b> — 위키 스펙의 「mini 교환 미제공」을 <b>처음으로 화면으로 확인</b>했습니다. ja 라벨 <b>出金</b>은 용어집의 「보내기」 개편 방향과 일치합니다</td></tr>
+        <tr><td>마이 · 알림 · 거래내역 · 송금 · 누적이자 · 보유 NFT</td><td>—</td><td>구성 동일. 영문 라벨 확정(누적이자 「My USDT Total Interest」, 송금 안내 「Lock-up/Plus Mode …」) · 알림 유형 <b>Login Notification</b>·<b>New IP login notification</b> · NFT 빈 상태에서는 <b>탭 3종이 노출되지 않습니다</b></td></tr>
+      </tbody></table>
+
+      <details class="ex mt-4"><summary>🆕 신설 · 변경 사항 전체 보기</summary><div class="ex-body">
+        <table class="ex-table mt-2"><tbody>
+          <tr><th>항목</th><th>핵심 확인</th></tr>
+          <tr><td><b>상품 상세에 구매 동선</b> 🆕</td><td>하단 고정 CTA <b>[Save purchase link]</b> · <b>[Buy now]</b>. [Buy now]는 <b>LINE MINI app으로 넘겨</b> <code>/k-pick/{카테고리}/{상품ID}/checkout</code>으로 갑니다 — 즉 <b>상세는 웹, 구매는 MINI app</b>입니다(어휘 <b>승인 대기 ⑪</b>)</td></tr>
+          <tr><td><b>커머스용 MINI app이 따로 있습니다</b> 🆕</td><td>구매·목록 CTA가 <b><code>2008994549-CGfrtgSs</code></b>로 유도됩니다 — 지금까지 점검에 써 온 mini 창구(<code>2008994547-GfGUdDxy</code>)와 <b>다른 앱</b>입니다. 혼용하지 않도록 IA에 명시했습니다</td></tr>
+          <tr><td><b>특정상거래법 표기</b> 🆕</td><td>상품 상세에 「特定商取引法に基づく表記」가 실렸고 <b>판매 사업자가 Afformation Inc.(운영 서비스 GuideKim)</b>입니다. <b>화면은 <code>unifi.me</code>인데 판매 주체는 외부 파트너</b>라, "Unifi 화면인가"를 도메인으로 볼지 판매·운영 주체로 볼지가 <b>승인 대기 ⑧</b>의 핵심 쟁점이 됐습니다</td></tr>
+          <tr><td><b>프로덕션에 카테고리 라우트 개방</b> 🆕</td><td><code>/benefits/k-pick/*</code>가 프로덕션에서도 열립니다 — 단 <b>KR IP에서는 카탈로그 0건</b>(Beta는 정상). ➡️ <b>KR IP 제한이 카테고리 목록에도 적용</b>됨이 확인돼 <code>kpick_kr_block_01</code> 유지 근거가 강화됐습니다</td></tr>
+          <tr><td>홈 미션 유도 카드 🆕</td><td>「Receive USDT rewards daily / Complete daily missions from check-ins to games」 — 프로덕션·Beta 공통. 홈이 <b>「Check {자산} Benefits」 섹션 그룹</b> 구조로 정리됐고 <b>섹션 순서는 로그인 여부·Preferred Stable에 따라 갈립니다</b>(순서를 화면 식별 근거로 쓰지 마세요)</td></tr>
+          <tr><td>게임 미션에 예치 조건 문구 🆕</td><td>「<b>Deposit 100 USDT or more</b> and complete 3 game missions to get a lucky ball.」 — 출석 체크와 같은 조건이 게임 미션에도 명시됐습니다</td></tr>
+          <tr><td>Apps 카테고리 소멸</td><td><b>SocialFi가 사라져 8종 → 7종</b>(AI·CONTENT·DePIN·GAME·Payment·SOCIAL·ETC) · <b>26 Apps</b>(지난주 27). 카테고리 폐지인지 앱이 빠져 숨은 것인지 다음 회차에 재확인합니다</td></tr>
+          <tr><td>캐시백률 균일화</td><td>K-뷰티·K-컬처 <b>7% 균일</b> / K-쇼핑 <b>10% 균일</b>(올리브영 1만원권만 5%) — 지난주의 상품별 편차와 또 다릅니다. <b>문서에 상수로 인용하지 마세요</b></td></tr>
+          <tr><td>K-컬처 신규 상품</td><td><b>DMZ 투어</b> · <b>난타 공연</b> · <b>JUMP 공연</b> 추가</td></tr>
+          <tr><td>Beta 홈 배너 교체</td><td>🆕 「결제 시 최대 15% 환원 — K-뷰티·K-컬처·쇼핑 인기 특전」 · ❌ 지난주의 「친구에게 JPYC 선물」 배너 소멸</td></tr>
+          <tr><td>공지사항</td><td><b>신규 공지 없음</b> — 최신이 9/1 Season 4. 4일 사이 정책 공지 변동 0건</td></tr>
+        </tbody></table>
+      </div></details>
+
+      <div class="mt-4 rounded-xl bg-rose-50 border border-rose-200 p-4">
+        <p class="text-sm font-bold text-rose-900">🔴 지난주에 "완전히 해소"라고 알린 mini 리워드 스켈레톤이 재발했습니다</p>
+        <p class="text-sm text-rose-900/90 mt-1">Beta mini 리워드 탭(<code>/benefits-mini/daily-mission</code>)이 <b>로그인 상태에서 20초를 기다려도 회색 막대(스켈레톤)로 고착</b>합니다. 미션 API는 <b>정상 응답(200)</b>이고 콘솔 오류도 없어 <b>화면 그리기 쪽 문제</b>로 보입니다(8월 진단과 동일). 프로덕션과 Beta 웹은 정상이라 <b>Beta mini 로그인 한정</b>입니다.<br>이 때문에 <b>mini 이자 배너(연 2%)·Special Missions·「매일 출석 체크」·NEXT Bay 배너를 이번 회차에 확인하지 못했습니다</b> — 다음 점검 최우선 항목이며 <b>FE 확인을 권장</b>합니다.</p>
+      </div>
+
+      <div class="mt-4 rounded-xl bg-amber-50 border border-amber-200 p-4">
+        <p class="text-sm font-bold text-amber-900">🙋 사용자 승인 대기 — Screen ID 어휘 11건 (⑨·⑩·⑪ 신규)</p>
+        <p class="text-sm text-amber-900/90 mt-1">① 보유 NFT <code>asset_nft_01</code> → <code>apps_mypage_nft_01</code> · ② <code>/reward/…</code> 부스트·스테이킹 어휘 · ③ K-Pick <code>kpick_</code> 프리픽스 · ④ 외부 지갑 연결 · ⑤ 비로그인 변형 어휘(<b>근거 강화</b>) · ⑥ 누적 이자 화면 · ⑦ 결제(Unifi Pay) 주기능 · ⑧ K-Pick 상품 상세 + <b>「Unifi 화면」 판정 기준</b> · <b>⑨ 「Preferred Stable」 설정 — 단순 설정이 아니라 화면 변형 축</b> · <b>⑩ 클리닉 섹션(목록·상세 분리 여부)</b> · <b>⑪ K-Pick 체크아웃(MINI app 전용 진입)</b>. ③·⑧·⑩·⑪은 <b>K-Pick 계열이라 묶어 결정</b>하는 것이 좋습니다. <b>확정 전까지 해당 영역 Screen ID 부여 금지.</b></p>
+      </div>
+
+      <details class="ex mt-4"><summary>변경 없음 확인 · 다음 회차 이월 항목 보기</summary><div class="ex-body">
+        <p class="ex-cap"><b>변경 없음</b>: 프로덕션 GNB <b>4탭</b>(로그인에서도 4탭 — <b>K-Pick 승격 6주째 미반영</b>) / Beta·mini 5탭 · 부스트 티어 30만·40만·50만 = 1·2·3%, <b>무기한</b> · CR <b>STAGE 2</b>(2R 9.1~9.11 진행 중)·분배 정책 전문 · Season 4 정책 수치(공지 전문 대조 동일) · 게임 6종 · <code>/apps</code> 구성(캐러셀 5종·미션 3건·Editor's Pick 3종) · <code>/apps/market</code> 구조 · 프로덕션 <code>/benefits</code> 배너 3종 축소판(로그인에서도 동일) · <code>/transfer</code>·거래내역·마이 나머지 항목 · mini <code>luckyball-invite</code> 비실시간 지급 블록·유의사항 6종 · <code>draw-promotion</code> LINE 앱 전용 게이트 · mini 푸터에 어그리게이터 약관 없음 · 로그인 게이트 소셜 5종</p>
+        <p class="ex-cap mt-2"><b>⚠️ 확인 필요</b>: ⓐ Beta 홈 「KAIA &amp; USDT」 부제 <b>「최대 0% 보상」이 6주 연속 재현</b> — 🆕 이번엔 <b>로그인 상태에서도 동일</b>해 비로그인 한정이 아님이 확인됐습니다(FE 확인 권장) · ⓑ <b>mini 이자 노출 충돌이 자산 탭까지 확대</b> — mini <code>/my</code> JPYC 카드에 「최대 연 2% 이자 받기」(위키 스펙은 "mini 이자 노출 불가") · <b>5주 연속</b>, 정책 확인 시급 · ⓒ 「내 예약」은 <b>로그인 상태에서도 라우트가 없습니다</b>(<code>href="#"</code> · 툴팁만) · ⓓ 캐시백률·상품 목록은 계속 흔들립니다 — 상수 인용 금지 · ⓔ 부스트 문구 정합성(공지 종료일 vs 화면 무기한)</p>
+        <p class="ex-cap mt-2"><b>이월</b>: mini 리워드 탭 전체(스켈레톤 · <b>최우선</b>) · QR 결제 스캔 이후 단계 · 결제용 사전 충전 잔액의 정체 · K-Pick 체크아웃 화면 · 클리닉 [문의하기] 이후 화면 · 프로덕션 K-Pick 카탈로그(JP IP 필요) · Wallet Mode(해외 IP) · LIFF(LINE 앱) · JP IP · approve 미완료 계정 · <code>draw-promotion</code> 내용 · 위임(Delegate) 입력 · 송금 2단계·QR · 거래 상세 · <code>/payout</code> · 계정 탈퇴 · 외부 지갑 연결 플로우</p>
+        <p class="ex-cap mt-2"><b>🧭 새 점검 교훈</b>: 인앱 브라우저로 K-Pick을 보면 <b>403·429</b>가 떠 카탈로그가 <b>빈 화면처럼 보입니다</b>. 같은 라우트를 사용자 Chrome으로 열면 정상입니다 — <b>K-Pick 카탈로그 유무는 Chrome으로 교차 확인</b>합니다.</p>
+      </div></details>
+    </div>
+
     <!-- ═══ 2026-09-03 (#5) ═══ -->
     <div class="panel mt-6">
       <div class="flex items-center gap-2 flex-wrap"><span class="badge badge-indigo">#5 · 2026-09-03</span><h3 class="panel-h">Unifi Pay 오프라인 QR 결제 출시 · K-Pick 상품 상세가 Unifi 내부 화면으로 편입 · mini 홈 전면 개편 · Season 4 개시</h3></div>
@@ -2605,9 +2675,13 @@ action url 을 모두 업데이트 했어
 /* IA_DATA — md/IA.md 갱신 시 이 배열만 고친다.
    d: 뎁스(1~3) · n: 화면명 · r: 라우트/부가 표기 · e: [Web, LIFF, Wallet, mini] 제공도 1=제공 2=조건부 0=미제공 */
 var IA_DATA = [
- [1,'홈','/ · 비로그인 열람 가능 (자산 카드 미노출)',1,1,1,1],
- [2,'오프라인 QR 결제 배너','홈 최상단 히어로 · /pay/qr/mpm/guide · 2026-09-03 신설',1,1,0,0],
- [2,'자산 요약 카드','USDT · JPYC · IDRP 탭',1,1,2,2],
+ [1,'홈','/ · 비로그인과 로그인이 사실상 다른 화면 (2026-09-07 실측)',1,1,1,1],
+ [2,'로그인 홈 헤더 아이콘 3종','[pay] → /pay/qr/mpm · [QR] → /deposit · [알림] · 2026-09-07 신설 · 비로그인에는 없음',1,1,2,2],
+ [2,'오프라인 QR 결제 배너','홈 최상단 히어로 · /pay/qr/mpm/guide · 비로그인 전용 (로그인 홈에는 없음)',1,1,0,0],
+ [2,'자산 요약 카드','2026-09-07 개편 — 토큰별 3카드 (JPYC · USDT · IDRP) · 카드마다 [Deposit] + 유도 문구 · 순서는 「Preferred Stable」 설정을 따른다',1,1,2,2],
+ [3,'Total Interest 인라인 표기','USDT 카드 안 「Total Interest N USDT」가 /interest/usdt 진입점 (구 「누적이자 받았어요」 배너 소멸)',1,1,0,2],
+ [2,'플러스 모드 프로모션 모달','2026-09-07 신설 · 로그인 홈 진입 시 · [Start Earning 7%] · [Don\'t show for 7 days]',1,1,0,0],
+ [2,'미션 유도 카드','「Receive USDT rewards daily」 · 2026-09-07 신설 · 프로덕션·Beta 공통',1,1,0,0],
  [3,'누적 이자 · 플러스 모드 배너','basic 연 3% · plus 연 7% · boost 최대 3% = 최대 연 10% · 플러스 모드 /plus/usdt (2026-09-03 라우트 확정)',1,1,0,0],
  [3,'레퍼럴 랭킹 배너','2026-09-03 프로덕션에서 소멸 (3rd referral 캠페인 종료) · beta는 JPYC 레퍼럴 배너로 교체',0,0,0,0],
  [2,'USDT 부스트','/reward/usdt',1,1,0,0],
@@ -2621,21 +2695,25 @@ var IA_DATA = [
  [2,'가이드','/doc/usdt · /doc/jpyc · /doc/wallet · /doc/trust · /guide',1,1,2,2],
  [2,'FAQ','/faq',1,1,1,1],
  [2,'OA 친구추가 유도','LIFF 접근 시',0,1,1,0],
- [1,'K-Pick','/benefits · 프로덕션은 KR IP에서 축소판 (배너 3종만) · beta는 전체 열람',2,2,0,1],
+ [1,'K-Pick','/benefits · 2026-09-07 허브로 축소 (배너 + 카테고리 4아이콘 + JPYC 가이드) · 카탈로그는 카테고리 목록으로 이관 · 프로덕션은 KR IP에서 배너 3종만',2,2,0,1],
  [3,'Web · LIFF는 JP only · Beta에서 GNB 정식 탭 승격','',2,2,0,1],
  [2,'카테고리 4종','K-뷰티 · K-쇼핑 · K-컬처 · 내 예약',2,2,0,1],
- [3,'카테고리 목록 라우트','/benefits/k-pick/{beauty · shopping · pop} · mini /benefits-mini/k-pick/… · 2026-09-03 신설 (내 예약은 라우트 없음)',2,2,0,1],
- [2,'바우처','올리브영 · 다이소 · CU · 이마트 12종 · 캐시백 5~10% + N% OFF 할인 표기 (2026-09-03 신설) · 수치 상수 인용 금지',2,2,0,1],
+ [3,'카테고리 목록 라우트','/benefits/k-pick/{beauty · shopping · pop} · mini /benefits-mini/k-pick/… · 2026-09-07 카탈로그 정본 화면이 됐다 · 프로덕션도 라우트 개방 (단 KR IP에서 0건) · 내 예약은 여전히 라우트 없음',2,2,0,1],
+ [2,'바우처','올리브영 · 다이소 · CU · 이마트 12종 · 2026-09-07 캐시백 10% 균일 (올리브영 1만원권만 5%) + N% OFF 할인 표기 · 수치 상수 인용 금지',2,2,0,1],
  [2,'K-Pick 상품 상세','/k-pick/{카테고리}/{상품ID} · Unifi 내부 화면으로 편입 (2026-09-03) · 정가 · 특가 · 캐시백 · 판매자 GuideKim · 환불 정책 · 리뷰',1,2,0,1],
  [3,'외부 이탈 상품 혼재','일부 상품은 여전히 guidekim.me/bizcon/… · 부여 전 목적지 개별 확인',2,2,0,1],
- [2,'K-뷰티 시술','쥬베룩 · 리쥬란 · 포텐자 · 캐시백 5~10% (환경별 상이 · 상수 인용 금지)',2,2,0,1],
- [2,'K-컬처 체험','퍼스널컬러 · 아이돌 메이크업 · BTS 팬투어 등 · 캐시백 7% · 상품 목록 로테이션',2,2,0,1],
+ [3,'구매 CTA · 체크아웃','2026-09-07 신설 — [Save purchase link] · [Buy now] → /k-pick/{cat}/{id}/checkout · 진입이 커머스용 MINI app (2008994549-CGfrtgSs) 전용 · 어휘 미확정 (승인 대기 ⑪)',2,2,0,1],
+ [3,'특정상거래법 표기','2026-09-07 신설 — 판매 사업자 Afformation Inc. (운영 서비스 GuideKim) · 화면은 Unifi 도메인이나 판매 주체는 외부 파트너',1,2,0,1],
+ [2,'클리닉 섹션','2026-09-07 신설 (K-뷰티 목록 안) · 필터 4종 (전체 · 피부·미용외과 · 치과 · 안과) · 클리닉 19곳 · 평점·리뷰·시술 태그·[문의하기]·결제액 5~15% 캐시백 · 어휘 미확정 (승인 대기 ⑩)',2,2,0,1],
+ [3,'클리닉 문의하기','[お問い合わせ] 이후 화면 미실측 (상태 변경 액션)',2,2,0,1],
+ [2,'K-뷰티 시술','쥬베룩 · 리쥬란 · 포텐자 등 · 2026-09-07 캐시백이 카테고리 단위 7% 균일로 (상수 인용 금지)',2,2,0,1],
+ [2,'K-컬처 체험','퍼스널컬러 · 아이돌 메이크업 · BTS 팬투어 · 2026-09-07 신규 DMZ 투어 · 난타 · JUMP 공연 · 캐시백 7% 균일 · 상품 목록 로테이션',2,2,0,1],
  [2,'내 예약','진행 중 예약 툴팁 · 레드닷',2,2,0,1],
  [2,'MY쇼핑','외부 guidekim.me 이탈 · Unifi 화면 아님 (상품 상세만 내부 편입 · 2026-09-03 부분 번복)',2,2,0,2],
  [2,'큐레이션 상세','/benefits-mini/curation/{id}',0,0,0,1],
  [2,'브릿지 화면','/channel/bridge/…',2,1,0,1],
  [1,'리워드','/benefits/daily-mission · mini /benefits-mini/daily-mission · 비로그인 열람 가능 (진행도 0)',1,1,0,1],
- [2,'mini 홈','/benefits-mini · 2026-09-03 전면 개편 — K-Pick형 커머스 화면으로 교체 (JPYC 잔액 배너 · 2칸 타일 소멸)',0,0,0,1],
+ [2,'mini 홈','/benefits-mini · 2026-09-07 허브로 축소 — Beta K-Pick 허브와 완전히 동일해졌다 (중복 판단 시급) · 로그인 시 「예약 진행 중」 툴팁',0,0,0,1],
  [2,'출석 체크','1~5일 연속 · 3 · 5일 럭키볼 · mini 「매일 출석 체크」 beta 신설 (2026-08-10 실측)',1,1,0,1],
  [3,'출석 완료 · 럭키볼 획득 팝업','',1,1,0,1],
  [2,'게임 미션','season 4 (2026-09-01~10-01) — 6종 중 3종 데일리 · 00:00 UTC+0 리셋 · 수치는 season 3와 동일',1,1,0,2],
@@ -2655,8 +2733,9 @@ var IA_DATA = [
  [2,'보내기','/transfer · 로그인 필수 · 라벨 개편 프로덕션 반영 (구 송금하기)',1,1,1,1],
  [3,'받는 사람 · 수량 입력 → QR 송금','',1,1,1,1],
  [2,'채우기','/deposit · 로그인 필수 · 라벨 개편 프로덕션 반영 (구 입금하기)',1,1,1,1],
- [3,'지원 네트워크 · 브릿지','수수료 무료 이벤트',1,1,1,2],
- [2,'교환','/apps/trade/swap · 로그인 필수',2,2,1,0],
+ [3,'지원 네트워크 · 브릿지','2026-09-07 배너 제거로 소멸 — 안내가 KAIA 단일 네트워크로 정리 · 부여 대상 아님',0,0,0,0],
+ [3,'JPYC 입금 안내','2026-09-07 개편 — jpyc.co.jp 외부 구매 유도 2단계 + [View JPYC Deposit Guide] (구 거래소 입금 3단계)',1,1,0,1],
+ [2,'교환','/apps/trade/swap · 로그인 필수 · 2026-09-07 mini /my에서 Swap 미노출 확인 (mini 미제공 스펙 첫 실측 근거)',2,2,1,0],
  [3,'Web · LIFF는 JP 미제공','',2,2,1,0],
  [2,'은행출금','외부 unifi.sentbe.com · 라벨 개편 프로덕션 반영 (구 은행송금)',1,1,1,2],
  [3,'복귀 화면','/payout',1,1,1,2],
@@ -2669,20 +2748,23 @@ var IA_DATA = [
  [1,'마이','/setting · 로그인 필수 · mini도 이 화면을 공유',1,1,1,1],
  [2,'인증 보안','이메일 · 패스키 · 간편 비밀번호',1,1,1,1],
  [2,'지갑 개인 키 확인','',1,1,1,1],
- [2,'언어 · 통화 설정','',1,1,1,1],
+ [2,'언어 · 통화 설정','Language Settings · Currency Settings',1,1,1,1],
+ [2,'Preferred Stable 설정','2026-09-07 신설 — 기준 스테이블코인 선택 (JPYC · USDT · IDRP) · 홈 카드 순서·히어로 이율·가이드 구성을 바꾼다 · 어휘 미확정 (승인 대기 ⑨)',1,1,1,1],
  [2,'알림 설정','',1,1,1,1],
  [2,'고객 센터','FAQ · 문의하기',1,1,1,1],
  [2,'로그아웃 · 계정 탈퇴','',1,1,1,1],
- [1,'결제 (Unifi Pay)','/pay/… · 2026-09-03 출시 · GNB 아닌 독립 영역 · 어휘 미확정 (승인 대기)',1,1,0,0],
+ [1,'결제 (Unifi Pay)','/pay/… · 2026-09-03 출시 · GNB 아닌 독립 영역 · 어휘 미확정 (승인 대기 ⑦)',1,1,0,0],
  [2,'오프라인 QR 결제 가이드','/pay/qr/mpm/guide · 비로그인 열람 가능 · 3단계 안내',1,1,0,0],
- [2,'QR 스캔 · 결제','/pay/qr/mpm · 로그인 필수 · 상태 변경이라 미진입',1,1,0,0],
- [3,'결제용 사전 충전 잔액','예치 · 지갑 잔액과의 관계 확인 필요',1,1,0,0],
- [3,'홈 상단 Pay 버튼','로그인 시 노출 추정 · 미실측',1,1,0,0],
+ [2,'QR 스캔 · 결제','/pay/qr/mpm · 2026-09-07 실측 — 「Scan QR for offline payment」 · 결제 미실행',1,1,0,0],
+ [3,'카메라 권한 다이얼로그','2026-09-07 신설 실측 — [Grant Access] · [Cancel] · 권한 미허용',1,1,0,0],
+ [3,'금액 입력 · 결제 확인','스캔 이후 단계 미실측 (상태 변경 액션)',1,1,0,0],
+ [3,'결제용 사전 충전 잔액','예치 · 지갑 잔액과의 관계 확인 필요 · 충전 화면 미발견',1,1,0,0],
+ [3,'홈 상단 Pay 버튼','2026-09-07 해소 — 로그인 홈 헤더의 [pay] 아이콘 (비로그인에는 없음)',1,1,0,0],
  [1,'Apps','/apps · GNB 아닌 독립 영역',1,1,2,0],
  [2,'게임 프로모션 캐러셀','최상단 5종 · 외부 게임 이탈',1,1,2,0],
  [2,'Reward 서브탭','미션형 보상 · 시세 위젯 · 비로그인 열람 가능',1,1,2,0],
  [2,'Market 서브탭','/apps/market · NFT drops',1,1,2,0],
- [2,'앱 카테고리 8종','27 apps (매주 변동) · 외부 dapp 이탈',1,1,2,0],
+ [2,'앱 카테고리 7종','2026-09-07 SocialFi 소멸 (8종→7종) · 26 apps (매주 변동) · 외부 dapp 이탈',1,1,2,0],
  [1,'로그인 온보딩','/auth/sign-in',1,1,1,1],
  [2,'소셜 로그인','google · line · naver · kakao · apple',1,1,1,0],
  [2,'LINE 단일 로그인','채널 동의 간소화',0,0,0,1],
@@ -3086,7 +3168,7 @@ var IA_DATA = [
 
 <footer class="border-t border-slate-200 bg-white">
   <div class="max-w-6xl mx-auto px-5 py-8 text-sm text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
-    <p>Figma → 다국어 위키 자동화 워크플로우 · 기획자 가이드 <b>v33</b> (2026-09-03)</p>
+    <p>Figma → 다국어 위키 자동화 워크플로우 · 기획자 가이드 <b>v34</b> (2026-09-07)</p>
     <p>핵심: <b class="text-slate-700">토큰 발급 → 요청 → AI 확인에 답하기 → 검증 통과 → 반영</b></p>
   </div>
 </footer>
