@@ -43,6 +43,7 @@
     "description": "...변경 사유 요약...",
     "total_terms": 29,                // terminology 실제 개수와 일치
     "last_updated": "2026-06-26",     // 갱신일(YYYY-MM-DD)
+    "updated_by": "hogeun (hogeun.kim.lnxt@gmail.com)",  // 이번 갱신을 요청/승인한 사람 (v5.3 신설, 자기신고 값)
     "total_exceptions": 8             // exceptions 실제 개수와 일치
   },
   "exceptions": [                     // 번역하지 않고 그대로 둘 표기 (고유명사·브랜드·기술·암호화폐)
@@ -55,6 +56,15 @@
   }
 }
 ```
+
+---
+
+### 3-1. `updated_by` (편집자 자기신고 — v5.3 신설)
+
+- **무엇인지**: Landpress API에는 실제 CMS 편집자 로그가 없다(누가 붙여넣었는지 시스템이 기록하지 않음). `updated_by`는 그 자리를 메우는 **자기신고 필드**로, "이번 갱신을 요청/승인한 사람"을 매 갱신 때마다 기록한다.
+- **값 결정 순서**: ① 세션에 사용자 식별 정보(userEmail 등 harness 컨텍스트)가 있으면 그 값을 쓴다(예: `hogeun (hogeun.kim.lnxt@gmail.com)`). ② 없으면 사용자에게 직접 물어 받는다. ③ 임의로 "Claude"·"AI" 등으로 채우지 않는다 — 실제 반영을 요청/승인한 사람을 남기는 것이 목적이다.
+- **한계**: Landpress 실제 편집자와 다를 수 있다(다른 팀원이 대신 붙여넣을 수 있음). 이 필드는 "누가 이 변경을 요청했는지"를 추적하는 것이지 "누가 CMS 버튼을 눌렀는지"를 추적하는 것이 아니다.
+- **갱신 시 필수**: 이후 모든 갱신(§5 체크리스트 4단계)에서 `updated_by`를 함께 채운다.
 
 ---
 
@@ -86,7 +96,7 @@
 □ 3. 후보의 5개 언어 표기를 기존 파일 번역과 대조해 일관성 확인 (불일치 시 보류/선정리)
 □ 3b. ⛔ 후보 표기의 XLT 등록값 실사용 건수 실측 (fetch_xlt_registry — 0건 표기는 권장 금지 · §4 기준 4)
 □ 4. 전체 JSON에 반영 — terminology/exceptions 추가, metadata 갱신
-     (version↑, total_terms/total_exceptions=실제 수, last_updated=오늘, created_at 유지, description에 사유)
+     (version↑, total_terms/total_exceptions=실제 수, last_updated=오늘, updated_by=요청/승인자(§3-1), created_at 유지, description에 사유)
 □ 5. 갱신된 전체 JSON + 변경 요약(added/changed 목록)을 사용자에게 전달
 □ 5b. ⛔ 기획자 가이드(dropweb) zip을 같은 작업에서 갱신해 전달 (§5-1 — 필수, 제안 아님)
 □ 6. 사용자가 가이드 페이지(또는 전달받은 JSON)에서 복사해 Landpress CMS(web3_xlt_json)에 붙여넣어 반영
