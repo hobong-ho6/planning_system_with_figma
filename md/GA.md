@@ -15,21 +15,25 @@
 
 ---
 
-## 2. 셀 구조 — XLT 중첩표 아래 `Event` 표
+## 2. 셀 구조 — `{Screen ID} - XLT & GA` 제목 1개 + XLT 중첩표 + Event 표
+
+**⚠️ 2026-09-10 정정**: 이전에는 XLT 중첩표 앞에 제목이 없고 Event 표 위에만 `<h5>Event</h5>`를 붙였다. 화면마다 위키 TOC 항목이 XLT/Event로 나뉘어 2개씩 생기고 목차가 길어지는 문제가 있어(unifi-mini-v2, pageId=4704515582 실측), **화면당 제목을 1개로 통합**했다. 새로 작성·수정하는 페이지는 아래 방식을 따른다.
 
 `XLT & GA` 셀은 위에서 아래로 다음 순서다.
 
-1. XLT 중첩표 `No | XLT Key | KR` (`md/wiki.md` 'Screen 표 (XLT 컬럼)' 규칙 그대로)
-2. `<h5>Event</h5>`
-3. Event 표 `# | Event Name | Parameter`
+1. `<h5>{Screen ID} - XLT & GA</h5>` — 화면당 **제목 1개만** (XLT용·Event용을 따로 만들지 않는다)
+2. XLT 중첩표 `No | XLT Key | KR` (`md/wiki.md` 'Screen 표 (XLT 컬럼)' 규칙 그대로 — XLT 키가 없으면 생략)
+3. `GA Screen ID: ...` 문구
+4. Event 표 `# | Event Name | Parameter`
 
 ```html
 <td>
+<h5>Clinic Bridge - XLT &amp; GA</h5>
 <table class="wrapped" data-mce-resize="false"><tbody>
 <tr><th>No</th><th>XLT Key</th><th>KR</th></tr>
 <tr><td>3</td><td><code>UF_clinic_bridge_consult_btn</code></td><td>LINE으로 상담하기</td></tr>
 </tbody></table>
-<h5>Event</h5>
+<p>GA Screen ID: <code>clinic_bridge_01</code></p>
 <table class="wrapped" data-mce-resize="false"><tbody>
 <tr><th>#</th><th>Event Name</th><th>Parameter</th></tr>
 <tr><td>-</td><td>view_clinic_bridge_01</td><td>-</td></tr>
@@ -39,9 +43,10 @@
 </td>
 ```
 
-- 화면에 **XLT 키가 없으면** 중첩표를 생략하고 셀에 `<h5>Event</h5>` + Event 표만 넣는다(`-`를 쓰지 않는다).
+- 화면에 **XLT 키가 없으면** 중첩표만 생략하고, 제목(`{Screen ID} - XLT & GA`) 바로 아래 `GA Screen ID:` 문구 + Event 표를 넣는다(`-`를 쓰지 않는다). **XLT 유무와 무관하게 제목은 항상 화면당 1개**다.
 - 한 화면에 Event 표는 **1개**다. `view` 행이 항상 첫 행, 그 아래 `click` 행을 `#` 오름차순으로 나열한다.
 - 색상 강조(빨강 등)는 필수가 아니다 — 그 페이지의 기존 관행(신규 항목 강조 등)이 있으면 따른다.
+- **기존 페이지에 과거 방식(XLT/Event 제목 분리)이 남아 있어도 소급 정정을 강제하지 않는다** — 그 페이지의 GA/XLT를 다시 손대는 김에 이 방식으로 정정하는 것을 권장한다.
 
 ---
 

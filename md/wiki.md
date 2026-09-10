@@ -296,7 +296,7 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 
 #### Screen 표 (XLT & GA 컬럼 — XLT 중첩표 `No | XLT Key | KR` 3컬럼 + GA Event 표)
 - **`No | XLT Key | KR`** 3컬럼으로 표시한다 (이미지와 함께 빠르게 텍스트 확인 용도).
-- **GA Event 추가 요청이 있으면** 이 중첩표 아래에 `<h5>Event</h5>` + `# | Event Name | Parameter` 표를 추가한다(`view_` 화면당 1개 필수 · `click_` 클릭 요소 자동 부여 · `#`=어노테이션 번호). 규칙·템플릿은 `md/GA.md`.
+- **GA Event 추가 요청이 있으면** 셀 맨 위에 `<h5>{Screen ID} - XLT & GA</h5>` 제목 1개를 붙이고(XLT용·Event용을 따로 만들지 않는다 — 2026-09-10 정정) 그 아래 `# | Event Name | Parameter` 표를 추가한다(`view_` 화면당 1개 필수 · `click_` 클릭 요소 자동 부여 · `#`=어노테이션 번호). 규칙·템플릿은 `md/GA.md`.
 - **`No` = 그 XLT 텍스트를 가리키는 Description 정책 코멘트 번호**(이미지의 빨강 원 ⓝ 번호)다 — 표의 텍스트가 이미지 어디에 있는지 바로 찾도록 연결한다.
   - **도출**: 화면의 미해결 루트 코멘트를 y좌표 순으로 번호화(= Description 정책 번호)한 뒤, 각 코멘트가 가리키는 텍스트를 매칭(좌표 포함/최근접 — `md/translate.md` '코멘트→텍스트 매칭 알고리즘')하고, **그 텍스트의 XLT 행에 해당 코멘트 번호**를 부여한다.
   - 한 텍스트에 여러 코멘트가 대응하면 **최솟값(가장 위/먼저)** 을 쓴다. 코멘트가 가리키지 않는 텍스트는 `No`를 빈칸으로 둔다.
@@ -590,9 +590,12 @@ git -C /tmp/repo_clone push origin main
   <td>(New) 자산 전송 팝업</td>
   <td><ac:image ac:width="300"><ri:attachment ri:filename="{frame_name}.png"/></ac:image></td>
   <td><p>화면 설명 1~2문장.</p><p><strong>정책</strong><br/>1. 상단 정책 내용<br/>&nbsp;&nbsp;↳ 첫 번째 답글 본문<br/>&nbsp;&nbsp;↳ 두 번째 답글 본문<br/>2. 다음 정책 내용</p></td>
-  <td><table><tbody><tr><th>No</th><th>XLT Key</th><th>KR</th></tr><tr><td>9</td><td>KW_...</td><td>한국어</td></tr></tbody></table>
-  <!-- GA Event 추가 요청 시에만 (md/GA.md): -->
-  <h5>Event</h5><table><tbody><tr><th>#</th><th>Event Name</th><th>Parameter</th></tr><tr><td>-</td><td>view_{screen_id}</td><td>-</td></tr><tr><td>9</td><td>click_{대상}</td><td></td></tr></tbody></table></td>
+  <td>
+  <!-- GA Event 추가 요청 시에만 (md/GA.md) — 제목은 XLT/Event 구분 없이 화면당 1개만: -->
+  <h5>{Screen ID} - XLT &amp; GA</h5>
+  <table><tbody><tr><th>No</th><th>XLT Key</th><th>KR</th></tr><tr><td>9</td><td>KW_...</td><td>한국어</td></tr></tbody></table>
+  <p>GA Screen ID: <code>{screen_id}</code></p>
+  <table><tbody><tr><th>#</th><th>Event Name</th><th>Parameter</th></tr><tr><td>-</td><td>view_{screen_id}</td><td>-</td></tr><tr><td>9</td><td>click_{대상}</td><td></td></tr></tbody></table></td>
 </tr>
 
 <!-- 코멘트(정책)가 있는 화면 (Confluence PAT 없을 때 fallback): GitHub 임시 URL -->
