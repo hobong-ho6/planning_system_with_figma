@@ -2,7 +2,7 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/b3d817d24ed34ebfad78857af950fd27.png?updatedAt=1789115362000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/da7e51fe1a8a4a878dec02c44d21c091.png?updatedAt=1789124810000",
     "size": "full",
     "aspectRatio": "28:19",
     "aspectMode": "cover"
@@ -13,32 +13,18 @@
     "contents": [
       {
         "type": "text",
-        "text": "🎁 Your 1,000 JPY coupon has arrived! A 10,000 KRW gift card for just 100 JPY!",
+        "text": "🎁 You've got a 1,000 JPY voucher!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
       },
       {
-        "type": "box",
-        "layout": "vertical",
-        "margin": "md",
-        "spacing": "sm",
-        "contents": [
-          {
-            "type": "text",
-            "text": "Thanks for adding us as a friend!\n10,000 KRW gift cards for Olive Young, Daiso, CU, and emart24: 1,100 JPY → 100 JPY!",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "Pick your favorite brand with the 1,000 JPY coupon you just received!",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          }
-        ]
+        "type": "text",
+        "text": "Use it at Olive Young, Daiso, CU, and emart24!",
+        "size": "sm",
+        "color": "#666666",
+        "wrap": true,
+        "margin": "md"
       }
     ]
   },
@@ -54,7 +40,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "Get a 10,000 KRW card for 100 JPY",
+          "label": "Use Voucher",
           "uri": "https://unifi-promotion.line-apps-beta.com/voucher-event-1"
         }
       }

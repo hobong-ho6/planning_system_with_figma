@@ -2,7 +2,7 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/89ffdec7a3d346c08b4f1d286c02eb0f.png?updatedAt=1789115363000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/9e636084549447dd81a3cc70e2fe98d8.png?updatedAt=1789124814000",
     "size": "full",
     "aspectRatio": "28:19",
     "aspectMode": "cover"
@@ -13,32 +13,18 @@
     "contents": [
       {
         "type": "text",
-        "text": "🎁 1,000엔 쿠폰 도착! 1만원권이 단 100엔!",
+        "text": "🎁 1,000엔 바우처를 받았어요!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
       },
       {
-        "type": "box",
-        "layout": "vertical",
-        "margin": "md",
-        "spacing": "sm",
-        "contents": [
-          {
-            "type": "text",
-            "text": "친구 추가 감사해요!\n올리브영·다이소·CU·emart24 1만원권이 1,100엔 → 100엔!",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "지금 받은 1,000엔 쿠폰으로 마음에 드는 브랜드를 골라 보세요!",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          }
-        ]
+        "type": "text",
+        "text": "올리브영·다이소·CU·emart24에서 사용할 수 있어요!",
+        "size": "sm",
+        "color": "#666666",
+        "wrap": true,
+        "margin": "md"
       }
     ]
   },
@@ -54,7 +40,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "100엔에 1만원권 받기",
+          "label": "바우처 사용하기",
           "uri": "https://unifi-promotion.line-apps-beta.com/voucher-event-1"
         }
       }

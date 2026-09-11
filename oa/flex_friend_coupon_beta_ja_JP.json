@@ -2,7 +2,7 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/1ef585126c734ba99ffada98fcba2a92.png?updatedAt=1789115364000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/1abc40609cd04f148850a6f41ea19ca5.png?updatedAt=1789124812000",
     "size": "full",
     "aspectRatio": "28:19",
     "aspectMode": "cover"
@@ -13,32 +13,18 @@
     "contents": [
       {
         "type": "text",
-        "text": "🎁 1,000円分のクーポンが届きました！10,000ウォン券がたったの100円！",
+        "text": "🎁 1,000円OFFクーポンが届きました！",
         "weight": "bold",
         "size": "lg",
         "wrap": true
       },
       {
-        "type": "box",
-        "layout": "vertical",
-        "margin": "md",
-        "spacing": "sm",
-        "contents": [
-          {
-            "type": "text",
-            "text": "友だち追加ありがとうございます！\nオリーブヤング・ダイソー・CU・emart24の10,000ウォン券が、1,100円 → 100円に！",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "今受け取った1,000円分のクーポンで、お好きなブランドを選んでみてください！",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          }
-        ]
+        "type": "text",
+        "text": "オリーブヤング、ダイソー、CUなどで使えます！",
+        "size": "sm",
+        "color": "#666666",
+        "wrap": true,
+        "margin": "md"
       }
     ]
   },
@@ -54,7 +40,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "100円で10,000ウォン券を受け取る",
+          "label": "クーポンを使う",
           "uri": "https://unifi-promotion.line-apps-beta.com/voucher-event-1"
         }
       }

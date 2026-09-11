@@ -2,7 +2,7 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/473a58c9c1114314a97f960f986e11d6.png?updatedAt=1789115361000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/7272ccefeb644f94868b12d544f3ac03.png?updatedAt=1789124815000",
     "size": "full",
     "aspectRatio": "28:19",
     "aspectMode": "cover"
@@ -13,32 +13,18 @@
     "contents": [
       {
         "type": "text",
-        "text": "🎁 คูปอง 1,000 เยนมาถึงแล้ว! บัตรของขวัญ 10,000 วอนในราคาเพียง 100 เยน!",
+        "text": "🎁 คูปองส่วนลด 1,000 เยนมาถึงแล้ว!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
       },
       {
-        "type": "box",
-        "layout": "vertical",
-        "margin": "md",
-        "spacing": "sm",
-        "contents": [
-          {
-            "type": "text",
-            "text": "ขอบคุณที่เพิ่มเราเป็นเพื่อน!\nบัตรของขวัญ 10,000 วอนของ Olive Young · Daiso · CU · emart24 จาก 1,100 เยน → 100 เยน!",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "เลือกแบรนด์ที่คุณชอบด้วยคูปอง 1,000 เยนที่เพิ่งได้รับได้เลย!",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          }
-        ]
+        "type": "text",
+        "text": "ใช้ได้ที่ Olive Young, Daiso, CU และอื่น ๆ!",
+        "size": "sm",
+        "color": "#666666",
+        "wrap": true,
+        "margin": "md"
       }
     ]
   },
@@ -54,8 +40,8 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "รับบัตร 10,000 วอนในราคา 100 เยน",
-          "uri": "https://promotion.unifi.me/voucher-event-1?referral_code=2008_SUTGA&attribution_code=2008_SUTGA"
+          "label": "ใช้คูปอง",
+          "uri": "https://miniapp.line.me/unifi/k-pick/open?referral_code=2008_SUTGA&attribution_code=2008_SUTGA&redirectUrl=https%3A%2F%2Fpromotion.unifi.me%2Fvoucher-event-1%3Freferral_code%3D2008_SUTGA%26attribution_code%3D2008_SUTGA"
         }
       }
     ]

@@ -2,7 +2,7 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/7adaebc408714e35beeb54ebbaba499b.png?updatedAt=1789115360000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/4bd0e49ca7e64e2989da44d5de813cef.png?updatedAt=1789124817000",
     "size": "full",
     "aspectRatio": "28:19",
     "aspectMode": "cover"
@@ -13,32 +13,18 @@
     "contents": [
       {
         "type": "text",
-        "text": "🎁 1,000日圓優惠券已送達！1萬韓元禮券只要100日圓！",
+        "text": "🎁 1,000日圓折價券已送達！",
         "weight": "bold",
         "size": "lg",
         "wrap": true
       },
       {
-        "type": "box",
-        "layout": "vertical",
-        "margin": "md",
-        "spacing": "sm",
-        "contents": [
-          {
-            "type": "text",
-            "text": "感謝您加入好友！\nOlive Young、大創、CU、emart24 的1萬韓元禮券，1,100日圓 → 100日圓！",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "用剛收到的1,000日圓優惠券，挑選您喜歡的品牌吧！",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          }
-        ]
+        "type": "text",
+        "text": "可在 Olive Young、大創、CU 等使用！",
+        "size": "sm",
+        "color": "#666666",
+        "wrap": true,
+        "margin": "md"
       }
     ]
   },
@@ -54,8 +40,8 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "100日圓入手1萬韓元禮券",
-          "uri": "https://promotion.unifi.me/voucher-event-1?referral_code=2008_SUTGA&attribution_code=2008_SUTGA"
+          "label": "使用折價券",
+          "uri": "https://miniapp.line.me/unifi/k-pick/open?referral_code=2008_SUTGA&attribution_code=2008_SUTGA&redirectUrl=https%3A%2F%2Fpromotion.unifi.me%2Fvoucher-event-1%3Freferral_code%3D2008_SUTGA%26attribution_code%3D2008_SUTGA"
         }
       }
     ]
