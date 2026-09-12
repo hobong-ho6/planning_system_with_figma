@@ -209,6 +209,31 @@ Landpress의 콘텐츠는 용어집뿐 아니라 **다른 컬렉션도 동일한
 3. **산출물과 대조한다** — 사용자가 CMS에 반영한 뒤에는 **반드시 다시 조회해 전달한 산출물과 필드·언어 단위로 대조**하고 그 결과를 보고한다. 붙여넣기 누락·이전 값 잔존은 실제로 발생한다.
 4. **쓰기** — 공개 조회 API에는 쓰기 경로가 없지만 **CMS 백오피스 API로는 저장·공개까지 가능하다**(§10). 기본은 산출물 전달이고, 사용자가 지시하면 Claude가 직접 PUT한다. 어느 쪽이든 **반영 후 재조회 대조**(위 3번)는 생략하지 않는다.
 
+### 9-1. ⛔ 응답 구조 — 두 API가 다르다 (2026-09-12 실측)
+
+**파싱 실패의 원인은 대부분 "환경이 달라서"가 아니라 "다른 API를 보고 있어서"다.** 같은 콘텐츠라도 **공개 조회 API**와 **CMS 백오피스 API**의 응답 봉투(envelope)가 서로 다르다.
+
+| | 공개 조회 `landpress-content.line-scdn.net` | CMS 백오피스 `landpress-content-v2.linecorp.com` |
+|---|---|---|
+| 봉투 | **있다** — `{ "header": {...}, "body": {...} }` | **없다** — 아이템 객체가 곧 응답 최상위 |
+| 진짜 상태 | **`header.statusCode`** (HTTP는 항상 200) | **HTTP status** (400/401/404가 그대로 온다) |
+| 다건(LIST) | `body.total` + `body.items[]` | 목록 경로는 파라미터 요건이 달라 `/items`만으로는 400 — **`/items/{id}`로 단건 조회**가 확실하다 |
+| 단건(SINGLE) | `body.{필드명}` (`/item` 엔드포인트) | 최상위 `.{필드명}` |
+| 필드 위치 | **아이템 직속** — `body.items[0].{필드명}` | **아이템 직속** — 응답 최상위 `.{필드명}` |
+| 부가 키 | `id·locale·primaryLocale·postId·published·_env` | 위 + **`_publishReservations`** |
+
+```
+공개:  GET  /contents/v2/projects/{pid}/collections/{col}/items?locale=ko_KR
+       → {"header":{"statusCode":200},"body":{"total":1,"items":[{"id":1,"published":true,"benefit_more":{...}}]}}
+CMS :  GET  /api/v1/projects/{pid}/collections/{col}/items/{id}?_locale=ko_KR
+       → {"id":1,"published":true,"benefit_more":{...},"_publishReservations":[]}
+```
+
+- ⛔ **`data.items[].values.{필드}` 형태는 어느 API에도 없다** — `data`·`values` 래핑은 존재하지 않는다. (계기: 2026-09-12 UIT prod 검증에서 `data`/`values` 가정으로 파서를 짰다가 `items=0`으로 나와 "등록 실패"로 오판할 뻔했다. 실제 데이터는 정상이었다.)
+- **로케일 파라미터 이름이 다르다** — 공개는 `?locale=`, CMS는 `?_locale=`. 서로 바꿔 쓰면 CMS 쪽은 **400 Bad Request**다.
+- **환경·프로젝트에 따라 달라지지 않는다** — 같은 공개 API를 UIT beta·UIT prod·LV beta·용어집 4개 프로젝트에 호출해 **응답 구조가 전부 동일함을 실측**했다. beta에서 되던 파서가 prod에서 안 되면 스키마 차이를 의심하기 전에 **엔드포인트·파라미터를 먼저 확인**한다.
+- **`items` 배열이 비면 데이터가 없는 게 아닐 수 있다** — ⓐ 봉투를 잘못 파싱했거나, ⓑ `?locale=`을 생략해 `primaryLocale` 항목만 돌아온 경우다(§9 3번 대조 시 자주 걸린다). **원시 응답을 한 번 그대로 찍어 확인**한 뒤 판단한다.
+
 ---
 
 ## 10. CMS API로 직접 쓰기 (2026-09-12 실측 · Claude 직접 반영)
