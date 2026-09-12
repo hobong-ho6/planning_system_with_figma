@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Figma → 다국어 위키 자동화 · 기획자 워크플로우 가이드 v36</title>
+<title>Figma → 다국어 위키 자동화 · 기획자 워크플로우 가이드 v37</title>
 <meta name="description" content="Figma 화면과 위키 주소만으로 AI가 5개 언어 번역과 위키 문서를 자동으로 작성하는 워크플로우. 기획자를 위한 사용 가이드." />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet" />
@@ -83,7 +83,7 @@
 <!-- ===== HERO ===== -->
 <section class="relative overflow-hidden bg-gradient-to-b from-brand-50 to-slate-50">
   <div class="max-w-6xl mx-auto px-5 pt-16 pb-20 text-center">
-    <span class="inline-block mb-5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide">기획자를 위한 사용 가이드 · 개발 지식 불필요 · <b>v36 (2026-09-12)</b></span>
+    <span class="inline-block mb-5 px-3 py-1 rounded-full bg-brand-100 text-brand-700 text-xs font-semibold tracking-wide">기획자를 위한 사용 가이드 · 개발 지식 불필요 · <b>v37 (2026-09-12)</b></span>
     <h1 class="text-3xl sm:text-5xl font-extrabold leading-tight text-ink">
       Figma 화면을 <span class="text-brand-600">5개 언어</span>로 번역하고<br class="hidden sm:block" />
       위키를 <span class="text-brand-600">자동으로</span> 채웁니다
@@ -96,7 +96,7 @@
       <span class="chip">📄 위키 문서 자동 작성</span>
       <span class="chip">🌐 5개 언어 번역 (한·영·일·중·태)</span>
       <span class="chip">✅ 품질 검증 게이트</span>
-      <span class="chip">📚 용어집 118 용어 (v5.4)</span>
+      <span class="chip">📚 용어집 118 용어 (v5.5)</span>
       <span class="chip">🆕 위키 새 페이지 생성</span>
       <span class="chip">🆔 Screen ID 공식 표준</span>
     </div>
@@ -528,7 +528,7 @@ git config --global handoff.person hong</pre>
       <li class="flow-step"><span class="flow-num">4</span><div><h3 class="flow-h">당신이 붙여넣기</h3><p class="flow-p">Landpress CMS에 JSON을 붙여넣어 반영합니다.</p></div></li>
       <li class="flow-step"><span class="flow-num">5</span><div><h3 class="flow-h">반영 확인 + 이력 기록</h3><p class="flow-p">AI가 재조회로 확인하고, 변경 이력을 별도 문서로 남깁니다.</p></div></li>
     </ol>
-    <p class="note note-slate mt-5">📝 용어집 원본은 Landpress에 있어 버전 관리가 어렵기 때문에, <b>"무엇을·언제·왜" 바꿨는지를 별도 변경 이력 문서</b>로 남겨 추적합니다. (현재 <b>v5.4 · 118 용어 + OA 변수 2종</b> — v2.1 → v2.6 → v3.0 → v3.5 → v3.9 → v4.0 → v4.3 → v4.7 → v4.9 → v5.0 → v5.1 → v5.2 → v5.3 → v5.4)</p>
+    <p class="note note-slate mt-5">📝 용어집 원본은 Landpress에 있어 버전 관리가 어렵기 때문에, <b>"무엇을·언제·왜" 바꿨는지를 별도 변경 이력 문서</b>로 남겨 추적합니다. (현재 <b>v5.5 · 118 용어 + OA 변수 2종</b> — v2.1 → v2.6 → v3.0 → v3.5 → v3.9 → v4.0 → v4.3 → v4.7 → v4.9 → v5.0 → v5.1 → v5.2 → v5.3 → v5.4 → v5.5)</p>
     <p class="note note-slate mt-3">🙋 <b>마지막 갱신자</b>: <code>hogeun (hogeun.kim.lnxt@gmail.com)</code> · 2026-09-12 <span class="tag-amber">🆕 v5.3</span> — Landpress는 실제 CMS 편집자 로그를 남기지 않아서, <b>이번 갱신을 요청·승인한 사람</b>을 용어집 JSON의 <code>metadata.updated_by</code>에 자기신고로 기록하는 방식을 v5.3부터 새로 만들었습니다. 이후 모든 갱신마다 이 값이 함께 채워집니다.</p>
     <p class="note note-amber mt-3">🆕 <b>엑셀 일괄 추가도 가능합니다</b> — 용어 후보 엑셀을 주면 기존 용어집과 전수 대조해 깨끗한 항목만 반영하고, <b>값 충돌·오역 의심 항목은 보류 리포트로 분리</b>해 팀 검토 후 반영합니다(임의 반영 금지). 검토 결과를 나중에 주면 보류 리포트의 이력 그대로 이어서 처리합니다.</p>
 
@@ -785,7 +785,7 @@ action url 을 모두 업데이트 했어
     <div class="panel mt-6">
       <h3 class="panel-h">버전 요약</h3>
       <table class="ex-table mt-3"><tbody>
-        <tr><th><b>v36 · 2026-09-12</b></th><td><b>용어집 v5.4 반영 — 「바우처」 신설 · 일본어는 クーポン</b> — 같은 대상(구매한 모바일 금액권)을 화면마다 <b>상품권</b>·<b>바우처</b>로 부르면서 5개 언어 번역이 갈리던 것을 <b>바우처</b>로 통일했습니다. 일본어는 실제로 더 많이 쓰이던 <code>バウチャー</code> 대신 <b><code>クーポン</code></b>이 정본입니다 — 이미 등록된 20개 문구의 일본어는 함께 다시 올립니다. 용어집 탭의 전체 용어 표(118개)·금지 목록(22건)·전체 JSON이 최신으로 교체됐습니다. 기획자 액션 <b>없음</b></td></tr>
+        <tr><th><b>v37 · 2026-09-12</b></th><td><b>용어집 반영을 Claude가 직접 할 수 있게 됐습니다 — 매번 방식을 여쭤봅니다</b> — 그동안 용어집은 <b>기획자가 직접 CMS에 붙여넣는</b> 방법뿐이었습니다. Landpress CMS에 <b>쓰기 경로가 있다는 것이 확인</b>되어, 이제 <b>Claude가 저장·공개까지 대신</b>할 수 있습니다. 다만 용어집은 전 서비스가 함께 쓰는 데이터라 <b>매번 「제가 반영할까요, 직접 하시겠어요?」를 여쭤보고</b> 답변대로 처리합니다 — 묻지 않고 쓰지 않고, 묻지 않고 JSON만 드리고 끝내지도 않습니다. 같은 방식으로 <b>바우처·가이드 페이지 같은 화면 콘텐츠(Landpress)도 Claude가 직접 등록·공개</b>할 수 있습니다(단 <b>언어별 항목은 기획자가 CMS에서 미리 만들어 두셔야</b> 합니다 — 생성만은 API로 안 됩니다). <b>용어집 v5.5 반영</b> — 「최대」의 영어·중국어 표기를 실제 많이 쓰는 쪽으로 바로잡았습니다(자동 검증 경고 <b>163건 감소</b>). 기획자 액션 <b>없음</b>(반영 방식을 물으면 골라주시면 됩니다)</td></tr><tr><th><b>v36 · 2026-09-12</b></th><td><b>용어집 v5.4 반영 — 「바우처」 신설 · 일본어는 クーポン</b> — 같은 대상(구매한 모바일 금액권)을 화면마다 <b>상품권</b>·<b>바우처</b>로 부르면서 5개 언어 번역이 갈리던 것을 <b>바우처</b>로 통일했습니다. 일본어는 실제로 더 많이 쓰이던 <code>バウチャー</code> 대신 <b><code>クーポン</code></b>이 정본입니다 — 이미 등록된 20개 문구의 일본어는 함께 다시 올립니다. 용어집 탭의 전체 용어 표(118개)·금지 목록(22건)·전체 JSON이 최신으로 교체됐습니다. 기획자 액션 <b>없음</b></td></tr>
         <tr><th>v35 · 2026-09-07</th><td><b>IA 점검 절차가 저장소 문서로 옮겨졌습니다</b> — 주간 IA 점검의 절차가 그동안 <b>담당자 PC의 개인 설정 안에만</b> 있어서, 다른 PC에서는 존재하지 않고 저장소 규칙과 어긋나도 드러나지 않았습니다(실제로 v34를 만들 때 가이드 소스를 잘못 짚어 소스가 한 버전 뒤처지는 일이 있었습니다). 절차를 <code>md/ia-check.md</code>로 옮겨 <b>git으로 함께 관리</b>하고, 개인 설정에는 "이 문서를 읽어 수행한다"만 남겼습니다. 시스템 가이드 탭의 <b>문서 지도 3곳</b>에 이 문서를 추가했습니다. 기획자가 요청하는 방식은 <b>달라지지 않습니다</b> — 기획자 액션 <b>없음</b></td></tr>
         <tr><th>v34 · 2026-09-07</th><td><b>IA 주간 점검 #6 — 마이 설정에 「Preferred Stable」 신설 · 로그인 홈 전면 개편 · K-Pick 2단 구조 재편 · 클리닉 섹션 신설 · 로그인 영역 전체 점검</b> — 사용자가 <b>기준 스테이블코인을 직접 고를 수 있게</b> 되면서 홈 자산 카드 순서·히어로 이율·가이드 구성이 그 설정에 따라 갈립니다(<b>승인 대기 ⑨</b> 신설 — 화면 변형 축이 하나 늘었습니다). 로그인 홈은 <b>토큰별 3카드 + 프로모션 모달 + 헤더 [pay]·[QR]·[알림] 3아이콘</b>으로 개편돼 비로그인 홈과 다른 화면이 됐고, 지난 회차 이월이던 <b>「Pay」 버튼이 로그인 전용임이 확인</b>됐습니다. K-Pick은 <b>허브 + 카테고리 목록 2단</b>으로 재편되고 K-뷰티에 <b>클리닉 섹션(19곳)</b>이 신설됐습니다(<b>승인 대기 ⑩</b>). 상품 상세에 <b>구매 CTA·체크아웃 라우트·특정상거래법 표기</b>가 붙었습니다(<b>승인 대기 ⑪</b>). 입금 <b>브릿지 배너는 제거</b>됐고 swap 「AlphaSec」 한국어 노출은 <b>해소</b>됐습니다. 다만 <b>mini 리워드 스켈레톤이 재발</b>했습니다. 「전체 IA 구조」 표도 함께 갱신했습니다. 기획자 액션 <b>없음</b></td></tr>
         <tr><th>v33 · 2026-09-03</th><td><b>GA Event 안내 보강</b> — 가이드 탭에 「GA Event 정의」 전용 섹션(규칙·표 구조·요청 방법) 신설, 시스템 가이드 탭 문서 지도 3곳(흐름 카드·상황→문서 표·파일 표)에 <code>md/GA.md</code> 추가. v32에서 카드·예시만 있고 본문 섹션과 문서 지도가 빠져 있던 것을 보완</td></tr>
@@ -857,7 +857,7 @@ action url 을 모두 업데이트 했어
 
     <h3 class="text-xl font-bold text-ink mt-10">v6 <span class="text-slate-400 font-normal text-base">2026-07-29</span></h3><div class="grid sm:grid-cols-2 gap-4 mt-4"><div class="card"><span class="badge badge-emerald">FAQ 🆕</span><h3 class="card-h mt-2">정책을 FAQ 문구로 정리해 드립니다</h3><p class="card-p">위키의 정책 표(예: <b>럭키볼 소비 기한·예산 소진</b>)를 주시면 <b>사용자에게 고지가 필요한 항목만</b> 골라 Q&amp;A 초안을 만들고, 사내 FAQ 정본과 <b>같은 표 형식</b>(Category·ko_KR·en_US·ja_JP·zh_TW·th_TH)으로 위키에 넣어 드립니다. 한국어 확정 후 <b>5개 언어 번역</b>까지 이어서 진행하며, 확정이 필요한 항목(시각 표기·기준 수치 공개 여부 등)은 별도로 정리해 드립니다.</p></div><div class="card"><span class="badge badge-indigo">용어집 v3.9</span><h3 class="card-h mt-2">변경 중국어(번체) 표기 교정</h3><p class="card-p"><code>변경</code>의 번체 값이 <b>更換</b>(물건·기기를 <b>교체</b>)으로 되어 있어, 정보·설정 변경 문맥에는 맞지 않았습니다. 실제 번역 3곳이 모두 <b>變更</b>을 쓰고 있어 등재값만 어긋나 검증에서 오탐이 나던 것을 바로잡았습니다.</p></div><div class="card"><span class="badge badge-slate">번역 패치</span><h3 class="card-h mt-2">키 몇 개만 문구가 바뀐 경우</h3><p class="card-p">위키 화면 정의의 한국어만 고쳐 두고 <b>"이 키들 다국어 반영해줘"</b>라고 요청하시면, 해당 키만 재번역해 <b>다국어 표·엑셀·History</b>를 함께 갱신합니다. 이때 대상 키의 <b>5개 언어 칸이 서로 어긋나지 않았는지 전수 대조</b>한 뒤에 적용하므로, 한 언어만 덮어써서 다른 언어 원본이 사라지는 일이 없습니다.</p></div></div><h3 class="text-xl font-bold text-ink mt-10">v5 <span class="text-slate-400 font-normal text-base">2026-07-28</span></h3>
     <div class="grid sm:grid-cols-2 gap-4 mt-4">
-      <div class="card"><span class="badge badge-emerald">용어집 🆕</span><h3 class="card-h mt-2">용어집을 이 가이드에서 반영합니다</h3><p class="card-p">이제 용어집을 갱신하면 <b>이 가이드도 같은 작업에서 함께 갱신</b>해 드립니다(용어집 탭의 이력 표·전체 용어 표·전체 JSON). 용어집 반영은 이 페이지의 <b>「최신 전체 JSON 보기 → 📋 JSON 복사」</b>에서 복사해 Landpress CMS에 붙여넣으시면 됩니다 — 별도 JSON 파일을 찾을 필요가 없습니다.</p></div>
+      <div class="card"><span class="badge badge-emerald">v37 · 직접 반영</span><h3 class="card-h mt-2">용어집·화면 콘텐츠를 Claude가 직접 등록합니다</h3><p class="card-p">Landpress CMS에 <b>쓰기 경로가 있다는 것이 확인</b>되어, 이제 Claude가 <b>저장·공개까지</b> 대신할 수 있습니다. 용어집은 전 서비스 공용 데이터라 <b>매번 방식을 여쭤봅니다</b> — 「① 제가 반영할까요 ② 직접 붙여넣으시겠어요?」 중에서 골라주시면 됩니다. 바우처 상세·가이드 페이지 같은 화면 콘텐츠도 같은 방식으로 등록·공개합니다. <b>다만 언어별 항목(일본어·영어·태국어·중국어 칸)은 기획자가 CMS에서 미리 만들어 두셔야</b> 합니다 — 항목 생성만은 API로 되지 않습니다.</p></div><div class="card"><span class="badge badge-emerald">용어집 🆕</span><h3 class="card-h mt-2">용어집을 이 가이드에서 반영합니다</h3><p class="card-p">이제 용어집을 갱신하면 <b>이 가이드도 같은 작업에서 함께 갱신</b>해 드립니다(용어집 탭의 이력 표·전체 용어 표·전체 JSON). 용어집 반영은 이 페이지의 <b>「최신 전체 JSON 보기 → 📋 JSON 복사」</b>에서 복사해 Landpress CMS에 붙여넣으시면 됩니다 — 별도 JSON 파일을 찾을 필요가 없습니다.</p></div>
       <div class="card"><span class="badge badge-indigo">용어집 v3.6</span><h3 class="card-h mt-2">친구초대 도메인 4종 추가 (107 → 111)</h3><p class="card-p"><b>링크·친구·선물하기·초대</b>를 등재했습니다. 등재 전 사용 중인 문구를 <b>전수 대조</b>해 실사용 표기를 확인 — <code>선물하기</code>는 명사형(送禮·มอบของขวัญ)이 아니라 실제 쓰이는 동사형 <b>送·มอบ</b>로 교정해 넣었고, <code>초대</code>의 태국어는 <b>เชิญ/ชวน 혼용</b>이라 다수형으로 등재하되 다른 형태도 정상으로 허용합니다.</p></div>
       <div class="card"><span class="badge badge-indigo">용어집 v3.8</span><h3 class="card-h mt-2">중국어(번체) 「공식 계정」 표기 교정</h3><p class="card-p">용어집의 <code>공식 계정</code> 중국어(번체) 값이 <b>公眾號</b>로 되어 있었는데, 이는 <b>WeChat(중국 대륙) 용어</b>입니다. LINE 대만의 공식 표기인 <b>官方帳號</b>로 바로잡았습니다. 실제 번역은 이미 전부 官方帳號였고 용어집만 어긋나 있어, 정상 번역이 오류로 잡히던 문제가 사라졌습니다.</p></div>
       <div class="card"><span class="badge badge-emerald">표기 규칙 🆕</span><h3 class="card-h mt-2">숫자 + 통화는 한 칸 띄웁니다 — <code>{0} JPYC</code> · <code>50,000 JPYC</code></h3><p class="card-p">치환자든 고정 숫자든 뒤에 통화·단위가 붙으면 <b>공백 1칸</b>을 넣습니다(<code>{0}JPYC</code>·<code>50,000JPYC</code>·<code>1JPYC</code> 금지). 치환된 금액이 통화에 달라붙어 보이는 것을 막기 위한 규칙이라 <b>일본어·중국어도 동일하게 띄웁니다</b>. 용어집 v3.7에 <code>{0} JPYC</code>가 등재되어 있어, 붙여 쓴 문구가 들어오면 검증에서 걸립니다.</p></div>
@@ -968,7 +968,7 @@ action url 을 모두 업데이트 했어
     <p class="sec-sub">번역 일관성의 기준인 용어집의 버전별 변경 기록입니다. 원본은 Landpress CMS(읽기 전용 API)에 있으며, 상세 이력은 저장소의 <code>md/glossary-changelog.md</code>로 추적합니다.</p>
 
     <details class="foldpanel">
-      <summary>용어집 버전 이력 <span class="fold-sub">v2.1 → v5.4 · 30개 버전 · 버전별 상세 카드 12장 포함</span><span class="fold-pill"></span></summary>
+      <summary>용어집 버전 이력 <span class="fold-sub">v2.1 → v5.5 · 31개 버전 · 버전별 상세 카드 13장 포함</span><span class="fold-pill"></span></summary>
       <div class="foldpanel-body">
         <table class="ex-table mt-3"><tbody>
         <tr><th>버전</th><th>날짜</th><th>용어 수</th><th>변경 요약</th></tr>
@@ -989,7 +989,8 @@ action url 을 모두 업데이트 했어
 <tr><td>v5.1</td><td>2026-09-04</td><td>117</td><td><b>등재 실사용과 어긋난 등재값 2건 교정</b> — <b>가격</b> zh_TW <code>售價</code> → <code>價格</code>(실측 <code>價格</code> 9건 · <code>售價</code> <b>0건</b>) · <b>유의사항</b> th_TH <code>หมายเหตุ</code> → <code>ข้อควรระวัง</code>(실측 <code>ข้อควรระวัง</code> 2건 · <code>หมายเหตุ</code> <b>0건</b>). 두 등재값 모두 <b>XLT 시스템 실사용이 0건</b>이라 정상 번역을 P1로 <b>반복 오탐</b>시키던 원인입니다(2026-09-04 clinic Landpress 다국어 게이트에서 검출). 실사용 0건 표기는 권장하지 않는다는 원칙에 따라 권장값은 <b>실측 다수 표기</b>입니다. <b>A/B 등재값 2,461키: P1 2,350 → 2,339(−11)</b> · P0 102 · P2 534 불변 · 신규 P1 0건</td></tr>
 <tr><td><b>v5.2</b></td><td>2026-09-07</td><td><b>117</b></td><td><b>럭키볼 th_TH 교정</b> — <code>ลูกบอลนำโชค</code> → <code>ลัคกี้บอล</code>. <b>XLT 시스템 전수 실측</b>(Unifi v1.7.5 · 럭키볼 포함 <b>47키</b>): <code>ลัคกี้บอล</code> <b>18건(다수)</b> vs <code>ลูกบอลนำโชค</code> 7건(소수) — 등재값이 <b>소수 표기</b>를 가리켜 리워드탭 개선 번역(<code>mr_dc_desc</code>·<code>mr_gm_desc</code>)에서 정상 다수 표기를 P1로 <b>반복 오탐</b>시킨 것을 2026-09-07 게이트에서 검출했습니다. en_US(<code>Lucky Ball</code>)·ja_JP(<code>ラッキーボール</code>)·zh_TW(<code>幸運球</code>)는 이미 다수 표기와 일치해 <b>변경 없음</b>. 금지 목록 <b>#21 신설</b>(th <code>ลูกบอลนำโชค</code> → <code>ลัคกี้บอล</code> — 잔존 소수 표기 검출). 용어 수 <b>117</b>·번역 예외 <b>11</b>은 변동 없습니다(값 교정만)</td></tr>
 <tr><td>v5.3</td><td>2026-09-07</td><td>117</td><td><b>스키마 확장 — <code>metadata.updated_by</code> 신설</b>. Landpress API에는 실제 CMS 편집자 로그가 없어 "누가 이 갱신을 반영했는지" 추적이 안 됐습니다. 이번 갱신을 <b>요청/승인한 사람을 자기신고 값으로 기록</b>하도록 필드를 추가했습니다(용어·예외·금지 목록 값 변경 없음, 117/11/21 그대로)</td></tr>
-<tr><td><b>v5.4</b></td><td>2026-09-12</td><td><b>118</b></td><td><b>용어 「바우처」 신설 + 일본어 정본 <code>クーポン</code> 확정</b> — Unifi mini v2.0 검증에서 같은 대상(구매한 모바일 금액권)을 화면마다 <b>상품권</b>/<b>바우처</b>로 다르게 부르고 있어 번역이 <code>ギフト券</code>/<code>バウチャー</code>, <code>Gift card</code>/<code>Voucher</code>처럼 두 갈래로 갈린 것이 검출됐습니다. 한국어는 <b>바우처</b>로 통일하고(등재 실사용 <b>바우처 20 : 상품권 0</b>), en <code>Voucher</code>(20건)·zh <code>優惠券</code>(19건)·th <code>เวาเชอร์</code>(18건)도 실측 다수와 같습니다. <b>일본어만 실측 다수(<code>バウチャー</code> 20 : <code>クーポン</code> 1)를 사용자 결정으로 뒤집어 <code>クーポン</code>으로 확정</b>했습니다(v5.0 캐시백 <code>還元</code>과 같은 유형). 금지 목록 <b>#22 신설</b>(ja <code>バウチャー</code> → <code>クーポン</code>) · 기존 등록 <b>20키</b>의 ja 일괄 재업로드를 동반합니다.</td></tr>
+<tr><td>v5.4</td><td>2026-09-12</td><td>118</td><td><b>용어 「바우처」 신설 + 일본어 정본 <code>クーポン</code> 확정</b> — Unifi mini v2.0 검증에서 같은 대상(구매한 모바일 금액권)을 화면마다 <b>상품권</b>/<b>바우처</b>로 다르게 부르고 있어 번역이 <code>ギフト券</code>/<code>バウチャー</code>, <code>Gift card</code>/<code>Voucher</code>처럼 두 갈래로 갈린 것이 검출됐습니다. 한국어는 <b>바우처</b>로 통일하고(등재 실사용 <b>바우처 20 : 상품권 0</b>), en <code>Voucher</code>(20건)·zh <code>優惠券</code>(19건)·th <code>เวาเชอร์</code>(18건)도 실측 다수와 같습니다. <b>일본어만 실측 다수(<code>バウチャー</code> 20 : <code>クーポン</code> 1)를 사용자 결정으로 뒤집어 <code>クーポン</code>으로 확정</b>했습니다(v5.0 캐시백 <code>還元</code>과 같은 유형). 금지 목록 <b>#22 신설</b>(ja <code>バウチャー</code> → <code>クーポン</code>) · 기존 등록 <b>20키</b>의 ja 일괄 재업로드를 동반합니다.</td></tr>
+<tr><td><b>v5.5</b></td><td>2026-09-12</td><td><b>118</b></td><td><b>등재 실사용과 어긋난 등재값 1건 교정 — 「최대」 en_US·zh_TW</b> — en <code>Max</code> → <b><code>up to</code></b>(실측 <code>up to</code>/<code>Up to</code> <b>123건</b> : <code>Max</code> 22건) · zh <code>最多</code> → <b><code>最高</code></b>(실측 <code>最高</code> <b>106건</b> : <code>最多</code> 32건). ja <code>最大</code>·th <code>สูงสุด</code>는 변경 없습니다. 등재값이 <b>소수 표기</b>를 가리켜 할인율·상한 문맥의 정상 번역을 P1로 <b>반복 오탐</b>시키던 원인이며, 2026-09-12 Unifi mini v2.0 Landpress 다국어 게이트 <b>5건</b>(voucher_detail · shopping_guide 다이소/CU · category_promotion_banner · service_guide)에서 연속 검출됐습니다. <b>A/B 실측(XLT 등록값 3,883키 = Unifi v1.7.6 2,549 + Dapp Portal v2.6.1 1,679, 중복 제거)</b>: P0 112 불변 · P2 808 불변 · <b>P1 3,833 → 3,670(−163)</b>. 함께 검토한 <b>신규 등재 3건은 A/B 반려</b>(포인트 +16 · 환불 +12 · 할인 +6으로 모두 P1 증가) · <b>금지 목록은 추가하지 않습니다</b>(zh <code>最多</code>는 수량 문맥 「최대 3개」, en <code>Max</code>는 라벨 문맥에서 정당해 일괄 금지하면 오탐). 용어 수 <b>118</b>·번역 예외 <b>11</b>·금지 목록 <b>22</b>는 변동 없습니다(값 교정만)</td></tr>
       </tbody></table>
         <div class="grid sm:grid-cols-2 gap-4 mt-6">
       <div class="card"><span class="badge badge-indigo">v3.0 · 대규모 확장</span><h3 class="card-h mt-2">35 → 104 용어 일괄 추가</h3><p class="card-p">통합 용어집 엑셀(101행)을 기존 용어집과 <b>전수 대조</b> — 동일 27건 제외, 신규 69건 반영. UI 라벨·거래/자산·이자/미션·설정 등 서비스 전 영역 커버. 값 충돌·오역 의심 4건은 <b>임의 반영하지 않고 보류 리포트로 분리</b>.</p></div>
@@ -1003,6 +1004,7 @@ action url 을 모두 업데이트 했어
       <div class="card"><span class="badge badge-emerald">v5.0 · 캐시백 ja</span><h3 class="card-h mt-2">キャッシュバック → 還元 전면 통일</h3><p class="card-p">clinic 화면 일본어 검수에서 캐시백의 일본어 표기로 <b>還元</b>이 지정됐습니다. 일부 화면만 바꾸면 <b>화면마다 표기가 갈리므로</b> 용어집 등재값을 <code>キャッシュバック</code> → <code>還元</code>으로 교체하고, 구 표기 금지 목록에 <b>#20</b>(ja <code>キャッシュバック</code>)을 넣어 남아 있는 문구를 검출하도록 했습니다. 이미 등록된 <b>XLT 17키</b>(clinic 11 · voucher 4 · max_cashback 2)는 함께 재업로드합니다. ⚠️ 교체 직전 시스템 실사용은 <code>キャッシュバック</code> 17건 : <code>還元</code> 1건으로 <b>실측 다수를 결정으로 뒤집은 사례</b>이며, 17키를 올리기 전에는 등재값과 용어집이 어긋납니다(실측 P1 일시 +33 → 업로드 후 −1, P0·P2 불변).</p></div>
       <div class="card"><span class="badge badge-emerald">v5.1 · 실사용 정합</span><h3 class="card-h mt-2">가격 zh · 유의사항 th 등재값 교정</h3><p class="card-p">용어집에 등재된 값이 <b>XLT 시스템의 실제 사용 표기와 어긋나</b> 정상 번역을 계속 경고(P1)로 잡던 2건을 고쳤습니다. <b>가격</b> zh_TW <code>售價</code> → <code>價格</code>(실측 <code>價格</code> 9건 · <code>售價</code> <b>0건</b>), <b>유의사항</b> th_TH <code>หมายเหตุ</code> → <code>ข้อควรระวัง</code>(실측 <code>ข้อควรระวัง</code> 2건 · <code>หมายเหตุ</code> <b>0건</b>). 두 구 등재값 모두 <b>실사용이 0건</b>이었습니다 — <b>실사용 0건 표기는 권장값으로 쓰지 않는다</b>는 원칙에 따라 실측 다수 표기로 맞췄습니다. 2026-09-04 clinic Landpress 다국어 게이트에서 검출됐고, <b>A/B 실측(등재값 2,461키)에서 P1 2,350 → 2,339(−11)</b> · P0 102 · P2 534 불변 · 신규 경고 0건입니다. 용어 수는 <b>117로 그대로</b>입니다(값 교정만).</p></div>
       <div class="card"><span class="badge badge-emerald">v5.4 · 바우처</span><h3 class="card-h mt-2">「상품권/바우처」 혼용 정리 — ja는 クーポン</h3><p class="card-p">같은 대상(구매한 모바일 금액권)을 화면마다 <b>상품권</b>·<b>바우처</b>로 부르면서 5개 언어 번역이 두 갈래로 갈렸습니다. 한국어를 <b>바우처</b>로 통일해 등재하고(en <code>Voucher</code> · zh <code>優惠券</code> · th <code>เวาเชอร์</code> — 모두 실측 다수), <b>일본어는 실측 다수 <code>バウチャー</code>(20건) 대신 사용자 결정으로 <code>クーポン</code></b>을 정본으로 삼았습니다. 남아 있는 <code>バウチャー</code>는 금지 목록 <b>#22</b>로 검출되며, 이미 등록된 <b>XLT 20키</b>의 일본어는 함께 재업로드합니다 — 업로드 전까지는 시스템 등록값과 용어집이 잠시 어긋납니다.</p></div>
+      <div class="card"><span class="badge badge-emerald">v5.5 · 최대</span><h3 class="card-h mt-2">「최대」 en·zh 등재값을 실측 다수로 교정</h3><p class="card-p">용어집에 등재된 값이 <b>XLT 시스템의 실제 사용 표기와 어긋나</b> 할인율·상한 문맥의 정상 번역을 계속 경고(P1)로 잡던 것을 고쳤습니다. <b>최대</b> en_US <code>Max</code> → <code>up to</code>(실측 <code>up to</code>/<code>Up to</code> <b>123건</b> : <code>Max</code> 22건) · zh_TW <code>最多</code> → <code>最高</code>(실측 <code>最高</code> <b>106건</b> : <code>最多</code> 32건). ja_JP <code>最大</code>·th_TH <code>สูงสุด</code>는 이미 다수 표기와 일치해 <b>변경 없음</b>입니다. 2026-09-12 Unifi mini v2.0 Landpress 다국어 게이트 <b>5건에서 연속 검출</b>됐고, <b>A/B 실측(등록값 3,883키)에서 P1 3,833 → 3,670(−163)</b> · P0 112 · P2 808 불변입니다. 함께 검토한 <b>신규 등재 3건(포인트·환불·할인)은 A/B에서 P1이 늘어 반려</b>했고, <b>금지 목록도 추가하지 않았습니다</b> — zh <code>最多</code>는 수량 문맥(「최대 3개」), en <code>Max</code>는 라벨 문맥에서 정당해 일괄 금지하면 오탐이 됩니다. 용어 수는 <b>118로 그대로</b>입니다(값 교정만).</p></div>
       <div class="card"><span class="badge badge-indigo">보류 관리</span><h3 class="card-h mt-2">잔여 보류 1건</h3><p class="card-p"><b>나중에 뽑기·더 뽑기의 zh/th</b> — 엑셀 값(稍後畫·วาด…)이 "그림 그리기"로 오역 의심(같은 엑셀의 뽑기=抽獎와 불일치). 교정안 제시 상태로 팀 확정 대기. 상세: <code>glossary_pending_review_v3.md</code></p></div>
     </div>
 
@@ -1013,10 +1015,10 @@ action url 을 모두 업데이트 했어
     </details>
 
     <div class="panel mt-6">
-      <h3 class="panel-h">🚫 구 표기 금지 목록 — v5.4 · 22건 <span class="text-slate-400 font-normal text-base">deprecated_terms</span></h3><p class="sec-sub">위 「용어집이 관리하는 5개 영역」에서 설명한 <code>deprecated_terms</code> 표입니다. <b>terminology(전체 용어집)와의 차이</b> — terminology는 한국어가 이미 맞는 단어일 때만 5개 언어를 대조하지만, 이 목록은 <b>틀린 표현 자체를 언어·화면 관계없이 잡아냅니다.</b> 아래 표현은 화면 문구에 쓰지 않습니다. <b>신규 문구·문구 변경</b>에서는 권장 표기를 바로 적용하고, 이미 XLT 시스템에 등록된 기존 문구는 임의로 바꾸지 않고 보고만 합니다. <b>의미가 모호하면 확인을 요청드린 뒤</b> 권장 표기 사용을 제안합니다. <b>문맥 조건</b> 칸이 채워진 행은 같은 문장에 그 단어가 함께 있을 때만 금지로 판정합니다(오탐 방지 — 예: 「팔로우」는 LINE·공식 계정과 함께 있을 때만 금지, 「~를 따르다」 같은 다른 뜻은 대상이 아님).</p><table class="ex-table mt-3"><tbody><tr><th>쓰지 않음</th><th>언어</th><th>권장 표기</th><th>문맥 조건</th><th>이유</th></tr><tr><td><code>OA 팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>OA는 사내 약어이고 팔로우는 구 표기다. 화면 문구에 쓰지 않는다</td></tr><tr><td><code>OA 채널 추가</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>채널은 LINE 공식 계정의 구 명칭이다</td></tr><tr><td><code>채널 팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>2026-08-04 사용자 확정으로 대체된 표기</td></tr><tr><td><code>공식 계정 팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>유지 문맥이면 「공식 계정 친구를 유지」로 쓴다</td></tr><tr><td><code>팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>단독 사용도 금지. 더 긴 금지 표현이 먼저 매칭되면 이 항목은 건너뛴다</td></tr><tr><td><code>공식계정</code></td><td>ko_KR</td><td><b>공식 계정</b></td><td>—</td><td>붙여쓰기 오류. 용어집 등재값은 「공식 계정」이다</td></tr><tr><td><code>フォロー</code></td><td>ja_JP</td><td><b>友だち追加</b></td><td>—</td><td>LINE 일본 표기는 友だち追加다</td></tr><tr><td><code>友達</code></td><td>ja_JP</td><td><b>友だち</b></td><td>—</td><td>LINE 일본 공식 표기는 히라가나 友だち다. 한자 友達를 쓰지 않는다</td></tr><tr><td><code>關注</code></td><td>zh_TW</td><td><b>加入好友</b></td><td>LINE·官方帳號</td><td>關注는 웨이보·위챗 용어다. 「關注App(관심 앱)」 등 다른 문맥은 대상이 아니다</td></tr><tr><td><code>追蹤</code></td><td>zh_TW</td><td><b>加入好友</b></td><td>LINE·官方帳號</td><td>追蹤는 SNS 팔로우 용어다</td></tr><tr><td><code>ติดตาม</code></td><td>th_TH</td><td><b>เพิ่มเพื่อน</b></td><td>LINE·บัญชีทางการ</td><td>ติดตาม는 SNS 팔로우 용어다. 「기대해 주세요·기다려 주세요」 문맥은 대상이 아니다</td></tr><tr><td><code>follow</code></td><td>en_US</td><td><b>add as a friend</b></td><td>official·LINE</td><td>SNS 팔로우 의미일 때만. 「~를 따르다(follow the steps/policies)」는 대상이 아니다. 단어 경계로만 매칭한다</td></tr><tr><td><code>월렛</code></td><td>ko_KR</td><td><b>지갑</b></td><td>—</td><td>외래어 음차. 서비스 표기 정본은 「지갑」이다(용어집 terminology 등재값). md/guide.md §5-1 C</td></tr><tr><td><code>유저</code></td><td>ko_KR</td><td><b>사용자</b></td><td>—</td><td>외래어 음차. 서비스 표기 정본은 「사용자」다(용어집 terminology 등재값). 같은 화면에서 「유저」·「사용자」가 혼용된 실측(시즌3 유의사항)이 계기</td></tr><tr><td><code>Mini App</code></td><td>ko_KR</td><td><b>MINI App</b></td><td>—</td><td>LINE 공식 제품명은 LINE MINI App(MINI 전부 대문자)다. LINE Developers 문서가 Mini App(소문자 ini)을 쓰지 않는다. en_US는 검증기가 대소문자를 무시해 정상 표기까지 오탐하므로 제외한다</td></tr><tr><td><code>Mini App</code></td><td>ja_JP</td><td><b>MINI App</b></td><td>—</td><td>LINE 공식 제품명은 LINE MINI App(MINI 전부 대문자)다. LINE Developers 문서가 Mini App(소문자 ini)을 쓰지 않는다</td></tr><tr><td><code>Mini App</code></td><td>th_TH</td><td><b>MINI App</b></td><td>—</td><td>LINE 공식 제품명은 LINE MINI App(MINI 전부 대문자)다. LINE Developers 문서가 Mini App(소문자 ini)을 쓰지 않는다</td></tr><tr><td><code>Mini App</code></td><td>zh_TW</td><td><b>MINI App</b></td><td>—</td><td>LINE 공식 제품명은 LINE MINI App(MINI 전부 대문자)다. LINE Developers 문서가 Mini App(소문자 ini)을 쓰지 않는다</td></tr><tr><td><code>후기</code></td><td>ko_KR</td><td><b>리뷰</b></td><td>—</td><td>5개 언어가 전부 review 계열(レビュー·Reviews·รีวิว·評論)이라 ko도 「리뷰」로 통일했다(2026-09-03 clinic 표기 통일). UI 라벨도 「리뷰」다</td></tr><tr><td><code>キャッシュバック</code></td><td>ja_JP</td><td><b>還元</b></td><td>—</td><td>캐시백 ja 정본을 還元으로 통일(2026-09-04 사용자 결정). キャッシュバック는 구 표기다</td></tr><tr><td><code>ลูกบอลนำโชค</code></td><td>th_TH</td><td><b>ลัคกี้บอล</b></td><td>—</td><td>럭키볼 th 정본은 <b>실측 다수 표기</b> ลัคกี้บอล이다(Unifi v1.7.5 럭키볼 47키: ลัคกี้บอล 18건 vs ลูกบอลนำโชค 7건). ลูกบอลนำโชค는 소수 구 표기다(2026-09-07 리워드탭 게이트에서 오탐 원인으로 검출)</td></tr><tr><td><code>バウチャー</code></td><td>ja_JP</td><td><b>クーポン</b></td><td>—</td><td>「바우처」의 일본어 정본을 <b>クーポン</b>으로 확정(2026-09-12 사용자 결정). 등재 실사용은 결정 직전 <code>バウチャー</code> 20건 : <code>クーポン</code> 1건으로, <b>실측 다수를 결정으로 뒤집은 건</b>입니다(v5.0 캐시백 還元과 같은 유형). 기존 등록 20키의 ja 일괄 재업로드를 동반합니다</td></tr></tbody></table><p class="ex-cap mt-2">번역 검증기가 이 목록으로 각 언어를 검사해 「구 표기」 경고를 냅니다. 더 긴 표현이 먼저 잡히면 그 안의 짧은 표현은 중복으로 보고하지 않습니다.</p><h3 class="panel-h">📋 전체 용어집 — v5.4 · 118용어 (가나다순) <span class="text-slate-400 font-normal text-base">terminology</span></h3><p class="sec-sub">한국어 단어 하나에 5개 언어 표준 번역이 고정된 표입니다(<code>terminology</code>). 번역할 때 이 표에 있는 단어가 나오면 항상 같은 번역을 씁니다.</p>
+      <h3 class="panel-h">🚫 구 표기 금지 목록 — v5.5 · 22건 <span class="text-slate-400 font-normal text-base">deprecated_terms</span></h3><p class="sec-sub">위 「용어집이 관리하는 5개 영역」에서 설명한 <code>deprecated_terms</code> 표입니다. <b>terminology(전체 용어집)와의 차이</b> — terminology는 한국어가 이미 맞는 단어일 때만 5개 언어를 대조하지만, 이 목록은 <b>틀린 표현 자체를 언어·화면 관계없이 잡아냅니다.</b> 아래 표현은 화면 문구에 쓰지 않습니다. <b>신규 문구·문구 변경</b>에서는 권장 표기를 바로 적용하고, 이미 XLT 시스템에 등록된 기존 문구는 임의로 바꾸지 않고 보고만 합니다. <b>의미가 모호하면 확인을 요청드린 뒤</b> 권장 표기 사용을 제안합니다. <b>문맥 조건</b> 칸이 채워진 행은 같은 문장에 그 단어가 함께 있을 때만 금지로 판정합니다(오탐 방지 — 예: 「팔로우」는 LINE·공식 계정과 함께 있을 때만 금지, 「~를 따르다」 같은 다른 뜻은 대상이 아님).</p><table class="ex-table mt-3"><tbody><tr><th>쓰지 않음</th><th>언어</th><th>권장 표기</th><th>문맥 조건</th><th>이유</th></tr><tr><td><code>OA 팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>OA는 사내 약어이고 팔로우는 구 표기다. 화면 문구에 쓰지 않는다</td></tr><tr><td><code>OA 채널 추가</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>채널은 LINE 공식 계정의 구 명칭이다</td></tr><tr><td><code>채널 팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>2026-08-04 사용자 확정으로 대체된 표기</td></tr><tr><td><code>공식 계정 팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>유지 문맥이면 「공식 계정 친구를 유지」로 쓴다</td></tr><tr><td><code>팔로우</code></td><td>ko_KR</td><td><b>Unifi LINE 공식 계정 친구 추가</b></td><td>—</td><td>단독 사용도 금지. 더 긴 금지 표현이 먼저 매칭되면 이 항목은 건너뛴다</td></tr><tr><td><code>공식계정</code></td><td>ko_KR</td><td><b>공식 계정</b></td><td>—</td><td>붙여쓰기 오류. 용어집 등재값은 「공식 계정」이다</td></tr><tr><td><code>フォロー</code></td><td>ja_JP</td><td><b>友だち追加</b></td><td>—</td><td>LINE 일본 표기는 友だち追加다</td></tr><tr><td><code>友達</code></td><td>ja_JP</td><td><b>友だち</b></td><td>—</td><td>LINE 일본 공식 표기는 히라가나 友だち다. 한자 友達를 쓰지 않는다</td></tr><tr><td><code>關注</code></td><td>zh_TW</td><td><b>加入好友</b></td><td>LINE·官方帳號</td><td>關注는 웨이보·위챗 용어다. 「關注App(관심 앱)」 등 다른 문맥은 대상이 아니다</td></tr><tr><td><code>追蹤</code></td><td>zh_TW</td><td><b>加入好友</b></td><td>LINE·官方帳號</td><td>追蹤는 SNS 팔로우 용어다</td></tr><tr><td><code>ติดตาม</code></td><td>th_TH</td><td><b>เพิ่มเพื่อน</b></td><td>LINE·บัญชีทางการ</td><td>ติดตาม는 SNS 팔로우 용어다. 「기대해 주세요·기다려 주세요」 문맥은 대상이 아니다</td></tr><tr><td><code>follow</code></td><td>en_US</td><td><b>add as a friend</b></td><td>official·LINE</td><td>SNS 팔로우 의미일 때만. 「~를 따르다(follow the steps/policies)」는 대상이 아니다. 단어 경계로만 매칭한다</td></tr><tr><td><code>월렛</code></td><td>ko_KR</td><td><b>지갑</b></td><td>—</td><td>외래어 음차. 서비스 표기 정본은 「지갑」이다(용어집 terminology 등재값). md/guide.md §5-1 C</td></tr><tr><td><code>유저</code></td><td>ko_KR</td><td><b>사용자</b></td><td>—</td><td>외래어 음차. 서비스 표기 정본은 「사용자」다(용어집 terminology 등재값). 같은 화면에서 「유저」·「사용자」가 혼용된 실측(시즌3 유의사항)이 계기</td></tr><tr><td><code>Mini App</code></td><td>ko_KR</td><td><b>MINI App</b></td><td>—</td><td>LINE 공식 제품명은 LINE MINI App(MINI 전부 대문자)다. LINE Developers 문서가 Mini App(소문자 ini)을 쓰지 않는다. en_US는 검증기가 대소문자를 무시해 정상 표기까지 오탐하므로 제외한다</td></tr><tr><td><code>Mini App</code></td><td>ja_JP</td><td><b>MINI App</b></td><td>—</td><td>LINE 공식 제품명은 LINE MINI App(MINI 전부 대문자)다. LINE Developers 문서가 Mini App(소문자 ini)을 쓰지 않는다</td></tr><tr><td><code>Mini App</code></td><td>th_TH</td><td><b>MINI App</b></td><td>—</td><td>LINE 공식 제품명은 LINE MINI App(MINI 전부 대문자)다. LINE Developers 문서가 Mini App(소문자 ini)을 쓰지 않는다</td></tr><tr><td><code>Mini App</code></td><td>zh_TW</td><td><b>MINI App</b></td><td>—</td><td>LINE 공식 제품명은 LINE MINI App(MINI 전부 대문자)다. LINE Developers 문서가 Mini App(소문자 ini)을 쓰지 않는다</td></tr><tr><td><code>후기</code></td><td>ko_KR</td><td><b>리뷰</b></td><td>—</td><td>5개 언어가 전부 review 계열(レビュー·Reviews·รีวิว·評論)이라 ko도 「리뷰」로 통일했다(2026-09-03 clinic 표기 통일). UI 라벨도 「리뷰」다</td></tr><tr><td><code>キャッシュバック</code></td><td>ja_JP</td><td><b>還元</b></td><td>—</td><td>캐시백 ja 정본을 還元으로 통일(2026-09-04 사용자 결정). キャッシュバック는 구 표기다</td></tr><tr><td><code>ลูกบอลนำโชค</code></td><td>th_TH</td><td><b>ลัคกี้บอล</b></td><td>—</td><td>럭키볼 th 정본은 <b>실측 다수 표기</b> ลัคกี้บอล이다(Unifi v1.7.5 럭키볼 47키: ลัคกี้บอล 18건 vs ลูกบอลนำโชค 7건). ลูกบอลนำโชค는 소수 구 표기다(2026-09-07 리워드탭 게이트에서 오탐 원인으로 검출)</td></tr><tr><td><code>バウチャー</code></td><td>ja_JP</td><td><b>クーポン</b></td><td>—</td><td>「바우처」의 일본어 정본을 <b>クーポン</b>으로 확정(2026-09-12 사용자 결정). 등재 실사용은 결정 직전 <code>バウチャー</code> 20건 : <code>クーポン</code> 1건으로, <b>실측 다수를 결정으로 뒤집은 건</b>입니다(v5.0 캐시백 還元과 같은 유형). 기존 등록 20키의 ja 일괄 재업로드를 동반합니다</td></tr></tbody></table><p class="ex-cap mt-2">번역 검증기가 이 목록으로 각 언어를 검사해 「구 표기」 경고를 냅니다. 더 긴 표현이 먼저 잡히면 그 안의 짧은 표현은 중복으로 보고하지 않습니다.</p><h3 class="panel-h">📋 전체 용어집 — v5.5 · 118용어 (가나다순) <span class="text-slate-400 font-normal text-base">terminology</span></h3><p class="sec-sub">한국어 단어 하나에 5개 언어 표준 번역이 고정된 표입니다(<code>terminology</code>). 번역할 때 이 표에 있는 단어가 나오면 항상 같은 번역을 씁니다.</p>
       <input id="glossarySearch" type="text" placeholder="🔍 용어 검색 (한국어·영어·일본어·중국어·태국어 아무 언어나)" class="mt-3 w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-brand-500" />
       <div style="max-height:480px;overflow:auto" class="mt-3 rounded-xl border border-slate-200">
-        <table class="ex-table" style="margin:0" id="glossaryTable"><tbody><tr><th>한국어</th><th>en_US</th><th>ja_JP</th><th>zh_TW</th><th>th_TH</th></tr><tr><td><b>{0} JPYC</b></td><td>{0} JPYC</td><td>{0} JPYC</td><td>{0} JPYC</td><td>{0} JPYC</td></tr><tr><td><b>가격</b></td><td>Price</td><td>価格</td><td>價格</td><td>ราคา</td></tr><tr><td><b>가입</b></td><td>Sign up</td><td>登録</td><td>註冊</td><td>สมัคร</td></tr><tr><td><b>간편 비밀번호</b></td><td>Passcode</td><td>簡単パスワード</td><td>簡易密碼</td><td>รหัสผ่านแบบง่าย</td></tr><tr><td><b>거래</b></td><td>transaction</td><td>取引</td><td>交易</td><td>ธุรกรรม</td></tr><tr><td><b>거래 ID</b></td><td>Transaction ID</td><td>取引ID</td><td>交易ID</td><td>รหัสธุรกรรม</td></tr><tr><td><b>거래 유형</b></td><td>Transaction Type</td><td>取引タイプ</td><td>交易類型</td><td>ประเภทธุรกรรม</td></tr><tr><td><b>거래내역</b></td><td>Transaction History</td><td>取引履歴</td><td>交易紀錄</td><td>ประวัติการทำธุรกรรม</td></tr><tr><td><b>결제</b></td><td>Payment</td><td>決済</td><td>付款</td><td>การชำระเงิน</td></tr><tr><td><b>결제 페이백</b></td><td>Payment Payback</td><td>決済ペイバック</td><td>消費回饋</td><td>โบนัสการจ่าย</td></tr><tr><td><b>계속하기</b></td><td>Continue</td><td>続ける</td><td>繼續</td><td>ดำเนินการต่อ</td></tr><tr><td><b>계정</b></td><td>account</td><td>アカウント</td><td>帳號</td><td>บัญชี</td></tr><tr><td><b>공식 계정</b></td><td>Official account</td><td>公式アカウント</td><td>官方帳號</td><td>บัญชีทางการ</td></tr><tr><td><b>공유하기</b></td><td>Share</td><td>共有する</td><td>分享</td><td>แชร์</td></tr><tr><td><b>공지사항</b></td><td>Notices</td><td>お知らせ</td><td>公告事項</td><td>ประกาศ</td></tr><tr><td><b>과거순</b></td><td>Oldest</td><td>古い順</td><td>最舊</td><td>เก่าสุด</td></tr><tr><td><b>교환</b></td><td>swap</td><td>交換</td><td>交換</td><td>แลกเปลี่ยน</td></tr><tr><td><b>교환 입금</b></td><td>Swap Deposit</td><td>交換入金</td><td>交換存入</td><td>ฝากเข้า (แลกเปลี่ยน)</td></tr><tr><td><b>교환 출금</b></td><td>Swap Withdrawal</td><td>交換出金</td><td>交換提領</td><td>ถอนออก (แลกเปลี่ยน)</td></tr><tr><td><b>교환하기</b></td><td>Swap</td><td>交換</td><td>兌換</td><td>แลกเปลี่ยน</td></tr><tr><td><b>구매</b></td><td>Buy</td><td>購入</td><td>購買</td><td>ซื้อ</td></tr><tr><td><b>구매하기</b></td><td>Buy now</td><td>購入する</td><td>購買</td><td>ซื้อ</td></tr><tr><td><b>권한</b></td><td>permission</td><td>アクセス権限</td><td>權限</td><td>สิทธิ์การเข้าถึง</td></tr><tr><td><b>기본 이자</b></td><td>Base Interest</td><td>基本利息</td><td>基本利息</td><td>ดอกเบี้ยพื้นฐาน</td></tr><tr><td><b>꺼내기</b></td><td>Withdraw</td><td>出金</td><td>領回</td><td>ถอน</td></tr><tr><td><b>내 자산</b></td><td>Assets</td><td>資産</td><td>資產</td><td>สินทรัพย์</td></tr><tr><td><b>넣기</b></td><td>Deposit</td><td>入金</td><td>充值</td><td>ฝาก</td></tr><tr><td><b>네트워크</b></td><td>Network</td><td>ネットワーク</td><td>網路</td><td>เครือข่าย</td></tr><tr><td><b>네트워크 전환</b></td><td>Network Conversion</td><td>ネットワーク換算</td><td>網路轉換</td><td>การแปลงเครือข่าย</td></tr><tr><td><b>다음</b></td><td>Next</td><td>次へ</td><td>下一步</td><td>ต่อไป</td></tr><tr><td><b>다음 단계</b></td><td>Next Step</td><td>次のステップ</td><td>下一階段</td><td>ขั้นตอนถัดไป</td></tr><tr><td><b>당첨</b></td><td>win</td><td>当選</td><td>中獎</td><td>ถูกรางวัล</td></tr><tr><td><b>당첨금</b></td><td>prize</td><td>当選金</td><td>獎金</td><td>เงินรางวัล</td></tr><tr><td><b>더보기</b></td><td>View More</td><td>もっと見る</td><td>更多</td><td>ดูเพิ่มเติม</td></tr><tr><td><b>락업 자산</b></td><td>Locked Assets</td><td>ロックアップ資産</td><td>鎖定資產</td><td>สินทรัพย์ที่ถูกล็อคอัพ</td></tr><tr><td><b>럭키볼</b></td><td>Lucky Ball</td><td>ラッキーボール</td><td>幸運球</td><td>ลัคกี้บอล</td></tr><tr><td><b>로그아웃</b></td><td>log out</td><td>ログアウト</td><td>登出</td><td>ออกจากระบบ</td></tr><tr><td><b>로그아웃 안내</b></td><td>Logout notice</td><td>ログアウトのご案内</td><td>登出通知</td><td>แจ้งออกระบบ</td></tr><tr><td><b>로그인</b></td><td>log in</td><td>ログイン</td><td>登入</td><td>เข้าสู่ระบบ</td></tr><tr><td><b>리뷰</b></td><td>Reviews</td><td>レビュー</td><td>評論</td><td>รีวิว</td></tr><tr><td><b>리워드</b></td><td>reward</td><td>リワード</td><td>獎勵</td><td>รางวัล</td></tr><tr><td><b>리워드 지급</b></td><td>Reward Payment</td><td>リワード支給</td><td>獎勵發放</td><td>การจ่ายรางวัล</td></tr><tr><td><b>링크</b></td><td>link</td><td>リンク</td><td>連結</td><td>ลิงก์</td></tr><tr><td><b>마이</b></td><td>My</td><td>マイ</td><td>我的</td><td>ของฉัน</td></tr><tr><td><b>마켓</b></td><td>Market</td><td>マーケット</td><td>商店</td><td>ตลาด</td></tr><tr><td><b>메시지</b></td><td>Message</td><td>メッセージ</td><td>訊息</td><td>ข้อความ</td></tr><tr><td><b>문의하기</b></td><td>Help</td><td>お問い合わせ</td><td>回報問題</td><td>สอบถาม</td></tr><tr><td><b>미션</b></td><td>mission</td><td>ミッション</td><td>任務</td><td>ภารกิจ</td></tr><tr><td><b>바우처</b></td><td>Voucher</td><td>クーポン</td><td>優惠券</td><td>เวาเชอร์</td></tr><tr><td><b>받는 사람</b></td><td>To</td><td>宛先</td><td>收款方</td><td>ผู้รับ</td></tr><tr><td><b>변경</b></td><td>change</td><td>変更</td><td>變更</td><td>เปลี่ยน</td></tr><tr><td><b>보내기</b></td><td>Send</td><td>出金</td><td>轉帳</td><td>ส่ง</td></tr><tr><td><b>보낸 사람</b></td><td>Sender</td><td>出金元</td><td>轉帳人</td><td>ผู้ส่ง</td></tr><tr><td><b>보너스 미션</b></td><td>Bonus Missions</td><td>ボーナスミッション</td><td>紅利任務</td><td>มิชชันโบนัส</td></tr><tr><td><b>복구 비밀번호</b></td><td>Recovery Password</td><td>復旧パスワード</td><td>復原密碼</td><td>รหัสผ่านกู้คืน</td></tr><tr><td><b>복사</b></td><td>copy</td><td>コピー</td><td>複製</td><td>คัดลอก</td></tr><tr><td><b>부스트 이자</b></td><td>Boost Interest</td><td>ブースト利息</td><td>加速利息</td><td>ดอกเบี้ยบูสต์</td></tr><tr><td><b>비밀번호</b></td><td>password</td><td>パスワード</td><td>密碼</td><td>รหัสผ่าน</td></tr><tr><td><b>뽑기</b></td><td>Draw</td><td>抽選</td><td>抽獎</td><td>จับรางวัล</td></tr><tr><td><b>사용자</b></td><td>user</td><td>ユーザー</td><td>用戶</td><td>ผู้ใช้</td></tr><tr><td><b>선물하기</b></td><td>gift</td><td>プレゼント</td><td>送</td><td>มอบ</td></tr><tr><td><b>송금</b></td><td>send</td><td>送金</td><td>轉帳</td><td>ส่ง</td></tr><tr><td><b>쇼핑</b></td><td>shopping</td><td>ショッピング</td><td>購物</td><td>ช้อปปิ้ง</td></tr><tr><td><b>숫자</b></td><td>Number</td><td>数字</td><td>數字</td><td>ตัวเลข</td></tr><tr><td><b>시작하기</b></td><td>Start</td><td>開始</td><td>開始</td><td>เริ่มต้น</td></tr><tr><td><b>알림</b></td><td>Notification</td><td>通知</td><td>通知</td><td>การแจ้งเตือน</td></tr><tr><td><b>언어 설정</b></td><td>Language Settings</td><td>言語設定</td><td>語言設定</td><td>ตั้งค่าภาษา</td></tr><tr><td><b>여기서</b></td><td>here</td><td>こちらで</td><td>在這裡</td><td>ที่นี่</td></tr><tr><td><b>연결</b></td><td>connect</td><td>連携</td><td>連結</td><td>เชื่อมโยง</td></tr><tr><td><b>연결 계정</b></td><td>Linked account</td><td>連携アカウント</td><td>綁定帳號</td><td>บัญชีที่ผูกไว้</td></tr><tr><td><b>연결 해제</b></td><td>disconnect</td><td>連携を解除</td><td>解除連結</td><td>ตัดการเชื่อมโยง</td></tr><tr><td><b>연결하기</b></td><td>Connect</td><td>連携する</td><td>綁定</td><td>ผูก</td></tr><tr><td><b>연이율</b></td><td>annual rate</td><td>年利</td><td>年利率</td><td>อัตรา/ปี</td></tr><tr><td><b>예상 수수료</b></td><td>Estimated Fee</td><td>予想手数料</td><td>預估手續費</td><td>ค่าธรรมเนียมโดยประมาณ</td></tr><tr><td><b>예치</b></td><td>deposit</td><td>預入</td><td>存入</td><td>ฝาก</td></tr><tr><td><b>예치 이자</b></td><td>Deposit interest</td><td>預入利息</td><td>存入利息</td><td>ดอกเบี้ยจากการฝาก</td></tr><tr><td><b>완료</b></td><td>Complete</td><td>完了</td><td>完成</td><td>เสร็จ</td></tr><tr><td><b>외부지갑</b></td><td>External Wallet</td><td>外部ウォレット</td><td>外部錢包</td><td>กระเป๋าภายนอก</td></tr><tr><td><b>유의사항</b></td><td>Cautions</td><td>注意事項</td><td>注意事項</td><td>ข้อควรระวัง</td></tr><tr><td><b>이자</b></td><td>interest</td><td>利息</td><td>利息</td><td>ดอกเบี้ย</td></tr><tr><td><b>인기</b></td><td>popular</td><td>人気</td><td>人氣</td><td>ยอดนิยม</td></tr><tr><td><b>일일 미션</b></td><td>Daily Mission</td><td>毎日のミッション</td><td>每日任務</td><td>ภารกิจรายวัน</td></tr><tr><td><b>입금 (거래내역 유형 라벨)</b></td><td>Received</td><td>受取済</td><td>已接收</td><td>ได้รับแล้ว</td></tr><tr><td><b>자산</b></td><td>asset</td><td>資産</td><td>資產</td><td>สินทรัพย์</td></tr><tr><td><b>전체</b></td><td>All</td><td>すべて</td><td>全部</td><td>ทั้งหมด</td></tr><tr><td><b>전체보기</b></td><td>View All</td><td>すべて見る</td><td>全部查看</td><td>ดูทั้งหมด</td></tr><tr><td><b>종료</b></td><td>Ended</td><td>終了</td><td>結束</td><td>สิ้นสุด</td></tr><tr><td><b>지갑</b></td><td>wallet</td><td>ウォレット</td><td>錢包</td><td>กระเป๋า</td></tr><tr><td><b>지갑 주소</b></td><td>wallet address</td><td>ウォレットアドレス</td><td>錢包地址</td><td>ที่อยู่กระเป๋า</td></tr><tr><td><b>지급 완료</b></td><td>Paid</td><td>支給済み</td><td>已發放</td><td>จ่ายแล้ว</td></tr><tr><td><b>직접 입력</b></td><td>Custom</td><td>直接入力</td><td>直接輸入</td><td>กำหนดเอง</td></tr><tr><td><b>채널 동의</b></td><td>channel consent</td><td>チャネル同意</td><td>頻道同意</td><td>การยินยอมแชนแนล</td></tr><tr><td><b>채우기</b></td><td>Receive</td><td>受け取る</td><td>接收</td><td>รับ</td></tr><tr><td><b>초대</b></td><td>invite</td><td>招待</td><td>邀請</td><td>เชิญ</td></tr><tr><td><b>총 자산</b></td><td>Total Assets</td><td>総資産</td><td>總資產</td><td>สินทรัพย์ทั้งหมด</td></tr><tr><td><b>최근 사용</b></td><td>Recently used</td><td>最近使用</td><td>最近已使用</td><td>ใช้งานล่าสุด</td></tr><tr><td><b>최대</b></td><td>Max</td><td>最大</td><td>最多</td><td>สูงสุด</td></tr><tr><td><b>최신순</b></td><td>Newest</td><td>新しい順</td><td>最新</td><td>ล่าสุด</td></tr><tr><td><b>최저가격</b></td><td>Floor</td><td>最低価格</td><td>最低價格</td><td>ราคาต่ำสุด</td></tr><tr><td><b>출금</b></td><td>withdraw</td><td>出金</td><td>提領</td><td>ถอน</td></tr><tr><td><b>출금 (거래내역 유형 라벨)</b></td><td>Sent</td><td>出金</td><td>出金</td><td>ส่งแล้ว</td></tr><tr><td><b>취소</b></td><td>Cancel</td><td>キャンセル</td><td>取消</td><td>ยกเลิก</td></tr><tr><td><b>친구</b></td><td>friend</td><td>友だち</td><td>好友</td><td>เพื่อน</td></tr><tr><td><b>카메라</b></td><td>camera</td><td>カメラ</td><td>相機</td><td>กล้อง</td></tr><tr><td><b>캐시백</b></td><td>cashback</td><td>還元</td><td>現金回饋</td><td>เงินคืน</td></tr><tr><td><b>캠페인</b></td><td>campaign</td><td>キャンペーン</td><td>活動</td><td>แคมเปญ</td></tr><tr><td><b>토큰</b></td><td>token</td><td>トークン</td><td>代幣</td><td>โทเค็น</td></tr><tr><td><b>토큰 교환</b></td><td>Token Swap</td><td>トークン交換</td><td>代幣兌換</td><td>แลกเปลี่ยนโทเค็น</td></tr><tr><td><b>통화 설정</b></td><td>Currency Settings</td><td>通貨設定</td><td>貨幣設定</td><td>ตั้งค่าสกุลเงิน</td></tr><tr><td><b>평균 잔고</b></td><td>average balance</td><td>平均残高</td><td>平均餘額</td><td>ยอดเงินคงเหลือเฉลี่ย</td></tr><tr><td><b>포이카츠</b></td><td>Poi-katsu</td><td>ポイ活</td><td>集點活動</td><td>Poi-katsu</td></tr><tr><td><b>프로필</b></td><td>profile</td><td>プロフィール</td><td>個人檔案</td><td>โปรไฟล์</td></tr><tr><td><b>플러스 이자</b></td><td>Plus Interest</td><td>プラス利息</td><td>Plus 利息</td><td>ดอกเบี้ยพลัส</td></tr><tr><td><b>플레이</b></td><td>Play</td><td>プレイ</td><td>遊戲</td><td>เล่น</td></tr><tr><td><b>혜택</b></td><td>benefit</td><td>特典</td><td>優惠</td><td>สิทธิประโยชน์</td></tr><tr><td><b>홈으로 이동</b></td><td>Go to Home</td><td>ホームへ</td><td>前往首頁</td><td>ไปยังหน้าหลัก</td></tr><tr><td><b>확인</b></td><td>check</td><td>確認</td><td>查看</td><td>ตรวจสอบ</td></tr><tr><td><b>회원가입</b></td><td>sign up</td><td>会員登録</td><td>註冊</td><td>สมัครสมาชิก</td></tr></tbody></table>
+        <table class="ex-table" style="margin:0" id="glossaryTable"><tbody><tr><th>한국어</th><th>en_US</th><th>ja_JP</th><th>zh_TW</th><th>th_TH</th></tr><tr><td><b>{0} JPYC</b></td><td>{0} JPYC</td><td>{0} JPYC</td><td>{0} JPYC</td><td>{0} JPYC</td></tr><tr><td><b>가격</b></td><td>Price</td><td>価格</td><td>價格</td><td>ราคา</td></tr><tr><td><b>가입</b></td><td>Sign up</td><td>登録</td><td>註冊</td><td>สมัคร</td></tr><tr><td><b>간편 비밀번호</b></td><td>Passcode</td><td>簡単パスワード</td><td>簡易密碼</td><td>รหัสผ่านแบบง่าย</td></tr><tr><td><b>거래</b></td><td>transaction</td><td>取引</td><td>交易</td><td>ธุรกรรม</td></tr><tr><td><b>거래 ID</b></td><td>Transaction ID</td><td>取引ID</td><td>交易ID</td><td>รหัสธุรกรรม</td></tr><tr><td><b>거래 유형</b></td><td>Transaction Type</td><td>取引タイプ</td><td>交易類型</td><td>ประเภทธุรกรรม</td></tr><tr><td><b>거래내역</b></td><td>Transaction History</td><td>取引履歴</td><td>交易紀錄</td><td>ประวัติการทำธุรกรรม</td></tr><tr><td><b>결제</b></td><td>Payment</td><td>決済</td><td>付款</td><td>การชำระเงิน</td></tr><tr><td><b>결제 페이백</b></td><td>Payment Payback</td><td>決済ペイバック</td><td>消費回饋</td><td>โบนัสการจ่าย</td></tr><tr><td><b>계속하기</b></td><td>Continue</td><td>続ける</td><td>繼續</td><td>ดำเนินการต่อ</td></tr><tr><td><b>계정</b></td><td>account</td><td>アカウント</td><td>帳號</td><td>บัญชี</td></tr><tr><td><b>공식 계정</b></td><td>Official account</td><td>公式アカウント</td><td>官方帳號</td><td>บัญชีทางการ</td></tr><tr><td><b>공유하기</b></td><td>Share</td><td>共有する</td><td>分享</td><td>แชร์</td></tr><tr><td><b>공지사항</b></td><td>Notices</td><td>お知らせ</td><td>公告事項</td><td>ประกาศ</td></tr><tr><td><b>과거순</b></td><td>Oldest</td><td>古い順</td><td>最舊</td><td>เก่าสุด</td></tr><tr><td><b>교환</b></td><td>swap</td><td>交換</td><td>交換</td><td>แลกเปลี่ยน</td></tr><tr><td><b>교환 입금</b></td><td>Swap Deposit</td><td>交換入金</td><td>交換存入</td><td>ฝากเข้า (แลกเปลี่ยน)</td></tr><tr><td><b>교환 출금</b></td><td>Swap Withdrawal</td><td>交換出金</td><td>交換提領</td><td>ถอนออก (แลกเปลี่ยน)</td></tr><tr><td><b>교환하기</b></td><td>Swap</td><td>交換</td><td>兌換</td><td>แลกเปลี่ยน</td></tr><tr><td><b>구매</b></td><td>Buy</td><td>購入</td><td>購買</td><td>ซื้อ</td></tr><tr><td><b>구매하기</b></td><td>Buy now</td><td>購入する</td><td>購買</td><td>ซื้อ</td></tr><tr><td><b>권한</b></td><td>permission</td><td>アクセス権限</td><td>權限</td><td>สิทธิ์การเข้าถึง</td></tr><tr><td><b>기본 이자</b></td><td>Base Interest</td><td>基本利息</td><td>基本利息</td><td>ดอกเบี้ยพื้นฐาน</td></tr><tr><td><b>꺼내기</b></td><td>Withdraw</td><td>出金</td><td>領回</td><td>ถอน</td></tr><tr><td><b>내 자산</b></td><td>Assets</td><td>資産</td><td>資產</td><td>สินทรัพย์</td></tr><tr><td><b>넣기</b></td><td>Deposit</td><td>入金</td><td>充值</td><td>ฝาก</td></tr><tr><td><b>네트워크</b></td><td>Network</td><td>ネットワーク</td><td>網路</td><td>เครือข่าย</td></tr><tr><td><b>네트워크 전환</b></td><td>Network Conversion</td><td>ネットワーク換算</td><td>網路轉換</td><td>การแปลงเครือข่าย</td></tr><tr><td><b>다음</b></td><td>Next</td><td>次へ</td><td>下一步</td><td>ต่อไป</td></tr><tr><td><b>다음 단계</b></td><td>Next Step</td><td>次のステップ</td><td>下一階段</td><td>ขั้นตอนถัดไป</td></tr><tr><td><b>당첨</b></td><td>win</td><td>当選</td><td>中獎</td><td>ถูกรางวัล</td></tr><tr><td><b>당첨금</b></td><td>prize</td><td>当選金</td><td>獎金</td><td>เงินรางวัล</td></tr><tr><td><b>더보기</b></td><td>View More</td><td>もっと見る</td><td>更多</td><td>ดูเพิ่มเติม</td></tr><tr><td><b>락업 자산</b></td><td>Locked Assets</td><td>ロックアップ資産</td><td>鎖定資產</td><td>สินทรัพย์ที่ถูกล็อคอัพ</td></tr><tr><td><b>럭키볼</b></td><td>Lucky Ball</td><td>ラッキーボール</td><td>幸運球</td><td>ลัคกี้บอล</td></tr><tr><td><b>로그아웃</b></td><td>log out</td><td>ログアウト</td><td>登出</td><td>ออกจากระบบ</td></tr><tr><td><b>로그아웃 안내</b></td><td>Logout notice</td><td>ログアウトのご案内</td><td>登出通知</td><td>แจ้งออกระบบ</td></tr><tr><td><b>로그인</b></td><td>log in</td><td>ログイン</td><td>登入</td><td>เข้าสู่ระบบ</td></tr><tr><td><b>리뷰</b></td><td>Reviews</td><td>レビュー</td><td>評論</td><td>รีวิว</td></tr><tr><td><b>리워드</b></td><td>reward</td><td>リワード</td><td>獎勵</td><td>รางวัล</td></tr><tr><td><b>리워드 지급</b></td><td>Reward Payment</td><td>リワード支給</td><td>獎勵發放</td><td>การจ่ายรางวัล</td></tr><tr><td><b>링크</b></td><td>link</td><td>リンク</td><td>連結</td><td>ลิงก์</td></tr><tr><td><b>마이</b></td><td>My</td><td>マイ</td><td>我的</td><td>ของฉัน</td></tr><tr><td><b>마켓</b></td><td>Market</td><td>マーケット</td><td>商店</td><td>ตลาด</td></tr><tr><td><b>메시지</b></td><td>Message</td><td>メッセージ</td><td>訊息</td><td>ข้อความ</td></tr><tr><td><b>문의하기</b></td><td>Help</td><td>お問い合わせ</td><td>回報問題</td><td>สอบถาม</td></tr><tr><td><b>미션</b></td><td>mission</td><td>ミッション</td><td>任務</td><td>ภารกิจ</td></tr><tr><td><b>바우처</b></td><td>Voucher</td><td>クーポン</td><td>優惠券</td><td>เวาเชอร์</td></tr><tr><td><b>받는 사람</b></td><td>To</td><td>宛先</td><td>收款方</td><td>ผู้รับ</td></tr><tr><td><b>변경</b></td><td>change</td><td>変更</td><td>變更</td><td>เปลี่ยน</td></tr><tr><td><b>보내기</b></td><td>Send</td><td>出金</td><td>轉帳</td><td>ส่ง</td></tr><tr><td><b>보낸 사람</b></td><td>Sender</td><td>出金元</td><td>轉帳人</td><td>ผู้ส่ง</td></tr><tr><td><b>보너스 미션</b></td><td>Bonus Missions</td><td>ボーナスミッション</td><td>紅利任務</td><td>มิชชันโบนัส</td></tr><tr><td><b>복구 비밀번호</b></td><td>Recovery Password</td><td>復旧パスワード</td><td>復原密碼</td><td>รหัสผ่านกู้คืน</td></tr><tr><td><b>복사</b></td><td>copy</td><td>コピー</td><td>複製</td><td>คัดลอก</td></tr><tr><td><b>부스트 이자</b></td><td>Boost Interest</td><td>ブースト利息</td><td>加速利息</td><td>ดอกเบี้ยบูสต์</td></tr><tr><td><b>비밀번호</b></td><td>password</td><td>パスワード</td><td>密碼</td><td>รหัสผ่าน</td></tr><tr><td><b>뽑기</b></td><td>Draw</td><td>抽選</td><td>抽獎</td><td>จับรางวัล</td></tr><tr><td><b>사용자</b></td><td>user</td><td>ユーザー</td><td>用戶</td><td>ผู้ใช้</td></tr><tr><td><b>선물하기</b></td><td>gift</td><td>プレゼント</td><td>送</td><td>มอบ</td></tr><tr><td><b>송금</b></td><td>send</td><td>送金</td><td>轉帳</td><td>ส่ง</td></tr><tr><td><b>쇼핑</b></td><td>shopping</td><td>ショッピング</td><td>購物</td><td>ช้อปปิ้ง</td></tr><tr><td><b>숫자</b></td><td>Number</td><td>数字</td><td>數字</td><td>ตัวเลข</td></tr><tr><td><b>시작하기</b></td><td>Start</td><td>開始</td><td>開始</td><td>เริ่มต้น</td></tr><tr><td><b>알림</b></td><td>Notification</td><td>通知</td><td>通知</td><td>การแจ้งเตือน</td></tr><tr><td><b>언어 설정</b></td><td>Language Settings</td><td>言語設定</td><td>語言設定</td><td>ตั้งค่าภาษา</td></tr><tr><td><b>여기서</b></td><td>here</td><td>こちらで</td><td>在這裡</td><td>ที่นี่</td></tr><tr><td><b>연결</b></td><td>connect</td><td>連携</td><td>連結</td><td>เชื่อมโยง</td></tr><tr><td><b>연결 계정</b></td><td>Linked account</td><td>連携アカウント</td><td>綁定帳號</td><td>บัญชีที่ผูกไว้</td></tr><tr><td><b>연결 해제</b></td><td>disconnect</td><td>連携を解除</td><td>解除連結</td><td>ตัดการเชื่อมโยง</td></tr><tr><td><b>연결하기</b></td><td>Connect</td><td>連携する</td><td>綁定</td><td>ผูก</td></tr><tr><td><b>연이율</b></td><td>annual rate</td><td>年利</td><td>年利率</td><td>อัตรา/ปี</td></tr><tr><td><b>예상 수수료</b></td><td>Estimated Fee</td><td>予想手数料</td><td>預估手續費</td><td>ค่าธรรมเนียมโดยประมาณ</td></tr><tr><td><b>예치</b></td><td>deposit</td><td>預入</td><td>存入</td><td>ฝาก</td></tr><tr><td><b>예치 이자</b></td><td>Deposit interest</td><td>預入利息</td><td>存入利息</td><td>ดอกเบี้ยจากการฝาก</td></tr><tr><td><b>완료</b></td><td>Complete</td><td>完了</td><td>完成</td><td>เสร็จ</td></tr><tr><td><b>외부지갑</b></td><td>External Wallet</td><td>外部ウォレット</td><td>外部錢包</td><td>กระเป๋าภายนอก</td></tr><tr><td><b>유의사항</b></td><td>Cautions</td><td>注意事項</td><td>注意事項</td><td>ข้อควรระวัง</td></tr><tr><td><b>이자</b></td><td>interest</td><td>利息</td><td>利息</td><td>ดอกเบี้ย</td></tr><tr><td><b>인기</b></td><td>popular</td><td>人気</td><td>人氣</td><td>ยอดนิยม</td></tr><tr><td><b>일일 미션</b></td><td>Daily Mission</td><td>毎日のミッション</td><td>每日任務</td><td>ภารกิจรายวัน</td></tr><tr><td><b>입금 (거래내역 유형 라벨)</b></td><td>Received</td><td>受取済</td><td>已接收</td><td>ได้รับแล้ว</td></tr><tr><td><b>자산</b></td><td>asset</td><td>資産</td><td>資產</td><td>สินทรัพย์</td></tr><tr><td><b>전체</b></td><td>All</td><td>すべて</td><td>全部</td><td>ทั้งหมด</td></tr><tr><td><b>전체보기</b></td><td>View All</td><td>すべて見る</td><td>全部查看</td><td>ดูทั้งหมด</td></tr><tr><td><b>종료</b></td><td>Ended</td><td>終了</td><td>結束</td><td>สิ้นสุด</td></tr><tr><td><b>지갑</b></td><td>wallet</td><td>ウォレット</td><td>錢包</td><td>กระเป๋า</td></tr><tr><td><b>지갑 주소</b></td><td>wallet address</td><td>ウォレットアドレス</td><td>錢包地址</td><td>ที่อยู่กระเป๋า</td></tr><tr><td><b>지급 완료</b></td><td>Paid</td><td>支給済み</td><td>已發放</td><td>จ่ายแล้ว</td></tr><tr><td><b>직접 입력</b></td><td>Custom</td><td>直接入力</td><td>直接輸入</td><td>กำหนดเอง</td></tr><tr><td><b>채널 동의</b></td><td>channel consent</td><td>チャネル同意</td><td>頻道同意</td><td>การยินยอมแชนแนล</td></tr><tr><td><b>채우기</b></td><td>Receive</td><td>受け取る</td><td>接收</td><td>รับ</td></tr><tr><td><b>초대</b></td><td>invite</td><td>招待</td><td>邀請</td><td>เชิญ</td></tr><tr><td><b>총 자산</b></td><td>Total Assets</td><td>総資産</td><td>總資產</td><td>สินทรัพย์ทั้งหมด</td></tr><tr><td><b>최근 사용</b></td><td>Recently used</td><td>最近使用</td><td>最近已使用</td><td>ใช้งานล่าสุด</td></tr><tr><td><b>최대</b></td><td>up to</td><td>最大</td><td>最高</td><td>สูงสุด</td></tr><tr><td><b>최신순</b></td><td>Newest</td><td>新しい順</td><td>最新</td><td>ล่าสุด</td></tr><tr><td><b>최저가격</b></td><td>Floor</td><td>最低価格</td><td>最低價格</td><td>ราคาต่ำสุด</td></tr><tr><td><b>출금</b></td><td>withdraw</td><td>出金</td><td>提領</td><td>ถอน</td></tr><tr><td><b>출금 (거래내역 유형 라벨)</b></td><td>Sent</td><td>出金</td><td>出金</td><td>ส่งแล้ว</td></tr><tr><td><b>취소</b></td><td>Cancel</td><td>キャンセル</td><td>取消</td><td>ยกเลิก</td></tr><tr><td><b>친구</b></td><td>friend</td><td>友だち</td><td>好友</td><td>เพื่อน</td></tr><tr><td><b>카메라</b></td><td>camera</td><td>カメラ</td><td>相機</td><td>กล้อง</td></tr><tr><td><b>캐시백</b></td><td>cashback</td><td>還元</td><td>現金回饋</td><td>เงินคืน</td></tr><tr><td><b>캠페인</b></td><td>campaign</td><td>キャンペーン</td><td>活動</td><td>แคมเปญ</td></tr><tr><td><b>토큰</b></td><td>token</td><td>トークン</td><td>代幣</td><td>โทเค็น</td></tr><tr><td><b>토큰 교환</b></td><td>Token Swap</td><td>トークン交換</td><td>代幣兌換</td><td>แลกเปลี่ยนโทเค็น</td></tr><tr><td><b>통화 설정</b></td><td>Currency Settings</td><td>通貨設定</td><td>貨幣設定</td><td>ตั้งค่าสกุลเงิน</td></tr><tr><td><b>평균 잔고</b></td><td>average balance</td><td>平均残高</td><td>平均餘額</td><td>ยอดเงินคงเหลือเฉลี่ย</td></tr><tr><td><b>포이카츠</b></td><td>Poi-katsu</td><td>ポイ活</td><td>集點活動</td><td>Poi-katsu</td></tr><tr><td><b>프로필</b></td><td>profile</td><td>プロフィール</td><td>個人檔案</td><td>โปรไฟล์</td></tr><tr><td><b>플러스 이자</b></td><td>Plus Interest</td><td>プラス利息</td><td>Plus 利息</td><td>ดอกเบี้ยพลัส</td></tr><tr><td><b>플레이</b></td><td>Play</td><td>プレイ</td><td>遊戲</td><td>เล่น</td></tr><tr><td><b>혜택</b></td><td>benefit</td><td>特典</td><td>優惠</td><td>สิทธิประโยชน์</td></tr><tr><td><b>홈으로 이동</b></td><td>Go to Home</td><td>ホームへ</td><td>前往首頁</td><td>ไปยังหน้าหลัก</td></tr><tr><td><b>확인</b></td><td>check</td><td>確認</td><td>查看</td><td>ตรวจสอบ</td></tr><tr><td><b>회원가입</b></td><td>sign up</td><td>会員登録</td><td>註冊</td><td>สมัครสมาชิก</td></tr></tbody></table>
       </div>
       <p class="ex-cap mt-2" id="glossaryCount">118개 용어 표시 중</p>
 
@@ -1063,7 +1065,7 @@ action url 을 모두 업데이트 했어
         <span class="text-xs text-slate-500">API를 직접 호출해 이 페이지의 임베드 용어집과 대조합니다</span>
       </div>
       <div id="verifyResult" class="hidden mt-3 rounded-xl border p-4 text-sm"></div>
-      <details class="ex mt-4"><summary>최신 전체 JSON 보기 — v5.4 · 118 terms · 11 exceptions · 22 deprecated · 2 OA variables · 갱신자 hogeun (2026-09-12)</summary>
+      <details class="ex mt-4"><summary>최신 전체 JSON 보기 — v5.5 · 118 terms · 11 exceptions · 22 deprecated · 2 OA variables · 갱신자 hogeun (2026-09-12)</summary>
         <div class="ex-body">
           <div class="flex items-center justify-between gap-3 mb-2">
             <p class="ex-cap m-0">CMS에 그대로 붙여넣을 수 있는 전체 JSON입니다.</p>
@@ -1072,7 +1074,7 @@ action url 을 모두 업데이트 했어
           <pre id="glossaryJsonData" class="ex-code" style="max-height:420px;overflow:auto">{
   &quot;metadata&quot;: {
     &quot;source&quot;: &quot;guide.md&quot;,
-    &quot;version&quot;: &quot;5.4&quot;,
+    &quot;version&quot;: &quot;5.5&quot;,
     &quot;languages&quot;: [
       &quot;ko_KR&quot;,
       &quot;en_US&quot;,
@@ -1082,7 +1084,7 @@ action url 을 모두 업데이트 했어
     ],
     &quot;created_at&quot;: &quot;2026-05-13T15:30:00+09:00&quot;,
     &quot;updated_by&quot;: &quot;hogeun (hogeun.kim.lnxt@gmail.com)&quot;,
-    &quot;description&quot;: &quot;v5.4: **용어 「바우처」 신설 + ja 정본 クーポン 확정**(2026-09-12 사용자 결정). Unifi mini v2.0에서 같은 대상(구매한 모바일 금액권)을 화면마다 `상품권`/`바우처`로 부르고 있어 번역이 ギフト券/バウチャー, Gift card/Voucher, 禮券/優惠券, บัตรกำนัล/เวาเชอร์로 두 갈래로 갈린 것이 게이트에서 검출됐다. ko는 `바우처`로 통일(등재 실사용 ko 바우처 20 : 상품권 0으로 실측과 일치), en `Voucher`(20건)·zh `優惠券`(19건)·th `เวาเชอร์`(18건)도 실측 다수와 일치한다. **ja만 실측 다수(バウチャー 20 : クーポン 1)를 결정으로 뒤집어 `クーポン`으로 확정**했다 — v5.0 캐시백 `還元`과 같은 유형이며, ja에 `バウチャー`가 든 기존 등록 20키의 일괄 재업로드를 동반한다. deprecated_terms #22(ja バウチャー→クーポン) 신설로 잔존 구 표기를 검출한다. || v5.3: **스키마 확장 — `metadata.updated_by` 신설**. Landpress API에 실제 편집자 로그가 없어 갱신을 요청/승인한 사람을 자기신고로 남긴다(md/landpress.md §3-1). 값 자체 변경 없음(용어·예외·금지표현 동일). || v5.2: **럭키볼 th_TH 교정** — `ลูกบอลนำโชค` → `ลัคกี้บอล`. XLT 시스템 전수 실측(Unifi v1.7.5, 럭키볼 포함 47키): `ลัคกี้บอล` 18건(다수) vs `ลูกบอลนำโชค` 7건(소수). 등재값이 소수표기를 가리켜 리워드탭 개선 번역(mr_dc_desc·mr_gm_desc)에서 자동검증기가 정상 다수표기를 P1로 반복 오탐시킨 것을 게이트에서 검출(2026-09-07). en_US(Lucky Ball)·ja_JP(ラッキーボール)·zh_TW(幸運球)는 이미 다수표기와 일치해 변경 없음. deprecated_terms #21 신설(th `ลูกบอลนำโชค`→`ลัคกี้บอล`)로 잔존 소수표기 검출. || v5.1: **등재 실사용과 어긋난 등재값 2건 교정** — 가격 zh_TW `售價`→`價格`(실측 `價格` 9건 · `售價` **0건**) · 유의사항 th_TH `หมายเหตุ`→`ข้อควรระวัง`(실측 `ข้อควรระวัง` 2건 · `หมายเหตุ` **0건**). 두 등재값 모두 XLT 시스템 실사용이 0건이라 정상 번역을 P1로 반복 오탐시키던 원인이다(2026-09-04 clinic Landpress 다국어 게이트에서 검출). 실사용 0건 표기 권장 금지 원칙에 따라 권장값은 모두 실측 다수 표기다. || v5.0: **캐시백 ja 정본 교체** — キャッシュバック → 還元 (2026-09-04 사용자 결정). clinic 화면의 일본어 검수에서 還元 표기가 지정됐고, 부분 적용은 화면 간 표기 분기를 낳으므로 전면 통일했다. terminology 캐시백 ja 교체 + deprecated_terms #20(ja キャッシュバック→還元) 신설로 잔존 구 표기를 검출한다. XLT 17키(clinic 11 · voucher 4 · max_cashback 2) 일괄 재업로드 동반. ※ 등재 실사용은 교체 직전 キャッシュバック 17 : 還元 1이었다 — 실측 다수를 따르지 않고 결정으로 뒤집은 건이므로, 17키 업로드 전에는 등재값과 용어집이 어긋난다. || v4.9: ⓐ **LINE MINI App 브랜드 표기 정본화** — LINE Developers 공식 문서가 제품명을 `LINE MINI App`(MINI 전부 대문자)로 일관 표기하고 `Mini App`(소문자 ini)은 쓰지 않음을 1차 출처로 확인(developers.line.biz/en/docs/line-mini-app/ · discover/introduction/ — 제목·헤딩·본문·API 레퍼런스 전건 동일). exceptions 2건 신설(`*LINE MINI App*`·`*MINI App*` · brand, 9→11) + deprecated_terms 4건(ko·ja·th·zh `Mini App`→`MINI App`) + `*Unifi mini*`(#9) note 보강(Unifi의 LINE MINI App 서비스명 · mini 소문자). ⚠️ en_US는 deprecated에서 제외 — 검증기가 en만 대소문자를 무시해 정상 표기까지 오탐한다. ⓑ **누적 오탐 원인 5건 교정**(등재 실사용 실측, Unifi v1.7.5 2,461키): 혜택 en `perks`→`benefit`(18:6) · 더보기 ja `すべて見る`→`もっと見る`(6:6 동률이나 `すべて見る`는 전부 ko 「전체보기」 번역이고 「더보기」 완전일치 키는 `もっと見る`) · 더보기 zh `查看更多`→`更多`(24:7 · `更多`가 `查看更多`의 부분이라 양쪽 모두 통과) · 결제 zh `結帳`→`付款`(26:3) · 교환 ja `スワップ`→`交換`(48:5). **교환 en `swap`은 유지** — `exchange`로 바꾸면 P1 +24로 악화(A/B 반려). ⓒ **`리뷰` 신규 등재**(레ビュー/Reviews/รีวิว/評論 — 4키 일관) + **deprecated ko `후기`→`리뷰`** (clinic 표기 통일에서 5개 언어가 전부 review 계열이라 ko를 「리뷰」로 정리했다). A/B 실측(등재값 전체 2,461키): **P0 102 불변 · P2 534 불변 · P1 2,437→2,357(-80)**. 개별 기여 — 교환 ja -33 · 혜택 en -26 · 결제 zh -23 · 더보기 ja -4 · 더보기 zh -3 · 리뷰 등재 ±0 · `Mini App` deprecated +4(실제 위반) · `후기` deprecated +5(실제 위반, 7키 재업로드로 해소 예정). 보유 엑셀 7종 합계 P1 83 불변(오탐 -4 / 실검출 +4). ※ 버전 4.8은 2026-08-12 시도 후 철회된 번호라(팀 합의 미도출) 재사용하지 않고 4.9로 올린다. || v4.7: 포이카츠 zh_TW 교정 — 點數活動 → 集點活動. 등재값 點數活動이 XLT 시스템 전체(Dapp Portal 1,596 + Unifi 2,134키)에서 실사용 0건인 반면 실제 번역은 集點活動(unifi_promotion_jpyc_unifi_text8c·unifi_promotion_unifi_text8d 2건)을 쓴다 — 등재값 쪽이 실사용과 어긋난 경우이며 v4.1에서 en·th만 Poi-katsu로 맞추고 「zh_TW 點數活動은 이번 범위 밖」으로 남겨둔 잔여분이다(2026-08-10 사용자 결정 ⓑ안). 集點은 대만에서 포인트 적립을 가리키는 관용 표현이라 직역투인 點數活動보다 자연스럽다. A/B 실측 — 시즌3 엑셀 58키 P1 67→65(-2, P0 0 불변) · Dapp Portal 1,596키 P1 1,721→1,719(-2, P0 15 불변·치환 제안 44건 불변) · Unifi 2,134키 변화 0건. 감소만 있고 신규 P1 0건. 아울러 metadata 수치 오류를 정정했다 — total_deprecated_terms가 13으로 남아 있었으나 실제 항목은 14개다(v4.6에서 #14 「유저」→「사용자」 추가 시 수치 갱신 누락). || v4.6: terminology에 「사용자」 등재 + deprecated_terms에 ko 「유저」→「사용자」 추가(#14). 시즌3 유의사항 8키에서 existing_user는 「유저」, wallet_jp는 「사용자」로 같은 화면에서 표기가 갈린 것이 계기다(사용자 결정: 「사용자」로 통일). A/B 실측 — 레지스트리 1,596키 기준 P1 1,655→1,661(+6): 그중 5건이 ko 「유저」 실제 검출(mini_luckyball_terms_existing_user·unifi_promotion_jpyc_bonus_all_title·_bonus_gold_title·_caution_contents2·_reward_info1-1), 1건은 오탐(trade_swap_slippage_setting_custom_title en — ko 「사용자 설정」이 관용적으로 'Custom'이라 terminology 매칭이 걸린다. 재판정 금지). 시즌3 57키 기준 P1 67→68(+1, existing_user 실제 위반). zh는 번체 「用戶」가 정본(레지스트리 21키 사용, 간체 「用户」 0건). || v4.5: deprecated_terms에 ko 「월렛」→「지갑」 추가(13건). terminology에 「지갑」이 등재돼 있어도 ko가 「월렛」이면 매칭 자체가 안 돼 검사 대상 밖이었다 — 「팔로우」와 같은 구조적 사각지대이며 v4.3에서 deprecated_terms를 만들 때 함께 넣었어야 했다. md/guide.md §5-1 C에는 「비수탁 지갑: 월렛 → 지갑」 규칙이 문서로만 있었다. XLT 시스템 1,596키 실측: ko 「월렛」 14건 잔존(「지갑」은 79건 정본). v4.4 누적본. || v4.4: deprecated_terms 보완 — ⓐ 신규 2건(ja 友達→友だち · ko 공식계정→공식 계정) ⓑ context 필드 신설로 오탐 제거: zh 關注·追蹤, th ติดตาม, en follow는 같은 셀에 LINE·官方帳號·บัญชีทางการ·official 중 하나가 있을 때만 검출한다(關注App=관심 앱, โปรดติดตาม=기대해 주세요, follow the steps=~를 따르다 같은 다른 문맥을 걸러낸다). en은 단어 경계로만 매칭한다. XLT 시스템 export(v2.6.0 2026-08-06) 1,596키 실측: 보완 전 21키 검출 중 오탐 8건 → 보완 후 오탐 0건·실제 대상 17키 정확 검출. v4.3 누적본. || v4.3: deprecated_terms 영역 신설(스키마 확장 — 5번째 최상위 키). OA 팔로우·OA 채널 추가·채널 팔로우 등 구 표기를 Unifi LINE 공식 계정 친구 추가로 통일하도록 금지→권장 매핑을 정본화했다(2026-08-04 사용자 확정을 용어집에 반영). terminology에 구(phrase)로 등재하는 안은 A/B 실측에서 P1 230→266(+36)으로 부적합해 기각했다 — terminology는 ko→5개 언어 정합 검사용이라 ko 자체의 구 표기를 잡지 못한다. validate_translation.py가 이 영역을 읽어 각 언어 셀의 구 표기를 P1로 경고한다. 실측: 최신 엑셀 8종 기준 신규 검출 0건(현행 산출물은 이미 정본 표기) — 예방 장치. v4.2 누적본. || v4.2: 지급 완료 신규 등재(Paid/支給済み/จ่ายแล้ว/已發放) — 비실시간 일괄 지급 전환으로 「지급 완료된 리워드」 표현이 화면에 상시 노출되는데, 등재값 완료(Complete/完了/เสร็จ/完成)만 있어 각 언어의 완료상 의역(Paid·支給済み·จ่ายแล้ว·已發放)이 P1로 오탐됐다. 검증기 최장일치 개선(2026-08-06)으로 더 긴 지급 완료가 완료보다 우선 매칭되면서 등재 효과가 생겼다 — 개선 전에는 등재해도 P1이 줄지 않았다(A/B 실측 확인). 실측: 보유 엑셀 8종 P1 197 → 193건(-4), 신규 P1 0건, P0 0건 불변. v4.1 누적본. || v4.1: ⓐ OA(LINE 공식계정) 메시지 전용 변수 영역 `oa_variables` 신설 — 당첨금 총액 변수를 {{amount}} → {{total_amount}}로 확정하고 앞으로 {{total_amount}}를 쓴다(2026-08-05 사용자 확정). OA는 XLT 키를 부여하지 않는 영역이라 화면 XLT의 인덱스 치환자({0}/{{0}})와 구분해 관리한다. ⓑ 종료 zh_TW 교정: 結尾(글의 맺음말) → 結束 — 등재값 자체가 오역이었다. ⓒ 포이카츠 en_US·th_TH: point activity·การสะสมแต้ม → Poi-katsu — 실제 번역이 이미 음차 표기를 쓰고 있어 등재값을 실사용에 맞췄다(zh_TW 點數活動은 이번 범위 밖). ⓓ 캠페인 신규 등재(campaign/キャンペーン/แคมเปญ/活動). ⓑ~ⓓ 실측: P1 63 → 58건(-5), 신규 P1 0건. v4.0 누적본.&quot;,
+    &quot;description&quot;: &quot;v5.5: **등재 실사용과 어긋난 등재값 1건 교정 — 「최대」 en_US·zh_TW**. en `Max`→`up to`(실측 `up to`/`Up to` 123건 : `Max` 22건) · zh `最多`→`最高`(실측 `最高` 106건 : `最多` 32건). XLT 등록값 전수 실측(Unifi v1.7.6 2,549키 + Dapp Portal v2.6.1 1,679키 = 중복 제거 3,883키 · ko 「최대」 포함 157키) 기준이며, 등재값이 소수 표기를 가리켜 할인율·상한 문맥의 정상 번역을 P1로 반복 오탐시키던 원인이다(2026-09-12 Unifi mini v2.0 Landpress 다국어 게이트 5건에서 연속 검출 — voucher_detail · shopping_guide 다이소/CU · category_promotion_banner · service_guide). **A/B 실측(등재값 3,883키)**: P0 112 불변 · P2 808 불변 · P1 3,833→3,670(**-163**). **같이 검토한 신규 등재 3건은 A/B 반려** — 포인트(+16) · 환불(+12) · 할인(+6)으로 모두 P1이 늘어 등재하지 않는다(각 언어에 복수 표기가 실제로 쓰여 단일 정본 등재가 정상 번역을 위반으로 만든다. v4.9 「교환 en `swap` 유지」와 같은 판단). **deprecated_terms는 추가하지 않는다** — zh `最多`는 수량 문맥(「최대 3개」), en `Max`는 라벨 문맥에서 정당해 일괄 금지하면 오탐이 된다. **쿠폰(함)은 실사용 0건이라 등재 금지 원칙(§4 기준 4)에 따라 제외**했다. || v5.4: **용어 「바우처」 신설 + ja 정본 クーポン 확정**(2026-09-12 사용자 결정). Unifi mini v2.0에서 같은 대상(구매한 모바일 금액권)을 화면마다 `상품권`/`바우처`로 부르고 있어 번역이 ギフト券/バウチャー, Gift card/Voucher, 禮券/優惠券, บัตรกำนัล/เวาเชอร์로 두 갈래로 갈린 것이 게이트에서 검출됐다. ko는 `바우처`로 통일(등재 실사용 ko 바우처 20 : 상품권 0으로 실측과 일치), en `Voucher`(20건)·zh `優惠券`(19건)·th `เวาเชอร์`(18건)도 실측 다수와 일치한다. **ja만 실측 다수(バウチャー 20 : クーポン 1)를 결정으로 뒤집어 `クーポン`으로 확정**했다 — v5.0 캐시백 `還元`과 같은 유형이며, ja에 `バウチャー`가 든 기존 등록 20키의 일괄 재업로드를 동반한다. deprecated_terms #22(ja バウチャー→クーポン) 신설로 잔존 구 표기를 검출한다. || v5.3: **스키마 확장 — `metadata.updated_by` 신설**. Landpress API에 실제 편집자 로그가 없어 갱신을 요청/승인한 사람을 자기신고로 남긴다(md/landpress.md §3-1). 값 자체 변경 없음(용어·예외·금지표현 동일). || v5.2: **럭키볼 th_TH 교정** — `ลูกบอลนำโชค` → `ลัคกี้บอล`. XLT 시스템 전수 실측(Unifi v1.7.5, 럭키볼 포함 47키): `ลัคกี้บอล` 18건(다수) vs `ลูกบอลนำโชค` 7건(소수). 등재값이 소수표기를 가리켜 리워드탭 개선 번역(mr_dc_desc·mr_gm_desc)에서 자동검증기가 정상 다수표기를 P1로 반복 오탐시킨 것을 게이트에서 검출(2026-09-07). en_US(Lucky Ball)·ja_JP(ラッキーボール)·zh_TW(幸運球)는 이미 다수표기와 일치해 변경 없음. deprecated_terms #21 신설(th `ลูกบอลนำโชค`→`ลัคกี้บอล`)로 잔존 소수표기 검출. || v5.1: **등재 실사용과 어긋난 등재값 2건 교정** — 가격 zh_TW `售價`→`價格`(실측 `價格` 9건 · `售價` **0건**) · 유의사항 th_TH `หมายเหตุ`→`ข้อควรระวัง`(실측 `ข้อควรระวัง` 2건 · `หมายเหตุ` **0건**). 두 등재값 모두 XLT 시스템 실사용이 0건이라 정상 번역을 P1로 반복 오탐시키던 원인이다(2026-09-04 clinic Landpress 다국어 게이트에서 검출). 실사용 0건 표기 권장 금지 원칙에 따라 권장값은 모두 실측 다수 표기다. || v5.0: **캐시백 ja 정본 교체** — キャッシュバック → 還元 (2026-09-04 사용자 결정). clinic 화면의 일본어 검수에서 還元 표기가 지정됐고, 부분 적용은 화면 간 표기 분기를 낳으므로 전면 통일했다. terminology 캐시백 ja 교체 + deprecated_terms #20(ja キャッシュバック→還元) 신설로 잔존 구 표기를 검출한다. XLT 17키(clinic 11 · voucher 4 · max_cashback 2) 일괄 재업로드 동반. ※ 등재 실사용은 교체 직전 キャッシュバック 17 : 還元 1이었다 — 실측 다수를 따르지 않고 결정으로 뒤집은 건이므로, 17키 업로드 전에는 등재값과 용어집이 어긋난다. || v4.9: ⓐ **LINE MINI App 브랜드 표기 정본화** — LINE Developers 공식 문서가 제품명을 `LINE MINI App`(MINI 전부 대문자)로 일관 표기하고 `Mini App`(소문자 ini)은 쓰지 않음을 1차 출처로 확인(developers.line.biz/en/docs/line-mini-app/ · discover/introduction/ — 제목·헤딩·본문·API 레퍼런스 전건 동일). exceptions 2건 신설(`*LINE MINI App*`·`*MINI App*` · brand, 9→11) + deprecated_terms 4건(ko·ja·th·zh `Mini App`→`MINI App`) + `*Unifi mini*`(#9) note 보강(Unifi의 LINE MINI App 서비스명 · mini 소문자). ⚠️ en_US는 deprecated에서 제외 — 검증기가 en만 대소문자를 무시해 정상 표기까지 오탐한다. ⓑ **누적 오탐 원인 5건 교정**(등재 실사용 실측, Unifi v1.7.5 2,461키): 혜택 en `perks`→`benefit`(18:6) · 더보기 ja `すべて見る`→`もっと見る`(6:6 동률이나 `すべて見る`는 전부 ko 「전체보기」 번역이고 「더보기」 완전일치 키는 `もっと見る`) · 더보기 zh `查看更多`→`更多`(24:7 · `更多`가 `查看更多`의 부분이라 양쪽 모두 통과) · 결제 zh `結帳`→`付款`(26:3) · 교환 ja `スワップ`→`交換`(48:5). **교환 en `swap`은 유지** — `exchange`로 바꾸면 P1 +24로 악화(A/B 반려). ⓒ **`리뷰` 신규 등재**(레ビュー/Reviews/รีวิว/評論 — 4키 일관) + **deprecated ko `후기`→`리뷰`** (clinic 표기 통일에서 5개 언어가 전부 review 계열이라 ko를 「리뷰」로 정리했다). A/B 실측(등재값 전체 2,461키): **P0 102 불변 · P2 534 불변 · P1 2,437→2,357(-80)**. 개별 기여 — 교환 ja -33 · 혜택 en -26 · 결제 zh -23 · 더보기 ja -4 · 더보기 zh -3 · 리뷰 등재 ±0 · `Mini App` deprecated +4(실제 위반) · `후기` deprecated +5(실제 위반, 7키 재업로드로 해소 예정). 보유 엑셀 7종 합계 P1 83 불변(오탐 -4 / 실검출 +4). ※ 버전 4.8은 2026-08-12 시도 후 철회된 번호라(팀 합의 미도출) 재사용하지 않고 4.9로 올린다. || v4.7: 포이카츠 zh_TW 교정 — 點數活動 → 集點活動. 등재값 點數活動이 XLT 시스템 전체(Dapp Portal 1,596 + Unifi 2,134키)에서 실사용 0건인 반면 실제 번역은 集點活動(unifi_promotion_jpyc_unifi_text8c·unifi_promotion_unifi_text8d 2건)을 쓴다 — 등재값 쪽이 실사용과 어긋난 경우이며 v4.1에서 en·th만 Poi-katsu로 맞추고 「zh_TW 點數活動은 이번 범위 밖」으로 남겨둔 잔여분이다(2026-08-10 사용자 결정 ⓑ안). 集點은 대만에서 포인트 적립을 가리키는 관용 표현이라 직역투인 點數活動보다 자연스럽다. A/B 실측 — 시즌3 엑셀 58키 P1 67→65(-2, P0 0 불변) · Dapp Portal 1,596키 P1 1,721→1,719(-2, P0 15 불변·치환 제안 44건 불변) · Unifi 2,134키 변화 0건. 감소만 있고 신규 P1 0건. 아울러 metadata 수치 오류를 정정했다 — total_deprecated_terms가 13으로 남아 있었으나 실제 항목은 14개다(v4.6에서 #14 「유저」→「사용자」 추가 시 수치 갱신 누락). || v4.6: terminology에 「사용자」 등재 + deprecated_terms에 ko 「유저」→「사용자」 추가(#14). 시즌3 유의사항 8키에서 existing_user는 「유저」, wallet_jp는 「사용자」로 같은 화면에서 표기가 갈린 것이 계기다(사용자 결정: 「사용자」로 통일). A/B 실측 — 레지스트리 1,596키 기준 P1 1,655→1,661(+6): 그중 5건이 ko 「유저」 실제 검출(mini_luckyball_terms_existing_user·unifi_promotion_jpyc_bonus_all_title·_bonus_gold_title·_caution_contents2·_reward_info1-1), 1건은 오탐(trade_swap_slippage_setting_custom_title en — ko 「사용자 설정」이 관용적으로 'Custom'이라 terminology 매칭이 걸린다. 재판정 금지). 시즌3 57키 기준 P1 67→68(+1, existing_user 실제 위반). zh는 번체 「用戶」가 정본(레지스트리 21키 사용, 간체 「用户」 0건). || v4.5: deprecated_terms에 ko 「월렛」→「지갑」 추가(13건). terminology에 「지갑」이 등재돼 있어도 ko가 「월렛」이면 매칭 자체가 안 돼 검사 대상 밖이었다 — 「팔로우」와 같은 구조적 사각지대이며 v4.3에서 deprecated_terms를 만들 때 함께 넣었어야 했다. md/guide.md §5-1 C에는 「비수탁 지갑: 월렛 → 지갑」 규칙이 문서로만 있었다. XLT 시스템 1,596키 실측: ko 「월렛」 14건 잔존(「지갑」은 79건 정본). v4.4 누적본. || v4.4: deprecated_terms 보완 — ⓐ 신규 2건(ja 友達→友だち · ko 공식계정→공식 계정) ⓑ context 필드 신설로 오탐 제거: zh 關注·追蹤, th ติดตาม, en follow는 같은 셀에 LINE·官方帳號·บัญชีทางการ·official 중 하나가 있을 때만 검출한다(關注App=관심 앱, โปรดติดตาม=기대해 주세요, follow the steps=~를 따르다 같은 다른 문맥을 걸러낸다). en은 단어 경계로만 매칭한다. XLT 시스템 export(v2.6.0 2026-08-06) 1,596키 실측: 보완 전 21키 검출 중 오탐 8건 → 보완 후 오탐 0건·실제 대상 17키 정확 검출. v4.3 누적본. || v4.3: deprecated_terms 영역 신설(스키마 확장 — 5번째 최상위 키). OA 팔로우·OA 채널 추가·채널 팔로우 등 구 표기를 Unifi LINE 공식 계정 친구 추가로 통일하도록 금지→권장 매핑을 정본화했다(2026-08-04 사용자 확정을 용어집에 반영). terminology에 구(phrase)로 등재하는 안은 A/B 실측에서 P1 230→266(+36)으로 부적합해 기각했다 — terminology는 ko→5개 언어 정합 검사용이라 ko 자체의 구 표기를 잡지 못한다. validate_translation.py가 이 영역을 읽어 각 언어 셀의 구 표기를 P1로 경고한다. 실측: 최신 엑셀 8종 기준 신규 검출 0건(현행 산출물은 이미 정본 표기) — 예방 장치. v4.2 누적본. || v4.2: 지급 완료 신규 등재(Paid/支給済み/จ่ายแล้ว/已發放) — 비실시간 일괄 지급 전환으로 「지급 완료된 리워드」 표현이 화면에 상시 노출되는데, 등재값 완료(Complete/完了/เสร็จ/完成)만 있어 각 언어의 완료상 의역(Paid·支給済み·จ่ายแล้ว·已發放)이 P1로 오탐됐다. 검증기 최장일치 개선(2026-08-06)으로 더 긴 지급 완료가 완료보다 우선 매칭되면서 등재 효과가 생겼다 — 개선 전에는 등재해도 P1이 줄지 않았다(A/B 실측 확인). 실측: 보유 엑셀 8종 P1 197 → 193건(-4), 신규 P1 0건, P0 0건 불변. v4.1 누적본. || v4.1: ⓐ OA(LINE 공식계정) 메시지 전용 변수 영역 `oa_variables` 신설 — 당첨금 총액 변수를 {{amount}} → {{total_amount}}로 확정하고 앞으로 {{total_amount}}를 쓴다(2026-08-05 사용자 확정). OA는 XLT 키를 부여하지 않는 영역이라 화면 XLT의 인덱스 치환자({0}/{{0}})와 구분해 관리한다. ⓑ 종료 zh_TW 교정: 結尾(글의 맺음말) → 結束 — 등재값 자체가 오역이었다. ⓒ 포이카츠 en_US·th_TH: point activity·การสะสมแต้ม → Poi-katsu — 실제 번역이 이미 음차 표기를 쓰고 있어 등재값을 실사용에 맞췄다(zh_TW 點數活動은 이번 범위 밖). ⓓ 캠페인 신규 등재(campaign/キャンペーン/แคมเปญ/活動). ⓑ~ⓓ 실측: P1 63 → 58건(-5), 신규 P1 0건. v4.0 누적본.&quot;,
     &quot;total_terms&quot;: 118,
     &quot;last_updated&quot;: &quot;2026-09-12&quot;,
     &quot;total_exceptions&quot;: 11,
@@ -1246,13 +1248,6 @@ action url 을 모두 업데이트 했어
     }
   ],
   &quot;terminology&quot;: {
-    &quot;{0} JPYC&quot;: {
-      &quot;en_US&quot;: &quot;{0} JPYC&quot;,
-      &quot;ja_JP&quot;: &quot;{0} JPYC&quot;,
-      &quot;ko_KR&quot;: &quot;{0} JPYC&quot;,
-      &quot;th_TH&quot;: &quot;{0} JPYC&quot;,
-      &quot;zh_TW&quot;: &quot;{0} JPYC&quot;
-    },
     &quot;가격&quot;: {
       &quot;en_US&quot;: &quot;Price&quot;,
       &quot;ja_JP&quot;: &quot;価格&quot;,
@@ -1267,40 +1262,12 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;สมัคร&quot;,
       &quot;zh_TW&quot;: &quot;註冊&quot;
     },
-    &quot;간편 비밀번호&quot;: {
-      &quot;en_US&quot;: &quot;Passcode&quot;,
-      &quot;ja_JP&quot;: &quot;簡単パスワード&quot;,
-      &quot;ko_KR&quot;: &quot;간편 비밀번호&quot;,
-      &quot;th_TH&quot;: &quot;รหัสผ่านแบบง่าย&quot;,
-      &quot;zh_TW&quot;: &quot;簡易密碼&quot;
-    },
     &quot;거래&quot;: {
       &quot;en_US&quot;: &quot;transaction&quot;,
       &quot;ja_JP&quot;: &quot;取引&quot;,
       &quot;ko_KR&quot;: &quot;거래&quot;,
       &quot;th_TH&quot;: &quot;ธุรกรรม&quot;,
       &quot;zh_TW&quot;: &quot;交易&quot;
-    },
-    &quot;거래 ID&quot;: {
-      &quot;en_US&quot;: &quot;Transaction ID&quot;,
-      &quot;ja_JP&quot;: &quot;取引ID&quot;,
-      &quot;ko_KR&quot;: &quot;거래 ID&quot;,
-      &quot;th_TH&quot;: &quot;รหัสธุรกรรม&quot;,
-      &quot;zh_TW&quot;: &quot;交易ID&quot;
-    },
-    &quot;거래 유형&quot;: {
-      &quot;en_US&quot;: &quot;Transaction Type&quot;,
-      &quot;ja_JP&quot;: &quot;取引タイプ&quot;,
-      &quot;ko_KR&quot;: &quot;거래 유형&quot;,
-      &quot;th_TH&quot;: &quot;ประเภทธุรกรรม&quot;,
-      &quot;zh_TW&quot;: &quot;交易類型&quot;
-    },
-    &quot;거래내역&quot;: {
-      &quot;en_US&quot;: &quot;Transaction History&quot;,
-      &quot;ja_JP&quot;: &quot;取引履歴&quot;,
-      &quot;ko_KR&quot;: &quot;거래내역&quot;,
-      &quot;th_TH&quot;: &quot;ประวัติการทำธุรกรรม&quot;,
-      &quot;zh_TW&quot;: &quot;交易紀錄&quot;
     },
     &quot;결제&quot;: {
       &quot;en_US&quot;: &quot;Payment&quot;,
@@ -1309,54 +1276,12 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;การชำระเงิน&quot;,
       &quot;zh_TW&quot;: &quot;付款&quot;
     },
-    &quot;결제 페이백&quot;: {
-      &quot;en_US&quot;: &quot;Payment Payback&quot;,
-      &quot;ja_JP&quot;: &quot;決済ペイバック&quot;,
-      &quot;ko_KR&quot;: &quot;결제 페이백&quot;,
-      &quot;th_TH&quot;: &quot;โบนัสการจ่าย&quot;,
-      &quot;zh_TW&quot;: &quot;消費回饋&quot;
-    },
-    &quot;계속하기&quot;: {
-      &quot;en_US&quot;: &quot;Continue&quot;,
-      &quot;ja_JP&quot;: &quot;続ける&quot;,
-      &quot;ko_KR&quot;: &quot;계속하기&quot;,
-      &quot;th_TH&quot;: &quot;ดำเนินการต่อ&quot;,
-      &quot;zh_TW&quot;: &quot;繼續&quot;
-    },
     &quot;계정&quot;: {
       &quot;en_US&quot;: &quot;account&quot;,
       &quot;ja_JP&quot;: &quot;アカウント&quot;,
       &quot;ko_KR&quot;: &quot;계정&quot;,
       &quot;th_TH&quot;: &quot;บัญชี&quot;,
       &quot;zh_TW&quot;: &quot;帳號&quot;
-    },
-    &quot;공식 계정&quot;: {
-      &quot;en_US&quot;: &quot;Official account&quot;,
-      &quot;ja_JP&quot;: &quot;公式アカウント&quot;,
-      &quot;ko_KR&quot;: &quot;공식 계정&quot;,
-      &quot;th_TH&quot;: &quot;บัญชีทางการ&quot;,
-      &quot;zh_TW&quot;: &quot;官方帳號&quot;
-    },
-    &quot;공유하기&quot;: {
-      &quot;en_US&quot;: &quot;Share&quot;,
-      &quot;ja_JP&quot;: &quot;共有する&quot;,
-      &quot;ko_KR&quot;: &quot;공유하기&quot;,
-      &quot;th_TH&quot;: &quot;แชร์&quot;,
-      &quot;zh_TW&quot;: &quot;分享&quot;
-    },
-    &quot;공지사항&quot;: {
-      &quot;en_US&quot;: &quot;Notices&quot;,
-      &quot;ja_JP&quot;: &quot;お知らせ&quot;,
-      &quot;ko_KR&quot;: &quot;공지사항&quot;,
-      &quot;th_TH&quot;: &quot;ประกาศ&quot;,
-      &quot;zh_TW&quot;: &quot;公告事項&quot;
-    },
-    &quot;과거순&quot;: {
-      &quot;en_US&quot;: &quot;Oldest&quot;,
-      &quot;ja_JP&quot;: &quot;古い順&quot;,
-      &quot;ko_KR&quot;: &quot;과거순&quot;,
-      &quot;th_TH&quot;: &quot;เก่าสุด&quot;,
-      &quot;zh_TW&quot;: &quot;最舊&quot;
     },
     &quot;교환&quot;: {
       &quot;en_US&quot;: &quot;swap&quot;,
@@ -1365,38 +1290,10 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;แลกเปลี่ยน&quot;,
       &quot;zh_TW&quot;: &quot;交換&quot;
     },
-    &quot;교환 입금&quot;: {
-      &quot;en_US&quot;: &quot;Swap Deposit&quot;,
-      &quot;ja_JP&quot;: &quot;交換入金&quot;,
-      &quot;ko_KR&quot;: &quot;교환 입금&quot;,
-      &quot;th_TH&quot;: &quot;ฝากเข้า (แลกเปลี่ยน)&quot;,
-      &quot;zh_TW&quot;: &quot;交換存入&quot;
-    },
-    &quot;교환 출금&quot;: {
-      &quot;en_US&quot;: &quot;Swap Withdrawal&quot;,
-      &quot;ja_JP&quot;: &quot;交換出金&quot;,
-      &quot;ko_KR&quot;: &quot;교환 출금&quot;,
-      &quot;th_TH&quot;: &quot;ถอนออก (แลกเปลี่ยน)&quot;,
-      &quot;zh_TW&quot;: &quot;交換提領&quot;
-    },
-    &quot;교환하기&quot;: {
-      &quot;en_US&quot;: &quot;Swap&quot;,
-      &quot;ja_JP&quot;: &quot;交換&quot;,
-      &quot;ko_KR&quot;: &quot;교환하기&quot;,
-      &quot;th_TH&quot;: &quot;แลกเปลี่ยน&quot;,
-      &quot;zh_TW&quot;: &quot;兌換&quot;
-    },
     &quot;구매&quot;: {
       &quot;en_US&quot;: &quot;Buy&quot;,
       &quot;ja_JP&quot;: &quot;購入&quot;,
       &quot;ko_KR&quot;: &quot;구매&quot;,
-      &quot;th_TH&quot;: &quot;ซื้อ&quot;,
-      &quot;zh_TW&quot;: &quot;購買&quot;
-    },
-    &quot;구매하기&quot;: {
-      &quot;en_US&quot;: &quot;Buy now&quot;,
-      &quot;ja_JP&quot;: &quot;購入する&quot;,
-      &quot;ko_KR&quot;: &quot;구매하기&quot;,
       &quot;th_TH&quot;: &quot;ซื้อ&quot;,
       &quot;zh_TW&quot;: &quot;購買&quot;
     },
@@ -1407,47 +1304,12 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;สิทธิ์การเข้าถึง&quot;,
       &quot;zh_TW&quot;: &quot;權限&quot;
     },
-    &quot;기본 이자&quot;: {
-      &quot;en_US&quot;: &quot;Base Interest&quot;,
-      &quot;ja_JP&quot;: &quot;基本利息&quot;,
-      &quot;ko_KR&quot;: &quot;기본 이자&quot;,
-      &quot;th_TH&quot;: &quot;ดอกเบี้ยพื้นฐาน&quot;,
-      &quot;zh_TW&quot;: &quot;基本利息&quot;
-    },
-    &quot;꺼내기&quot;: {
-      &quot;en_US&quot;: &quot;Withdraw&quot;,
-      &quot;ja_JP&quot;: &quot;出金&quot;,
-      &quot;ko_KR&quot;: &quot;꺼내기&quot;,
-      &quot;th_TH&quot;: &quot;ถอน&quot;,
-      &quot;zh_TW&quot;: &quot;領回&quot;
-    },
-    &quot;내 자산&quot;: {
-      &quot;en_US&quot;: &quot;Assets&quot;,
-      &quot;ja_JP&quot;: &quot;資産&quot;,
-      &quot;ko_KR&quot;: &quot;내 자산&quot;,
-      &quot;th_TH&quot;: &quot;สินทรัพย์&quot;,
-      &quot;zh_TW&quot;: &quot;資產&quot;
-    },
     &quot;넣기&quot;: {
       &quot;en_US&quot;: &quot;Deposit&quot;,
       &quot;ja_JP&quot;: &quot;入金&quot;,
       &quot;ko_KR&quot;: &quot;넣기&quot;,
       &quot;th_TH&quot;: &quot;ฝาก&quot;,
       &quot;zh_TW&quot;: &quot;充值&quot;
-    },
-    &quot;네트워크&quot;: {
-      &quot;en_US&quot;: &quot;Network&quot;,
-      &quot;ja_JP&quot;: &quot;ネットワーク&quot;,
-      &quot;ko_KR&quot;: &quot;네트워크&quot;,
-      &quot;th_TH&quot;: &quot;เครือข่าย&quot;,
-      &quot;zh_TW&quot;: &quot;網路&quot;
-    },
-    &quot;네트워크 전환&quot;: {
-      &quot;en_US&quot;: &quot;Network Conversion&quot;,
-      &quot;ja_JP&quot;: &quot;ネットワーク換算&quot;,
-      &quot;ko_KR&quot;: &quot;네트워크 전환&quot;,
-      &quot;th_TH&quot;: &quot;การแปลงเครือข่าย&quot;,
-      &quot;zh_TW&quot;: &quot;網路轉換&quot;
     },
     &quot;다음&quot;: {
       &quot;en_US&quot;: &quot;Next&quot;,
@@ -1456,13 +1318,6 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;ต่อไป&quot;,
       &quot;zh_TW&quot;: &quot;下一步&quot;
     },
-    &quot;다음 단계&quot;: {
-      &quot;en_US&quot;: &quot;Next Step&quot;,
-      &quot;ja_JP&quot;: &quot;次のステップ&quot;,
-      &quot;ko_KR&quot;: &quot;다음 단계&quot;,
-      &quot;th_TH&quot;: &quot;ขั้นตอนถัดไป&quot;,
-      &quot;zh_TW&quot;: &quot;下一階段&quot;
-    },
     &quot;당첨&quot;: {
       &quot;en_US&quot;: &quot;win&quot;,
       &quot;ja_JP&quot;: &quot;当選&quot;,
@@ -1470,75 +1325,12 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;ถูกรางวัล&quot;,
       &quot;zh_TW&quot;: &quot;中獎&quot;
     },
-    &quot;당첨금&quot;: {
-      &quot;en_US&quot;: &quot;prize&quot;,
-      &quot;ja_JP&quot;: &quot;当選金&quot;,
-      &quot;ko_KR&quot;: &quot;당첨금&quot;,
-      &quot;th_TH&quot;: &quot;เงินรางวัล&quot;,
-      &quot;zh_TW&quot;: &quot;獎金&quot;
-    },
-    &quot;더보기&quot;: {
-      &quot;en_US&quot;: &quot;View More&quot;,
-      &quot;ja_JP&quot;: &quot;もっと見る&quot;,
-      &quot;ko_KR&quot;: &quot;더보기&quot;,
-      &quot;th_TH&quot;: &quot;ดูเพิ่มเติม&quot;,
-      &quot;zh_TW&quot;: &quot;更多&quot;
-    },
-    &quot;락업 자산&quot;: {
-      &quot;en_US&quot;: &quot;Locked Assets&quot;,
-      &quot;ja_JP&quot;: &quot;ロックアップ資産&quot;,
-      &quot;ko_KR&quot;: &quot;락업 자산&quot;,
-      &quot;th_TH&quot;: &quot;สินทรัพย์ที่ถูกล็อคอัพ&quot;,
-      &quot;zh_TW&quot;: &quot;鎖定資產&quot;
-    },
-    &quot;럭키볼&quot;: {
-      &quot;en_US&quot;: &quot;Lucky Ball&quot;,
-      &quot;ja_JP&quot;: &quot;ラッキーボール&quot;,
-      &quot;ko_KR&quot;: &quot;럭키볼&quot;,
-      &quot;th_TH&quot;: &quot;ลัคกี้บอล&quot;,
-      &quot;zh_TW&quot;: &quot;幸運球&quot;
-    },
-    &quot;로그아웃&quot;: {
-      &quot;en_US&quot;: &quot;log out&quot;,
-      &quot;ja_JP&quot;: &quot;ログアウト&quot;,
-      &quot;ko_KR&quot;: &quot;로그아웃&quot;,
-      &quot;th_TH&quot;: &quot;ออกจากระบบ&quot;,
-      &quot;zh_TW&quot;: &quot;登出&quot;
-    },
-    &quot;로그아웃 안내&quot;: {
-      &quot;en_US&quot;: &quot;Logout notice&quot;,
-      &quot;ja_JP&quot;: &quot;ログアウトのご案内&quot;,
-      &quot;ko_KR&quot;: &quot;로그아웃 안내&quot;,
-      &quot;th_TH&quot;: &quot;แจ้งออกระบบ&quot;,
-      &quot;zh_TW&quot;: &quot;登出通知&quot;
-    },
-    &quot;로그인&quot;: {
-      &quot;en_US&quot;: &quot;log in&quot;,
-      &quot;ja_JP&quot;: &quot;ログイン&quot;,
-      &quot;ko_KR&quot;: &quot;로그인&quot;,
-      &quot;th_TH&quot;: &quot;เข้าสู่ระบบ&quot;,
-      &quot;zh_TW&quot;: &quot;登入&quot;
-    },
     &quot;리뷰&quot;: {
       &quot;en_US&quot;: &quot;Reviews&quot;,
       &quot;ja_JP&quot;: &quot;レビュー&quot;,
       &quot;ko_KR&quot;: &quot;리뷰&quot;,
       &quot;th_TH&quot;: &quot;รีวิว&quot;,
       &quot;zh_TW&quot;: &quot;評論&quot;
-    },
-    &quot;리워드&quot;: {
-      &quot;en_US&quot;: &quot;reward&quot;,
-      &quot;ja_JP&quot;: &quot;リワード&quot;,
-      &quot;ko_KR&quot;: &quot;리워드&quot;,
-      &quot;th_TH&quot;: &quot;รางวัล&quot;,
-      &quot;zh_TW&quot;: &quot;獎勵&quot;
-    },
-    &quot;리워드 지급&quot;: {
-      &quot;en_US&quot;: &quot;Reward Payment&quot;,
-      &quot;ja_JP&quot;: &quot;リワード支給&quot;,
-      &quot;ko_KR&quot;: &quot;리워드 지급&quot;,
-      &quot;th_TH&quot;: &quot;การจ่ายรางวัล&quot;,
-      &quot;zh_TW&quot;: &quot;獎勵發放&quot;
     },
     &quot;링크&quot;: {
       &quot;en_US&quot;: &quot;link&quot;,
@@ -1561,40 +1353,12 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;ตลาด&quot;,
       &quot;zh_TW&quot;: &quot;商店&quot;
     },
-    &quot;메시지&quot;: {
-      &quot;en_US&quot;: &quot;Message&quot;,
-      &quot;ja_JP&quot;: &quot;メッセージ&quot;,
-      &quot;ko_KR&quot;: &quot;메시지&quot;,
-      &quot;th_TH&quot;: &quot;ข้อความ&quot;,
-      &quot;zh_TW&quot;: &quot;訊息&quot;
-    },
-    &quot;문의하기&quot;: {
-      &quot;en_US&quot;: &quot;Help&quot;,
-      &quot;ja_JP&quot;: &quot;お問い合わせ&quot;,
-      &quot;ko_KR&quot;: &quot;문의하기&quot;,
-      &quot;th_TH&quot;: &quot;สอบถาม&quot;,
-      &quot;zh_TW&quot;: &quot;回報問題&quot;
-    },
     &quot;미션&quot;: {
       &quot;en_US&quot;: &quot;mission&quot;,
       &quot;ja_JP&quot;: &quot;ミッション&quot;,
       &quot;ko_KR&quot;: &quot;미션&quot;,
       &quot;th_TH&quot;: &quot;ภารกิจ&quot;,
       &quot;zh_TW&quot;: &quot;任務&quot;
-    },
-    &quot;바우처&quot;: {
-      &quot;en_US&quot;: &quot;Voucher&quot;,
-      &quot;ja_JP&quot;: &quot;クーポン&quot;,
-      &quot;ko_KR&quot;: &quot;바우처&quot;,
-      &quot;th_TH&quot;: &quot;เวาเชอร์&quot;,
-      &quot;zh_TW&quot;: &quot;優惠券&quot;
-    },
-    &quot;받는 사람&quot;: {
-      &quot;en_US&quot;: &quot;To&quot;,
-      &quot;ja_JP&quot;: &quot;宛先&quot;,
-      &quot;ko_KR&quot;: &quot;받는 사람&quot;,
-      &quot;th_TH&quot;: &quot;ผู้รับ&quot;,
-      &quot;zh_TW&quot;: &quot;收款方&quot;
     },
     &quot;변경&quot;: {
       &quot;en_US&quot;: &quot;change&quot;,
@@ -1603,34 +1367,6 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;เปลี่ยน&quot;,
       &quot;zh_TW&quot;: &quot;變更&quot;
     },
-    &quot;보내기&quot;: {
-      &quot;en_US&quot;: &quot;Send&quot;,
-      &quot;ja_JP&quot;: &quot;出金&quot;,
-      &quot;ko_KR&quot;: &quot;보내기&quot;,
-      &quot;th_TH&quot;: &quot;ส่ง&quot;,
-      &quot;zh_TW&quot;: &quot;轉帳&quot;
-    },
-    &quot;보낸 사람&quot;: {
-      &quot;en_US&quot;: &quot;Sender&quot;,
-      &quot;ja_JP&quot;: &quot;出金元&quot;,
-      &quot;ko_KR&quot;: &quot;보낸 사람&quot;,
-      &quot;th_TH&quot;: &quot;ผู้ส่ง&quot;,
-      &quot;zh_TW&quot;: &quot;轉帳人&quot;
-    },
-    &quot;보너스 미션&quot;: {
-      &quot;en_US&quot;: &quot;Bonus Missions&quot;,
-      &quot;ja_JP&quot;: &quot;ボーナスミッション&quot;,
-      &quot;ko_KR&quot;: &quot;보너스 미션&quot;,
-      &quot;th_TH&quot;: &quot;มิชชันโบนัส&quot;,
-      &quot;zh_TW&quot;: &quot;紅利任務&quot;
-    },
-    &quot;복구 비밀번호&quot;: {
-      &quot;en_US&quot;: &quot;Recovery Password&quot;,
-      &quot;ja_JP&quot;: &quot;復旧パスワード&quot;,
-      &quot;ko_KR&quot;: &quot;복구 비밀번호&quot;,
-      &quot;th_TH&quot;: &quot;รหัสผ่านกู้คืน&quot;,
-      &quot;zh_TW&quot;: &quot;復原密碼&quot;
-    },
     &quot;복사&quot;: {
       &quot;en_US&quot;: &quot;copy&quot;,
       &quot;ja_JP&quot;: &quot;コピー&quot;,
@@ -1638,40 +1374,12 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;คัดลอก&quot;,
       &quot;zh_TW&quot;: &quot;複製&quot;
     },
-    &quot;부스트 이자&quot;: {
-      &quot;en_US&quot;: &quot;Boost Interest&quot;,
-      &quot;ja_JP&quot;: &quot;ブースト利息&quot;,
-      &quot;ko_KR&quot;: &quot;부스트 이자&quot;,
-      &quot;th_TH&quot;: &quot;ดอกเบี้ยบูสต์&quot;,
-      &quot;zh_TW&quot;: &quot;加速利息&quot;
-    },
-    &quot;비밀번호&quot;: {
-      &quot;en_US&quot;: &quot;password&quot;,
-      &quot;ja_JP&quot;: &quot;パスワード&quot;,
-      &quot;ko_KR&quot;: &quot;비밀번호&quot;,
-      &quot;th_TH&quot;: &quot;รหัสผ่าน&quot;,
-      &quot;zh_TW&quot;: &quot;密碼&quot;
-    },
     &quot;뽑기&quot;: {
       &quot;en_US&quot;: &quot;Draw&quot;,
       &quot;ja_JP&quot;: &quot;抽選&quot;,
       &quot;ko_KR&quot;: &quot;뽑기&quot;,
       &quot;th_TH&quot;: &quot;จับรางวัล&quot;,
       &quot;zh_TW&quot;: &quot;抽獎&quot;
-    },
-    &quot;사용자&quot;: {
-      &quot;en_US&quot;: &quot;user&quot;,
-      &quot;ja_JP&quot;: &quot;ユーザー&quot;,
-      &quot;ko_KR&quot;: &quot;사용자&quot;,
-      &quot;th_TH&quot;: &quot;ผู้ใช้&quot;,
-      &quot;zh_TW&quot;: &quot;用戶&quot;
-    },
-    &quot;선물하기&quot;: {
-      &quot;en_US&quot;: &quot;gift&quot;,
-      &quot;ja_JP&quot;: &quot;プレゼント&quot;,
-      &quot;ko_KR&quot;: &quot;선물하기&quot;,
-      &quot;th_TH&quot;: &quot;มอบ&quot;,
-      &quot;zh_TW&quot;: &quot;送&quot;
     },
     &quot;송금&quot;: {
       &quot;en_US&quot;: &quot;send&quot;,
@@ -1694,33 +1402,12 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;ตัวเลข&quot;,
       &quot;zh_TW&quot;: &quot;數字&quot;
     },
-    &quot;시작하기&quot;: {
-      &quot;en_US&quot;: &quot;Start&quot;,
-      &quot;ja_JP&quot;: &quot;開始&quot;,
-      &quot;ko_KR&quot;: &quot;시작하기&quot;,
-      &quot;th_TH&quot;: &quot;เริ่มต้น&quot;,
-      &quot;zh_TW&quot;: &quot;開始&quot;
-    },
     &quot;알림&quot;: {
       &quot;en_US&quot;: &quot;Notification&quot;,
       &quot;ja_JP&quot;: &quot;通知&quot;,
       &quot;ko_KR&quot;: &quot;알림&quot;,
       &quot;th_TH&quot;: &quot;การแจ้งเตือน&quot;,
       &quot;zh_TW&quot;: &quot;通知&quot;
-    },
-    &quot;언어 설정&quot;: {
-      &quot;en_US&quot;: &quot;Language Settings&quot;,
-      &quot;ja_JP&quot;: &quot;言語設定&quot;,
-      &quot;ko_KR&quot;: &quot;언어 설정&quot;,
-      &quot;th_TH&quot;: &quot;ตั้งค่าภาษา&quot;,
-      &quot;zh_TW&quot;: &quot;語言設定&quot;
-    },
-    &quot;여기서&quot;: {
-      &quot;en_US&quot;: &quot;here&quot;,
-      &quot;ja_JP&quot;: &quot;こちらで&quot;,
-      &quot;ko_KR&quot;: &quot;여기서&quot;,
-      &quot;th_TH&quot;: &quot;ที่นี่&quot;,
-      &quot;zh_TW&quot;: &quot;在這裡&quot;
     },
     &quot;연결&quot;: {
       &quot;en_US&quot;: &quot;connect&quot;,
@@ -1729,41 +1416,6 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;เชื่อมโยง&quot;,
       &quot;zh_TW&quot;: &quot;連結&quot;
     },
-    &quot;연결 계정&quot;: {
-      &quot;en_US&quot;: &quot;Linked account&quot;,
-      &quot;ja_JP&quot;: &quot;連携アカウント&quot;,
-      &quot;ko_KR&quot;: &quot;연결 계정&quot;,
-      &quot;th_TH&quot;: &quot;บัญชีที่ผูกไว้&quot;,
-      &quot;zh_TW&quot;: &quot;綁定帳號&quot;
-    },
-    &quot;연결 해제&quot;: {
-      &quot;en_US&quot;: &quot;disconnect&quot;,
-      &quot;ja_JP&quot;: &quot;連携を解除&quot;,
-      &quot;ko_KR&quot;: &quot;연결 해제&quot;,
-      &quot;th_TH&quot;: &quot;ตัดการเชื่อมโยง&quot;,
-      &quot;zh_TW&quot;: &quot;解除連結&quot;
-    },
-    &quot;연결하기&quot;: {
-      &quot;en_US&quot;: &quot;Connect&quot;,
-      &quot;ja_JP&quot;: &quot;連携する&quot;,
-      &quot;ko_KR&quot;: &quot;연결하기&quot;,
-      &quot;th_TH&quot;: &quot;ผูก&quot;,
-      &quot;zh_TW&quot;: &quot;綁定&quot;
-    },
-    &quot;연이율&quot;: {
-      &quot;en_US&quot;: &quot;annual rate&quot;,
-      &quot;ja_JP&quot;: &quot;年利&quot;,
-      &quot;ko_KR&quot;: &quot;연이율&quot;,
-      &quot;th_TH&quot;: &quot;อัตรา/ปี&quot;,
-      &quot;zh_TW&quot;: &quot;年利率&quot;
-    },
-    &quot;예상 수수료&quot;: {
-      &quot;en_US&quot;: &quot;Estimated Fee&quot;,
-      &quot;ja_JP&quot;: &quot;予想手数料&quot;,
-      &quot;ko_KR&quot;: &quot;예상 수수료&quot;,
-      &quot;th_TH&quot;: &quot;ค่าธรรมเนียมโดยประมาณ&quot;,
-      &quot;zh_TW&quot;: &quot;預估手續費&quot;
-    },
     &quot;예치&quot;: {
       &quot;en_US&quot;: &quot;deposit&quot;,
       &quot;ja_JP&quot;: &quot;預入&quot;,
@@ -1771,33 +1423,12 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;ฝาก&quot;,
       &quot;zh_TW&quot;: &quot;存入&quot;
     },
-    &quot;예치 이자&quot;: {
-      &quot;en_US&quot;: &quot;Deposit interest&quot;,
-      &quot;ja_JP&quot;: &quot;預入利息&quot;,
-      &quot;ko_KR&quot;: &quot;예치 이자&quot;,
-      &quot;th_TH&quot;: &quot;ดอกเบี้ยจากการฝาก&quot;,
-      &quot;zh_TW&quot;: &quot;存入利息&quot;
-    },
     &quot;완료&quot;: {
       &quot;en_US&quot;: &quot;Complete&quot;,
       &quot;ja_JP&quot;: &quot;完了&quot;,
       &quot;ko_KR&quot;: &quot;완료&quot;,
       &quot;th_TH&quot;: &quot;เสร็จ&quot;,
       &quot;zh_TW&quot;: &quot;完成&quot;
-    },
-    &quot;외부지갑&quot;: {
-      &quot;en_US&quot;: &quot;External Wallet&quot;,
-      &quot;ja_JP&quot;: &quot;外部ウォレット&quot;,
-      &quot;ko_KR&quot;: &quot;외부지갑&quot;,
-      &quot;th_TH&quot;: &quot;กระเป๋าภายนอก&quot;,
-      &quot;zh_TW&quot;: &quot;外部錢包&quot;
-    },
-    &quot;유의사항&quot;: {
-      &quot;en_US&quot;: &quot;Cautions&quot;,
-      &quot;ja_JP&quot;: &quot;注意事項&quot;,
-      &quot;ko_KR&quot;: &quot;유의사항&quot;,
-      &quot;th_TH&quot;: &quot;ข้อควรระวัง&quot;,
-      &quot;zh_TW&quot;: &quot;注意事項&quot;
     },
     &quot;이자&quot;: {
       &quot;en_US&quot;: &quot;interest&quot;,
@@ -1813,20 +1444,6 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;ยอดนิยม&quot;,
       &quot;zh_TW&quot;: &quot;人氣&quot;
     },
-    &quot;일일 미션&quot;: {
-      &quot;en_US&quot;: &quot;Daily Mission&quot;,
-      &quot;ja_JP&quot;: &quot;毎日のミッション&quot;,
-      &quot;ko_KR&quot;: &quot;일일 미션&quot;,
-      &quot;th_TH&quot;: &quot;ภารกิจรายวัน&quot;,
-      &quot;zh_TW&quot;: &quot;每日任務&quot;
-    },
-    &quot;입금 (거래내역 유형 라벨)&quot;: {
-      &quot;en_US&quot;: &quot;Received&quot;,
-      &quot;ja_JP&quot;: &quot;受取済&quot;,
-      &quot;ko_KR&quot;: &quot;입금 (거래내역 유형 라벨)&quot;,
-      &quot;th_TH&quot;: &quot;ได้รับแล้ว&quot;,
-      &quot;zh_TW&quot;: &quot;已接收&quot;
-    },
     &quot;자산&quot;: {
       &quot;en_US&quot;: &quot;asset&quot;,
       &quot;ja_JP&quot;: &quot;資産&quot;,
@@ -1841,13 +1458,6 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;ทั้งหมด&quot;,
       &quot;zh_TW&quot;: &quot;全部&quot;
     },
-    &quot;전체보기&quot;: {
-      &quot;en_US&quot;: &quot;View All&quot;,
-      &quot;ja_JP&quot;: &quot;すべて見る&quot;,
-      &quot;ko_KR&quot;: &quot;전체보기&quot;,
-      &quot;th_TH&quot;: &quot;ดูทั้งหมด&quot;,
-      &quot;zh_TW&quot;: &quot;全部查看&quot;
-    },
     &quot;종료&quot;: {
       &quot;en_US&quot;: &quot;Ended&quot;,
       &quot;ja_JP&quot;: &quot;終了&quot;,
@@ -1861,6 +1471,461 @@ action url 을 모두 업데이트 했어
       &quot;ko_KR&quot;: &quot;지갑&quot;,
       &quot;th_TH&quot;: &quot;กระเป๋า&quot;,
       &quot;zh_TW&quot;: &quot;錢包&quot;
+    },
+    &quot;초대&quot;: {
+      &quot;en_US&quot;: &quot;invite&quot;,
+      &quot;ja_JP&quot;: &quot;招待&quot;,
+      &quot;ko_KR&quot;: &quot;초대&quot;,
+      &quot;th_TH&quot;: &quot;เชิญ&quot;,
+      &quot;zh_TW&quot;: &quot;邀請&quot;
+    },
+    &quot;최대&quot;: {
+      &quot;en_US&quot;: &quot;up to&quot;,
+      &quot;ja_JP&quot;: &quot;最大&quot;,
+      &quot;ko_KR&quot;: &quot;최대&quot;,
+      &quot;th_TH&quot;: &quot;สูงสุด&quot;,
+      &quot;zh_TW&quot;: &quot;最高&quot;
+    },
+    &quot;출금&quot;: {
+      &quot;en_US&quot;: &quot;withdraw&quot;,
+      &quot;ja_JP&quot;: &quot;出金&quot;,
+      &quot;ko_KR&quot;: &quot;출금&quot;,
+      &quot;th_TH&quot;: &quot;ถอน&quot;,
+      &quot;zh_TW&quot;: &quot;提領&quot;
+    },
+    &quot;취소&quot;: {
+      &quot;en_US&quot;: &quot;Cancel&quot;,
+      &quot;ja_JP&quot;: &quot;キャンセル&quot;,
+      &quot;ko_KR&quot;: &quot;취소&quot;,
+      &quot;th_TH&quot;: &quot;ยกเลิก&quot;,
+      &quot;zh_TW&quot;: &quot;取消&quot;
+    },
+    &quot;친구&quot;: {
+      &quot;en_US&quot;: &quot;friend&quot;,
+      &quot;ja_JP&quot;: &quot;友だち&quot;,
+      &quot;ko_KR&quot;: &quot;친구&quot;,
+      &quot;th_TH&quot;: &quot;เพื่อน&quot;,
+      &quot;zh_TW&quot;: &quot;好友&quot;
+    },
+    &quot;토큰&quot;: {
+      &quot;en_US&quot;: &quot;token&quot;,
+      &quot;ja_JP&quot;: &quot;トークン&quot;,
+      &quot;ko_KR&quot;: &quot;토큰&quot;,
+      &quot;th_TH&quot;: &quot;โทเค็น&quot;,
+      &quot;zh_TW&quot;: &quot;代幣&quot;
+    },
+    &quot;혜택&quot;: {
+      &quot;en_US&quot;: &quot;benefit&quot;,
+      &quot;ja_JP&quot;: &quot;特典&quot;,
+      &quot;ko_KR&quot;: &quot;혜택&quot;,
+      &quot;th_TH&quot;: &quot;สิทธิประโยชน์&quot;,
+      &quot;zh_TW&quot;: &quot;優惠&quot;
+    },
+    &quot;확인&quot;: {
+      &quot;en_US&quot;: &quot;check&quot;,
+      &quot;ja_JP&quot;: &quot;確認&quot;,
+      &quot;ko_KR&quot;: &quot;확인&quot;,
+      &quot;th_TH&quot;: &quot;ตรวจสอบ&quot;,
+      &quot;zh_TW&quot;: &quot;查看&quot;
+    },
+    &quot;{0} JPYC&quot;: {
+      &quot;en_US&quot;: &quot;{0} JPYC&quot;,
+      &quot;ja_JP&quot;: &quot;{0} JPYC&quot;,
+      &quot;ko_KR&quot;: &quot;{0} JPYC&quot;,
+      &quot;th_TH&quot;: &quot;{0} JPYC&quot;,
+      &quot;zh_TW&quot;: &quot;{0} JPYC&quot;
+    },
+    &quot;거래 ID&quot;: {
+      &quot;en_US&quot;: &quot;Transaction ID&quot;,
+      &quot;ja_JP&quot;: &quot;取引ID&quot;,
+      &quot;ko_KR&quot;: &quot;거래 ID&quot;,
+      &quot;th_TH&quot;: &quot;รหัสธุรกรรม&quot;,
+      &quot;zh_TW&quot;: &quot;交易ID&quot;
+    },
+    &quot;과거순&quot;: {
+      &quot;en_US&quot;: &quot;Oldest&quot;,
+      &quot;ja_JP&quot;: &quot;古い順&quot;,
+      &quot;ko_KR&quot;: &quot;과거순&quot;,
+      &quot;th_TH&quot;: &quot;เก่าสุด&quot;,
+      &quot;zh_TW&quot;: &quot;最舊&quot;
+    },
+    &quot;꺼내기&quot;: {
+      &quot;en_US&quot;: &quot;Withdraw&quot;,
+      &quot;ja_JP&quot;: &quot;出金&quot;,
+      &quot;ko_KR&quot;: &quot;꺼내기&quot;,
+      &quot;th_TH&quot;: &quot;ถอน&quot;,
+      &quot;zh_TW&quot;: &quot;領回&quot;
+    },
+    &quot;당첨금&quot;: {
+      &quot;en_US&quot;: &quot;prize&quot;,
+      &quot;ja_JP&quot;: &quot;当選金&quot;,
+      &quot;ko_KR&quot;: &quot;당첨금&quot;,
+      &quot;th_TH&quot;: &quot;เงินรางวัล&quot;,
+      &quot;zh_TW&quot;: &quot;獎金&quot;
+    },
+    &quot;더보기&quot;: {
+      &quot;en_US&quot;: &quot;View More&quot;,
+      &quot;ja_JP&quot;: &quot;もっと見る&quot;,
+      &quot;ko_KR&quot;: &quot;더보기&quot;,
+      &quot;th_TH&quot;: &quot;ดูเพิ่มเติม&quot;,
+      &quot;zh_TW&quot;: &quot;更多&quot;
+    },
+    &quot;럭키볼&quot;: {
+      &quot;en_US&quot;: &quot;Lucky Ball&quot;,
+      &quot;ja_JP&quot;: &quot;ラッキーボール&quot;,
+      &quot;ko_KR&quot;: &quot;럭키볼&quot;,
+      &quot;th_TH&quot;: &quot;ลัคกี้บอล&quot;,
+      &quot;zh_TW&quot;: &quot;幸運球&quot;
+    },
+    &quot;로그인&quot;: {
+      &quot;en_US&quot;: &quot;log in&quot;,
+      &quot;ja_JP&quot;: &quot;ログイン&quot;,
+      &quot;ko_KR&quot;: &quot;로그인&quot;,
+      &quot;th_TH&quot;: &quot;เข้าสู่ระบบ&quot;,
+      &quot;zh_TW&quot;: &quot;登入&quot;
+    },
+    &quot;리워드&quot;: {
+      &quot;en_US&quot;: &quot;reward&quot;,
+      &quot;ja_JP&quot;: &quot;リワード&quot;,
+      &quot;ko_KR&quot;: &quot;리워드&quot;,
+      &quot;th_TH&quot;: &quot;รางวัล&quot;,
+      &quot;zh_TW&quot;: &quot;獎勵&quot;
+    },
+    &quot;메시지&quot;: {
+      &quot;en_US&quot;: &quot;Message&quot;,
+      &quot;ja_JP&quot;: &quot;メッセージ&quot;,
+      &quot;ko_KR&quot;: &quot;메시지&quot;,
+      &quot;th_TH&quot;: &quot;ข้อความ&quot;,
+      &quot;zh_TW&quot;: &quot;訊息&quot;
+    },
+    &quot;바우처&quot;: {
+      &quot;en_US&quot;: &quot;Voucher&quot;,
+      &quot;ja_JP&quot;: &quot;クーポン&quot;,
+      &quot;ko_KR&quot;: &quot;바우처&quot;,
+      &quot;th_TH&quot;: &quot;เวาเชอร์&quot;,
+      &quot;zh_TW&quot;: &quot;優惠券&quot;
+    },
+    &quot;보내기&quot;: {
+      &quot;en_US&quot;: &quot;Send&quot;,
+      &quot;ja_JP&quot;: &quot;出金&quot;,
+      &quot;ko_KR&quot;: &quot;보내기&quot;,
+      &quot;th_TH&quot;: &quot;ส่ง&quot;,
+      &quot;zh_TW&quot;: &quot;轉帳&quot;
+    },
+    &quot;사용자&quot;: {
+      &quot;en_US&quot;: &quot;user&quot;,
+      &quot;ja_JP&quot;: &quot;ユーザー&quot;,
+      &quot;ko_KR&quot;: &quot;사용자&quot;,
+      &quot;th_TH&quot;: &quot;ผู้ใช้&quot;,
+      &quot;zh_TW&quot;: &quot;用戶&quot;
+    },
+    &quot;여기서&quot;: {
+      &quot;en_US&quot;: &quot;here&quot;,
+      &quot;ja_JP&quot;: &quot;こちらで&quot;,
+      &quot;ko_KR&quot;: &quot;여기서&quot;,
+      &quot;th_TH&quot;: &quot;ที่นี่&quot;,
+      &quot;zh_TW&quot;: &quot;在這裡&quot;
+    },
+    &quot;연이율&quot;: {
+      &quot;en_US&quot;: &quot;annual rate&quot;,
+      &quot;ja_JP&quot;: &quot;年利&quot;,
+      &quot;ko_KR&quot;: &quot;연이율&quot;,
+      &quot;th_TH&quot;: &quot;อัตรา/ปี&quot;,
+      &quot;zh_TW&quot;: &quot;年利率&quot;
+    },
+    &quot;채우기&quot;: {
+      &quot;en_US&quot;: &quot;Receive&quot;,
+      &quot;ja_JP&quot;: &quot;受け取る&quot;,
+      &quot;ko_KR&quot;: &quot;채우기&quot;,
+      &quot;th_TH&quot;: &quot;รับ&quot;,
+      &quot;zh_TW&quot;: &quot;接收&quot;
+    },
+    &quot;최신순&quot;: {
+      &quot;en_US&quot;: &quot;Newest&quot;,
+      &quot;ja_JP&quot;: &quot;新しい順&quot;,
+      &quot;ko_KR&quot;: &quot;최신순&quot;,
+      &quot;th_TH&quot;: &quot;ล่าสุด&quot;,
+      &quot;zh_TW&quot;: &quot;最新&quot;
+    },
+    &quot;카메라&quot;: {
+      &quot;en_US&quot;: &quot;camera&quot;,
+      &quot;ja_JP&quot;: &quot;カメラ&quot;,
+      &quot;ko_KR&quot;: &quot;카메라&quot;,
+      &quot;th_TH&quot;: &quot;กล้อง&quot;,
+      &quot;zh_TW&quot;: &quot;相機&quot;
+    },
+    &quot;캐시백&quot;: {
+      &quot;en_US&quot;: &quot;cashback&quot;,
+      &quot;ja_JP&quot;: &quot;還元&quot;,
+      &quot;ko_KR&quot;: &quot;캐시백&quot;,
+      &quot;th_TH&quot;: &quot;เงินคืน&quot;,
+      &quot;zh_TW&quot;: &quot;現金回饋&quot;
+    },
+    &quot;캠페인&quot;: {
+      &quot;en_US&quot;: &quot;campaign&quot;,
+      &quot;ja_JP&quot;: &quot;キャンペーン&quot;,
+      &quot;ko_KR&quot;: &quot;캠페인&quot;,
+      &quot;th_TH&quot;: &quot;แคมเปญ&quot;,
+      &quot;zh_TW&quot;: &quot;活動&quot;
+    },
+    &quot;프로필&quot;: {
+      &quot;en_US&quot;: &quot;profile&quot;,
+      &quot;ja_JP&quot;: &quot;プロフィール&quot;,
+      &quot;ko_KR&quot;: &quot;프로필&quot;,
+      &quot;th_TH&quot;: &quot;โปรไฟล์&quot;,
+      &quot;zh_TW&quot;: &quot;個人檔案&quot;
+    },
+    &quot;플레이&quot;: {
+      &quot;en_US&quot;: &quot;Play&quot;,
+      &quot;ja_JP&quot;: &quot;プレイ&quot;,
+      &quot;ko_KR&quot;: &quot;플레이&quot;,
+      &quot;th_TH&quot;: &quot;เล่น&quot;,
+      &quot;zh_TW&quot;: &quot;遊戲&quot;
+    },
+    &quot;내 자산&quot;: {
+      &quot;en_US&quot;: &quot;Assets&quot;,
+      &quot;ja_JP&quot;: &quot;資産&quot;,
+      &quot;ko_KR&quot;: &quot;내 자산&quot;,
+      &quot;th_TH&quot;: &quot;สินทรัพย์&quot;,
+      &quot;zh_TW&quot;: &quot;資產&quot;
+    },
+    &quot;총 자산&quot;: {
+      &quot;en_US&quot;: &quot;Total Assets&quot;,
+      &quot;ja_JP&quot;: &quot;総資産&quot;,
+      &quot;ko_KR&quot;: &quot;총 자산&quot;,
+      &quot;th_TH&quot;: &quot;สินทรัพย์ทั้งหมด&quot;,
+      &quot;zh_TW&quot;: &quot;總資產&quot;
+    },
+    &quot;거래내역&quot;: {
+      &quot;en_US&quot;: &quot;Transaction History&quot;,
+      &quot;ja_JP&quot;: &quot;取引履歴&quot;,
+      &quot;ko_KR&quot;: &quot;거래내역&quot;,
+      &quot;th_TH&quot;: &quot;ประวัติการทำธุรกรรม&quot;,
+      &quot;zh_TW&quot;: &quot;交易紀錄&quot;
+    },
+    &quot;계속하기&quot;: {
+      &quot;en_US&quot;: &quot;Continue&quot;,
+      &quot;ja_JP&quot;: &quot;続ける&quot;,
+      &quot;ko_KR&quot;: &quot;계속하기&quot;,
+      &quot;th_TH&quot;: &quot;ดำเนินการต่อ&quot;,
+      &quot;zh_TW&quot;: &quot;繼續&quot;
+    },
+    &quot;공유하기&quot;: {
+      &quot;en_US&quot;: &quot;Share&quot;,
+      &quot;ja_JP&quot;: &quot;共有する&quot;,
+      &quot;ko_KR&quot;: &quot;공유하기&quot;,
+      &quot;th_TH&quot;: &quot;แชร์&quot;,
+      &quot;zh_TW&quot;: &quot;分享&quot;
+    },
+    &quot;공지사항&quot;: {
+      &quot;en_US&quot;: &quot;Notices&quot;,
+      &quot;ja_JP&quot;: &quot;お知らせ&quot;,
+      &quot;ko_KR&quot;: &quot;공지사항&quot;,
+      &quot;th_TH&quot;: &quot;ประกาศ&quot;,
+      &quot;zh_TW&quot;: &quot;公告事項&quot;
+    },
+    &quot;교환하기&quot;: {
+      &quot;en_US&quot;: &quot;Swap&quot;,
+      &quot;ja_JP&quot;: &quot;交換&quot;,
+      &quot;ko_KR&quot;: &quot;교환하기&quot;,
+      &quot;th_TH&quot;: &quot;แลกเปลี่ยน&quot;,
+      &quot;zh_TW&quot;: &quot;兌換&quot;
+    },
+    &quot;구매하기&quot;: {
+      &quot;en_US&quot;: &quot;Buy now&quot;,
+      &quot;ja_JP&quot;: &quot;購入する&quot;,
+      &quot;ko_KR&quot;: &quot;구매하기&quot;,
+      &quot;th_TH&quot;: &quot;ซื้อ&quot;,
+      &quot;zh_TW&quot;: &quot;購買&quot;
+    },
+    &quot;네트워크&quot;: {
+      &quot;en_US&quot;: &quot;Network&quot;,
+      &quot;ja_JP&quot;: &quot;ネットワーク&quot;,
+      &quot;ko_KR&quot;: &quot;네트워크&quot;,
+      &quot;th_TH&quot;: &quot;เครือข่าย&quot;,
+      &quot;zh_TW&quot;: &quot;網路&quot;
+    },
+    &quot;로그아웃&quot;: {
+      &quot;en_US&quot;: &quot;log out&quot;,
+      &quot;ja_JP&quot;: &quot;ログアウト&quot;,
+      &quot;ko_KR&quot;: &quot;로그아웃&quot;,
+      &quot;th_TH&quot;: &quot;ออกจากระบบ&quot;,
+      &quot;zh_TW&quot;: &quot;登出&quot;
+    },
+    &quot;문의하기&quot;: {
+      &quot;en_US&quot;: &quot;Help&quot;,
+      &quot;ja_JP&quot;: &quot;お問い合わせ&quot;,
+      &quot;ko_KR&quot;: &quot;문의하기&quot;,
+      &quot;th_TH&quot;: &quot;สอบถาม&quot;,
+      &quot;zh_TW&quot;: &quot;回報問題&quot;
+    },
+    &quot;비밀번호&quot;: {
+      &quot;en_US&quot;: &quot;password&quot;,
+      &quot;ja_JP&quot;: &quot;パスワード&quot;,
+      &quot;ko_KR&quot;: &quot;비밀번호&quot;,
+      &quot;th_TH&quot;: &quot;รหัสผ่าน&quot;,
+      &quot;zh_TW&quot;: &quot;密碼&quot;
+    },
+    &quot;선물하기&quot;: {
+      &quot;en_US&quot;: &quot;gift&quot;,
+      &quot;ja_JP&quot;: &quot;プレゼント&quot;,
+      &quot;ko_KR&quot;: &quot;선물하기&quot;,
+      &quot;th_TH&quot;: &quot;มอบ&quot;,
+      &quot;zh_TW&quot;: &quot;送&quot;
+    },
+    &quot;시작하기&quot;: {
+      &quot;en_US&quot;: &quot;Start&quot;,
+      &quot;ja_JP&quot;: &quot;開始&quot;,
+      &quot;ko_KR&quot;: &quot;시작하기&quot;,
+      &quot;th_TH&quot;: &quot;เริ่มต้น&quot;,
+      &quot;zh_TW&quot;: &quot;開始&quot;
+    },
+    &quot;연결하기&quot;: {
+      &quot;en_US&quot;: &quot;Connect&quot;,
+      &quot;ja_JP&quot;: &quot;連携する&quot;,
+      &quot;ko_KR&quot;: &quot;연결하기&quot;,
+      &quot;th_TH&quot;: &quot;ผูก&quot;,
+      &quot;zh_TW&quot;: &quot;綁定&quot;
+    },
+    &quot;외부지갑&quot;: {
+      &quot;en_US&quot;: &quot;External Wallet&quot;,
+      &quot;ja_JP&quot;: &quot;外部ウォレット&quot;,
+      &quot;ko_KR&quot;: &quot;외부지갑&quot;,
+      &quot;th_TH&quot;: &quot;กระเป๋าภายนอก&quot;,
+      &quot;zh_TW&quot;: &quot;外部錢包&quot;
+    },
+    &quot;유의사항&quot;: {
+      &quot;en_US&quot;: &quot;Cautions&quot;,
+      &quot;ja_JP&quot;: &quot;注意事項&quot;,
+      &quot;ko_KR&quot;: &quot;유의사항&quot;,
+      &quot;th_TH&quot;: &quot;ข้อควรระวัง&quot;,
+      &quot;zh_TW&quot;: &quot;注意事項&quot;
+    },
+    &quot;전체보기&quot;: {
+      &quot;en_US&quot;: &quot;View All&quot;,
+      &quot;ja_JP&quot;: &quot;すべて見る&quot;,
+      &quot;ko_KR&quot;: &quot;전체보기&quot;,
+      &quot;th_TH&quot;: &quot;ดูทั้งหมด&quot;,
+      &quot;zh_TW&quot;: &quot;全部查看&quot;
+    },
+    &quot;최저가격&quot;: {
+      &quot;en_US&quot;: &quot;Floor&quot;,
+      &quot;ja_JP&quot;: &quot;最低価格&quot;,
+      &quot;ko_KR&quot;: &quot;최저가격&quot;,
+      &quot;th_TH&quot;: &quot;ราคาต่ำสุด&quot;,
+      &quot;zh_TW&quot;: &quot;最低價格&quot;
+    },
+    &quot;포이카츠&quot;: {
+      &quot;en_US&quot;: &quot;Poi-katsu&quot;,
+      &quot;ja_JP&quot;: &quot;ポイ活&quot;,
+      &quot;ko_KR&quot;: &quot;포이카츠&quot;,
+      &quot;th_TH&quot;: &quot;Poi-katsu&quot;,
+      &quot;zh_TW&quot;: &quot;集點活動&quot;
+    },
+    &quot;회원가입&quot;: {
+      &quot;en_US&quot;: &quot;sign up&quot;,
+      &quot;ja_JP&quot;: &quot;会員登録&quot;,
+      &quot;ko_KR&quot;: &quot;회원가입&quot;,
+      &quot;th_TH&quot;: &quot;สมัครสมาชิก&quot;,
+      &quot;zh_TW&quot;: &quot;註冊&quot;
+    },
+    &quot;거래 유형&quot;: {
+      &quot;en_US&quot;: &quot;Transaction Type&quot;,
+      &quot;ja_JP&quot;: &quot;取引タイプ&quot;,
+      &quot;ko_KR&quot;: &quot;거래 유형&quot;,
+      &quot;th_TH&quot;: &quot;ประเภทธุรกรรม&quot;,
+      &quot;zh_TW&quot;: &quot;交易類型&quot;
+    },
+    &quot;공식 계정&quot;: {
+      &quot;en_US&quot;: &quot;Official account&quot;,
+      &quot;ja_JP&quot;: &quot;公式アカウント&quot;,
+      &quot;ko_KR&quot;: &quot;공식 계정&quot;,
+      &quot;th_TH&quot;: &quot;บัญชีทางการ&quot;,
+      &quot;zh_TW&quot;: &quot;官方帳號&quot;
+    },
+    &quot;교환 입금&quot;: {
+      &quot;en_US&quot;: &quot;Swap Deposit&quot;,
+      &quot;ja_JP&quot;: &quot;交換入金&quot;,
+      &quot;ko_KR&quot;: &quot;교환 입금&quot;,
+      &quot;th_TH&quot;: &quot;ฝากเข้า (แลกเปลี่ยน)&quot;,
+      &quot;zh_TW&quot;: &quot;交換存入&quot;
+    },
+    &quot;교환 출금&quot;: {
+      &quot;en_US&quot;: &quot;Swap Withdrawal&quot;,
+      &quot;ja_JP&quot;: &quot;交換出金&quot;,
+      &quot;ko_KR&quot;: &quot;교환 출금&quot;,
+      &quot;th_TH&quot;: &quot;ถอนออก (แลกเปลี่ยน)&quot;,
+      &quot;zh_TW&quot;: &quot;交換提領&quot;
+    },
+    &quot;기본 이자&quot;: {
+      &quot;en_US&quot;: &quot;Base Interest&quot;,
+      &quot;ja_JP&quot;: &quot;基本利息&quot;,
+      &quot;ko_KR&quot;: &quot;기본 이자&quot;,
+      &quot;th_TH&quot;: &quot;ดอกเบี้ยพื้นฐาน&quot;,
+      &quot;zh_TW&quot;: &quot;基本利息&quot;
+    },
+    &quot;다음 단계&quot;: {
+      &quot;en_US&quot;: &quot;Next Step&quot;,
+      &quot;ja_JP&quot;: &quot;次のステップ&quot;,
+      &quot;ko_KR&quot;: &quot;다음 단계&quot;,
+      &quot;th_TH&quot;: &quot;ขั้นตอนถัดไป&quot;,
+      &quot;zh_TW&quot;: &quot;下一階段&quot;
+    },
+    &quot;락업 자산&quot;: {
+      &quot;en_US&quot;: &quot;Locked Assets&quot;,
+      &quot;ja_JP&quot;: &quot;ロックアップ資産&quot;,
+      &quot;ko_KR&quot;: &quot;락업 자산&quot;,
+      &quot;th_TH&quot;: &quot;สินทรัพย์ที่ถูกล็อคอัพ&quot;,
+      &quot;zh_TW&quot;: &quot;鎖定資產&quot;
+    },
+    &quot;받는 사람&quot;: {
+      &quot;en_US&quot;: &quot;To&quot;,
+      &quot;ja_JP&quot;: &quot;宛先&quot;,
+      &quot;ko_KR&quot;: &quot;받는 사람&quot;,
+      &quot;th_TH&quot;: &quot;ผู้รับ&quot;,
+      &quot;zh_TW&quot;: &quot;收款方&quot;
+    },
+    &quot;보낸 사람&quot;: {
+      &quot;en_US&quot;: &quot;Sender&quot;,
+      &quot;ja_JP&quot;: &quot;出金元&quot;,
+      &quot;ko_KR&quot;: &quot;보낸 사람&quot;,
+      &quot;th_TH&quot;: &quot;ผู้ส่ง&quot;,
+      &quot;zh_TW&quot;: &quot;轉帳人&quot;
+    },
+    &quot;언어 설정&quot;: {
+      &quot;en_US&quot;: &quot;Language Settings&quot;,
+      &quot;ja_JP&quot;: &quot;言語設定&quot;,
+      &quot;ko_KR&quot;: &quot;언어 설정&quot;,
+      &quot;th_TH&quot;: &quot;ตั้งค่าภาษา&quot;,
+      &quot;zh_TW&quot;: &quot;語言設定&quot;
+    },
+    &quot;연결 계정&quot;: {
+      &quot;en_US&quot;: &quot;Linked account&quot;,
+      &quot;ja_JP&quot;: &quot;連携アカウント&quot;,
+      &quot;ko_KR&quot;: &quot;연결 계정&quot;,
+      &quot;th_TH&quot;: &quot;บัญชีที่ผูกไว้&quot;,
+      &quot;zh_TW&quot;: &quot;綁定帳號&quot;
+    },
+    &quot;연결 해제&quot;: {
+      &quot;en_US&quot;: &quot;disconnect&quot;,
+      &quot;ja_JP&quot;: &quot;連携を解除&quot;,
+      &quot;ko_KR&quot;: &quot;연결 해제&quot;,
+      &quot;th_TH&quot;: &quot;ตัดการเชื่อมโยง&quot;,
+      &quot;zh_TW&quot;: &quot;解除連結&quot;
+    },
+    &quot;예치 이자&quot;: {
+      &quot;en_US&quot;: &quot;Deposit interest&quot;,
+      &quot;ja_JP&quot;: &quot;預入利息&quot;,
+      &quot;ko_KR&quot;: &quot;예치 이자&quot;,
+      &quot;th_TH&quot;: &quot;ดอกเบี้ยจากการฝาก&quot;,
+      &quot;zh_TW&quot;: &quot;存入利息&quot;
+    },
+    &quot;일일 미션&quot;: {
+      &quot;en_US&quot;: &quot;Daily Mission&quot;,
+      &quot;ja_JP&quot;: &quot;毎日のミッション&quot;,
+      &quot;ko_KR&quot;: &quot;일일 미션&quot;,
+      &quot;th_TH&quot;: &quot;ภารกิจรายวัน&quot;,
+      &quot;zh_TW&quot;: &quot;每日任務&quot;
     },
     &quot;지갑 주소&quot;: {
       &quot;en_US&quot;: &quot;wallet address&quot;,
@@ -1890,110 +1955,12 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;การยินยอมแชนแนล&quot;,
       &quot;zh_TW&quot;: &quot;頻道同意&quot;
     },
-    &quot;채우기&quot;: {
-      &quot;en_US&quot;: &quot;Receive&quot;,
-      &quot;ja_JP&quot;: &quot;受け取る&quot;,
-      &quot;ko_KR&quot;: &quot;채우기&quot;,
-      &quot;th_TH&quot;: &quot;รับ&quot;,
-      &quot;zh_TW&quot;: &quot;接收&quot;
-    },
-    &quot;초대&quot;: {
-      &quot;en_US&quot;: &quot;invite&quot;,
-      &quot;ja_JP&quot;: &quot;招待&quot;,
-      &quot;ko_KR&quot;: &quot;초대&quot;,
-      &quot;th_TH&quot;: &quot;เชิญ&quot;,
-      &quot;zh_TW&quot;: &quot;邀請&quot;
-    },
-    &quot;총 자산&quot;: {
-      &quot;en_US&quot;: &quot;Total Assets&quot;,
-      &quot;ja_JP&quot;: &quot;総資産&quot;,
-      &quot;ko_KR&quot;: &quot;총 자산&quot;,
-      &quot;th_TH&quot;: &quot;สินทรัพย์ทั้งหมด&quot;,
-      &quot;zh_TW&quot;: &quot;總資產&quot;
-    },
     &quot;최근 사용&quot;: {
       &quot;en_US&quot;: &quot;Recently used&quot;,
       &quot;ja_JP&quot;: &quot;最近使用&quot;,
       &quot;ko_KR&quot;: &quot;최근 사용&quot;,
       &quot;th_TH&quot;: &quot;ใช้งานล่าสุด&quot;,
       &quot;zh_TW&quot;: &quot;最近已使用&quot;
-    },
-    &quot;최대&quot;: {
-      &quot;en_US&quot;: &quot;Max&quot;,
-      &quot;ja_JP&quot;: &quot;最大&quot;,
-      &quot;ko_KR&quot;: &quot;최대&quot;,
-      &quot;th_TH&quot;: &quot;สูงสุด&quot;,
-      &quot;zh_TW&quot;: &quot;最多&quot;
-    },
-    &quot;최신순&quot;: {
-      &quot;en_US&quot;: &quot;Newest&quot;,
-      &quot;ja_JP&quot;: &quot;新しい順&quot;,
-      &quot;ko_KR&quot;: &quot;최신순&quot;,
-      &quot;th_TH&quot;: &quot;ล่าสุด&quot;,
-      &quot;zh_TW&quot;: &quot;最新&quot;
-    },
-    &quot;최저가격&quot;: {
-      &quot;en_US&quot;: &quot;Floor&quot;,
-      &quot;ja_JP&quot;: &quot;最低価格&quot;,
-      &quot;ko_KR&quot;: &quot;최저가격&quot;,
-      &quot;th_TH&quot;: &quot;ราคาต่ำสุด&quot;,
-      &quot;zh_TW&quot;: &quot;最低價格&quot;
-    },
-    &quot;출금&quot;: {
-      &quot;en_US&quot;: &quot;withdraw&quot;,
-      &quot;ja_JP&quot;: &quot;出金&quot;,
-      &quot;ko_KR&quot;: &quot;출금&quot;,
-      &quot;th_TH&quot;: &quot;ถอน&quot;,
-      &quot;zh_TW&quot;: &quot;提領&quot;
-    },
-    &quot;출금 (거래내역 유형 라벨)&quot;: {
-      &quot;en_US&quot;: &quot;Sent&quot;,
-      &quot;ja_JP&quot;: &quot;出金&quot;,
-      &quot;ko_KR&quot;: &quot;출금 (거래내역 유형 라벨)&quot;,
-      &quot;th_TH&quot;: &quot;ส่งแล้ว&quot;,
-      &quot;zh_TW&quot;: &quot;出金&quot;
-    },
-    &quot;취소&quot;: {
-      &quot;en_US&quot;: &quot;Cancel&quot;,
-      &quot;ja_JP&quot;: &quot;キャンセル&quot;,
-      &quot;ko_KR&quot;: &quot;취소&quot;,
-      &quot;th_TH&quot;: &quot;ยกเลิก&quot;,
-      &quot;zh_TW&quot;: &quot;取消&quot;
-    },
-    &quot;친구&quot;: {
-      &quot;en_US&quot;: &quot;friend&quot;,
-      &quot;ja_JP&quot;: &quot;友だち&quot;,
-      &quot;ko_KR&quot;: &quot;친구&quot;,
-      &quot;th_TH&quot;: &quot;เพื่อน&quot;,
-      &quot;zh_TW&quot;: &quot;好友&quot;
-    },
-    &quot;카메라&quot;: {
-      &quot;en_US&quot;: &quot;camera&quot;,
-      &quot;ja_JP&quot;: &quot;カメラ&quot;,
-      &quot;ko_KR&quot;: &quot;카메라&quot;,
-      &quot;th_TH&quot;: &quot;กล้อง&quot;,
-      &quot;zh_TW&quot;: &quot;相機&quot;
-    },
-    &quot;캐시백&quot;: {
-      &quot;en_US&quot;: &quot;cashback&quot;,
-      &quot;ja_JP&quot;: &quot;還元&quot;,
-      &quot;ko_KR&quot;: &quot;캐시백&quot;,
-      &quot;th_TH&quot;: &quot;เงินคืน&quot;,
-      &quot;zh_TW&quot;: &quot;現金回饋&quot;
-    },
-    &quot;캠페인&quot;: {
-      &quot;en_US&quot;: &quot;campaign&quot;,
-      &quot;ja_JP&quot;: &quot;キャンペーン&quot;,
-      &quot;ko_KR&quot;: &quot;캠페인&quot;,
-      &quot;th_TH&quot;: &quot;แคมเปญ&quot;,
-      &quot;zh_TW&quot;: &quot;活動&quot;
-    },
-    &quot;토큰&quot;: {
-      &quot;en_US&quot;: &quot;token&quot;,
-      &quot;ja_JP&quot;: &quot;トークン&quot;,
-      &quot;ko_KR&quot;: &quot;토큰&quot;,
-      &quot;th_TH&quot;: &quot;โทเค็น&quot;,
-      &quot;zh_TW&quot;: &quot;代幣&quot;
     },
     &quot;토큰 교환&quot;: {
       &quot;en_US&quot;: &quot;Token Swap&quot;,
@@ -2016,19 +1983,40 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;ยอดเงินคงเหลือเฉลี่ย&quot;,
       &quot;zh_TW&quot;: &quot;平均餘額&quot;
     },
-    &quot;포이카츠&quot;: {
-      &quot;en_US&quot;: &quot;Poi-katsu&quot;,
-      &quot;ja_JP&quot;: &quot;ポイ活&quot;,
-      &quot;ko_KR&quot;: &quot;포이카츠&quot;,
-      &quot;th_TH&quot;: &quot;Poi-katsu&quot;,
-      &quot;zh_TW&quot;: &quot;集點活動&quot;
+    &quot;결제 페이백&quot;: {
+      &quot;en_US&quot;: &quot;Payment Payback&quot;,
+      &quot;ja_JP&quot;: &quot;決済ペイバック&quot;,
+      &quot;ko_KR&quot;: &quot;결제 페이백&quot;,
+      &quot;th_TH&quot;: &quot;โบนัสการจ่าย&quot;,
+      &quot;zh_TW&quot;: &quot;消費回饋&quot;
     },
-    &quot;프로필&quot;: {
-      &quot;en_US&quot;: &quot;profile&quot;,
-      &quot;ja_JP&quot;: &quot;プロフィール&quot;,
-      &quot;ko_KR&quot;: &quot;프로필&quot;,
-      &quot;th_TH&quot;: &quot;โปรไฟล์&quot;,
-      &quot;zh_TW&quot;: &quot;個人檔案&quot;
+    &quot;리워드 지급&quot;: {
+      &quot;en_US&quot;: &quot;Reward Payment&quot;,
+      &quot;ja_JP&quot;: &quot;リワード支給&quot;,
+      &quot;ko_KR&quot;: &quot;리워드 지급&quot;,
+      &quot;th_TH&quot;: &quot;การจ่ายรางวัล&quot;,
+      &quot;zh_TW&quot;: &quot;獎勵發放&quot;
+    },
+    &quot;보너스 미션&quot;: {
+      &quot;en_US&quot;: &quot;Bonus Missions&quot;,
+      &quot;ja_JP&quot;: &quot;ボーナスミッション&quot;,
+      &quot;ko_KR&quot;: &quot;보너스 미션&quot;,
+      &quot;th_TH&quot;: &quot;มิชชันโบนัส&quot;,
+      &quot;zh_TW&quot;: &quot;紅利任務&quot;
+    },
+    &quot;부스트 이자&quot;: {
+      &quot;en_US&quot;: &quot;Boost Interest&quot;,
+      &quot;ja_JP&quot;: &quot;ブースト利息&quot;,
+      &quot;ko_KR&quot;: &quot;부스트 이자&quot;,
+      &quot;th_TH&quot;: &quot;ดอกเบี้ยบูสต์&quot;,
+      &quot;zh_TW&quot;: &quot;加速利息&quot;
+    },
+    &quot;예상 수수료&quot;: {
+      &quot;en_US&quot;: &quot;Estimated Fee&quot;,
+      &quot;ja_JP&quot;: &quot;予想手数料&quot;,
+      &quot;ko_KR&quot;: &quot;예상 수수료&quot;,
+      &quot;th_TH&quot;: &quot;ค่าธรรมเนียมโดยประมาณ&quot;,
+      &quot;zh_TW&quot;: &quot;預估手續費&quot;
     },
     &quot;플러스 이자&quot;: {
       &quot;en_US&quot;: &quot;Plus Interest&quot;,
@@ -2037,20 +2025,6 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;ดอกเบี้ยพลัส&quot;,
       &quot;zh_TW&quot;: &quot;Plus 利息&quot;
     },
-    &quot;플레이&quot;: {
-      &quot;en_US&quot;: &quot;Play&quot;,
-      &quot;ja_JP&quot;: &quot;プレイ&quot;,
-      &quot;ko_KR&quot;: &quot;플레이&quot;,
-      &quot;th_TH&quot;: &quot;เล่น&quot;,
-      &quot;zh_TW&quot;: &quot;遊戲&quot;
-    },
-    &quot;혜택&quot;: {
-      &quot;en_US&quot;: &quot;benefit&quot;,
-      &quot;ja_JP&quot;: &quot;特典&quot;,
-      &quot;ko_KR&quot;: &quot;혜택&quot;,
-      &quot;th_TH&quot;: &quot;สิทธิประโยชน์&quot;,
-      &quot;zh_TW&quot;: &quot;優惠&quot;
-    },
     &quot;홈으로 이동&quot;: {
       &quot;en_US&quot;: &quot;Go to Home&quot;,
       &quot;ja_JP&quot;: &quot;ホームへ&quot;,
@@ -2058,19 +2032,47 @@ action url 을 모두 업데이트 했어
       &quot;th_TH&quot;: &quot;ไปยังหน้าหลัก&quot;,
       &quot;zh_TW&quot;: &quot;前往首頁&quot;
     },
-    &quot;확인&quot;: {
-      &quot;en_US&quot;: &quot;check&quot;,
-      &quot;ja_JP&quot;: &quot;確認&quot;,
-      &quot;ko_KR&quot;: &quot;확인&quot;,
-      &quot;th_TH&quot;: &quot;ตรวจสอบ&quot;,
-      &quot;zh_TW&quot;: &quot;查看&quot;
+    &quot;간편 비밀번호&quot;: {
+      &quot;en_US&quot;: &quot;Passcode&quot;,
+      &quot;ja_JP&quot;: &quot;簡単パスワード&quot;,
+      &quot;ko_KR&quot;: &quot;간편 비밀번호&quot;,
+      &quot;th_TH&quot;: &quot;รหัสผ่านแบบง่าย&quot;,
+      &quot;zh_TW&quot;: &quot;簡易密碼&quot;
     },
-    &quot;회원가입&quot;: {
-      &quot;en_US&quot;: &quot;sign up&quot;,
-      &quot;ja_JP&quot;: &quot;会員登録&quot;,
-      &quot;ko_KR&quot;: &quot;회원가입&quot;,
-      &quot;th_TH&quot;: &quot;สมัครสมาชิก&quot;,
-      &quot;zh_TW&quot;: &quot;註冊&quot;
+    &quot;네트워크 전환&quot;: {
+      &quot;en_US&quot;: &quot;Network Conversion&quot;,
+      &quot;ja_JP&quot;: &quot;ネットワーク換算&quot;,
+      &quot;ko_KR&quot;: &quot;네트워크 전환&quot;,
+      &quot;th_TH&quot;: &quot;การแปลงเครือข่าย&quot;,
+      &quot;zh_TW&quot;: &quot;網路轉換&quot;
+    },
+    &quot;로그아웃 안내&quot;: {
+      &quot;en_US&quot;: &quot;Logout notice&quot;,
+      &quot;ja_JP&quot;: &quot;ログアウトのご案内&quot;,
+      &quot;ko_KR&quot;: &quot;로그아웃 안내&quot;,
+      &quot;th_TH&quot;: &quot;แจ้งออกระบบ&quot;,
+      &quot;zh_TW&quot;: &quot;登出通知&quot;
+    },
+    &quot;복구 비밀번호&quot;: {
+      &quot;en_US&quot;: &quot;Recovery Password&quot;,
+      &quot;ja_JP&quot;: &quot;復旧パスワード&quot;,
+      &quot;ko_KR&quot;: &quot;복구 비밀번호&quot;,
+      &quot;th_TH&quot;: &quot;รหัสผ่านกู้คืน&quot;,
+      &quot;zh_TW&quot;: &quot;復原密碼&quot;
+    },
+    &quot;입금 (거래내역 유형 라벨)&quot;: {
+      &quot;en_US&quot;: &quot;Received&quot;,
+      &quot;ja_JP&quot;: &quot;受取済&quot;,
+      &quot;ko_KR&quot;: &quot;입금 (거래내역 유형 라벨)&quot;,
+      &quot;th_TH&quot;: &quot;ได้รับแล้ว&quot;,
+      &quot;zh_TW&quot;: &quot;已接收&quot;
+    },
+    &quot;출금 (거래내역 유형 라벨)&quot;: {
+      &quot;en_US&quot;: &quot;Sent&quot;,
+      &quot;ja_JP&quot;: &quot;出金&quot;,
+      &quot;ko_KR&quot;: &quot;출금 (거래내역 유형 라벨)&quot;,
+      &quot;th_TH&quot;: &quot;ส่งแล้ว&quot;,
+      &quot;zh_TW&quot;: &quot;出金&quot;
     }
   },
   &quot;oa_variables&quot;: [
@@ -2304,11 +2306,11 @@ action url 을 모두 업데이트 했어
     {
       &quot;id&quot;: &quot;22&quot;,
       &quot;lang&quot;: &quot;ja_JP&quot;,
-      &quot;active&quot;: true,
+      &quot;note&quot;: &quot;2026-09-12 사용자 결정 — 「바우처」의 일본어 정본을 クーポン으로 확정. 등재 실사용은 결정 직전 バウチャー 20 : クーポン 1이라 실측 다수를 결정으로 뒤집은 건이다(v5.0 캐시백 還元과 같은 유형). 기존 등록 20키 ja 일괄 재업로드 동반 — 업로드 전에는 등재값과 용어집이 어긋난다&quot;,
       &quot;since&quot;: &quot;2026-09-12&quot;,
+      &quot;active&quot;: true,
       &quot;pattern&quot;: &quot;バウチャー&quot;,
-      &quot;recommend&quot;: &quot;クーポン&quot;,
-      &quot;note&quot;: &quot;2026-09-12 사용자 결정 — 「바우처」의 일본어 정본을 クーポン으로 확정. 등재 실사용은 결정 직전 バウチャー 20 : クーポン 1이라 실측 다수를 결정으로 뒤집은 건이다(v5.0 캐시백 還元과 같은 유형). 기존 등록 20키 ja 일괄 재업로드 동반 — 업로드 전에는 등재값과 용어집이 어긋난다&quot;
+      &quot;recommend&quot;: &quot;クーポン&quot;
     }
   ]
 }</pre>
@@ -3079,7 +3081,7 @@ var IA_DATA = [
           <tr><td><code>md/check.md</code></td><td><b>검증 패턴 사전</b> — 3단계 검증 절차 · 자주 발견되는 함정 · <b>교차 오염 탐지 매트릭스</b> · 자동 검사 사각지대</td><td><b>새 오류 패턴을 발견할 때마다</b> (누적 문서)</td></tr>
           <tr><td><code>md/translation_validation_guide.md</code></td><td><b>의미 기반 검증 방법론</b> — 정확/주의/오류 3단계 판정, 언어별 중점</td><td>판정 방법론이 바뀔 때</td></tr>
           <tr><td><code>md/xlt-verify.md</code> <span class="badge badge-emerald">v20 신규</span></td><td><b>XLT 시스템 등록값 검증</b> — 읽기 API 명세 · 타겟 확정 · 용어집 대조 · 수정 제안 · 위키 대조 모드</td><td>API·검증 절차가 바뀔 때</td></tr>
-          <tr><td><code>md/landpress.md</code></td><td><b>용어집 관리</b> — 조회·갱신 절차 · 전체 JSON 산출 · <b>가이드 zip 동반 갱신</b></td><td>용어집 운영 방식이 바뀔 때</td></tr>
+          <tr><td><code>md/landpress.md</code> <span class="badge badge-emerald">v37 개정</span></td><td><b>Landpress 용어집·콘텐츠 관리 정본</b> — 용어집 출처·갱신 절차 · <b>§10 CMS 쓰기 API</b>(저장·공개 방법, 언어별 항목은 CMS에서 미리 생성) · <b>§10-5 반영 방식 질문 절차</b>(Claude 직접 반영 / 직접 붙여넣기) · 기획자 가이드 동반 갱신(§5-1)</td><td>용어집을 바꾸거나 화면 콘텐츠를 등록할 때</td></tr>
           <tr><td><code>md/glossary-changelog.md</code></td><td><b>용어집 변경 이력</b> — 버전별 무엇을·왜 바꿨는지</td><td><b>용어집 버전이 오를 때마다</b> (필수)</td></tr>
           <tr><td><code>md/OA.md</code></td><td><b>OA 메시지 규칙</b> — 키 미부여 · 변수 표기 · Flex JSON</td><td>OA 규칙이 바뀔 때</td></tr>
           <tr><td><code>md/GA.md</code> <span class="badge badge-emerald">v32 신규</span></td><td><b>GA Event 정의 규칙</b> — <code>XLT &amp; GA</code> 열 · view/click 명명 · <code>#</code>=어노테이션 번호 · Landpress 항목 <code>id</code> 파라미터</td><td>GA 이벤트 규칙이 바뀔 때</td></tr>
@@ -3214,7 +3216,7 @@ var IA_DATA = [
 
 <footer class="border-t border-slate-200 bg-white">
   <div class="max-w-6xl mx-auto px-5 py-8 text-sm text-slate-500 flex flex-col sm:flex-row items-center justify-between gap-3">
-    <p>Figma → 다국어 위키 자동화 워크플로우 · 기획자 가이드 <b>v36</b> (2026-09-12)</p>
+    <p>Figma → 다국어 위키 자동화 워크플로우 · 기획자 가이드 <b>v37</b> (2026-09-12)</p>
     <p>핵심: <b class="text-slate-700">토큰 발급 → 요청 → AI 확인에 답하기 → 검증 통과 → 반영</b></p>
   </div>
 </footer>
