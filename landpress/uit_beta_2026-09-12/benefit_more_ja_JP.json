@@ -1,0 +1,29 @@
+{
+  "title": "追加特典を受け取る",
+  "items": [
+    {
+      "id": "daily_mission",
+      "title": "毎日のミッションでJPYCをもらう",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "unlimited_mission",
+      "title": "無制限ミッションで最大3万円をもらう",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "luckyball",
+      "title": "100%当選！JPYCラッキーボール抽選",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "korea_travel_cashback",
+      "title": "韓国旅行の人気商品を購入して還元をもらう",
+      "iconUrl": "",
+      "targetUrl": ""
+    }
+  ]
+}

@@ -1,0 +1,29 @@
+{
+  "title": "추가 혜택 받기",
+  "items": [
+    {
+      "id": "daily_mission",
+      "title": "일일 미션하고 JPYC 받기",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "unlimited_mission",
+      "title": "무제한 미션으로 최대 3만엔 받기",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "luckyball",
+      "title": "100% 당첨! JPYC 럭키볼 뽑기",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "korea_travel_cashback",
+      "title": "한국 여행 인기 상품 구매하고 캐시백 받기",
+      "iconUrl": "",
+      "targetUrl": ""
+    }
+  ]
+}

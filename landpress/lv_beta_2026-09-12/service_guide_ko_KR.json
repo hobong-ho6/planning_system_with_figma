@@ -1,0 +1,58 @@
+{
+  "title": "두근두근 한국 여행\n뭐부터 준비할까?",
+  "banner": {
+    "label": "JPYC 계좌 연동하기",
+    "targetUrl": "",
+    "description": "한국 여행 전 JPYC 계좌 미리\n연동하면 최대 혜택, 준비 끝"
+  },
+  "faqRef": "k_pick_clinic_common_info · clinic_detail_common.faq",
+  "useNow": {
+    "items": [
+      {
+        "step": 1,
+        "label": "STEP 1",
+        "imageUrl": "",
+        "description": "Unifi mini의 MY탭에 들어가요"
+      },
+      {
+        "step": 2,
+        "label": "STEP 2",
+        "imageUrl": "",
+        "description": "상단의 상품권 메뉴에서 구매한\n바우처를 확인할 수 있어요"
+      },
+      {
+        "step": 3,
+        "label": "STEP 3",
+        "imageUrl": "",
+        "description": "오프라인 매장에서 결제시\n상품권의 바코드를 보여줘요"
+      }
+    ],
+    "title": "한국 도착 즉시 사용하기"
+  },
+  "prepare": {
+    "items": [
+      {
+        "title": "한국 여행 쇼핑 상품권 구매",
+        "imageUrl": "",
+        "description": "한국 도착 즉시 사용 가능한 상품권\n최대 15% 혜택으로 미리 준비해요",
+        "linkLabel": "인기 상품 보기",
+        "targetUrl": ""
+      },
+      {
+        "title": "인기 클리닉 무료 상담 예약",
+        "imageUrl": "",
+        "description": "",
+        "linkLabel": "인기 상품 보기",
+        "targetUrl": ""
+      },
+      {
+        "title": "K뷰티･인기 여행 상품 예약",
+        "imageUrl": "",
+        "description": "한국 여행 인기 필수 체험!\n원하는 일정에 미리 예약해요",
+        "linkLabel": "인기 상품 보기",
+        "targetUrl": ""
+      }
+    ],
+    "title": "한국 여행 미리 준비하기"
+  }
+}

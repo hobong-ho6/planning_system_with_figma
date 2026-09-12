@@ -1,0 +1,29 @@
+{
+  "title": "รับสิทธิประโยชน์เพิ่มเติม",
+  "items": [
+    {
+      "id": "daily_mission",
+      "title": "ทำภารกิจรายวันรับ JPYC",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "unlimited_mission",
+      "title": "รับสูงสุด 30,000 เยน จากภารกิจไม่จำกัด",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "luckyball",
+      "title": "ถูกรางวัล 100%! จับรางวัลลัคกี้บอล JPYC",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "korea_travel_cashback",
+      "title": "ซื้อสินค้าท่องเที่ยวเกาหลียอดนิยมรับเงินคืน",
+      "iconUrl": "",
+      "targetUrl": ""
+    }
+  ]
+}

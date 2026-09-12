@@ -1,0 +1,29 @@
+{
+  "title": "領取更多優惠",
+  "items": [
+    {
+      "id": "daily_mission",
+      "title": "完成每日任務領 JPYC",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "unlimited_mission",
+      "title": "透過無限任務最多可得 3 萬日圓",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "luckyball",
+      "title": "100% 中獎！JPYC 幸運球抽獎",
+      "iconUrl": "",
+      "targetUrl": ""
+    },
+    {
+      "id": "korea_travel_cashback",
+      "title": "購買韓國旅遊人氣商品領現金回饋",
+      "iconUrl": "",
+      "targetUrl": ""
+    }
+  ]
+}

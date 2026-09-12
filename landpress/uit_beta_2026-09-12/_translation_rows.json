@@ -1,0 +1,106 @@
+[
+ {
+  "xlt_key": "payment_guide.sections[0].title",
+  "ko_KR": "결제 순서",
+  "ja_JP": "決済の流れ",
+  "en_US": "Payment Steps",
+  "th_TH": "ขั้นตอนการชำระเงิน",
+  "zh_TW": "付款流程"
+ },
+ {
+  "xlt_key": "payment_guide.sections[0].items[0].description",
+  "ko_KR": "결제 수단을 선택하고 결제 정보를 입력합니다.",
+  "ja_JP": "決済手段を選択し、決済情報を入力します。",
+  "en_US": "Select a payment method and enter your payment details.",
+  "th_TH": "เลือกวิธีการชำระเงินและกรอกข้อมูลการชำระเงิน",
+  "zh_TW": "選擇付款方式並輸入付款資訊。"
+ },
+ {
+  "xlt_key": "payment_guide.sections[0].items[1].description",
+  "ko_KR": "결제가 완료되면 바우처가 바로 발급됩니다.",
+  "ja_JP": "決済が完了すると、クーポンがすぐに発行されます。",
+  "en_US": "Once payment is complete, your voucher is issued immediately.",
+  "th_TH": "เมื่อชำระเงินเสร็จสิ้น เวาเชอร์จะออกให้ทันที",
+  "zh_TW": "付款完成後，優惠券將立即發放。"
+ },
+ {
+  "xlt_key": "payment_guide.sections[0].items[2].description",
+  "ko_KR": "구매한 바우처는 My쇼핑에서 확인할 수 있으며\nUnifi 친구 추가 시 LINE으로도 받아볼 수 있어요.",
+  "ja_JP": "購入したクーポンはMyショッピングで確認でき、\nUnifiを友だち追加するとLINEでも受け取れます。",
+  "en_US": "You can check purchased vouchers in My Shopping,\nand also receive them on LINE by adding Unifi as a friend.",
+  "th_TH": "ตรวจสอบเวาเชอร์ที่ซื้อได้ที่ My Shopping\nและรับผ่าน LINE ได้เมื่อเพิ่ม Unifi เป็นเพื่อน",
+  "zh_TW": "購買的優惠券可在 My購物 中查看，\n加 Unifi 為好友後也能透過 LINE 收取。"
+ },
+ {
+  "xlt_key": "payment_guide.sections[0].items[3].description",
+  "ko_KR": "결제가 확인되면 결제 금액의 5% 캐시백도 포인트로 지급됩니다.",
+  "ja_JP": "決済が確認されると、決済金額の5%が還元ポイントとして付与されます。",
+  "en_US": "Once your payment is confirmed, you also receive 5% cashback as points.",
+  "th_TH": "เมื่อยืนยันการชำระเงินแล้ว จะได้รับเงินคืน 5% ของยอดชำระเป็นพอยต์",
+  "zh_TW": "付款確認後，將以點數發放付款金額 5% 的現金回饋。"
+ },
+ {
+  "xlt_key": "payment_guide.sections[1].title",
+  "ko_KR": "취소･환불",
+  "ja_JP": "キャンセル・返金",
+  "en_US": "Cancellation & Refund",
+  "th_TH": "การยกเลิกและการคืนเงิน",
+  "zh_TW": "取消與退款"
+ },
+ {
+  "xlt_key": "payment_guide.sections[1].items[0]",
+  "ko_KR": "구매 전 상품별 취소·환불 조건을 꼭 확인해 주세요.",
+  "ja_JP": "ご購入前に、商品ごとのキャンセル・返金条件を必ずご確認ください。",
+  "en_US": "Please check the cancellation and refund terms for each product before purchase.",
+  "th_TH": "กรุณาตรวจสอบเงื่อนไขการยกเลิกและการคืนเงินของแต่ละสินค้าก่อนซื้อ",
+  "zh_TW": "購買前請務必確認各商品的取消與退款條件。"
+ },
+ {
+  "xlt_key": "payment_guide.sections[1].items[1]",
+  "ko_KR": "바우처를 사용하지 않은 경우, 유효기간 내 100% 환불할 수 있습니다. 유효기간이 지났거나 일부 사용한 경우에는 환불이 불가합니다.",
+  "ja_JP": "クーポンを未使用の場合、有効期限内であれば100%返金できます。有効期限が過ぎた場合や一部使用した場合は返金できません。",
+  "en_US": "Unused vouchers can be fully refunded within the validity period. Refunds are not available after the validity period or if the voucher has been partially used.",
+  "th_TH": "หากยังไม่ได้ใช้เวาเชอร์ สามารถขอคืนเงินเต็มจำนวนได้ภายในระยะเวลาที่กำหนด หากเลยระยะเวลาที่กำหนดหรือใช้ไปบางส่วนแล้ว จะไม่สามารถคืนเงินได้",
+  "zh_TW": "未使用的優惠券可在有效期限內全額退款。超過有效期限或已部分使用時無法退款。"
+ },
+ {
+  "xlt_key": "benefit_more.title",
+  "ko_KR": "추가 혜택 받기",
+  "ja_JP": "追加特典を受け取る",
+  "en_US": "Get More Benefits",
+  "th_TH": "รับสิทธิประโยชน์เพิ่มเติม",
+  "zh_TW": "領取更多優惠"
+ },
+ {
+  "xlt_key": "benefit_more.items[0].title",
+  "ko_KR": "일일 미션하고 JPYC 받기",
+  "ja_JP": "毎日のミッションでJPYCをもらう",
+  "en_US": "Complete Daily Missions and get JPYC",
+  "th_TH": "ทำภารกิจรายวันรับ JPYC",
+  "zh_TW": "完成每日任務領 JPYC"
+ },
+ {
+  "xlt_key": "benefit_more.items[1].title",
+  "ko_KR": "무제한 미션으로 최대 3만엔 받기",
+  "ja_JP": "無制限ミッションで最大3万円をもらう",
+  "en_US": "Earn up to ¥30,000 with unlimited missions",
+  "th_TH": "รับสูงสุด 30,000 เยน จากภารกิจไม่จำกัด",
+  "zh_TW": "透過無限任務最多可得 3 萬日圓"
+ },
+ {
+  "xlt_key": "benefit_more.items[2].title",
+  "ko_KR": "100% 당첨! JPYC 럭키볼 뽑기",
+  "ja_JP": "100%当選！JPYCラッキーボール抽選",
+  "en_US": "100% win! Draw the JPYC Lucky Ball",
+  "th_TH": "ถูกรางวัล 100%! จับรางวัลลัคกี้บอล JPYC",
+  "zh_TW": "100% 中獎！JPYC 幸運球抽獎"
+ },
+ {
+  "xlt_key": "benefit_more.items[3].title",
+  "ko_KR": "한국 여행 인기 상품 구매하고 캐시백 받기",
+  "ja_JP": "韓国旅行の人気商品を購入して還元をもらう",
+  "en_US": "Buy popular Korea travel products and get cashback",
+  "th_TH": "ซื้อสินค้าท่องเที่ยวเกาหลียอดนิยมรับเงินคืน",
+  "zh_TW": "購買韓國旅遊人氣商品領現金回饋"
+ }
+]
