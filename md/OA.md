@@ -265,6 +265,9 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
 7. 생성되면 **`messageId`** 가 발급된다(예: `N6aa3b1eb401c795e1244ceef`). 이 값을 위키에 기록한다.
 
 - ⚠️ **브라우저 접근 경로**: 이 사내 CMS는 **Claude in Chrome(사용자의 실제 로그인 세션)** 으로 접근한다. 샌드박스 브라우저 패널에서는 리소스가 차단돼(`ERR_BLOCKED_BY_CLIENT`) 화면이 비어 보인다(실측 2026-09-12).
+- ⚠️ **화면 본문은 교차 출처 iframe**이라 JS로 조작할 수 없다 — **좌표 클릭·타이핑으로만** 다룬다. 폼이 길어 `CREATE`가 화면 밖이면 **`Message 1 (FLEX)` 패널 헤더를 눌러 접으면** 버튼이 올라온다(마우스 휠·`End` 키로는 iframe이 스크롤되지 않는다, 실측 2026-09-12).
+- ✅ **`{{이름}}` 변수는 시스템이 인식한다** — `LOAD MESSAGE` 후 **`placeholders`** 필드에 변수명이 자동 추출된다(실측: `product_name, reservation_date`). 규칙 2의 표기가 실제 치환 키와 일치한다는 확인 지점이므로, **불러온 뒤 placeholders 목록이 기대한 변수와 같은지 본다.**
+- **실측(2026-09-12 · beta 파이프라인 검증)**: Landpress beta `postId 216`(ko_KR, primary) ↔ LIAM beta `messageId N6aa509563ae13b187b7d0c7e`. 언어 항목이 `ko_KR` 하나뿐이면 LIAM 언어 탭도 `KO_KR` 하나만 나온다.
 - ⛔ **생성·`UPDATE`·`DELETE`는 사용자 확인을 받은 뒤에만 누른다.** 조회·`LOAD MESSAGE`까지는 자유롭게 해도 되지만, 등록은 발송 대상이 되는 쓰기 동작이다.
 - **참조 실측**: prod Landpress `postId 1951` ↔ LIAM `messageId N6aa3b1eb401c795e1244ceef`.
 
@@ -283,13 +286,15 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
   - ⛔ code 매크로에 **`<ac:parameter ac:name="language">json</ac:parameter>`를 넣지 않는다** — 이 위키에서 `Error rendering macro 'code'`가 난다(실측 2026-09-12).
   - 확인용으로 URL 실값을 임시로 넣었다면(시뮬레이터 렌더 테스트 등) **그 사실을 Description 비고에 남긴다.**
 - **Flex JSON(언어별 5개)은 해당 화면 Description 셀에 첨부·링크**한다 — `Flex: [ko_KR] [en_US] [ja_JP] [zh_TW] [th_TH]` 형태 다운로드 링크(규칙 3). intro 영역이 아니라 화면별 Description에 둔다.
-- **등록 현황 표(필수 — Landpress·LIAM HUB 등록 후)**: OA 섹션에 아래 표를 두고 환경별 id를 기록한다.
+- **등록 현황 표(필수 — Landpress·LIAM HUB 등록 후)**: 환경별 id를 기록한다.
 
-  | Screen ID | Landpress postId (beta) | LIAM messageId (beta) | Landpress postId (prod) | LIAM messageId (prod) |
+  | 화면 | Landpress postId (beta) | LIAM messageId (beta) | Landpress postId (prod) | LIAM messageId (prod) |
   |---|---|---|---|---|
-  | (OA) … | 1234 | N6aa… | 1951 | N6aa3b1eb401c795e1244ceef |
+  | (OA) … | 216 | N6aa509563ae13b187b7d0c7e | 1951 | N6aa3b1eb401c795e1244ceef |
 
   미등록 환경은 `-`로 둔다. **beta id를 prod 칸에 쓰지 않는다.**
+  - ⛔ **위치는 OA 섹션 맨 끝**(다음 `<h1>` 직전)이고, **첫 칼럼 헤더는 `화면`** 이다. `Screen` 제목 뒤 **첫 표**이거나 첫 칼럼이 `Screen ID`면 `check_wiki_storage.py`가 이 표를 Screen 표로 오인해 컬럼 수 위반으로 막는다(2026-09-12 실측).
+  - 부분 등록(일부 언어만·테스트)이면 **그 사실과 이유를 표 아래 비고로** 남긴다.
 - History에 변경 행 추가(PIC=`Claude 자동 생성`).
 
 ---
