@@ -46,3 +46,7 @@ xlt_validation_temp.xlsx
 *_temp.xlsx
 Unifi_App_Screenshot.zip
 scripts/scripts/
+
+# 검증용 임시 엑셀 (landpress JSON 작업 시 validate_translation 입력)
+landpress/**/xlt_output_*.xlsx
+landpress/**/*_validation_report.md
