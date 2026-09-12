@@ -1,0 +1,51 @@
+{
+  "cta": {
+    "badge": "Up to 15% off",
+    "label": "Buy a CU ₩10,000 voucher",
+    "targetUrl": ""
+  },
+  "title": "Ride the K-food wave —\na ₩10,000 convenience store feast",
+  "sections": [
+    {
+      "items": [
+        {
+          "name": "Binggrae Banana Flavored Milk",
+          "caption": "A top pick for foreign travelers",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/007ecb5a149c480da5c818e081ce17c7.png"
+        },
+        {
+          "name": "Hazelnut Pouch Coffee",
+          "caption": "The viral pairing with banana milk",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8fa38e8236f24ceb932cee088f565ba8.png"
+        },
+        {
+          "name": "Cup Ice",
+          "caption": "A must for the banana milk coffee combo",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/66d4a33ac3994934b71785154328348b.png"
+        },
+        {
+          "name": "Samyang Carbo Buldak Ramen",
+          "caption": "The face of K-spice",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8645907936df4ee382fd4496664dc0d6.png"
+        },
+        {
+          "name": "String / Sliced Cheese",
+          "caption": "The essential pairing with Buldak",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8df9819a03c84027aab98eeffaf8bbce.png"
+        }
+      ],
+      "title": "The combo you saw on social media!",
+      "caution": "* Prices and availability may vary by store.",
+      "summary": {
+        "title": "About ₩7,800 for all of them",
+        "description": "Take on the best CU combos for ₩10,000"
+      }
+    }
+  ],
+  "description": "Take on the best CU combos for ₩10,000",
+  "heroImageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/94e5332eb3b8496984b2fc4e6b796450.png",
+  "voucherSection": {
+    "title": "Vouchers you may also like",
+    "productIds": []
+  }
+}

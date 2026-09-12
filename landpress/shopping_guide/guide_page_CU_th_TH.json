@@ -1,0 +1,51 @@
+{
+  "cta": {
+    "badge": "ลดสูงสุด 15%",
+    "label": "ซื้อบัตรกำนัล CU 10,000 วอน",
+    "targetUrl": ""
+  },
+  "title": "กระแส K-Food ด้วยเงิน 10,000 วอน\nตะลุยของอร่อยในร้านสะดวกซื้อ",
+  "sections": [
+    {
+      "items": [
+        {
+          "name": "Binggrae นมรสกล้วย",
+          "caption": "สินค้ายอดนิยมของนักท่องเที่ยวต่างชาติ",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/007ecb5a149c480da5c818e081ce17c7.png"
+        },
+        {
+          "name": "กาแฟซองเฮเซลนัท",
+          "caption": "คอมโบยอดฮิตคู่กับนมกล้วย",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8fa38e8236f24ceb932cee088f565ba8.png"
+        },
+        {
+          "name": "น้ำแข็งถ้วย",
+          "caption": "ไอเทมที่ขาดไม่ได้สำหรับคอมโบนมกล้วยกาแฟ",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/66d4a33ac3994934b71785154328348b.png"
+        },
+        {
+          "name": "Samyang มาม่าผัดเผ็ดคาร์โบนารา",
+          "caption": "ตัวแทนความเผ็ดสไตล์เกาหลี",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8645907936df4ee382fd4496664dc0d6.png"
+        },
+        {
+          "name": "ชีสแท่ง / ชีสแผ่น",
+          "caption": "คู่หูที่ต้องมีคู่กับบุลดัก",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8df9819a03c84027aab98eeffaf8bbce.png"
+        }
+      ],
+      "title": "คอมโบที่เห็นในโซเชียล!",
+      "caution": "※ ราคาและการจำหน่ายสินค้าอาจแตกต่างกันไปตามสาขา",
+      "summary": {
+        "title": "ซื้อทั้งหมดประมาณ ₩7,800",
+        "description": "ท้าลองคอมโบเด็ดของ CU ด้วยเงิน 10,000 วอน"
+      }
+    }
+  ],
+  "description": "ท้าลองคอมโบเด็ดของ CU ด้วยเงิน 10,000 วอน",
+  "heroImageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/94e5332eb3b8496984b2fc4e6b796450.png",
+  "voucherSection": {
+    "title": "เวาเชอร์ที่น่าสนใจ",
+    "productIds": []
+  }
+}

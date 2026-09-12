@@ -1,0 +1,85 @@
+{
+  "cta": {
+    "badge": "최대 15% 할인",
+    "label": "올리브영 3만원권 구매하기",
+    "targetUrl": ""
+  },
+  "title": "올리브영 3만원으로\n뭐 살 수 있어요?",
+  "sections": [
+    {
+      "items": [
+        {
+          "name": "메디힐 에센셜\n마스크팩 2매",
+          "caption": "올리브영 판매랭킹 1위",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8e39c933fdd04b3782c2c28038b8824b.png"
+        },
+        {
+          "name": "롬앤 더 쥬시\n래스팅 틴트",
+          "caption": "립 카테고리 BEST 1위",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/be28d17b8bfa44fc97d0877f337d3412.png"
+        },
+        {
+          "name": "이니스프리 화산송이\n모공 클렌징폼",
+          "caption": "누적 판매 5,000만 개 돌파",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/9742000f38434ffe987ab7056c22fc4d.png"
+        }
+      ],
+      "title": "올리브영 처음이라면 이 조합",
+      "caution": "※ 상품 가격 및 판매 여부는 매장에 따라 달라질 수 있습니다.",
+      "summary": {
+        "title": "전부 구매하면 약 ₩29,900",
+        "description": "3만원권 하나로 이 조합을 모두 담을 수 있어요"
+      }
+    },
+    {
+      "items": [
+        {
+          "name": "메디힐 더마\n토너패드 100매",
+          "caption": "리뷰 8만 건 이상",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/5e9cf8f5799548669849a383bd8ac1c1.png"
+        },
+        {
+          "name": "메디힐 에센셜\n마스크팩 2매",
+          "caption": "토너패드와 좋은 궁합",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/cf3965c29bc6406e9edb6e3d7e86ea26.png"
+        },
+        {
+          "name": "롬앤 더 쥬시\n래스팅 틴트",
+          "caption": "립 카테고리 BEST 1위",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/7b1a8299367745b7b5f0d2a5713745ca.png"
+        }
+      ],
+      "title": "여행중에도 피부관리에 진심",
+      "summary": {
+        "title": "전부 구매하면 약 ₩30,000",
+        "description": "3만원 하나로 인기 스킨케어에 집중 투자"
+      }
+    },
+    {
+      "items": [
+        {
+          "name": "어노브 딥 데미지\n트리트먼트 EX 미니",
+          "caption": "대표적인 K-뷰티 아이템",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/2a447170a0fd445fa09c9fcffa5fdd89.png"
+        },
+        {
+          "name": "논픽션 핸드크림 미니\n소용량 제품",
+          "caption": "립 카테고리 BEST 1위",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a9d213dc524e4efcb6caf7a12a1923d4.png"
+        },
+        {
+          "name": "바이오던스 콜라겐\n립 에센스",
+          "caption": "립 카테고리 BEST 1위",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/b2041714725f4940a61f78042fd3042e.png"
+        }
+      ],
+      "title": "친구들이 더 좋아하는 K-뷰티템",
+      "summary": {
+        "title": "전부 구매하면 약 ₩28,000",
+        "description": "3만원권 하나로 친구 가족 선물 준비 끝!"
+      }
+    }
+  ],
+  "description": "한국에서 많이 찾는 인기 아이템만 골랐어요",
+  "heroImageUrl": ""
+}

@@ -1,0 +1,43 @@
+{
+  "summary": {
+    "items": [
+      {
+        "label": "Validity period",
+        "value": "Valid for 60 days from the purchase date (no extension)"
+      },
+      {
+        "label": "Where to use",
+        "value": "OLIVE YOUNG stores and the online shop (excluding some stores)"
+      },
+      {
+        "label": "Cancellation and refund",
+        "value": "Full refund available within the validity period if unused"
+      },
+      {
+        "label": "How to receive",
+        "value": "e-Coupon"
+      }
+    ]
+  },
+  "productInfo": {
+    "title": "Product details",
+    "sections": [
+      {
+        "title": "How to use",
+        "description": "[OLIVE YOUNG stores]\nPresent the mobile gift card barcode when paying\n(Not available at malls, department stores, KTX stations, and other select in-store locations, or at self-checkout counters)\n\n[OLIVE YOUNG online shop]\nCheckout > Check mobile gift card balance > Enter the mobile gift card number > Confirm the balance > Pay"
+      },
+      {
+        "title": "Usage information",
+        "description": "Support may be unavailable for issues that occur while using a mobile gift card purchased outside official channels, resold, or obtained through improper means\nOLIVE YOUNG mobile gift cards can be used immediately at OLIVE YOUNG stores nationwide and in the mobile app. (Including Olive Better) (Excluding some stores; not available on PC)\nMultiple mobile gift cards can be used in a single payment in stores, but only one mobile gift card can be used per payment in the online shop.\nThe card can be used in several installments within the displayed amount.\nIf your purchase exceeds the mobile gift card amount, you can pay the difference with another payment method.\nCJ ONE points can be earned and a cash receipt can be issued at the time of payment.\nFor inquiries about use or returns, please contact the Gifticon customer center (1800-0133)."
+      },
+      {
+        "title": "Changes and cancellation",
+        "description": "If the voucher has not been used, you can receive a 100% refund within the validity period. Refunds are not available after the validity period has passed or if the voucher has been partially used."
+      },
+      {
+        "title": "Precautions",
+        "description": "Once an OLIVE YOUNG mobile gift card expires, it cannot be reused after an exchange or return of the purchased product.\nOLIVE YOUNG mobile gift cards cannot be recharged.\nOLIVE YOUNG mobile gift cards cannot be used to purchase gift cards, gift certificates, or certain products.\nWe are not liable for incidents caused by theft, loss, or similar circumstances.\nInquiries received outside customer center hours cannot be processed the same day, and expired cards are handled based on their expired status."
+      }
+    ]
+  }
+}

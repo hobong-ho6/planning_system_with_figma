@@ -1,0 +1,102 @@
+{
+  "title": "ワクワクの韓国旅行\n何から準備する？",
+  "prepare": {
+    "items": [
+      {
+        "title": "韓国旅行のショッピング商品券を購入",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/abca0ac0db2e4d3dbe0695a402ca92b2.png?updatedAt=1789191963000",
+        "description": "韓国到着後すぐ使える商品券\n最大15%お得に準備しましょう",
+        "linkLabel": "人気商品を見る",
+        "targetUrl": ""
+      },
+      {
+        "title": "人気クリニックの無料相談を予約",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/43d568b4aeef4dd6a1e09256c33c6ef0.png?updatedAt=1789191968000",
+        "description": "日本語の相談で安心して\n人気クリニックを事前に予約しましょう",
+        "linkLabel": "人気商品を見る",
+        "targetUrl": ""
+      },
+      {
+        "title": "K-ビューティー・人気旅行商品を予約",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/17bfbb16d3d04ec7b3e1cb5216ebbd38.png?updatedAt=1789191964000",
+        "description": "韓国旅行で人気の必須体験！\nご希望の日程で事前に予約しましょう",
+        "linkLabel": "人気商品を見る",
+        "targetUrl": ""
+      }
+    ],
+    "title": "韓国旅行の事前準備"
+  },
+  "useNow": {
+    "items": [
+      {
+        "step": 1,
+        "label": "STEP 1",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/984e338c4b27469182e6d0295d994ce2.png?updatedAt=1789191961000",
+        "description": "Unifi miniのMYタブを開きます"
+      },
+      {
+        "step": 2,
+        "label": "STEP 2",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/aac2bec715d64b7ab10e9b29443072cf.png?updatedAt=1789191960000",
+        "description": "上部の商品券メニューで購入した\nクーポンを確認できます"
+      },
+      {
+        "step": 3,
+        "label": "STEP 3",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/3ec40e667cec4975bae67519629a01f7.png?updatedAt=1789191959000",
+        "description": "オフライン店舗での決済時に\n商品券のバーコードを提示します"
+      }
+    ],
+    "title": "韓国到着後すぐ使う"
+  },
+  "banner": {
+    "label": "JPYCアカウントを連携する",
+    "targetUrl": "",
+    "description": "韓国旅行前にJPYCアカウントを\n連携すれば最大の特典で準備完了"
+  },
+  "faq": {
+    "title": "よくある質問",
+    "items": [
+      {
+        "id": "point_usage",
+        "title": "受け取ったポイントはどこで使えますか？",
+        "description": "還元で受け取ったポイントはJPYCに交換できます。"
+      },
+      {
+        "id": "cashback_rate",
+        "title": "還元はどのくらい、いつ受け取れますか？",
+        "description": "クーポンは決済が確認されると、決済金額の10%がポイントで戻ります。\nクリニックは施術後に現地で決済すると決済金額の一定割合がポイントで戻り、その割合は病院ごとに異なるため各病院の画面で確認できます。"
+      },
+      {
+        "id": "japanese_support",
+        "title": "日本語で問い合わせできますか？",
+        "description": "はい、日本語でお問い合わせいただけます。LINEからお気軽にお問い合わせいただければ日本語でご案内しますので、コミュニケーションの心配なく進められます。"
+      },
+      {
+        "id": "voucher_where_check",
+        "title": "購入したクーポンはどこで確認できますか？",
+        "description": "MYタブ > クーポンで確認できます。Unifiを友だち追加するとLINEでも受け取れます。"
+      },
+      {
+        "id": "voucher_issue_time",
+        "title": "クーポンはいつ発行されますか？",
+        "description": "決済が完了するとすぐに発行されます。受け取り方法はeギフトなので、別途配送を待つ必要はありません。"
+      },
+      {
+        "id": "voucher_how_to_use",
+        "title": "クーポンはどうやって使いますか？",
+        "description": "オフライン店舗での決済時にクーポンのバーコードを提示してください。利用可能な場所や利用方法は商品ごとに異なるため、各商品の画面でご確認ください。"
+      },
+      {
+        "id": "clinic_price",
+        "title": "クリニックの施術価格は韓国人と同じですか？",
+        "description": "韓国人と同じ価格でご利用いただけます。外国人であることを理由とした追加費用はかかりません。ただし、相談後に施術の範囲やオプションが変わると最終的なお支払い金額が変わることがあります。"
+      },
+      {
+        "id": "clinic_booking",
+        "title": "クリニックの予約はどのように進みますか？",
+        "description": "LINEの無料相談で希望する施術を相談し、来院日程を予約します。病院に来院して相談した後、施術の可否と項目を決め、施術が終わったら現地で決済します。"
+      }
+    ]
+  }
+}

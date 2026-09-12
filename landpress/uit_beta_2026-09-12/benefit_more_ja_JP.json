@@ -4,26 +4,22 @@
     {
       "id": "daily_mission",
       "title": "毎日のミッションでJPYCをもらう",
-      "iconUrl": "",
-      "targetUrl": ""
+      "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/d374ef6e6fdd4e67a8491d23a43b7aae.png?updatedAt=1789190195000"
     },
     {
       "id": "unlimited_mission",
       "title": "無制限ミッションで最大3万円をもらう",
-      "iconUrl": "",
-      "targetUrl": ""
+      "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/0e5cbdf839cf468292e98ed5386c350e.png?updatedAt=1789190198000"
     },
     {
       "id": "luckyball",
       "title": "100%当選！JPYCラッキーボール抽選",
-      "iconUrl": "",
-      "targetUrl": ""
+      "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/f77667c28d2145c7aa0ddf29d47c99ab.png?updatedAt=1789190196000"
     },
     {
       "id": "korea_travel_cashback",
       "title": "韓国旅行の人気商品を購入して還元をもらう",
-      "iconUrl": "",
-      "targetUrl": ""
+      "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/d374ef6e6fdd4e67a8491d23a43b7aae.png?updatedAt=1789190195000"
     }
   ]
 }

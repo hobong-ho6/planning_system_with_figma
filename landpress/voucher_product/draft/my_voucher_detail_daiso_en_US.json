@@ -1,0 +1,36 @@
+{
+  "usage": {
+    "title": "How to use",
+    "items": [
+      {
+        "step": 1,
+        "description": "When paying at a DAISO store, show the barcode in your coupon box to the store staff to use it"
+      },
+      {
+        "step": 2,
+        "description": "You can use it until the balance is fully spent\nwithin the validity period"
+      }
+    ]
+  },
+  "notice": {
+    "title": "Product description and precautions",
+    "sections": [
+      {
+        "title": "How to use",
+        "description": "[DAISO stores]\nPresent the gift card when paying, or use a self-checkout counter\n(Select DAISO gift card > Scan the items > Scan the barcode or enter the number > Pay)\n\n[DAISO online store]\nAt checkout, enter the amount to use under \"DAISO gift card\" > Pay (available after registering the gift card)"
+      },
+      {
+        "title": "Usage information",
+        "description": "Please be sure to check the list of available stores before use.\nThis is a deducting-balance gift card that can be used multiple times within its remaining balance.\nIf your purchase exceeds the gift card amount, you can pay the difference by card, cash, or another method.\nPoints can be earned when paying with the gift card.\nProducts purchased with the gift card can be exchanged or returned within the validity period.\nAvailable stores: https://www.daisogift.co.kr/usestoreinfo"
+      },
+      {
+        "title": "Changes and cancellation",
+        "description": "If the voucher has not been used, you can receive a 100% refund within the validity period. Refunds are not available after the validity period has passed or if the voucher has been partially used."
+      },
+      {
+        "title": "Precautions",
+        "description": "The exchange validity period is 60 days from the purchase date. (Validity periods may differ for seasonal products, corporate gifts (B2B), and discounted products.)"
+      }
+    ]
+  }
+}

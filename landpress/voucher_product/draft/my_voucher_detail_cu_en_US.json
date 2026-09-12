@@ -1,0 +1,36 @@
+{
+  "usage": {
+    "title": "How to use",
+    "items": [
+      {
+        "step": 1,
+        "description": "When paying at a CU store, show the barcode in your coupon box to the store staff to use it"
+      },
+      {
+        "step": 2,
+        "description": "You can use it until the balance is fully spent\nwithin the validity period"
+      }
+    ]
+  },
+  "notice": {
+    "title": "Product description and precautions",
+    "sections": [
+      {
+        "title": "How to use",
+        "description": "[CU stores]\nPresent the mobile gift card barcode when paying\n(Can be used just like cash or a card at CU stores nationwide)"
+      },
+      {
+        "title": "Usage information",
+        "description": "It can be used just like cash or a card at CU stores nationwide.\nIt can be combined with cash, a card, or other payment methods.\nMobile carrier discount cards can be applied.\nCU mobile gift cards support balance tracking and can be used in installments within the remaining balance.\nA cash receipt can be issued.\nFor balance and usage history inquiries: Galaxia Communications customer center, 1566-0123"
+      },
+      {
+        "title": "Changes and cancellation",
+        "description": "If the voucher has not been used, you can receive a 100% refund within the validity period. Refunds are not available after the validity period has passed or if the voucher has been partially used."
+      },
+      {
+        "title": "Precautions",
+        "description": "The exchange validity period is 60 days.\nIt cannot be combined with other coupons, and points cannot be earned.\nRestricted items: cigarettes, lottery tickets, garbage bags, T-money top-ups, parcel delivery, and other service products"
+      }
+    ]
+  }
+}

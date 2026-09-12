@@ -1,0 +1,25 @@
+{
+  "title": "How to use your voucher",
+  "items": [
+    {
+      "step": 1,
+      "title": "Purchase a voucher",
+      "description": "Purchase the voucher you want on Unifi."
+    },
+    {
+      "step": 2,
+      "title": "Check your purchased voucher",
+      "description": "You can find your vouchers in MY tab > Voucher, and also receive them on LINE if you add Unifi as a friend."
+    },
+    {
+      "step": 3,
+      "title": "Get cashback",
+      "description": "After your purchase, 10% of the payment amount is returned as points."
+    },
+    {
+      "step": 4,
+      "title": "Use your voucher",
+      "description": "Check where and how to use each product before using it."
+    }
+  ]
+}

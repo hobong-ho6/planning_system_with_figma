@@ -1,0 +1,51 @@
+{
+  "cta": {
+    "badge": "最大15%割引",
+    "label": "CUコンビニ1万ウォン商品券を購入",
+    "targetUrl": ""
+  },
+  "title": "K-フード旋風 1万ウォンで\nコンビニ美食探訪",
+  "sections": [
+    {
+      "items": [
+        {
+          "name": "ビングレ バナナ味牛乳",
+          "caption": "外国人観光客に人気の定番",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/007ecb5a149c480da5c818e081ce17c7.png"
+        },
+        {
+          "name": "ヘーゼルナッツ パウチコーヒー",
+          "caption": "バナナ牛乳と合わせるSNS人気の組み合わせ",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8fa38e8236f24ceb932cee088f565ba8.png"
+        },
+        {
+          "name": "カップ氷",
+          "caption": "バナナ牛乳コーヒー組み合わせの必須アイテム",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/66d4a33ac3994934b71785154328348b.png"
+        },
+        {
+          "name": "サムヤン カルボ ブルダック炒め麺",
+          "caption": "K-辛さの代表格",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8645907936df4ee382fd4496664dc0d6.png"
+        },
+        {
+          "name": "ストリング／スライスチーズ",
+          "caption": "ブルダックと合わせる必須の組み合わせ",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8df9819a03c84027aab98eeffaf8bbce.png"
+        }
+      ],
+      "title": "SNSで見たあの組み合わせ！",
+      "caution": "※ 商品の価格および取り扱いは店舗により異なる場合があります。",
+      "summary": {
+        "title": "すべて購入して約₩7,800",
+        "description": "CU 1万ウォンでコンビニ神組み合わせの食べ歩きに挑戦"
+      }
+    }
+  ],
+  "description": "CU 1万ウォンでコンビニ神組み合わせの食べ歩きに挑戦",
+  "heroImageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/94e5332eb3b8496984b2fc4e6b796450.png",
+  "voucherSection": {
+    "title": "一緒に見たいクーポン",
+    "productIds": []
+  }
+}
