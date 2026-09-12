@@ -260,6 +260,17 @@ body: { "exceptions": { …용어집 전체 JSON… }, "published": true }
 
 > ⚠️ **필드 이름이 `exceptions`지만 값은 용어집 전체**다. `terminology`만 따로 넣는 필드가 아니다 — 통째로 교체한다.
 
+**⛔ 단건 컬렉션에서는 `published`를 body에 넣지 않는다** (2026-09-12 실측) — 용어집에 `{"exceptions": {…}, "published": true}`로 PUT하면 **`400 SYSTEM_CODE_UNDEFINED`** 로 거부된다(데이터는 바뀌지 않는다). `published`를 빼고 `{"exceptions": {…}}`만 보내면 **200**이고, 기존 게시 상태(`published: true`)는 그대로 유지된다. 다건 컬렉션(`shopping_guide` 등)에서는 반대로 `published: true`가 정상 동작한다 — **컬렉션 타입에 따라 다르다.**
+
+**권장 — 전체를 재전송하지 말고 변경분만 적용한다.** 라이브 값을 GET해 그 객체에서 바꿀 필드만 고쳐 PUT하면 전송 중 손실·구버전 덮어쓰기 위험이 없다(용어집 전체는 27KB다). 실측 절차:
+
+```
+① GET /item → metadata.version 확인 (기대 버전과 다르면 중단)
+② 받은 exceptions 객체를 복제 → terminology 해당 항목 + metadata(version·last_updated·total_terms·updated_by·description) 수정
+③ PUT /items/1?locale=en_US  body: {"exceptions": 수정본}   ← published 넣지 않음
+④ fetch_glossary 재조회 → 확정 산출물과 전건 대조(metadata·terminology·exceptions·oa_variables·deprecated_terms)
+```
+
 ### 10-5. 용어집 직접 쓰기 규칙 (⛔ 차단 게이트)
 
 용어집은 **전 서비스 공용 라이브 데이터**다. 기술적으로 쓸 수 있다는 것과 써도 된다는 것은 다르다.
