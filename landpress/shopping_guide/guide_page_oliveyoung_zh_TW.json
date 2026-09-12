@@ -1,0 +1,85 @@
+{
+  "cta": {
+    "badge": "最高 15% 折扣",
+    "label": "購買 OLIVE YOUNG 3 萬韓元商品券",
+    "targetUrl": ""
+  },
+  "title": "在 OLIVE YOUNG 用 3 萬韓元\n能買什麼？",
+  "sections": [
+    {
+      "items": [
+        {
+          "name": "Mediheal 精華\n面膜 2 片",
+          "caption": "OLIVE YOUNG 銷售排行第 1",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8e39c933fdd04b3782c2c28038b8824b.png"
+        },
+        {
+          "name": "rom&nd 果汁\n持色唇釉",
+          "caption": "唇部類別 BEST 第 1",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/be28d17b8bfa44fc97d0877f337d3412.png"
+        },
+        {
+          "name": "innisfree 火山泥\n毛孔潔顏泡沫",
+          "caption": "累計銷售突破 5,000 萬個",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/9742000f38434ffe987ab7056c22fc4d.png"
+        }
+      ],
+      "title": "第一次逛 OLIVE YOUNG 就選這組",
+      "caution": "※ 商品價格與販售情形可能因門市而異。",
+      "summary": {
+        "title": "全部購買約 ₩29,900",
+        "description": "一張 3 萬韓元商品券就能全部帶走"
+      }
+    },
+    {
+      "items": [
+        {
+          "name": "Mediheal Derma\n化妝水棉片 100 片",
+          "caption": "超過 8 萬則評論",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/5e9cf8f5799548669849a383bd8ac1c1.png"
+        },
+        {
+          "name": "Mediheal 精華\n面膜 2 片",
+          "caption": "與化妝水棉片絕配",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/cf3965c29bc6406e9edb6e3d7e86ea26.png"
+        },
+        {
+          "name": "rom&nd 果汁\n持色唇釉",
+          "caption": "唇部類別 BEST 第 1",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/7b1a8299367745b7b5f0d2a5713745ca.png"
+        }
+      ],
+      "title": "旅行中也認真保養",
+      "summary": {
+        "title": "全部購買約 ₩30,000",
+        "description": "一張 3 萬韓元商品券，集中投資人氣保養品"
+      }
+    },
+    {
+      "items": [
+        {
+          "name": "UNOVE 深層修護\n護髮素 EX 迷你",
+          "caption": "代表性的 K-美妝單品",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/2a447170a0fd445fa09c9fcffa5fdd89.png"
+        },
+        {
+          "name": "NONFICTION 護手霜迷你\n小容量",
+          "caption": "適合送禮的迷你尺寸",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a9d213dc524e4efcb6caf7a12a1923d4.png"
+        },
+        {
+          "name": "BIODANCE 膠原蛋白\n唇部精華",
+          "caption": "膠原蛋白唇部護理",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/b2041714725f4940a61f78042fd3042e.png"
+        }
+      ],
+      "title": "朋友更愛的 K-美妝好物",
+      "summary": {
+        "title": "全部購買約 ₩28,000",
+        "description": "一張 3 萬韓元商品券，朋友家人的禮物一次搞定！"
+      }
+    }
+  ],
+  "description": "精選韓國最熱門的人氣單品",
+  "heroImageUrl": ""
+}

@@ -1,0 +1,85 @@
+{
+  "cta": {
+    "badge": "最大15%割引",
+    "label": "オリーブヤング3万ウォン商品券を購入",
+    "targetUrl": ""
+  },
+  "title": "オリーブヤング3万ウォンで\n何が買える？",
+  "sections": [
+    {
+      "items": [
+        {
+          "name": "メディヒール エッセンシャル\nマスクパック 2枚",
+          "caption": "オリーブヤング販売ランキング1位",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8e39c933fdd04b3782c2c28038b8824b.png"
+        },
+        {
+          "name": "ロムアンド ジューシー\nラスティング ティント",
+          "caption": "リップカテゴリーBEST1位",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/be28d17b8bfa44fc97d0877f337d3412.png"
+        },
+        {
+          "name": "イニスフリー 火山灰\n毛穴クレンジングフォーム",
+          "caption": "累計販売5,000万個突破",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/9742000f38434ffe987ab7056c22fc4d.png"
+        }
+      ],
+      "title": "オリーブヤング初心者ならこの組み合わせ",
+      "caution": "※ 商品の価格および取り扱いは店舗により異なる場合があります。",
+      "summary": {
+        "title": "すべて購入して約₩29,900",
+        "description": "3万ウォン商品券1枚でこの組み合わせがすべて揃います"
+      }
+    },
+    {
+      "items": [
+        {
+          "name": "メディヒール ダーマ\nトナーパッド 100枚",
+          "caption": "レビュー8万件以上",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/5e9cf8f5799548669849a383bd8ac1c1.png"
+        },
+        {
+          "name": "メディヒール エッセンシャル\nマスクパック 2枚",
+          "caption": "トナーパッドと相性抜群",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/cf3965c29bc6406e9edb6e3d7e86ea26.png"
+        },
+        {
+          "name": "ロムアンド ジューシー\nラスティング ティント",
+          "caption": "リップカテゴリーBEST1位",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/7b1a8299367745b7b5f0d2a5713745ca.png"
+        }
+      ],
+      "title": "旅行中もスキンケアに本気",
+      "summary": {
+        "title": "すべて購入して約₩30,000",
+        "description": "3万ウォン商品券1枚で人気スキンケアに集中投資"
+      }
+    },
+    {
+      "items": [
+        {
+          "name": "アンオーブ ディープダメージ\nトリートメント EX ミニ",
+          "caption": "代表的なK-ビューティーアイテム",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/2a447170a0fd445fa09c9fcffa5fdd89.png"
+        },
+        {
+          "name": "ノンフィクション ハンドクリーム ミニ\n少容量タイプ",
+          "caption": "ギフトにぴったりのミニサイズ",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a9d213dc524e4efcb6caf7a12a1923d4.png"
+        },
+        {
+          "name": "バイオダンス コラーゲン\nリップエッセンス",
+          "caption": "コラーゲンのリップケア",
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/b2041714725f4940a61f78042fd3042e.png"
+        }
+      ],
+      "title": "友だちがもっと喜ぶK-ビューティーアイテム",
+      "summary": {
+        "title": "すべて購入して約₩28,000",
+        "description": "3万ウォン商品券1枚で友だちや家族へのお土産準備完了！"
+      }
+    }
+  ],
+  "description": "韓国で人気のアイテムだけを厳選しました",
+  "heroImageUrl": ""
+}
