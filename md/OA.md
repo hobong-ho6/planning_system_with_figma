@@ -250,7 +250,9 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
 | 환경 | 주소 | OA Channel |
 |---|---|---|
 | **beta** | `https://liam-hub.hub-beta.linecorp.com/service-view/313?menuId=23160&roleId=6970` | 2개 중 ⛔ **`Unifi Beta OA (2010418473)`** 를 고른다 (`Dapp Portal Beta (2008939708)` 아님) |
-| **prod** | `https://liam-hub.hub.linecorp.com/service-view/313?menuId=18628&roleId=6969` | 채널이 1개라 **선택 과정 없음**, 나머지는 동일 |
+| **prod** | `https://liam-hub.hub.linecorp.com/service-view/313?menuId=18628&roleId=6969` | ⛔ **`Dapp Portal (2006670905)`**(기본 선택값) — `Dapp Portal_Test (2007058493)` 아님 |
+
+> ⛔ **beta와 prod의 올바른 채널이 다르다 (2026-09-12 실측 · 사용자 확정).** beta는 `Dapp Portal Beta`가 아니라 **`Unifi Beta OA`** 를 골라야 하는데, **prod에는 Unifi 채널 자체가 없고** `Dapp Portal`·`Dapp Portal_Test` 2개뿐이며 **`Dapp Portal (2006670905)`이 정답**이다. "prod는 채널이 1개"는 사실과 다르므로 **기본 선택값을 그대로 믿지 말고 위 표의 채널 ID로 확인**한다.
 
 > ⛔ **URL의 `roleId`가 중요하다.** `service-view/313`은 같아도 `roleId`(beta `6970` / prod `6969`)·`menuId`(beta `23160` / prod `18628`)가 환경을 가른다. **주소를 손으로 고쳐 쓰지 말고 위 표의 URL을 그대로 쓴다** — 잘못된 roleId로 들어가면 다른 권한·다른 환경 화면이 열린다.
 
@@ -267,7 +269,16 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
 - ⚠️ **브라우저 접근 경로**: 이 사내 CMS는 **Claude in Chrome(사용자의 실제 로그인 세션)** 으로 접근한다. 샌드박스 브라우저 패널에서는 리소스가 차단돼(`ERR_BLOCKED_BY_CLIENT`) 화면이 비어 보인다(실측 2026-09-12).
 - ⚠️ **화면 본문은 교차 출처 iframe**이라 JS로 조작할 수 없다 — **좌표 클릭·타이핑으로만** 다룬다. 폼이 길어 `CREATE`가 화면 밖이면 **`Message 1 (FLEX)` 패널 헤더를 눌러 접으면** 버튼이 올라온다(마우스 휠·`End` 키로는 iframe이 스크롤되지 않는다, 실측 2026-09-12).
 - ✅ **`{{이름}}` 변수는 시스템이 인식한다** — `LOAD MESSAGE` 후 **`placeholders`** 필드에 변수명이 자동 추출된다(실측: `product_name, reservation_date`). 규칙 2의 표기가 실제 치환 키와 일치한다는 확인 지점이므로, **불러온 뒤 placeholders 목록이 기대한 변수와 같은지 본다.**
-- **실측(2026-09-12 · beta 파이프라인 검증)**: Landpress beta `postId 216`(ko_KR, primary) ↔ LIAM beta `messageId N6aa509563ae13b187b7d0c7e`. 언어 항목이 `ko_KR` 하나뿐이면 LIAM 언어 탭도 `KO_KR` 하나만 나온다.
+- ⛔ **`isActive`는 기본 체크(Yes)다.** 테스트·미완성 문구로 등록할 때는 **체크를 풀고 생성**해 발송되지 않게 한다. 실제 사용 시 켠다.
+- **실측(2026-09-12 · 파이프라인 검증)**
+
+  | 환경 | Landpress postId | primary locale | LIAM messageId | isActive |
+  |---|---|---|---|---|
+  | beta | `216` (ko_KR) | **ko_KR** | `N6aa509563ae13b187b7d0c7e` | Yes |
+  | prod | `1956` (ko_KR) | **en_US**(빈 항목) | `N6aa50c973af74c70a397b9b0` | **No**(테스트라 해제) |
+
+  - **primary locale은 환경마다 다를 수 있다**(beta ko_KR / prod en_US). primary가 비어 있어도 **게시된 언어 항목만 LIAM 탭에 나오므로** `ko_KR` 하나만 채워도 `LOAD MESSAGE`는 정상 동작한다.
+  - **primary가 미게시면 공개 조회 API는 그 항목을 404로 준다** — `ko_KR`을 `published: true`로 올려도 마찬가지다. 이때 **반영 확인은 CMS API(`/items/{postId}?locale=`)로** 한다(§10-3 5번의 확장).
 - ⛔ **생성·`UPDATE`·`DELETE`는 사용자 확인을 받은 뒤에만 누른다.** 조회·`LOAD MESSAGE`까지는 자유롭게 해도 되지만, 등록은 발송 대상이 되는 쓰기 동작이다.
 - **참조 실측**: prod Landpress `postId 1951` ↔ LIAM `messageId N6aa3b1eb401c795e1244ceef`.
 
