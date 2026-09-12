@@ -554,12 +554,32 @@ git -C /tmp/repo_clone push origin main
 | markdown 포맷으로 업데이트 | `ac:image` 너비 지정·중첩표 미지원, 반드시 storage 포맷 사용 |
 
 ### Step 5: 위키 업데이트
+
+#### ⛔ `content`에 파일 경로를 넣지 않는다 — 페이지가 통째로 날아간다 (2026-09-12 실측 사고)
+
+`confluence_update_page`의 **`content`는 XHTML 본문 문자열**이다. 여기에 **파일 경로를 넣으면 그 경로 문자열이 그대로 페이지 본문이 된다** — 도구는 경고 없이 성공(`Page updated successfully`)을 반환하고, **기존 본문 전체가 사라진다.**
+
+> **실측(2026-09-12 · pageId 4725932984)**: `content`에 `/private/tmp/.../oa_page_full_new.html`을 넘겼더니 본문이 **그 148자 경로 문자열 하나로 교체**됐다. 직후 REST PUT으로 복구(v27→v28)했지만, **복구 가능했던 이유는 보낼 내용을 로컬 파일로 갖고 있었기 때문**이다.
+
+- ⛔ **파일 내용을 넣으려면 파일을 읽어 그 문자열을 넘긴다.** 경로를 넘기지 않는다.
+- ✅ **본문이 크면(수십 KB 이상) MCP 도구 대신 REST PUT을 쓴다** — 파일을 그대로 실어 보내므로 이 함정 자체가 없고, 대화에 본문을 통과시키지 않아 안전하다.
+  ```bash
+  # payload.json = {"id":…, "type":"page", "title":…, "version":{"number":N+1},
+  #                 "body":{"storage":{"value":"<본문>","representation":"storage"}}}
+  curl -s -X PUT -H "Authorization: Bearer $CONFLUENCE_PAT" -H "Content-Type: application/json" \
+    --data-binary @payload.json "$BASE_URL/rest/api/content/{pageId}" -w "HTTP:%{http_code}\n"
+  ```
+- **PUT 직후 본문 길이를 확인**한다. 보낸 것보다 현저히 짧으면 이 사고를 의심한다(`check_wiki_storage.py post`는 렌더 실패는 잡지만 **본문이 통째로 바뀐 것은 잡지 못한다**).
+- **되돌릴 수 있게** 보낼 storage를 **항상 로컬 파일로 먼저 저장**한 뒤 PUT한다.
+
+#### 호출 파라미터
+
 1. **storage 포맷** 사용 (nested table 지원을 위해)
 2. `confluence_update_page` 호출:
    - `page_id`: 대상 페이지 ID
    - `title`: 페이지 제목
    - `content_format`: `storage`
-   - `content`: XHTML 콘텐츠
+   - `content`: XHTML 콘텐츠 **본문 문자열**(⛔ 파일 경로 아님 — 위 차단 규칙)
    - `version_comment`: 변경 내용 요약
 3. 업데이트 후 반환된 version 확인
 

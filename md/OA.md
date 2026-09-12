@@ -233,7 +233,7 @@ OA 메시지 본문은 **Landpress의 `oam_message_task_multi` 컬렉션**에 �
 
 1. **OA 작성이 끝나면 사용자에게 "Landpress에 등록할까요?"를 묻는다.** 묻지 않고 등록하지 않는다. 등록 대상 환경(beta/prod)도 함께 확인한다.
 2. 등록한다고 하면 — **사용자에게 "언어별 항목을 Landpress CMS에서 먼저 만들어 달라"고 요청한다.** 로케일 항목 **생성 API는 없다**(`md/landpress.md` §10-2 · §10-3 4번) → 항목이 없으면 PUT이 `404 NOT_FOUND_ITEM`이다. ⛔ **`POST .../items`로 항목을 만들지 않는다**(빈 항목이 실제로 생성된다 — §10-3 1번).
-3. 사용자가 항목을 만들고 **postId를 알려주면**, 그 id로 언어별 PUT:
+3. 사용자가 항목을 만들고 **postId를 알려주면**, ⛔ **먼저 그 항목의 현재 내용을 GET해 확인한다** — 사용자가 이미 채워 둔 내용이 있으면 덮어쓰기 전에 알린다. 빈 껍데기(`type: TEXT`·`content_flex: null`·`content_text: ""`)면 그대로 교체해도 안전하다(실측: beta 216·prod 1956 모두 빈 껍데기였다). 확인 후 언어별 PUT:
    ```
    PUT /api/v1/projects/{projectId}/collections/oam_message_task_multi/items/{postId}?locale={ko_KR|en_US|ja_JP|zh_TW|th_TH}
    body: { "title": …, "messages": [ … ], "published": true }
