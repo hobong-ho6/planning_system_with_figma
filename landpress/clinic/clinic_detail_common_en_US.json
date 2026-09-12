@@ -1,0 +1,107 @@
+{
+  "process": {
+    "title": "Consultation and treatment process",
+    "items": [
+      {
+        "step": 1,
+        "title": "Free LINE consultation and booking",
+        "description": "Consult about the treatment you want and book your visit."
+      },
+      {
+        "step": 2,
+        "title": "Clinic visit, consultation, and treatment",
+        "description": "Visit the clinic and decide whether to proceed and which treatment to receive."
+      },
+      {
+        "step": 3,
+        "title": "Pay on site after treatment",
+        "description": "No prepayment is required; you pay after the treatment."
+      },
+      {
+        "step": 4,
+        "title": "Get cashback",
+        "description": "After payment is confirmed, you get a percentage of the amount back in points. The rate varies by clinic."
+      }
+    ]
+  },
+  "faq": {
+    "title": "Frequently asked questions",
+    "items": [
+      {
+        "id": "price_same_as_local",
+        "title": "Is the treatment price the same as for Korean customers?",
+        "description": "You can receive treatment at the same price as Korean customers.\nNo extra fee applies because you are a foreign visitor, and you pay based on the same treatment price the clinic provides. However, if the treatment scope or options change after the consultation, the final payment amount may differ."
+      },
+      {
+        "id": "change_on_visit",
+        "title": "Can I change the booked treatment when I visit?",
+        "description": "After visiting the clinic, you may change the treatment or choose not to proceed after the consultation. If the treatment items change as a result, the final payment amount changes accordingly."
+      },
+      {
+        "id": "cashback_timing",
+        "title": "When can I receive the cashback?",
+        "description": "Once you pay on site after the treatment, you get a percentage of the amount back in points after your payment is confirmed. The cashback rate varies by clinic and is shown on each clinic's page."
+      },
+      {
+        "id": "prepayment_required",
+        "title": "Do I need to pay before booking?",
+        "description": "No prepayment is required. You pay on site after finishing the consultation and treatment at the clinic."
+      },
+      {
+        "id": "japanese_consultation",
+        "title": "Can I have a consultation in Japanese?",
+        "description": "Yes. Just reach out on LINE and you will be guided in Japanese, so you can go ahead without worrying about the language."
+      },
+      {
+        "id": "booking_flow",
+        "title": "How does booking work?",
+        "description": "Discuss the treatment you want in a free LINE consultation and book your visit date. At the clinic, you decide after the consultation whether to proceed and which treatment to receive, then pay on site after the treatment to receive cashback points."
+      },
+      {
+        "id": "cashback_usage",
+        "title": "Where can I use the cashback points I receive?",
+        "description": "You can use points to buy vouchers and travel products, and you can also swap points for JPYC."
+      },
+      {
+        "id": "info_review_source",
+        "title": "Where do the clinic information and reviews come from?",
+        "description": "Clinic and treatment information is based on details provided by each medical institution, and reviews are based on actual user reviews registered with GuideKim. The clinic booking service is also provided through GuideKim."
+      },
+      {
+        "id": "change_or_cancel",
+        "title": "Can I change or cancel my booking?",
+        "description": "If you need to change the date or cancel, just message the LINE account you consulted with and we can make the change or cancellation. If you cancel without notice or arrive late, your use of the service may be restricted under the clinic's policy."
+      }
+    ]
+  },
+  "changeCancel": {
+    "title": "Changes and cancellation",
+    "items": [
+      "If you need to change or cancel your schedule, you can request it through the LINE chat where you consulted.",
+      "After visiting the clinic, you may change the treatment or choose not to proceed after consultation.",
+      "If you cancel without notice or arrive late, your use may be restricted under the clinic's policy."
+    ]
+  },
+  "cautions": {
+    "title": "Precautions",
+    "items": [
+      "Clinic and treatment information is provided based on details supplied by each medical institution.",
+      "Review content is provided based on user reviews registered on GuideKim.",
+      "Consultation and treatment details may vary by individual, so please check with the medical institution for details.",
+      "Cashback benefits and usage conditions may differ by clinic.",
+      "The clinic booking service is provided through GuideKim."
+    ]
+  },
+  "deviceNotice": {
+    "title": "About the devices used",
+    "unapproved": "The {0} used in this treatment is an unapproved medical device that has not received approval or certification under Japan's Pharmaceuticals and Medical Devices Act.",
+    "source": "Source of import: {0}",
+    "jpApproval": "Equivalent device approved in Japan: {0}",
+    "overseasSafety": "Overseas safety information: {0}",
+    "reliefExcluded": "Treatments using unapproved medical devices may not be covered by Japan's Relief System for Adverse Drug Reactions."
+  },
+  "contact": {
+    "title": "Contact",
+    "note": "LINE consultation is for booking requests only. For questions about the information shown, please use the contact above."
+  }
+}
