@@ -250,7 +250,9 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
 | 환경 | 주소 | OA Channel |
 |---|---|---|
 | **beta** | `https://liam-hub.hub-beta.linecorp.com/service-view/313?menuId=23160&roleId=6970` | 2개 중 ⛔ **`Unifi Beta OA (2010418473)`** 를 고른다 (`Dapp Portal Beta (2008939708)` 아님) |
-| **prod** | 사용자에게 확인 후 기재 (미확인) | 채널이 1개라 **선택 과정 없음**, 나머지는 동일 |
+| **prod** | `https://liam-hub.hub.linecorp.com/service-view/313?menuId=18628&roleId=6969` | 채널이 1개라 **선택 과정 없음**, 나머지는 동일 |
+
+> ⛔ **URL의 `roleId`가 중요하다.** `service-view/313`은 같아도 `roleId`(beta `6970` / prod `6969`)·`menuId`(beta `23160` / prod `18628`)가 환경을 가른다. **주소를 손으로 고쳐 쓰지 말고 위 표의 URL을 그대로 쓴다** — 잘못된 roleId로 들어가면 다른 권한·다른 환경 화면이 열린다.
 
 ### 절차
 
