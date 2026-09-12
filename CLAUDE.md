@@ -172,7 +172,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `md/translation_validation_guide.md` | 의미 기반(semantic) 번역 검증 방법론 — ko_KR 기준 정확/주의/오류 3단계 판정, 언어별 중점 점검. `validate_translation.py`(정규식)와 상호 보완. 번역 검증 시 `md/check.md`와 함께 사용. **패턴 사전 정본은 check.md '실전 패턴 모음'(새 패턴은 거기에만 추가)** |
 | `md/landpress.md` | Landpress 용어집(`web3_xlt_json`) 관리·업데이트·**조회 표시** 방법 — 갱신 시 **전체 JSON(순수 JSON만) 산출 → ⛔ 반영 방식을 사용자에게 묻고(§10-5) 답변대로 Claude 직접 PUT 또는 사용자 붙여넣기**. **CMS 쓰기 API 절차는 §10**. 용어집 보완 권장(게이트 d-1) 시 + **사용자 용어집 조회 요청 시 표로 정리(§7)** 필수 참조 |
 | `md/glossary-changelog.md` | 용어집(`web3_xlt_json`) 버전별 변경 이력(git 추적) — 용어집 갱신 시마다 항목 추가 필수 |
-| `md/OA.md` | OA(LINE 공식계정) 메시지 규칙 — XLT 키 미부여(번역만)·변수 `{{이름}}`(사용자 정의)·첨부 이미지 Flex 메시지 JSON(URI 사용자 입력). OA 섹션 프레임 처리 시 필수 참조 |
+| `md/OA.md` | OA(LINE 공식계정) 메시지 규칙 — XLT 키 미부여(번역만)·변수 `{{이름}}`(사용자 정의)·Flex 메시지 JSON·**렌더 이미지 생성(`render_oa_flex.py`)·Landpress(`oam_message_task_multi`) 등록·LIAM HUB Event Message 등록**. OA 섹션 프레임 처리 시 필수 참조 |
 | `md/dropweb-guide.md` | 정적 웹사이트 배포 규격 — `md/prototype.md` 수행 시 필수 참조 |
 | `md/xlt-verify.md` | **XLT 시스템 등록값 검증 정본** — 읽기 API 명세(엔드포인트·인증 없음·서비스별 키스페이스 분리)·타겟 확정(서비스/디바이스/버전 사용자 선택)·용어집 대조·수정 제안·업로드 엑셀. **정기 검증 시 + 번역 Step 2-1 유사 키 제안 시 필수 참조** |
 | `md/GA.md` | GA Event 정의 규칙 — Screen 표 4열 `XLT & GA`(storage `&amp;`) · XLT 중첩표 아래 `# \| Event Name \| Parameter` 표 · `view_`+Screen ID 화면당 1개(Parameter `-`) · `click_` 클릭 요소 자동 부여(`#`=어노테이션 번호). **위키 업데이트에서 사용자가 GA event 추가를 요청한 경우에만** 적용 |
@@ -246,6 +246,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `collect_frames.py` | 프레임 읽기 전용 배치 수집 (노드·코멘트 1회 조회 + 좌표 정규화 + 텍스트 매칭 + 어노테이션 렌더 → `frames.json`) | 3단계 Step 3~4 입력 생성 (프레임 다수 시) |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
 | `patch_translation.py` | 키 단위 번역 패치 (지정 언어 셀만 교체·무결성 가드) | 키 단위 번역 패치 모드 (`md/translate.md`) |
+| `render_oa_flex.py` | OA Flex bubble JSON → 카드 이미지(PNG) 렌더 (HTML/CSS + headless Chrome + 자동 크롭) — **근사 렌더**, 최종 확인은 사람이 Flex Simulator에서 | OA 렌더 이미지 첨부 (`md/OA.md`) |
 | `build_prototype_data.py` | data.js/i18n.js 생성 + 무결성 검증 (입력: prototype_input.json, translation_extract.json, translation_data.json, comments_data.json) | 2단계 Step 5 |
 | `setup_new_project.sh` | 새 프로젝트 초기화 (복사 + 폴더 생성 + 검증) | 새 프로젝트 시작 시 |
 | `test_validation.py` | 엑셀 규격·검증 로직 회귀 테스트 | scripts/ 수정 후 필수 실행 |
@@ -342,7 +343,7 @@ templates/     ✅ 프로토타입 템플릿 전체
 새 프로젝트에서 다음을 확인:
 - [ ] `CLAUDE.md` 파일 존재
 - [ ] `md/` 폴더에 가이드 파일 전체 존재 (목록은 위 '참조 가이드' 표 기준 — 개수는 계속 늘어남)
-- [ ] `scripts/` 폴더에 13개 Python 스크립트(fetch_glossary, fetch_xlt_registry, fetch_comments, validate_translation, verify_xlt_glossary, compare_wiki_xlt, check_gate_report, check_wiki_storage, collect_frames, export_to_xlt, patch_translation, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
+- [ ] `scripts/` 폴더에 14개 Python 스크립트(fetch_glossary, fetch_xlt_registry, fetch_comments, validate_translation, verify_xlt_glossary, compare_wiki_xlt, check_gate_report, check_wiki_storage, collect_frames, export_to_xlt, patch_translation, render_oa_flex, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
 - [ ] `templates/` 폴더에 5개 템플릿 존재
 - [ ] `.claude/`에 `settings.json`(SessionStart 훅)·`skills/`·`agents/` 존재
 - [ ] Python 의존성 설치 완료 (`pip list | grep pandas`)

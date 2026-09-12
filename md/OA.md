@@ -80,15 +80,19 @@ for l,u in URLS.items():                      # {lang: url}
 
 **export 함정(실측)**: Figma 프레임 480×300을 **2x**로 내보내면 960×600이어야 하지만, **드롭 섀도 영역이 export 범위에 포함**돼 1120×760이 되어 한도를 넘었다. 프레임 크기 × 배율로 계산하지 말고 **받은 파일을 실측**한다. 한도 초과 시 1x 또는 1.5x 재추출을 요청한다(다운스케일 대응보다 재추출이 정석).
 
-#### 3-1. ⛔ OA 문구를 바꾸면 3곳이 항상 세트다 (2026-08-05 신설 — 실측 누락)
+#### 3-1. ⛔ OA 문구를 바꾸면 아래가 항상 세트다 (2026-08-05 신설 · 2026-09-12 확장)
 
-**OA 문구를 한 글자라도 수정하면 아래 3곳을 같은 작업에서 모두 갱신하고, 라운드트립으로 검증한다.** 하나라도 빠지면 **문서상 문구와 실제 발송 문구가 어긋난다.**
+**OA 문구를 한 글자라도 수정하면 아래를 같은 작업에서 모두 갱신하고, 라운드트립으로 검증한다.** 하나라도 빠지면 **문서상 문구와 실제 발송 문구가 어긋난다.**
 
 | # | 대상 | 확인 방법 |
 |---|---|---|
 | ⓐ | **위키 Screen 표의 다국어 번역 셀** | 라이브 재조회로 5개 언어 반영 확인 |
-| ⓑ | **언어별 Flex JSON**(`oa/flex_{프레임}_{lang}.json` 5개) | JSON 파싱 + 구 문구 잔존 0건 |
-| ⓒ | **zip 첨부**(`flex_{프레임}_5lang.zip`) | **첨부를 다시 내려받아** 압축 해제 후 5파일 전수 재검증 |
+| ⓑ | **위키 「샘플 JSON(KR)」 칸**(2026-09-12 추가) | 라이브 재조회 후 JSON 파싱 + 구 문구 잔존 0건 |
+| ⓒ | **언어별 Flex JSON**(`oa/flex_{프레임}_{lang}.json` 5개) | JSON 파싱 + 구 문구 잔존 0건 |
+| ⓓ | **zip 첨부**(`flex_{프레임}_5lang.zip`) | **첨부를 다시 내려받아** 압축 해제 후 5파일 전수 재검증 |
+| ⓔ | **렌더 이미지**(`oa_flex_{슬러그}.png`, 2026-09-12 추가) | `render_oa_flex.py` 재실행 → 같은 파일명으로 첨부 갱신 → 렌더 확인 |
+| ⓕ | **Landpress 항목**(등록했다면) | 언어별 PUT 후 공개 조회 API 재조회 대조 |
+| ⓖ | **LIAM HUB Event Message**(등록했다면) | Landpress를 다시 `LOAD MESSAGE` → 확인 → `UPDATE` (Landpress만 고치면 발송 메시지는 구 문구다) |
 
 **왜 차단 체크인가**: `Flex JSON·zip`은 **OA 콘솔·Messaging API에 그대로 넣는 발송 원본**이다. 위키 표만 고치면 문서는 최신인데 **실제 발송은 구 문구**가 나간다.
 
@@ -150,13 +154,140 @@ for l,u in URLS.items():                      # {lang: url}
 
 ---
 
+## Flex 렌더링 이미지 — Claude가 직접 그려 위키에 첨부 (2026-09-12 신설)
+
+**LINE 공식 [Flex Message Simulator](https://developers.line.biz/flex-simulator/)는 LINE Business ID 로그인이 필요해 Claude가 자동화할 수 없다**(실측 2026-09-12 — 로그인 벽에서 막힌다. 사용자가 로그인해 둔 세션으로는 붙여넣기·Apply까지 동작하지만, **렌더 결과를 파일로 저장할 수 없어** 위키 첨부로 이어지지 않는다).
+
+대신 **bubble JSON을 LINE 스타일 HTML/CSS로 그린 뒤 headless Chrome으로 캡처**한다. 이 경로는 로그인이 필요 없고 파일로 떨어지므로 그대로 Confluence에 첨부할 수 있다.
+
+### 도구 — `scripts/render_oa_flex.py`
+
+```bash
+# bubbles.json = {"화면 이름": {bubble JSON}, …}  또는  [{"name": …, "bubble": …}, …]
+python3 scripts/render_oa_flex.py --input bubbles.json --out-dir assets/oa_render
+```
+
+- bubble JSON을 **파싱해서 그린다** — 문구를 스크립트에 하드코딩하지 않으므로, 위키에 실린 샘플 JSON을 그대로 입력하면 **같은 이미지가 재현**된다.
+- 지원 노드: `box`(vertical/horizontal/baseline·margin·spacing·paddingAll·backgroundColor) · `text`(size·weight·color·wrap·align·margin) · `separator` · `button`(primary/secondary/link·height·color) · `image`(aspectRatio·aspectMode) · `spacer`. `icon`·`video`는 무시한다.
+- 크기 키워드는 LINE 스펙 근사로 매핑한다(`sm`=13px, `lg`=17px, spacing `md`=8px …).
+- 캡처 후 **Pillow로 여백을 자동 크롭**해 카드만 남긴다(`{slug}.png` + `manifest.json`).
+- 메시지 봉투(`{"type":"flex","altText":…,"contents":{…}}`)로 감싼 JSON을 넣어도 bubble만 꺼내 그린다.
+
+### ⚠️ 한계 — 이것은 "근사 렌더"다
+
+| 같다 | 다를 수 있다 |
+|---|---|
+| 레이아웃·요소 순서·문단 구분선 | **폰트**(LINE 자체 폰트 ↔ 시스템 폰트) |
+| 색상·버튼 스타일·배치 | **미세 여백**(1~2px 수준), 줄바꿈 위치 |
+| hero 이미지 비율·크롭 | LINE 앱의 말풍선 바깥 UI |
+
+- 위키 첨부·리뷰용으로는 충분하지만, **발송 전 최종 확인은 사람이 Flex Message Simulator에서** 한다(규칙 3의 확인 흐름은 그대로 유지).
+- ⛔ **렌더 이미지를 "실제 발송 화면"이라고 단정해 보고하지 않는다.** 근사 렌더임을 함께 밝힌다.
+
+### 위키 첨부
+
+- 파일명 **`oa_flex_{슬러그}.png`** (슬러그: 화면 이름에서 `(OA)` 제거 → `+`→`P`·`-`→`M` 치환 → 나머지 특수문자 `_`).
+- 해당 화면의 **Screen 칸**에 `<ac:image ac:width="280"><ri:attachment ri:filename="oa_flex_….png" /></ac:image>` 로 건다(`<ri:page>` 금지 — `md/wiki.md` 4-C).
+- **기존 첨부 갱신은 같은 파일명 유지 + `POST .../child/attachment/{attachmentId}/data`** — 파일명이 바뀌면 본문 참조가 깨진다(규칙 3-1의 curl `filename=` 주의 동일 적용).
+- 문구·JSON을 고쳤으면 **렌더 이미지도 같은 작업에서 다시 만들어 갱신**한다(규칙 3-1의 "3곳 세트"에 **ⓓ 렌더 이미지**가 추가된 셈이다).
+
+---
+
+## Landpress 등록 (`oam_message_task_multi`) — 2026-09-12 신설
+
+OA 메시지 본문은 **Landpress의 `oam_message_task_multi` 컬렉션**에 언어별 항목으로 등록하고, 사내 CMS(LIAM HUB)가 그 항목을 불러가 발송 메시지를 만든다.
+
+### 프로젝트
+
+| 환경 | projectId | CMS 편집 URL |
+|---|---|---|
+| **beta** | `a2qaxhygpi95g8l4a48n2vn4` | `https://landpress-content-v2.linecorp.com/projects/a2qaxhygpi95g8l4a48n2vn4/content/collections/oam_message_task_multi/items?_locale=all` |
+| **prod** | `w5eph4y9qxe05c8fqpi7rlxh` | `https://landpress-content-v2.linecorp.com/projects/w5eph4y9qxe05c8fqpi7rlxh/content/collections/oam_message_task_multi/items?_locale=all` |
+
+- 조회(읽기 전용, 인증 불필요): `https://landpress-content.line-scdn.net/contents/v2/projects/{projectId}/collections/oam_message_task_multi/items/{postId}`
+- 쓰기는 **CMS 백오피스 API**(`landpress-content-v2.linecorp.com`) — 절차·제약은 `md/landpress.md` §10 그대로 따른다(브라우저 탭 세션 필요, `?locale=`, 다건 컬렉션이므로 `published: true` 허용).
+
+### 항목 스키마 (실측 — prod postId `1951`)
+
+```jsonc
+{
+  "title": "친구추가 1000엔 쿠폰",       // 사람이 읽는 이름. LIAM HUB의 Title에 그대로 넣는다
+  "published": true,
+  "messages": [                          // 한 항목에 메시지 여러 개 가능(순차 발송)
+    {
+      "type": "FLEX",                    // FLEX | TEXT
+      "_type": "oam_message",
+      "alt_text": "1,000円OFFクーポンが届きました！",   // 봉투 텍스트(언어별)
+      "content_flex": { …bubble JSON… }, // ⚠️ bubble 단일 객체 (봉투로 감싸지 않는다)
+      "content_text": ""                 // TEXT 타입일 때 본문
+    }
+  ]
+}
+```
+
+- **`content_flex`에는 bubble만 넣는다** — 위키 「샘플 JSON(KR)」 칸의 값과 같은 형태다.
+- **언어**: `ko_KR` · `en_US` · `ja_JP` · `zh_TW` · `th_TH` (LIAM HUB 탭 표기는 `EN_US`·`JA_JP`·`TH_TH`·`KO_KR`·`ZH_TW`).
+- `postId`는 환경마다 다르다 — beta에서 받은 id를 prod에 쓰지 않는다.
+
+### ⛔ 등록 절차 (순서 준수)
+
+1. **OA 작성이 끝나면 사용자에게 "Landpress에 등록할까요?"를 묻는다.** 묻지 않고 등록하지 않는다. 등록 대상 환경(beta/prod)도 함께 확인한다.
+2. 등록한다고 하면 — **사용자에게 "언어별 항목을 Landpress CMS에서 먼저 만들어 달라"고 요청한다.** 로케일 항목 **생성 API는 없다**(`md/landpress.md` §10-2 · §10-3 4번) → 항목이 없으면 PUT이 `404 NOT_FOUND_ITEM`이다. ⛔ **`POST .../items`로 항목을 만들지 않는다**(빈 항목이 실제로 생성된다 — §10-3 1번).
+3. 사용자가 항목을 만들고 **postId를 알려주면**, 그 id로 언어별 PUT:
+   ```
+   PUT /api/v1/projects/{projectId}/collections/oam_message_task_multi/items/{postId}?locale={ko_KR|en_US|ja_JP|zh_TW|th_TH}
+   body: { "title": …, "messages": [ … ], "published": true }
+   ```
+4. **반영 후 공개 조회 API로 재조회해 전건 대조**한다(언어·`alt_text`·`content_flex` 문구까지). `md/landpress.md` §9 3번 — 생략 금지.
+5. 위키에 **postId를 beta/prod로 나눠 기록**한다(아래 「등록 현황」 표).
+
+---
+
+## LIAM HUB 등록 (Event Messages) — 2026-09-12 신설
+
+Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러 **발송용 Event Message**를 만든다. 여기서 발급되는 **`messageId`가 실제 발송 식별자**다.
+
+| 환경 | 주소 | OA Channel |
+|---|---|---|
+| **beta** | `https://liam-hub.hub-beta.linecorp.com/service-view/313?menuId=23160&roleId=6970` | 2개 중 ⛔ **`Unifi Beta OA (2010418473)`** 를 고른다 (`Dapp Portal Beta (2008939708)` 아님) |
+| **prod** | 사용자에게 확인 후 기재 (미확인) | 채널이 1개라 **선택 과정 없음**, 나머지는 동일 |
+
+### 절차
+
+1. 해당 환경의 Event Messages 화면에서 **OA Channel을 고른다**(beta 한정 — 위 표).
+2. **`NEW EVENT MESSAGE`** 클릭.
+3. **Title** = Landpress 항목의 `title` 을 그대로 입력.
+4. **Landpress Post Id** = 3단계에서 받은 postId 입력 → **`LOAD MESSAGE`** 클릭.
+5. 언어 탭(`EN_US`·`JA_JP`·`TH_TH`·`KO_KR`·`ZH_TW`)을 열어 **불러온 데이터가 Landpress에 넣은 값과 같은지 확인**한다(문구·`alt_text`·버튼 URL·미리보기 카드).
+6. **`UPDATE`** 버튼으로 생성한다(신규 화면에서는 `CREATE`로 보일 수 있다).
+7. 생성되면 **`messageId`** 가 발급된다(예: `N6aa3b1eb401c795e1244ceef`). 이 값을 위키에 기록한다.
+
+- ⚠️ **브라우저 접근 경로**: 이 사내 CMS는 **Claude in Chrome(사용자의 실제 로그인 세션)** 으로 접근한다. 샌드박스 브라우저 패널에서는 리소스가 차단돼(`ERR_BLOCKED_BY_CLIENT`) 화면이 비어 보인다(실측 2026-09-12).
+- ⛔ **생성·`UPDATE`·`DELETE`는 사용자 확인을 받은 뒤에만 누른다.** 조회·`LOAD MESSAGE`까지는 자유롭게 해도 되지만, 등록은 발송 대상이 되는 쓰기 동작이다.
+- **참조 실측**: prod Landpress `postId 1951` ↔ LIAM `messageId N6aa3b1eb401c795e1244ceef`.
+
+---
+
 ## 위키 반영 (OA 섹션)
 
 - 위치: Screen 섹션의 `<h4>OA</h4>` 서브섹션 아래 표.
-- 컬럼: `Screen ID | Screen(이미지) | Description | 다국어 번역 (XLT 키 미부여)`
+- 컬럼: `Screen ID | Screen(이미지) | Description | 샘플 JSON(KR) | 다국어 번역(XLT 키 미부여) 또는 XLT & GA`
+  - **「샘플 JSON(KR)」은 Description 바로 오른쪽**에 둔다(2026-09-12 신설). 화면 표의 마지막 칼럼 이름은 페이지 템플릿에 따라 `다국어 번역` 또는 `XLT & GA`이며, 그대로 둔다.
+  - ⚠️ `scripts/check_wiki_storage.py`는 Screen 표를 4컬럼으로 검사하지만 **「샘플 JSON(KR)」은 예외로 허용**한다(다른 칼럼 추가는 여전히 위반).
 - 번역 칸: 키 없는 `No | KR | JA | EN | TH | ZH-TW` 중첩표(규칙 1). 변수는 `{{이름}}`으로 표기(규칙 2).
-- 이미지: 번호 어노테이션(ⓝ↔No, 경계 clamp — `md/wiki.md` Step 4-B 규칙) 후 Confluence 첨부.
+- **Screen 칸 = 렌더 이미지**: `scripts/render_oa_flex.py` 산출물 `oa_flex_{슬러그}.png`를 첨부해 `<ac:image>`로 건다(위 「Flex 렌더링 이미지」). Figma 렌더·실기기 캡처가 있으면 그것을 우선한다.
+- **샘플 JSON(KR) 칸**: bubble **단일 객체**를 `code` 매크로로 넣는다.
+  - ⛔ `{"type":"flex","altText":…,"contents":{…}}` 봉투로 감싸지 않는다 — Flex Message Simulator가 `invalid json`으로 거부한다(실측 2026-09-12). `altText`는 Description의 메시지 초안 표에 남긴다.
+  - ⛔ code 매크로에 **`<ac:parameter ac:name="language">json</ac:parameter>`를 넣지 않는다** — 이 위키에서 `Error rendering macro 'code'`가 난다(실측 2026-09-12).
+  - 확인용으로 URL 실값을 임시로 넣었다면(시뮬레이터 렌더 테스트 등) **그 사실을 Description 비고에 남긴다.**
 - **Flex JSON(언어별 5개)은 해당 화면 Description 셀에 첨부·링크**한다 — `Flex: [ko_KR] [en_US] [ja_JP] [zh_TW] [th_TH]` 형태 다운로드 링크(규칙 3). intro 영역이 아니라 화면별 Description에 둔다.
+- **등록 현황 표(필수 — Landpress·LIAM HUB 등록 후)**: OA 섹션에 아래 표를 두고 환경별 id를 기록한다.
+
+  | Screen ID | Landpress postId (beta) | LIAM messageId (beta) | Landpress postId (prod) | LIAM messageId (prod) |
+  |---|---|---|---|---|
+  | (OA) … | 1234 | N6aa… | 1951 | N6aa3b1eb401c795e1244ceef |
+
+  미등록 환경은 `-`로 둔다. **beta id를 prod 칸에 쓰지 않는다.**
 - History에 변경 행 추가(PIC=`Claude 자동 생성`).
 
 ---
@@ -176,6 +307,15 @@ for l,u in URLS.items():                      # {lang: url}
 7. Confluence 첨부 — 화면별 5개 언어를 `flex_{프레임}_5lang.zip`으로 묶어 첨부
    (기존 첨부는 같은 파일명으로 POST .../child/attachment/{id}/data 갱신)
    → 각 화면 Description에 zip 링크 1개 확인
-8. 위키 OA 섹션 반영(키 없는 번역표 + 이미지 + Flex JSON) + History
+8. **렌더 이미지 생성·첨부** — `scripts/render_oa_flex.py`로 화면별 PNG 생성
+   → `oa_flex_{슬러그}.png`로 첨부하고 Screen 칸에 `<ac:image>` 연결
+9. 위키 OA 섹션 반영(키 없는 번역표 + 렌더 이미지 + 샘플 JSON(KR) 칼럼 + Flex JSON zip) + History
    (XLT 엑셀·전역 키 표는 건드리지 않는다)
+   → PUT 직전/직후 `check_wiki_storage.py pre|post` exit 0 확인
+10. **사용자에게 "Landpress에 등록할까요?" 확인** → 등록 시 언어별 항목 생성 요청
+    → postId 수령 → 언어별 PUT → 공개 조회 API 재조회 대조
+11. **LIAM HUB Event Message 생성**(beta는 `Unifi Beta OA` 채널 선택)
+    → Title=Landpress title · Landpress Post Id 입력 → LOAD MESSAGE → 확인 → UPDATE
+    → 발급된 messageId 수령
+12. 위키 「등록 현황」 표에 **beta/prod로 나눠 postId·messageId 기록**
 ```

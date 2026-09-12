@@ -40,6 +40,9 @@ from pathlib import Path
 
 BASE_URL = os.environ.get("CONFLUENCE_BASE_URL", "https://wiki.workers-hub.com")
 
+# Screen 표에서 4컬럼 규칙의 예외로 허용하는 컬럼 (md/OA.md '위키 반영')
+OPTIONAL_SCREEN_COLS = {"샘플 JSON(KR)"}
+
 # 렌더 실패 신호 (Confluence 로케일별 표기)
 RENDER_ERROR_MARKERS = [
     "Unknown Attachment", "알 수 없는 첨부", "알수없는 첨부",
@@ -69,19 +72,21 @@ def check_storage(storage: str, allow_ri_page: bool = False) -> list:
     violations = []
 
     # ⓐ Screen 표 컬럼 — 4컬럼 고정, 화면명 컬럼 금지
+    #   예외: OA 표의 「샘플 JSON(KR)」(md/OA.md '위키 반영') 은 허용 컬럼이다.
     for cells in _screen_table_headers(storage):
         if not cells:
             continue
         joined = " | ".join(cells)
         banned = [c for c in cells if c in ("화면명", "프레임명", "Frame", "화면 이름")]
+        core = [c for c in cells if c not in OPTIONAL_SCREEN_COLS]
         if banned:
             violations.append(
                 f"[Screen 표] 금지 컬럼 {banned} 존재 — Screen ID가 식별자이므로 화면명 컬럼 금지 "
                 f"(현재: {joined}) · md/wiki.md 'Screen 표 컬럼 구성'")
-        elif cells[0] == "Screen ID" and len(cells) != 4:
+        elif cells[0] == "Screen ID" and len(core) != 4:
             violations.append(
                 f"[Screen 표] 컬럼 수 {len(cells)} — 'Screen ID | Screen | Description | XLT & GA' 4컬럼 고정 "
-                f"(현재: {joined})")
+                f"(OA 표의 '샘플 JSON(KR)'만 예외) (현재: {joined})")
 
     # ⓑ 첨부 참조에 <ri:page> 금지
     if not allow_ri_page:
