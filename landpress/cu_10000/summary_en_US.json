@@ -1,0 +1,32 @@
+{
+  "chips": [
+    "Official voucher",
+    "Instant issue"
+  ],
+  "specs": [
+    {
+      "title": "Seller",
+      "description": "GuideKim (disclosure under the Act on Specified Commercial Transactions)"
+    },
+    {
+      "title": "Validity period",
+      "description": "Exchange validity period of 60 days (no extension)"
+    },
+    {
+      "title": "Where to use",
+      "description": "CU stores nationwide"
+    },
+    {
+      "title": "Cancellation and refund",
+      "description": "Full refund available within the validity period if unused"
+    },
+    {
+      "title": "How to receive",
+      "description": "e-Coupon"
+    }
+  ],
+  "banner": {
+    "title": "Unifi mini is an officially certified \nLINE MINI App",
+    "description": "Discover discounted vouchers and \ncashback benefits"
+  }
+}
