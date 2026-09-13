@@ -225,12 +225,14 @@ Landpress의 콘텐츠는 용어집뿐 아니라 **다른 컬렉션도 동일한
 ```
 공개:  GET  /contents/v2/projects/{pid}/collections/{col}/items?locale=ko_KR
        → {"header":{"statusCode":200},"body":{"total":1,"items":[{"id":1,"published":true,"benefit_more":{...}}]}}
-CMS :  GET  /api/v1/projects/{pid}/collections/{col}/items/{id}?_locale=ko_KR
+CMS :  GET  /api/v1/projects/{pid}/collections/{col}/items/{id}?locale=ko_KR
        → {"id":1,"published":true,"benefit_more":{...},"_publishReservations":[]}
 ```
 
 - ⛔ **`data.items[].values.{필드}` 형태는 어느 API에도 없다** — `data`·`values` 래핑은 존재하지 않는다. (계기: 2026-09-12 UIT prod 검증에서 `data`/`values` 가정으로 파서를 짰다가 `items=0`으로 나와 "등록 실패"로 오판할 뻔했다. 실제 데이터는 정상이었다.)
-- **로케일 파라미터 이름이 다르다** — 공개는 `?locale=`, CMS는 `?_locale=`. 서로 바꿔 쓰면 CMS 쪽은 **400 Bad Request**다.
+- ⛔ **로케일 파라미터는 공개·CMS 둘 다 `?locale=`이다** (2026-09-13 실측으로 정정 — 이전 기술 「CMS는 `?_locale=`, 바꿔 쓰면 400」은 **틀렸다**). **`?_locale=`은 CMS 웹 UI 전용**이며 API는 **400을 주지 않고 조용히 무시**한다.
+  - 실측(prod `oam_message_task_multi` postId `1956` · primary `en_US`, `ko_KR` 보유): `?locale=ko_KR` → **200 `ko_KR`** · `?_locale=ko_KR` → **200 `en_US`**(primary) · 파라미터 없음 → **200 `en_US`**.
+  - **가장 위험한 실패 방식이다** — 에러 없이 200이 오고 **다른 언어를 보면서 맞다고 착각**한다. 로케일 대조는 응답의 `locale` 필드를 반드시 확인한다.
 - **환경·프로젝트에 따라 달라지지 않는다** — 같은 공개 API를 UIT beta·UIT prod·LV beta·용어집 4개 프로젝트에 호출해 **응답 구조가 전부 동일함을 실측**했다. beta에서 되던 파서가 prod에서 안 되면 스키마 차이를 의심하기 전에 **엔드포인트·파라미터를 먼저 확인**한다.
 - **`items` 배열이 비면 데이터가 없는 게 아닐 수 있다** — ⓐ 봉투를 잘못 파싱했거나, ⓑ `?locale=`을 생략해 `primaryLocale` 항목만 돌아온 경우다(§9 3번 대조 시 자주 걸린다). **원시 응답을 한 번 그대로 찍어 확인**한 뒤 판단한다.
 
