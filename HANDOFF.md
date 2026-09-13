@@ -33,7 +33,7 @@
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
 | [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 09-13 | **산출물 커밋 누락 정리**(게이트 리포트 9·`landpress/` 100파일이 최대 9일간 로컬에만) — 전역 절차에 「세션 종료 시 `??` 확인」 신설 · 온보딩 판별 버그 수정(7시나리오 실측) · 락 대상에 `.claude/**` · **미결 0** |
-| [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-13 | ❌ **정합 2종 깨짐**(Mission **10↔9** · mini **4↔3** — History 행 추가분을 Summary가 못 따라감) · K-Pick 8↔8 ✅ · **수정 미착수**(사용자 확인 대기) · Lucky Ball·Wallet Mode 미실측 |
+| [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-13 | ✅ **5종 전부 정합 · 전건 실측**(Lucky Ball 8↔8 · Mission **10↔10** · mini **4↔4** · Wallet 2↔2 · K-Pick 8↔8) — 깨져 있던 2종 Summary 블록 신설 + K-Pick 제목 v1.7.5 확정(위키 3건 PUT) · **미결 0** |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 09-13 | 용어집 **v5.5** · 가이드 **v39 게시 완료** · 태그 **`guide-v39`** · 🔜 **다음 갱신 때 「고유명사 공식 표기 확인」 규칙 반영 예정**(사용자 확정) |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 v31(⚠️ zip만 발행·소스 미커밋 → 09-03 복원 `b49b1a1`) · 로그인 2회 연속 미점검 |
 | [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
