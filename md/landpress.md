@@ -284,7 +284,12 @@ GET /api/v1/projects/{pid}/roles/my   → 200이면 로그인·권한 OK (type: 
 1. ⛔ **`POST .../items`는 새 항목을 즉시 생성한다.** 라우트 존재 확인 목적으로 호출하지 않는다 — 실제로 빈 항목이 생성돼 삭제해야 했다(2026-09-12). 라우트 확인은 **존재하지 않는 id로 `PUT`/`PATCH`** 를 보내 `NOT_FOUND_ITEM`(라우트 있음) / `Cannot PUT`(없음)으로 구분한다. 검증이 꼭 필요하면 **beta에서만**, `uid`에 `__probe_delete_me__` 같은 표식을 넣어 만들고 **같은 스크립트의 `finally`에서 `DELETE`** 해 원상복구까지 한 번에 끝낸다.
 2. **`{postId}`는 CMS URL의 item 번호**이고 **내부 레코드 id는 로케일마다 다르다**(예: `shopping_guide` 다이소 postId 5 · ko_KR 내부 id 6).
 3. **로케일 선택은 `?locale=`** 이다. CMS 화면 URL의 `?_locale=`은 API에서 **무시된다**.
-4. **언어별 항목이 없으면 PUT은 `404 NOT_FOUND_ITEM`** 이다. 생성 경로가 없으므로 **사용자가 CMS UI에서 컬렉션·항목을 로케일까지 미리 만들어 두어야** 한다 — Claude가 API로 할 수 있는 일은 **이미 있는 로케일 행에 값을 쓰고 공개하는 것**까지다(2026-09-13 재확인).
+4. **언어별 항목이 없으면 PUT은 `404 NOT_FOUND_ITEM`** 이다. 단, **항목 자체는 API로 만들 수 있다** — 아래 4-1 참조.
+
+4-1. ⛔ **정정 (2026-09-13 실측)**: "생성 경로가 없다"는 **틀렸다.** **`POST .../items?locale={loc}`로 단일 로케일 항목을 새로 만들 수 있다**(`201` + 새 `postId` 반환, 그 로케일이 `primaryLocale: true`가 된다). 실측: beta `oam_message_task_multi`에 **15건을 `?locale=ko_KR`로 연속 생성**(postId 217~231), 전건 재조회 대조 통과.
+   - **여전히 불가능한 것**: **이미 있는 항목에 다른 로케일을 추가**하는 것(`/locales/*`·`/translations/*`는 `Cannot POST`). 즉 **한 항목의 2번째 언어부터는 사용자가 CMS UI에서** 추가해야 하고, 추가된 뒤에는 Claude가 PUT으로 채운다.
+   - **작업 순서 권장**: ① Claude가 `POST ?locale=ko_KR`로 항목 생성 → ② 사용자가 CMS에서 나머지 로케일 추가 → ③ Claude가 로케일별 PUT.
+   - ⛔ **생성은 되돌리기 번거로우니 사용자 지시가 있을 때만** 한다(라우트 확인 목적의 POST는 여전히 금지 — 위 1번). 대량 생성 전 **1건만 만들어 재조회로 검증**한 뒤 나머지를 진행한다.
 5. **미게시 항목은 공개 조회 API에 안 나온다.** 반영 확인은 `published: true` 여부까지 본다.
 6. **`POST .../items`로 만든 항목은 primary 로케일 1개뿐이다**(2026-09-13 실측: 201 · `en_US(primary)` 1행만 생성). 나머지 4개 로케일 행은 생기지 않아 그대로는 쓸 수 없다.
 7. ⛔ **`POST .../items?locale=ko_KR`은 201을 주지만 「고아 항목」이 생긴다.** 기존 항목에 ko_KR 행이 붙는 게 아니라 **ko_KR 로케일만 가진 별개 항목**이 새로 만들어진다(실측: base=post24, 호출 결과=post25). body에 `postId`를 넣어도 무시된다. **201을 성공으로 오해하지 않는다.** `PUT ?locale=`(404 `NOT_FOUND_ITEM`) · `POST .../items/{id}/locales` · `/translations` · `POST .../items/{id}?locale=` · `PATCH ?locale=`도 전부 실패한다 — **기존 항목에 로케일 행을 추가하는 API 경로는 없다.**

@@ -232,8 +232,15 @@ OA 메시지 본문은 **Landpress의 `oam_message_task_multi` 컬렉션**에 �
 ### ⛔ 등록 절차 (순서 준수)
 
 1. **OA 작성이 끝나면 사용자에게 "Landpress에 등록할까요?"를 묻는다.** 묻지 않고 등록하지 않는다. 등록 대상 환경(beta/prod)도 함께 확인한다.
-2. 등록한다고 하면 — **사용자에게 "언어별 항목을 Landpress CMS에서 먼저 만들어 달라"고 요청한다.** 로케일 항목 **생성 API는 없다**(`md/landpress.md` §10-2 · §10-3 4번) → 항목이 없으면 PUT이 `404 NOT_FOUND_ITEM`이다. ⛔ **`POST .../items`로 항목을 만들지 않는다**(빈 항목이 실제로 생성된다 — §10-3 1번).
-3. 사용자가 항목을 만들고 **postId를 알려주면**, ⛔ **먼저 그 항목의 현재 내용을 GET해 확인한다** — 사용자가 이미 채워 둔 내용이 있으면 덮어쓰기 전에 알린다. 빈 껍데기(`type: TEXT`·`content_flex: null`·`content_text: ""`)면 그대로 교체해도 안전하다(실측: beta 216·prod 1956 모두 빈 껍데기였다). 확인 후 언어별 PUT:
+2. 등록한다고 하면 — **한국어(`ko_KR`) 항목은 Claude가 직접 만든다**(2026-09-13 정정. 이전 규칙의 "생성 불가"는 틀렸다):
+   ```
+   POST /api/v1/projects/{projectId}/collections/oam_message_task_multi/items?locale=ko_KR
+   body: { "title": …, "messages": [ … ], "published": true }     → 201 + 새 postId
+   ```
+   - ⛔ **대량 생성 전 1건만 만들어 재조회로 검증**한 뒤 나머지를 진행한다(생성은 되돌리기 번거롭다).
+   - **2번째 언어부터는 Claude가 추가할 수 없다** — 사용자가 CMS UI에서 로케일을 추가해 주면 그 뒤 Claude가 PUT으로 채운다(`md/landpress.md` §10-3 4-1).
+   - 사용자가 **이미 만들어 둔 항목이 있으면** 그 postId를 받아 3번으로 간다.
+3. **기존 항목에 쓸 때는** ⛔ **먼저 그 항목의 현재 내용을 GET해 확인한다** — 사용자가 이미 채워 둔 내용이 있으면 덮어쓰기 전에 알린다. 빈 껍데기(`type: TEXT`·`content_flex: null`·`content_text: ""`)면 그대로 교체해도 안전하다(실측: beta 216·prod 1956 모두 빈 껍데기였다). 확인 후 언어별 PUT:
    ```
    PUT /api/v1/projects/{projectId}/collections/oam_message_task_multi/items/{postId}?locale={ko_KR|en_US|ja_JP|zh_TW|th_TH}
    body: { "title": …, "messages": [ … ], "published": true }
@@ -278,6 +285,9 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
   | prod | `1956` (ko_KR) | **en_US**(빈 항목) | `N6aa50c973af74c70a397b9b0` | **No**(테스트라 해제) |
 
   - **primary locale은 환경마다 다를 수 있다**(beta ko_KR / prod en_US). primary가 비어 있어도 **게시된 언어 항목만 LIAM 탭에 나오므로** `ko_KR` 하나만 채워도 `LOAD MESSAGE`는 정상 동작한다.
+  - **`POST ?locale=ko_KR`로 만든 항목은 `ko_KR`이 primary**가 된다(실측 217~231).
+
+- **실측(2026-09-13 · beta 전건 등록)**: 위키 16화면을 beta Landpress에 **`ko_KR` 단일 로케일로 전건 생성** — `216`(기존) + `217~231`(신규 15건). 전건 재조회 대조(문구 수·버튼 수·구분선 수·`alt_text`·`published`·`primaryLocale`·hero URL·버튼 URL) **불일치 0건**. LIAM Event Message는 클리닉 T0만 생성된 상태.
   - **primary가 미게시면 공개 조회 API는 그 항목을 404로 준다** — `ko_KR`을 `published: true`로 올려도 마찬가지다. 이때 **반영 확인은 CMS API(`/items/{postId}?locale=`)로** 한다(§10-3 5번의 확장).
 - ⛔ **생성·`UPDATE`·`DELETE`는 사용자 확인을 받은 뒤에만 누른다.** 조회·`LOAD MESSAGE`까지는 자유롭게 해도 되지만, 등록은 발송 대상이 되는 쓰기 동작이다.
 - **참조 실측**: prod Landpress `postId 1951` ↔ LIAM `messageId N6aa3b1eb401c795e1244ceef`.
