@@ -236,7 +236,7 @@ CMS :  GET  /api/v1/projects/{pid}/collections/{col}/items/{id}?_locale=ko_KR
 
 ---
 
-## 10. CMS API로 직접 쓰기 (2026-09-12 실측 · Claude 직접 반영)
+## 10. CMS API로 직접 쓰기 (2026-09-12 실측 · 2026-09-13 생성 계열 보강 · Claude 직접 반영)
 
 공개 조회 API(`landpress-content.line-scdn.net`)와 **별개로**, CMS 백오피스(`landpress-content-v2.linecorp.com`)에는 쓰기 경로가 있다. 브라우저 로그인 세션이 있으면 Claude가 **저장·공개까지** 직접 할 수 있다.
 
@@ -275,16 +275,21 @@ GET /api/v1/projects/{pid}/roles/my   → 200이면 로그인·권한 OK (type: 
 | **저장** | `PUT .../items/{postId}?locale={loc}` · body `{필드명: 값}` | ✅ |
 | **공개** | 같은 PUT body에 `"published": true` 추가 | ✅ |
 | 삭제 | `DELETE .../items/{postId}` | ✅ |
-| 로케일 항목 생성 | `/locales/*`·`/translations/*` 전부 `Cannot POST` | ❌ |
+| **항목 생성** | `POST .../items` → **201** + postId 반환 | ⚠️ **primary 로케일 1개만 생긴다** — 아래 10-3 6번 |
+| **기존 항목에 로케일 행 추가** | `PUT ?locale=` · `POST .../items/{id}/locales` · `/translations` · `POST .../items/{id}?locale=` · `PATCH ?locale=` | ❌ **전 경로 실패** — 아래 10-3 7번 |
 | 전용 publish 엔드포인트 | `/publish` 계열 전부 `Cannot POST` | ❌ — 위 플래그로 대체 |
 
 ### 10-3. 주의 (실측에서 걸린 것)
 
-1. ⛔ **`POST .../items`는 새 항목을 즉시 생성한다.** 라우트 존재 확인 목적으로도 호출하지 않는다 — 실제로 빈 항목이 생성돼 삭제해야 했다(2026-09-12). 라우트 확인은 **존재하지 않는 id로 `PUT`/`PATCH`** 를 보내 `NOT_FOUND_ITEM`(라우트 있음) / `Cannot PUT`(없음)으로 구분한다.
+1. ⛔ **`POST .../items`는 새 항목을 즉시 생성한다.** 라우트 존재 확인 목적으로 호출하지 않는다 — 실제로 빈 항목이 생성돼 삭제해야 했다(2026-09-12). 라우트 확인은 **존재하지 않는 id로 `PUT`/`PATCH`** 를 보내 `NOT_FOUND_ITEM`(라우트 있음) / `Cannot PUT`(없음)으로 구분한다. 검증이 꼭 필요하면 **beta에서만**, `uid`에 `__probe_delete_me__` 같은 표식을 넣어 만들고 **같은 스크립트의 `finally`에서 `DELETE`** 해 원상복구까지 한 번에 끝낸다.
 2. **`{postId}`는 CMS URL의 item 번호**이고 **내부 레코드 id는 로케일마다 다르다**(예: `shopping_guide` 다이소 postId 5 · ko_KR 내부 id 6).
 3. **로케일 선택은 `?locale=`** 이다. CMS 화면 URL의 `?_locale=`은 API에서 **무시된다**.
-4. **언어별 항목이 없으면 PUT은 `404 NOT_FOUND_ITEM`** 이다. 생성 경로가 없으므로 **사용자가 CMS에서 언어 항목을 미리 만들어 두어야** 한다.
+4. **언어별 항목이 없으면 PUT은 `404 NOT_FOUND_ITEM`** 이다. 생성 경로가 없으므로 **사용자가 CMS UI에서 컬렉션·항목을 로케일까지 미리 만들어 두어야** 한다 — Claude가 API로 할 수 있는 일은 **이미 있는 로케일 행에 값을 쓰고 공개하는 것**까지다(2026-09-13 재확인).
 5. **미게시 항목은 공개 조회 API에 안 나온다.** 반영 확인은 `published: true` 여부까지 본다.
+6. **`POST .../items`로 만든 항목은 primary 로케일 1개뿐이다**(2026-09-13 실측: 201 · `en_US(primary)` 1행만 생성). 나머지 4개 로케일 행은 생기지 않아 그대로는 쓸 수 없다.
+7. ⛔ **`POST .../items?locale=ko_KR`은 201을 주지만 「고아 항목」이 생긴다.** 기존 항목에 ko_KR 행이 붙는 게 아니라 **ko_KR 로케일만 가진 별개 항목**이 새로 만들어진다(실측: base=post24, 호출 결과=post25). body에 `postId`를 넣어도 무시된다. **201을 성공으로 오해하지 않는다.** `PUT ?locale=`(404 `NOT_FOUND_ITEM`) · `POST .../items/{id}/locales` · `/translations` · `POST .../items/{id}?locale=` · `PATCH ?locale=`도 전부 실패한다 — **기존 항목에 로케일 행을 추가하는 API 경로는 없다.**
+8. **postId는 로케일 블록의 첫 내부 id다.** 5개 로케일 컬렉션에서 항목이 여럿이면 postId가 `1 · 6 · 11 · 16`처럼 **5칸씩 건너뛴다**(내부 id 1~5가 post1, 6~10이 post6). 정상 항목은 이 블록이 한 번에 만들어지며, API로 하나씩 만들면 블록이 생기지 않는다. **beta와 prod의 postId 배치는 다를 수 있으므로 복제할 때 postId가 아니라 `uid`(단건이면 컬렉션)를 기준으로 매핑**한다(실측: `voucher_product` beta 1=oliveyoung·6=cu·11=daiso·16=emart ↔ prod 1=emart·6=cu·11=oliveyoung·16=daiso).
+9. **beta → prod 복제는 beta 등록값을 읽어 그대로 PUT**한다. 산출물 파일에서 다시 만들지 않으면 그 사이 beta에 반영된 수정이 자동으로 따라온다. 복제 후에는 **공개 조회 API로 beta ↔ prod를 필드 단위 대조**하고 `published`까지 확인한다(2026-09-13: LV prod 6개 컬렉션 55항목 전건 일치).
 
 ### 10-4. 용어집(`web3_xlt_json`)에 적용할 때
 
@@ -332,6 +337,24 @@ body: { "exceptions": { …용어집 전체 JSON… }, "published": true }
 3. **§5 체크리스트 1~5b를 먼저 끝낸다.** 특히 3b(실사용 실측)·5b(기획자 가이드 zip 동반 갱신)를 건너뛰고 쓰기만 하지 않는다.
 4. **PUT 후 `fetch_glossary` 재조회 → 전달 산출물과 전건 대조**하고 결과를 보고한다.
 5. **8단계(`glossary-changelog.md` 기재 + 커밋)** 는 직접 쓰든 사용자가 붙여넣든 동일하게 수행한다.
+
+### 10-5-1. ⛔ beta + prod 동시 갱신 (2026-09-13 사용자 확정 — 차단 규칙)
+
+**위키 `4727978725`에 정의된 LPC 컬렉션은 beta·prod 양쪽 모두 등록이 끝났다. 그러므로 JSON을 바꿀 때는 항상 두 환경을 함께 갱신한다.**
+
+- **값이든 스키마든 한쪽만 바꾸지 않는다.** 한쪽만 반영하면 FE가 환경별로 다른 응답을 받는다.
+- **순서는 beta 먼저 → 검증 → prod 복제**이고, **같은 작업 안에서 끝낸다**. prod를 「나중에」로 미루지 않는다.
+- **prod 복제는 beta 등록값을 읽어 그대로 PUT**한다 — 저장소 산출물에서 다시 만들지 않는다. 그래야 그 사이 beta에 들어간 수정이 빠짐없이 따라온다.
+- **매핑은 `postId`가 아니라 `uid` 기준**이다(단건 컬렉션은 컬렉션 단위). beta와 prod는 postId 배치가 다를 수 있다 — §10-3 8번.
+- 반영 후 **공개 조회 API로 beta ↔ prod를 필드 단위 대조**하고 `published`까지 확인한다.
+- prod에 컬렉션·항목(로케일 포함)이 없으면 **사용자에게 생성을 요청**한다(§10-3 4·6·7번 — API로는 만들 수 없다).
+
+| 프로젝트 | projectId |
+|---|---|
+| LV beta | `a2qaxhygpi95g8l4a48n2vn4` |
+| LV prod | `w5eph4y9qxe05c8fqpi7rlxh` |
+| UIT beta | `n7nuefo6t491uc9cp863lgyq` |
+| UIT prod | `lkyusnekq1vv9759rbnwgamh` |
 
 ### 10-6. API 호출 vs UI 조작 — 어느 쪽을 쓰나
 
