@@ -4,21 +4,21 @@
     "items": [
       {
         "title": "Buy shopping vouchers for Korea",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/abca0ac0db2e4d3dbe0695a402ca92b2.png?updatedAt=1789191963000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/c3471ba4466344f396da6e016a24503d.png",
         "description": "Vouchers you can use as soon as you arrive\nPrepare ahead with up to 15% off",
         "linkLabel": "View popular products",
         "targetUrl": ""
       },
       {
         "title": "Book a free consultation at popular clinics",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/43d568b4aeef4dd6a1e09256c33c6ef0.png?updatedAt=1789191968000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/f7201a27c2be4a4db43c2853a40e9867.png",
         "description": "Consult in Japanese with ease\nand book popular clinics in advance",
         "linkLabel": "View popular products",
         "targetUrl": ""
       },
       {
         "title": "Book K-beauty and popular travel products",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/17bfbb16d3d04ec7b3e1cb5216ebbd38.png?updatedAt=1789191964000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a51f95d24cc84fa59d9dc70dc46f730f.png",
         "description": "Must-try experiences in Korea!\nBook ahead for the dates you want",
         "linkLabel": "View popular products",
         "targetUrl": ""
@@ -31,19 +31,19 @@
       {
         "step": 1,
         "label": "STEP 1",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/984e338c4b27469182e6d0295d994ce2.png?updatedAt=1789191961000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/0fba3162bee64e648b504473fc2a4489.png",
         "description": "Open the MY tab in Unifi mini"
       },
       {
         "step": 2,
         "label": "STEP 2",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/aac2bec715d64b7ab10e9b29443072cf.png?updatedAt=1789191960000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/eb20aa884a95458c8fc7e748fa57add6.png",
         "description": "Check the vouchers you bought\nin the voucher menu at the top"
       },
       {
         "step": 3,
         "label": "STEP 3",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/3ec40e667cec4975bae67519629a01f7.png?updatedAt=1789191959000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/be1c1143263c4571b8f3bfc24484bd75.png",
         "description": "Show the voucher barcode\nwhen paying at an offline store"
       }
     ],

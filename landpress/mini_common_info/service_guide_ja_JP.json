@@ -4,21 +4,21 @@
     "items": [
       {
         "title": "韓国旅行のショッピング商品券を購入",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/abca0ac0db2e4d3dbe0695a402ca92b2.png?updatedAt=1789191963000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/c3471ba4466344f396da6e016a24503d.png",
         "description": "韓国到着後すぐ使える商品券\n最大15%お得に準備しましょう",
         "linkLabel": "人気商品を見る",
         "targetUrl": ""
       },
       {
         "title": "人気クリニックの無料相談を予約",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/43d568b4aeef4dd6a1e09256c33c6ef0.png?updatedAt=1789191968000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/f7201a27c2be4a4db43c2853a40e9867.png",
         "description": "日本語の相談で安心して\n人気クリニックを事前に予約しましょう",
         "linkLabel": "人気商品を見る",
         "targetUrl": ""
       },
       {
         "title": "K-ビューティー・人気旅行商品を予約",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/17bfbb16d3d04ec7b3e1cb5216ebbd38.png?updatedAt=1789191964000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a51f95d24cc84fa59d9dc70dc46f730f.png",
         "description": "韓国旅行で人気の必須体験！\nご希望の日程で事前に予約しましょう",
         "linkLabel": "人気商品を見る",
         "targetUrl": ""
@@ -31,19 +31,19 @@
       {
         "step": 1,
         "label": "STEP 1",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/984e338c4b27469182e6d0295d994ce2.png?updatedAt=1789191961000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a7553021719143468f646920af2e4bd2.png",
         "description": "Unifi miniのMYタブを開きます"
       },
       {
         "step": 2,
         "label": "STEP 2",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/aac2bec715d64b7ab10e9b29443072cf.png?updatedAt=1789191960000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/e88a3608ffe1441aa17cbfa5b70fe9d3.png",
         "description": "上部の商品券メニューで購入した\nクーポンを確認できます"
       },
       {
         "step": 3,
         "label": "STEP 3",
-        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/3ec40e667cec4975bae67519629a01f7.png?updatedAt=1789191959000",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/870f510caff24915b50503b82673b054.png",
         "description": "オフライン店舗での決済時に\n商品券のバーコードを提示します"
       }
     ],
