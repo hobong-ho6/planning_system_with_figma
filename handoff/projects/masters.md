@@ -1,6 +1,6 @@
 # masters — 마스터 페이지 5종 + 정책 문서
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-03 · 세션 #14 · 마지막 커밋 `c8ca2aa` · **5종 전부 History↔Summary 정합**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-13 · 세션 #15 · ⚠️ **5종 중 2종 정합 깨짐**(Mission 10↔9 · mini 4↔3 — 2026-09-13 실측)
 
 ## 대상 / 링크
 
@@ -9,19 +9,21 @@ Release History **데이터 행 ↔ Summary `<h3>버전 N` 블록 1:1** 상태:
 | 페이지 | ID | 버전 | 정합 |
 |---|---|---|---|
 | [Master] Lucky Ball Promotion | `4368569057` | v17 | 8↔8 |
-| [Master] Mission and Reward | `4368568387` | v19 | 9↔9 |
-| [Master] Unifi mini | `4386238705` | v11 | 3↔3 |
-| [Master] Wallet Mode | `4386238738` | v3 | 2↔2 |
-| [Master] K-Pick | `4686410639` | **v5** | **8↔8**(2026-09-03 신설) |
+| [Master] Mission and Reward | `4368568387` | v19 | ❌ **10↔9** |
+| [Master] Unifi mini | `4386238705` | v11 | ❌ **4↔3** |
+| [Master] Wallet Mode | `4386238738` | v3 | 2↔2 (미실측) |
+| [Master] K-Pick | `4686410639` | **v5** | ✅ **8↔8** |
 
-> ⚠️ **버전은 2026-09-13 실측으로 정정**(Mission 16→19 · Unifi mini 9→11 · K-Pick 3→5 — 다른 세션/사용자 편집분). **「정합」 열은 이번에 실측하지 않았다** — 버전이 올랐으므로 Release History ↔ Summary 정합이 깨졌을 수 있다(아래 다음 할 일).
+> **2026-09-13 실측**(v19·v11·v5 라이브 조회). 버전 상승분은 **다른 세션/사용자가 Release History에 행을 추가한 것**이고 Summary가 따라가지 않았다 — 프로젝트 규칙 「행이 삽입되면 Summary 번호를 밀어 복구한다」의 전형 사례가 2건 재발했다.
+> Lucky Ball·Wallet Mode 2종은 이번에 조회하지 않았다(기재값 유지 · **미실측 표시**).
 
 - `4479295382` **K-Pick 노출 정책**(v10) — mini 마스터 History 2행의 하위 문서. K-Pick 노출 조건의 **최신 정본**(②To-be)
 - `4368569133` Mission and Reward 정책 + FAQ(v39) — FAQ 10문항 5개 언어(미결정 6건은 종결)
 
 ## 마스터 페이지 정합 규칙 (이 프로젝트 절차 정본)
 
-- `Release History` **데이터 행 수(`<td class="numberingColumn">` 개수) = Summary `<h3>버전 N` 블록 수**
+- `Release History` **데이터 행 수 = Summary `<h3>버전 N` 블록 수**
+- ⛔ **행 카운트 정규식은 속성을 허용해야 한다**(2026-09-13 실측) — 실제 storage는 `<td class="numberingColumn" contenteditable="false" data-mce-resize="false">`다. `<td class="numberingColumn">` 정확 일치로 세면 **3종 모두 0건**이 나와 「전건 불일치」로 오판한다. `<td class="numberingColumn"[^>]*>`로 센다(헤더는 `<th`라 자동 제외).
 - 검증 앵커는 `<h1>Release History</h1>`를 쓴다 — History 행 본문에 "Release History"가 들어가 **오집계된 실측**이 있다
 - 릴리즈 버전 미확정이면 제목에 `[PL] Unifi (버전 미정)`
 - **행이 삽입되면 Summary 번호를 밀어 복구**한다 — 사용자가 History에 행을 넣는 것이 정상 흐름이고 Summary가 뒤늦게 따라간다(실측 2회)
@@ -30,7 +32,11 @@ Release History **데이터 행 ↔ Summary `<h3>버전 N` 블록 1:1** 상태:
 
 ## 현재 상태
 
-5종 전부 정합. K-Pick은 2026-09-03 Summary 8블록 신설(v1 문서생성 → v3).
+**정합 2종 깨짐 · 수정 미착수**(2026-09-13 재확인, 위키 편집 없음 — 사용자 확인 대기).
+
+- **Mission and Reward v19 — 10↔9**: History **10행**이 신설됐는데 Summary 블록이 없다. 10행의 `Version` 셀은 **비어 있고** `Wiki` 셀은 **「리워드탭 개선」** 1건 → 버전 미확정이므로 신설 시 제목은 `[PL] Unifi (버전 미정) / 리워드탭 개선`
+- **Unifi mini v11 — 4↔3**: History **4행** `[PL] Unifi v1.7.0.1 & v1.7.0.2` / 「[Unifi Mini] 홈을 LIFF K-Pick 홈과 통일 + 배너 문구 변경」에 대응하는 Summary 블록이 없다. **같은 내용이 [Master] K-Pick 버전 4 블록에는 이미 있다** → 그 블록을 mini 관점으로 옮겨 쓰면 된다
+- **K-Pick v5 — 8↔8 정합**. 다만 **History 8행 `Version` 셀이 `[PL] Unifi v1.7.5`로 채워졌는데 Summary `<h3>` 제목은 아직 `[PL] Unifi (버전 미정)`이다** — 아래 「2곳 갱신」 TODO가 **절반만 진행된 상태**
 
 ## 진행 중 작업(WIP)
 
@@ -38,8 +44,10 @@ Release History **데이터 행 ↔ Summary `<h3>버전 N` 블록 1:1** 상태:
 
 ## 다음 할 일
 
-- [ ] **P1 — 3종 정합 재확인**: Mission and Reward(v16→**v19**) · Unifi mini(v9→**v11**) · K-Pick(v3→**v5**)이 이 파일 기재 이후 올랐다(2026-09-13 실측). Release History 데이터 행 ↔ Summary `<h3>버전 N` 블록 **1:1 정합이 유지되는지 재대조** 필요
-- **K-Pick 버전 8 릴리즈 확정 시 2곳 갱신** — Release History 8행의 `Version` 셀이 비어 있어 Summary 제목을 `[PL] Unifi (버전 미정) / 클리닉 예약 동선 개선`으로 표기했다. 릴리즈가 정해지면 History 셀과 Summary `<h3>` 제목을 함께 채운다
+- [ ] **P1 — Mission and Reward `4368568387` 버전 10 블록 신설**(10↔9 해소). 참조: 「리워드탭 개선」. Version 셀이 비어 있으므로 제목은 `[PL] Unifi (버전 미정) / 리워드탭 개선`
+- [ ] **P1 — Unifi mini `4386238705` 버전 4 블록 신설**(4↔3 해소). 참조: 「[Unifi Mini] 홈을 LIFF K-Pick 홈과 통일 + 배너 문구 변경」. **K-Pick 마스터 버전 4 블록에 같은 내용이 이미 있다** — 원본 위키를 다시 조회해 mini 관점으로 작성
+- [ ] **P2 — K-Pick `4686410639` Summary 버전 8 제목 갱신**: History 8행이 `[PL] Unifi v1.7.5`로 확정됐으므로 `<h3>` 제목의 `[PL] Unifi (버전 미정)`을 **`[PL] Unifi v1.7.5`**로 바꾼다(2곳 갱신 TODO의 남은 절반)
+- [ ] **P2 — Lucky Ball `4368569057`·Wallet Mode `4386238738` 정합 실측**: 2026-09-13 재확인에서 조회하지 않았다. 3종에서 2건이 깨져 있었으므로 나머지 2종도 확인이 필요하다
 - 참조 위키가 갱신되면 해당 Summary 블록도 따라 갱신한다(하위 문서 → 마스터 방향) — 특히 `4667512757` 클리닉(법무 잔여 조치 진행 중)·`4637821463` 배너(Unifi↔DP 값 분기 미해소)
 
 ## ⛔ 사용자 결정으로 종결 (재작업·재제안 금지)
@@ -49,6 +57,12 @@ Release History **데이터 행 ↔ Summary `<h3>버전 N` 블록 1:1** 상태:
 - FAQ 미결정 6건 — 2026-08-10 미착수 종결.
 
 ## 세션 기록
+
+### 2026-09-13 — 세션 #15: 3종 정합 재확인 (**조회만 · 위키 편집 0건**)
+
+- 계기: 핸드오프 정리 중 **기재 버전과 라이브가 달랐다**(Mission 16→19 · mini 9→11 · K-Pick 3→5). 버전이 올랐으면 정합이 깨졌을 수 있어 재대조했고, **실제로 2종이 깨져 있었다**
+- 결과 — **Mission 10↔9 ❌** · **mini 4↔3 ❌** · **K-Pick 8↔8 ✅**. 둘 다 **History에 행이 추가되고 Summary가 따라가지 않은** 같은 패턴(이 프로젝트 규칙에 이미 「행이 삽입되면 Summary 번호를 밀어 복구」로 적혀 있던 전형)
+- **배운 것** ⓐ **카운트 정규식이 오탐을 만들었다** — `<td class="numberingColumn">` 정확 일치로 세니 3종 모두 0건이라 「전건 불일치」로 보였다. 실제 storage에는 `contenteditable`·`data-mce-resize` 속성이 더 붙는다. **검사 결과가 「전건 실패」면 대상이 아니라 검사기를 먼저 의심한다** ⓑ **「정합」 같은 파생 상태는 원본 버전이 오르면 자동으로 무효가 된다** — 버전만 정정하고 정합 열을 그대로 두면 낡은 ✅가 남는다. 그래서 09-13 정정 때 「미실측」으로 명시해 두었고 이번에 그게 재확인 경로가 됐다 ⓒ **부분 완료 TODO는 완료로 보이기 쉽다** — K-Pick 「2곳 갱신」 중 History 셀만 채워지고 Summary 제목은 `(버전 미정)`으로 남아 있었다(정합 카운트로는 안 잡힌다)
 
 ### 2026-09-03 — 세션 #14: [Master] K-Pick Summary 8블록 신설 (**위키 1페이지 v1→v3, git 커밋 0건**)
 
