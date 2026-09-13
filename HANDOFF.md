@@ -33,7 +33,7 @@
 |---|---|---|---|---|
 | [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 08-20 | 온보딩 판별 **버그 수정**(7시나리오 실측) · 락 대상에 `.claude/**` · **미결 0**(플러그인·MCP 인증 폐기) |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-03 | **[Master] K-Pick v3 신설**(Summary 8블록 · 8↔8) · 5종 전부 정합 |
-| [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 09-04 | 용어집 **v5.1 라이브**(캐시백 ja `還元` + 실사용 0건 등재값 2건 교정) · 가이드 v33 · 태그 **`guide-v33.3`** |
+| [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 09-13 | 용어집 **v5.5** · 가이드 **v39 게시 완료** · 태그 **`guide-v39`** · 🔜 **다음 갱신 때 「고유명사 공식 표기 확인」 규칙 반영 예정**(사용자 확정) |
 | [kaiawallet-transition](handoff/projects/kaiawallet-transition.md) | `hogeun` | 위키 `4515188069` · **8프레임 37키** | 08-24 | 위키 **v18**(8화면 재편 · 185셀 전건 · 14키 제거) · 용어집 보완 3건 대기 |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 v31(⚠️ zip만 발행·소스 미커밋 → 09-03 복원 `b49b1a1`) · 로그인 2회 연속 미점검 |
 | [kpick-oa-consent](handoff/projects/kpick-oa-consent.md) | `hogeun` | 위키 `4637821100` · 1프레임 4키 | 08-24 | 위키 **v3 반영 완료**(P0=0) · 미결 3건 — **등록 서비스 확정(FE)** · History↔Policy 불일치 · `kpick_` 잠정 |
@@ -41,7 +41,7 @@
 | [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-28 | `4620240898` **v5**(정본 템플릿 구조 정합화) · 정의 필요 4항목 추적 |
 | [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` + 하위 LPC `4686692164`·일본어 검수 `4685320765` | 09-04 | 위키 v129 · LPC **v16** · 게이트 22건 P0=0 · 병원 3곳(`da-ps` 비공개 확정) · **real ↔ beta 85/85 동일** · **미결 전부 종결 — 새 요청 대기** |
 | [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
-| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` · **24+화면** | 09-13 | 위키 **v173** — LV 신규 키 `mini_voucher_detail_max_benefit_badge` 1건 추가(게이트 P0 0) · **`최대혜택가` 3키(`_rate`/`_label`/`_badge`) 정리 합의 대기** · **GA Screen ID 9건 확정 대기** · 09-12~13 미기록 세션 3건 존재(게이트 리포트가 근거) |
+| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **24+화면** | 09-13 | 본문 **v173** · LPC **v41** — **LPC 8개 컬렉션 beta·prod 전부 등록·공개 완료**(55항목 전건 일치) · 클리닉 통합 + 일본 의료광고 규제 반영 · shopping_guide Figma 최신안(이미지 26) · **한정해제 요건 ②③④ 8개 파라미터 미확보**(병원·법무) · `최대혜택가` 3키 정리·GA Screen ID 9건 확정 대기 |
 
 ---
 
@@ -86,6 +86,10 @@
 - **Screen ID**: `md/IA.md` 어휘로 `주기능_부기능_세부기능_01`(소문자), **매핑 표 사용자 승인 후에만** 부여. 기존 프레임명 기반 페이지는 소급 금지
 - **Jira는 별도 PAT가 필요하다**(2026-08-21 실측) — Confluence PAT로 `jira.workers-hub.com`은 **401**이고 Jira MCP(`mcp__noahs-mcp-jira__*`)는 **세션에 따라 끊긴다**. REST는 `GET /rest/api/2/issue/{KEY}`. ⚠️ **description만 보면 안 된다** — `UNIFY-10118`은 **Figma 링크가 코멘트에 있었다**(`/issue/{KEY}/comment` · 첨부도 함께 확인). **`md/wiki.md` 티켓 확장 규칙에 반영 완료**
 - **용어집 「실사용 0건」 판정은 의미까지 본다**(2026-09-03 정정) — ja `すべて見る`를 「실사용 0건」으로 3세션 기록했으나 Unifi v1.7.4 실측 **6건**이다. 다만 6건 전부 ko 「**전체보기**」 번역이고 ko 「더보기」는 `もっと見る` 5건이 정본이다. 즉 문제는 「실사용 없음」이 아니라 **「다른 뜻의 표현을 등재했다」**다. 건수만 세지 말고 **그 키의 ko가 무엇인지** 함께 확인한다
+- **⛔ JSON을 바꾸면 Landpress beta·prod를 항상 함께 갱신한다**(2026-09-13 사용자 확정 · `md/landpress.md` §10-5-1) — 위키 `4727978725`에 정의된 LPC 컬렉션 **8개가 양쪽 모두 등록 완료**됐다. 순서는 **beta 먼저 → 검증 → prod 복제**이고 **같은 작업 안에서** 끝낸다(prod를 「나중에」로 미루지 않는다). prod 복제는 저장소 산출물이 아니라 **beta 등록값을 읽어 그대로 PUT**한다(그 사이 beta 수정이 따라온다). ⚠️ **매핑은 postId가 아니라 `uid` 기준** — beta/prod는 배치가 다르다(실측: `voucher_product` beta 1=oliveyoung·6=cu·11=daiso·16=emart ↔ prod 1=emart·6=cu·11=oliveyoung·16=daiso). 반영 후 공개 조회 API로 필드 단위 대조 + `published` 확인
+- **⛔ 고유명사 로마자 표기는 추측하지 않는다**(2026-09-13 신설 · CLAUDE.md 게이트 1-1 · `md/check.md` 함정 2-2) — 브랜드·제품·기관·법령명은 **번역이 아니라 조사** 대상이다. 확인 순서 ① 기존 등록값(XLT·LPC) → ② 브랜드 공식 사이트 → ③ 공식 SNS·도메인 → ④ 판매처 상품 페이지. **대소문자·띄어쓰기까지 원문 그대로**. 계기: 선례가 없다고 추정한 **필리밀리→`FEELIMEELY`(실제 `FILLIMILLI`)·헤트라스→`Hetras`(실제 `hetras` 소문자)** 가 **둘 다 틀려** 5개 언어를 재등록했다
+- **Landpress 항목·로케일은 API로 만들 수 없다**(2026-09-13 실측 · `md/landpress.md` §10-3) — `POST /items`는 201이지만 **primary 로케일 1행만** 생기고, `POST /items?locale=ko_KR`은 **201을 주면서 「고아 항목」을 새로 만든다**(기존 항목에 붙지 않는다 · body의 `postId` 무시). 기존 항목에 로케일 행을 추가하는 경로는 **없다** → 컬렉션·항목 생성은 **사용자가 CMS UI에서**, API는 **있는 로케일 행에 쓰기·공개**까지
+- **CMS API의 로케일 파라미터도 `?locale=`이다**(2026-09-13 실측 정정) — `?_locale=`은 **CMS 웹 UI 전용**이며 API에서 **400이 아니라 조용히 무시**된다. `?_locale=ko_KR`로 조회하면 200에 primary 항목이 돌아와 **다른 언어를 보면서 맞다고 착각**한다
 - **캐시 금지 실측**: 세션 #17 감사 도중 `UF_floating_jpyc_banner_title`이 **실제로 삭제**돼 1시간 만에 키 수가 2,131→2,130으로 바뀌었다. 원본 재조회는 형식이 아니다
 
 ---

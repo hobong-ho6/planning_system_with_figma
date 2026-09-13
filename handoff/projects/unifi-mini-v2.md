@@ -1,10 +1,12 @@
 # unifi-mini-v2 — Unifi mini v2.0 화면정의 (Figma 정책 취합 + XLT/GA)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-13 · 세션 #3 · 마지막 커밋 `e686c0a`
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-13 · 세션 #4 · 마지막 커밋 `a359cbc`
 
 ## 대상 / 링크
 
 - 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v173**
+  - **하위 `4727978725` 「Unifi mini v2.0 - LPC 관리 영역」** — **현재 v41**. LPC 컬렉션 8개의 정의·등록 JSON·환경 현황 정본. 세션 #4의 주 작업 대상
+  - 하위 `4725950300` 「Admin 관리 대상」
 - Figma: 파일 `GOCHAYBS7hIrmWRGNuJOKV`(`Web3`) — 여러 페이지/섹션에 화면이 흩어져 있다(`Unifi mini v2.0` 페이지 + 개별 섹션)
 - XLT: **부분 착수**. 담당 FE 팀 확정 — `JPYC 자산 상세`계열·`결제 페이지` = **UIT**(`UF_`·`{{0}}`) / `Voucher Detail`·`Clinic Detail` = **LV**(`mini_`·`{0}`). Home/Category/Search/My는 세션 #1 이후 다른 세션에서 이미 번역 완료(v60 시점 확인)
 - 이미지: **위키 첨부가 정본**. 로컬 `assets/collected_*`는 git 미추적 재생성물(세션마다 새로 생성)
@@ -12,6 +14,19 @@
 ## 현재 상태
 
 > ⚠️ **세션 #2(09-10, v96) 이후 09-12~13에 이 파일에 기록되지 않은 세션이 여러 번 있었다** — 위키가 **v96 → v172**로 올라갔다. 근거는 `reports/gate/` 3건(`unifi_mini_v2_xlt_108keys_2026-09-12` · `voucher_detail_7keys_2026-09-13` · `ja_term_unify_22keys_2026-09-13`)과 위키 History다. 그 세션들의 산출물은 위키·게이트 리포트에 남아 있으나 **다음 할 일·미결은 이 파일에 옮겨지지 않았다**(세션 #3에서 확인한 범위만 아래에 반영).
+
+**세션 #4(09-13)** — 하위 **LPC 관리 영역(`4727978725`)** 전면 작업. 위키 **v26 → v41**(15회 PUT, 매회 `check_wiki_storage.py` pre/post exit 0).
+
+| 대상 | 결과 |
+|---|---|
+| **클리닉** | `k_pick_clinic_product` 폐지 → `k_pick_clinic_common_info` 단일 컬렉션으로 통합(`clinic_menu` + `clinic_detail_common`). **일본 의료광고 규제 반영** — 시술 설명 22종에서 치료 효과 단정 제거, 「임플란트(원데이)」 기간 단정 삭제, `section.description`을 법무 확정 문구로 교체. 요건 ②④용 `deviceNotice`·`contact`·`duration`·`risk` 필드 신설 |
+| **바우처** | CU 유효기간 기산점 통일(교환 → 구매일로부터) · zh_TW에만 남아 있던 `販售商`(특정상거래법 판매자 표기) 제거 — 법정 표기는 XLT `UF_voucher_tokusho_link`로 제공됨을 전 컬렉션·XLT 2,549키 조사로 확인 · 이마트24 ja `購入日より`→`から` 통일 |
+| **service_guide** | useNow 3스텝을 **언어별 이미지로 분기**(5로케일×3=15장, 기존엔 전 로케일이 한국어 이미지 공유) + prepare 3장 교체 · URL에서 `?updatedAt=` 제거 |
+| **shopping_guide** | 올리브영·다이소를 Figma 최신안으로 전면 갱신(이미지 26장·캡션·구성 3·3·3→4·3·3). **숨김 카드 3개(`visible=false`) 제외** · 브랜드 표기 2건 웹 확인 후 교정(`FILLIMILLI`·`hetras`) |
+| **환경** | **LV prod 전면 반영** — 8개 컬렉션이 beta·prod 양쪽 5개 언어까지 등록·공개. 공개 조회 API로 **LV prod 55항목 전건 일치** 확인 |
+| **규칙** | `md/landpress.md` §10-3 보강·§10-5-1 신설(beta+prod 동시 갱신) · CLAUDE.md 게이트 1-1·`md/check.md` 함정 2-2·`md/guide.md` Q2(고유명사 추측 금지) · 기획자 가이드 **v39 게시**(태그 `guide-v39`) |
+
+게이트 3건 전부 `check_gate_report.py` exit 0 — `clinic_merged_regulation_5lang_2026-09-12` · `voucher_cu_validity_tw_seller_2026-09-13` · `shopping_guide_figma_refresh_5lang_2026-09-13`.
 
 **세션 #3(09-13)** — Slack 스레드 대응으로 LV 신규 키 **1건**(`mini_voucher_detail_max_benefit_badge`)을 만들고 위키 **v172 → v173** 반영. 게이트 P0 0 · `check_gate_report.py` exit 0 · `check_wiki_storage.py` pre/post exit 0.
 
@@ -39,6 +54,14 @@
 
 ## 다음 할 일
 
+- [ ] 🔴 **P0 — 클리닉 한정해제 요건 ②③④ · 값 미확보 8개 파라미터**(LPC 위키 6번 3항). 요건 ①(스스로 찾아온 상세 페이지)만 충족이며 **①~④가 모두 충족돼야 성립** → 지금 상태로는 상세에 **시술명을 노출할 수 없다**
+  - `price` 48시술 중 **46건이 「상담 후 안내」** · `duration` 48건 공백 → **조치 E 3택 결정 필요**(① 시술별 시작가 확보 / ② 시술명→진료 분야 / ③ 대표 시술 노출 제외) — 기획·병원
+  - `risk` 48건 공백(병원·의료) · `deviceNotice`의 `{0}` 4종(기기명·입수 경로·일본 승인 유무·해외 안전성) 미확보(병원·법무) — **값이 없으면 블록 전체를 노출하지 않는다**(부분 고지는 위반)
+  - `contact` 하위 **병원별 전화·이메일 필드 자체가 없다**(병원)
+  - ⚠️ **`deviceNotice` 대상 범위 법무 확인** — 고지 대상은 쥬베룩·포텐자이나 위키 `4693549881` 본문은 **리쥬란(힐러)**도 미승인으로 기술(해당 시 `clinic_menu`의 리쥬란 **7건** 추가)
+- [ ] **P2 — `primaryLocale` beta↔prod 불일치 5개 컬렉션**(LPC 위키 9-3) — LV `voucher_common_info`·`mini_common_info`·`category_promotion_banner` + UIT 2개가 **beta `ko_KR` / prod `en_US`**. `?locale=`을 붙이면 무해하나 **생략하는 호출이 있으면 환경별로 다른 언어가 나온다** → FE 확인 필요
+- [ ] **P2 — FAQ 「한국인과 동일한 가격」 단정 표현**(`clinic_detail_common.faq` · `mini_common_info.service_guide.faq`) — 전 제휴 병원에 대한 단정이라 병원별로 다르면 허위 소지(「최대 15% 캐시백」 지적과 같은 구조). 법무 문서에 없는 항목이라 **미수정·판단 대기**
+- [ ] **P3 — CU shopping_guide는 이번 Figma 섹션에 없어 미갱신** — 갱신하려면 해당 Figma 노드 필요
 - [ ] **P1 — `최대혜택가` 계열 3키 정리 합의(LV)**: `mini_voucher_detail_max_benefit_rate`(라벨만) · `_label`(라벨만, 값 동일) · `_badge`(라벨+`{0}%`)가 공존한다. 특히 `_rate`는 **이름에 rate가 있는데 값에 rate가 없는** 상태 — FE 사용처 확인 후 폐기/개명 여부를 LV와 합의해야 한다(위키 History에 빨강으로 기재)
 - [ ] **P2 — `최대혜택가` 띄어쓰기 통일 검토**: 맞춤법은 `최대 혜택가`. 적용 시 3키 + Figma 원문을 **동시에** 바꿔야 한다(부분 적용 시 같은 화면에서 표기 분기)
 - [ ] **P2 — ja `特典` vs `特別` 분기 확인**: `UF_voucher_price_benefit`·`mini_home_price_benefit`은 `特別価格`, `max_benefit` 3키는 `最大特典価格`. 용어집 정본은 혜택=`特典`
@@ -67,6 +90,16 @@
 - **혜택가(`mini_home_price_benefit`) 등 페이지 내 이미 재사용 중인 키는 외부 위키 키로 교체하지 않음** — 페이지 내부 일관성 우선(사용자 확인 없이 이 원칙 적용, 필요시만 재검토)
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-09-13 — 세션 #4: LPC 관리 영역 전면 작업 + LV prod 반영 완료 (LPC v26→v41)
+
+- **완료**: 위 「현재 상태」 표 참조(클리닉 통합·규제 반영 / 바우처 문구 정합 / service_guide 언어별 이미지 / shopping_guide Figma 최신안 / LV prod 8개 컬렉션 반영 / 규칙 3종 신설 / 가이드 v39)
+- **교훈 ① — 파일명으로 이미지를 매칭하지 않는다**: shopping_guide 26장이 전부 `Mask group-N.png`였다. **Figma 노드를 렌더해 이미지끼리 대조**(24×24 정규화 후 평균 절대차)해 26/26·최대 거리 0.025로 확정했다. 같은 방식으로 **숨김 카드 3개(`visible=false`)**를 걸러냈다 — 포함했으면 없는 상품이 3번 노출됐다. `image.png`는 미디어 라이브러리에 **동명 5건**이 있어 크기+업로드 시각으로 특정했다
+- **교훈 ② — 201이 성공이 아니다**: `POST /items?locale=ko_KR`은 201을 주지만 기존 항목에 로케일을 붙이는 게 아니라 **고아 항목을 새로 만든다**. probe는 **beta에서 표식 uid로 만들고 같은 스크립트 `finally`에서 DELETE**해 원상복구까지 한 번에 끝냈다(5건 생성·5건 삭제 확인)
+- **교훈 ③ — `?_locale=`은 조용히 무시된다**: CMS API에서 400이 아니라 200에 primary 항목이 돌아온다. 이걸 모르고 「로케일이 en_US 하나뿐」이라 오판했다가 사용자 지적으로 `?locale=all`로 정정했다
+- **교훈 ④ — 내 패치가 적용됐는지 표를 직접 읽어 확인한다**: 「§9-4에 LV prod 4행 추가」를 보고했으나 정규식이 문서 전체를 검색해 **§9-3의 행을 잡아 거기에 복제**했다(§9-4엔 미반영 · §9-3엔 말이 안 되는 행 4개). 사용자가 요약 표를 지적하지 않았으면 그대로 남았다 → **구간을 한정하고, PUT 전에 표를 출력해 눈으로 대조**한다
+- **교훈 ⑤ — 고유명사는 조사 대상이다**: 선례가 없다고 추정한 `FEELIMEELY`·`Hetras`가 **둘 다 틀렸다**(정답 `FILLIMILLI`·`hetras`). 하나는 철자, 하나는 대소문자가 틀린 사례 → 규칙으로 고정(CLAUDE.md 게이트 1-1)
+- **미결**: 위 「다음 할 일」 P0(한정해제 요건 8개 파라미터)
 
 ### 2026-09-13 — 세션 #3: Slack 스레드 대응 LV 신규 키 1건 (v172→v173)
 
