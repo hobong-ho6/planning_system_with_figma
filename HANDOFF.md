@@ -12,8 +12,9 @@
   · 특정 위키·화면·키의 상태 → handoff/projects/{name}.md
   · PC·경로·환경               → handoff/people/{person}.md
   · 지금 점유 중인 전역 자원    → handoff/lanes/{...}.md
-■ 분량: 인덱스 표를 제외하고 100줄 이내(매 세션 주입되므로 짧게 유지).
-  넘치면 규칙은 md/ 문서로 옮기고 포인터만, 프로젝트 상태는 projects/ 로 내린다.
+■ 분량: 20KB 이내(`wc -c HANDOFF.md` — 줄 수가 아니라 바이트로 잰다. 한글 1자=3바이트).
+  이 파일 + 담당자 people/ 1개가 매 세션 주입된다 → 합계 24KB 이내 유지(2026-09-13 실측 22.3KB).
+  넘치면 규칙은 md/ 문서로 옮기고 경고+포인터만, 프로젝트 상태는 projects/ 로 내린다.
 ════════════════════════════════════════════════════════════
 -->
 
@@ -26,17 +27,17 @@
 ## 프로젝트 인덱스
 
 > 활성 프로젝트만 올린다. 종료된 것은 `handoff/projects/_archive/`로 옮기고 이 표에서 지운다.
-> **2026-09-04 종결 5건** — `season3`·`luckyball-campaign`·`nonrealtime`·`xlt-registry`·`unifi-app-xlt`를 `_archive/`로 옮겼다(전부 「미결 없음/전건 종결」 명시 · 08-20 이후 활동 없음). 재개가 필요하면 아카이브에서 되돌린다.
+> 아카이브 10건(09-04 5건·09-13 5건)은 `_archive/`에 있다 — 재개가 필요하면 되돌린다.
 > 담당자는 `git config --global handoff.person` 값과 같은 문자열을 쓴다(`handoff/README.md` 「사람 식별」).
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
 | [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 09-13 | **산출물 커밋 누락 정리**(게이트 리포트 9·`landpress/` 100파일이 최대 9일간 로컬에만) — 전역 절차에 「세션 종료 시 `??` 확인」 신설 · 온보딩 판별 버그 수정(7시나리오 실측) · 락 대상에 `.claude/**` · **미결 0** |
-| [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-03 | **[Master] K-Pick v3 신설**(Summary 8블록 · 8↔8) · 5종 전부 정합 |
+| [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-13 | ⚠️ **3종 버전이 실측과 달랐다**(Mission 16→**19** · Unifi mini 9→**11** · K-Pick 3→**5**, 다른 세션/사용자 편집) — 표는 정정했으나 **정합 미실측** · P1 재확인 대기 |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 09-13 | 용어집 **v5.5** · 가이드 **v39 게시 완료** · 태그 **`guide-v39`** · 🔜 **다음 갱신 때 「고유명사 공식 표기 확인」 규칙 반영 예정**(사용자 확정) |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 v31(⚠️ zip만 발행·소스 미커밋 → 09-03 복원 `b49b1a1`) · 로그인 2회 연속 미점검 |
 | [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
-| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **24+화면** | 09-13 | 본문 **v173** · LPC **v41** — **LPC 8개 컬렉션 beta·prod 전부 등록·공개 완료**(55항목 전건 일치) · 클리닉 통합 + 일본 의료광고 규제 반영 · shopping_guide Figma 최신안(이미지 26) · **한정해제 요건 ②③④ 8개 파라미터 미확보**(병원·법무) · `최대혜택가` 3키 정리·GA Screen ID 9건 확정 대기 · **K-Pick 1만원권 4종 편입**(산출물 100파일·게이트 4건 뒤늦게 커밋 · ⚠️ LPC projectId 미기록으로 **등록 여부 미확인**) |
+| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **24+화면** | 09-13 | 본문 **v173** · LPC **v41** — LPC 8컬렉션 beta·prod 등록·공개 완료 · ⚠️ **미결 3건**(한정해제 파라미터 8개 · GA Screen ID 9건 · K-Pick 1만원권 LPC projectId 미기록) → 파일 참조 |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` · 예약 OA **16화면**(클리닉 12·여행 4) | 09-13 | 위키 **v37** — **beta 전건 등록 완료**(Landpress 16 `ko_KR` + LIAM Event Message 16 · 대조 불일치 0) · prod는 클리닉 T0만(`isActive` **No**) · **번역 미착수**(ko만)·hero/버튼 URL **임시값** |
 
 ---

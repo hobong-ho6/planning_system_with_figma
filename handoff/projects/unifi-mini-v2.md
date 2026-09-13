@@ -16,40 +16,17 @@
 
 ## 현재 상태
 
-> ⚠️ **세션 #2(09-10, v96) 이후 09-12~13에 이 파일에 기록되지 않은 세션이 여러 번 있었다** — 위키가 **v96 → v172**로 올라갔다. 근거는 `reports/gate/` 3건(`unifi_mini_v2_xlt_108keys_2026-09-12` · `voucher_detail_7keys_2026-09-13` · `ja_term_unify_22keys_2026-09-13`)과 위키 History다. 그 세션들의 산출물은 위키·게이트 리포트에 남아 있으나 **다음 할 일·미결은 이 파일에 옮겨지지 않았다**(세션 #3에서 확인한 범위만 아래에 반영).
+본문 위키 **v173** · 하위 LPC 관리 영역 **v41**. 화면 **24+**(Home/Category/Search/My + 결제 3 · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
 
-**세션 #4(09-13)** — 하위 **LPC 관리 영역(`4727978725`)** 전면 작업. 위키 **v26 → v41**(15회 PUT, 매회 `check_wiki_storage.py` pre/post exit 0).
-
-| 대상 | 결과 |
+| 영역 | 상태 |
 |---|---|
-| **클리닉** | `k_pick_clinic_product` 폐지 → `k_pick_clinic_common_info` 단일 컬렉션으로 통합(`clinic_menu` + `clinic_detail_common`). **일본 의료광고 규제 반영** — 시술 설명 22종에서 치료 효과 단정 제거, 「임플란트(원데이)」 기간 단정 삭제, `section.description`을 법무 확정 문구로 교체. 요건 ②④용 `deviceNotice`·`contact`·`duration`·`risk` 필드 신설 |
-| **바우처** | CU 유효기간 기산점 통일(교환 → 구매일로부터) · zh_TW에만 남아 있던 `販售商`(특정상거래법 판매자 표기) 제거 — 법정 표기는 XLT `UF_voucher_tokusho_link`로 제공됨을 전 컬렉션·XLT 2,549키 조사로 확인 · 이마트24 ja `購入日より`→`から` 통일 |
-| **service_guide** | useNow 3스텝을 **언어별 이미지로 분기**(5로케일×3=15장, 기존엔 전 로케일이 한국어 이미지 공유) + prepare 3장 교체 · URL에서 `?updatedAt=` 제거 |
-| **shopping_guide** | 올리브영·다이소를 Figma 최신안으로 전면 갱신(이미지 26장·캡션·구성 3·3·3→4·3·3). **숨김 카드 3개(`visible=false`) 제외** · 브랜드 표기 2건 웹 확인 후 교정(`FILLIMILLI`·`hetras`) |
-| **환경** | **LV prod 전면 반영** — 8개 컬렉션이 beta·prod 양쪽 5개 언어까지 등록·공개. 공개 조회 API로 **LV prod 55항목 전건 일치** 확인 |
-| **규칙** | `md/landpress.md` §10-3 보강·§10-5-1 신설(beta+prod 동시 갱신) · CLAUDE.md 게이트 1-1·`md/check.md` 함정 2-2·`md/guide.md` Q2(고유명사 추측 금지) · 기획자 가이드 **v39 게시**(태그 `guide-v39`) |
+| **XLT·GA 정의** | 신설 12화면 전부 완료(UIT=결제·JPYC / LV=Voucher·Clinic Detail). Home/Category/Search/My는 이전 세션에 완료 |
+| **LPC 8개 컬렉션** | **beta·prod 양쪽 5개 언어 등록·공개 완료** — 공개 조회 API로 LV prod **55항목 전건 일치** 확인 |
+| **클리닉** | `k_pick_clinic_product` 폐지 → `k_pick_clinic_common_info` 단일 컬렉션 통합 · **일본 의료광고 규제 반영**(효과 단정 제거, 요건 ②④용 `deviceNotice`·`contact`·`duration`·`risk` 필드 신설) |
+| **K-Pick 1만원권 4종** | 산출물·게이트 완료(09-11) · ⚠️ LPC projectId 미기록으로 **등록 여부 미확인** |
+| **미결 핵심** | 🔴 클리닉 **한정해제 요건 ②③④ 8개 파라미터 미확보**(병원·법무) → 상세에 **시술명 노출 불가** · GA Screen ID 9건 `(제안)` 상태 · `최대혜택가` 3키 정리 |
 
-게이트 3건 전부 `check_gate_report.py` exit 0 — `clinic_merged_regulation_5lang_2026-09-12` · `voucher_cu_validity_tw_seller_2026-09-13` · `shopping_guide_figma_refresh_5lang_2026-09-13`.
-
-**세션 #3(09-13)** — Slack 스레드 대응으로 LV 신규 키 **1건**(`mini_voucher_detail_max_benefit_badge`)을 만들고 위키 **v172 → v173** 반영. 게이트 P0 0 · `check_gate_report.py` exit 0 · `check_wiki_storage.py` pre/post exit 0.
-
-세션 #2에서 화면 4개 섹션 신설(`결제 페이지`·`Voucher Detail - LV`·`Clinic Detail - LV` + JPYC 서브 화면 2개) + 기존 화면 다수의 GA/XLT 정의 + 전체 정책 재점검 + **다른 위키와의 키 재사용 교차검증**을 수행했다. PUT은 총 20회+(v75→v96), 매 PUT `check_wiki_storage.py` pre/post exit 0 확인.
-
-| 섹션 | 화면 수 | 비고 |
-|---|---|---|
-| `결제 페이지`(신설) | 3 | (Unifi mini) 결제페이지·결제 실패(기본)·결제 완료 — UIT, XLT·GA 완료 |
-| `Voucher Detail - LV`(신설) | 3 | 바우처 상세(정책 34건)·개별리뷰·전체리뷰 — LV, XLT·GA 완료 |
-| `Clinic Detail - LV`(신설) | 4 | 클리닉 상세(정책 38건, 페이지 내 최대)·리뷰 더보기·개별리뷰·전체리뷰 — LV, XLT·GA 완료 |
-| `My` 하위 JPYC | +2 | `JPYC 자산 상세 - 자산없는 경우`·`JPYC Bottmsheet`(안내) 신설, XLT·GA 완료 |
-| `Home` › `Banners` | 삭제 | 사용자 요청으로 행 전체 삭제(정책 4·키 4, 재사용 없음 확인) |
-| `Admin 관리 대상`/`확정 필요 항목` | 갱신 | 세션 #2 신규 화면에서 발견분 추가 |
-| `API 확인` | **삭제됨** | 세션 중 **다른 세션/사용자가 이 단 전체를 삭제** — 되돌리지 않음(2026-09-10 관찰, 사유 미확인) |
-| `LPC 관리 영역`(신규) | 9행 | Admin/API처럼 4컬럼 취합 — Landpress 관리 정책 전수(신규 7 + 기존 미취합분 2) |
-
-- **GA Screen ID는 전부 `(제안)` 상태** — `payment_main_01`·`payment_fail_01`·`payment_complete_01`·`voucher_detail_01`·`voucher_detail_review_01_01`·`voucher_detail_review_all_01_01`·`clinic_detail_01`·`clinic_detail_review_01_01`·`clinic_detail_review_all_01_01`·`my_jpyc_guide`(확정됨, 유일)·`my_jpyc_detail_01_01`(기존 재사용). **사용자 확정 필요**
-- **XLT & GA 셀 제목 규칙 변경**(전역, `md/GA.md` 반영 완료) — 화면당 `{Screen ID} - XLT`/`- Event` 2개였던 제목을 **`{Screen ID} - XLT & GA` 1개로 통합**(TOC 길이 문제)
-- **다른 위키(pageId `4667512757`, 클리닉 예약 동선 개선)와 키 재사용 교차검증**: `클리닉 상세`·`바우처 상세`에서 신설한 키 중 **22건**이 그 위키의 기존 `UF_` 키와 문구 일치(실제 XLT 시스템 등록도 재확인) → 전부 교체. 결제/JPYC 44키는 겹침 없음(도메인이 달라 당연)
-- **XLT 시스템 자체 등록값 확인**(서비스 `Unifi`/`WEB BROWSER`, v1.7.6, 2,467키): 위키 전체 키 중 실제 등록된 것 태그(`(XLT 등록됨)`) + **이름 충돌 1건 발견·수정**(`UF_jpyc_guide_title`이 이미 다른 뜻으로 등록돼 있어 `UF_jpyc_overview_title`로 변경)
+> ⚠️ **09-12~13에 이 파일에 기록되지 않은 세션이 여러 번 있었다**(v96 → v172). 근거는 `reports/gate/` 3건과 위키 History. 그 세션들의 **다음 할 일·미결은 이 파일에 옮겨지지 않았다** — 아래 「다음 할 일」은 세션 #3 이후 확인된 범위다.
 
 ## 진행 중 작업(WIP)
 
@@ -104,7 +81,7 @@
 
 ### 2026-09-13 — 세션 #4: LPC 관리 영역 전면 작업 + LV prod 반영 완료 (LPC v26→v41)
 
-- **완료**: 위 「현재 상태」 표 참조(클리닉 통합·규제 반영 / 바우처 문구 정합 / service_guide 언어별 이미지 / shopping_guide Figma 최신안 / LV prod 8개 컬렉션 반영 / 규칙 3종 신설 / 가이드 v39)
+- **완료**: 클리닉 통합·의료광고 규제 반영 / 바우처 문구 정합(CU 유효기간 기산점 통일 · zh_TW `販售商` 제거 — 법정 표기는 XLT `UF_voucher_tokusho_link`로 제공됨을 XLT 2,549키 조사로 확인 · 이마트24 ja `購入日より`→`から`) / service_guide useNow 3스텝 **언어별 이미지 분기**(5로케일×3=15장) / shopping_guide 올리브영·다이소 Figma 최신안 전면 갱신(이미지 26장 · 숨김 카드 3개 제외 · 브랜드 표기 2건 웹 확인 교정) / **LV prod 전면 반영**(8컬렉션 × 5언어) / 규칙 3종 신설 · 기획자 가이드 v39 게시. 게이트 3건 exit 0
 - **교훈 ① — 파일명으로 이미지를 매칭하지 않는다**: shopping_guide 26장이 전부 `Mask group-N.png`였다. **Figma 노드를 렌더해 이미지끼리 대조**(24×24 정규화 후 평균 절대차)해 26/26·최대 거리 0.025로 확정했다. 같은 방식으로 **숨김 카드 3개(`visible=false`)**를 걸러냈다 — 포함했으면 없는 상품이 3번 노출됐다. `image.png`는 미디어 라이브러리에 **동명 5건**이 있어 크기+업로드 시각으로 특정했다
 - **교훈 ② — 201이 성공이 아니다**: `POST /items?locale=ko_KR`은 201을 주지만 기존 항목에 로케일을 붙이는 게 아니라 **고아 항목을 새로 만든다**. probe는 **beta에서 표식 uid로 만들고 같은 스크립트 `finally`에서 DELETE**해 원상복구까지 한 번에 끝냈다(5건 생성·5건 삭제 확인)
 - **교훈 ③ — `?_locale=`은 조용히 무시된다**: CMS API에서 400이 아니라 200에 primary 항목이 돌아온다. 이걸 모르고 「로케일이 en_US 하나뿐」이라 오판했다가 사용자 지적으로 `?locale=all`로 정정했다

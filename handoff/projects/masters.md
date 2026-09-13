@@ -9,10 +9,12 @@ Release History **데이터 행 ↔ Summary `<h3>버전 N` 블록 1:1** 상태:
 | 페이지 | ID | 버전 | 정합 |
 |---|---|---|---|
 | [Master] Lucky Ball Promotion | `4368569057` | v17 | 8↔8 |
-| [Master] Mission and Reward | `4368568387` | v16 | 9↔9 |
-| [Master] Unifi mini | `4386238705` | v9 | 3↔3 |
+| [Master] Mission and Reward | `4368568387` | v19 | 9↔9 |
+| [Master] Unifi mini | `4386238705` | v11 | 3↔3 |
 | [Master] Wallet Mode | `4386238738` | v3 | 2↔2 |
-| [Master] K-Pick | `4686410639` | **v3** | **8↔8**(2026-09-03 신설) |
+| [Master] K-Pick | `4686410639` | **v5** | **8↔8**(2026-09-03 신설) |
+
+> ⚠️ **버전은 2026-09-13 실측으로 정정**(Mission 16→19 · Unifi mini 9→11 · K-Pick 3→5 — 다른 세션/사용자 편집분). **「정합」 열은 이번에 실측하지 않았다** — 버전이 올랐으므로 Release History ↔ Summary 정합이 깨졌을 수 있다(아래 다음 할 일).
 
 - `4479295382` **K-Pick 노출 정책**(v10) — mini 마스터 History 2행의 하위 문서. K-Pick 노출 조건의 **최신 정본**(②To-be)
 - `4368569133` Mission and Reward 정책 + FAQ(v39) — FAQ 10문항 5개 언어(미결정 6건은 종결)
@@ -36,6 +38,7 @@ Release History **데이터 행 ↔ Summary `<h3>버전 N` 블록 1:1** 상태:
 
 ## 다음 할 일
 
+- [ ] **P1 — 3종 정합 재확인**: Mission and Reward(v16→**v19**) · Unifi mini(v9→**v11**) · K-Pick(v3→**v5**)이 이 파일 기재 이후 올랐다(2026-09-13 실측). Release History 데이터 행 ↔ Summary `<h3>버전 N` 블록 **1:1 정합이 유지되는지 재대조** 필요
 - **K-Pick 버전 8 릴리즈 확정 시 2곳 갱신** — Release History 8행의 `Version` 셀이 비어 있어 Summary 제목을 `[PL] Unifi (버전 미정) / 클리닉 예약 동선 개선`으로 표기했다. 릴리즈가 정해지면 History 셀과 Summary `<h3>` 제목을 함께 채운다
 - 참조 위키가 갱신되면 해당 Summary 블록도 따라 갱신한다(하위 문서 → 마스터 방향) — 특히 `4667512757` 클리닉(법무 잔여 조치 진행 중)·`4637821463` 배너(Unifi↔DP 값 분기 미해소)
 
