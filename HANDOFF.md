@@ -41,7 +41,7 @@
 | [misc-wikis](handoff/projects/misc-wikis.md) | `hogeun` | 기타 위키 8종 | 08-28 | `4620240898` **v5**(정본 템플릿 구조 정합화) · 정의 필요 4항목 추적 |
 | [clinic](handoff/projects/clinic.md) | `hogeun` | 위키 `4667512757` + 하위 LPC `4686692164`·일본어 검수 `4685320765` | 09-04 | 위키 v129 · LPC **v16** · 게이트 22건 P0=0 · 병원 3곳(`da-ps` 비공개 확정) · **real ↔ beta 85/85 동일** · **미결 전부 종결 — 새 요청 대기** |
 | [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
-| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **24+화면** | 09-13 | 본문 **v173** · LPC **v41** — **LPC 8개 컬렉션 beta·prod 전부 등록·공개 완료**(55항목 전건 일치) · 클리닉 통합 + 일본 의료광고 규제 반영 · shopping_guide Figma 최신안(이미지 26) · **한정해제 요건 ②③④ 8개 파라미터 미확보**(병원·법무) · `최대혜택가` 3키 정리·GA Screen ID 9건 확정 대기 |
+| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **24+화면** | 09-13 | 본문 **v173** · LPC **v41** — **LPC 8개 컬렉션 beta·prod 전부 등록·공개 완료**(55항목 전건 일치) · 클리닉 통합 + 일본 의료광고 규제 반영 · shopping_guide Figma 최신안(이미지 26) · **한정해제 요건 ②③④ 8개 파라미터 미확보**(병원·법무) · `최대혜택가` 3키 정리·GA Screen ID 9건 확정 대기 · **K-Pick 1만원권 4종 편입**(산출물 100파일·게이트 4건 뒤늦게 커밋 · ⚠️ LPC projectId 미기록으로 **등록 여부 미확인**) |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` · 예약 OA **16화면**(클리닉 12·여행 4) | 09-13 | 위키 **v37** — **beta 전건 등록 완료**(Landpress 16 `ko_KR` + LIAM Event Message 16 · 대조 불일치 0) · prod는 클리닉 T0만(`isActive` **No**) · **번역 미착수**(ko만)·hero/버튼 URL **임시값** |
 
 ---
