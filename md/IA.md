@@ -29,6 +29,7 @@
 | 2026-08-10 | **주간 정기 점검 #4** — 프로덕션 + Beta + Unifi mini Beta | 인앱 브라우저(프로덕션 비로그인) + 사용자 Chrome(**Beta 로그인 세션 만료 — 비로그인**) | **USDT PLUS 이율 5%→7%(8/6 발효)로 홈 히어로 「최대 연 10%」 교체**, **Unifi Pay Direct(B2B 결제) 출시 공지**, **프로덕션 게임 미션 섹션 복귀**(#3 이월 해소), **mini Reward에 「매일 출석 체크」 신설**, **mini 럭키볼 친구 초대에 비실시간 지급(2주 이내·지급될/지급 완료 리워드) 반영**, 리워드 스켈레톤 이슈가 **Beta 비로그인에서도 재현**(Beta 환경 이슈로 범위 축소) |
 | 2026-08-10 | **#4 로그인 보강 점검** — 프로덕션·Beta·mini **로그인 상태** | 사용자 Chrome(프로덕션·Beta 양쪽 로그인 세션 제공받음) | **액션 라벨 개편(보내기·채우기·은행출금)·「외부 지갑 연결」이 프로덕션에 반영 확정**, 🆕 **`/interest/usdt` 누적 이자 화면 실측**, **스켈레톤 재현 조건 정정**(프로덕션 전건 정상 / Beta 웹 비로그인 / **mini Reward는 로그인에서도 고착**), 🆕 Beta **비상장 토큰 4종**·디버그 패널(**국가 모킹·결제 가맹점 진입**) 발견, 알림·거래내역 **한국어 필터 라벨** 확정 |
 | 2026-09-07 | **주간 정기 점검 #6** — 프로덕션(비로그인 + **로그인**) + Beta(**로그인**) + Unifi mini Beta(**로그인**) | 인앱 브라우저(프로덕션 비로그인) + 사용자 Chrome(프로덕션·Beta 양쪽 로그인 세션 제공) | 🔴 **마이 설정에 「Preferred Stable」 신설**(기준 스테이블코인을 사용자가 선택 — 화면 변형 축이 하나 늘었다), 🔴 **로그인 홈 전면 개편**(토큰별 3카드 + 프로모션 모달 + 헤더 **[pay]·[QR]·[알림]** 3아이콘 — #5 이월 「홈 상단 Pay 버튼」 해소), 🔴 **K-Pick 2단 구조 재편**(허브 + 카테고리 목록), 🔴 **K-美容에 「クリニック」 섹션 신설**(클리닉 19곳·필터 4종), 🆕 **`/pay/qr/mpm` 스캔 화면 실측**(카메라 권한 다이얼로그), 🆕 **상품 상세에 체크아웃 라우트·특정상거래법 표기·새 MINI app ID**, ❌ **입금 브릿지 배너 소멸**(이월 종결), ✅ **AlphaSec 한국어 노출 해소**, 🔴 **mini Reward 스켈레톤 재발** |
+| 2026-09-14 | **주간 정기 점검 #7** — 프로덕션(비로그인 + **로그인**) + Beta(비로그인) + Unifi mini Beta(비로그인) | 인앱 브라우저(프로덕션 비로그인·Beta·mini) + Chrome(**프로덕션 로그인 세션 유지**) | 🔴 **오프라인 QR 결제 캐시백 캠페인 화면 신설**(`/pay/campaigns/offline` — ICB 파트너 가맹점·지역 탭 4종·9/10 공지), 🔴 **프로덕션 리워드 탭 스켈레톤 고착**(비로그인·로그인 모두 재현 / Beta 웹·mini는 정상 — #6과 환경이 역전됐다), 🔴 **KAIA 스테이킹 이율 4.2%→4.1% 하향**(홈·자산·`/reward/kaia` 3곳 일치), 🆕 **홈 「부스트 참여하고 USDT 받기」 배너 신설**, 🆕 **Apps에 「나의 관심 Apps」 섹션 신설·USDT 시세 출처 Bithumb 교체**, ❌ **swap AlphaSec 배너 소멸**, 🔴 **mini 홈에 카탈로그 복귀**(#6 「Web 허브와 완전 중복」 판정 번복), ✅ **mini Reward 스켈레톤 해소**, 🔴 **mini 「외부 게임 미션」 한국어 노출 재발** |
 | 2026-09-03 | **주간 정기 점검 #5** — 프로덕션 + Beta + Unifi mini Beta (직전 회차로부터 **24일** — 8/17·8/24·8/31 미실행분 합산) | 인앱 브라우저(프로덕션·Beta·mini 비로그인) · Chrome 로그인 세션 **만료** | 🔴 **Unifi Pay 오프라인 QR 결제 사용자 화면 출시**(`/pay/qr/mpm/guide`·`/pay/qr/mpm` — #4 추적 항목 해소), 🔴 **K-Pick 상품 상세가 Unifi 내부 화면으로 편입 시작**(`/k-pick/shopping/{id}` — #3 「외부 이탈 확정」 부분 번복), 🔴 **mini 홈 전면 개편**(K-Pick형 커머스 화면으로 교체), **Season 4 개시**(9/1~10/1 · 수치 동일), **K-Pick 카테고리 라우트 3종 신설**, ✅ **스켈레톤 이슈 전 조합 해소**, ⚠️ **KR IP 정책은 프로덕션에서 유효**(판정 정정) |
 
 > ⚠️ 표시 = 아직 직접 진입 못 한 추정 영역(팝업·조건부 화면 등). 확인되는 대로 이 파일을 갱신한다.
@@ -46,13 +47,13 @@
 | 기준 자산 | USDT (예치풀) | USDT (EOA 지갑) | **JPYC** 리워드 (소수점 2자리) |
 | GNB | **Home·Apps·Assets·My 4탭** | Home·Assets·My 3탭 | ~~Home·Assets·My 3탭~~ → **Beta 실측 5탭**(Home·K-Pick·Reward·Assets·My · 2026-07-30·08-03 연속 확인) |
 | 어그리게이터 약관/approve | 필수 (가입 시) | 미제공 (체크 안 함) | 미제공 (체크 안 함) |
-| 예치·이자 | 제공 — **BASIC 연 3% / PLUS 연 7%**(2026-08-06 발효, 구 5%) + Boost 최대 3% = **최대 연 10%** | **이율 정보 전부 제거** (자산·자산상세) | ⚠️ 위키 스펙은 "미제공(예치금·이자 노출 불가)" — 그러나 **Beta mini Reward 상단에 JPYC 이자 배너가 4주 연속 실측**(2026-08-03·08-10·09-03). 🆕 **수치가 「최대 연 5%」 → 「最大年2%」로 하향**(2026-09-03). 🔴 **2026-09-07 mini 자산 탭(`/my`)의 JPYC 카드에도 「最大年2%の利息を受け取る」가 노출**돼 충돌이 리워드 탭 밖으로 확대됐다 → 확인 필요(§4) |
+| 예치·이자 | 제공 — **BASIC 연 3% / PLUS 연 7%**(2026-08-06 발효, 구 5%) + Boost 최대 3% = **최대 연 10%** | **이율 정보 전부 제거** (자산·자산상세) | ⚠️ 위키 스펙은 "미제공(예치금·이자 노출 불가)" — 그러나 **Beta mini Reward 상단에 JPYC 이자 배너가 4주 연속 실측**(2026-08-03·08-10·09-03). 🆕 **수치가 「최대 연 5%」 → 「最大年2%」로 하향**(2026-09-03). 🔴 **2026-09-07 mini 자산 탭(`/my`)의 JPYC 카드에도 「最大年2%の利息を受け取る」가 노출**돼 충돌이 리워드 탭 밖으로 확대됐다 → 확인 필요(§4). ⚠️ **2026-09-14 mini Reward 탭에서 이자 배너가 보이지 않았다**(비로그인 기준 — 자리에 JPYC 구매 가이드 배너) → 정책 반영인지 비로그인 한정인지 **로그인 재확인 필요** |
 | 교환(Swap) | **JP 미제공**, 그 외 제공 | 제공 | 미제공 — ✅ **2026-09-07 첫 실측 근거**: Beta mini `/my` 액션이 **取引履歴·出金·入金·銀行出金**으로 **Swap 미노출**(풀 모드는 4종). 위키 스펙과 일치 |
 | 은행송금 | 제공 | 제공 | 검토 중 (Sentbe 연동 방식) |
 | 거래내역/알림 | 제공 | 이자 내역 제외 | 이자 내역 제외 |
 | SkyFlag | 미제공 | 미제공 | **제공** |
 | OA 친구추가 유도 | LIFF 접근 시 유도 | LIFF 접근 시 유도 | 없음 (통합 OA 검토) |
-| 결제 | 지갑 연결 + 🆕 **오프라인 QR 결제(Unifi Pay)** — 2026-09-03 실측 · 사전 충전 잔액에서 차감 · 🆕 **2026-09-07 스캔 화면(`/pay/qr/mpm`)·로그인 홈 헤더 [pay] 버튼 실측**(§2-9) | 지갑 연결 | **LINE IAP** (지갑 연결 없음) + **JPYC 결제**(2026-07-10 공지 도입) |
+| 결제 | 지갑 연결 + 🆕 **오프라인 QR 결제(Unifi Pay)** — 2026-09-03 실측 · 사전 충전 잔액에서 차감 · 🆕 **2026-09-07 스캔 화면(`/pay/qr/mpm`)·로그인 홈 헤더 [pay] 버튼 실측** · 🔴 **2026-09-14 오프라인 캐시백 캠페인 화면 신설(`/pay/campaigns/offline` — ICB 파트너 가맹점)**(§2-9) | 지갑 연결 | **LINE IAP** (지갑 연결 없음) + **JPYC 결제**(2026-07-10 공지 도입) |
 | JPYC 이자 | **제공 (최대 연 5%)** — 2026-06-29 출시 | 미제공(이율 제거) | 미제공 |
 
 ### 0-0. 점검 환경 — 프로덕션 / Beta / mini Beta (2026-07-30 신설)
@@ -105,6 +106,8 @@ Beta 부속 도메인(실측): 프로모션 `unifi-promotion.line-apps-beta.com`
 | `/k-pick/{카테고리}/{상품ID}/checkout` | 🆕 K-Pick 체크아웃 | ⬜ | 🆕 2026-09-07 라우트 확인 — [Buy now]가 **LINE MINI app intent**로 유도(`miniapp.line.me/2008994549-CGfrtgSs/...`). **구매 플로우라 미진입** |
 | `/pay/qr/mpm/guide` | 🆕 오프라인 QR 결제 가이드 | 🟢 | 🆕 홈 최상단 히어로 배너로 진입. 프로덕션·Beta 공통 |
 | `/pay/qr/mpm` | 🆕 QR 스캔·결제 | 🔴 | ✅ **2026-09-07 실측**: "Scan QR for offline payment" + **카메라 권한 다이얼로그**([Grant Access]·[Cancel]). **권한 미허용·결제 미실행** |
+| `/pay/campaigns/offline` | 🆕 오프라인 결제 캐시백 캠페인 | 🟢 | 🆕 **2026-09-14 신설**. 비로그인 홈 배너 「Pay with QR, get 10% back」로 진입 · 프로덕션·Beta 공통 · **로그인 홈에는 배너가 없다** |
+| `/pay/campaigns/offline?campaignStatus=view` | 🆕 내 캐시백 조회 | 🔴 | 🆕 비로그인에서 [View my cashback] → `/auth/sign-in?returnUrl=…campaignStatus%3Dview`. ⚠️ **로그인 상태에서 버튼·쿼리 모두 무반응**(화면 변화 없음) — 미실측·FE 확인 대상(§4) |
 | `/plus/usdt` | 플러스 모드 상세 | 🔴 | 🆕 홈 「Earn up to 7% interest」 배너 진입점 (2026-09-03 라우트 확정) |
 | `/reward/kaia` · `/reward/usdt` | 스테이킹·부스트 | 🟢 | 정책·티어 전문은 동일 노출. 로그인 시 Accrued Reward·Delegatable KAIA·티어 충족 여부에 실제 값 |
 | `/apps` · `/apps/market` | Apps 메인·마켓 | 🟢 | 비로그인 배너 **"로그인하고 $1.2 리워드 받기"** 노출 |
@@ -129,7 +132,7 @@ Beta 부속 도메인(실측): 프로모션 `unifi-promotion.line-apps-beta.com`
 | 조합 | 상태 | 근거 |
 |---|---|---|
 | **Web × KR IP × 비로그인** | ✅ 실측 (프로덕션 2026-07-27·07-30·08-03·08-10) | 인앱 브라우저 |
-| **Web × KR IP × 로그인** | ✅ **실측 완료 (2026-08-10 프로덕션 로그인 전체 순회)** — `/my`·`/setting`·`/notification`·`/my/token/transaction`·`/interest/usdt`·`/transfer`·`/deposit`·`/apps/trade/swap`·`/apps/my-page/nfts` | Chrome (프로덕션+Beta 양쪽 세션) |
+| **Web × KR IP × 로그인** | ✅ **실측 완료 (2026-08-10 · 09-07 · 09-14 프로덕션 로그인 전체 순회)** — `/my`·`/setting`·`/notification`·`/my/token/transaction`·`/interest/usdt`·`/transfer`·`/deposit`·`/apps/trade/swap`·`/apps/my-page/nfts` | Chrome (프로덕션+Beta 양쪽 세션) |
 | **mini × KR IP × 로그인** | ✅ 실측 (Beta mini 2026-07-30·08-03·08-10·**09-07**) | Chrome (Beta mini) |
 | **mini × KR IP × 비로그인** | ✅ 실측 (2026-08-10) — 홈에 JPYC 잔액 배너·내 예약 타일 미노출, `luckyball-invite` CTA가 [로그인 하기] | Chrome |
 | **LIFF × 모든 IP** | ⬜ 미점검 — LINE 인앱 브라우저 진입 필요 | 위키 스펙만 |
@@ -169,6 +172,8 @@ Beta 부속 도메인(실측): 프로모션 `unifi-promotion.line-apps-beta.com`
 - 외부 이탈 도메인: 은행송금 `unifi.sentbe.com` · 개발자 `developers.unifi.me` · 보안 감사 `contract-audit.unifi.me` · 고객센터 `contact.unifi.me` · 스테이블 코인 소개 `welcome.unifi.me` · 프로모션 `promotion.unifi.me`.
 - **⚠️ 리워드 라우트 이원화 (2026-07-30 실측)**: `/reward/...` = **부스트·스테이킹 보상** 영역(§2-2-1)이고, GNB 리워드 탭(출석·게임·럭키볼)은 `/benefits/daily-mission`이다. 그리고 **Beta에서 `/benefits`는 K-Pick 탭**이다 — `/reward`·`/benefits`·`/benefits/daily-mission` 셋이 서로 다른 화면이므로 라우트만 보고 주기능을 정하지 않는다.
 - **구 라우트 리다이렉트**: `/boost/kaia` → `/reward/usdt` (2026-07-30 확인 — 구 링크는 살아 있으나 신규 표기는 `/reward/usdt`).
+- 🆕 **2026-09-14 신설 라우트**: 결제 캠페인 **`/pay/campaigns/offline`**(비로그인 열람) · 내 캐시백 **`/pay/campaigns/offline?campaignStatus=view`**(로그인 필수 · 무반응 — §4). 캠페인 배너 링크에 `utm_*`·`referral_code` 파라미터가 붙는다.
+- 🆕 **홈 헤더 아이콘의 GA 이벤트 어휘 실측 (2026-09-14)**: 좌→우 **`click_home_pay_qr`**(→ `/pay/qr/mpm`) · **`click_address`**(→ `/deposit`) · **`click_gnb_noticenter`**(→ `/notification`). ⚠️ #6에 「[QR] = 입금」으로 적은 두 번째 아이콘의 정본 어휘는 **「주소(address)」**다.
 - 🆕 **2026-09-07 신설·확정 라우트**: K-Pick **체크아웃 `/k-pick/{카테고리}/{상품ID}/checkout`**(구매 CTA [Buy now] — **LINE MINI app 전용 진입**) · 프로덕션 **`/benefits/k-pick/{beauty|shopping|pop}` 개방**(KR IP에서 카탈로그 0건).
 - 🆕 **커머스용 MINI app ID가 별개다 (2026-09-07 실측)**: 상품 상세·카테고리 목록의 CTA가 **`2008994549-CGfrtgSs`** 로 유도된다(`miniapp.line.me/2008994549-CGfrtgSs/...`). §0-0의 mini 점검 창구 `2008994547-GfGUdDxy`와 **다른 앱**이므로 혼용하지 않는다.
 - ❌ **입금 「브릿지」 배너 소멸 (2026-09-07 로그인 실측)**: `/deposit`에서 멀티 네트워크 브릿지 진입점이 제거되고 안내가 **"All KAIA network tokens use the same wallet address."** 단일 네트워크(KAIA) 표기로 정리됐다. `asset_deposit_network_01`은 **부여 대상 아님**으로 처리(§2-3).
@@ -198,9 +203,13 @@ Beta 부속 도메인(실측): 프로모션 `unifi-promotion.line-apps-beta.com`
 
 ```
 home_pay_qr_01                    🆕 **오프라인 QR 결제 히어로 배너 (2026-09-03 신설 · 홈 최상단)** — "USDT Payments, All in One QR! / Offline Payment Guide" → `/pay/qr/mpm/guide`(§2-9)
+home_pay_campaign_01 ⚠️잠정        🆕 **오프라인 결제 캐시백 캠페인 배너 (2026-09-14 신설 · 비로그인 전용)** — "Pay with QR, get 10% back / Instant USDT cashback in Korea"
+                                  → `/pay/campaigns/offline`(§2-9) · 프로덕션·Beta 공통 · **로그인 홈에는 없다**
+home_benefit_boost_01             🆕 **부스트 배너 (2026-09-14 신설 · 프로덕션·Beta 공통)** — 「부스트 참여하고 USDT 받기 / 최대 3% 추가 이자 받기」 → `/reward/usdt`
 home_main_01                      홈 메인 — 자산 요약 카드(USDT/JPYC/IDRP 탭·입금하기·플러스 모드 배너·누적 이자)
                                   └ 🔴 **로그인 홈 전면 개편 (2026-09-07 프로덕션 로그인 실측)** — 비로그인 홈과 구성이 통째로 다르다
-                                     · **헤더 아이콘 3종**: **[pay]**(→ `/pay/qr/mpm` QR 결제 · **로그인 전용** — #5 이월 항목 해소) · **[QR]**(→ `/deposit` 입금) · **[알림]**(레드닷)
+                                     · **헤더 아이콘 3종**: **[pay]**(`click_home_pay_qr` → `/pay/qr/mpm` QR 결제 · **로그인 전용** — #5 이월 항목 해소) · **[주소]**(`click_address` → `/deposit` 입금 · 🆕 2026-09-14 GA 어휘 실측으로 「QR」→「주소」 정정) · **[알림]**(`click_gnb_noticenter` · 레드닷)
+                                     · 🆕 **토큰 3카드 자체가 토큰 상세 링크다 (2026-09-14)** — 카드 전체가 `/my/token/{컨트랙트주소}`로 이동한다(카드 내 [채우기]는 별도)
                                      · **토큰별 3카드**: 「JPYC Balance」·「USDT Balance(3% Annually · **Total Interest** N USDT)」·「IDRP Balance」 —
                                        카드마다 **[Deposit]** 버튼 + 유도 문구(JPYC "Deposit JPYC now and Manage easily with Unifi" ·
                                        USDT "Earn Annual 7% in Plus Mode" · 🆕 IDRP "**Buy IDRP and swap for USDT to earn up to 10% annual interest, paid daily**")
@@ -220,7 +229,9 @@ home_benefit_plus_01              🆕 플러스 모드 배너 (2026-09-03 프�
 home_benefit_swap_01              🆕 "Get more interest — Deposit other tokens and Swap to USDT" (2026-09-03 신설)
 home_benefit_referral_01          ❌ **소멸 (2026-09-03)** — ~~특별 레퍼럴 랭킹 혜택~~. 3rd Special USDT Referral Campaign 종료(8/21 보상 지급 완료 공지)로 프로덕션 홈에서 제거
                                   ※ Beta에는 대체 배너 **「友だちと一緒にJPYCをもっとゲット — 預けてリワードUP！ランキング報酬も」**(→ `promotion.unifi.me/referral-campaign-jpyc-2`)가 있다
-home_benefit_together_01          🆕 함께하면 더 큰 혜택, KAIA & USDT (Better Together — 최대 4.2% 보상 + 특별 혜택 · /reward/kaia 진입 배너 · 2026-07-30 신설)
+home_benefit_together_01          🆕 함께하면 더 큰 혜택, KAIA & USDT (Better Together — /reward/kaia 진입 배너 · 2026-07-30 신설)
+                                  └ 🔴 **부제 수치가 최대 4.2% → 「최대 4.1% 보상에 특별 혜택까지!」로 하향됐다 (2026-09-14 프로덕션 로그인·비로그인 공통)**
+                                     — 내 자산 KAIA 카드·`/reward/kaia` 본문과도 **4.1%로 일치**한다(§2-2-1·§2-3). 수치를 상수로 인용하지 않는다
                                   ※ Beta 전용 홈 배너(2026-09-03 실측 갱신): 🆕 **「友だちにJPYCをプレゼントする / ラッキーボール1個で最大50,000JPYC」**(→ mini `luckyball-invite`) ·
                                     🆕 **「友だちと一緒にJPYCをもっとゲット / 預けてリワードUP！ランキング報酬も」**(→ `promotion.unifi.me/referral-campaign-jpyc-2`) ·
                                     「연 7% 더 높아진 이자 혜택 받기」(→ `/plus/usdt`) · 결제 시 최대 15% 캐시백(→ `/benefits`) · 부스트로 최대 3% 추가 이자 ·
@@ -250,6 +261,12 @@ home_privacy_01                   개인정보 처리방침 (/term/PRIVACY_POLIC
 
 ```
 reward_main_01                    Rewards 메인 (리워드 USDT·럭키볼 개수 요약)
+                                  └ 🔴 **2026-09-14 프로덕션 리워드 탭 스켈레톤 고착 — 환경이 역전됐다**
+                                     · 인앱 브라우저(비로그인)·Chrome(**로그인**) 양쪽에서 **15초 후에도 대시 블록 33개**로 고착(3회 재현)
+                                     · 렌더되는 것은 헤더 「Rewards」·「미션 / 일일 미션하고 럭키볼로 최대 500 USDT 뽑기」·「Apps 둘러보기」뿐
+                                     · 콘솔 **`ACCESS_DENIED`(401)** · `api-reward.unifi.me/v1/mission-users` 401 (`/v1/token-info/country`는 200)
+                                     · ✅ **Beta 웹·Beta mini 리워드 탭은 정상 렌더** — #6(프로덕션 정상·Beta mini 고착)과 **정반대**
+                                     · ⛔ 가려진 영역: 출석 체크 진행도·게임 미션 6종·럭키볼 요약 → **이 회차 재확인 불가**. **FE 확인 권장 · 최우선 이월**(§4)
                                   └ 한국어 실측 문구(2026-08-03): "리워드 0 USDT" / "럭키볼 0개" / **"일일 미션"**(Daily Mission) + 카운트다운 "HH:MM:SS 남음" /
                                     "일일 미션하고 럭키볼로 최대 500 USDT 뽑기" / "Apps 둘러보기"
 reward_checkin_01                 출석 체크 (1~5일 연속 — 3·5일 럭키볼, **"출석하기"** 버튼)
@@ -284,12 +301,15 @@ reward_boost_usdt_01 ⚠️잠정        USDT Reward 탭 (/reward/usdt — 구 /
                                   └ USDT 특별 이자 "최대 3% 추가 Boost" · 티어 300,000/400,000/500,000 KAIA = 1/2/3%
                                   └ **부스트 조건에 위임(delegate) KAIA 합산** — Unifi 지갑 보유 + Kaia Square의 Unifi 노드 위임 수량을 동등 반영 (2026-07-30 신설 문구)
                                   └ 플러스 모드 USDT에 적용 · 일 00:00 UTC+0 기준 · 최대 100,000 USDT까지
+                                  └ 🆕 **한국어 전문 실측 (2026-09-14 로그인)**: 「부스트 혜택은 상시로 자동 적용됩니다 / 별도의 만기나 유지 기간 종료 없이 상시 운영돼요」 ·
+                                     「Tier는 잔고에 따라 매일 갱신됩니다 — 매일 이자 지급 시점(00:00 UTC+0)의 잔고에 따라 다음 날 Tier가 즉시 상/하향」 ·
+                                     「KAIA 보유량이 Tier 1 미만으로 떨어지면 당일 이자는 미지급되나, 추가 입금하여 조건을 채우면 해당일부터 즉시 다시 지급」
                                   └ 🆕 **운영 기간이 「무기한」으로 바뀌었다 (2026-09-03 실측)** — 화면 문구 "Your Boost remains active automatically with **no expiration date**."
                                      ※ 구 기재(공지 기준 "~2026-10-04 23:59:59 UTC+0 연장")를 대체한다. 단 하단 각주에 "내부 사정에 따라 변경·조기 종료 가능" 유지
 reward_staking_kaia_01 ⚠️잠정      KAIA Reward 탭 (/reward/kaia — **KAIA Dual Rewards: Base + Special**)
-                                  └ **Staking Rewards / KAIA Staking**: 위임으로 연 최대 4.2% · Accrued Reward · **Delegate 버튼** · Delegatable KAIA
+                                  └ **Staking Rewards / KAIA Staking**: 위임으로 연 최대 **4.1%**(🔴 2026-09-14 **4.2% → 4.1% 하향** — 홈 배너·내 자산 카드와 일치) · Accrued Reward · **Delegate 버튼** · Delegatable KAIA
                                   └ **Special Contribution Rewards**(= CR): KAIA 위임 + USDT 보유 시 10 USDT당 최대 0.449999 KAIA · Claimable reward · USDT principal
-                                  └ **Mission Check Period**: 🆕 **STAGE 2** — 1R 8.22~9.1 **Ended** / **2R 9.1~9.11 진행 중** / 3R 9.11~9.21 Scheduled (2026-09-03 실측) · View all
+                                  └ **Mission Check Period**: 🆕 **STAGE 2** — 1R 8.22~9.1 종료 / 2R 9.1~9.11 종료 / **3R 9.11~9.21 진행 중**(2026-09-14 실측 · 09-03에는 2R 진행 중) · 전체 보기
                                      ※ STAGE 1은 1R 7.23~8.2 / 2R 8.2~8.12 / 3R 8.12~8.22였다 — **약 10일 회차가 STAGE 단위로 이어진다**
                                   └ 🆕 **섹션 문구 신설 (2026-09-03)**: **"Unlock Idle Rewards — Delegate to unlock your wallet's idle rewards!"**(Staking) ·
                                      **"Wake up special rewards — Deposit 10,000 USDT to earn up to 450 KAIA in rewards."**(CR) · **[View Total Rewards]** 진입점
@@ -336,7 +356,7 @@ asset_main_01                     내 자산 메인 — 나의 총 자산·액�
                                   └ ⚠️ **액션 버튼 노출 개수는 조건부**: 프로덕션(자산 보유)은 4종 전부, **Beta(잔고 0) 계정은 「보내기·채우기」 2종만 화면 노출**(DOM에는 4종 존재)
                                   └ 🆕 **Beta 전용 — 비상장 토큰 4종 표시**(BO·GRT·SIK·YOO 각 10,000 · **「비상장」 배지**). 프로덕션 미노출
                                   └ 🆕 **프로덕션 카드 유도 문구 확정 (2026-09-07 로그인 실측)**: USDT "**Hold USDT in Plus Mode and Earn 7% annual interest with no conditions**"(→ `/plus/usdt`) ·
-                                     KAIA "**Stake KAIA and Earn up to 4.2% annual interest**"(→ `/reward/kaia`) · **JPYC 카드에 「Max 2%」 배지**(#5까지 Beta·mini 전용이던 표기가 프로덕션 반영) · IDRP는 문구 없음
+                                     KAIA "**Stake KAIA and Earn up to 4.2% annual interest**"(→ `/reward/kaia` · 🔴 **2026-09-14 한국어 「KAIA 스테이킹하고 최대 연 4.1% 이자 받으세요」로 수치 하향**) · **JPYC 카드에 「Max 2%」 배지**(#5까지 Beta·mini 전용이던 표기가 프로덕션 반영) · IDRP는 문구 없음
                                   └ 🆕 **누적 이자 진입점이 바뀌었다 (2026-09-07)**: 구 「누적이자 N USDT를 받았어요」 배너가 사라지고 **USDT 카드 안 「Total Interest N USDT」 인라인 표기**가 `/interest/usdt` 진입점이다
                                   └ 🔴 **Beta mini `/my`는 액션이 3종이다 (2026-09-07)**: **取引履歴 · 出金 · 入金 · 銀行出金** — **Swap 미노출**(§0 "mini 교환 미제공"의 첫 실측 근거).
                                      🆕 JPYC 카드에 **「最大年2%の利息を受け取る」** 노출(이자 미제공 스펙과 충돌 — §4) · ❌ #4의 **비상장 토큰 4종(BO·GRT·SIK·YOO)은 미노출**
@@ -350,6 +370,8 @@ asset_interest_usdt_01 ⚠️잠정      🆕 **나의 USDT 누적 이자 (`/int
                                   └ 구성: 누적 이자 총액 · 보유 USDT 누적 이자 · 현재 **연 3%**(BASIC) ·
                                     배너 2종 **「플러스 모드로 연 7% 이자 받기」**·**「KAIA 부스트로 최대 연 3% 추가이자 받기」** ·
                                     **나의 이자 내역**(필터 3종: 3개월 · 최신순 · 전체 · 항목 표기 "연 4% 기본 이자" = 과거 이율 표기 그대로 보존)
+                                  └ 🆕 **빈 상태 실측 (2026-09-14 · 이자 수령 이력 0건)**: 「받은 이자 내역이 없습니다 / USDT를 입금하고 이자를 받아보세요.」 + CTA **[USDT 입금하기]**
+                                     ※ 누적 이자가 0에 가까우면 내 자산 USDT 카드의 「Total Interest」 인라인 표기도 보이지 않는다(진입점은 화면 자체 URL)
                                   └ 🆕 **영문 라벨 확정 (2026-09-07)**: 헤더 **"My USDT Total Interest"** · 합계 **"Total USDT Interest"** · 배너 2종 **"Earn Annual 7% in Plus Mode"**·**"Earn Up to 3% with KAIA Boost"** · 내역 항목 **"4% Base Interest"**
 asset_history_01                  거래내역 (/my/token/transaction — 필터 4종 **한국어 실측 라벨(2026-08-10): 3개월(기간)·모든 토큰(토큰)·전체(유형)·최신순(정렬)** ·
                                   항목 표기 **"입금 | 기본 이자 +N USDT"**(영문 UI는 "Received | Base Interest") · Wallet/mini는 이자 내역 제외)
@@ -367,6 +389,9 @@ asset_deposit_01                  입금하기 (/deposit — 네트워크(KAIA)�
                                      카테고리 탭 **Stablecoins / Other Tokens** · 토큰 탭 **JPYC · USDT · IDRP**(Preferred Stable 순) ·
                                      JPYC 안내가 **2단계**로 교체 — ① "**Buy JPYC on jpyc.co.jp**" + **[View JPYC Deposit Guide]** ② "Check your JPYC balance"
                                      (구 "거래소 입금 3단계 안내"에서 **외부 구매처 유도**로 성격이 바뀌었다) · 하단 "The new Stablecoin Wallet"
+                                  └ 🔴 **2026-09-14 JPYC 1단계 문구가 다시 바뀌었다** — ① 「**JPYC를 Unifi 지갑으로 전송하세요** / Unifi에서 내 지갑 주소를 복사한 후, 보유 중인 JPYC를 해당 주소로 입금하세요」
+                                     + **[JPYC 입금 가이드 보기]** ② 「지갑에 입금된 JPYC를 확인하세요」. **#6의 외부 구매처(jpyc.co.jp) 유도 문구가 사라지고 「지갑 전송 안내」로 되돌아갔다**
+                                     (2단계 구조·[가이드] 버튼은 유지 · 네트워크 안내 「KAIA 네트워크의 모든 토큰은 동일한 지갑주소를 사용합니다」 유지)
 asset_deposit_network_01 ❌소멸     ~~지원 네트워크 안내 — **브릿지**(어떤 네트워크로 보내도 전액 도착)~~
                                   └ ❌ **2026-09-07 배너 자체가 제거됐다** — #4에서 "클릭이 동작하지 않음 → FE 확인 대상"으로 이월했던 항목이 **화면 제거로 종결**.
                                      현재 입금은 **KAIA 단일 네트워크 안내**뿐이다. **Screen ID 부여 대상 아님**(부활 시 새 항목으로 기록)
@@ -390,14 +415,21 @@ apps_main_01                      Apps 메인 — Reward 서브탭 (/apps · **�
                                     USDT Reward Missions(실측 3건: Lucky Dice Lv3 도달 0.1 USDT / Pinky Auctions 빙고 1줄 1 USDT / Pinky Auctions 친구 10명 초대 0.1 USDT) ·
                                     KAIA Reward Missions(2026-08-03 기준 항목 없음) / Editor's Pick(PetPoP·Legend War·Skylands) / Explore Apps
                                     (🆕 **카테고리 7종: AI·CONTENT·DePIN·GAME·Payment·SOCIAL·ETC** — **2026-09-07 `SocialFi` 소멸**(8종→7종) · **26 Apps**(7/27·7/30 27 → 8/3 30 → 8/10 29 → 9/3 27 → **9/7 26**) · Popular 정렬 · 각 앱은 외부 dapp URL로 이탈)
-                                  └ 수혜자 수·시세 위젯은 **매 점검 변동**(2026-09-07: 9,021,821명 · 1 KAIA=$0.03 · 1 USDT=$0.99 · 기준일 2026.09.07) — 변경 판단 대상 아님
+                                  └ 🆕 **2026-09-14 구조 변경 3건**
+                                     · 🆕 **「나의 관심 Apps」 섹션 신설**(게임 프로모션 캐러셀 바로 아래 · [전체보기] 동반) — IA에 없던 영역
+                                     · 게임 프로모션 캐러셀이 **5종 → 3종**으로 축소(🆕 **「오늘도 환생2」** 신규 / ❌ Endless Frontier2·LORDNINE·Seal M 미노출 · 잔류 Siege Of Titans·LEGEND WAR)
+                                     · **USDT 시세 출처가 CoinMarketCap → Bithumb으로 교체**(KAIA는 CoinMarketCap 유지) — 표기는 통화 설정을 따른다(KRW 계정에서 ₩)
+                                  └ ✅ **카테고리 7종 2주 연속 확인 (2026-09-14)** — AI·CONTENT·DePIN·GAME·Payment·SOCIAL·ETC. `SocialFi` 소멸이 일시 현상이 아니라 **카테고리 폐지**로 판정한다(#6 추적 항목 종결)
+                                  └ 수혜자 수·시세 위젯은 **매 점검 변동**(2026-09-14: 9,022,377명 · 1 KAIA=₩39 · 1 USDT=₩1,360 · 기준일 2026.09.14 / 2026-09-07: 9,021,821명) — 변경 판단 대상 아님
 apps_market_01                    Apps 마켓 서브탭 (/apps/market — Buy/Sell · Drops: Live & Upcoming / Past / Now · NFT 드롭 카드(가격 KAIA·수량·판매율))
 apps_mypage_nft_01                나의 NFTs (/apps/my-page/nfts — 탭 3종: 전체·판매중·거래내역 / 빈 상태 "지갑에 보유하고 있는 NFT가 없어요")
-                                  └ 🆕 **2026-09-07 영문 빈 상태 실측**: "**No NFTs / You don't have any NFTs in your wallet.**" — 보유 0건에서는 **탭 3종이 노출되지 않는다**(빈 상태 전용 구성)
+                                  └ 🆕 **2026-09-07 영문 빈 상태 실측**: "**No NFTs / You don't have any NFTs in your wallet.**"
+                                  └ ⛔ **2026-09-14 기재 정정** — 보유 0건에서도 **탭 3종이 노출된다**(「전체 0 · 판매중 0 · 거래내역」). #6의 "탭 미노출" 기재는 오기이므로 폐기하고, 빈 상태는 **탭 + 「NFT 없음 / 지갑에 보유하고 있는 NFT가 없어요」** 구성으로 확정한다
                                   ※ 진입점은 내 자산의 "보유 NFT" · `/apps/my-page` 단독 진입은 `/my`로 리다이렉트
 apps_trade_swap_01                교환하기 (/apps/trade/swap — From/To 토큰 선택·Max·스왑 방향 전환 버튼·교환 · JP 미제공·mini 미제공)
                                   └ 하단 프로모션 배너 — ✅ **2026-09-07 번역 누락 해소**: 영문 UI에서 **"Trade KAIA on AlphaSec with Zero Fees!"** 로 정상 노출
                                      (#3에 "지금 AlphaSec에서 KAIA 거래하면 즉시 수수료 0원!" 한국어 그대로 노출로 기록됐던 XLT 누락 의심 건 **종결**)
+                                  └ ❌ **2026-09-14 AlphaSec 배너 자체가 사라졌다** — 화면은 From/To·잔고·[최대]·방향 전환·[교환]만 남았다. 프로모션 종료로 보이며, 부활 시 새 항목으로 기록한다
 apps_trade_swap_confirm_01_01     ⚠️ 교환 확인 팝업 (예상 수수료)
 ```
 
@@ -410,7 +442,7 @@ my_security_passkey_01            인증/보안 — 생체 인증 패스키 (등
 my_security_passcode_01           인증/보안 — 간편 비밀번호
 my_wallet_privatekey_01           지갑 — 개인 키 확인하기
 my_setting_language_01            화면 표시 — 언어 설정 (한국어 등 · 영문 UI "Language Settings")
-my_setting_preferred_stable_01 ⚠️잠정  🔴 **화면 표시 — 「Preferred Stable」 신설 (2026-09-07 실측 · 값 JPYC/USDT/IDRP)**
+my_setting_preferred_stable_01 ⚠️잠정  🔴 **화면 표시 — 「선호 스테이블 코인」(Preferred Stable) 신설 (2026-09-07 실측 · 🆕 2026-09-14 한국어 라벨 확정 · 값 JPYC/USDT/IDRP)**
                                   └ **기준 스테이블코인을 사용자가 고른다** — 홈 자산 카드 순서·기본 탭, 홈 히어로 이율 수치, 가이드 카드 구성이 이 값에 따라 갈린다(§0-0-1 축 ①-b)
                                   └ ⛔ **어휘 미확정 — 부여 금지**(§4 승인 대기 ⑨)
 my_setting_currency_01            화면 표시 — 통화 설정 (JPY ¥ 등)
@@ -457,7 +489,9 @@ kpick_category_01                 🆕 **K-Pick 카테고리 목록 (2026-09-03 
                                   └ 🆕 헤더에 **MY쇼핑** 링크(허브와 동일) · 상단 탭 **K-美容 / K-買い物 / K-カルチャー**
                                   └ Beta Web `/benefits/k-pick/beauty` · `/benefits/k-pick/shopping` · `/benefits/k-pick/pop`
                                   └ Beta mini `/benefits-mini/k-pick/beauty` · `/shopping` · `/pop` (동일 구성)
-                                  └ 라벨 K-美容 / K-買い物 / K-カルチャー · ⚠️ **「내 예약」은 여전히 `href="#"`** — 라우트 없음
+                                  └ 라벨 K-美容 / K-買い物 / K-カルチャー(ja UI) · 🆕 **영문 UI 라벨 확정 (2026-09-14)**: **K-Beauty / K-Shopping / K-Culture**(프로덕션·Beta·mini 공통) ·
+                                     허브의 카테고리 4아이콘은 **K-Beauty · K-Shopping · K-Culture · My Reservation** · ⚠️ **「내 예약」은 여전히 `href="#"`** — 라우트 없음
+                                  └ 🆕 **mini 카테고리 목록에는 헤더 타이틀 「K-Pick」이 있다 (2026-09-14)** — Beta Web 목록 헤더는 [back]·「My Shopping」뿐이다(같은 화면의 환경 차이)
                                   └ 🔴 **K-美容에 「クリニック」 섹션 신설 (2026-09-07 · Beta Web·mini 공통)** — 이 저장소 clinic 위키 작업 대상 화면이 라이브에 올라왔다
                                      · 필터 4종 **すべて / 皮膚・美容外科 / 歯科 / 眼科**
                                      · 클리닉 카드 구성: 병원명 · **평점(4.6~4.9)+리뷰 수** · 지역(서울 강남구 등) · **시술 태그**(라미네이트·임플란트·쥬베룩·리쥬란·포텐자·울세라·서마지 등) ·
@@ -465,10 +499,15 @@ kpick_category_01                 🆕 **K-Pick 카테고리 목록 (2026-09-03 
                                      · 실측 **19곳**: 루치과 · 뷰티온의원 명동 · **청담봄온의원** · 청담여신미용외과 · 티아나미용외과 · 더피크의원 · **DA미용외과** ·
                                        레디피부과 · 강남헤라미용외과 · 델픽의원 · 힐링안과 · 밀리클리닉 도산 · AB미용외과 · 톡스앤필 강동천호점 · POEN클리닉 ·
                                        원데이치과 · VS라인의원 강남점 · 루비미용외과 등
+                                     · 🆕 **2026-09-14 재실측**: 클리닉 **18곳**(#6 19곳) · 필터 영문 라벨 **All / Dermatology & Plastic Surge(ry) / Dentistry / Ophthalmology** ·
+                                       **클리닉 캐시백은 카드별로 다르다**(티아나 15% · 원데이치과 10% · 레디피부과 8% · 강남헤라 5% · 힐링안과 15%) — **카테고리 균일 7%와 별개 축**이다
                                      · ⛔ **어휘 미확정 — 부여 금지**(§4 승인 대기 ⑩)
                                   └ 카탈로그 대폭 확대: K-뷰티에 헤어·두피·마사지·에스테·퍼스널컬러 등 **20건 이상**(마리엠헤어&헤드스파·명동 컨디션·JUNO HAIR 홍대·말지아 힐링스파·동대문 풋샵 등),
                                     K-컬처에 한복 대여(경복궁 아리한복)·찜질방(스파렉스 동묘점 **GuideKim 한정**)·인사동 전각 체험·개화기 의상(인천 차이나타운)·달리포토 스냅 신규
                                   └ 🆕 **K-컬처 신규 상품 (2026-09-07)**: **DMZ 투어**(전문 가이드 동행) · **난타(Nanta Show) 공연** · **JUMP 공연**(명보아트홀) · K-Pop 걸그룹 스타일링 포토
+                                  └ 🆕 **2026-09-14 카탈로그 실측치**: K-Beauty **20건**(+클리닉 18곳) · K-Shopping **바우처 12종**(올리브영 3·다이소 3·CU 2·이마트 4 — #6과 동일 구성) · K-Culture **22건**
+                                  └ 🆕 **K-Culture 상품 카드에 태그 배지가 붙었다 (2026-09-14)** — 예: 「ソウル」·「仁川」·「Show Ticket」·「Martial Arts」·「KPOP」·「Dance class」·「Aquarium」.
+                                     ⚠️ **일본어(지역)와 영문(장르)이 한 카드 안에 혼재**한다 — 표기 정책 확인 대상(§4). 🆕 신규 상품 **코엑스 아쿠아리움 입장권**
                                   └ 🆕 **캐시백률이 카테고리 단위로 균일해졌다 (2026-09-07)**: K-美容·K-カルチャー **환원 7% 균일** / K-買い物 **환원 10% 균일**(올리브영 1만원권만 5%)
                                      ※ #5의 상품별 편차(5%·10%)와 다르다 — **여전히 상수로 인용하지 않는다**
 kpick_product_detail_01 ⚠️잠정     🔴 **K-Pick 상품 상세 — Unifi 내부 화면으로 편입 시작 (2026-09-03 프로덕션 실측)**
@@ -518,7 +557,12 @@ kpick_kr_block_01                 KR IP — 버튼 비노출 + 국가 서비스 
                                   └ 🔴 **2026-09-07 mini 홈도 허브로 축소됐다** — 현재 구성: 헤더(マイショッピング·noti) → JPYC 안내 배너 → 「최대 15% 환원!」 배너 →
                                      **카테고리 4아이콘**(K-美容·K-買い物·K-カルチャー·マイ予約) → JPYC 구매 가이드. **바우처·스킨부스터·K-컬처 카탈로그는 카테고리 목록으로 이관**
                                      = **Beta Web `/benefits` 허브와 완전히 동일해졌다**. 중복 판단이 더 급해졌다(§4)
+                                  └ 🔴 **2026-09-14 카탈로그가 mini 홈으로 되돌아왔다 — #6 「완전 중복」 판정 번복**
+                                     현재 mini 홈 = 허브(JPYC 배너·15% 환원 배너·카테고리 4아이콘) **+ 🆕 「The most affordable way to plan your Korea trip」 › 「Must-have vouchers for your Korea trip」 바우처 12종**
+                                     **+ 큐레이션 3건**(클리닉·리쥬란·포텐자) **+ K-뷰티 상품**(Good Morning Yakson 등). 🆕 신규 상품 **TOM N TOMS Iced Americano**(환원 5% · `test.guidekim.me`)
+                                     ➡️ **Beta Web `/benefits` 허브에는 카탈로그가 없다** — 두 화면은 다시 달라졌고, 중복 판단은 「허브는 같고 홈에만 카탈로그가 붙는다」로 갱신해야 한다(§4)
                                   └ 🆕 **로그인 상태 실측(2026-09-07)**: 카테고리 행 옆에 **「進行中のご予約があります」 툴팁 + マイ予約** 노출(비로그인에는 없음)
+                                     · ⚠️ **2026-09-14 비로그인에서도 같은 툴팁(「You have a reservation in progress」 + My Reservation)이 노출됐다** — 로그인 한정 기재와 상충. 조건 재확인 필요(§4)
                                   └ 푸터 약관은 **Unifi·Unifi ウォレット·개인정보·마케팅만** — 어그리게이터 약관 없음 유지 ✅
                                   └ ❌ **소멸한 구 구성**: JPYC balance 배너 · 2칸 타일(내 예약 N건 / JPYC 데일리 미션 레드닷) · "From K-beauty to K-culture" 배너
                                   └ mini GNB 링크 실측: ホーム `/benefits-mini` · **K-Pick `/benefits-mini/k-pick/beauty`(신설)** · リワード `/benefits-mini/daily-mission` · 資産 `/my` · マイ `/setting`
@@ -533,6 +577,8 @@ kpick_kr_block_01                 KR IP — 버튼 비노출 + 국가 서비스 
                                     홍대 K-POP 댄스클래스 / 강남 호소 도산·청담점 · 캐시백 7% · ¥ 가격)
                                   └ ⚠️ 7/30 있던 **"100% 당첨되는 JPYC 럭키볼" 섹션이 홈에서 미노출**(→ Reward 탭 데일리 미션으로 이동 추정)
                                   └ ✅ **2026-09-03 스켈레톤 고착 해소** — Beta 웹·Beta mini 리워드 탭 모두 비로그인에서 정상 렌더(§4)
+                                  └ ✅ **2026-09-14 mini Reward 스켈레톤 해소** — 비로그인에서 대시 블록 0개, Special Missions·Mission·Daily check-in·Game mission 전부 정상 렌더.
+                                     ⚠️ 단 **JPYC 이자 배너(「最大年2%」)는 이번 회차에 보이지 않았다**(자리에 JPYC 구매 가이드 배너) — 정책 반영인지 비로그인 한정인지 로그인 재확인 필요(§4)
                                   └ 🔴 **2026-09-07 mini Reward 스켈레톤 재발** — **로그인 상태에서 20초 후에도 고착**. 이자 배너·Special Missions 카드·Daily Mission 진행도·
                                      「매일 출석 체크」·NEXT Bay 배너 영역이 대시 블록으로 남아 **재확인 불가**. `mission-users`·`missions` API는 **200**, 콘솔 에러 없음 →
                                      #3과 동일한 **프런트 렌더 이슈** 추정. 새 추적 항목으로 등록(§4)
@@ -543,6 +589,8 @@ kpick_kr_block_01                 KR IP — 버튼 비노출 + 국가 서비스 
                                   └ **Daily Mission** — "럭키볼로 최대 50,000 JPYC 뽑기" / 리워드 0 JPYC / 럭키볼 0
                                   └ ~~**Game mission** — "게임 미션 완료하고 JPYC 받기" / 항목 **"외부 게임 미션"**(0/2)~~
                                      → ✅ **2026-09-03 섹션 자체가 사라졌다**(NEXT Bay 배너로 대체). 한국어 노출 XLT 누락 의심 건도 함께 소멸
+                                     → 🔴 **2026-09-14 섹션 부활 + XLT 누락 재발**: "Game mission / Complete game missions to earn JPYC" 아래 항목이 **「외부 게임 미션」 한국어 그대로** 노출되고
+                                       "Before proceeding with mission 0/2"가 붙는다. 영문 UI인데 항목명만 한국어다 — **XLT 키 누락 의심 · #5에서 종결한 건의 재발**(§4)
                                   └ 🆕 **「매일 출석 체크」 섹션 신설 (2026-08-10 실측 — 8/3 "출석 체크 없음" 기재 정정)**
                                      "3일 연속, 5일 연속 출석체크하고 럭키볼 받아요" / 1일~5일 진행도 / CTA **"00:00:00 안에 출석하기"**(카운트다운 내장)
                                      ※ 풀 모드 문구("100 USDT 이상 예치하고 3일, 5일 연속 출석체크하면 럭키볼 받아요")와 달리 **예치 조건 문구가 없다** — mini는 JPYC 기준이라 조건 별도 확인 필요(§4)
@@ -595,11 +643,23 @@ pay_qr_guide_01 ⚠️잠정             오프라인 QR 결제 가이드 (/pay/
                                         ⚠️ 홈 상단 「Pay」 버튼은 **로그인 상태에서만 노출**로 추정(비로그인 홈 헤더 미노출)
                                      ③ 매장 QR 스캔 → 금액 입력 → **Unifi Pay로 결제 완료**
                                   └ CTA **[Start QR payment]** ×2 (본문 중간·하단)
-pay_qr_scan_01 ⚠️잠정              ✅ **QR 스캔 화면 실측 (2026-09-07 프로덕션 로그인 · /pay/qr/mpm)**
+pay_qr_scan_01 ⚠️잠정              ✅ **QR 스캔 화면 실측 (2026-09-07 프로덕션 로그인 · /pay/qr/mpm)** · 🆕 **한국어 라벨 확정 (2026-09-14)**:
+                                  「오프라인 결제 QR 스캔하기 / 매장에 부착된 결제 QR을 스캔해 주세요. 스캔 후 결제가 진행돼요.」 · 권한 팝업 「카메라 접근을 허용해 주세요. / QR코드를 스캔하려면 카메라 접근 권한이 필요해요. 설정에서 카메라 접근을 허용해 주세요.」 **[권한 허용하기]·[취소]**
                                   └ 헤드라인 **"Scan QR for offline payment"** · 안내 **"Please scan the payment QR code posted at the store. Payment proceeds after scanning."**
                                   └ 🆕 진입 즉시 **카메라 권한 다이얼로그**: "Please allow camera access. / Camera access is required to scan QR codes. Please allow camera access in Settings."
                                      · CTA **[Grant Access]** · **[Cancel]** → 별도 팝업 어휘 필요(`pay_qr_scan_01_01` 상당)
                                   └ **카메라 권한 미허용·결제 미실행** — 스캔 이후 금액 입력·결제 단계는 여전히 미실측
+pay_campaign_offline_01 ⚠️잠정     🔴 **오프라인 결제 캐시백 캠페인 (2026-09-14 신설 · `/pay/campaigns/offline` · 비로그인 열람 가능 · 프로덕션·Beta 공통)**
+                                  └ 헤드라인 "10% cashback on your Korea trip with USDT / Pay by QR with USDT at offline stores and get 10% back automatically. **First come, first served through October 31, 2026.**"
+                                  └ 구성: **[View my cashback]** → 🔒 `?campaignStatus=view`(로그인 필수) / 「Event details」 혜택 2블록(10% 캐시백 최대 50 USDT · 누적 500 USDT↑ 시 **500 USDT 추첨 10명**) /
+                                     **「Participating merchants」 지역 탭 4종(Gangnam-gu · Seongdong-gu · Yongsan-gu · Mapo-gu)** + 가맹점 카드(상호·카테고리·주소) /
+                                     「How to use」 5단계 / 「Compared to overseas cards」 3블록(수수료 0% · 연 3% 이자 · 은행 환율) / FAQ 5종 + [View Unifi FAQ] / 유의사항 9종 / 하단 CTA **[Pay with QR]**
+                                  └ 가맹점 카테고리 실측 5종: **F&B · Clothing/Fashion Accessories · Pharmacy/Medicine · Clinic · Services/Other** — 카드 클릭 시 **Google Maps 검색으로 외부 이탈**(Unifi 화면 아님)
+                                  └ 🆕 **가맹점 제휴 주체는 「ICB 파트너」**(9/10 공지) · **ZeroPay 가맹점 연동 예정**("will be added soon") — 향후 가맹점 범위 확대 예고
+                                  └ 정책(9/10 공지 전문): 기간 **2026-09-10 ~ 10-31 23:59(UTC+9)** · **방한 외국인 대상, 한국 거주 한국인 제외** · USDT QR 결제만 인정 ·
+                                     캐시백 결제 후 자동 지급(10~15분 소요 가능) · 1인 누적 상한 **50 USDT** · 추첨 지급 **2026년 11월 중순 예정** · 최대 **550 USDT**
+                                  └ ⚠️ **[View my cashback]가 로그인 상태에서 무반응** — 실제 클릭·`?campaignStatus=view` 직접 진입 모두 화면 변화 없음. **캐시백 조회 화면 미실측 · FE 확인 권장**(§4)
+                                  └ ⛔ **어휘 미확정 — 부여 금지**(§4 승인 대기 ⑫ · ⑦ `pay_` 주기능 확정과 묶어 결정)
 pay_qr_entry_01                   ✅ **진입점 확정 (2026-09-07)** — **로그인 홈 헤더 [pay] 아이콘**(비로그인 홈에는 없다 · #5 이월 항목 해소) + 가이드 페이지 하단 [Start QR payment]
 pay_qr_amount_01_01 ⚠️잠정         ⚠️ 금액 입력·결제 확인 (가이드 문구 근거 — 미실측)
 ```
@@ -628,6 +688,8 @@ pay_qr_amount_01_01 ⚠️잠정         ⚠️ 금액 입력·결제 확인 (�
   - 2026-09-07 실측 승격: **QR 스캔 화면**(`/pay/qr/mpm` + 카메라 권한 다이얼로그) · **로그인 홈 헤더 [pay]·[QR] 아이콘** · **로그인 홈 토큰별 3카드·프로모션 모달** ·
     **마이 「Preferred Stable」 설정** · **K-美容 클리닉 섹션(19곳)** · **상품 상세 구매 CTA·체크아웃 라우트·특정상거래법 표기** · **커머스용 MINI app ID** ·
     **`/deposit` 개편(브릿지 소멸·jpyc.co.jp 유도)** · **Beta mini `/my` 액션 3종(Swap 미노출)** · **NFT 빈 상태 영문 문구**
+  - 2026-09-14 실측 승격: **오프라인 결제 캐시백 캠페인 화면**(`/pay/campaigns/offline` — 가맹점 목록·정책 전문) · **QR 스캔 화면 한국어 라벨** · **홈 헤더 아이콘 GA 어휘 3종** ·
+    **`/setting` 「선호 스테이블 코인」 한국어 라벨** · **`/reward/usdt` 부스트 정책 한국어 전문** · **`/interest/usdt` 빈 상태** · **K-Pick 카테고리 영문 탭 라벨** · **클리닉 필터 영문 라벨**
   - 2026-08-10 실측 승격: **mini 「매일 출석 체크」 섹션**, **mini 럭키볼 친구 초대 비실시간 지급 블록·유의사항 6종**, **프로덕션 게임 미션 진행도 구성**, **홈 히어로 최대 연 10% 표기**
   - [x] ~~🔴 **스켈레톤 이슈**~~ → ✅ **2026-09-03 전 조합 해소·종결**. 프로덕션·Beta 웹·Beta mini 리워드 탭이 **비로그인에서 모두 정상 렌더**됐다(5주간 추적 종료). 재발 시 새 항목으로 기록한다. 아래는 8/10 시점의 재현 매트릭스(이력 보존).
 
@@ -639,7 +701,12 @@ pay_qr_amount_01_01 ⚠️잠정         ⚠️ 금액 입력·결제 확인 (�
 
     → **프로덕션은 완전 해소**(7/27 프로덕션 로그인 재현은 더 이상 관측되지 않음). 남은 문제는 **Beta 한정**이고, 그중 **mini Reward 탭은 로그인 상태에서도 뜨지 않는다** — 럭키볼 캠페인 작업의 핵심 화면이라 **우선 확인 대상**이다.
     참고(8/3 Beta 네트워크 실측): 정적 자산·API 모두 200(`POST /unifi/v1/mission-users` 포함), 콘솔 에러 0건인데 UI만 스켈레톤 → 프런트 렌더 이슈 추정
-- [ ] 🔴 **신규 (2026-09-07) — mini Reward 스켈레톤 재발**: #5에서 "전 조합 해소·종결"한 직후 **4일 만에 Beta mini `/benefits-mini/daily-mission`에서 재현**됐다.
+- [ ] 🔴 **신규 (2026-09-14) — 프로덕션 리워드 탭 스켈레톤 고착 (최우선)**: `www.unifi.me/benefits/daily-mission`이 **비로그인(인앱)·로그인(Chrome) 모두 15초 후에도 대시 33개**로 고착한다(3회 재현).
+  콘솔 **`ACCESS_DENIED`(401)**, `api-reward.unifi.me/v1/mission-users` **401**(같은 도메인의 `/v1/token-info/country`는 200).
+  **Beta 웹·Beta mini 리워드 탭은 정상 렌더**돼 #6(프로덕션 정상 · Beta mini 고착)과 **환경이 정반대로 뒤집혔다**.
+  가려진 영역: **출석 체크 진행도 · 게임 미션 6종 · 럭키볼 요약 · 카운트다운** — 이 회차 재확인 불가. **FE 확인 권장 · 다음 회차 최우선**
+- [x] ~~🔴 **신규 (2026-09-07) — mini Reward 스켈레톤 재발**~~ → ✅ **2026-09-14 해소**(비로그인 실측 · 대시 0). 남은 스켈레톤은 위 프로덕션 건이다. 상세는 아래 이력 보존.
+  - (이력 보존) **mini Reward 스켈레톤 재발 (2026-09-07)**: #5에서 "전 조합 해소·종결"한 직후 **4일 만에 Beta mini `/benefits-mini/daily-mission`에서 재현**됐다.
   **로그인 상태 · 20초 대기 후에도 고착** · 대시 블록 16개 · `mission-users`·`missions` API **200** · 콘솔 에러 없음(8/3 진단과 동일).
   가려진 영역: **이자 배너(最大年2%) · Special Missions 카드 · Daily Mission 진행도 · 「매일 출석 체크」 · NEXT Bay 배너** — 이 회차에 해당 항목 재확인 불가.
   ⚠️ 이번엔 **Beta mini 로그인 한정**이고 프로덕션·Beta 웹은 정상이다. **FE 확인 권장** · 다음 회차 최우선 재확인
@@ -652,7 +719,7 @@ pay_qr_amount_01_01 ⚠️잠정         ⚠️ 금액 입력·결제 확인 (�
 - [x] ~~**🆕 Unifi Pay Direct의 사용자 화면 편입 여부 추적**~~ → ✅ **2026-09-03 편입 확인**. 오프라인 QR 결제 화면이 프로덕션·Beta 양쪽에 출시됐다(§2-9). 남은 것은 어휘 확정 → **승인 대기 ⑦**
 - [ ] 🆕 **결제용 「사전 충전(top-up)」 잔액의 정체 확인** — 가이드가 "충전된 잔액에서 결제된다"고 하는데, 예치(Plus/Basic)·지갑 잔액과 어떤 관계인지 화면·기획 확인 필요. `pay_` 하위에 충전 화면이 별도로 있는지도 미확인
 - [x] ~~🆕 **홈 상단 「Pay」 버튼 실측**~~ → ✅ **2026-09-07 해소**. **로그인 홈 헤더의 [pay] 아이콘**이며 **비로그인 홈에는 없다**(옆에 [QR]=입금·[알림] 아이콘 동반). 스캔 화면(`/pay/qr/mpm`)까지 실측 완료(§2-9)
-- [ ] **🆕 Beta 홈 「함께하면 더 큰 혜택, KAIA & USDT」 부제 수치 이상** — **"最大0%の報酬"** 노출(프로덕션 4.2%). **2026-09-07까지 6주 연속 재현**, 이번엔 **로그인 상태에서도 동일** — 데이터 미로딩 시 0 폴백으로 보이며 **FE 확인 권장**(비로그인 한정이 아님이 확인됐다)
+- [ ] **🆕 Beta 홈 「함께하면 더 큰 혜택, KAIA & USDT」 부제 수치 이상** — **"最大0%の報酬" / "Up to 0% rewards"** 노출(프로덕션 4.1%). **2026-09-14까지 7주 연속 재현**(영문 UI에서도 동일), 2026-09-07 **로그인 상태에서도 동일** — 데이터 미로딩 시 0 폴백으로 보이며 **FE 확인 권장**(비로그인 한정이 아님이 확인됐다)
 - [ ] **🆕 mini 출석 체크의 자격 조건 확인** — 풀 모드는 "100 USDT 이상 예치" 문구가 있는데 mini에는 예치 조건 문구가 없다. JPYC 기준 조건이 별도인지, 문구 누락인지 기획 확인 필요.
   🆕 **2026-09-07 참고**: 풀 모드는 **게임 미션에도** "Deposit 100 USDT or more" 조건 문구가 붙어 있다(§2-2). **mini는 스켈레톤 재발로 재확인 불가** → 다음 회차 이월
 - [ ] **mini 이자 노출 정책 충돌 확인** — 위키 스펙은 "mini 예치금·이자 노출 불가"인데 Beta mini에 이자 표기가 **5주 연속 실측**됐다. 2026-09-03 수치가 「최대 연 5%」 → 「最大年2%」로 하향.
@@ -663,7 +730,7 @@ pay_qr_amount_01_01 ⚠️잠정         ⚠️ 금액 입력·결제 확인 (�
 - [x] ~~입금 **브릿지**(멀티 네트워크 입금) 상세 화면 확인~~ → ❌ **2026-09-07 배너 자체가 제거돼 종결**. `/deposit`이 **KAIA 단일 네트워크 안내**로 정리되고 JPYC은 **jpyc.co.jp 외부 구매 유도 2단계**로 교체됐다(§2-3). 부활 시 새 항목으로 기록
 - [x] ~~**Beta 액션 라벨 개편의 프로덕션 반영 시점 추적**~~ → **2026-08-10 프로덕션 반영 확인**(보내기·채우기·교환하기·은행출금). **구 라벨이 남은 XLT·위키 문구는 교체 대상**(용어집 v3.9~v4.0 `보내기` 개편과 연동)
 - [x] ~~**K-Pick KR IP 정책 재확인 — 구 정책 기재 폐기 검토**~~ → ⚠️ **2026-09-03 판정 정정: 폐기하지 않는다.** 프로덕션 `/benefits`를 함께 본 결과 **KR IP에서는 배너 3종만 노출되고 카테고리·바우처·시술·K-컬처가 전부 미노출**이었다. Beta의 전체 열람은 정책 폐기가 아니라 **Beta 환경이 IP 게이팅을 적용하지 않은 것**으로 판단한다. `kpick_kr_block_01` 기재 **유지**
-- [ ] **K-Pick 탭의 프로덕션 GNB 승격 추적** — Beta·mini는 5탭(K-Pick 포함)인데 프로덕션은 **6주째 4탭**이다(2026-09-07 로그인에서도 4탭). 승격 시점 확인.
+- [ ] **K-Pick 탭의 프로덕션 GNB 승격 추적** — Beta·mini는 5탭(K-Pick 포함)인데 프로덕션은 **7주째 4탭**이다(2026-09-14 로그인·비로그인 모두 4탭). 승격 시점 확인.
   ⚠️ 단 프로덕션에 **`/benefits`·`/benefits/k-pick/*` 라우트는 이미 열려 있다** — GNB 노출만 남은 상태로 보인다
 - [ ] **🆕 USDT 이율 변경의 문서 파급 확인** — PLUS **5% → 7%**(2026-08-06 발효, BASIC 3% 유지, Boost 포함 최대 10%). 위키·XLT·프로모션 문구에 **구 수치(5%·8%)** 가 남아 있으면 일괄 교체 대상
 - [ ] **⛔ 승인 대기 ④ (2026-08-03 신설 · 08-10 갱신)**: 「외부 지갑 연결」 어휘 — 잠정 `asset_wallet_connect_01`. **프로덕션 반영이 확인돼 어휘 확정 필요성이 올라갔다**. 내 자산 헤더 케밥 메뉴 소속이라 `asset_` 유지가 자연스러우나, 연결 플로우가 Apps/지갑 영역으로 갈 수 있어 **확정 전 부여 금지**
@@ -679,8 +746,12 @@ pay_qr_amount_01_01 ⚠️잠정         ⚠️ 금액 입력·결제 확인 (�
 - [ ] **⛔ 승인 대기 ⑪ (신규 2026-09-07)**: 🆕 **K-Pick 체크아웃 어휘** — `/k-pick/{카테고리}/{상품ID}/checkout`이 확인됐고 진입이 **LINE MINI app 전용**(커머스용 MINI app `2008994549-CGfrtgSs`)이다.
   후보 ⓐ `kpick_checkout_01` ⓑ `kpick_product_checkout_01` ⓒ MINI app 전용이므로 `_mini` 접미.
   ⚠️ **판매 주체가 Afformation Inc.(GuideKim)** 임이 특정상거래법 표기로 확인됐다 — 「Unifi 화면인가」 판정 기준을 도메인이 아니라 **판매 주체·운영 주체**로 볼지 함께 결정. **확정 전 부여 금지**
+- [ ] **⛔ 승인 대기 ⑫ (신규 2026-09-14)**: 🔴 **오프라인 결제 캐시백 캠페인 화면 어휘** — `/pay/campaigns/offline`이 사용자 화면으로 출시됐다(§2-9).
+  후보 ⓐ `pay_campaign_offline_01`(+ 캐시백 조회 `pay_campaign_offline_01_01`) ⓑ 프로모션 주기능으로 보고 `promo_pay_offline_01` ⓒ `pay_` 하위 `pay_cashback_01`.
+  ⚠️ **캠페인성 화면을 `pay_`(기능)로 볼지 `promo_`(캠페인)로 볼지**가 쟁점이다 — 승인 대기 ⑦(결제 주기능)·프로모션 프리픽스 확정과 **묶어 결정**. **확정 전 부여 금지**
 - [ ] 🆕 **mini 홈 ↔ K-Pick 탭 중복 판단** — mini 홈(`/benefits-mini`)이 K-Pick 화면과 사실상 같아졌다(§2-7).
-  🔴 **2026-09-07 중복이 완전해졌다** — 양쪽 모두 **같은 허브 구성**(배너 + 카테고리 4아이콘 + JPYC 가이드)으로 축소됐다. 별도 화면으로 볼지, 같은 화면의 진입 경로 차이로 볼지 **결정 시급**
+  ~~🔴 2026-09-07 중복이 완전해졌다~~ → 🔴 **2026-09-14 판정 번복**: mini 홈에 **바우처 12종·큐레이션 3건·K-뷰티 상품 카탈로그가 복귀**했고 Beta Web `/benefits` 허브에는 카탈로그가 없다.
+  즉 **상단 허브 영역은 동일하고 mini 홈에만 카탈로그가 덧붙는 구조**다. 2주 만에 구성이 뒤집혔으므로 **구성 스냅샷이 아니라 「허브 + (환경별) 카탈로그」 구조로 어휘를 정하는 편이 안전하다** — 결정 필요
 - [ ] 🆕 **NEXT Bay 미션의 어휘 분리 여부** — 라우트는 게임 미션 상세(`/benefits/games/{uuid}`)와 같은 계열인데 **성격이 커머스 구매 미션**이다. `reward_mission_game_detail_01`에 포함할지 분리할지 확인
 - [ ] **⛔ 승인 대기 ⑤ (신규 2026-08-03)**: **비로그인 변형 어휘 방식** — 홈처럼 섹션 구성이 통째로 다른 화면에 별도 ID를 줄지(`home_main_guest_01` 등), 같은 ID의 상태로 볼지 결정 필요(§0-0-1). 환경 변형(`_wallet`/`_mini`) 접미 방식과 표기를 통일할지도 함께 확정
 - [ ] **미실측 축 조합 해소 (§0-0-1 커버리지 표)** — ~~ⓐ 프로덕션 로그인~~(2026-08-10 해소) ⓑ **LIFF 진입**(LINE 인앱 브라우저) ⓒ **JP IP** ⓓ **해외 IP = Wallet Mode**(US·CA·UK·SG) ⓔ **approve 미완료 계정** ~~ⓕ mini 비로그인~~(2026-08-10 해소).
@@ -688,8 +759,15 @@ pay_qr_amount_01_01 ⚠️잠정         ⚠️ 금액 입력·결제 확인 (�
 - [ ] **mini `draw-promotion` LINE 앱 전용 게이트 어휘** — 잠정 없음. 웹에서는 딤+다이얼로그로만 접근되므로 `promo_luckyball_lineonly_01_01` 류 팝업 어휘 필요 여부 확인
 - [ ] Wallet Mode 실기기/실IP 실측 (US/UK/CA/SG IP 필요 — 여전히 위키 스펙 근거) ※ **Unifi mini는 2026-07-30 Beta로 실측 착수**(`/benefits-mini` 계열)
 - [ ] `kpick_` 프리픽스 확정 (K-Pick 탭 주기능 어휘 — 기존 XLT는 UF_/mini_guidekim_) · **2026-07-30 Beta에서 GNB 정식 탭 승격·카테고리 3종 개편 실측** → 승인 대기 ③
-- [ ] 🆕 **Apps 카테고리 `SocialFi` 소멸 확인 (2026-09-07)** — 카테고리가 **8종 → 7종**(AI·CONTENT·DePIN·GAME·Payment·SOCIAL·ETC)으로 줄고 앱 수도 27 → 26이 됐다.
-  카테고리 폐지인지 해당 앱이 빠져 카테고리가 자동 숨김된 것인지 확인 필요(다음 회차 재확인 — 앱 수는 매주 변동하므로 **카테고리 구성만** 판정 대상)
+- [x] ~~🆕 **Apps 카테고리 `SocialFi` 소멸 확인 (2026-09-07)**~~ → ✅ **2026-09-14 2주 연속 7종 확인으로 카테고리 폐지 확정**(AI·CONTENT·DePIN·GAME·Payment·SOCIAL·ETC · 26 Apps 유지). 추적 종결
+- [ ] 🆕 **신규 (2026-09-14) — Apps 「나의 관심 Apps」 섹션의 정체 확인** — 게임 프로모션 캐러셀 아래에 신설된 섹션([전체보기] 동반)이 즐겨찾기인지 추천인지, 별도 라우트가 있는지 미확인(비어 있는 상태로만 관측)
+- [ ] 🆕 **신규 (2026-09-14) — 캐시백 조회 「View my cashback」 무반응** — 로그인 상태에서 버튼 클릭·`?campaignStatus=view` 직접 진입 모두 화면 변화가 없다.
+  참여 이력이 없어 빈 상태가 렌더되지 않는 것인지, #4의 입금 브릿지 배너처럼 **동작하지 않는 진입점**인지 확인 필요. **FE 확인 권장**
+- [ ] 🔴 **신규 (2026-09-14) — mini 「외부 게임 미션」 한국어 노출 재발** — #5에서 "섹션 소멸과 함께 종결"로 닫았던 XLT 누락 의심 건이 **Game mission 섹션 부활과 함께 재현**됐다(영문 UI인데 항목명만 한국어). XLT 키 확인 대상
+- [ ] 🆕 **신규 (2026-09-14) — K-Culture 상품 카드 태그의 언어 혼재** — 같은 카드에 「ソウル」·「仁川」(ja)과 「Show Ticket」·「KPOP」·「Aquarium」(en)이 섞여 노출된다. 태그 원본이 다국어화 대상인지 기획·XLT 확인 필요
+- [ ] 🆕 **신규 (2026-09-14) — mini 홈 「내 예약」 툴팁의 노출 조건** — #6은 로그인 한정으로 기재했으나 이번 회차 **비로그인에서도 노출**됐다. 조건 재확인 필요
+- [ ] 🔴 **신규 (2026-09-14) — KAIA 스테이킹 이율 4.2% → 4.1% 하향의 문서 파급** — 홈 배너·내 자산 카드·`/reward/kaia` 3곳이 모두 4.1%다.
+  위키·XLT·프로모션에 **구 수치(4.2%)** 가 남아 있으면 교체 대상(USDT 5%→7% 건과 동일 성격 · IA 점검 범위 밖, 별도 작업)
 - [ ] 프로모션 프리픽스 `promo_` vs `event_` 확정 (현재 `promo_` 잠정)
 - [ ] Wallet Mode/mini 전용 변형 어휘(`_wallet`/`_mini` 접미 방식) 사용자 확정
 - [ ] 은행송금(Sentbe)·SkyFlag의 mini 연동 방식 확정 시 트리 갱신
