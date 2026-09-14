@@ -1,0 +1,97 @@
+{
+  "faq": {
+    "items": [
+      {
+        "id": "point_usage",
+        "title": "Where can I use the points I receive?",
+        "description": "Points you receive as cashback can be exchanged for JPYC."
+      },
+      {
+        "id": "cashback_rate",
+        "title": "How much cashback do I get, and when?",
+        "description": "For vouchers, 10% of the payment amount is returned as points once your payment is confirmed.\nFor clinics, a set percentage of the payment is returned as points when you pay on site after the treatment. The rate differs by clinic and can be checked on each clinic page."
+      },
+      {
+        "id": "japanese_support",
+        "title": "Can I make inquiries in Japanese?",
+        "description": "Yes, you can make inquiries in Japanese. Just reach out on LINE and you will be guided in Japanese, so you can proceed without worrying about communication."
+      },
+      {
+        "id": "voucher_where_check",
+        "title": "Where can I find the vouchers I bought?",
+        "description": "You can find them in MY tab > Vouchers. You can also receive them on LINE by adding Unifi as a friend."
+      },
+      {
+        "id": "voucher_issue_time",
+        "title": "When is the voucher issued?",
+        "description": "It is issued immediately once your payment is complete. It is delivered as an e-coupon, so there is no shipping to wait for."
+      },
+      {
+        "id": "voucher_how_to_use",
+        "title": "How do I use the voucher?",
+        "description": "Show the voucher barcode when paying at an offline store. Where and how you can use it differs by product, so please check each product page."
+      },
+      {
+        "id": "clinic_booking",
+        "title": "How does clinic booking work?",
+        "description": "Consult about the treatment you want in a free LINE consultation and book your visit date. After the consultation at the clinic, you decide whether to proceed and which items to have, then pay on site once the treatment is done."
+      }
+    ],
+    "title": "Frequently asked questions"
+  },
+  "title": "Excited for your Korea trip?\nHere is where to start",
+  "banner": {
+    "label": "Link your JPYC account",
+    "targetUrl": "",
+    "description": "Link your JPYC account before your trip\nfor the best benefits, and you are all set"
+  },
+  "useNow": {
+    "items": [
+      {
+        "step": 1,
+        "label": "STEP 1",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/0fba3162bee64e648b504473fc2a4489.png",
+        "description": "Open the MY tab in Unifi mini"
+      },
+      {
+        "step": 2,
+        "label": "STEP 2",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/eb20aa884a95458c8fc7e748fa57add6.png",
+        "description": "Check the vouchers you bought\nin the voucher menu at the top"
+      },
+      {
+        "step": 3,
+        "label": "STEP 3",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/be1c1143263c4571b8f3bfc24484bd75.png",
+        "description": "Show the voucher barcode\nwhen paying at an offline store"
+      }
+    ],
+    "title": "Use it as soon as you arrive"
+  },
+  "prepare": {
+    "items": [
+      {
+        "title": "Buy shopping vouchers for Korea",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/c3471ba4466344f396da6e016a24503d.png",
+        "linkLabel": "View popular products",
+        "targetUrl": "",
+        "description": "Vouchers you can use as soon as you arrive\nPrepare ahead with up to 15% off"
+      },
+      {
+        "title": "Book a free consultation at popular clinics",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/f7201a27c2be4a4db43c2853a40e9867.png",
+        "linkLabel": "View popular products",
+        "targetUrl": "",
+        "description": "Consult in Japanese with ease\nand book popular clinics in advance"
+      },
+      {
+        "title": "Book K-beauty and popular travel products",
+        "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a51f95d24cc84fa59d9dc70dc46f730f.png",
+        "linkLabel": "View popular products",
+        "targetUrl": "",
+        "description": "Must-try experiences in Korea!\nBook ahead for the dates you want"
+      }
+    ],
+    "title": "Get ready for your Korea trip"
+  }
+}

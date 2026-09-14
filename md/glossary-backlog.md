@@ -44,6 +44,15 @@
 | 6 | **혜택**(캐시백 문맥) | ⓑ 반복 오탐 | clinic 영역 문맥별 — th `เงินคืน` · zh `現金回饋` 추가 검토 | clinic 선례 th 4/4 · zh 다수(재실측 필요) | `gate_report_clinic_bridge_rolling_banner_10keys_2026-09-03.md`<br>`gate_report_clinic_consolidated_85keys_2026-09-03.md` | 2026-09-14 |
 | 7 | **이자 내역** | ⓐ 미등재 | en `interest history` · ja `利息の履歴` · zh `利息紀錄` · th 실측 필요 | 실측 필요 | `gate_report_apppush_permission_desc_2026-08-14.md` | 2026-09-14 |
 | 8 | **연동 · 전송 · 보내기** | ⓐ 미등재 3건 | 실측 필요 | 실측 필요 | `handoff/projects/_archive/kaiawallet-transition.md` 「다음 할 일」 | 2026-09-14 |
+| 9 | **확인**(결제 승인 문맥) | ⓑ 반복 오탐 | en `confirmed` · th `ยืนยัน` · zh `確認` 문맥 추가<br>(현행 `check`·`ตรวจสอบ`·`查看`는 **조회** 문맥) | en `confirm~` **8건** · th `ยืนยัน` **78건** · zh `確認` **97건** | `gate_report_lpc_faq_terms_2026-09-14.md` | 2026-09-14 |
+| 10 | **구매**(서술문) | ⓑ 반복 오탐 | en `purchase` 병기<br>(현행 `Buy`는 버튼 라벨용) | en `purchase` **21건** / `Buy` **13건** | `gate_report_lpc_faq_terms_2026-09-14.md` | 2026-09-14 |
+| 11 | **완료**(관용 결합) | ⓑ 반복 오탐 | th `สำเร็จ` 병기<br>(현행 `เสร็จ`) | th `สำเร็จ` **50건** / `เสร็จ` **43건** | `gate_report_lpc_faq_terms_2026-09-14.md` | 2026-09-14 |
+| 12 | **결제 금액**(복합어) | ⓑ 반복 오탐 | th `ยอดชำระ` 병기<br>(현행 `การชำระเงิน`은 단독 명사) | th `ยอดชำระ` **6건** / `การชำระเงิน` **20건** | `gate_report_lpc_faq_terms_2026-09-14.md` | 2026-09-14 |
+| 13 | **포인트** | ⓐ 미등재 · 반복 사용 | th **`คะแนน`** · zh `點數`<br>⛔ `พอยต์`는 **실사용 0건**이라 채택 금지 | th `คะแนน` **9건** / `พอยต์` **0건** · zh `點數` 다수 | `gate_report_lpc_faq_terms_2026-09-14.md` | 2026-09-14 |
+| 14 | **최대**(가격 라벨 문맥) | ⓑ 반복 오탐 | en 라벨은 **`Max`** 유지<br>(현행 `up to`는 **수량** 문맥 — `Up to benefit price`는 비문) | en `Max benefit price` **3건** | `gate_report_xlt_benefit_price_unify_2026-09-14.md` | 2026-09-14 |
+| 15 | **혜택**(가격 결합) | ⓑ 반복 오탐 | th는 **`ราคาพิเศษ`**가 관용<br>(`ราคาสิทธิประโยชน์`는 부자연) · ja·en·zh는 2026-09-14 정본 통일 완료 | th `ราคาพิเศษ` 계열 **7건** | `gate_report_xlt_benefit_price_unify_2026-09-14.md` | 2026-09-14 |
+| 16 | **인기** | ⓑ 반복 오탐 | en 문맥별(`popular` / `top pick` / `loved by`) | **실측 필요** | `gate_report_cu_guide_products_2026-09-14.md` | 2026-09-14 |
+| 17 | **브랜드 3종**(서울우유·델라페·비요뜨) | ⓐ 미등재 | ja `ソウル牛乳` · en/th/zh `Seoul Milk`<br>`delafe` · `viyott` (**소문자 고정**) | XLT **0건** — 2026-09-14 LPC CU 가이드에 최초 등재<br>⚠️ **다음 리뷰 때 재실측 후 판단**(현 시점 0건) | `gate_report_cu_guide_products_2026-09-14.md` | 2026-09-14 |
 
 ### 비고
 
