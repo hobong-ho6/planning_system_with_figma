@@ -10,14 +10,14 @@
         {
           "title": "쥬베룩",
           "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "튠페이스",
           "description": "얼굴 부위에 고주파를 전달하는 장비를 이용한 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -29,7 +29,7 @@
         {
           "title": "쥬베룩",
           "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -41,14 +41,14 @@
         {
           "title": "쥬베룩",
           "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "포텐자",
           "description": "마이크로니들 고주파(RF) 장비를 이용한 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -60,28 +60,28 @@
         {
           "title": "쥬베룩",
           "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "울쎄라",
           "description": "집속 초음파(HIFU) 장비를 이용한 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "리쥬란",
           "description": "피부 관리를 위한 스킨부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "써마지",
           "description": "진피층에 고주파를 전달하는 장비를 이용한 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -93,28 +93,28 @@
         {
           "title": "리쥬란",
           "description": "피부 관리를 위한 스킨부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "포텐자",
           "description": "마이크로니들 고주파(RF) 장비를 이용한 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "인모드",
           "description": "고주파 장비를 이용한 얼굴·턱선 부위 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "올리지오",
           "description": "고주파 장비를 이용한 얼굴 부위 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -126,14 +126,14 @@
         {
           "title": "포텐자",
           "description": "마이크로니들 고주파(RF) 장비를 이용한 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "쥬베룩",
           "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -145,14 +145,14 @@
         {
           "title": "라미네이트",
           "description": "앞니 표면에 얇은 세라믹을 부착하는 치료",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "임플란트",
           "description": "빠진 치아 자리에 인공 치근을 식립하는 치료",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -164,14 +164,14 @@
         {
           "title": "라미네이트",
           "description": "앞니 표면에 얇은 세라믹을 부착하는 치료",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "임플란트",
           "description": "빠진 치아 자리에 인공 치근을 식립하는 치료",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -183,21 +183,21 @@
         {
           "title": "스마일라식",
           "description": "레이저로 각막 실질을 교정하는 시력 교정술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "라섹",
           "description": "각막 표면에 레이저를 조사하는 시력 교정술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "ICL 렌즈삽입술",
           "description": "눈 안에 렌즈를 삽입하는 시력 교정술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -209,21 +209,21 @@
         {
           "title": "포텐자",
           "description": "마이크로니들 고주파(RF) 장비를 이용한 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "쥬베룩",
           "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "코 성형",
           "description": "콧대와 코끝 형태를 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -235,14 +235,14 @@
         {
           "title": "리쥬란",
           "description": "피부 관리를 위한 스킨부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "포텐자",
           "description": "마이크로니들 고주파(RF) 장비를 이용한 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -254,35 +254,35 @@
         {
           "title": "리쥬란",
           "description": "피부 관리를 위한 스킨부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "포텐자",
           "description": "마이크로니들 고주파(RF) 장비를 이용한 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "안면윤곽",
           "description": "얼굴 뼈 형태를 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "눈 성형",
           "description": "눈꺼풀 라인을 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "코 성형",
           "description": "콧대와 코끝 형태를 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -294,14 +294,14 @@
         {
           "title": "코 성형",
           "description": "콧대와 코끝 형태를 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "눈 성형(재수술)",
           "description": "이전 눈 수술 부위를 다시 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -313,21 +313,21 @@
         {
           "title": "코 성형",
           "description": "콧대와 코끝 형태를 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "눈 성형",
           "description": "눈꺼풀 라인을 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "가슴 성형",
           "description": "가슴 형태와 볼륨을 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -339,14 +339,14 @@
         {
           "title": "눈 성형",
           "description": "눈꺼풀 라인을 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "코 성형",
           "description": "콧대와 코끝 형태를 교정하는 수술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -382,14 +382,14 @@
         {
           "title": "리쥬란",
           "description": "피부 관리를 위한 스킨부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "쥬베룩",
           "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -401,7 +401,7 @@
         {
           "title": "리쥬란",
           "description": "피부 관리를 위한 스킨부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -413,21 +413,21 @@
         {
           "title": "리쥬란",
           "description": "피부 관리를 위한 스킨부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "쥬베룩",
           "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         },
         {
           "title": "포텐자",
           "description": "마이크로니들 고주파(RF) 장비를 이용한 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
@@ -439,7 +439,7 @@
         {
           "title": "줄기세포",
           "description": "줄기세포를 이용하는 피부 시술",
-          "price": "상담 후 안내",
+          "price": "상담 문의",
           "duration": "",
           "risk": ""
         }
