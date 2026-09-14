@@ -8,20 +8,14 @@
 
 ## 대상 / 링크
 
-- 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v183**(내 마지막 PUT · 라이브는 그 뒤 v184)
-  - **하위 `4727978725` 「Unifi mini v2.0 - LPC 관리 영역」** — **현재 v41**. LPC 컬렉션 8개의 정의·등록 JSON·환경 현황 정본. 세션 #4의 주 작업 대상
+- 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v184**
+  - **하위 `4727978725` 「Unifi mini v2.0 - LPC 관리 영역」** — **현재 v45**. LPC 컬렉션 8개의 정의·등록 JSON·환경 현황 정본. 세션 #4의 주 작업 대상
   - 하위 `4725950300` 「Admin 관리 대상」
 - **Unifi B/E API 스펙 `4725939674`** — FE가 실제로 받는 값의 정본. GuideKim 파트너 스펙과 다른 지점이 있어 **구현 기준은 이쪽**이다(아래 「상태값 기준」)
 - Figma: 파일 `GOCHAYBS7hIrmWRGNuJOKV`(`Web3`) — 여러 페이지/섹션에 화면이 흩어져 있다(`Unifi mini v2.0` 페이지 + 개별 섹션)
 - XLT: **부분 착수**. 담당 FE 팀 확정 — `JPYC 자산 상세`계열·`결제 페이지` = **UIT**(`UF_`·`{{0}}`) / `Voucher Detail`·`Clinic Detail` = **LV**(`mini_`·`{0}`). **`최근 본 상품`은 화면만 LV**(2026-09-14 이관) — **키는 `UF_`·`{{0}}` 유지**(팀 규칙의 의도된 예외, 아래 다음 할 일). Home/Category/Search/My는 세션 #1 이후 다른 세션에서 이미 번역 완료(v60 시점 확인)
 - 이미지: **위키 첨부가 정본**. 로컬 `assets/collected_*`는 git 미추적 재생성물(세션마다 새로 생성)
-- **K-Pick 1만원권 바우처 4종**(`k_pick_shopping_product`) — 산출물 `landpress/{cu,daiso,emart24,oliveyoung}_10000/` 각 25파일(5필드 × 5언어) · 게이트 리포트 `reports/gate/gate_report_landpress_*_10000_5lang_2026-09-11.md`
-  - LPC `uid`: CU `bizcon-S0234613-coupon` · 다이소 `bizcon-S0242269-coupon` · 이마트24 `bizcon-S0246152-coupon` · 올리브영 `bizcon-S0213605-coupon` (GuideKim `productKey: content:bizcon-*`)
-  - ✅ **projectId 확보(2026-09-14 실측)** — 이 컬렉션은 LV가 아니라 **UIT 프로젝트**에 있다: beta `n7nuefo6t491uc9cp863lgyq` · prod **`lkyusnekq1vv9759rbnwgamh`**. 09-13에 LV 쌍(`w5eph…`·`a2qax…`)만 찔러 봐서 `NOT_FOUND_COLLECTION`이 났던 것이다 — **컬렉션을 못 찾으면 팀(LV/UIT) 쌍을 바꿔 본다**
-  - ✅ **prod 등록·공개 완료 · 전건 일치** — 4종 × 5언어 × 5필드(summary·review·guide·info·checkout) = **100셀 전부 로컬 산출물과 동일**, `published=true` 5개 언어 전부(2026-09-14 공개 조회 API)
-  - ⚠️ **beta에는 1만원권 4종이 없다** — UIT beta `k_pick_shopping_product`는 item **2건**(`bizcon-S0213607`·`bizcon-S0121647`)뿐이고 prod는 **8건**이다. 전역 규칙 「JSON을 바꾸면 beta·prod를 함께」 기준으로는 **beta가 6건 뒤처진 상태**(아래 다음 할 일)
-  - ⚠️ **LPC 위키 §9-2 UIT 현황 표에 `k_pick_shopping_product` 행이 없다** — `my_common_info`·`payment_common_info` 2행뿐이라 이 컬렉션은 환경 현황에서 누락돼 있다
-
+- **K-Pick 1만원권 바우처 4종**(`k_pick_shopping_product`) — ⛔ **관리 대상 아님으로 종결**(2026-09-14 · LPC 위키 1번 표 기준 · 세션 #8). 산출물 `landpress/{cu,daiso,emart24,oliveyoung}_10000/`(5필드 × 5언어) · 게이트 `reports/gate/gate_report_landpress_*_10000_5lang_2026-09-11.md` · UIT prod `lkyusnekq1vv9759rbnwgamh`에 **100셀 전건 일치** 등록 완료. **beta 분기 · §9-2 표 누락 · 판매처 표기는 범위 밖**
 ## 현재 상태
 
 본문 위키 **v183** · 하위 LPC 관리 영역 **v41**. 화면 **25**(Home/Category/Search/My + 결제 3 · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
@@ -86,7 +80,13 @@
 - **교훈 ② UIT 볼드 규격은 등록값으로 실측된다** — `<span>텍스트</span>`(강조) **7건** / `<span />`(값 치환) **60건**. 추측 대신 2,549키를 전수 스캔해 답했다
 - **교훈 ③ 위키 기재는 낡는다** — 「`UF_voucher_detail_*` 7키 모두 미등록」이 실측상 **8키 전부 등록 완료**였고, E 항목의 tiana 3건·`{from,amount,currency}` 스키마도 라이브와 달랐다
 
-### 2026-09-14 — 세션 #7: `최근 본 상품` UIT→LV 이관 (v173→v178 · `5b3941b`)
+### 2026-09-14 — 세션 #7: `최근 본 상품` UIT→LV 이관 + API 스펙 갱신 반영 (v173→v183 · `5b3941b`)
 
-- 섹션을 `Voucher Detail - LV` 아래로 분리 · XLT 3키는 **`UF_` 유지**(prod 기등록 · 사용자 확정) → 「확정 필요 항목」에 **LV 회신 대기** 등재 · 9-17 이후 범위 표 2행 보강 · ZH-TW 한자↔숫자 공백 규칙은 전역(`HANDOFF.md`)
+- **전반(v173→v178)**: 섹션을 `Voucher Detail - LV` 아래로 분리 · XLT 3키는 **`UF_` 유지**(prod 기등록 · 사용자 확정) → 「확정 필요 항목」에 **LV 회신 대기** 등재 · 9-17 이후 범위 표 2행 보강 · ZH-TW 한자↔숫자 공백 규칙은 전역(`HANDOFF.md`)
+- **후반(v178→v183) — Slack 스레드(BE 정수영) 근거로 API 스펙 갱신 반영**
+  - **여행 `use_state` 미제공 확정** → 이를 조건으로 쓰던 **6곳 폐기**(취소선+`specout`). 「사용 완료」 배지가 사라지고 **2차 배지는 환불 상태 전용**이 됐다. 예약 내역 기준은 원래 `order_status`+이용일이라 무영향
+  - **GA**: `view_my_voucher_status_expired_01` 폐기 → `view_my_voucher_detail_01`에 `voucher_status` 파라미터 신설(값 7종 · API 원값). 값 목록은 위키 GA 표 관례상 **표 아래 별도 표**로 기재
+  - **GuideKim ↔ Unifi B/E 기준 병기**(사용자 지시): 상품권 `ISSUE_PENDING`→`PAID` 통합 6곳 · `point.status` **대문자** 4값 · 클리닉 `NO_SHOW`·`REJECTED`→`CANCELED` 통합 4곳. Policy 각주에 **「구현은 B/E 기준」** 원칙을 못박았다
+- **교훈 — 위키 정의의 기준(계약 상대)을 명시하지 않으면 낡는다**: 상태값이 GuideKim 계약값인지 FE 수신값인지 구분이 없어 「`REFUNDED`가 명세서에 없다」는 오진을 했다. 실제로는 **Unifi B/E가 자체 추가한 값**이었다
+- ⚠️ **병렬 세션 충돌**: 이 파일을 갱신하던 중 세션 #8이 미커밋 편집을 자기 커밋(`d098e3d`)에 함께 담아 커밋했다. 본문 항목은 살아남았고 헤더만 #8 것으로 교체됐다
 
