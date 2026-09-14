@@ -1,16 +1,18 @@
 # unifi-mini-v2 — Unifi mini v2.0 화면정의 (Figma 정책 취합 + XLT/GA)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-14 · 세션 #6 · 마지막 커밋 `b135d23`
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-14 · 세션 #7 · 마지막 커밋 `be43934`
 >
-> 📌 **2026-09-14 미결 3건 실측 점검** — GA Screen ID **해소**(위키 History에 「(제안) 10건 전부 확정」·본문 잔존 0) · K-Pick 1만원권 projectId **확보·전건 일치**(UIT prod) · 한정해제 8개 파라미터는 **여전히 미결**(LPC v41 3번 표 그대로).
+> 📌 **세션 #7 — `최근 본 상품` UIT→LV 이관 + 9-17 이후 범위 정리(위키 v173→v178)**. 섹션을 `Voucher Detail - LV` 아래로 분리했고 **XLT 3키는 `UF_` 네임스페이스를 유지**(prod 기등록 · 사용자 확정)해 「확정 필요 항목」에 **LV 회신 대기**로 등재했다. 위키 전수 확인으로 **9-17 이후 범위 표에 2행 보강**. ZH-TW 표기 규칙 신설은 전역(`HANDOFF.md`).
+>
+> ⚠️ 세션 #6 이전 기록은 아래 「현재 상태」에 반영돼 있다.
 
 ## 대상 / 링크
 
-- 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v173**
+- 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v178**
   - **하위 `4727978725` 「Unifi mini v2.0 - LPC 관리 영역」** — **현재 v41**. LPC 컬렉션 8개의 정의·등록 JSON·환경 현황 정본. 세션 #4의 주 작업 대상
   - 하위 `4725950300` 「Admin 관리 대상」
 - Figma: 파일 `GOCHAYBS7hIrmWRGNuJOKV`(`Web3`) — 여러 페이지/섹션에 화면이 흩어져 있다(`Unifi mini v2.0` 페이지 + 개별 섹션)
-- XLT: **부분 착수**. 담당 FE 팀 확정 — `JPYC 자산 상세`계열·`결제 페이지` = **UIT**(`UF_`·`{{0}}`) / `Voucher Detail`·`Clinic Detail` = **LV**(`mini_`·`{0}`). Home/Category/Search/My는 세션 #1 이후 다른 세션에서 이미 번역 완료(v60 시점 확인)
+- XLT: **부분 착수**. 담당 FE 팀 확정 — `JPYC 자산 상세`계열·`결제 페이지` = **UIT**(`UF_`·`{{0}}`) / `Voucher Detail`·`Clinic Detail` = **LV**(`mini_`·`{0}`). **`최근 본 상품`은 화면만 LV**(2026-09-14 이관) — **키는 `UF_`·`{{0}}` 유지**(팀 규칙의 의도된 예외, 아래 다음 할 일). Home/Category/Search/My는 세션 #1 이후 다른 세션에서 이미 번역 완료(v60 시점 확인)
 - 이미지: **위키 첨부가 정본**. 로컬 `assets/collected_*`는 git 미추적 재생성물(세션마다 새로 생성)
 - **K-Pick 1만원권 바우처 4종**(`k_pick_shopping_product`) — 산출물 `landpress/{cu,daiso,emart24,oliveyoung}_10000/` 각 25파일(5필드 × 5언어) · 게이트 리포트 `reports/gate/gate_report_landpress_*_10000_5lang_2026-09-11.md`
   - LPC `uid`: CU `bizcon-S0234613-coupon` · 다이소 `bizcon-S0242269-coupon` · 이마트24 `bizcon-S0246152-coupon` · 올리브영 `bizcon-S0213605-coupon` (GuideKim `productKey: content:bizcon-*`)
@@ -21,11 +23,12 @@
 
 ## 현재 상태
 
-본문 위키 **v173** · 하위 LPC 관리 영역 **v41**. 화면 **24+**(Home/Category/Search/My + 결제 3 · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
+본문 위키 **v178** · 하위 LPC 관리 영역 **v41**. 화면 **25**(Home/Category/Search/My + 결제 3 · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
 
 | 영역 | 상태 |
 |---|---|
 | **XLT·GA 정의** | 신설 12화면 전부 완료(UIT=결제·JPYC / LV=Voucher·Clinic Detail). Home/Category/Search/My는 이전 세션에 완료 |
+| **최근 본 상품** | 09-14 **UIT→LV 이관** — `Voucher Detail - LV` 아래 독립 섹션(v174). XLT 3키 **`UF_` 유지**(prod `v1.7.9` 기등록 실측) · 2·3번 「번역 대기」 오기 **정정**(v175) · 9-17 **이후 릴리즈**라 마이페이지 영역도 **미노출**(v177) · 「확정 필요 항목」에 **LV 회신 대기**(v178) |
 | **LPC 8개 컬렉션** | **beta·prod 양쪽 5개 언어 등록·공개 완료** — 공개 조회 API로 LV prod **55항목 전건 일치** 확인 |
 | **클리닉** | `k_pick_clinic_product` 폐지 → `k_pick_clinic_common_info` 단일 컬렉션 통합 · **일본 의료광고 규제 반영**(효과 단정 제거, 요건 ②④용 `deviceNotice`·`contact`·`duration`·`risk` 필드 신설) |
 | **K-Pick 1만원권 4종** | ✅ **UIT prod 등록·공개 완료**(100셀 전건 일치, 09-14 실측) · ⚠️ **UIT beta 미반영**(item 2 vs prod 8) · 위키 §9-2 표에 행 누락 |
@@ -35,7 +38,7 @@
 
 ## 진행 중 작업(WIP)
 
-없음. (위키 산출물만 있고 저장소 코드 변경은 `md/GA.md`·`md/wiki.md` 템플릿 갱신뿐 — 이 커밋에 포함)
+없음. 세션 #7의 저장소 변경은 `md/guide.md`·`md/check.md`(ZH-TW 표기 규칙 · `e7f26bf`)와 게이트 리포트 1건(`84cb062`)으로 전부 푸시 완료. 나머지 산출물은 위키다.
 
 ## 다음 할 일
 
@@ -47,6 +50,8 @@
 - [ ] **P2 — `primaryLocale` beta↔prod 불일치 5개 컬렉션**(LPC 위키 9-3) — LV `voucher_common_info`·`mini_common_info`·`category_promotion_banner` + UIT 2개가 **beta `ko_KR` / prod `en_US`**. `?locale=`을 붙이면 무해하나 **생략하는 호출이 있으면 환경별로 다른 언어가 나온다** → FE 확인 필요
 - [ ] **P2 — FAQ 「한국인과 동일한 가격」 단정 표현**(`clinic_detail_common.faq` · `mini_common_info.service_guide.faq`) — 전 제휴 병원에 대한 단정이라 병원별로 다르면 허위 소지(「최대 15% 캐시백」 지적과 같은 구조). 법무 문서에 없는 항목이라 **미수정·판단 대기**
 - [ ] **P3 — CU shopping_guide는 이번 Figma 섹션에 없어 미갱신** — 갱신하려면 해당 Figma 노드 필요
+- [ ] **P1 — `최근 본 상품` XLT 네임스페이스 LV 회신 대기**: 화면은 LV인데 키는 `UF_`·`{{0}}`다(3키 모두 `Unifi`/`WEB BROWSER` `v1.7.9` 기등록이라 `mini_` 재부여는 재등록·FE 교체만 발생). 위키 「확정 필요 항목」에 **확인 주체 `LV`** 로 등재했다 — LV가 `mini_`를 원하면 신규 키 3건 등록·5개 언어 번역·FE 교체가 필요하다. ⚠️ Slack 공유는 아직 안 했다(사용자 확인 후)
+- [ ] **P3 — `상품권 이미지 저장` 화면의 이후 릴리즈 표기 확인**: 9-17 이후 범위 표에는 넣었으나(v177), Screen `상품권 이미지 저장` h5 제목에는 `Search - LV`·`최근 본 상품 - LV`처럼 「이후 릴리즈」 표기가 없다 — 통일할지 확인
 - [ ] **P1 — `최대혜택가` 계열 3키 정리 합의(LV)**: `mini_voucher_detail_max_benefit_rate`(라벨만) · `_label`(라벨만, 값 동일) · `_badge`(라벨+`{0}%`)가 공존한다. 특히 `_rate`는 **이름에 rate가 있는데 값에 rate가 없는** 상태 — FE 사용처 확인 후 폐기/개명 여부를 LV와 합의해야 한다(위키 History에 빨강으로 기재)
 - [ ] **P2 — `최대혜택가` 띄어쓰기 통일 검토**: 맞춤법은 `최대 혜택가`. 적용 시 3키 + Figma 원문을 **동시에** 바꿔야 한다(부분 적용 시 같은 화면에서 표기 분기)
 - [ ] **P2 — ja `特典` vs `特別` 분기 확인**: `UF_voucher_price_benefit`·`mini_home_price_benefit`은 `特別価格`, `max_benefit` 3키는 `最大特典価格`. 용어집 정본은 혜택=`特典`
