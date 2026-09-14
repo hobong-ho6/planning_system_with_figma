@@ -5,7 +5,7 @@
 - **대상 2건** (사용자 확정)
   1. **6번** — `최대혜택가` → `최대 혜택가` 띄어쓰기 (ko 3셀)
   2. **7번** — 「혜택가」 계열의 ja·en을 용어집 정본에 맞춤 (8셀)
-- **산출물**: `xlt/xlt_benefit_price_unify_2026-09-14.xlsx` (시트 2개 — `Unifi` 3키 · `DappPortal` 4키)
+- **산출물**: `xlt/xlt_benefit_price_unify_unifi_2026-09-14.xlsx`(3키) · `xlt/xlt_benefit_price_unify_dappportal_2026-09-14.xlsx`(4키) — **서비스별 2개 파일**
 - ⛔ **XLT는 쓰기 API가 없다** — 업로드는 **사용자가 수행**한다.
 
 ---
@@ -153,6 +153,14 @@ P0 0건 · P2 0건. P1 10건 전건:
 
 XLT는 **읽기 전용 API만 존재**한다(`md/xlt-verify.md`). 쓰기 경로가 없으므로 Claude가 반영할 수 없다.
 
-1. `xlt/xlt_benefit_price_unify_2026-09-14.xlsx`를 XLT 시스템에 업로드 — **시트가 서비스별로 나뉘어 있다**(`Unifi` 3키 · `DappPortal` 4키)
+1. 두 파일을 각 서비스에 업로드 — `..._unifi_...xlsx`(3키) → `Unifi` · `..._dappportal_...xlsx`(4키) → `Dapp Portal`
+
+> **2026-09-14 재생성 메모** — 초기 산출물은 서비스별 **시트**로 나눈 임의 형식이었다.
+> 업로드가 안 된다는 보고를 받고 규격 문제로 판단해 재생성했는데, **실제 원인은 규격이 아니었다**(사용자 조작 실수).
+> 다만 재생성본이 규격상 더 정확하므로 그대로 쓴다 — `scripts/export_to_xlt.py`의 `create_xlt_excel()`로 만들어
+> **시트 `properties` + `plurals`**, 컬럼 **`(빈칸), en_US, ko_KR, ja_JP, zh_TW, th_TH`** 로 생성했고,
+> 업로드 성공 이력이 있는 `xlt/unifi_mini_v2.0_voucher_detail_7키_20260913.xlsx`와 시트·컬럼 구조가 동일함을 대조로 확인했다.
+> **원칙: XLT 엑셀은 `export_to_xlt.py`로 만든다**(손으로 DataFrame을 조립하지 않는다).
+
 2. 업로드 후 `scripts/fetch_xlt_registry.py`로 **재실측해 반영 확인**
 3. 위키 Screen XLT 표·다국어 표의 해당 값도 갱신
