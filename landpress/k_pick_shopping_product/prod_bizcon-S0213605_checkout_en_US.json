@@ -1,0 +1,12 @@
+{
+  "steps": [
+    "Select a payment method and enter your payment details.",
+    "Your voucher is issued as soon as the payment is completed.",
+    "You can find purchased vouchers in MY Shopping, and also receive them on LINE if you add Unifi as a friend.",
+    "Once your payment is confirmed, you also receive 10% cashback as points."
+  ],
+  "refund": {
+    "title": "Please check the cancellation and refund conditions for each product before purchasing.",
+    "description": "If the voucher has not been used, you can receive a 100% refund within the validity period. Refunds are not available after the validity period has passed or if the voucher has been partially used."
+  }
+}
