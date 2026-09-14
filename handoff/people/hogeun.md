@@ -32,7 +32,14 @@
   ```
 - `fetch_xlt_registry.py --out`이 만드는 JSON은 `{"metadata":…, "entries": {키: {5개 언어}}}`이고 **`entries`는 dict**다(리스트로 가정하면 `'str' object has no attribute 'get'`). 서브에이전트에 레지스트리를 넘길 때 이 구조를 프롬프트에 명시한다.
 - **XLT 읽기 API는 사내망/VPN 전제다**(무인증이지만 IP 화이트리스트 추정). 실패 유형별 처리는 `md/xlt-verify.md` §2-4 — 특히 **사내 프록시 로그인 페이지가 200 + HTML로 오는 경우**를 `RuntimeError`로 잡는다. VPN 미연결 시 사용자 export로 폴백하며 **레지스트리는 항상 옵셔널**이라 게이트 전체가 실패하지는 않는다.
-- `.claude/launch.json`은 **git 제외**이고 기존 항목의 경로·실행파일이 이 PC와 어긋나 **`guide-site` 기동이 실패한다**(2026-08-10 실측). 가이드 미리보기는 이게 빠르다:
+- `.claude/launch.json`은 **git 제외**이고 기존 항목의 경로·실행파일이 이 PC와 어긋나 **`guide-site` 기동이 실패한다**(2026-08-10 실측 · 2026-09-14 재확인 — 등록된 npx 경로 `~/.nvm/versions/node/v24.14.1/bin/npx`가 이 PC에 없다. 실제 위치는 **`/usr/local/bin/npx`**).
+  - ⚠️ **`preview_start`로 띄우는 파이썬 http.server는 이 PC에서 `PermissionError: os.getcwd()`로 죽는다**(2026-09-14 실측) — `-m http.server --directory`도 argparse 기본값이 `os.getcwd()`라 기동 전에 실패하고, `os.chdir` 후 `SimpleHTTPRequestHandler`를 쓰는 `guide-local` 항목은 기동은 되지만 **요청마다** 같은 예외로 500을 낸다. 샌드박스가 cwd 조회를 막아서다.
+  - 가이드 미리보기는 **npx http-server 항목**을 `launch.json`에 넣고 `preview_start`로 띄운다(브라우저 도구로 렌더 확인까지 가능):
+  ```json
+  { "name": "guide-v40", "runtimeExecutable": "/usr/local/bin/npx",
+    "runtimeArgs": ["--yes","http-server","<저장소>/guide","-p","8144","-c-1","--silent"], "port": 8144 }
+  ```
+  - Bash로 간단히 볼 때는 여전히 이게 빠르다(샌드박스 밖):
   ```bash
   python3 -m http.server 8000 --directory guide
   ```
