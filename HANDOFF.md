@@ -38,7 +38,7 @@
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 v31(⚠️ zip만 발행·소스 미커밋 → 09-03 복원 `b49b1a1`) · 로그인 2회 연속 미점검 |
 | [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
 | [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **24+화면** | 09-13 | 본문 **v173** · LPC **v41** — LPC 8컬렉션 beta·prod 등록·공개 완료 · ⚠️ **미결 3건**(한정해제 파라미터 8개 · GA Screen ID 9건 · K-Pick 1만원권 LPC projectId 미기록) → 파일 참조 |
-| [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` · 예약 OA **16화면**(클리닉 12·여행 4) | 09-13 | 위키 **v37** — **beta 전건 등록 완료**(Landpress 16 `ko_KR` + LIAM Event Message 16 · 대조 불일치 0) · prod는 클리닉 T0만(`isActive` **No**) · **번역 미착수**(ko만)·hero/버튼 URL **임시값** |
+| [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` · 예약 OA **16화면**(클리닉 12·여행 4) | 09-14 | 위키 **v37** — **beta 전건 등록 완료**(Landpress 16 `ko_KR` + LIAM Event Message 16 · 대조 불일치 0) · prod는 클리닉 T0만(`isActive` **No**) · **번역 미착수**(ko만)·hero/버튼 URL **임시값** |
 
 ---
 

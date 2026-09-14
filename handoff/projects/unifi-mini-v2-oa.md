@@ -1,6 +1,6 @@
 # unifi-mini-v2-oa — 클리닉·여행 예약 OA 메시지 (발송 타임라인 16화면)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-13 · 세션 #3 · 마지막 커밋 `34a013c`
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-14(세션 #0 기록 보완) · 세션 #3 · 마지막 커밋 `605e2a3`
 
 ## 대상 / 링크
 
@@ -11,6 +11,7 @@
 - Landpress `oam_message_task_multi` — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh`
 - LIAM HUB Event Messages — beta [`menuId=23160&roleId=6970`](https://liam-hub.hub-beta.linecorp.com/service-view/313?menuId=23160&roleId=6970) / prod [`menuId=18628&roleId=6969`](https://liam-hub.hub.linecorp.com/service-view/313?menuId=18628&roleId=6969)
 - 게이트 리포트 prefix: `reports/gate/gate_report_oa_reservation_*.md` — **아직 없음**(번역 미착수)
+- **설계 근거는 위키 Background·Related Docs**(09-10 세션 #0) — 유사 서비스 10군(Zocdoc·Hot Pepper·EPARK·일본 클리닉 LINE·Creatrip Buddy·한국 병원 SMS·Prospyr/Consentz·똑닥·강남언니·Klook/KKday/GetYourGuide/와그) + 리마인드 근거 연구 7항목 · 출처 39건. 생성 스크립트는 세션 스크래치에만 있었고 저장소에 없다 → **편집은 라이브 storage 외과 수정**
 
 ## 현재 상태
 
@@ -53,6 +54,8 @@ prod: 클리닉 T0만 — Landpress `1956` / LIAM `N6aa50c973af74c70a397b9b0` (`
 | 2026-09-12 | 위키 Screen 표에 **「샘플 JSON(KR)」 칼럼 신설**(Description 오른쪽) | 시뮬레이터에 붙여넣을 JSON을 화면별로 바로 꺼내 쓰기 위해. `check_wiki_storage.py`에 예외 허용 추가 — `4841b51` 이전 |
 | 2026-09-12 | 카드 렌더 이미지는 **`scripts/render_oa_flex.py`(근사 렌더)** 로 만들어 Screen 칸에 첨부 | LINE 공식 시뮬레이터는 로그인 벽이라 자동화 불가 · 렌더 결과를 파일로 남길 수 없어 첨부로 못 잇는다 |
 | 2026-09-12 | prod OA Channel은 **`Dapp Portal (2006670905)`** | prod에는 Unifi 채널이 없다(`Dapp Portal`·`Dapp Portal_Test` 2개뿐). 사용자 확정 |
+| 2026-09-10 | **발송 캘렌더** — 클리닉 T0·D-14(조건부)·D-7·D-3·D-1·당일 아침·방문 후·D+3·D+7(+선택 D+1 절개·D+14) / 여행 4회(T0·D-3·D-1·D+1) · 둘러보기 크로스셀은 방문 전(클리닉 T0·D-14·D-7·D-3 / 여행 T0·D-3·D+1)에만 1줄+버튼 1개 | 무작위 시험(3일+1일 병행 노쇼 4.4%)·일본 LINE 실무(3日前·前日·当日朝)·GetYourGuide 3접점. 여행은 케어 시퀀스가 없어 축소 |
+| 2026-09-10 | **변수 축소** — `product_name`(클리닉=병원명)·`reservation_date`(날짜+시각 통합) 등 14종만. 시술명·취소 마감·역/건물/전화·경과 확인 시각·캐시백 지급일·설문/리뷰 URL·여행 집결/운영사 연락은 **변수화하지 않음** · 시점 표현 「시술」→「방문」 · 방문 후 안내는 공통 가이드 텍스트(티아나 안내문 일반화) | 사용자 지시 — 시술은 상담 후 확정, 취소는 병원 상담, 리뷰는 예약 상세에서. 세션 #1(09-12)에서 결제·캐시백·`clinic_aftercare_notes`가 추가로 제거됨 |
 
 ## ⛔ 사용자 결정으로 종결 (재작업·재제안 금지 — 이 프로젝트 한정)
 
@@ -79,3 +82,8 @@ prod: 클리닉 T0만 — Landpress `1956` / LIAM `N6aa50c973af74c70a397b9b0` (`
 
 - 완료: 16화면에 「샘플 JSON(KR)」 칼럼 신설 · 전 화면 문구를 문단 구분(separator)·소제목 구조로 재구성해 가독성 개선 · 클리닉 T0에서 결제 금액·캐시백 제거(정확한 값 미확보) · `{{clinic_aftercare_notes}}` 제거(데이터 소스 확보 불가)
 - 교훈: 기획자 가이드 v38 발행 시 **네비 항목 추가로 메뉴가 2줄로 접혀** 같은 버전을 세 번 재발행했다 — 구조 검사만으로는 안 보이니 **헤더를 실제로 캡처해 확인**한다
+
+### 2026-09-10 — 세션 #0: 리서치 → 발송 설계 문서 최초 생성 (`OA Research` v1→v20, 이후 `Unifi mini v2.0 - OA`로 개명)
+
+- 완료: 웹 리서치(유사 서비스·근거 연구) → 클리닉 9+2·여행 4 캘렌더 → 한국어 초안 16행·변수 → 크로스셀 → 정본 템플릿 구조 재구성(v11) → 사용자 변수 삭제 반영·공통 가이드(v15) → 변수 통합·「방문」 표현(v16~17) → Specification › Variables 신설(v19~20). 매 PUT `check_wiki_storage.py` pre/post exit 0
+- 교훈: **사용자가 같은 페이지를 실시간 편집한다**(9회) — 편집기 저장은 텍스트가 같아도 버전을 올리고 마크업만 정규화하므로 **텍스트 diff + 매크로/`{{변수}}` 카운트**로 의도 편집(Excerpt 추가·제거, 변수 행 삭제)을 가른다 · **PUT 제목은 라이브 GET에서 읽는다**(v18 개명 후 고정 문자열로 보냈으면 되돌아감) · 전체 재생성 방식은 사용자 편집과 충돌해 외과 수정으로 전환
