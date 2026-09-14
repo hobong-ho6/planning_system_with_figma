@@ -27,7 +27,7 @@
 ## 프로젝트 인덱스
 
 > 활성 프로젝트만 올린다. 종료된 것은 `handoff/projects/_archive/`로 옮기고 이 표에서 지운다.
-> 아카이브 10건(09-04 5건·09-13 5건)은 `_archive/`에 있다 — 재개가 필요하면 되돌린다.
+> 아카이브 11건(09-04 5건·09-13 5건·09-14 1건)은 `_archive/`에 있다 — 재개가 필요하면 되돌린다.
 > 담당자는 `git config --global handoff.person` 값과 같은 문자열을 쓴다(`handoff/README.md` 「사람 식별」).
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
@@ -36,8 +36,7 @@
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-13 | ✅ **5종 전부 정합 · 전건 실측**(Lucky Ball 8↔8 · Mission **10↔10** · mini **4↔4** · Wallet 2↔2 · K-Pick 8↔8) — 깨져 있던 2종 Summary 블록 신설 + K-Pick 제목 v1.7.5 확정(위키 3건 PUT) · **미결 0** |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 09-13 | 용어집 **v5.5** · 가이드 **v39 게시 완료** · 태그 **`guide-v39`** · 🔜 **다음 갱신 때 「고유명사 공식 표기 확인」 규칙 반영 예정**(사용자 확정) |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 v31(⚠️ zip만 발행·소스 미커밋 → 09-03 복원 `b49b1a1`) · 로그인 2회 연속 미점검 |
-| [guidekim-funnel](handoff/projects/guidekim-funnel.md) | `hogeun` | 위키 `4639704548`·`4639718809`·`4661828572` · 88키 | 09-01 | v47·v9·**v5** · 게이트 4건 P0=0 · **미결 10건**(조사 처리 FE 협의 신규 · 원문 확인 2·등재값 검수 2·zh 표기 2·용어집 2·상품 종속 키 구조) |
-| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **24+화면** | 09-13 | 본문 **v173** · LPC **v41** — LPC 8컬렉션 beta·prod 등록·공개 완료 · ⚠️ **미결 3건**(한정해제 파라미터 8개 · GA Screen ID 9건 · K-Pick 1만원권 LPC projectId 미기록) → 파일 참조 |
+| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **24+화면** | 09-14 | 본문 **v173** · LPC **v41** — 09-14 미결 3건 실측: GA Screen ID **해소** · K-Pick 1만원권 **UIT prod 등록·100셀 전건 일치**(신규: beta 6건 뒤처짐·§9-2 표 행 누락) · 🔴 **한정해제 8개 파라미터는 여전히 미결** → 파일 참조 |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` · 예약 OA **16화면**(클리닉 12·여행 4) | 09-14 | 위키 **v37** — **beta 전건 등록 완료**(Landpress 16 `ko_KR` + LIAM Event Message 16 · 대조 불일치 0) · prod는 클리닉 T0만(`isActive` **No**) · **번역 미착수**(ko만)·hero/버튼 URL **임시값** |
 
 ---
@@ -107,4 +106,5 @@
 - **살아 있는 교훈**: PUT 직전 라이브 rebase 필수 · **미추적 파일을 같은 경로에 Write해 직전 세션 기록을 잃은 적 있다**(세션 시작 `git status`의 `??` 확인) · **다른 세션의 uncommitted 변경은 커밋하지 않는다**(WIP 보존 규칙을 그대로 적용하면 그 세션 작업을 가로챈다) · **세션은 병렬로 돈다**(`git fetch`만 하고 pull을 미루면 구버전 도구로 산출물을 만든다)
 - **2026-09-13 종결 1건** — `clinic`(위키 `4667512757` · 최종 v129 · LPC v16)을 `_archive/`로 옮겼다. 「다음 할 일 **없음** · 미완료 21건 전부 종결」(09-04 사용자 결정)이고 이후 활동이 없다. 클리닉 **LPC 콘텐츠 작업은 `unifi-mini-v2`로 이어진다**(세션 #4에서 `k_pick_clinic_common_info` 통합·의료광고 규제 반영) — 재개가 필요하면 아카이브에서 되돌린다
 - **2026-09-13 종결 4건(미결을 남긴 채 사용자 결정으로 종료)** — `kaiawallet-transition`·`guidekim-banner`·`kpick-oa-consent`·`misc-wikis`. **닫을 당시 열려 있던 것**(재개 시 아카이브 파일의 「다음 할 일」이 정본): ⓐ kaiawallet — 용어집 보완 3건(「연동」·「전송」·「보내기」 미등재)·Figma 원문 개선 6건 ⓑ guidekim-banner — 🔴 `kbeauty_to_kculture` **Unifi↔Dapp Portal 값 분기**(업로드 범위 FE 확정 전) 외 3건 ⓒ kpick-oa-consent — XLT 등록 서비스 확정(FE)·History↔Policy 불일치·`kpick_` 프리픽스 잠정 ⓓ misc-wikis — `4620240898` 정의 필요 4항목(분류 대기 목록이었다 · 새 작업이 생기면 독립 파일로 다시 만든다)
+- **2026-09-14 종결 1건** — `guidekim-funnel`(위키 `4639704548` v47·`4639718809` v9·`4661828572` v5 · 92키 · 게이트 4건 P0=0). 열려 있던 10건은 아카이브 파일의 「다음 할 일」이 정본 — `_1`/`_2` 조사 FE 협의 · 원문 확인 2 · 등재값 ja 2 · zh 표기 2 · **상품 종속 키 구조**(Landpress 이관 방향은 `unifi-mini-v2`에서 진행 중) · 용어집 2건은 **v4.9에 이미 반영돼 해소**
 - 프로젝트별 세션 기록은 각 `handoff/projects/*.md` 「세션 기록」 참조
