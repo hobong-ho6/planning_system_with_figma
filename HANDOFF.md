@@ -104,9 +104,6 @@
 
 ## 아카이브 요약 (전역 연혁)
 
-- **2026-07-24~08-06 세션 #1~#9 (기반 구축)**: 럭키볼 캠페인 위키 v1→v147 · 시즌3 위키 신규 구축 · `md/OA.md`·`md/IA.md` 정본 신설 · 용어집 v2.6→v4.1(`oa_variables` 신설) · 도구 3종(`check_wiki_storage`·`collect_frames`·최장일치 검증기) · 에이전트 4종 · 주간 IA 점검 도입 · 가이드 v1~v13. 규칙·도구는 전부 `md/`·`scripts/`에 반영 완료
+- **종결 프로젝트 6건 + 기반 구축기 연혁 → [`handoff/projects/_archive/README.md`](handoff/projects/_archive/README.md)**로 이관(2026-09-14 분량 압축). 각 아카이브 `.md`의 「다음 할 일」이 닫을 당시의 정본이다 — **재개가 필요하면 그 파일을 `handoff/projects/`로 되돌리고 인덱스에 한 줄 추가**한다
 - **살아 있는 교훈**: PUT 직전 라이브 rebase 필수 · **미추적 파일을 같은 경로에 Write해 직전 세션 기록을 잃은 적 있다**(세션 시작 `git status`의 `??` 확인) · **다른 세션의 uncommitted 변경은 커밋하지 않는다**(WIP 보존 규칙을 그대로 적용하면 그 세션 작업을 가로챈다) · **세션은 병렬로 돈다**(`git fetch`만 하고 pull을 미루면 구버전 도구로 산출물을 만든다)
-- **2026-09-13 종결 1건** — `clinic`(위키 `4667512757` · 최종 v129 · LPC v16)을 `_archive/`로 옮겼다. 「다음 할 일 **없음** · 미완료 21건 전부 종결」(09-04 사용자 결정)이고 이후 활동이 없다. 클리닉 **LPC 콘텐츠 작업은 `unifi-mini-v2`로 이어진다**(세션 #4에서 `k_pick_clinic_common_info` 통합·의료광고 규제 반영) — 재개가 필요하면 아카이브에서 되돌린다
-- **2026-09-13 종결 4건(미결을 남긴 채 사용자 결정으로 종료)** — `kaiawallet-transition`·`guidekim-banner`·`kpick-oa-consent`·`misc-wikis`. **닫을 당시 열려 있던 것**(재개 시 아카이브 파일의 「다음 할 일」이 정본): ⓐ kaiawallet — 용어집 보완 3건(「연동」·「전송」·「보내기」 미등재)·Figma 원문 개선 6건 ⓑ guidekim-banner — 🔴 `kbeauty_to_kculture` **Unifi↔Dapp Portal 값 분기**(업로드 범위 FE 확정 전) 외 3건 ⓒ kpick-oa-consent — XLT 등록 서비스 확정(FE)·History↔Policy 불일치·`kpick_` 프리픽스 잠정 ⓓ misc-wikis — `4620240898` 정의 필요 4항목(분류 대기 목록이었다 · 새 작업이 생기면 독립 파일로 다시 만든다)
-- **2026-09-14 종결 1건** — `guidekim-funnel`(위키 `4639704548` v47·`4639718809` v9·`4661828572` v5 · 92키 · 게이트 4건 P0=0). 열려 있던 10건은 아카이브 파일의 「다음 할 일」이 정본 — `_1`/`_2` 조사 FE 협의 · 원문 확인 2 · 등재값 ja 2 · zh 표기 2 · **상품 종속 키 구조**(Landpress 이관 방향은 `unifi-mini-v2`에서 진행 중) · 용어집 2건은 **v4.9에 이미 반영돼 해소**
 - 프로젝트별 세션 기록은 각 `handoff/projects/*.md` 「세션 기록」 참조
