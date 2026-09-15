@@ -299,6 +299,35 @@ GET /api/v1/projects/{pid}/roles/my   → 200이면 로그인·권한 OK (type: 
 | **기존 항목에 로케일 행 추가** | `PUT ?locale=` · `POST .../items/{id}/locales` · `/translations` · `POST .../items/{id}?locale=` · `PATCH ?locale=` | ❌ **전 경로 실패** — 아래 10-3 7번 |
 | 전용 publish 엔드포인트 | `/publish` 계열 전부 `Cannot POST` | ❌ — 위 플래그로 대체 |
 
+### 10-3-0. ⛔⛔ PUT은 문서를 통째로 교체한다 — 빠뜨린 필드는 `null`이 된다 (2026-09-15 실측 · 최우선)
+
+**`PUT .../items/{postId}?locale={loc}`은 부분 갱신(PATCH)이 아니라 전체 교체다. body에 넣지 않은 콘텐츠 필드는 그 자리에서 `null`이 된다.**
+그러므로 **쓰기 전 반드시 라이브 값을 읽어 병합(read-modify-write)** 한 뒤, **그 로케일의 콘텐츠 필드를 전부 포함해** 보낸다.
+
+```
+① GET  /items/{postId}?locale={loc}          ← 현재 문서를 읽는다
+② 받은 객체에서 바꿀 필드만 교체              ← 나머지 필드는 그대로 둔다
+③ PUT  같은 URL · body = {…전 콘텐츠 필드…, published:true}
+④ GET  재조회 → 바꾼 필드 + 보존 필드 모두 대조
+```
+
+⛔ **`uid`만 바꾸는 작업, 한 필드만 고치는 작업이 가장 위험하다** — 「바꿀 것만 보내면 된다」는 직관이 정확히 이 사고를 만든다.
+
+**실측 사고 (2026-09-14 발생 · 2026-09-15 발견·복구)** — 콘텐츠 **4필드가 beta·prod 양쪽에서 소실**됐다.
+
+| 소실된 필드 | 범위 | 직전 작업 |
+|---|---|---|
+| `shopping_guide.guide_page` | 3브랜드 × 5개 언어 × 2환경 | `uid`를 `VOUCHER_*` 체계로 전환(uid만 전송) |
+| `voucher_product.voucher_detail` (LV) | 4브랜드 × 5개 언어 × 2환경 | 〃 |
+| `voucher_product.my_voucher_detail` (LV·UIT) | 4브랜드 × 5개 언어 × 2환경 | 〃 |
+| `k_pick_clinic_common_info.clinic_detail_common` | 5개 언어 × 2환경 | `clinic_menu`만 전송 |
+
+**진단 근거** — ⓐ `uid`를 바꾼 컬렉션 2개가 정확히 소실됐다 ⓑ 클리닉은 **같은 항목의 형제 필드**(`clinic_menu` 정상 6,017B / `clinic_detail_common` null)라 「컬렉션 문제」가 아니다 ⓒ **콘텐츠 필드가 1개뿐인 컬렉션 6개는 전부 무사**하다(어떤 PUT이든 그 필드를 포함하므로).
+
+⚠️ **리비전 이력이 없다** — `/revisions`·`/histories`·`/versions` 전부 404이고 `/audit-logs`에는 **GET 이벤트만** 남는다. **CMS만으로는 복구가 불가능하므로**, LPC에 올리는 JSON은 **반드시 `landpress/` 아래에 5개 언어 전부 커밋**해 둔다(이번 복구도 그 산출물로 했다).
+
+---
+
 ### 10-3. 주의 (실측에서 걸린 것)
 
 1. ⛔ **`POST .../items`는 새 항목을 즉시 생성한다.** 라우트 존재 확인 목적으로 호출하지 않는다 — 실제로 빈 항목이 생성돼 삭제해야 했다(2026-09-12). 라우트 확인은 **존재하지 않는 id로 `PUT`/`PATCH`** 를 보내 `NOT_FOUND_ITEM`(라우트 있음) / `Cannot PUT`(없음)으로 구분한다. 검증이 꼭 필요하면 **beta에서만**, `uid`에 `__probe_delete_me__` 같은 표식을 넣어 만들고 **같은 스크립트의 `finally`에서 `DELETE`** 해 원상복구까지 한 번에 끝낸다.
