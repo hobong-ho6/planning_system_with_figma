@@ -54,6 +54,7 @@
 | 16 | **인기** | ⓑ 반복 오탐 | en 문맥별(`popular` / `top pick` / `loved by`) | **실측 필요** | `gate_report_cu_guide_products_2026-09-14.md` | 2026-09-14 |
 | 17 | **브랜드 3종**(서울우유·델라페·비요뜨) | ⓐ 미등재 | ja `ソウル牛乳` · en/th/zh `Seoul Milk`<br>`delafe` · `viyott` (**소문자 고정**) | XLT **0건** — 2026-09-14 LPC CU 가이드에 최초 등재<br>⚠️ **다음 리뷰 때 재실측 후 판단**(현 시점 0건) | `gate_report_cu_guide_products_2026-09-14.md` | 2026-09-14 |
 | 18 | **더보기**(en 대소문자) | ⓑ 반복 오탐 | 등재값 `View More` 유지하되 **대소문자 변형 통일** 검토(`View More`/`View more`) | 「더보기」 포함 키 **10건** — `View More` 4 · `View more` 1 · `See more` 2 · `View {{0}} more` 1 · `More Notifications` 1 · 기타 1 | `gate_report_100yen_deal_2026-09-15.md` | 2026-09-15 |
+| 19 | **쿠폰**(할인 쿠폰 — `바우처`와 구분) | ⓐ 미등재 · 반복 사용 | ko `쿠폰` · ja `クーポン` · en `coupon` · th `คูปอง` · zh `優惠券` | ⚠️ **실사용 0건**(ko `쿠폰` 포함 XLT 등록 키 0 · 대조군 `바우처` 35건) — 100엔딜 신규 키(`UF_100yen_coupon_applied`·`caution_contents8~10`)가 **미업로드**라서다(등록된 `UF_100yen_*`는 12키). **업로드 후 재실측 전 채택 금지** | `gate_report_voucher_retention_oa_2026-09-15.md`<br>`gate_report_oa_friend_coupon_v3_2026-09-11.md` | 2026-09-15 |
 
 ### 비고
 
