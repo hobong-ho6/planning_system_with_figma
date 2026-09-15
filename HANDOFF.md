@@ -32,7 +32,7 @@
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
-| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 09-15 | **전역 결정 연혁을 `md/decisions.md`로 이관**(HANDOFF 20.4KB → **17.0KB** · 여유 3.4KB · 삭제 아닌 이관) · 분량 기준은 `wc -c` 바이트(HANDOFF 20KB·프로젝트 18KB·주입 총합 24KB · 현재 **20.9KB**) · ⚠️ 아카이브 판단은 「다음 할 일」을 **눈으로 읽는다**(체크박스 grep은 오판) · **미결 0** |
+| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 09-15 | **기획자 가이드를 「모아서 한 번에」로 전환**(`md/guide-backlog.md` 신설 · 대기 **7건** · 임계 10건/차단 2건/2주 시 제안 · 보류 시 +5건까지 재제안 금지) · `put_wiki_storage.py` 표 등재 · 전역 결정 연혁은 `md/decisions.md` · 분량 기준은 `wc -c` 바이트 · **미결 0** |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-13 | ✅ **5종 전부 정합 · 전건 실측**(Lucky Ball 8↔8 · Mission **10↔10** · mini **4↔4** · Wallet 2↔2 · K-Pick 8↔8) — 깨져 있던 2종 Summary 블록 신설 + K-Pick 제목 v1.7.5 확정(위키 3건 PUT) · **미결 0** |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 09-15 | 용어집 **v5.5**(118 terms) · 가이드 **v42 게시 완료**(태그 `guide-v42`) — **2026-09-15 API·태그 실측 재확인** · ⛔ 용어집 보완은 **「모아서 한 번에」**(`md/glossary-backlog.md` **대기 18건** · 발견 시 묻지 않는다) · **미결 1건**(`UF_clinic_detail_review_source` ja 검토) |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-15 | 점검 **#7**(09-14) 반영 — **주기 정상 복귀**(#5→#6 4일 → #7 7일) · 🔴 **프로덕션 리워드 탭 스켈레톤 고착**(#6과 환경 역전 · `mission-users` 401) · 🔴 오프라인 결제 캐시백 캠페인 신설 · KAIA **4.2→4.1%** · **Preferred Stable** 축 신설 · ⛔ Screen ID 어휘 승인 대기 **12건** · **7주 연속 2건**(Beta 0% 표기 · K-Pick GNB) · ⚠️ **#6·#7이 12일간 미기록이던 것을 09-15에 소급 반영**(리포트 근거) |
@@ -87,10 +87,10 @@
 
 | 날짜 | 결정 | 이유 |
 |---|---|---|
+| 2026-09-15 | **기획자 가이드는 「모아서 한 번에」 — 푸시마다 묻지 않고 `md/guide-backlog.md`에 등재만 한다**(정본 CLAUDE.md 📣 규칙). 다만 **대기 10건 이상 · ⛔차단 규칙 2건 이상 · 마지막 `guide-v*` 태그로부터 2주** 중 하나면 **한 줄로 제안**하고, 보류되면 **5건 더 쌓일 때까지 재제안 금지** | 가이드 1건 갱신에 **5곳 수정 + zip 재생성 + 헤더 렌더 확인 + 게시 + 태그**가 따라붙어 건건이 하면 비용이 과하고 버전만 잘게 오른다. 용어집도 이미 모아서 반영하므로(2026-09-14) **같은 흐름**이다 — 용어집 반영 작업에서 가이드를 함께 갱신한다. `1013215`·`edeb5d2` |
 | 2026-09-15 | **Landpress PUT은 전체 교체다 — 콘텐츠 필드를 전부 담아 read-modify-write 한다**(정본 `md/landpress.md` §10-3-0). **강제 산출물 2종** — 쓸 때 `scripts/restore/lpc_safe_put.js`(직접 PUT 금지) · 쓰기 **직전·직후** `check_lpc_nulls.py` **exit 0** | `uid`만·한 필드만 보낸 PUT이 **형제 필드를 `null`로 지웠다** — 2026-09-14 4필드 소실(beta·prod). **리비전 이력이 없어**(`/revisions` 404 · `/audit-logs`는 GET만) CMS만으로는 복구 불가였고 저장소 `landpress/` 산출물이 유일한 복구원이었다. `e06866f`·`faa088a` |
 | 2026-09-14 | **위키 상태값은 GuideKim ↔ Unifi B/E 기준을 병기하고 구현은 B/E 기준** | FE가 받는 값은 B/E를 거쳐 달라진다 — 상품권 `ISSUE_PENDING`→`PAID` · 클리닉 `NO_SHOW`/`REJECTED`→`CANCELED` · `point.status` 대문자 · 여행 `use_state` 미제공. B/E 스펙 `4725939674` |
 | 2026-09-14 | **ZH-TW는 한자↔숫자·변수 경계에 공백 1칸**(`共 {{0}} 件` · JP는 반대로 붙임) — **신규·변경 키부터**, 기존은 소급 안 함. 정본 `md/guide.md` §5-1 B | 등록값 283건이 공백 247(87%)·무공백 36으로 갈려 있다(`{{0}}個`↔`{{0}} 個`). 전역 통일은 재등록·QA 비용이 커 **불일치 증가만 막는다**. `e7f26bf` |
-| 2026-09-10 | **`XLT & GA` 셀 제목은 화면당 1개**(`{Screen ID} - XLT & GA`) — 이전엔 `- XLT`·`- Event` 2개로 나눴다. `md/GA.md` §2 정정, 새 페이지는 이 방식이 기본. 기존 페이지는 GA 작업 시 정정 권장(소급 강제 아님) | unifi-mini-v2에서 화면마다 목차(TOC) 항목이 2개씩 생겨 목차가 길어진다는 사용자 지적. XLT 키가 없는 화면도 제목은 동일하게 1개 유지 |
 
 ## ⛔ 전역 종결 (재작업·재제안 금지)
 
