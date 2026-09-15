@@ -22,7 +22,7 @@
 
 ## 현재 상태
 
-본문 위키 **v194** · 하위 LPC 관리 영역 **v55**. 화면 **25**(Home/Category/Search/My + 결제 3 · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
+본문 위키 **v194** · 하위 LPC 관리 영역 **v55**. `mini_common_header_title`은 **2026-09-15 등록 확인**(Dapp Portal 1,696키). 화면 **25**(Home/Category/Search/My + 결제 3 · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
 
 | 영역 | 상태 |
 |---|---|
@@ -49,7 +49,6 @@
 
 - [ ] 🔴 **P0 — 클리닉 한정해제 요건 ②③④ · 8개 파라미터 미확보**: 요건 ①만 충족, **①~④ 모두 충족돼야 성립** → 상세에 **시술명 노출 불가**. 8개 표와 결정 2건(㉮ `price` 3택 · ㉯ `deviceNotice` 리쥬란 포함 법무)은 **LPC 위키 6번 3항이 정본**. ⚠️ **마스터에도 시술별 가격이 없다**(26건 중 24건 `price:"0"`) → 선택지 ①(시작가)은 **마스터 구조 변경 선행** 필요
 - [ ] **P1 — XLT 엑셀 업로드 대기**(사용자 수행): `xlt/xlt_benefit_price_unify_{unifi,dappportal}_2026-09-14.xlsx` **2개 파일** — 「혜택가」 ja·en 정본 통일 + 「최대 혜택가」 띄어쓰기 **7키·11셀**. ⛔ XLT는 쓰기 API가 없다. 엑셀은 **`export_to_xlt.py`로 생성**(시트 `properties`+`plurals` · 컬럼 `(빈칸),en,ko,ja,zh,th` 고정). 업로드 후 `fetch_xlt_registry.py` 재실측 → 위키 XLT·다국어 표 갱신
-- [ ] **P1 — XLT 엑셀 업로드 대기(세션 #11 신규)**: `xlt/xlt_output_20260915130220.xlsx` — `mini_common_header_title` **1키**(LV · Dapp Portal). 위키 첨부명은 `unifi_mini_v2.0_category_header_20260915.xlsx`
 - [ ] **P2 — 병원 식별자 체계 통일**: 21곳 중 **18곳 `uid` / 3곳 `unifiId`(UUID)** — 이 3곳은 마스터 `externalId`가 `null`이라 「beta↔prod는 `uid` 기준」 규칙으로 **매핑 불가** → FE·기획 확인
 - [ ] **P3 — 마스터 원본값 오류 1건**(디에이피부과 도산 `priceItems[0].name`=`상담 문의` · ₩390,000): 시술명 자리에 가격 문구. **마스터가 정본이라 그대로 둔다**(09-14 확정) — 마스터 갱신 시 정리
 
