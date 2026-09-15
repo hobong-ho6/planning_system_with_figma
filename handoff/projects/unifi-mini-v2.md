@@ -1,6 +1,6 @@
 # unifi-mini-v2 — Unifi mini v2.0 화면정의 (Figma 정책 취합 + XLT/GA)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-15 · 세션 #12 · 마지막 커밋 `5fb41ee` · 세션 #11 `456287f`
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-15 · 세션 #12 · 마지막 커밋 `83d9828` · 세션 #11 `456287f`
 >
 > 📌 **세션 #12 — 🔴 LPC 콘텐츠 소실 발견·원인 규명·전량 복구 + 일본어 검수 문서 신설**. LPC **4필드가 beta·prod 양쪽에서 `null`** 이었다(`shopping_guide.guide_page` · `voucher_product.voucher_detail`·`my_voucher_detail` · `k_pick_clinic_common_info.clinic_detail_common`). 원인은 **PUT이 문서를 통째로 교체**하는데 `uid`·단일 필드만 보낸 PUT이 형제 필드를 지운 것. **160건 전량 복구·전건 대조 일치**. 재발 방지 규칙 `md/landpress.md` **§10-3-0** 신설. 이어서 **「Unifi mini v2.0 - 일본어 검수」(`4750149077`) 신설**(834행).
 >
