@@ -12,7 +12,7 @@
 
 ## 대상 / 링크
 
-- 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v194**
+- 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v197**
   - **하위 `4727978725` 「LPC 관리 영역」** — **현재 v55**. LPC 컬렉션 **9개**의 정의·등록 JSON·환경 현황·비율 연동 규칙(§9-7) 정본
   - 하위 `4725950300` 「Admin 관리 대상」 · Figma 파일 `GOCHAYBS7hIrmWRGNuJOKV`(`Web3`)
 - **Unifi B/E API 스펙 `4725939674`** — FE가 실제로 받는 값의 정본. GuideKim 파트너 스펙과 다른 지점이 있어 **구현 기준은 이쪽**이다(아래 「상태값 기준」)
@@ -22,7 +22,7 @@
 
 ## 현재 상태
 
-본문 위키 **v194** · 하위 LPC 관리 영역 **v55**. `mini_common_header_title`은 **2026-09-15 등록 확인**(Dapp Portal 1,696키). 화면 **25**(Home/Category/Search/My + 결제 3 · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
+본문 위키 **v197** · 하위 LPC 관리 영역 **v55**. `mini_common_header_title`은 **2026-09-15 등록 확인**(Dapp Portal 1,696키). 화면 **25**(Home/Category/Search/My + 결제 3 · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
 
 | 영역 | 상태 |
 |---|---|
@@ -72,6 +72,7 @@
 
 ### 2026-09-15 — 세션 #11: Category 이미지 갱신 + 공통 헤더 타이틀 1키 (v192→v193 · `584fc5b`)
 
+- 완료(리뷰 2): **리뷰 「더보기」는 리뷰가 2개를 초과할 때(3개 이상) 노출**(Slack 확정 · **An Vo 구현 회신 완료**) · **리뷰 영역 스펙은 클리닉 정의를 바우처에도 동일 적용**(바우처에 중복 기재하지 않는 이유를 양쪽에 명시) → v195·**v197**(확정 반영). ⚠️ v196은 **사용자가 직접** 추가한 Related Docs `QA` 행 — **버전 가드가 잡아내 덮어쓰지 않고 rebase**했다
 - 완료(리뷰): **리뷰어 아바타 = 닉네임 첫 글자 이미지**(Slack 확정). GuideKim 리뷰 API가 아바타를 주지 않아(`authorName`은 `s***u` 마스킹) **Unifi가 생성**한다 — 개별리뷰 2 · 전체리뷰 2화면 Description + Related Docs `Discussion` 행. ⚠️ 「리뷰 **본문**은 관리 대상 아님」(종결)과 **다른 사안**이다
 - 완료: `카테고리 1`·`카테고리 2`·`(Specout)` 2화면 어노테이션 **4장 재첨부**(같은 파일명 유지) · 본문 **16곳 surgical 교체**(구간 한정 + `count==1` assert) · XLT 신규 1키 게이트 **P0/P1/P2 전부 0** · `check_wiki_storage.py` pre/post exit 0
 - 교훈: **「이미지만 갱신」 요청이라도 코멘트를 먼저 재조회한다.** 이미지만 바꿨다면 `카테고리 2`는 이미지 ⓵~⓺과 Description 1~5가 **어긋난 채** 남았을 것이다 — Figma에 `xlt` 마커가 1개 늘어 통합 번호가 전부 밀려 있었다.
@@ -80,13 +81,8 @@
 
 ### 2026-09-15 — 세션 #10: LPC `payment_guide` 정본 정렬 + 위키 XLT 병기 (LPC v52→v55 · `3c99668`)
 
-- **요청**: 「`payment_guide`는 XLT로도 관리됨을 병기」 → 병기 후 **LPC 실값까지 정본에 정렬**로 확장
-- **정본 확인**: XLT 등록값 `Unifi / WEB BROWSER v1.7.9`(2,557키) 신규 조회 — `payment_guide` 8개 경로 **전부 키 등록 확인**(`UF_voucher_pay_steps_title` · `_step1`~`_step4` · `UF_voucher_info_refund` · `UF_voucher_pay_refund_desc1`·`_desc2`)
-- **LPC 반영**: 목표값을 **리포트가 아니라 라이브 등록값에서 직접 생성**(`{{0}}`→`10` 치환) → beta PUT 5건 → 공개 API 검증 → **beta 등록값을 읽어 prod에 복제**(§10-5-1) → **beta↔prod·정본 전건 대조 PASS**. ko 2 · ja 4 · en 5 · th 5 · zh 3 = **환경당 19셀**
-- **위키 v53~v55**: ① XLT 병행 관리 병기(정본=XLT) + **경로↔키 매핑 표 8행** + 요약 표 병기 ② 「CMS 미반영」 주석 → 「정렬 완료·PASS」 ③ **실등록 JSON 블록을 정렬 후 라이브 값으로 교체**. `check_wiki_storage.py` pre·post 전 회차 exit 0
-- **(d-2) 3번 해소**: 신설 2키(`_refund_desc1`·`_refund_desc2`)가 **XLT 시스템에 등록 확인**됨 — LPC와 XLT 값이 같아졌다
-- ⚠️ **교훈 — 위키에 「미반영」을 적었으면 반영 후 반드시 되돌아온다.** v54에서 내가 직전에 쓴 주석이 곧바로 거짓이 됐다. 상태를 적은 문장은 **그 상태를 바꾸는 작업의 체크리스트**다
-- ⚠️ **미기록 세션 존재**: `95cc142`(#9) 이후 `0f2b40b`·`5f9b9af`·`0021d95`·`a5fc006`·`2ad22d1`·`453eb91` **6커밋**이 이 파일에 반영되지 않았다(결제페이지 LPC→XLT 전환·바코드·잔액 툴팁·엑셀 재생성). 근거는 `reports/gate/` 해당 리포트
+- 정본(XLT 등록값 `v1.7.9`) 기준으로 LPC `payment_common_info`를 **beta·prod 38셀** 반영, **5개 언어 전건 대조 PASS** · LPC 위키에 「`payment_guide`는 XLT로도 관리」 병기 + **경로↔키 매핑 표 8행** 신설
+- 교훈: **같은 문구가 XLT와 LPC 두 경로로 관리되면 「어느 쪽이 정본인지」를 문서에 박아야** 다음 세션이 반대로 덮어쓴다
 
 ### 2026-09-14 — 세션 #9: 혜택 비율 체계 확정 · `voucher_product`(UIT) 신설 (본문 v184 · LPC v49)
 
