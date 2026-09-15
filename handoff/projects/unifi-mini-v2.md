@@ -2,7 +2,7 @@
 
 > 담당자: `hogeun` · 마지막 갱신: 2026-09-15 · 세션 #12 · 마지막 커밋 `83d9828` · 세션 #11 `456287f`
 >
-> 📌 **세션 #12 — 🔴 LPC 콘텐츠 소실 발견·원인 규명·전량 복구 + 일본어 검수 문서 신설**. LPC **4필드가 beta·prod 양쪽에서 `null`** 이었다(`shopping_guide.guide_page` · `voucher_product.voucher_detail`·`my_voucher_detail` · `k_pick_clinic_common_info.clinic_detail_common`). 원인은 **PUT이 문서를 통째로 교체**하는데 `uid`·단일 필드만 보낸 PUT이 형제 필드를 지운 것. **160건 전량 복구·전건 대조 일치**. 재발 방지 규칙 `md/landpress.md` **§10-3-0** 신설. 이어서 **「Unifi mini v2.0 - 일본어 검수」(`4750149077`) 신설**(834행).
+> 📌 **세션 #12 — 🔴 LPC 콘텐츠 소실 발견·원인 규명·전량 복구 + 일본어 검수 문서 신설**. LPC **4필드가 beta·prod 양쪽에서 `null`**(원인: PUT이 문서를 통째로 교체하는데 `uid`·단일 필드만 보낸 PUT이 형제 필드를 지움). **160건 전량 복구·전건 대조 일치** · 재발 방지 **§10-3-0 + 강제 산출물 2종**. **「Unifi mini v2.0 - 일본어 검수」(`4750149077`) 신설**(834행).
 >
 > 📌 **세션 #11 — Category 화면 갱신 + 공통 헤더 타이틀 키 신설**. `카테고리 1`·`카테고리 2` 이미지를 최신 Figma로 재첨부하고, 신설된 `xlt` 마커에 맞춰 **카테고리 2의 Description·XLT `No`·GA `#`를 전부 +1 재정렬**했다. XLT 신규 **1키** `mini_common_header_title`(P0·P1·P2 **전부 0**). `(Specout)카테고리 선택`·`(Specout)카테고리 정렬` **스펙아웃 표기**(행·XLT 5키는 기록용 유지). 본문 **v192 → v193**. 이어서 **리뷰어 아바타 정책**(닉네임 첫 글자를 이미지로 사용 · GuideKim API 미제공)을 개별리뷰 2 · 전체리뷰 2화면에 반영해 **v194**.
 >
@@ -78,7 +78,7 @@
 - **원인**: PUT은 **부분 갱신이 아니라 전체 교체** — body에 없는 필드가 `null`이 된다. 근거 ⓐ `uid`를 바꾼 컬렉션 2개만 소실 ⓑ 클리닉은 **형제 필드**가 갈림(`clinic_menu` 정상/`clinic_detail_common` null) ⓒ 콘텐츠 필드 1개뿐인 컬렉션 6개는 무사
 - ⚠️ **리비전 이력이 없다** — `/revisions`·`/histories`·`/versions` 404 · `/audit-logs`는 **GET만** 기록. **저장소 `landpress/` 산출물(5개 언어)이 유일한 복구원**이었다
 - **복구**: 120건 PUT(=필드 160건) · 안전장치 3중(값 있으면 skip · 형제 필드 read-modify-write · 건별 재조회). 스크립트의 「실패 50건」은 **`JSON.stringify` 키 순서 오탐**(값 정상) · **LV beta `en_US` 3건에 한국어 잔존 초안**이 있어 skip됐던 것을 교정 → 최종 **160/160 일치 · 전 컬렉션 280필드 null 0 · `clinic_menu` 보존**
-- **재발 방지**: `md/landpress.md` **§10-3-0** 신설 — PUT 전 read-modify-write 강제 + 사고 실측 기록(`e06866f`). 복구·검증 기록 `reports/restore/landpress_restore_2026-09-15.md` · 재현 `scripts/restore/verify_landpress_restore.py`
+- **재발 방지**: `md/landpress.md` **§10-3-0** + **강제 산출물 2종**(`f183bb8`) — 쓸 때 `scripts/restore/lpc_safe_put.js`(read-modify-write·건별 재조회 대조 · **직접 PUT 금지**) · 쓰기 **직전·직후** `scripts/check_lpc_nulls.py` **exit 0**(공개 조회 API로 9컬렉션×4프로젝트×5언어 null 스윕). `CLAUDE.md`에 「⛔ LPC 쓰기 규칙」 신설. 기록 `reports/restore/landpress_restore_2026-09-15.md`
 - ⛔ **LPC 관리 범위 = 위키 `4727978725` 정의만**(사용자 확정). UIT `k_pick_clinic_common_info`(필드 `cautions`·`faq` 등)는 LV 동명과 **스키마가 다른 별개**이고 위키 미정의 → **범위 밖**(복구도 하지 않았다)
 - **일본어 검수 문서 신설** — [`4750149077`](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4750149077) **834행**(XLT 298 · Admin 14 · LPC 522) · 이미지는 **표 안 `rowspan` 셀**(교차 참조 55장 · 깨짐 0) · 상위 문서에 단 신설(**v197→v200**). **GA 제외**(노출 문구 없음) · **OA 제외**(167건 `ja` 미착수) · Admin은 조회 불가라 ko·ja 빈칸
 - ⚠️ **교훈 — 「업데이트 했다」는 보고가 곧 「값이 살아 있다」는 뜻이 아니다.** 세션 #9은 정상 완료로 기록했고 실제로 PUT도 200이었지만, **같은 PUT이 형제 필드를 지웠다.** 쓰기 후 검증은 **쓴 필드만이 아니라 그 항목 전체**를 봐야 한다
