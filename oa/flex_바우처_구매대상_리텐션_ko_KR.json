@@ -2,9 +2,9 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/e87b263ba7e74efca2270776e897c07d.png?updatedAt=1789471220000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/5cdc3532b3bc4a65a5fd648a17b1d6ae.png?updatedAt=1789474066000",
     "size": "full",
-    "aspectRatio": "25:17",
+    "aspectRatio": "28:19",
     "aspectMode": "cover"
   },
   "body": {
@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "모든 바우처 15% 할인!",
+        "text": "지금 진행중인 최대 15% 환원 기회를 확인해보세요!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,14 +26,14 @@
         "contents": [
           {
             "type": "text",
-            "text": "올리브영·다이소·CU 등 원하는 바우처를",
+            "text": "올리브영, 다이소, CU 상품권 15% 환원!",
             "size": "sm",
             "color": "#666666",
             "wrap": true
           },
           {
             "type": "text",
-            "text": "할인가로 구매해보세요.",
+            "text": "더 많은 상품을 보러가세요.",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -54,7 +54,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "15% 할인받고 구매하기",
+          "label": "상품 보러가기",
           "uri": "https://miniapp.line.me/unifi/event/voucher-event-1?referral_code=2055_SUTGA&attribution_code=2055_SUTGA&utm_content=sep_2026&utm_term=coupon_remind_oa"
         }
       }
