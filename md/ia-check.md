@@ -107,6 +107,21 @@ git push origin main
 - IA 리포트 탭의 최신 회차(`#N · YYYY-MM-DD`)도 함께 확인해 **이번 회차 번호**를 정한다. **새 버전 번호는 확정된 베이스의 내부 버전 + 1**이다(파일명 최댓값 + 1이 아니다).
 - 작업은 `guide/`에서 직접 하거나, 스크래치패드에 복사해 편집한 뒤 `guide/`에 되돌린다 — 구성은 `index.html` · `style.css` · `script.js` · `img/`(5개 png).
 
+### 2-0-1. 로컬 미리보기 — `preview_start` 기동 방법 (실측 함정)
+
+브라우저 도구로 렌더까지 확인하려면 **npx http-server** 항목을 `.claude/launch.json`에 넣고 `preview_start`로 띄운다. `.claude/launch.json`은 **git 제외**라 PC마다 직접 만들어야 하고, 기존 항목의 경로가 그 PC와 어긋나면 기동이 실패한다(2026-08-10 실측 · 2026-09-14 재확인 — 등록된 `~/.nvm/.../npx`가 없고 실제 위치는 `/usr/local/bin/npx`였다).
+
+```json
+{ "name": "guide-vN", "runtimeExecutable": "/usr/local/bin/npx",
+  "runtimeArgs": ["--yes","http-server","<저장소>/guide","-p","8144","-c-1","--silent"], "port": 8144 }
+```
+
+⚠️ **`preview_start`로 파이썬 `http.server`를 띄우면 `PermissionError: os.getcwd()`로 죽는다**(2026-09-14 실측). `-m http.server --directory`도 argparse 기본값이 `os.getcwd()`라 기동 전에 실패하고, `os.chdir` 후 `SimpleHTTPRequestHandler`를 쓰는 항목은 기동은 되지만 **요청마다** 같은 예외로 500을 낸다 — 샌드박스가 cwd 조회를 막아서다. Bash로 간단히 볼 때는 샌드박스 밖이라 아래가 여전히 빠르다.
+
+```bash
+python3 -m http.server 8000 --directory guide
+```
+
 ### 2-1. ⛔ 「전체 IA 구조」 표 동기화 (`md/IA.md`를 고쳤으면 필수)
 
 IA 점검 리포트 탭 최상단 `<div id="ia-structure">`의 표는 **팀원이 IA를 확인하는 창구**이고, 데이터는 `index.html` 안 **`IA_DATA` 배열** 한 곳에 있다. `md/IA.md`의 §2 화면 트리·§0 제공 매트릭스가 바뀌었으면 **같은 작업에서 이 배열을 맞춘다** — 두 곳이 어긋나면 팀원이 보는 IA가 틀린다.

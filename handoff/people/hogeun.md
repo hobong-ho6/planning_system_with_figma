@@ -1,45 +1,27 @@
 # hogeun
 
 > 사람키: `hogeun` · git identity `Hogeun Kim <hogeun.kim.lnxt@gmail.com>` · `handoff.person=hogeun` — **PC 2대 동일**(규칙: `handoff/README.md` 「사람 식별」)
-> 담당 프로젝트: **활성 11종 전부** — `HANDOFF.md` 프로젝트 인덱스 참조
+> 담당 프로젝트: **활성 전부**(`HANDOFF.md` 인덱스 참조 — 수치는 적지 않는다, 늘 어긋난다)
 
 ## PC
 
 | hostname | 저장소 경로 | git 세팅 | 비고 |
 |---|---|---|---|
 | `AL02359162.local` | `/Users/user/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 접속 시 XLT 읽기 API 사용 가능 |
-| `AD03230205ui-iMac.local` | `/Users/ad03230205/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 경로 실측 확인 · `handoff.person=hogeun` 확인 |
+| `AD03230205ui-iMac.local` | `/Users/ad03230205/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 OK(2026-09-15 XLT API 실측) |
 
 ## 환경 복구
 
-- **⚠ Python 의존성이 사라질 수 있다**(실측 1회) — `ModuleNotFoundError`가 나면:
+- **⚠ Python 의존성이 사라질 수 있다**(실측 1회) — `ModuleNotFoundError` 시 아래(`Pillow` 포함 — `collect_frames.py`가 요구):
   ```bash
   pip3 install --break-system-packages -r scripts/requirements.txt
   ```
-  (`Pillow` 포함 — `collect_frames.py`가 요구)
 
-## 도구 함정 (이 PC들에서 실측)
+## 도구 함정 (이 PC들에서 실측 — 전역 스크립트 계약은 `HANDOFF.md`)
 
-- `validate_translation.py`는 **용어집을 두 번째 위치 인자로만** 받는다(`--glossary` 플래그 없음). 빠뜨리면 "용어집이 로드되지 않음. 2단계 건너뜀"으로 **조용히 통과**한다:
-  ```bash
-  python3 scripts/validate_translation.py <엑셀> scripts/glossary.json
-  ```
-- `check_wiki_storage.py post --page`는 `CONFLUENCE_PAT` **환경변수**를 요구한다(`--token` 아님). `compare_wiki_xlt.py`도 동일.
-- `collect_node_boxes(frame_doc)`는 **`(boxes, frame_bbox)` 튜플을 반환**한다 — `fetch_threads(node_boxes=..., frame_origin=...)`에 그대로 넘기면 `AttributeError: 'tuple' object has no attribute 'get'`으로 죽는다(2026-08-24 실측). 언패킹해서 넘긴다:
-  ```python
-  boxes, origin = collect_node_boxes(frame_doc)
-  threads = fetch_threads(file_key, token, node_ids=ids, node_boxes=boxes, frame_origin=origin)
-  ```
+- `collect_node_boxes(frame_doc)`는 **`(boxes, frame_bbox)` 튜플을 반환**한다 — `boxes, origin = collect_node_boxes(doc)`로 **언패킹해서** `fetch_threads(node_boxes=boxes, frame_origin=origin)`에 넘긴다. 그대로 넘기면 `AttributeError: 'tuple' object has no attribute 'get'`(2026-08-24 실측).
 - `fetch_xlt_registry.py --out`이 만드는 JSON은 `{"metadata":…, "entries": {키: {5개 언어}}}`이고 **`entries`는 dict**다(리스트로 가정하면 `'str' object has no attribute 'get'`). 서브에이전트에 레지스트리를 넘길 때 이 구조를 프롬프트에 명시한다.
-- **XLT 읽기 API는 사내망/VPN 전제다**(무인증이지만 IP 화이트리스트 추정). 실패 유형별 처리는 `md/xlt-verify.md` §2-4 — 특히 **사내 프록시 로그인 페이지가 200 + HTML로 오는 경우**를 `RuntimeError`로 잡는다. VPN 미연결 시 사용자 export로 폴백하며 **레지스트리는 항상 옵셔널**이라 게이트 전체가 실패하지는 않는다.
-- `.claude/launch.json`은 **git 제외**이고 기존 항목의 경로·실행파일이 이 PC와 어긋나 **`guide-site` 기동이 실패한다**(2026-08-10 실측 · 2026-09-14 재확인 — 등록된 npx 경로 `~/.nvm/versions/node/v24.14.1/bin/npx`가 이 PC에 없다. 실제 위치는 **`/usr/local/bin/npx`**).
-  - ⚠️ **`preview_start`로 띄우는 파이썬 http.server는 이 PC에서 `PermissionError: os.getcwd()`로 죽는다**(2026-09-14 실측) — `-m http.server --directory`도 argparse 기본값이 `os.getcwd()`라 기동 전에 실패하고, `os.chdir` 후 `SimpleHTTPRequestHandler`를 쓰는 `guide-local` 항목은 기동은 되지만 **요청마다** 같은 예외로 500을 낸다. 샌드박스가 cwd 조회를 막아서다.
-  - 가이드 미리보기는 **npx http-server 항목**을 `launch.json`에 넣고 `preview_start`로 띄운다(브라우저 도구로 렌더 확인까지 가능):
-  ```json
-  { "name": "guide-v40", "runtimeExecutable": "/usr/local/bin/npx",
-    "runtimeArgs": ["--yes","http-server","<저장소>/guide","-p","8144","-c-1","--silent"], "port": 8144 }
-  ```
-  - Bash로 간단히 볼 때는 여전히 이게 빠르다(샌드박스 밖):
-  ```bash
-  python3 -m http.server 8000 --directory guide
-  ```
+- **XLT 읽기 API는 사내망/VPN 전제다**(무인증이나 IP 화이트리스트 추정). 실패 유형별 처리·프록시 로그인 페이지(200 + HTML) 대응은 **`md/xlt-verify.md` §2-4가 정본**. 미연결 시 사용자 export로 폴백하며 레지스트리는 **옵셔널**이라 게이트가 통째로 실패하지는 않는다.
+- `.claude/launch.json`은 **git 제외**라 PC마다 직접 만들어야 하고, 이 PC에선 **npx 경로가 `/usr/local/bin/npx`**다(등록된 `~/.nvm/...` 경로는 없다). **가이드 로컬 미리보기 기동법·파이썬 `http.server` 샌드박스 함정은 `md/ia-check.md` §2-0-1이 정본**이다.
+- **`timeout` 명령이 없다**(macOS 기본 · 2026-09-15 실측) — `timeout 90 python3 ...`은 `command not found`로 죽는다. 필요하면 `gtimeout`(coreutils)을 쓰거나 그냥 실행한다.
+- **Slack `get_thread_replies`는 긴 스레드에서 토큰 상한을 넘겨 파일로 떨어진다**(2026-09-15 실측 · 113메시지 152KB). 반환된 경로를 `python3`/`jq`로 **필요한 `ts`만 뽑아 읽는다** — 전문을 컨텍스트에 올리지 않는다.
