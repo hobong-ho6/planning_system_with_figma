@@ -1,47 +1,48 @@
 # unifi-mini-v2 — Unifi mini v2.0 화면정의 (Figma 정책 취합 + XLT/GA)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-15 · 세션 #11 · 마지막 커밋 `456287f` · 세션 #10 `3c99668`
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-15 · 세션 #12 · 마지막 커밋 `5fb41ee` · 세션 #11 `456287f`
+>
+> 📌 **세션 #12 — 🔴 LPC 콘텐츠 소실 발견·원인 규명·전량 복구 + 일본어 검수 문서 신설**. LPC **4필드가 beta·prod 양쪽에서 `null`** 이었다(`shopping_guide.guide_page` · `voucher_product.voucher_detail`·`my_voucher_detail` · `k_pick_clinic_common_info.clinic_detail_common`). 원인은 **PUT이 문서를 통째로 교체**하는데 `uid`·단일 필드만 보낸 PUT이 형제 필드를 지운 것. **160건 전량 복구·전건 대조 일치**. 재발 방지 규칙 `md/landpress.md` **§10-3-0** 신설. 이어서 **「Unifi mini v2.0 - 일본어 검수」(`4750149077`) 신설**(834행).
 >
 > 📌 **세션 #11 — Category 화면 갱신 + 공통 헤더 타이틀 키 신설**. `카테고리 1`·`카테고리 2` 이미지를 최신 Figma로 재첨부하고, 신설된 `xlt` 마커에 맞춰 **카테고리 2의 Description·XLT `No`·GA `#`를 전부 +1 재정렬**했다. XLT 신규 **1키** `mini_common_header_title`(P0·P1·P2 **전부 0**). `(Specout)카테고리 선택`·`(Specout)카테고리 정렬` **스펙아웃 표기**(행·XLT 5키는 기록용 유지). 본문 **v192 → v193**. 이어서 **리뷰어 아바타 정책**(닉네임 첫 글자를 이미지로 사용 · GuideKim API 미제공)을 개별리뷰 2 · 전체리뷰 2화면에 반영해 **v194**.
 >
-> ⚠️ **v186 → v192 구간은 이 파일에 기록이 없다** — 세션 #10 종료 후 다른 세션이 6버전 올렸고, 그 내용은 위키 History가 유일한 근거다.
+> ⚠️ **v186→v192 구간은 기록이 없다**(다른 세션 6버전 · 위키 History가 유일한 근거)
 >
 > 📌 **세션 #10 — LPC `payment_guide`를 XLT 정본에 정렬 + 위키 병기**. 정본(XLT 등록값 `v1.7.9`) 기준으로 LPC `payment_common_info`를 **beta·prod 각 19셀 · 총 38셀** 반영하고 **5개 언어 전건 대조 PASS**. LPC 위키에 **「`payment_guide`는 XLT로도 관리」 병기 + 경로↔키 매핑 표 8행**을 신설했다. LPC 위키 **v50 → v55**.
 >
-> ⚠️ **세션 #8과 결정이 충돌했다** — `k_pick_shopping_product` 캐시백 정정을 11:49에 반영한 뒤, 14:15에 세션 #8이 「관리 대상 아님」으로 확정했다. 사용자 확인으로 **값은 유지 · 이후 갱신 대상에서 제외**로 정리(아래 종결).
 
 ## 대상 / 링크
 
-- 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v197**
+- 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v200**
   - **하위 `4727978725` 「LPC 관리 영역」** — **현재 v55**. LPC 컬렉션 **9개**의 정의·등록 JSON·환경 현황·비율 연동 규칙(§9-7) 정본
-  - 하위 `4725950300` 「Admin 관리 대상」 · Figma 파일 `GOCHAYBS7hIrmWRGNuJOKV`(`Web3`)
-- **Unifi B/E API 스펙 `4725939674`** — FE가 실제로 받는 값의 정본. GuideKim 파트너 스펙과 다른 지점이 있어 **구현 기준은 이쪽**이다(아래 「상태값 기준」)
-- XLT: **부분 착수**. 담당 FE 팀 확정 — `JPYC 자산 상세`계열·`결제 페이지` = **UIT**(`UF_`·`{{0}}`) / `Voucher Detail`·`Clinic Detail` = **LV**(`mini_`·`{0}`). **`최근 본 상품`은 화면만 LV**(2026-09-14 이관) — **키는 `UF_`·`{{0}}` 유지**(팀 규칙의 의도된 예외, 아래 다음 할 일). Home/Category/Search/My는 세션 #1 이후 다른 세션에서 이미 번역 완료(v60 시점 확인)
-- 이미지: **위키 첨부가 정본**. 로컬 `assets/collected_*`는 git 미추적 재생성물(세션마다 새로 생성)
+  - 하위 `4725950300` 「Admin 관리 대상」 · `4725963532` 「100엔딜」([전용 파일](100yen-deal.md)) · `4750149077` 「일본어 검수」 · Figma `GOCHAYBS7hIrmWRGNuJOKV`(`Web3`)
+- **Unifi B/E API 스펙 `4725939674`** — FE 수신값의 정본. GuideKim 스펙과 달라 **구현 기준은 이쪽**
+- XLT: 담당 FE — `JPYC 자산 상세`·`결제 페이지` = **UIT**(`UF_`·`{{0}}`) / `Voucher Detail`·`Clinic Detail` = **LV**(`mini_`·`{0}`). **`최근 본 상품`은 화면만 LV** — 키는 `UF_` 유지(의도된 예외). Home/Category/Search/My는 이전 세션에 번역 완료
+- 이미지: **위키 첨부가 정본**(로컬 `assets/collected_*`는 git 미추적 재생성물)
 - **K-Pick 1만원권 4종**(`k_pick_shopping_product`) — ⛔ **관리 대상 아님**(09-14 · 상세는 「⛔ 종결」). 산출물 `landpress/{cu,daiso,emart24,oliveyoung}_10000/` · UIT prod에 100셀 등록 완료
 
 ## 현재 상태
 
-본문 위키 **v197** · 하위 LPC 관리 영역 **v55**. `mini_common_header_title`은 **2026-09-15 등록 확인**(Dapp Portal 1,696키). 화면 **25**(Home/Category/Search/My + 결제 3 · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
+본문 위키 **v200** · 하위 LPC 관리 영역 **v55** · 하위 **일본어 검수 `4750149077`**(834행 · 신설 09-15). `mini_common_header_title`은 **2026-09-15 등록 확인**(Dapp Portal 1,696키). 화면 **25**(Home/Category/Search/My + 결제 3 · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
 
 | 영역 | 상태 |
 |---|---|
 | **XLT·GA 정의** | 신설 12화면 전부 완료(UIT=결제·JPYC / LV=Voucher·Clinic Detail). Home/Category/Search/My는 이전 세션에 완료 |
-| **⛔ 상태값 기준 · 여행 · GA**(세션 #7) | Policy 상태값은 **GuideKim 기준**, FE 수신값은 **Unifi B/E** 경유로 다르다 — v183에서 병기, **구현은 B/E 기준**(스펙 `4725939674`). 여행 `use_state` 미제공으로 6곳 폐기 · GA는 `voucher_status` 파라미터로 흡수. **상세는 위키가 정본** |
-| **최근 본 상품** | 09-14 **UIT→LV 이관**(`Voucher Detail - LV` 하위 독립 섹션). XLT 3키 **`UF_` 유지**(prod 기등록) · **9-17 이후 릴리즈**라 마이페이지 영역도 미노출 · 「확정 필요 항목」에 **LV 회신 대기** |
-| **LPC 컬렉션** | **9개**(LV 6 · UIT 3) 전부 **beta·prod 5개 언어 등록·공개 완료**. 09-14 **`voucher_product`(UIT) 신설** — `my_voucher_detail`만 두고 4브랜드 × 5언어 등록, **LV·UIT × beta·prod 4곳 전건 일치**(§4-3). ⛔ **병존 유지 확정** — 변경 시 4곳 동반 갱신. 09-15 **`payment_common_info`(UIT) 정본 정렬 완료**(beta·prod 38셀 · 전건 대조 PASS) |
+| **⛔ 상태값 기준** | Policy는 **GuideKim 기준** · FE 수신값은 **Unifi B/E** 경유로 다르다 → **구현은 B/E 기준**(스펙 `4725939674`). 여행 `use_state` 미제공 6곳 폐기. **상세는 위키가 정본** |
+| **최근 본 상품** | 09-14 **UIT→LV 이관** · XLT 3키 **`UF_` 유지**(prod 기등록) · **9-17 이후 릴리즈** · 「확정 필요 항목」에 LV 회신 대기 |
+| **LPC 컬렉션** | **9개**(LV 6 · UIT 3) 전부 **beta·prod 5개 언어 등록·공개 완료**. 09-14 **`voucher_product`(UIT) 신설** — `my_voucher_detail`만 두고 4브랜드 × 5언어 등록, **LV·UIT × beta·prod 4곳 전건 일치**(§4-3). ⛔ **병존 유지 확정** — 변경 시 4곳 동반 갱신. 09-15 **`payment_common_info`(UIT) 정본 정렬 완료**(38셀) · 🔴 **09-15 콘텐츠 소실 4필드 전량 복구**(160건 전건 일치 · 원인=부분 PUT) |
 | **혜택 비율 체계** | ⛔ **할인 5% · 캐시백 10% · 합산 소구 15%**(09-14 사용자 확정 · 아래 「⛔ 종결」이 정본). 비율이 리터럴로 박힌 **6필드 · 80셀**은 값 변경 시 함께 갱신 → [LPC 위키](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §9-7 |
 | **클리닉** | `k_pick_clinic_product` 폐지 → `k_pick_clinic_common_info` 단일 통합 · **일본 의료광고 규제 반영**(효과 단정 제거 · `deviceNotice`·`contact`·`duration`·`risk` 신설) → [LPC 위키](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) |
 | **K-Pick 1만원권 4종** | ⛔ **관리 대상 아님**(`k_pick_shopping_product`) — 사유·경위는 아래 「⛔ 종결」이 정본 |
-| **클리닉 `clinic_menu`** | ✅ **병원 21곳 · 시술 48건** · 가격 **0/없음 → `상담 문의` 46건 · 금액 2건** · beta↔prod 5언어 전건 동치. ⛔ 르아델 제외(`priceItems` 빈 배열) → [LPC 위키](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) |
-| **Unifi 마스터 대조** | 병원 29곳(ACTIVE 22)·바우처 17종(ACTIVE 16) 대조 완료. 금액권 12종 = 위키 브랜드 표와 **누락·초과 0** · 병원 식별자 `uid` 18 / `unifiId` 3 혼재(→ 다음 할 일 P2) |
+| **클리닉 `clinic_menu`** | ✅ 병원 21곳 · 시술 48건 · 가격 **`상담 문의` 46 / 금액 2** · beta↔prod 5언어 동치. ⛔ 르아델 제외(`priceItems` 빈 배열) |
+| **Unifi 마스터 대조** | 병원 29(ACTIVE 22)·바우처 17종 대조 완료 · 금액권 12종 **누락·초과 0** · 병원 식별자 `uid` 18 / `unifiId` 3 혼재(→ P2) |
 | **미결 핵심** | 🔴 클리닉 **한정해제 요건 ②③④ 8개 파라미터 미확보**(병원·법무) → 상세에 **시술명 노출 불가** · `최대혜택가` 3키 정리. ~~GA Screen ID~~는 09-14 해소 |
 
-> ⚠️ 09-12~13 미기록 세션(v96→v172)의 미결은 이 파일에 옮겨지지 않았다 — 근거는 `reports/gate/` 3건과 위키 History.
+> ⚠️ 09-12~13 미기록 세션(v96→v172)의 미결은 미반영 — 근거는 `reports/gate/` 3건과 위키 History.
 
 ## 진행 중 작업(WIP)
 
-없음. 세션 #9의 저장소 변경은 산출물 140개 + 게이트 리포트 1건으로 전부 푸시 완료(`4895c52` · `b64853c`). 위키 v184·v49는 git 밖 산출물이다.
+없음. 세션 #12 산출물(복구 기록·검증 스크립트·`md/landpress.md` §10-3-0)은 전부 푸시 완료. 위키·LPC는 git 밖 산출물이다.
 
 ## 다음 할 일
 
@@ -49,6 +50,7 @@
 
 - [ ] 🔴 **P0 — 클리닉 한정해제 요건 ②③④ · 8개 파라미터 미확보**: 요건 ①만 충족, **①~④ 모두 충족돼야 성립** → 상세에 **시술명 노출 불가**. 8개 표와 결정 2건(㉮ `price` 3택 · ㉯ `deviceNotice` 리쥬란 포함 법무)은 **LPC 위키 6번 3항이 정본**. ⚠️ **마스터에도 시술별 가격이 없다**(26건 중 24건 `price:"0"`) → 선택지 ①(시작가)은 **마스터 구조 변경 선행** 필요
 - [ ] **P1 — XLT 엑셀 업로드 대기**(사용자 수행): `xlt/xlt_benefit_price_unify_{unifi,dappportal}_2026-09-14.xlsx` **2개 파일** — 「혜택가」 ja·en 정본 통일 + 「최대 혜택가」 띄어쓰기 **7키·11셀**. ⛔ XLT는 쓰기 API가 없다. 엑셀은 **`export_to_xlt.py`로 생성**(시트 `properties`+`plurals` · 컬럼 `(빈칸),en,ko,ja,zh,th` 고정). 업로드 후 `fetch_xlt_registry.py` 재실측 → 위키 XLT·다국어 표 갱신
+- [ ] **P1 — 일본어 검수 의견 회수 후 반영**: [`4750149077`](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4750149077) 834행의 「검수 의견」 열. XLT 수정분은 `ja_JP` 교정 → 엑셀 산출(업로드는 사용자) · LPC 수정분은 **read-modify-write**(`md/landpress.md` §10-3-0)로 반영. Admin 14영역은 **등록값을 채워야 검수 가능**
 - [ ] **P2 — 병원 식별자 체계 통일**: 21곳 중 **18곳 `uid` / 3곳 `unifiId`(UUID)** — 이 3곳은 마스터 `externalId`가 `null`이라 「beta↔prod는 `uid` 기준」 규칙으로 **매핑 불가** → FE·기획 확인
 - [ ] **P3 — 마스터 원본값 오류 1건**(디에이피부과 도산 `priceItems[0].name`=`상담 문의` · ₩390,000): 시술명 자리에 가격 문구. **마스터가 정본이라 그대로 둔다**(09-14 확정) — 마스터 갱신 시 정리
 
@@ -70,29 +72,30 @@
 
 ## 세션 기록 (최신 위, 최대 5개)
 
+### 2026-09-15 — 세션 #12: LPC 콘텐츠 소실 복구 + 일본어 검수 문서 신설 (`5fb41ee`)
+
+- 🔴 **사고**: LPC **4필드가 beta·prod 양쪽 `null`**(공개 조회 API 기준 — FE 영향 가능). `updatedAt` 전부 2026-09-14
+- **원인**: PUT은 **부분 갱신이 아니라 전체 교체** — body에 없는 필드가 `null`이 된다. 근거 ⓐ `uid`를 바꾼 컬렉션 2개만 소실 ⓑ 클리닉은 **형제 필드**가 갈림(`clinic_menu` 정상/`clinic_detail_common` null) ⓒ 콘텐츠 필드 1개뿐인 컬렉션 6개는 무사
+- ⚠️ **리비전 이력이 없다** — `/revisions`·`/histories`·`/versions` 404 · `/audit-logs`는 **GET만** 기록. **저장소 `landpress/` 산출물(5개 언어)이 유일한 복구원**이었다
+- **복구**: 120건 PUT(=필드 160건) · 안전장치 3중(값 있으면 skip · 형제 필드 read-modify-write · 건별 재조회). 스크립트의 「실패 50건」은 **`JSON.stringify` 키 순서 오탐**(값 정상) · **LV beta `en_US` 3건에 한국어 잔존 초안**이 있어 skip됐던 것을 교정 → 최종 **160/160 일치 · 전 컬렉션 280필드 null 0 · `clinic_menu` 보존**
+- **재발 방지**: `md/landpress.md` **§10-3-0** 신설 — PUT 전 read-modify-write 강제 + 사고 실측 기록(`e06866f`). 복구·검증 기록 `reports/restore/landpress_restore_2026-09-15.md` · 재현 `scripts/restore/verify_landpress_restore.py`
+- ⛔ **LPC 관리 범위 = 위키 `4727978725` 정의만**(사용자 확정). UIT `k_pick_clinic_common_info`(필드 `cautions`·`faq` 등)는 LV 동명과 **스키마가 다른 별개**이고 위키 미정의 → **범위 밖**(복구도 하지 않았다)
+- **일본어 검수 문서 신설** — [`4750149077`](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4750149077) **834행**(XLT 298 · Admin 14 · LPC 522) · 이미지는 **표 안 `rowspan` 셀**(교차 참조 55장 · 깨짐 0) · 상위 문서에 단 신설(**v197→v200**). **GA 제외**(노출 문구 없음) · **OA 제외**(167건 `ja` 미착수) · Admin은 조회 불가라 ko·ja 빈칸
+- ⚠️ **교훈 — 「업데이트 했다」는 보고가 곧 「값이 살아 있다」는 뜻이 아니다.** 세션 #9은 정상 완료로 기록했고 실제로 PUT도 200이었지만, **같은 PUT이 형제 필드를 지웠다.** 쓰기 후 검증은 **쓴 필드만이 아니라 그 항목 전체**를 봐야 한다
+
 ### 2026-09-15 — 세션 #11: Category 이미지 갱신 + 공통 헤더 타이틀 1키 (v192→v193 · `584fc5b`)
 
-- 완료(리뷰 2): **리뷰 「더보기」는 리뷰가 2개를 초과할 때(3개 이상) 노출**(Slack 확정 · **An Vo 구현 회신 완료**) · **리뷰 영역 스펙은 클리닉 정의를 바우처에도 동일 적용**(바우처에 중복 기재하지 않는 이유를 양쪽에 명시) → v195·**v197**(확정 반영). ⚠️ v196은 **사용자가 직접** 추가한 Related Docs `QA` 행 — **버전 가드가 잡아내 덮어쓰지 않고 rebase**했다
-- 완료(리뷰): **리뷰어 아바타 = 닉네임 첫 글자 이미지**(Slack 확정). GuideKim 리뷰 API가 아바타를 주지 않아(`authorName`은 `s***u` 마스킹) **Unifi가 생성**한다 — 개별리뷰 2 · 전체리뷰 2화면 Description + Related Docs `Discussion` 행. ⚠️ 「리뷰 **본문**은 관리 대상 아님」(종결)과 **다른 사안**이다
-- 완료: `카테고리 1`·`카테고리 2`·`(Specout)` 2화면 어노테이션 **4장 재첨부**(같은 파일명 유지) · 본문 **16곳 surgical 교체**(구간 한정 + `count==1` assert) · XLT 신규 1키 게이트 **P0/P1/P2 전부 0** · `check_wiki_storage.py` pre/post exit 0
-- 교훈: **「이미지만 갱신」 요청이라도 코멘트를 먼저 재조회한다.** 이미지만 바꿨다면 `카테고리 2`는 이미지 ⓵~⓺과 Description 1~5가 **어긋난 채** 남았을 것이다 — Figma에 `xlt` 마커가 1개 늘어 통합 번호가 전부 밀려 있었다.
-- 교훈: **같은 파일명 첨부 갱신은 `POST .../child/attachment/{id}/data`다.** `child/attachment`에 그냥 POST하면 **버전이 오르지 않고 조용히 무시**된다(실측 — 첫 시도가 v6/v5/v4/v2 그대로였다). 기존 첨부 id를 먼저 조회해야 한다.
-- 교훈: History 표는 **오래된 것이 위**이고, 본문에 박힌 `<time datetime="2026-09-17" />`(릴리즈 언급)을 행 앵커로 오인하면 삽입 위치가 틀어진다 — 표 구간을 한정해 `</tbody>` 앞에 넣었다.
+- 완료(리뷰): **「더보기」는 리뷰 3개 이상일 때 노출**(Slack 확정·An Vo 회신) · **리뷰 영역 스펙은 클리닉 정의를 바우처에도 동일 적용** · **리뷰어 아바타 = 닉네임 첫 글자 이미지**(GuideKim API 미제공 → Unifi 생성) → v195·**v197**. ⚠️ v196은 사용자가 직접 추가한 행 — **버전 가드가 잡아 rebase**했다. 「리뷰 본문은 관리 대상 아님」(종결)과는 **다른 사안**
+- 완료: 어노테이션 **4장 재첨부** · 본문 **16곳 surgical 교체** · XLT 신규 1키 게이트 P0/P1/P2 전부 0
+- 교훈 ①: **「이미지만 갱신」이라도 코멘트를 먼저 재조회한다** — `xlt` 마커가 1개 늘어 통합 번호가 전부 밀려 있었다 ② **같은 파일명 첨부 갱신은 `POST .../child/attachment/{id}/data`** (`child/attachment` POST는 **조용히 무시**된다) ③ History 표는 **오래된 것이 위**이고 본문의 `<time>`을 행 앵커로 오인하면 삽입 위치가 틀어진다
 
 ### 2026-09-15 — 세션 #10: LPC `payment_guide` 정본 정렬 + 위키 XLT 병기 (LPC v52→v55 · `3c99668`)
 
 - 정본(XLT 등록값 `v1.7.9`) 기준으로 LPC `payment_common_info`를 **beta·prod 38셀** 반영, **5개 언어 전건 대조 PASS** · LPC 위키에 「`payment_guide`는 XLT로도 관리」 병기 + **경로↔키 매핑 표 8행** 신설
 - 교훈: **같은 문구가 XLT와 LPC 두 경로로 관리되면 「어느 쪽이 정본인지」를 문서에 박아야** 다음 세션이 반대로 덮어쓴다
 
-### 2026-09-14 — 세션 #9: 혜택 비율 체계 확정 · `voucher_product`(UIT) 신설 (본문 v184 · LPC v49)
+### 2026-09-14 — 세션 #9·#8 (요약 병합)
 
-- **할인 5% · 캐시백 10% · 합산 15%** 확정 → 리터럴 박힌 **6필드 · 80셀**을 LPC 위키 §9-7 규칙으로 신설 · `voucher_product`(UIT) 신설 등록(4브랜드 × 5언어 · **LV·UIT × beta·prod 4곳 전건 일치**) · CU 가이드 상품 개편(브랜드 3종 **공식 표기 웹 확인**)
-- 교훈: **비율처럼 여러 필드에 흩어지는 값은 「연동 필드 규칙」을 문서로 박아야** 다음 변경에서 일부만 고치는 사고를 막는다
-
-### 2026-09-14 — 세션 #8: 클리닉 LPC 정비 · 마스터 대조 · My 바우처 상세 3키 (`d098e3d`)
-
-- 클리닉 가격 기본값 **`상담 문의`**(5언어 × 46건) · ACTIVE 22곳 beta→prod 전건 동치 · My 바우처 상세 **신규 3키**(UIT `72193-11353`). 교훈: ① 관리 범위를 **위키 1번 표로 먼저 확정** ② **위키 기재는 낡는다**(「7키 미등록」이 실제로는 전부 등록)
-
-### 2026-09-14 — 세션 #7: `최근 본 상품` UIT→LV 이관 + API 스펙 갱신 (v173→v183 · `5b3941b`)
-
-- 섹션을 `Voucher Detail - LV` 아래로 분리(XLT 3키 `UF_` 유지) · 여행 `use_state` 미제공 확정 → 6곳 폐기, GA는 `voucher_status`로 흡수 · GuideKim ↔ Unifi B/E 기준 병기 후 **「구현은 B/E 기준」** 명시. 교훈: 위키 상태값은 **계약 상대를 명시하지 않으면 낡는다**
+- **#9** 혜택 비율 **할인 5%·캐시백 10%·합산 15%** 확정 → 리터럴 **6필드·80셀**을 LPC 위키 §9-7 규칙으로 신설 · `voucher_product`(UIT) 신설 등록(**4곳 전건 일치**) · CU 가이드 개편(브랜드 3종 공식 표기 웹 확인). 교훈: **여러 필드에 흩어지는 값은 「연동 필드 규칙」을 문서로 박아야** 일부만 고치는 사고를 막는다
+- **#8** 클리닉 가격 기본값 **`상담 문의`**(5언어×46건) · ACTIVE 22곳 beta→prod 동치 · My 바우처 상세 **신규 3키**. 교훈: ① 관리 범위를 **위키 1번 표로 먼저 확정** ② **위키 기재는 낡는다**
+- **#7** `최근 본 상품` UIT→LV 이관 · 여행 `use_state` 미제공으로 6곳 폐기 (v173→v183 `5b3941b`)

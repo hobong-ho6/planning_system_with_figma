@@ -36,7 +36,7 @@
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-13 | ✅ **5종 전부 정합 · 전건 실측**(Lucky Ball 8↔8 · Mission **10↔10** · mini **4↔4** · Wallet 2↔2 · K-Pick 8↔8) — 깨져 있던 2종 Summary 블록 신설 + K-Pick 제목 v1.7.5 확정(위키 3건 PUT) · **미결 0** |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 09-15 | 용어집 **v5.5**(118 terms) · 가이드 **v42 게시 완료**(태그 `guide-v42`) — **2026-09-15 API·태그 실측 재확인** · ⛔ 용어집 보완은 **「모아서 한 번에」**(`md/glossary-backlog.md` **대기 18건** · 발견 시 묻지 않는다) · **미결 1건**(`UF_clinic_detail_review_source` ja 검토) |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-15 | 점검 **#7**(09-14) 반영 — **주기 정상 복귀**(#5→#6 4일 → #7 7일) · 🔴 **프로덕션 리워드 탭 스켈레톤 고착**(#6과 환경 역전 · `mission-users` 401) · 🔴 오프라인 결제 캐시백 캠페인 신설 · KAIA **4.2→4.1%** · **Preferred Stable** 축 신설 · ⛔ Screen ID 어휘 승인 대기 **12건** · **7주 연속 2건**(Beta 0% 표기 · K-Pick GNB) · ⚠️ **#6·#7이 12일간 미기록이던 것을 09-15에 소급 반영**(리포트 근거) |
-| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **25화면** | 09-15 | 본문 **v197** · LPC **v55** — 세션 #11: Category 이미지 갱신 + **공통 헤더 타이틀 `mini_common_header_title` 신설**(게이트 P0/P1/P2 **전부 0**) · `카테고리 2` 번호 **전부 +1 재정렬** · `(Specout)` 2화면 표기(XLT 5키 기록용 유지) · ⛔ **헤더 타이틀은 카테고리 1·2에만**(나머지 5화면 반영 안 함 — 재제안 금지) · ⛔ **리뷰어 아바타 = 닉네임 첫 글자**(GuideKim API 미제공 · 「리뷰 **본문** 관리 대상 아님」과 다른 사안) · **리뷰 「더보기」= 리뷰 2개 초과 시 노출**(FE 구현 확정) · **리뷰 영역 스펙은 클리닉↔바우처 공통** · ⛔ 혜택 비율 **할인 5% · 캐시백 10% · 합산 15%** · ⛔ `k_pick_shopping_product` 관리 대상 아님 · 🔴 **미결**: 클리닉 한정해제 8개 파라미터 · XLT 엑셀 업로드 3파일 |
+| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 4문서 · **25화면** | 09-15 | 본문 **v200** · LPC **v55** — 🔴 **LPC 콘텐츠 소실 4필드 전량 복구**(160건 전건 일치 · 원인=부분 PUT → 전역 결정·`md/landpress.md` §10-3-0) · **일본어 검수 문서 `4750149077` 신설**(834행 · XLT 298·Admin 14·LPC 522 · GA/OA 제외) · ⛔ **LPC 범위 = 위키 `4727978725` 정의만**(UIT `k_pick_clinic_common_info`는 범위 밖) · ⛔ 혜택 비율 **할인 5%·캐시백 10%·합산 15%** · XLT 엑셀 **업로드 대기** · 🔴 **한정해제 8개 파라미터** 미결 → 파일 참조 |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` · 예약 OA **16화면**(클리닉 12·여행 4) | 09-14 | 위키 **v37** — **beta 전건 등록 완료**(Landpress 16 `ko_KR` + LIAM Event Message 16 · 대조 불일치 0) · prod는 클리닉 T0만(`isActive` **No**) · **번역 미착수**(ko만)·hero/버튼 URL **임시값** |
 | [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` · Figma `74343:1703` · **3화면** | 09-15 | 위키 **v1** · XLT **13키 전건 등록 확인**(Unifi 12 · Dapp Portal 1 · 실측) · 게이트 **P0 0** · ⛔ 주의사항은 JPYC 프로모션과 **전용 키 분리**(값만 복사) · ⛔ 「백엔딜」 음차 금지 → 4언어 **서술형** · 🔴 **미결 1건**(Home 더보기 landing url `TBU`) · ⚠️ **원 세션이 아닌 세션이 대신 등재** |
 
@@ -85,10 +85,10 @@
 
 | 날짜 | 결정 | 이유 |
 |---|---|---|
+| 2026-09-15 | **Landpress PUT은 전체 교체다 — 콘텐츠 필드를 전부 담아 read-modify-write 한다**(정본 `md/landpress.md` §10-3-0) | `uid`만·한 필드만 보낸 PUT이 **형제 필드를 `null`로 지웠다** — 2026-09-14 4필드 소실(beta·prod). **리비전 이력이 없어**(`/revisions` 404 · `/audit-logs`는 GET만) CMS만으로는 복구 불가였고 저장소 `landpress/` 산출물이 유일한 복구원이었다. `e06866f`·`faa088a` |
 | 2026-09-14 | **위키 상태값은 GuideKim ↔ Unifi B/E 기준을 병기하고 구현은 B/E 기준** | FE가 받는 값은 B/E를 거쳐 달라진다 — 상품권 `ISSUE_PENDING`→`PAID` · 클리닉 `NO_SHOW`/`REJECTED`→`CANCELED` · `point.status` 대문자 · 여행 `use_state` 미제공. B/E 스펙 `4725939674` |
 | 2026-09-14 | **ZH-TW는 한자↔숫자·변수 경계에 공백 1칸**(`共 {{0}} 件` · JP는 반대로 붙임) — **신규·변경 키부터**, 기존은 소급 안 함. 정본 `md/guide.md` §5-1 B | 등록값 283건이 공백 247(87%)·무공백 36으로 갈려 있다(`{{0}}個`↔`{{0}} 個`). 전역 통일은 재등록·QA 비용이 커 **불일치 증가만 막는다**. `e7f26bf` |
 | 2026-09-10 | **`XLT & GA` 셀 제목은 화면당 1개**(`{Screen ID} - XLT & GA`) — 이전엔 `- XLT`·`- Event` 2개로 나눴다. `md/GA.md` §2 정정, 새 페이지는 이 방식이 기본. 기존 페이지는 GA 작업 시 정정 권장(소급 강제 아님) | unifi-mini-v2에서 화면마다 목차(TOC) 항목이 2개씩 생겨 목차가 길어진다는 사용자 지적. XLT 키가 없는 화면도 제목은 동일하게 1개 유지 |
-| 2026-09-10 | **다른 위키(같은 앱의 다른 기능)에 문구가 일치하는 기존 XLT 키가 있으면 팀 경계(UIT/LV)를 넘어서도 재사용한다** — 사용자 확인 시에만, 실제 XLT 시스템 등록도 재확인 | unifi-mini-v2에서 다른 위키(`4667512757`)와 뒤늦게 교차검증해 22개 키를 재작업. **신규 키 확정 전에 관련 기능의 다른 위키를 먼저 확인**한다 |
 
 ## ⛔ 전역 종결 (재작업·재제안 금지)
 
