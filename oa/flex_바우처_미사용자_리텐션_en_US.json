@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "You still have an unused coupon!",
+        "text": "Don't let your 1,000 JPY coupon go to waste!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,14 @@
         "contents": [
           {
             "type": "text",
-            "text": "Check your 1,000 JPY coupon now and get special benefits🎁",
+            "text": "Get OLIVE YOUNG, DAISO, and CU 10,000 won vouchers for [just 100 JPY]!",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "Limited time only — get yours now",
             "size": "sm",
             "color": "#666666",
             "wrap": true

@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "ส่วนลด 15% ทุกเวาเชอร์!",
+        "text": "ดูโปรโมชันเงินคืนสูงสุด 15% ที่กำลังจัดอยู่ตอนนี้!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,14 +26,14 @@
         "contents": [
           {
             "type": "text",
-            "text": "ซื้อเวาเชอร์ที่คุณต้องการ เช่น OLIVE YOUNG, DAISO และ CU",
+            "text": "รับเงินคืน 15% สำหรับเวาเชอร์ OLIVE YOUNG, DAISO และ CU!",
             "size": "sm",
             "color": "#666666",
             "wrap": true
           },
           {
             "type": "text",
-            "text": "ในราคาส่วนลด",
+            "text": "ดูสินค้าเพิ่มเติม",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -54,7 +54,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "ซื้อพร้อมส่วนลด 15%",
+          "label": "ดูสินค้า",
           "uri": "https://miniapp.line.me/unifi/event/voucher-event-1?referral_code=2055_SUTGA&attribution_code=2055_SUTGA&utm_content=sep_2026&utm_term=coupon_remind_oa"
         }
       }

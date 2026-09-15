@@ -76,7 +76,8 @@ prod: 클리닉 T0만 — Landpress `1956` / LIAM `N6aa50c973af74c70a397b9b0` (`
 - **신규 2종** — `(OA) 바우처 미사용자 리텐션`(Figma `74620-14367`) · `(OA) 바우처 구매 대상 리텐션`(`74620-13917`). Screen 아래 `<h4>OA</h4>` 서브섹션 신설(5컬럼) + 렌더 이미지·Flex zip 첨부 + 등록 현황 표
 - **등록**(2종 × beta/prod 전건) — Landpress: 미사용자 beta **234**·prod **1971**, 구매대상 beta **235**·prod **1976** — **전부 5로케일 · 재조회 대조 5/5 통과**
 - **LIAM HUB Event Message** — 미사용자 beta `N6aa933a4f3f3e36a2adf4b6d`·prod `N6aa9340377e3bf6ac76a6955`(사용자 생성) / 구매대상 beta `N6aa937253ae13b187b7d0c8e`·prod `N6aa9377277e3bf6ac76a695a`(Claude 생성). 전부 `isActive` **Yes**
-- ⚠️ **미해결 — EN·TH·ZH-TW가 구 문구인 채 게시**: 신문구는 KR·JA만 제공됐는데 미사용자(234·1971)의 3개 언어가 `published: true`라 **prod LIAM Message Lang에 5개 언어가 모두 실린다** → 구 문구 발송 가능. 번역 확정 후 교체하거나 그 전까지 게시 해제 필요
+- ✅ **5개 언어 신문구 전건 반영 완료**(2026-09-15) — KR·JA는 사용자 확정문, EN·TH·ZH-TW는 그 기준 신규 번역(게이트 `gate_report_voucher_retention_oa_5lang_2026-09-15.md` · P0 0 · 40셀 전수). Landpress **20건(4항목 × 5로케일) 전부 신문구·공개** · LIAM 4건 재동기화(Message Lang 5개 언어)
+- ⛔ **Landpress를 고치면 LIAM에서 `LOAD MESSAGE` → `UPDATE`를 반드시 한다**(2026-09-15 실측) — LIAM은 **스냅샷**을 들고 있어, Landpress만 고치면 발송은 구 문구로 나간다. 실제로 4건 모두 구 스냅샷이었고 재동기화 후에야 Message Lang이 2개 → 5개 언어가 됐다
 - ⚠️ **CTA URL** — 구매 대상 OA는 미사용자 OA와 **같은 URL**을 쓴다(사용자 확정). `utm_term=coupon_remind_oa`가 쿠폰 리마인드 전용 태깅이라 유입이 그쪽으로 집계된다. 전용 URL 확정 시 JSON·zip·렌더·Landpress 4곳(234·235·1971·1976) 동시 갱신
 - **문구 2차 교체**(같은 세션) — 사용자가 확정문을 주며 「다국어 번역 검증 스킵」 지시. ko·ja만 제공돼 **en·th·zh는 구 문구**로 남았고 **`published: false`로 막아 두었다**(게시하면 그 언어만 캠페인과 다른 메시지가 나간다)
 - **히어로 규격** — 1차 이미지 **1800×1224로 LINE 한도 1024 초과**였고(비율 25:17은 정상) 2차 교체분 **840×570·28:19·271KB로 해소**. `aspectRatio`도 함께 갱신해야 한다(25:17→28:19)

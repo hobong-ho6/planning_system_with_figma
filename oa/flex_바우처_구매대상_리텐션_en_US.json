@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "15% off all vouchers!",
+        "text": "Check out the ongoing offer — up to 15% cashback!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,14 +26,14 @@
         "contents": [
           {
             "type": "text",
-            "text": "Buy the vouchers you want, like OLIVE YOUNG, DAISO, and CU,",
+            "text": "15% cashback on OLIVE YOUNG, DAISO, and CU vouchers!",
             "size": "sm",
             "color": "#666666",
             "wrap": true
           },
           {
             "type": "text",
-            "text": "at a discounted price.",
+            "text": "See more products.",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -54,7 +54,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "Buy with 15% off",
+          "label": "See products",
           "uri": "https://miniapp.line.me/unifi/event/voucher-event-1?referral_code=2055_SUTGA&attribution_code=2055_SUTGA&utm_content=sep_2026&utm_term=coupon_remind_oa"
         }
       }

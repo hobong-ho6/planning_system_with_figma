@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "所有優惠券享 15% 折扣！",
+        "text": "立即查看進行中的最高 15% 現金回饋活動！",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,14 +26,14 @@
         "contents": [
           {
             "type": "text",
-            "text": "OLIVE YOUNG、DAISO、CU 等，",
+            "text": "OLIVE YOUNG、DAISO、CU 商品券享 15% 現金回饋！",
             "size": "sm",
             "color": "#666666",
             "wrap": true
           },
           {
             "type": "text",
-            "text": "以折扣價購買您想要的優惠券。",
+            "text": "查看更多商品。",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -54,7 +54,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "享 15% 折扣購買",
+          "label": "查看商品",
           "uri": "https://miniapp.line.me/unifi/event/voucher-event-1?referral_code=2055_SUTGA&attribution_code=2055_SUTGA&utm_content=sep_2026&utm_term=coupon_remind_oa"
         }
       }

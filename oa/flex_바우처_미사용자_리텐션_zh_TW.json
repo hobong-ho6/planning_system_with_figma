@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "您還有尚未使用的優惠券！",
+        "text": "別浪費您的 1,000 日圓優惠券！",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,14 @@
         "contents": [
           {
             "type": "text",
-            "text": "立即查看 1,000 日圓優惠券，領取超值優惠🎁",
+            "text": "OLIVE YOUNG、DAISO、CU 的 10,000 韓元商品券，[只要 100 日圓]！",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "限期活動，立即領取",
             "size": "sm",
             "color": "#666666",
             "wrap": true
