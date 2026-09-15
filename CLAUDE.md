@@ -237,6 +237,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 1. **등재 트리거 (하나라도 해당하면 `md/guide-backlog.md`에 한 줄 추가)**: ⓐ 규칙·절차(md/) 변경으로 사용자가 요청하는 방식이나 결과물이 달라질 때, ⓑ 새 기능·모드·메뉴·스크립트가 추가됐을 때, ⓒ 여러 커밋을 일괄 푸시해 누적 변경이 많을 때. 오타 수정·단건 산출물 커밋은 등재하지 않는다.
 2. **등재만 하고 묻지 않는다** — 무엇이 어느 탭·어느 섹션과 어긋나는지 대기 목록에 적어 두고, 푸시 보고에는 「가이드 대기 목록 등재」로만 남긴다.
+2-1. **⛔ 다만 대기가 쌓이면 제안한다 (2026-09-15 사용자 승인)** — 아래 중 하나에 해당하면 푸시 보고 끝에 **한 줄로** 「가이드 업데이트를 할까요?」라고 제안한다(차단 질문이 아니다. 답이 없으면 그냥 진행한다):
+   - 대기 **10건 이상**, 또는
+   - 대기 중 **⛔ 차단 규칙**(게이트·쓰기 규칙처럼 지키지 않으면 사고가 나는 것)이 **2건 이상**, 또는
+   - 마지막 `guide-v*` 태그로부터 **2주 경과**.
+   ⛔ **재촉 금지** — 사용자가 보류하면 **대기가 5건 더 쌓일 때까지 다시 제안하지 않는다.** 제안했다는 사실과 시점을 `md/guide-backlog.md`에 남긴다.
 3. **사용자가 「가이드 업데이트」를 요청하면** — 대기 전건을 표로 제시해 반영 범위를 확정받은 뒤: ⓐ 가이드를 갱신한다 — **소스 정본은 git 추적 `guide/`다**(zip 직접 편집 금지, 베이스 확정·버전 번호·zip 생성·게시 태그는 `md/landpress.md` §5-1 0단계). 업데이트 이력 탭에 항목 추가(변경이 크면 버전 vN+1, 작으면 현행 버전 갱신). **⛔ 새 규칙 문서(`md/*.md`)·새 기능이 생겼으면 갱신 대상은 5곳 전부다(2026-09-03 신설 — GA.md를 v32에서 이력 카드·작업 모드·요청 예시에만 넣고 아래 ①②를 빠뜨려 v33으로 재발행한 실측)**: ① **가이드 탭 본문 전용 섹션**(규칙·표 구조·요청 방법 — 「담당 FE 팀 규칙」·「검증 게이트」와 같은 급) ② **시스템 가이드 탭 문서 지도 3곳**(흐름 카드 · 「하려는 일→읽을 문서」 표 · 파일 표) ③ 업데이트 이력(버전 요약 행 + 카드) ④ 상황별 작업 모드 카드 ⑤ 「이렇게 요청하세요」 예시 + 상단 네비 링크(데스크톱·모바일 2곳). 용어집 변경 시 용어집 탭의 이력 표·임베드 JSON·전체 용어 표를 최신으로 교체.
    - ⛔ **네비에 항목을 추가하면 반드시 렌더를 눈으로 확인한다 (2026-09-12 실측 — 같은 버전을 세 번 재발행함)**: ⓐ **항목마다 `<li>` 하나** — 기존 `<li>` 안에 `<a>`를 덧붙이면 두 메뉴가 한 항목처럼 **붙어서** 나온다(`GA EventOA 메시지`). ⓑ 네비는 `max-w-6xl` 안이라 **한글 항목이 늘면 폭이 넘쳐 전 항목이 2줄로 접힌다** — 항목 추가 시 `text-xs`·`gap` 축소·`whitespace-nowrap`으로 한 줄에 맞추고, 폭이 부족한 구간은 브레이크포인트를 올려(`md:`→`lg:`) 햄버거로 넘긴다(`navToggle`·`navLinks`·`navLinksMobile` **세 곳 동시 변경**). ⓒ 구조 검사만으로는 안 보이므로 **headless Chrome으로 1920·1440px 헤더를 캡처해 한 줄인지 확인**한 뒤 zip을 만든다(`--user-data-dir` 지정·`--virtual-time-budget=6000` 없으면 CDN 로딩으로 멈춘다). ⓑ `guide/` 커밋 + 생성한 zip을 사용자에게 전달하고 **드랍웹 게시를 요청**한다(게시 규격은 `md/dropweb-guide.md`) — **게시(업로드)는 사용자가 수행**하며 Claude가 임의 게시하지 않는다. 게시 확인 후 `git tag guide-vN`.
 
@@ -269,6 +274,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `check_lpc_nulls.py` | LPC 콘텐츠 필드 `null`·미게시 검사 (위키 정의 9개 컬렉션 × 4프로젝트 × 5개 언어 · 읽기 전용) | **LPC 쓰기 직전·직후** — exit 0 확인 |
 | `restore/lpc_safe_put.js` | LPC 안전 쓰기 템플릿 (read-modify-write + 재조회 대조) — ⛔ 직접 PUT 금지 | LPC에 쓸 때 (브라우저 콘솔) |
 | `check_wiki_storage.py` | 위키 storage/렌더 규칙 검사 (Screen 표 4컬럼·첨부 `ri:page` 금지·URL 이스케이프 / 렌더 `Unknown Attachment`) | 3단계 위키 PUT **직전 `pre`·직후 `post`** — exit 0 확인 |
+| `put_wiki_storage.py` | 위키 본문(storage) **버전 가드 PUT** — 로컬 파일을 그대로 보내고, 라이브 버전이 `--expect-version`과 다르면 **PUT 하지 않고 exit 2**(다른 세션이 먼저 고침) · PUT 후 본문 길이가 5% 이상 어긋나면 exit 3. MCP `confluence_update_page`는 본문을 대화에 실어 큰 페이지에서 **본문 유실 위험**이 있다(2026-09-12 실측 사고) | 3단계 위키 PUT — **본문이 크거나 다른 세션과 동시 편집 가능성이 있으면 필수** |
 | `collect_frames.py` | 프레임 읽기 전용 배치 수집 (노드·코멘트 1회 조회 + 좌표 정규화 + 텍스트 매칭 + 어노테이션 렌더 → `frames.json`) | 3단계 Step 3~4 입력 생성 (프레임 다수 시) |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
 | `patch_translation.py` | 키 단위 번역 패치 (지정 언어 셀만 교체·무결성 가드) | 키 단위 번역 패치 모드 (`md/translate.md`) |
@@ -369,7 +375,7 @@ templates/     ✅ 프로토타입 템플릿 전체
 새 프로젝트에서 다음을 확인:
 - [ ] `CLAUDE.md` 파일 존재
 - [ ] `md/` 폴더에 가이드 파일 전체 존재 (목록은 위 '참조 가이드' 표 기준 — 개수는 계속 늘어남)
-- [ ] `scripts/` 폴더에 14개 Python 스크립트(fetch_glossary, fetch_xlt_registry, fetch_comments, validate_translation, verify_xlt_glossary, compare_wiki_xlt, check_gate_report, check_wiki_storage, collect_frames, export_to_xlt, patch_translation, render_oa_flex, build_prototype_data, test_validation) + setup_new_project.sh + requirements.txt 존재
+- [ ] `scripts/` 폴더에 Python 스크립트 전체 존재 — 목록은 위 「자동화 스크립트」 표 기준(개수는 계속 늘어난다). `setup_new_project.sh` + `requirements.txt` 포함
 - [ ] `templates/` 폴더에 5개 템플릿 존재
 - [ ] `.claude/`에 `settings.json`(SessionStart 훅)·`skills/`·`agents/` 존재
 - [ ] Python 의존성 설치 완료 (`pip list | grep pandas`)
