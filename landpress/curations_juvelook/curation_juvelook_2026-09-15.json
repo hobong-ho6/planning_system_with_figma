@@ -1,0 +1,287 @@
+{
+  "partnerId": "019ef92b-2bc2-7c6f-96e6-f3710bc26a18",
+  "externalId": null,
+  "imageUrl": "https://unifi-apps.line-scdn.net/0hfq5E7GbuOV4IPCV8yBZGCUxpNy9kTSBLcQorJm5oIT5mWWBab1szR0hDJD5DTjdgNxMuUC56Lzx9ZzVpUhswR3VXZg9DbCJdUVs_a1hlJBF5ZDZ0Uhh3bUhMIRV5VnZ0RA",
+  "badgeImageUrl": null,
+  "subImageUrl": "https://unifi-apps.line-scdn.net/0hmk9dxKT6MkQEHS5vvkxNE15IPDVobCtRfSsgPGJJKiRqeGtAY3o0cnpqMgt1czNtZAc0XVcYaA92UX1CZwt-WX59ZB9bRnVzXQw_SkdpbyRcXnVuTRt-XlRtMCRMLDM",
+  "backgroundColor": "#FFE6F7",
+  "subBackgroundColor": "#FFF7FC",
+  "dotColor": "#CDA9C2",
+  "title": {
+    "en-US": "For reduced skin elasticity, Juvelook",
+    "ja-JP": "以前より低下した肌のハリでお悩みならジュベルック",
+    "ko-KR": "예전보다 떨어진 피부 탄력이 고민이라면 쥬베룩",
+    "th-TH": "หากกังวลเรื่องความยืดหยุ่นผิวที่ลดลงกว่าเดิม Juvelook",
+    "zh-TW": "肌膚彈性不如從前，就選 Juvelook"
+  },
+  "subTitle": {
+    "en-US": "Juvelook",
+    "ja-JP": "ジュベルック",
+    "ko-KR": "쥬베룩",
+    "th-TH": "Juvelook",
+    "zh-TW": "Juvelook"
+  },
+  "description": {
+    "en-US": "Skin texture & elasticity concerns",
+    "ja-JP": "肌のキメ・ハリが気になる方へ",
+    "ko-KR": "피부결·탄력이 고민이라면",
+    "th-TH": "สำหรับผู้ที่กังวลเรื่องผิวและความยืดหยุ่น",
+    "zh-TW": "在意膚質與彈性的人"
+  },
+  "doctorInfoTitle": {
+    "en-US": "Juvelook treatment clinic",
+    "ja-JP": "ジュベルック施術クリニック",
+    "ko-KR": "쥬베룩 시술 클리닉",
+    "th-TH": "คลินิกหัตถการ Juvelook",
+    "zh-TW": "Juvelook施術診所"
+  },
+  "doctorInfoDescription": {
+    "en-US": "Juvelook is a collagen booster available in Skin and Volume types, so you can choose based on your skin concerns. Before treatment, confirm the details through a thorough consultation with the medical staff.",
+    "ja-JP": "ジュベルックは肌状態に合わせて選ぶ施術です。キメ・毛穴用とボリューム用のタイプがあり、医師が診察の上で適したプランをご提案します。",
+    "ko-KR": "쥬베룩은 콜라겐 부스터로, 스킨과 볼륨 타입으로 구성되어 있어 피부 고민에 따라 선택할 수 있어요. 시술 전 의료진과 충분한 상담을 통해 시술 내용을 확인하세요.",
+    "th-TH": "จูเวลุค (Juvelook) เป็นคอลลาเจนบูสเตอร์ที่มีทั้งประเภท Skin และ Volume จึงเลือกได้ตามปัญหาผิวของคุณ ก่อนทำหัตถการ โปรดตรวจสอบรายละเอียดผ่านการปรึกษากับบุคลากรทางการแพทย์อย่างละเอียด",
+    "zh-TW": "Juvelook 是膠原蛋白增生劑，分為 Skin 與 Volume 兩種類型，可依肌膚困擾選擇。療程前請透過與醫療人員的充分諮詢確認療程內容。"
+  },
+  "doctorInfoBadgeImageUrl": null,
+  "status": "ACTIVE",
+  "effects": [
+    {
+      "iconUrl": "https://unifi-apps.line-scdn.net/0h4Hzu4z_ga2dHDHdD5BgUMB1ZZRYrfXJyPjp5HyFYcwcpaTJjIGsnU2EEdyhpaWtOeR1vfxQIcyw1QCRhJBonej1sPTwYVyxQHh1mfxdzdQIxVGViMAogail8aQcPPWo",
+      "label": {
+        "en-US": "Enlarged pores",
+        "ja-JP": "開いた毛穴",
+        "ko-KR": "늘어진 모공",
+        "th-TH": "รูขุมขนกว้าง",
+        "zh-TW": "毛孔粗大"
+      },
+      "sortOrder": 0
+    },
+    {
+      "iconUrl": "https://unifi-apps.line-scdn.net/0hXIzvK1N9B2ZHDxtC5Ex4MQNaCRcrfh5zPjkVHiFbHwYpal5iIGgNfz5KBgRpSwhMJ2EUaAt8AT0YVAtRHSgOfzpkWDcMXxxlHmgBUxdZEgY1TB5jHRVJfgRdHy02ZUhMCw",
+      "label": {
+        "en-US": "Loss of elasticity",
+        "ja-JP": "ハリの低下",
+        "ko-KR": "탄력 저하",
+        "th-TH": "ความยืดหยุ่นลดลง",
+        "zh-TW": "彈性下降"
+      },
+      "sortOrder": 1
+    },
+    {
+      "iconUrl": "https://unifi-apps.line-scdn.net/0hjNd5Opx3NWFZTClF-l1KNgMZOxA1PSx0IHonGT8YLQE3KWxlPisyeAkaIAEdAzJcHF05UgkvLiorAHpnOlp5fCMsYzoGF3JWAF04eQkzKwQoInFnLkp-bDc8NwERfTQ",
+      "label": {
+        "en-US": "Fine lines",
+        "ja-JP": "小じわ",
+        "ko-KR": "잔주름",
+        "th-TH": "ริ้วรอยเล็ก",
+        "zh-TW": "細紋"
+      },
+      "sortOrder": 2
+    }
+  ],
+  "treatmentSpecs": [
+    {
+      "label": {
+        "en-US": "Main ingredient",
+        "ja-JP": "主成分",
+        "ko-KR": "주성분",
+        "th-TH": "ส่วนประกอบหลัก",
+        "zh-TW": "主成分"
+      },
+      "value": {
+        "en-US": "Collagen booster (PDLLA) + hyaluronic acid",
+        "ja-JP": "コラーゲンブースター(PDLLA)＋ヒアルロン酸",
+        "ko-KR": "콜라겐 부스터(PDLLA) + 히알루론산",
+        "th-TH": "คอลลาเจนบูสเตอร์ (PDLLA) + กรดไฮยาลูรอนิก",
+        "zh-TW": "膠原蛋白增生劑(PDLLA)＋玻尿酸"
+      },
+      "sortOrder": 0
+    },
+    {
+      "label": {
+        "en-US": "Treatment time",
+        "ja-JP": "施術時間",
+        "ko-KR": "시술 시간",
+        "th-TH": "ระยะเวลาทำหัตถการ",
+        "zh-TW": "療程時間"
+      },
+      "value": {
+        "en-US": "30–40 min incl. anesthesia",
+        "ja-JP": "約30〜40分(麻酔含む)",
+        "ko-KR": "약 30~40분 (마취 포함)",
+        "th-TH": "ประมาณ 30–40 นาที (รวมยาชา)",
+        "zh-TW": "約30〜40分鐘(含麻醉)"
+      },
+      "sortOrder": 1
+    },
+    {
+      "label": {
+        "en-US": "Recovery period",
+        "ja-JP": "回復期間",
+        "ko-KR": "회복 기간",
+        "th-TH": "ระยะเวลาพักฟื้น",
+        "zh-TW": "恢復期"
+      },
+      "value": {
+        "en-US": "Same-day recovery",
+        "ja-JP": "当日から日常生活が可能",
+        "ko-KR": "당일 일상 생활 가능",
+        "th-TH": "กลับไปใช้ชีวิตประจำวันได้ในวันเดียวกัน",
+        "zh-TW": "當日即可正常生活"
+      },
+      "sortOrder": 2
+    },
+    {
+      "label": {
+        "en-US": "Interval",
+        "ja-JP": "推奨周期",
+        "ko-KR": "권장주기",
+        "th-TH": "รอบที่แนะนำ",
+        "zh-TW": "建議週期"
+      },
+      "value": {
+        "en-US": "Every 4–6 weeks (3+ sessions recommended)",
+        "ja-JP": "4〜6週間隔(3回以上推奨)",
+        "ko-KR": "4~6주 간격 (3회 이상 권장)",
+        "th-TH": "ทุก 4–6 สัปดาห์ (แนะนำ 3 ครั้งขึ้นไป)",
+        "zh-TW": "間隔4〜6週(建議3次以上)"
+      },
+      "sortOrder": 3
+    }
+  ],
+  "hospitals": [
+    {
+      "hospitalId": "c89e20f2-7aa0-11f1-bb9a-fa163fda432b",
+      "isRepresentative": true,
+      "description": {
+        "en-US": "Combined Juvelook·Tune Face treatment provided after consultation with medical staff",
+        "ja-JP": "医師相談後のジュベルック・チューンフェイス施術",
+        "ko-KR": "의료진 상담 후 진행되는 쥬베룩·튠페이스 복합 시술",
+        "th-TH": "หัตถการผสมผสาน Juvelook·Tune Face ที่ทำหลังปรึกษาแพทย์",
+        "zh-TW": "經醫療團隊諮詢後進行的Juvelook・Tune Face複合療程"
+      },
+      "badgeText": {
+        "en-US": "Combined Juvelook·Tune Face treatment provided after consultation with medical staff",
+        "ja-JP": "医師相談後のジュベルック・チューンフェイス施術",
+        "ko-KR": "의료진 상담 후 진행되는 쥬베룩·튠페이스 복합 시술",
+        "th-TH": "หัตถการผสมผสาน Juvelook·Tune Face ที่ทำหลังปรึกษาแพทย์",
+        "zh-TW": "經醫療團隊諮詢後進行的Juvelook・Tune Face複合療程"
+      },
+      "sortOrder": 0
+    },
+    {
+      "hospitalId": "c900d978-7aa0-11f1-bb9a-fa163fda432b",
+      "isRepresentative": true,
+      "description": {
+        "en-US": "Medical staff with extensive Juvelook treatment experience",
+        "ja-JP": "ジュベルック施術経験が豊富な医療陣",
+        "ko-KR": "쥬베룩 시술 경험이 풍부한 의료진",
+        "th-TH": "ทีมแพทย์ที่มีประสบการณ์ Juvelook มากมาย",
+        "zh-TW": "擁有豐富Juvelook施術經驗的醫療團隊"
+      },
+      "badgeText": {
+        "en-US": "Medical staff with extensive Juvelook treatment experience",
+        "ja-JP": "ジュベルック施術経験が豊富な医療陣",
+        "ko-KR": "쥬베룩 시술 경험이 풍부한 의료진",
+        "th-TH": "ทีมแพทย์ที่มีประสบการณ์ Juvelook มากมาย",
+        "zh-TW": "擁有豐富Juvelook施術經驗的醫療團隊"
+      },
+      "sortOrder": 1
+    },
+    {
+      "hospitalId": "c95fa0be-7aa0-11f1-bb9a-fa163fda432b",
+      "isRepresentative": true,
+      "description": {
+        "en-US": "Medical staff with extensive Juvelook treatment experience",
+        "ja-JP": "ジュベルック施術経験が豊富な医療陣",
+        "ko-KR": "쥬베룩 시술 경험이 풍부한 의료진",
+        "th-TH": "ทีมแพทย์ที่มีประสบการณ์ Juvelook มากมาย",
+        "zh-TW": "擁有豐富Juvelook施術經驗的醫療團隊"
+      },
+      "badgeText": {
+        "en-US": "Medical staff with extensive Juvelook treatment experience",
+        "ja-JP": "ジュベルック施術経験が豊富な医療陣",
+        "ko-KR": "쥬베룩 시술 경험이 풍부한 의료진",
+        "th-TH": "ทีมแพทย์ที่มีประสบการณ์ Juvelook มากมาย",
+        "zh-TW": "擁有豐富Juvelook施術經驗的醫療團隊"
+      },
+      "sortOrder": 2
+    },
+    {
+      "hospitalId": "c9c10435-7aa0-11f1-bb9a-fa163fda432b",
+      "isRepresentative": true,
+      "description": {
+        "en-US": "Treatment across all Juvelook·Rejuran products",
+        "ja-JP": "ジュベルック・リジュラン全製品施術",
+        "ko-KR": "쥬베룩·리쥬란 전 제품 시술",
+        "th-TH": "หัตถการครบทุกผลิตภัณฑ์ Juvelook·Rejuran",
+        "zh-TW": "Juvelook・Rejuran全系列產品施術"
+      },
+      "badgeText": {
+        "en-US": "Treatment across all Juvelook·Rejuran products",
+        "ja-JP": "ジュベルック・リジュラン全製品施術",
+        "ko-KR": "쥬베룩·리쥬란 전 제품 시술",
+        "th-TH": "หัตถการครบทุกผลิตภัณฑ์ Juvelook·Rejuran",
+        "zh-TW": "Juvelook・Rejuran全系列產品施術"
+      },
+      "sortOrder": 3
+    },
+    {
+      "hospitalId": "ca1f3aa0-7aa0-11f1-bb9a-fa163fda432b",
+      "isRepresentative": true,
+      "description": {
+        "en-US": "Combined Rejuran·Juvelook treatment provided after consultation with medical staff",
+        "ja-JP": "医療陣とのカウンセリング後に行うリジュラン・ジュベルック複合施術",
+        "ko-KR": "의료진 상담 후 진행되는 리쥬란·쥬베룩 복합 시술",
+        "th-TH": "หัตถการผสมผสาน Rejuran·Juvelook ที่ทำหลังปรึกษาแพทย์",
+        "zh-TW": "經醫療團隊諮詢後進行的Rejuran・Juvelook複合療程"
+      },
+      "badgeText": {
+        "en-US": "Combined Rejuran·Juvelook treatment provided after consultation with medical staff",
+        "ja-JP": "医療陣とのカウンセリング後に行うリジュラン・ジュベルック複合施術",
+        "ko-KR": "의료진 상담 후 진행되는 리쥬란·쥬베룩 복합 시술",
+        "th-TH": "หัตถการผสมผสาน Rejuran·Juvelook ที่ทำหลังปรึกษาแพทย์",
+        "zh-TW": "經醫療團隊諮詢後進行的Rejuran・Juvelook複合療程"
+      },
+      "sortOrder": 4
+    },
+    {
+      "hospitalId": "cae8387b-7aa0-11f1-bb9a-fa163fda432b",
+      "isRepresentative": true,
+      "description": {
+        "en-US": "Combined Potenza·Juvelook·Shurink treatment provided after consultation with medical staff",
+        "ja-JP": "医師相談後のポテンツァ・ジュベルック・シュリンク施術",
+        "ko-KR": "의료진 상담 후 진행되는 포텐자·쥬베룩·슈링크 복합 시술",
+        "th-TH": "หัตถการผสมผสาน Potenza·Juvelook·Shurink ที่ทำหลังปรึกษาแพทย์",
+        "zh-TW": "經醫療團隊諮詢後進行的Potenza・Juvelook・Shurink複合療程"
+      },
+      "badgeText": {
+        "en-US": "Combined Potenza·Juvelook·Shurink treatment provided after consultation with medical staff",
+        "ja-JP": "医師相談後のポテンツァ・ジュベルック・シュリンク施術",
+        "ko-KR": "의료진 상담 후 진행되는 포텐자·쥬베룩·슈링크 복합 시술",
+        "th-TH": "หัตถการผสมผสาน Potenza·Juvelook·Shurink ที่ทำหลังปรึกษาแพทย์",
+        "zh-TW": "經醫療團隊諮詢後進行的Potenza・Juvelook・Shurink複合療程"
+      },
+      "sortOrder": 5
+    },
+    {
+      "hospitalId": "cce466bf-7aa0-11f1-bb9a-fa163fda432b",
+      "isRepresentative": true,
+      "description": {
+        "en-US": "Medical staff with extensive Juvelook treatment experience",
+        "ja-JP": "ジュベルック施術経験が豊富な医療陣",
+        "ko-KR": "쥬베룩 시술 경험이 풍부한 의료진",
+        "th-TH": "ทีมแพทย์ที่มีประสบการณ์ Juvelook มากมาย",
+        "zh-TW": "擁有豐富Juvelook施術經驗的醫療團隊"
+      },
+      "badgeText": {
+        "en-US": "Medical staff with extensive Juvelook treatment experience",
+        "ja-JP": "ジュベルック施術経験が豊富な医療陣",
+        "ko-KR": "쥬베룩 시술 경험이 풍부한 의료진",
+        "th-TH": "ทีมแพทย์ที่มีประสบการณ์ Juvelook มากมาย",
+        "zh-TW": "擁有豐富Juvelook施術經驗的醫療團隊"
+      },
+      "sortOrder": 6
+    }
+  ]
+}
