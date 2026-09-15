@@ -52,6 +52,20 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
+## ⛔ LPC 쓰기 규칙 (Landpress — 2026-09-15 신설)
+
+**Landpress `PUT`은 부분 갱신이 아니라 문서 전체 교체다. body에 넣지 않은 콘텐츠 필드는 `null`이 된다.**
+
+- **쓸 때는 `scripts/restore/lpc_safe_put.js`를 쓴다** — 직접 PUT하지 않는다(현재 문서를 읽어 콘텐츠 필드를 전부 실어 보내고 건별 재조회 대조)
+- **쓰기 직전·직후 `python3 scripts/check_lpc_nulls.py` → exit 0**을 확인한다. exit 1이면 쓰기·완료 선언 금지
+- ⛔ **`uid`만 바꾸거나 한 필드만 고치는 작업이 가장 위험하다** — 2026-09-14 그런 PUT이 **4필드를 beta·prod 양쪽에서 지웠고**, CMS에 **리비전 이력이 없어**(`/revisions` 404) 저장소 `landpress/` 산출물이 유일한 복구원이었다
+- LPC에 올리는 JSON은 **반드시 `landpress/` 아래에 5개 언어 전부 커밋**한다(유일한 복구원)
+- 관리 범위는 **위키 `4727978725`에 정의된 것만**이다 — 실측에서 더 나와도 대상이 아니다
+
+정본: `md/landpress.md` §10-3-0 · 사고 기록 `reports/restore/landpress_restore_2026-09-15.md`
+
+---
+
 ## ⛔ 원격 최신성 확인 규칙 (git — 뒤처져 있으면 pull 권유, 2026-08-10 신설)
 
 **로컬이 원격보다 뒤처진 채 공유 산출물을 쓰면 병렬 세션·다른 사용자의 결과물을 모르고 덮어쓴다.** 캐시 금지 규칙의 git판이다 — 저장소도 원본이고, 세션 시작 시점의 pull은 시간이 지나면 낡는다. (계기: 2026-08-10 두 세션이 같은 파일명 가이드 zip을 만들어 무음 덮어쓰기 — 한쪽은 작업 시작 때만 최신 확인을 하고 쓰기 직전에 안 했다.)
@@ -251,6 +265,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `fetch_comments.py` | Figma 코멘트 reply-aware 조회 (루트+답글 스레드, 자기 점검 로그) — **인라인 재구현 금지** | 1단계 코멘트 선별 모드 · 3단계 위키 Description |
 | `validate_translation.py` | 3단계 검증 수행 (P0/P1/P2, 컬럼별 이질 문자체계 검출 포함) | 1단계 Step 5 |
 | `check_gate_report.py` | 게이트 리포트 완결성 검사 (필수 요소 6종 — 완료 선언 직전 exit 0 확인) | 1단계 Step 5 게이트 |
+| `check_lpc_nulls.py` | LPC 콘텐츠 필드 `null`·미게시 검사 (위키 정의 9개 컬렉션 × 4프로젝트 × 5개 언어 · 읽기 전용) | **LPC 쓰기 직전·직후** — exit 0 확인 |
+| `restore/lpc_safe_put.js` | LPC 안전 쓰기 템플릿 (read-modify-write + 재조회 대조) — ⛔ 직접 PUT 금지 | LPC에 쓸 때 (브라우저 콘솔) |
 | `check_wiki_storage.py` | 위키 storage/렌더 규칙 검사 (Screen 표 4컬럼·첨부 `ri:page` 금지·URL 이스케이프 / 렌더 `Unknown Attachment`) | 3단계 위키 PUT **직전 `pre`·직후 `post`** — exit 0 확인 |
 | `collect_frames.py` | 프레임 읽기 전용 배치 수집 (노드·코멘트 1회 조회 + 좌표 정규화 + 텍스트 매칭 + 어노테이션 렌더 → `frames.json`) | 3단계 Step 3~4 입력 생성 (프레임 다수 시) |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
