@@ -50,3 +50,26 @@ LV prod  clinic_menu=6,017B · clinic_detail_common=2,829B
 - 전 항목 `published: true`
 
 검증 재현: `python3 scripts/restore/verify_landpress_restore.py`
+
+## 5. 관리 범위 — 위키 정의가 정본 (2026-09-15 사용자 확정)
+
+**LPC 관리 대상은 위키 [pageId 4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725)에 정의된 컬렉션·필드뿐이다.** 실측에서 더 발견돼도 관리 대상이 아니며 위키에 추가하지도 않는다.
+
+### 실측 매트릭스 (2026-09-15 · 공개 조회 API)
+
+| 컬렉션 | LV beta | LV prod | UIT beta | UIT prod |
+|---|---|---|---|---|
+| `category_promotion_banner` | 1건×5 | 1건×5 | — | — |
+| `k_pick_clinic_common_info` | 1건×5 | 1건×5 | (범위 밖) | (범위 밖) |
+| `mini_common_info` | 1건×5 | 1건×5 | — | — |
+| `my_common_info` | — | — | 1건×5 | 1건×5 |
+| `payment_common_info` | — | — | 1건×5 | 1건×5 |
+| `shopping_guide` | 3건×5 | 3건×5 | — | — |
+| `voucher_common_info` | 1건×5 | 1건×5 | — | — |
+| `voucher_product` | 4건×5 | 4건×5 | 4건×5 | 4건×5 |
+
+존재하는 모든 조합이 **전건 × 5개 언어 · `null` 0 · `published: true`** 다.
+
+### 범위 밖으로 확정한 것
+
+**UIT `k_pick_clinic_common_info`** — 필드 `cautions`·`change_cancel`·`faq`·`process`·`voucher`. LV 동명 컬렉션(`clinic_menu`·`clinic_detail_common`)과 **스키마가 다른 별개**이고 위키에 정의가 없다. **이번 복구는 이 컬렉션을 건드리지 않았다**(복구 대상 10건은 전부 LV beta·prod의 `clinic_detail_common`). 읽기 검증에만 포함됐다.
