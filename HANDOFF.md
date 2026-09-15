@@ -38,6 +38,7 @@
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 v31(⚠️ zip만 발행·소스 미커밋 → 09-03 복원 `b49b1a1`) · 로그인 2회 연속 미점검 |
 | [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **25화면** | 09-15 | 본문 **v186** · LPC **v55** — 09-15 **`payment_guide` 정본 정렬 완료**(XLT 등록값 기준 beta·prod **38셀** · 전건 대조 PASS)·LPC 위키에 **XLT 병기 + 경로↔키 매핑 표** 신설 · ⛔ **혜택 비율: 할인 5% · 캐시백 10% · 합산 15%** · **§9-7 연동 필드 규칙**(6필드·80셀) · **`voucher_product`(UIT) 신설**(4곳 동치) · ⛔ `k_pick_shopping_product`·리뷰 본문 **관리 대상 아님** · XLT 7키 통일 엑셀 **업로드 대기** · ⛔ **미결 4건 해소** · 🔴 **한정해제 8개 파라미터** 미결 → 파일 참조 |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` · 예약 OA **16화면**(클리닉 12·여행 4) | 09-14 | 위키 **v37** — **beta 전건 등록 완료**(Landpress 16 `ko_KR` + LIAM Event Message 16 · 대조 불일치 0) · prod는 클리닉 T0만(`isActive` **No**) · **번역 미착수**(ko만)·hero/버튼 URL **임시값** |
+| [home-voucher-banner](handoff/projects/home-voucher-banner.md) | `hogeun` | 위키 `4725962816` · Unifi mini 홈 배너(v1.7.9.1 핫픽스) | 09-15 | ✅ **완료** — 위키 신규 생성 **v2**(제목 확정 「1,000엔 바우처 배너」) · XLT 신규 2키 **업로드·등록 실측 확인**(Dapp Portal 1,692→**1,694**) · GA(view 1·click 1) · 게이트 P0 0 · ⛔ **기존 `UF_jpyc_buy_guide_banner*`는 3개 탭 공용이라 미변경**(홈 전용 신규 키로 분리) · ⛔ ja는 Figma 기재 유지 종결 · **미결 1건**(랜딩 URL 확정 대기) |
 
 ---
 
