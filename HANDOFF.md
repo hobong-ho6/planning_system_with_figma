@@ -32,7 +32,7 @@
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
-| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 09-13 | **포인터 압축 완료**(인덱스 11→7행 · 상세는 `md/` 정본으로 이관) · **분량 기준을 줄 수 → `wc -c` 바이트로 전환**(HANDOFF 20KB·프로젝트 18KB·주입 총합 24KB · 현재 22.7KB) · 산출물 커밋 누락 정리 · **미결 0** |
+| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 09-15 | **전역 결정 연혁을 `md/decisions.md`로 이관**(HANDOFF 20.4KB → **17.0KB** · 여유 3.4KB · 삭제 아닌 이관) · 분량 기준은 `wc -c` 바이트(HANDOFF 20KB·프로젝트 18KB·주입 총합 24KB · 현재 **20.9KB**) · ⚠️ 아카이브 판단은 「다음 할 일」을 **눈으로 읽는다**(체크박스 grep은 오판) · **미결 0** |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-13 | ✅ **5종 전부 정합 · 전건 실측**(Lucky Ball 8↔8 · Mission **10↔10** · mini **4↔4** · Wallet 2↔2 · K-Pick 8↔8) — 깨져 있던 2종 Summary 블록 신설 + K-Pick 제목 v1.7.5 확정(위키 3건 PUT) · **미결 0** |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원)** | 09-14 | 용어집 **v5.5** · 가이드 **v42 게시 완료** · 태그 **`guide-v42`** — **용어집 보완을 「모아서 한 번에」로 전환**(`md/glossary-backlog.md` 신설 · 대기 8건 · v41은 게시 없이 v42에 흡수) · **미결 1건**(`UF_clinic_detail_review_source` ja 검토) |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-03 | 점검 **#5** 완료 · 🔴 **Unifi Pay QR 결제 출시**·**K-Pick 상품 상세 내부 편입**·mini 홈 개편 · 승인 대기 **7건** · 가이드 v31(⚠️ zip만 발행·소스 미커밋 → 09-03 복원 `b49b1a1`) · 로그인 2회 연속 미점검 |
