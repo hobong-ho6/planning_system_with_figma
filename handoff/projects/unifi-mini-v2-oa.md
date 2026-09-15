@@ -63,6 +63,8 @@ prod: 클리닉 T0만 — Landpress `1956` / LIAM `N6aa50c973af74c70a397b9b0` (`
 
 ## ⛔ 사용자 결정으로 종결 (재작업·재제안 금지 — 이 프로젝트 한정)
 
+- **100엔딜 구매 사용자 OA의 JA는 `還元`을 유지한다**(2026-09-15 사용자 확정) — KR·EN·TH·ZH-TW는 `15% 혜택`(용어집 `혜택` 등재값)이고 **JA만 `還元`**이다. 용어집 `캐시백`의 ja 정본이 `還元`이라 등재값과도 어긋나지 않는다. **「언어 간 불일치」로 다시 올리지 않는다.**
+
 - **샘플 JSON은 bubble 단일 객체로 둔다** — `{"type":"flex","altText":…,"contents":{…}}` 봉투로 감싸면 Flex Message Simulator가 `invalid json`으로 거부한다(2026-09-12 실측). `altText`는 Description의 메시지 초안 표에 남긴다
 - **code 매크로에 `language=json`을 넣지 않는다** — 이 위키에서 `Error rendering macro 'code'`가 난다(2026-09-12 실측)
 - **문구를 고치면 동기화 대상이 세트다** — 위키 번역표·샘플 JSON·Flex JSON 파일·zip 첨부·렌더 이미지 + (등록했다면) Landpress·LIAM HUB. 특히 **Landpress만 고치고 LIAM에서 다시 `LOAD MESSAGE` → `UPDATE`를 안 하면 실제 발송은 구 문구**다(`md/OA.md` 규칙 3-1 ⓐ~ⓖ)
@@ -82,10 +84,9 @@ prod: 클리닉 T0만 — Landpress `1956` / LIAM `N6aa50c973af74c70a397b9b0` (`
 - **Landpress** — 미구매 beta **234**·prod **1971** / 구매 beta **235**·prod **1976** — **4항목 × 5로케일 = 20건 확정문·공개**(재조회 전건 대조 불일치 0 · `null` 0 · 항목명도 새 명칭으로 변경)
 - **LIAM HUB** — 미구매 beta `N6aa933a4f3f3e36a2adf4b6d`·prod `N6aa9340377e3bf6ac76a6955` / 구매 beta `N6aa937253ae13b187b7d0c8e`·prod `N6aa9377277e3bf6ac76a695a` · 전부 `isActive` **Yes**
 
-**미해결**
+**미해결 — 없음**
 
-- ⚠️ **LIAM 4건이 구 스냅샷이다** — 재정의 내용이 반영돼 있지 않다. **사용자가 직접 `LOAD MESSAGE` → `UPDATE`** 예정이며 **LIAM `Title`도 구 명칭**이라 함께 바꿔야 한다
-- ⚠️ **`15% 환원` → `15% 혜택`은 KR·EN·TH·ZH-TW만 적용** — **JA 확정문은 그대로 `還元`**이다(사용자 제공 원문). 의도한 차이인지 확인 필요
+- ✅ **LIAM 4건 재동기화 완료**(2026-09-15 · **사용자 직접 수행**) — 재정의된 문구·URL·히어로가 발송 메시지에 반영됐다
 - ✅ **구 첨부 4건 삭제 완료**(2026-09-15 사용자 승인) — `oa_flex_바우처_*.png` · `flex_바우처_*_5lang.zip`. 삭제 전 **본문 참조 0건 / 신 첨부 4건 참조 1건**을 확인했고, 삭제 후 렌더 검사도 통과(깨진 참조 0)
 
 **배운 것**
