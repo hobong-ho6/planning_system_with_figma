@@ -19,6 +19,7 @@
 | [misc-wikis](misc-wikis.md) | 2026-09-13 | 분류 대기 목록 | `4620240898` 정의 필요 4항목. **새 작업이 생기면 독립 파일로 다시 만든다** |
 | [guidekim-funnel](guidekim-funnel.md) | 2026-09-14 | 위키 `4639704548` v47 · `4639718809` v9 · `4661828572` v5 · 92키 · 게이트 4건 P0=0 | 10건 — `_1`/`_2` 조사 FE 협의 · 원문 확인 2 · 등재값 ja 2 · zh 표기 2 · **상품 종속 키 구조**(Landpress 이관 방향은 `unifi-mini-v2`에서 진행 중). 용어집 2건은 **v4.9에 반영돼 해소** |
 | [luckyball-campaign](luckyball-campaign.md) · [season3](season3.md) · [nonrealtime](nonrealtime.md) · [unifi-app-xlt](unifi-app-xlt.md) · [xlt-registry](xlt-registry.md) | 2026-08-20 | 기반 구축기 프로젝트 | 각 파일 참조 |
+| [home-voucher-banner](home-voucher-banner.md) | 2026-09-15 | 위키 `4725962816` 최종 v3 · XLT 2키 등록 완료 | **없음** — 랜딩 URL 확정·전달로 미결 0. ⛔ 기존 `UF_jpyc_buy_guide_banner*`는 **3개 탭 공용이라 미변경**(홈 전용 신규 키로 분리) · ⛔ ja는 Figma 기재 유지(`バウチャー`·`今すぐ購入` — 시스템 유일 사례) · ⚠️ 같은 날 병렬 작업 **100엔딜 프로모션과 별건** |
 
 ---
 

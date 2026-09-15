@@ -1,10 +1,12 @@
 # home-voucher-banner — 1,000엔 바우처 배너 (Unifi mini 홈 · v1.7.9.1 핫픽스)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-15 · 세션 #1 · 마지막 커밋 `45c454d`
+> 담당자: `hogeun` · **종결 2026-09-15** · 세션 #1 · 마지막 커밋 `45c454d`
+>
+> ✅ **종결 — 미결 0.** 랜딩 URL이 확정·전달되어 위키 Policy의 「변경될 수 있다」 단서를 지우고 확정 표기로 바꿨다(**위키 v3**). 재개가 필요하면 이 파일을 `handoff/projects/`로 되돌리고 `HANDOFF.md` 인덱스에 한 줄 추가한다.
 
 ## 대상 / 링크
 
-- 위키: https://wiki.workers-hub.com/pages/viewpage.action?pageId=4725962816 — **현재 v2** (신규 생성 · 부모 `[PL] Unifi v1.7.9.1` `4744893034`의 첫 자식)
+- 위키: https://wiki.workers-hub.com/pages/viewpage.action?pageId=4725962816 — **최종 v3** (신규 생성 · 부모 `[PL] Unifi v1.7.9.1` `4744893034`의 첫 자식)
 - Figma: `Web3` 파일 `GOCHAYBS7hIrmWRGNuJOKV` / `Home` 섹션 `74343:3254` — AS-IS `74343:4097` · TO-BE ko `74343:3255` · TO-BE ja `74343:3664`
 - 근거 Slack: https://group-all-workers-hub.slack.com/archives/C08HYMJ7Z8V/p1789435945748639 (1,000엔 바우처 이벤트 Home UI 조정 · 핫픽스 합의 · 버전 확정)
 - XLT 서비스·키스페이스: **Dapp Portal / WEB BROWSER** · 프리픽스 `mini_` · 담당 FE **LV**
@@ -22,7 +24,7 @@ XLT 신규 2키는 **사용자가 업로드 완료**했고, 업로드 후 레지
 
 ## 다음 할 일
 
-- [ ] P2 **배너 랜딩 URL 확정** — Slack 스레드에서 `miniapp.line.me/unifi/event/voucher-event-1?utm_*&referral_code=2050_SUTGA&attribution_code=2050_SUTGA`가 제안됐으나 **확정 답변이 없다**. 위키 Policy에는 사용자 지시로 **명시 + 「변경될 수 있다」 병기**로 넣어 뒀다. 확정되면 Policy 「배너 진입 동작」 행만 외과적 갱신.
+**없음 — 종결.** 랜딩 URL(`https://miniapp.line.me/unifi/event/voucher-event-1` + 캠페인 파라미터)은 2026-09-15 확정·FE 전달 완료로 위키에 확정 표기했다.
 
 ## ⚠️ 인접 작업 — 이름이 비슷한 다른 건과 혼동 주의
 

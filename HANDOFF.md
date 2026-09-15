@@ -27,7 +27,7 @@
 ## 프로젝트 인덱스
 
 > 활성 프로젝트만 올린다. 종료된 것은 `handoff/projects/_archive/`로 옮기고 이 표에서 지운다.
-> 아카이브 11건(09-04 5건·09-13 5건·09-14 1건)은 `_archive/`에 있다 — 재개가 필요하면 되돌린다.
+> 아카이브 **12건**(09-04 5 · 09-13 5 · 09-14 1 · **09-15 1**)은 `_archive/`에 있다 — 재개가 필요하면 되돌린다.
 > 담당자는 `git config --global handoff.person` 값과 같은 문자열을 쓴다(`handoff/README.md` 「사람 식별」).
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
@@ -38,7 +38,6 @@
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-15 | 점검 **#7**(09-14) 반영 — **주기 정상 복귀**(#5→#6 4일 → #7 7일) · 🔴 **프로덕션 리워드 탭 스켈레톤 고착**(#6과 환경 역전 · `mission-users` 401) · 🔴 오프라인 결제 캐시백 캠페인 신설 · KAIA **4.2→4.1%** · **Preferred Stable** 축 신설 · ⛔ Screen ID 어휘 승인 대기 **12건** · **7주 연속 2건**(Beta 0% 표기 · K-Pick GNB) · ⚠️ **#6·#7이 12일간 미기록이던 것을 09-15에 소급 반영**(리포트 근거) |
 | [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + 하위 **LPC `4727978725`** · **25화면** | 09-15 | 본문 **v197** · LPC **v55** — 세션 #11: Category 이미지 갱신 + **공통 헤더 타이틀 `mini_common_header_title` 신설**(게이트 P0/P1/P2 **전부 0**) · `카테고리 2` 번호 **전부 +1 재정렬** · `(Specout)` 2화면 표기(XLT 5키 기록용 유지) · ⛔ **헤더 타이틀은 카테고리 1·2에만**(나머지 5화면 반영 안 함 — 재제안 금지) · ⛔ **리뷰어 아바타 = 닉네임 첫 글자**(GuideKim API 미제공 · 「리뷰 **본문** 관리 대상 아님」과 다른 사안) · **리뷰 「더보기」= 리뷰 2개 초과 시 노출**(FE 구현 확정) · **리뷰 영역 스펙은 클리닉↔바우처 공통** · ⛔ 혜택 비율 **할인 5% · 캐시백 10% · 합산 15%** · ⛔ `k_pick_shopping_product` 관리 대상 아님 · 🔴 **미결**: 클리닉 한정해제 8개 파라미터 · XLT 엑셀 업로드 3파일 |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` · 예약 OA **16화면**(클리닉 12·여행 4) | 09-14 | 위키 **v37** — **beta 전건 등록 완료**(Landpress 16 `ko_KR` + LIAM Event Message 16 · 대조 불일치 0) · prod는 클리닉 T0만(`isActive` **No**) · **번역 미착수**(ko만)·hero/버튼 URL **임시값** |
-| [home-voucher-banner](handoff/projects/home-voucher-banner.md) | `hogeun` | 위키 `4725962816` · Unifi mini 홈 배너(v1.7.9.1 핫픽스) | 09-15 | ✅ **완료** — 위키 신규 생성 **v2**(제목 확정 「1,000엔 바우처 배너」) · XLT 신규 2키 **업로드·등록 실측 확인**(Dapp Portal 1,692→**1,694**) · GA(view 1·click 1) · 게이트 P0 0 · ⛔ **기존 `UF_jpyc_buy_guide_banner*`는 3개 탭 공용이라 미변경**(홈 전용 신규 키로 분리) · ⛔ ja는 Figma 기재 유지 종결 · **미결 1건**(랜딩 URL 확정 대기) |
 | [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` · Figma `74343:1703` · **3화면** | 09-15 | 위키 **v1** · XLT **13키 전건 등록 확인**(Unifi 12 · Dapp Portal 1 · 실측) · 게이트 **P0 0** · ⛔ 주의사항은 JPYC 프로모션과 **전용 키 분리**(값만 복사) · ⛔ 「백엔딜」 음차 금지 → 4언어 **서술형** · 🔴 **미결 1건**(Home 더보기 landing url `TBU`) · ⚠️ **원 세션이 아닌 세션이 대신 등재** |
 
 ---
