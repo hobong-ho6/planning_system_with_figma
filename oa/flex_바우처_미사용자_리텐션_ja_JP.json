@@ -2,9 +2,9 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/e87b263ba7e74efca2270776e897c07d.png?updatedAt=1789471220000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/21b3817f9d3f48648020231301db85fd.png?updatedAt=1789473047000",
     "size": "full",
-    "aspectRatio": "25:17",
+    "aspectRatio": "28:19",
     "aspectMode": "cover"
   },
   "body": {
@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "まだ使っていないクーポンがありますよ！",
+        "text": "＼1,000円クーポン使わないと損！／",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,14 @@
         "contents": [
           {
             "type": "text",
-            "text": "今すぐ1,000円分クーポンをチェックして、お得な特典を受け取りましょう🎁",
+            "text": "オリーブヤング・ダイソー・CUの1万ウォン券が【たった100円】に！",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "期間限定につき、今すぐGET➡️",
             "size": "sm",
             "color": "#666666",
             "wrap": true

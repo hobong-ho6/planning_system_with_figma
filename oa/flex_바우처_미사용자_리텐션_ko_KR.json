@@ -2,9 +2,9 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/e87b263ba7e74efca2270776e897c07d.png?updatedAt=1789471220000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/21b3817f9d3f48648020231301db85fd.png?updatedAt=1789473047000",
     "size": "full",
-    "aspectRatio": "25:17",
+    "aspectRatio": "28:19",
     "aspectMode": "cover"
   },
   "body": {
@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "아직 사용하지 않은 쿠폰이 있어요!",
+        "text": "사용하지 않은 1,000엔 쿠폰 안쓰면 손해!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,7 +26,14 @@
         "contents": [
           {
             "type": "text",
-            "text": "지금 바로 1,000엔 쿠폰을 확인하고 특별한 혜택을 받아보세요🎁",
+            "text": "올리브영, 다이소, CU 1만원 상품권을 [단 100엔]에!",
+            "size": "sm",
+            "color": "#666666",
+            "wrap": true
+          },
+          {
+            "type": "text",
+            "text": "한정 기간 진행되니, 지금 바로 GET",
             "size": "sm",
             "color": "#666666",
             "wrap": true
