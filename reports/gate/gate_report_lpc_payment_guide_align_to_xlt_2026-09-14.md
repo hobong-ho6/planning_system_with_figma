@@ -93,3 +93,36 @@
 ## 통과 판정
 
 **P0 = 0 (자동 + 수동 전수)** → LPC 반영 진행. 순서는 전역 규칙대로 **beta → 공개 조회 API 검증 → prod**.
+
+---
+
+## 반영 기록 (2026-09-15)
+
+**LPC 반영 완료 — beta·prod 38셀. 전건 대조 PASS.**
+
+목표값은 이 리포트 본문이 아니라 **작업 시점에 새로 조회한 XLT 등록값**(`Unifi / WEB BROWSER v1.7.9` · 2,557키)에서 직접 생성했다(캐시 금지 규칙). `UF_voucher_pay_step4`의 `{{0}}`만 확정 캐시백율 `10`으로 치환했다 — LPC는 변수 치환이 없다.
+
+| 단계 | 결과 |
+|---|---|
+| 로그인·권한 확인 (§10-1) | beta·prod 모두 `ADMIN` · `roles/my` 200 |
+| ① beta PUT (5 로케일 · `postId=1`) | 200 × 5 |
+| ② beta 검증 (공개 조회 API) | 목표값 전건 일치 · `published: true` |
+| ③ prod 복제 | **beta 등록값을 CMS에서 GET → 그대로 PUT**(산출물 재생성 없음 · §10-5-1) · GET 200 × 5 · PUT 200 × 5 |
+| ④ beta ↔ prod 전건 대조 | **PASS** — 5개 언어 모두 정본 일치 · beta==prod · `published: true` |
+
+- 실제 변경 셀: ko 2 · ja 4 · en 5 · th 5 · zh 3 = **환경당 19셀 · 총 38셀** (사전 대조 결과가 이 리포트 1절과 일치)
+- prod `updatedAt` 2026-09-15T02:17 · 변경은 `payment_guide`의 8개 경로 문자열뿐(구조·필드 변화 없음)
+
+### 위키 동반 갱신 — [pageId 4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) v52 → v55
+
+| 버전 | 내용 |
+|---|---|
+| v53 | 4-2 `payment_guide`에 **XLT 병행 관리 병기**(정본=XLT) · **LPC 경로 ↔ XLT Key 매핑 표 8행** 신설 · 요약 표 「신설 필드」 행 병기 |
+| v54 | 「CMS 미반영」 주석 → **「2026-09-15 정렬 완료 · 전건 대조 PASS」** 로 교체 |
+| v55 | 「실등록 JSON (ko_KR)」 코드 블록을 **정렬 후 라이브 값**으로 갱신(`My쇼핑`→`MY쇼핑` · `취소･환불`→`취소·환불` 2셀 · 32행 유지) |
+
+`check_wiki_storage.py` pre·post 전 회차 exit 0.
+
+### (d-2) 3번 해소
+
+「신설 2키가 XLT 시스템 미등록」은 **해소됐다** — 2026-09-15 등록값 재조회에서 `UF_voucher_pay_refund_desc1`·`UF_voucher_pay_refund_desc2` 모두 **등록 확인**(v1.7.9). LPC와 XLT 양쪽이 같은 값이다.
