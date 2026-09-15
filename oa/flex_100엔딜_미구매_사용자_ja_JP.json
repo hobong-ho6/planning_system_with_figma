@@ -2,7 +2,7 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/21b3817f9d3f48648020231301db85fd.png?updatedAt=1789473047000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/5cdc3532b3bc4a65a5fd648a17b1d6ae.png?updatedAt=1789474066000",
     "size": "full",
     "aspectRatio": "28:19",
     "aspectMode": "cover"
@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "อย่าปล่อยให้คูปอง 1,000 เยน สูญเปล่า!",
+        "text": "＼1,000円クーポン使わないと損！／",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,14 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "รับเวาเชอร์ OLIVE YOUNG, DAISO และ CU มูลค่า 10,000 วอน ในราคา [เพียง 100 เยน]!",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "ระยะเวลาจำกัด รับเลยตอนนี้",
+            "text": "オリーブヤング・ダイソー・CUの1万ウォン券が【たった100円】に！",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -54,7 +47,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "รับสิทธิประโยชน์",
+          "label": "期間限定につき、今すぐGET➡️",
           "uri": "https://miniapp.line.me/unifi/event/voucher-event-1?referral_code=2055_SUTGA&attribution_code=2055_SUTGA&utm_content=sep_2026&utm_term=coupon_remind_oa"
         }
       }

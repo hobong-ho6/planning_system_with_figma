@@ -2,7 +2,7 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/21b3817f9d3f48648020231301db85fd.png?updatedAt=1789473047000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/5cdc3532b3bc4a65a5fd648a17b1d6ae.png?updatedAt=1789474066000",
     "size": "full",
     "aspectRatio": "28:19",
     "aspectMode": "cover"
@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "사용하지 않은 1,000엔 쿠폰 안쓰면 손해!",
+        "text": "別浪費您的 1,000 日圓優惠券！",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,14 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "올리브영, 다이소, CU 1만원 상품권을 [단 100엔]에!",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "한정 기간 진행되니, 지금 바로 GET",
+            "text": "OLIVE YOUNG、DAISO、CU 的 10,000 韓元商品券，[只要 100 日圓]！",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -54,7 +47,7 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "혜택받기",
+          "label": "限期活動，立即領取",
           "uri": "https://miniapp.line.me/unifi/event/voucher-event-1?referral_code=2055_SUTGA&attribution_code=2055_SUTGA&utm_content=sep_2026&utm_term=coupon_remind_oa"
         }
       }

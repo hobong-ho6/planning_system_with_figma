@@ -2,7 +2,7 @@
   "type": "bubble",
   "hero": {
     "type": "image",
-    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/5cdc3532b3bc4a65a5fd648a17b1d6ae.png?updatedAt=1789474066000",
+    "url": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/21b3817f9d3f48648020231301db85fd.png?updatedAt=1789473047000",
     "size": "full",
     "aspectRatio": "28:19",
     "aspectMode": "cover"
@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "立即查看進行中的最高 15% 現金回饋活動！",
+        "text": "Check out the ongoing offer — up to 15% benefits!",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,14 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "OLIVE YOUNG、DAISO、CU 商品券享 15% 現金回饋！",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "查看更多商品。",
+            "text": "15% benefits on OLIVE YOUNG, DAISO, and CU vouchers!",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -54,8 +47,8 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "查看商品",
-          "uri": "https://miniapp.line.me/unifi/event/voucher-event-1?referral_code=2055_SUTGA&attribution_code=2055_SUTGA&utm_content=sep_2026&utm_term=coupon_remind_oa"
+          "label": "See more products.",
+          "uri": "https://miniapp.line.me/unifi/benefits-mini/k-pick/shopping?referral_code=2056_SUTGA&attribution_code=2056_SUTGA&utm_content=sep_2026&utm_term=coupon_retention_oa"
         }
       }
     ]

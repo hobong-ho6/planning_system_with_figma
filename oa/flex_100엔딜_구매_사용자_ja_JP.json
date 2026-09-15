@@ -13,7 +13,7 @@
     "contents": [
       {
         "type": "text",
-        "text": "Don't let your 1,000 JPY coupon go to waste!",
+        "text": "＼最大15%還元チャンス／",
         "weight": "bold",
         "size": "lg",
         "wrap": true
@@ -26,14 +26,7 @@
         "contents": [
           {
             "type": "text",
-            "text": "Get OLIVE YOUNG, DAISO, and CU 10,000 won vouchers for [just 100 JPY]!",
-            "size": "sm",
-            "color": "#666666",
-            "wrap": true
-          },
-          {
-            "type": "text",
-            "text": "Limited time only — get yours now",
+            "text": "オリーブヤング・ダイソー・CUのギフト券が15%還元！",
             "size": "sm",
             "color": "#666666",
             "wrap": true
@@ -54,8 +47,8 @@
         "height": "sm",
         "action": {
           "type": "uri",
-          "label": "Get benefits",
-          "uri": "https://miniapp.line.me/unifi/event/voucher-event-1?referral_code=2055_SUTGA&attribution_code=2055_SUTGA&utm_content=sep_2026&utm_term=coupon_remind_oa"
+          "label": "今すぐ対象商品をチェック➡️",
+          "uri": "https://miniapp.line.me/unifi/benefits-mini/k-pick/shopping?referral_code=2056_SUTGA&attribution_code=2056_SUTGA&utm_content=sep_2026&utm_term=coupon_retention_oa"
         }
       }
     ]
