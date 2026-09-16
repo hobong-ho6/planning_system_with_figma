@@ -2,7 +2,7 @@
   "cta": {
     "badge": "最大15%割引",
     "label": "オリーブヤング3万ウォン商品券を購入",
-    "targetUrl": "/benefits-mini/voucher/ef41f4c8-7aa0-11f1-bb9a-fa163fda432b"
+    "targetUrl": "/benefits-mini/voucher/ef779021-7aa0-11f1-bb9a-fa163fda432b"
   },
   "title": "オリーブヤング3万ウォンで\n何が買える？",
   "sections": [
@@ -19,7 +19,7 @@
           "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/4a749d3ebdd34f62a1521a2c8b5093d9.png"
         },
         {
-          "name": "イニスフリー 火山灰\n毛穴クレンジングフォーム 150ml",
+          "name": "イニスフリー ヴォルカニック\nポア クレンジングフォーム 150ml",
           "caption": "累計販売5,000万個突破",
           "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/989fab572fa24da9a9f873be8bcf0630.png"
         },
@@ -30,10 +30,10 @@
         }
       ],
       "title": "オリーブヤング初心者ならこの組み合わせ",
-      "caution": "※ 商品の価格および取り扱いは店舗により異なる場合があります。",
+      "caution": "※ 商品の価格および取扱の有無は、店舗により異なる場合があります。",
       "summary": {
         "title": "すべて購入して約₩29,900",
-        "description": "3万ウォン商品券1枚でこの組み合わせがすべて揃います"
+        "description": "3万ウォン商品券1枚でこの組み合わせがすべて揃います！"
       }
     },
     {
