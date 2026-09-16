@@ -1,0 +1,570 @@
+[
+ {
+  "id": 2,
+  "updatedAt": "2026-09-15T06:17:01.000Z",
+  "createdAt": "2026-09-12T08:39:24.000Z",
+  "locale": "ko_KR",
+  "primaryLocale": false,
+  "postId": 1,
+  "published": true,
+  "clinic_menu": {
+   "clinics": [
+    {
+     "uid": "miliclinicdosan",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "쥬베룩",
+       "duration": "",
+       "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "튠페이스",
+       "duration": "",
+       "description": "얼굴 부위에 고주파를 전달하는 장비를 이용한 시술"
+      }
+     ]
+    },
+    {
+     "uid": "redi-skin",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "쥬베룩",
+       "duration": "",
+       "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술"
+      }
+     ]
+    },
+    {
+     "uid": "delphic-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "쥬베룩",
+       "duration": "",
+       "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "포텐자",
+       "duration": "",
+       "description": "마이크로니들 고주파(RF) 장비를 이용한 시술"
+      }
+     ]
+    },
+    {
+     "uid": "bomon-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "쥬베룩",
+       "duration": "",
+       "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "울쎄라",
+       "duration": "",
+       "description": "집속 초음파(HIFU) 장비를 이용한 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "리쥬란",
+       "duration": "",
+       "description": "피부 관리를 위한 스킨부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "써마지",
+       "duration": "",
+       "description": "진피층에 고주파를 전달하는 장비를 이용한 시술"
+      }
+     ]
+    },
+    {
+     "uid": "cheonho-toxnfill",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "리쥬란",
+       "duration": "",
+       "description": "피부 관리를 위한 스킨부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "포텐자",
+       "duration": "",
+       "description": "마이크로니들 고주파(RF) 장비를 이용한 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "인모드",
+       "duration": "",
+       "description": "고주파 장비를 이용한 얼굴·턱선 부위 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "올리지오",
+       "duration": "",
+       "description": "고주파 장비를 이용한 얼굴 부위 시술"
+      }
+     ]
+    },
+    {
+     "uid": "poen-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "포텐자",
+       "duration": "",
+       "description": "마이크로니들 고주파(RF) 장비를 이용한 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "쥬베룩",
+       "duration": "",
+       "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술"
+      }
+     ]
+    },
+    {
+     "uid": "le-dental",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "라미네이트",
+       "duration": "",
+       "description": "앞니 표면에 얇은 세라믹을 부착하는 치료"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "임플란트",
+       "duration": "",
+       "description": "빠진 치아 자리에 인공 치근을 식립하는 치료"
+      }
+     ]
+    },
+    {
+     "uid": "oneday-dental",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "라미네이트",
+       "duration": "",
+       "description": "앞니 표면에 얇은 세라믹을 부착하는 치료"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "임플란트",
+       "duration": "",
+       "description": "빠진 치아 자리에 인공 치근을 식립하는 치료"
+      }
+     ]
+    },
+    {
+     "uid": "healing-eye",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "스마일라식",
+       "duration": "",
+       "description": "레이저로 각막 실질을 교정하는 시력 교정술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "라섹",
+       "duration": "",
+       "description": "각막 표면에 레이저를 조사하는 시력 교정술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "ICL 렌즈삽입술",
+       "duration": "",
+       "description": "눈 안에 렌즈를 삽입하는 시력 교정술"
+      }
+     ]
+    },
+    {
+     "uid": "hera-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "포텐자",
+       "duration": "",
+       "description": "마이크로니들 고주파(RF) 장비를 이용한 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "쥬베룩",
+       "duration": "",
+       "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "코 성형",
+       "duration": "",
+       "description": "콧대와 코끝 형태를 교정하는 수술"
+      }
+     ]
+    },
+    {
+     "uid": "vsline-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "리쥬란",
+       "duration": "",
+       "description": "피부 관리를 위한 스킨부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "포텐자",
+       "duration": "",
+       "description": "마이크로니들 고주파(RF) 장비를 이용한 시술"
+      }
+     ]
+    },
+    {
+     "uid": "da-ps",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "리쥬란",
+       "duration": "",
+       "description": "피부 관리를 위한 스킨부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "포텐자",
+       "duration": "",
+       "description": "마이크로니들 고주파(RF) 장비를 이용한 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "안면윤곽",
+       "duration": "",
+       "description": "얼굴 뼈 형태를 교정하는 수술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "눈 성형",
+       "duration": "",
+       "description": "눈꺼풀 라인을 교정하는 수술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "코 성형",
+       "duration": "",
+       "description": "콧대와 코끝 형태를 교정하는 수술"
+      }
+     ]
+    },
+    {
+     "uid": "tiana-ps",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "코 성형",
+       "duration": "",
+       "description": "콧대와 코끝 형태를 교정하는 수술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "눈 성형(재수술)",
+       "duration": "",
+       "description": "이전 눈 수술 부위를 다시 교정하는 수술"
+      }
+     ]
+    },
+    {
+     "uid": "ab-ps",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "코 성형",
+       "duration": "",
+       "description": "콧대와 코끝 형태를 교정하는 수술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "눈 성형",
+       "duration": "",
+       "description": "눈꺼풀 라인을 교정하는 수술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "가슴 성형",
+       "duration": "",
+       "description": "가슴 형태와 볼륨을 교정하는 수술"
+      }
+     ]
+    },
+    {
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "눈 성형",
+       "duration": "",
+       "description": "눈꺼풀 라인을 교정하는 수술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "코 성형",
+       "duration": "",
+       "description": "콧대와 코끝 형태를 교정하는 수술"
+      }
+     ],
+     "unifiId": "cf48164c-7aa0-11f1-bb9a-fa163fda432b"
+    },
+    {
+     "items": [
+      {
+       "risk": "",
+       "price": "₩390,000",
+       "title": "상담 문의",
+       "duration": "",
+       "description": "원하는 시술을 먼저 상담하는 항목"
+      }
+     ],
+     "unifiId": "cfae7051-7aa0-11f1-bb9a-fa163fda432b"
+    },
+    {
+     "items": [
+      {
+       "risk": "",
+       "price": "₩270,000",
+       "title": "아트메이크업",
+       "duration": "",
+       "description": "눈썹·입술 등에 색소를 넣는 반영구 시술"
+      }
+     ],
+     "unifiId": "d00e6b05-7aa0-11f1-bb9a-fa163fda432b"
+    },
+    {
+     "uid": "theheal-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "리쥬란",
+       "duration": "",
+       "description": "피부 관리를 위한 스킨부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "쥬베룩",
+       "duration": "",
+       "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술"
+      }
+     ]
+    },
+    {
+     "uid": "wonjin-ps",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "리쥬란",
+       "duration": "",
+       "description": "피부 관리를 위한 스킨부스터 시술"
+      }
+     ]
+    },
+    {
+     "uid": "gu-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "리쥬란",
+       "duration": "",
+       "description": "피부 관리를 위한 스킨부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "쥬베룩",
+       "duration": "",
+       "description": "피부 고민에 따라 타입을 선택하는 콜라겐 부스터 시술"
+      },
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "포텐자",
+       "duration": "",
+       "description": "마이크로니들 고주파(RF) 장비를 이용한 시술"
+      }
+     ]
+    },
+    {
+     "uid": "wooa-ps",
+     "items": [
+      {
+       "risk": "",
+       "price": "상담 문의",
+       "title": "줄기세포",
+       "duration": "",
+       "description": "줄기세포를 이용하는 피부 시술"
+      }
+     ]
+    }
+   ],
+   "section": {
+    "title": "대표 시술",
+    "description": "표시된 금액은 표준 비용이며, 상담 후 시술 범위·옵션에 따라 최종 결제 금액이 달라질 수 있어요."
+   }
+  },
+  "clinic_detail_common": {
+   "faq": {
+    "items": [
+     {
+      "id": "price_same_as_local",
+      "title": "한국인과 시술 가격이 동일한가요?",
+      "description": "한국인과 동일한 가격으로 이용할 수 있어요.\n외국인이라는 이유로 별도의 추가 비용이 적용되지 않으며, 병원에서 안내하는 동일한 시술 가격을 기준으로 결제해요. 단, 상담 후 시술 범위나 옵션이 변경되는 경우 최종 결제 금액이 달라질 수 있어요."
+     },
+     {
+      "id": "change_on_visit",
+      "title": "예약한 시술을 방문 시 변경할 수 있나요?",
+      "description": "병원 방문 후 상담을 통해 시술 내용을 변경하거나, 시술을 받지 않을 수도 있어요. 상담 결과에 따라 시술 항목이 달라지면 최종 결제 금액도 함께 변경돼요."
+     },
+     {
+      "id": "cashback_timing",
+      "title": "캐시백은 언제 받을 수 있나요?",
+      "description": "시술 후 현장에서 결제하면, 결제 확인이 완료된 뒤 결제금의 일정 비율을 포인트로 돌려받아요. 캐시백 비율은 병원마다 다르며, 각 병원 화면에서 확인할 수 있어요."
+     },
+     {
+      "id": "prepayment_required",
+      "title": "예약 전에 결제가 필요한가요?",
+      "description": "사전 결제는 필요하지 않아요. 병원에서 상담과 시술을 마친 뒤 현장에서 결제하면 돼요."
+     },
+     {
+      "id": "japanese_consultation",
+      "title": "일본어로 상담할 수 있나요?",
+      "description": "네, 일본어로 상담할 수 있어요. LINE으로 편하게 문의하시면 일본어로 안내받을 수 있어 의사소통 걱정 없이 진행할 수 있어요."
+     },
+     {
+      "id": "booking_flow",
+      "title": "예약은 어떻게 진행되나요?",
+      "description": "LINE 무료 상담에서 원하는 시술을 상담하고 방문 일정을 예약해요. 병원에 내원해 상담 후 시술 여부와 항목을 결정하고, 시술이 끝난 뒤 현장에서 결제하면 캐시백 포인트를 받을 수 있어요."
+     },
+     {
+      "id": "cashback_usage",
+      "title": "받은 캐시백 포인트는 어디에 쓸 수 있나요?",
+      "description": "바우처나 여행 상품을 포인트로 구매할 수 있고, 포인트를 JPYC로 교환할 수도 있어요."
+     },
+     {
+      "id": "info_review_source",
+      "title": "병원 정보와 리뷰는 어디서 제공되나요?",
+      "description": "클리닉 및 시술 정보는 각 의료기관에서 제공한 내용을 바탕으로 안내되며, 리뷰는 GuideKim에 등록된 실제 이용자 리뷰를 바탕으로 제공돼요. 클리닉 예약 연계 서비스도 GuideKim을 통해 제공돼요."
+     },
+     {
+      "id": "change_or_cancel",
+      "title": "예약을 변경하거나 취소할 수 있나요?",
+      "description": "일정 변경이나 취소가 필요한 경우 상담을 진행한 LINE으로 요청하시면 변경 및 취소가 가능해요. 사전 연락 없이 취소하거나 늦게 도착할 경우 병원 규정에 따라 이용이 제한될 수 있어요."
+     }
+    ],
+    "title": "자주 묻는 질문"
+   },
+   "contact": {
+    "note": "LINE 상담은 예약 접수용입니다. 표시 내용에 대한 문의는 위 연락처로 해주세요.",
+    "title": "문의처"
+   },
+   "process": {
+    "items": [
+     {
+      "step": 1,
+      "title": "무료 LINE 상담 및 예약",
+      "description": "원하는 시술을 상담하고 방문 일정을 예약해요."
+     },
+     {
+      "step": 2,
+      "title": "병원 방문 및 상담·시술",
+      "description": "병원에 내원하여 상담 후 시술 여부와 시술 항목을 결정해요."
+     },
+     {
+      "step": 3,
+      "title": "시술 후 현장 결제",
+      "description": "사전 결제 없이 시술이 끝난 후 결제해요."
+     },
+     {
+      "step": 4,
+      "title": "캐시백 받기",
+      "description": "결제 확인 후 결제금의 일정 비율을 포인트로 돌려받아요. 비율은 병원마다 달라요."
+     }
+    ],
+    "title": "상담 및 시술 과정"
+   },
+   "cautions": {
+    "items": [
+     "클리닉 및 시술 정보는 각 의료기관에서 제공한 내용을 바탕으로 안내됩니다.",
+     "리뷰 관련 내용은 GuideKim에 등록된 이용자 리뷰를 참고해 제공됩니다.",
+     "개인에 따라 상담 및 시술 내용이 달라질 수 있으니, 자세한 내용은 해당 의료기관을 통해 확인해 주세요.",
+     "캐시백 혜택 및 이용 조건은 클리닉별로 다를 수 있습니다.",
+     "클리닉 예약 연계 서비스는 GuideKim을 통해 제공됩니다."
+    ],
+    "title": "유의사항"
+   },
+   "changeCancel": {
+    "items": [
+     "일정 변경이나 취소가 필요한 경우 상담을 진행한 LINE으로 요청 시 변경 및 취소가 가능해요.",
+     "병원 방문 후 상담을 통해 시술 내용을 변경하거나, 시술을 받지 않을 수도 있어요.",
+     "사전 연락 없이 취소하거나 늦게 도착할 경우, 병원 규정에 따라 이용이 제한될 수 있어요."
+    ],
+    "title": "변경 및 취소"
+   },
+   "deviceNotice": {
+    "title": "사용 의료기기 안내",
+    "source": "입수 경로 : {0}",
+    "jpApproval": "일본 국내 승인 의료기기 유무 : {0}",
+    "unapproved": "본 시술에 사용되는 {0}은(는) 일본 「의약품의료기기등법(약기법)」상 승인·인증을 받지 않은 미승인 의료기기입니다.",
+    "overseasSafety": "해외 안전성 정보 : {0}",
+    "reliefExcluded": "미승인 의료기기를 사용한 시술은 일본 「의약품 부작용 피해구제제도」의 대상이 되지 않을 수 있습니다."
+   }
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ }
+]

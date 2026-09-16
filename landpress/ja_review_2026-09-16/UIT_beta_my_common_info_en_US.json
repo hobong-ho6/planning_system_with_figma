@@ -1,0 +1,39 @@
+[
+ {
+  "id": 2,
+  "updatedAt": "2026-09-12T05:21:56.000Z",
+  "createdAt": "2026-09-12T03:33:51.000Z",
+  "locale": "en_US",
+  "primaryLocale": false,
+  "postId": 1,
+  "published": true,
+  "benefit_more": {
+   "items": [
+    {
+     "id": "daily_mission",
+     "title": "Complete Daily Missions and get JPYC",
+     "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/d374ef6e6fdd4e67a8491d23a43b7aae.png?updatedAt=1789190195000"
+    },
+    {
+     "id": "unlimited_mission",
+     "title": "Earn up to ¥30,000 with unlimited missions",
+     "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/0e5cbdf839cf468292e98ed5386c350e.png?updatedAt=1789190198000"
+    },
+    {
+     "id": "luckyball",
+     "title": "100% win! Draw the JPYC Lucky Ball",
+     "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/f77667c28d2145c7aa0ddf29d47c99ab.png?updatedAt=1789190196000"
+    },
+    {
+     "id": "korea_travel_cashback",
+     "title": "Buy popular Korea travel products and get cashback",
+     "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/d374ef6e6fdd4e67a8491d23a43b7aae.png?updatedAt=1789190195000"
+    }
+   ],
+   "title": "Get More Benefits"
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ }
+]

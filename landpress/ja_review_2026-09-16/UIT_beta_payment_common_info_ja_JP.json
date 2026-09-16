@@ -1,0 +1,46 @@
+[
+ {
+  "id": 3,
+  "updatedAt": "2026-09-16T03:31:04.000Z",
+  "createdAt": "2026-09-12T03:34:30.000Z",
+  "locale": "ja_JP",
+  "primaryLocale": false,
+  "postId": 1,
+  "published": true,
+  "payment_guide": {
+   "sections": [
+    {
+     "items": [
+      {
+       "step": 1,
+       "description": "決済方法を選択し、決済情報を入力してください。"
+      },
+      {
+       "step": 2,
+       "description": "決済が完了すると、クーポンが即時に発行されます。"
+      },
+      {
+       "step": 3,
+       "description": "購入したクーポンはMYショッピングで確認でき、\nUnifiを友だち追加するとLINEでも受け取れます。"
+      },
+      {
+       "step": 4,
+       "description": "決済が確認されると、決済額の10%の還元もポイントで付与されます。"
+      }
+     ],
+     "title": "決済の流れ"
+    },
+    {
+     "items": [
+      "ご購入前に、商品ごとのキャンセル・返金条件を必ずご確認ください。",
+      "未使用かつ有効期限内の場合に限り、全額返金いたします。 有効期限切れ、または一部でもご使用された場合の返金はいたしかねます。"
+     ],
+     "title": "キャンセル・返金"
+    }
+   ]
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ }
+]

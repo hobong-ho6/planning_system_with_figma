@@ -1,0 +1,18 @@
+[
+ {
+  "id": 4,
+  "updatedAt": "2026-09-12T05:30:45.000Z",
+  "createdAt": "2026-09-12T05:30:41.000Z",
+  "locale": "zh_TW",
+  "primaryLocale": false,
+  "postId": 1,
+  "published": true,
+  "contents": {
+   "title": "全商品優惠券最高 15% 折扣中！"
+  },
+  "on_off": true,
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ }
+]

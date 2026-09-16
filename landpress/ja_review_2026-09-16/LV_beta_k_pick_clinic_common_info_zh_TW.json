@@ -1,0 +1,570 @@
+[
+ {
+  "id": 4,
+  "updatedAt": "2026-09-15T06:17:53.000Z",
+  "createdAt": "2026-09-12T08:36:47.000Z",
+  "locale": "zh_TW",
+  "primaryLocale": false,
+  "postId": 1,
+  "published": true,
+  "clinic_detail_common": {
+   "faq": {
+    "items": [
+     {
+      "id": "price_same_as_local",
+      "title": "療程價格與韓國人相同嗎？",
+      "description": "您可以與韓國人享有相同的價格。\n不會因為是外國人而收取額外費用，並依診所提供的相同療程價格付款。但諮詢後若療程範圍或選項有變更，最終付款金額可能會有所不同。"
+     },
+     {
+      "id": "change_on_visit",
+      "title": "預約的療程可以在到院時變更嗎？",
+      "description": "到院後可透過諮詢變更療程內容，或選擇不進行療程。若療程項目因諮詢結果而變更，最終付款金額也會隨之調整。"
+     },
+     {
+      "id": "cashback_timing",
+      "title": "現金回饋什麼時候可以領取？",
+      "description": "療程結束後於現場付款，確認付款後將依一定比例以點數返還。現金回饋比例因診所而異，可於各診所頁面查看。"
+     },
+     {
+      "id": "prepayment_required",
+      "title": "預約前需要付款嗎？",
+      "description": "無需預先付款。在診所完成諮詢與療程後，於現場付款即可。"
+     },
+     {
+      "id": "japanese_consultation",
+      "title": "可以用日語諮詢嗎？",
+      "description": "可以。透過 LINE 諮詢即可獲得日語說明，不必擔心語言溝通問題。"
+     },
+     {
+      "id": "booking_flow",
+      "title": "預約如何進行？",
+      "description": "先透過 LINE 免費諮詢討論想要的療程並預約到院日期。到院諮詢後決定是否進行療程及療程項目，療程結束後於現場付款即可獲得現金回饋點數。"
+     },
+     {
+      "id": "cashback_usage",
+      "title": "領取的現金回饋點數可以用在哪裡？",
+      "description": "可以用點數購買優惠券或旅遊商品，也可以將點數交換為 JPYC。"
+     },
+     {
+      "id": "info_review_source",
+      "title": "診所資訊與評論由何處提供？",
+      "description": "診所與療程資訊依各醫療機構提供的內容說明，評論則來自登錄於 GuideKim 的實際使用者評論。診所預約串接服務同樣透過 GuideKim 提供。"
+     },
+     {
+      "id": "change_or_cancel",
+      "title": "可以變更或取消預約嗎？",
+      "description": "需要變更日期或取消時，請透過諮詢時使用的 LINE 聯繫即可辦理變更與取消。若未事先聯繫即取消或遲到，可能依診所規定限制使用。"
+     }
+    ],
+    "title": "常見問題"
+   },
+   "contact": {
+    "note": "LINE 諮詢僅用於預約受理。對於顯示內容的疑問，請透過上方聯絡方式洽詢。",
+    "title": "洽詢窗口"
+   },
+   "process": {
+    "items": [
+     {
+      "step": 1,
+      "title": "LINE 免費諮詢與預約",
+      "description": "諮詢您想要的療程並預約到院日期。"
+     },
+     {
+      "step": 2,
+      "title": "到院、諮詢與療程",
+      "description": "到院諮詢後決定是否進行療程及療程項目。"
+     },
+     {
+      "step": 3,
+      "title": "療程後現場付款",
+      "description": "無需預先付款，療程結束後再付款。"
+     },
+     {
+      "step": 4,
+      "title": "領取現金回饋",
+      "description": "確認付款後，將依一定比例以點數返還。比例因診所而異。"
+     }
+    ],
+    "title": "諮詢與療程流程"
+   },
+   "cautions": {
+    "items": [
+     "診所與療程資訊係依各醫療機構提供的內容提供。",
+     "評論相關內容係參考 GuideKim 上登錄的使用者評論提供。",
+     "諮詢與療程內容可能因人而異，詳細內容請向該醫療機構確認。",
+     "現金回饋優惠及使用條件可能因診所而異。",
+     "診所預約串接服務由 GuideKim 提供。"
+    ],
+    "title": "注意事項"
+   },
+   "changeCancel": {
+    "items": [
+     "如需變更或取消日程，可透過先前諮詢的 LINE 提出申請。",
+     "到院後可透過諮詢變更療程內容，或選擇不進行療程。",
+     "若未事先聯絡即取消或遲到，可能依診所規定限制使用。"
+    ],
+    "title": "變更與取消"
+   },
+   "deviceNotice": {
+    "title": "使用醫療器材說明",
+    "source": "取得管道：{0}",
+    "jpApproval": "日本國內核准醫療器材之有無：{0}",
+    "unapproved": "本療程使用的{0}為未依日本《醫藥品醫療器材等法(藥機法)》取得核准或認證的未核准醫療器材。",
+    "overseasSafety": "海外安全性資訊：{0}",
+    "reliefExcluded": "使用未核准醫療器材的療程，可能不適用日本「醫藥品副作用受害救濟制度」。"
+   }
+  },
+  "clinic_menu": {
+   "clinics": [
+    {
+     "uid": "miliclinicdosan",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Juvelook",
+       "duration": "",
+       "description": "依肌膚困擾選擇類型的膠原蛋白導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Tune Face",
+       "duration": "",
+       "description": "使用向臉部傳遞射頻的儀器進行的療程"
+      }
+     ]
+    },
+    {
+     "uid": "redi-skin",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Juvelook",
+       "duration": "",
+       "description": "依肌膚困擾選擇類型的膠原蛋白導入療程"
+      }
+     ]
+    },
+    {
+     "uid": "delphic-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Juvelook",
+       "duration": "",
+       "description": "依肌膚困擾選擇類型的膠原蛋白導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Potenza",
+       "duration": "",
+       "description": "使用微針射頻(RF)儀器的療程"
+      }
+     ]
+    },
+    {
+     "uid": "bomon-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Juvelook",
+       "duration": "",
+       "description": "依肌膚困擾選擇類型的膠原蛋白導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Ulthera",
+       "duration": "",
+       "description": "使用聚焦超音波(HIFU)儀器的療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Rejuran",
+       "duration": "",
+       "description": "用於肌膚保養的肌膚導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Thermage",
+       "duration": "",
+       "description": "使用向真皮層傳遞射頻的儀器進行的療程"
+      }
+     ]
+    },
+    {
+     "uid": "cheonho-toxnfill",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Rejuran",
+       "duration": "",
+       "description": "用於肌膚保養的肌膚導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Potenza",
+       "duration": "",
+       "description": "使用微針射頻(RF)儀器的療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "InMode",
+       "duration": "",
+       "description": "使用射頻儀器進行的臉部與下顎線療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Oligio",
+       "duration": "",
+       "description": "使用射頻儀器進行的臉部療程"
+      }
+     ]
+    },
+    {
+     "uid": "poen-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Potenza",
+       "duration": "",
+       "description": "使用微針射頻(RF)儀器的療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Juvelook",
+       "duration": "",
+       "description": "依肌膚困擾選擇類型的膠原蛋白導入療程"
+      }
+     ]
+    },
+    {
+     "uid": "le-dental",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "貼面(Laminate)",
+       "duration": "",
+       "description": "於前齒表面貼附薄陶瓷的治療"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "植牙",
+       "duration": "",
+       "description": "於缺牙處植入人工牙根的治療"
+      }
+     ]
+    },
+    {
+     "uid": "oneday-dental",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "貼面(Laminate)",
+       "duration": "",
+       "description": "於前齒表面貼附薄陶瓷的治療"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "植牙",
+       "duration": "",
+       "description": "於缺牙處植入人工牙根的治療"
+      }
+     ]
+    },
+    {
+     "uid": "healing-eye",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "SMILE LASIK",
+       "duration": "",
+       "description": "以雷射矯正角膜基質的視力矯正術"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "LASEK",
+       "duration": "",
+       "description": "於角膜表面照射雷射的視力矯正術"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "ICL晶體植入術",
+       "duration": "",
+       "description": "於眼內植入鏡片的視力矯正術"
+      }
+     ]
+    },
+    {
+     "uid": "hera-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Potenza",
+       "duration": "",
+       "description": "使用微針射頻(RF)儀器的療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Juvelook",
+       "duration": "",
+       "description": "依肌膚困擾選擇類型的膠原蛋白導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "鼻整形",
+       "duration": "",
+       "description": "矯正鼻樑與鼻尖形狀的手術"
+      }
+     ]
+    },
+    {
+     "uid": "vsline-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Rejuran",
+       "duration": "",
+       "description": "用於肌膚保養的肌膚導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Potenza",
+       "duration": "",
+       "description": "使用微針射頻(RF)儀器的療程"
+      }
+     ]
+    },
+    {
+     "uid": "da-ps",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Rejuran",
+       "duration": "",
+       "description": "用於肌膚保養的肌膚導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Potenza",
+       "duration": "",
+       "description": "使用微針射頻(RF)儀器的療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "臉部輪廓",
+       "duration": "",
+       "description": "矯正臉部骨骼形狀的手術"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "眼整形",
+       "duration": "",
+       "description": "矯正眼瞼線條的手術"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "鼻整形",
+       "duration": "",
+       "description": "矯正鼻樑與鼻尖形狀的手術"
+      }
+     ]
+    },
+    {
+     "uid": "tiana-ps",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "鼻整形",
+       "duration": "",
+       "description": "矯正鼻樑與鼻尖形狀的手術"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "眼整形(修復手術)",
+       "duration": "",
+       "description": "再次矯正先前眼部手術部位的手術"
+      }
+     ]
+    },
+    {
+     "uid": "ab-ps",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "鼻整形",
+       "duration": "",
+       "description": "矯正鼻樑與鼻尖形狀的手術"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "眼整形",
+       "duration": "",
+       "description": "矯正眼瞼線條的手術"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "胸整形",
+       "duration": "",
+       "description": "矯正胸部形狀與量感的手術"
+      }
+     ]
+    },
+    {
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "眼整形",
+       "duration": "",
+       "description": "矯正眼瞼線條的手術"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "鼻整形",
+       "duration": "",
+       "description": "矯正鼻樑與鼻尖形狀的手術"
+      }
+     ],
+     "unifiId": "cf48164c-7aa0-11f1-bb9a-fa163fda432b"
+    },
+    {
+     "items": [
+      {
+       "risk": "",
+       "price": "₩390,000",
+       "title": "諮詢洽詢",
+       "duration": "",
+       "description": "先就想要的療程進行諮詢的項目"
+      }
+     ],
+     "unifiId": "cfae7051-7aa0-11f1-bb9a-fa163fda432b"
+    },
+    {
+     "items": [
+      {
+       "risk": "",
+       "price": "₩270,000",
+       "title": "美妝紋繡",
+       "duration": "",
+       "description": "於眉毛與唇部等處填入色素的半永久療程"
+      }
+     ],
+     "unifiId": "d00e6b05-7aa0-11f1-bb9a-fa163fda432b"
+    },
+    {
+     "uid": "theheal-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Rejuran",
+       "duration": "",
+       "description": "用於肌膚保養的肌膚導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Juvelook",
+       "duration": "",
+       "description": "依肌膚困擾選擇類型的膠原蛋白導入療程"
+      }
+     ]
+    },
+    {
+     "uid": "wonjin-ps",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Rejuran",
+       "duration": "",
+       "description": "用於肌膚保養的肌膚導入療程"
+      }
+     ]
+    },
+    {
+     "uid": "gu-clinic",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Rejuran",
+       "duration": "",
+       "description": "用於肌膚保養的肌膚導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Juvelook",
+       "duration": "",
+       "description": "依肌膚困擾選擇類型的膠原蛋白導入療程"
+      },
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "Potenza",
+       "duration": "",
+       "description": "使用微針射頻(RF)儀器的療程"
+      }
+     ]
+    },
+    {
+     "uid": "wooa-ps",
+     "items": [
+      {
+       "risk": "",
+       "price": "價格請諮詢",
+       "title": "幹細胞",
+       "duration": "",
+       "description": "使用幹細胞的肌膚療程"
+      }
+     ]
+    }
+   ],
+   "section": {
+    "title": "代表療程",
+    "description": "顯示的金額為標準價格，最終付款金額可能依諮詢後決定的療程範圍與選項而有所不同。"
+   }
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ }
+]

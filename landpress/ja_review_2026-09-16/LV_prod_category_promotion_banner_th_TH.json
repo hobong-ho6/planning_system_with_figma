@@ -1,0 +1,18 @@
+[
+ {
+  "id": 5,
+  "updatedAt": "2026-09-13T07:18:36.000Z",
+  "createdAt": "2026-09-13T07:14:24.000Z",
+  "locale": "th_TH",
+  "primaryLocale": false,
+  "postId": 1,
+  "published": true,
+  "on_off": true,
+  "contents": {
+   "title": "ลดสูงสุด 15% สำหรับเวาเชอร์ทุกรายการ!"
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ }
+]

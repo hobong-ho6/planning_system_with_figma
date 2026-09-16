@@ -1,0 +1,198 @@
+[
+ {
+  "id": 1,
+  "updatedAt": "2026-09-15T06:17:34.000Z",
+  "createdAt": "2026-09-14T05:16:58.000Z",
+  "locale": "en_US",
+  "primaryLocale": true,
+  "postId": 1,
+  "published": true,
+  "uid": "VOUCHER_OLIVE_YOUNG",
+  "my_voucher_detail": {
+   "usage": {
+    "items": [
+     {
+      "step": 1,
+      "description": "When paying at an OLIVE YOUNG store, show the barcode in your coupon box to the store staff to use it"
+     },
+     {
+      "step": 2,
+      "description": "You can use it until the balance is fully spent\nwithin the validity period"
+     }
+    ],
+    "title": "How to use"
+   },
+   "notice": {
+    "title": "Product description and precautions",
+    "sections": [
+     {
+      "title": "How to use",
+      "description": "[OLIVE YOUNG stores]\nPresent the mobile gift card barcode when paying\n(Not available at malls, department stores, KTX stations, and other select in-store locations, or at self-checkout counters)\n\n[OLIVE YOUNG online shop]\nCheckout > Check mobile gift card balance > Enter the mobile gift card number > Confirm the balance > Pay"
+     },
+     {
+      "title": "Usage information",
+      "description": "Support may be unavailable for issues that occur while using a mobile gift card purchased outside official channels, resold, or obtained through improper means\nOLIVE YOUNG mobile gift cards can be used immediately at OLIVE YOUNG stores nationwide and in the mobile app. (Including Olive Better) (Excluding some stores; not available on PC)\nMultiple mobile gift cards can be used in a single payment in stores, but only one mobile gift card can be used per payment in the online shop.\nThe card can be used in several installments within the displayed amount.\nIf your purchase exceeds the mobile gift card amount, you can pay the difference with another payment method.\nCJ ONE points can be earned and a cash receipt can be issued at the time of payment.\nFor inquiries about use or returns, please contact the Gifticon customer center (1800-0133)."
+     },
+     {
+      "title": "Changes and cancellation",
+      "description": "If the voucher has not been used, you can receive a 100% refund within the validity period. Refunds are not available after the validity period has passed or if the voucher has been partially used."
+     },
+     {
+      "title": "Precautions",
+      "description": "Once an OLIVE YOUNG mobile gift card expires, it cannot be reused after an exchange or return of the purchased product.\nOLIVE YOUNG mobile gift cards cannot be recharged.\nOLIVE YOUNG mobile gift cards cannot be used to purchase gift cards, gift certificates, or certain products.\nWe are not liable for incidents caused by theft, loss, or similar circumstances.\nInquiries received outside customer center hours cannot be processed the same day, and expired cards are handled based on their expired status."
+     }
+    ]
+   }
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ },
+ {
+  "id": 6,
+  "updatedAt": "2026-09-15T06:17:32.000Z",
+  "createdAt": "2026-09-14T05:17:04.000Z",
+  "locale": "en_US",
+  "primaryLocale": true,
+  "postId": 6,
+  "published": true,
+  "uid": "VOUCHER_CU",
+  "my_voucher_detail": {
+   "usage": {
+    "items": [
+     {
+      "step": 1,
+      "description": "When paying at a CU store, show the barcode in your coupon box to the store staff to use it"
+     },
+     {
+      "step": 2,
+      "description": "You can use it until the balance is fully spent\nwithin the validity period"
+     }
+    ],
+    "title": "How to use"
+   },
+   "notice": {
+    "title": "Product description and precautions",
+    "sections": [
+     {
+      "title": "How to use",
+      "description": "[CU stores]\nPresent the mobile gift card barcode when paying\n(Can be used just like cash or a card at CU stores nationwide)"
+     },
+     {
+      "title": "Usage information",
+      "description": "It can be used just like cash or a card at CU stores nationwide.\nIt can be combined with cash, a card, or other payment methods.\nMobile carrier discount cards can be applied.\nCU mobile gift cards support balance tracking and can be used in installments within the remaining balance.\nA cash receipt can be issued.\nFor balance and usage history inquiries: Galaxia Communications customer center, 1566-0123"
+     },
+     {
+      "title": "Changes and cancellation",
+      "description": "If the voucher has not been used, you can receive a 100% refund within the validity period. Refunds are not available after the validity period has passed or if the voucher has been partially used."
+     },
+     {
+      "title": "Precautions",
+      "description": "The exchange validity period is 60 days from the purchase date.\nIt cannot be combined with other coupons, and points cannot be earned.\nRestricted items: cigarettes, lottery tickets, garbage bags, T-money top-ups, parcel delivery, and other service products"
+     }
+    ]
+   }
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ },
+ {
+  "id": 11,
+  "updatedAt": "2026-09-15T06:17:33.000Z",
+  "createdAt": "2026-09-14T05:17:10.000Z",
+  "locale": "en_US",
+  "primaryLocale": true,
+  "postId": 11,
+  "published": true,
+  "uid": "VOUCHER_DAISO",
+  "my_voucher_detail": {
+   "usage": {
+    "items": [
+     {
+      "step": 1,
+      "description": "When paying at a DAISO store, show the barcode in your coupon box to the store staff to use it"
+     },
+     {
+      "step": 2,
+      "description": "You can use it until the balance is fully spent\nwithin the validity period"
+     }
+    ],
+    "title": "How to use"
+   },
+   "notice": {
+    "title": "Product description and precautions",
+    "sections": [
+     {
+      "title": "How to use",
+      "description": "[DAISO stores]\nPresent the gift card when paying, or use a self-checkout counter\n(Select DAISO gift card > Scan the items > Scan the barcode or enter the number > Pay)\n\n[DAISO online store]\nAt checkout, enter the amount to use under \"DAISO gift card\" > Pay (available after registering the gift card)"
+     },
+     {
+      "title": "Usage information",
+      "description": "Please be sure to check the list of available stores before use.\nThis is a deducting-balance gift card that can be used multiple times within its remaining balance.\nIf your purchase exceeds the gift card amount, you can pay the difference by card, cash, or another method.\nPoints can be earned when paying with the gift card.\nProducts purchased with the gift card can be exchanged or returned within the validity period.\nAvailable stores: https://www.daisogift.co.kr/usestoreinfo"
+     },
+     {
+      "title": "Changes and cancellation",
+      "description": "If the voucher has not been used, you can receive a 100% refund within the validity period. Refunds are not available after the validity period has passed or if the voucher has been partially used."
+     },
+     {
+      "title": "Precautions",
+      "description": "The exchange validity period is 60 days from the purchase date. (Validity periods may differ for seasonal products, corporate gifts (B2B), and discounted products.)"
+     }
+    ]
+   }
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ },
+ {
+  "id": 16,
+  "updatedAt": "2026-09-15T06:17:33.000Z",
+  "createdAt": "2026-09-14T05:17:16.000Z",
+  "locale": "en_US",
+  "primaryLocale": true,
+  "postId": 16,
+  "published": true,
+  "uid": "VOUCHER_EMART24",
+  "my_voucher_detail": {
+   "usage": {
+    "items": [
+     {
+      "step": 1,
+      "description": "When paying at an emart24 store, show the barcode in your coupon box to the store staff to use it"
+     },
+     {
+      "step": 2,
+      "description": "You can use it until the balance is fully spent\nwithin the validity period"
+     }
+    ],
+    "title": "How to use"
+   },
+   "notice": {
+    "title": "Product description and precautions",
+    "sections": [
+     {
+      "title": "How to use",
+      "description": "[emart24 stores]\nPresent the mobile gift card barcode when paying\n(Not available at E-Mart / E-Mart Everyday, Simon, gas stations, stores inside highway rest areas, and certain other special stores)"
+     },
+     {
+      "title": "Usage information",
+      "description": "Support may be unavailable for issues that occur while using a mobile gift card purchased outside official channels, resold, or obtained through improper means\nemart24 mobile gift cards can be used immediately at stores nationwide (excluding certain stores)."
+     },
+     {
+      "title": "Changes and cancellation",
+      "description": "If the voucher has not been used, you can receive a 100% refund within the validity period. Refunds are not available after the validity period has passed or if the voucher has been partially used."
+     },
+     {
+      "title": "Precautions",
+      "description": "The exchange validity period is 60 days from the purchase date. (Validity periods may differ for seasonal products, corporate gifts (B2B), and discounted products.)\nThis voucher is an emart24 product and cannot be used at E-Mart or E-Mart Everyday.\nIt cannot be used for cigarettes, parcel delivery, Lotto, Toto, wine points, transportation cards, gift cards, garbage bags, waste stickers, POSA cards, USIM, or gift certificates.\nShinsegae Point accumulation and mobile carrier discounts are available.\nDiscount benefits such as combining other coupons and promotions follow the brand's policy.\nAny balance remaining after use is restored so that it can be used again within the validity period. Any additional amount can be paid with the same mobile gift card, cash, or a credit card.\nThis mobile gift card cannot be exchanged for cash.\nAnything other than a valid mobile gift card loaded on a mobile phone (for example, presenting only the authorization number) cannot be used.\nFor inquiries about refunds, exchanges, or approvals, please contact the place where you purchased the gift card."
+     }
+    ]
+   }
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ }
+]

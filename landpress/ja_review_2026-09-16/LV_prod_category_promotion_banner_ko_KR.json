@@ -1,0 +1,18 @@
+[
+ {
+  "id": 2,
+  "updatedAt": "2026-09-13T07:18:34.000Z",
+  "createdAt": "2026-09-13T07:14:24.000Z",
+  "locale": "ko_KR",
+  "primaryLocale": false,
+  "postId": 1,
+  "published": true,
+  "on_off": true,
+  "contents": {
+   "title": "바우처 전 상품 최대 15% 할인 진행중!"
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ }
+]

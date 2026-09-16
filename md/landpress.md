@@ -299,6 +299,17 @@ GET /api/v1/projects/{pid}/roles/my   → 200이면 로그인·권한 OK (type: 
 | **기존 항목에 로케일 행 추가** | `PUT ?locale=` · `POST .../items/{id}/locales` · `/translations` · `POST .../items/{id}?locale=` · `PATCH ?locale=` | ❌ **전 경로 실패** — 아래 10-3 7번 |
 | 전용 publish 엔드포인트 | `/publish` 계열 전부 `Cannot POST` | ❌ — 위 플래그로 대체 |
 
+### 10-3-00. ⛔ beta·prod는 항상 같은 상태로 유지한다 (2026-09-16 사용자 결정)
+
+**LPC에 쓸 때는 beta·prod 양쪽에 같은 변경을 반영하고, 두 환경의 값이 같은지 재조회로 확인한다.** 한쪽만 고치면 그 차이가 **조용히 남는다** — 공개 조회 API로는 두 환경을 따로 봐야 해서 눈에 띄지 않는다.
+
+- 쓰기 후 검증은 **①반영 확인(값 == 의도값) ②환경 간 대조(beta == prod)** 둘 다 한다. 하나만 하면 「양쪽 다 똑같이 틀린」 상태를 못 잡는다.
+- **실측(2026-09-16)** — 일본어 검수 51건을 반영하며 쓰기 전 대조에서 **beta↔prod 차이 0건**을 확인하고 시작했고, 쓰기 후에도 **51/51 일치 · 차이 0건**이었다.
+
+### CMS 목록 API 파라미터 (2026-09-16 실측)
+
+`GET /api/v1/projects/{pid}/collections/{col}/items` 는 **`page`·`limit`이 필수**이고 **`limit`은 최대 100**이다. 빠뜨리면 `400 page should not be empty, limit should not be empty`, 100을 넘기면 `400 INVALID_QUERY_LIMIT_MAX`가 난다. 100건을 넘는 컬렉션은 `page`를 올려 가며 이어 받는다.
+
 ### 10-3-0. ⛔⛔ PUT은 문서를 통째로 교체한다 — 빠뜨린 필드는 `null`이 된다 (2026-09-15 실측 · 최우선)
 
 **`PUT .../items/{postId}?locale={loc}`은 부분 갱신(PATCH)이 아니라 전체 교체다. body에 넣지 않은 콘텐츠 필드는 그 자리에서 `null`이 된다.**

@@ -1,0 +1,46 @@
+[
+ {
+  "id": 1,
+  "updatedAt": "2026-09-15T02:17:21.000Z",
+  "createdAt": "2026-09-12T08:10:42.000Z",
+  "locale": "en_US",
+  "primaryLocale": true,
+  "postId": 1,
+  "published": true,
+  "payment_guide": {
+   "sections": [
+    {
+     "items": [
+      {
+       "step": 1,
+       "description": "Select a payment method and enter your payment details."
+      },
+      {
+       "step": 2,
+       "description": "Your voucher is issued as soon as the payment is completed."
+      },
+      {
+       "step": 3,
+       "description": "You can find purchased vouchers in MY Shopping,\nand also receive them on LINE if you add Unifi as a friend."
+      },
+      {
+       "step": 4,
+       "description": "Once the payment is confirmed, 10% cashback on the payment amount is also given as points."
+      }
+     ],
+     "title": "Payment steps"
+    },
+    {
+     "items": [
+      "Please check the cancellation and refund terms for each product before purchase.",
+      "Unused vouchers can be fully refunded within the validity period. Refunds are not available after the validity period or if the voucher has been partially used."
+     ],
+     "title": "Cancellation and refund"
+    }
+   ]
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ }
+]

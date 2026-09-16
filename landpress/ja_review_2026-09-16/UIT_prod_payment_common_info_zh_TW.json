@@ -1,0 +1,46 @@
+[
+ {
+  "id": 4,
+  "updatedAt": "2026-09-15T02:17:22.000Z",
+  "createdAt": "2026-09-12T08:10:42.000Z",
+  "locale": "zh_TW",
+  "primaryLocale": false,
+  "postId": 1,
+  "published": true,
+  "payment_guide": {
+   "sections": [
+    {
+     "items": [
+      {
+       "step": 1,
+       "description": "選擇付款方式並輸入付款資訊。"
+      },
+      {
+       "step": 2,
+       "description": "付款完成後將立即發行優惠券。"
+      },
+      {
+       "step": 3,
+       "description": "已購買的優惠券可於 MY 購物中查看，\n加入 Unifi 好友後也可透過 LINE 收到。"
+      },
+      {
+       "step": 4,
+       "description": "確認付款後，也會以點數發放消費金額 10% 的現金回饋。"
+      }
+     ],
+     "title": "付款流程"
+    },
+    {
+     "items": [
+      "購買前請務必確認各商品的取消與退款條件。",
+      "未使用的優惠券可在有效期限內全額退款。超過有效期限或已部分使用時無法退款。"
+     ],
+     "title": "取消與退款"
+    }
+   ]
+  },
+  "createdBy": null,
+  "updatedBy": null,
+  "_env": "main"
+ }
+]
