@@ -2,7 +2,7 @@
   "cta": {
     "badge": "Up to 15% off",
     "label": "Buy a DAISO ₩10,000 voucher",
-    "targetUrl": "https://miniapp.line.me/2008994547-GfGUdDxy/benefits-mini/voucher/f02efff9-7aa0-11f1-bb9a-fa163fda432b"
+    "targetUrl": "/benefits-mini/voucher/f02efff9-7aa0-11f1-bb9a-fa163fda432b"
   },
   "title": "How much can you get\nfor ₩10,000 at DAISO?",
   "sections": [
