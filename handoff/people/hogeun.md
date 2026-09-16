@@ -8,9 +8,11 @@
 | hostname | 저장소 경로 | git 세팅 | 비고 |
 |---|---|---|---|
 | `AL02359162.local` | `/Users/user/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 접속 시 XLT 읽기 API 사용 가능 |
-| `AD03230205ui-iMac.local` | `/Users/ad03230205/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 OK(2026-09-15 XLT API 실측) |
+| `AD03230205ui-iMac.local` | `/Users/ad03230205/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 OK(2026-09-15 XLT API 실측) · **DropWeb MCP 등록됨**(2026-09-16) |
 
 ## 환경 복구
+
+- **DropWeb MCP**(09-16) — `~/.claude.json`의 `mcpServers.dropweb`. ⛔ **PC마다 등록**(토큰=비밀값, 저장소에 없음) · DropWeb **MCP Token** 메뉴에서 발급 · `md/dropweb-guide.md` §8
 
 - **⚠ Python 의존성이 사라질 수 있다**(실측 1회) — `ModuleNotFoundError` 시 아래(`Pillow` 포함 — `collect_frames.py`가 요구):
   ```bash
