@@ -38,7 +38,7 @@
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-15 | 점검 **#7**(09-14) 반영 — **주기 정상 복귀**(#5→#6 4일 → #7 7일) · 🔴 **프로덕션 리워드 탭 스켈레톤 고착**(#6과 환경 역전 · `mission-users` 401) · 🔴 오프라인 결제 캐시백 캠페인 신설 · KAIA **4.2→4.1%** · **Preferred Stable** 축 신설 · ⛔ Screen ID 어휘 승인 대기 **12건** · **7주 연속 2건**(Beta 0% 표기 · K-Pick GNB) · ⚠️ **#6·#7이 12일간 미기록이던 것을 09-15에 소급 반영**(리포트 근거) |
 | [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + LPC `4727978725` + 일본어 검수 `4750149077` · **29화면** | 09-16 | 본문 **v231** · LPC **v64** — ✅ **LPC 이동 URL 전건 확정**(`shopping_guide` 30셀 + `service_guide` 40셀 · ⛔ **상대 경로가 정본**, JPYC 배너만 외부 전체 URL) · QA 4건 처리(11296·11299·11321 Resolved · 11333 = **LPC 아님**) · **혜택 상세 키 분리**(`UF_my_benefit_bottomsheet_total_desc` · FE 적용은 추후 일괄) · JPYC 가이드 3키 줄바꿈 · ⚠️ **줄바꿈 정본 화면별로 갈림** |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` **예약 OA 16화면 전용**(100엔딜 OA는 `100yen-deal`) | 09-16 | 발송 시간 제한 정책 확정(스케줄 22~8시 금지 · 확정 T0 예외) · beta 16건 등록 완료 · ⚠️ hero·버튼 URL **임시값** · `ko_KR`만(번역 미착수) · prod는 T0 1건 `isActive` No |
-| [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` **페이지 전체** — Screen 3화면 + **OA 2종**(09-16 이관) | 09-16 | 위키 **v24** · XLT **15키**(13 + 공유 2키) · 리텐션 OA 2종 완료 · **딜페이지 공유 2키 신규 등록**(Figma 미반영 = FE 구현 요소) · 🔴 Home 「더보기」 landing URL 미확정 |
+| [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` **페이지 전체** — Screen 3화면 + **OA 2종**(09-16 이관) | 09-16 | 위키 **v25** · XLT **15키**(13 + 공유 2키) · 리텐션 OA 2종 완료 · **공유 툴팁 중복 요청 차단**(문구 대조 — 신규 키 없음) · 🔴 운영 화면 툴팁 **하드코딩 불일치** · 🔴 Home 「더보기」 landing URL 미확정 |
 
 ---
 
