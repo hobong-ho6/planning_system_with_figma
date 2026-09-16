@@ -74,21 +74,21 @@
         "title": "韓国旅行のショッピング商品券を購入",
         "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/c3471ba4466344f396da6e016a24503d.png",
         "linkLabel": "人気商品を見る",
-        "targetUrl": "",
+        "targetUrl": "/benefits-mini/category/voucher",
         "description": "韓国到着後すぐ使える商品券\n最大15%お得に準備しましょう"
       },
       {
         "title": "人気クリニックの無料相談を予約",
         "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/f7201a27c2be4a4db43c2853a40e9867.png",
         "linkLabel": "人気商品を見る",
-        "targetUrl": "",
+        "targetUrl": "/benefits-mini/category/clinic",
         "description": "日本語の相談で安心して\n人気クリニックを事前に予約しましょう"
       },
       {
         "title": "K-ビューティー・人気旅行商品を予約",
         "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a51f95d24cc84fa59d9dc70dc46f730f.png",
         "linkLabel": "人気商品を見る",
-        "targetUrl": "",
+        "targetUrl": "/benefits-mini/category/k-beauty",
         "description": "韓国旅行で人気の必須体験！\nご希望の日程で事前に予約しましょう"
       }
     ],

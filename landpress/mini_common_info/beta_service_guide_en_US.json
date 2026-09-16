@@ -74,21 +74,21 @@
         "title": "Buy shopping vouchers for Korea",
         "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/c3471ba4466344f396da6e016a24503d.png",
         "linkLabel": "View popular products",
-        "targetUrl": "",
+        "targetUrl": "/benefits-mini/category/voucher",
         "description": "Vouchers you can use as soon as you arrive\nPrepare ahead with up to 15% off"
       },
       {
         "title": "Book a free consultation at popular clinics",
         "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/f7201a27c2be4a4db43c2853a40e9867.png",
         "linkLabel": "View popular products",
-        "targetUrl": "",
+        "targetUrl": "/benefits-mini/category/clinic",
         "description": "Consult in Japanese with ease\nand book popular clinics in advance"
       },
       {
         "title": "Book K-beauty and popular travel products",
         "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a51f95d24cc84fa59d9dc70dc46f730f.png",
         "linkLabel": "View popular products",
-        "targetUrl": "",
+        "targetUrl": "/benefits-mini/category/k-beauty",
         "description": "Must-try experiences in Korea!\nBook ahead for the dates you want"
       }
     ],
