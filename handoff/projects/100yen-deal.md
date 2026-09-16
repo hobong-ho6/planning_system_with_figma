@@ -1,6 +1,6 @@
 # 100yen-deal — 100엔딜 프로모션 (Unifi mini · XLT 13키 + **리텐션 OA 2종**)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-16 · 세션 #2 · 마지막 커밋 `e8c052f`
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-16 · 세션 #6 · 마지막 커밋 `PLACEHOLDER` · 위키 **v24**
 >
 > 📌 **범위**: 위키 `4725963532` 한 페이지 전체 — Screen 3화면(XLT 13키) + **OA 서브섹션 2종**. 예약 OA 16화면(`4725932984`)은 [`unifi-mini-v2-oa`](unifi-mini-v2-oa.md) 소관이다.
 >
@@ -9,7 +9,7 @@
 ## 대상 / 링크
 
 - Figma: `Web3` `GOCHAYBS7hIrmWRGNuJOKV` / SECTION **`백엔딜 프로모션` `74343:1703`** — `Home - 100엔딜` `74343:1704` · `100앤딜 상세` `74343:2357`(프레임명 오타) · `결제하기` `74343:3107`
-- 위키: [pageId 4725963532](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4725963532) `100엔딜` — **현재 v1**(2026-09-15 12:40 생성 · 부모 `Unifi mini v2.0`)
+- 위키: [pageId 4725963532](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4725963532) `100엔딜` — **현재 v24**(2026-09-15 12:40 생성 · 부모 `Unifi mini v2.0`)
 - XLT: **Home = LV**(`mini_` · `{0}` · Dapp Portal) / **상세·결제하기 = UIT**(`UF_` · `{{0}}` · Unifi)
 - 게이트 리포트: `reports/gate/gate_report_100yen_deal_2026-09-15.md` · OA `gate_report_voucher_retention_oa_2026-09-15.md` · `gate_report_voucher_retention_oa_5lang_2026-09-15.md`
 - **리텐션 OA 2종**(2026-09-16 `unifi-mini-v2-oa`에서 이관) — Figma `74620-14367`(미구매) · `74620-13917`(구매) · 산출물 `oa/flex_100엔딜_{미구매,구매}_사용자_*.json`
@@ -52,6 +52,15 @@
 - ⛔ **Landpress를 고치면 LIAM에서 `LOAD MESSAGE` → `UPDATE`를 반드시 한다** — LIAM은 **스냅샷**을 들고 있어 Landpress만 고치면 발송은 구 문구다(`md/OA.md` 규칙 3-1 ⓖ · 2026-09-15 실측)
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-09-16 — 세션 #6: 딜페이지 공유하기 2키 신규 (위키 v21→**v23** · Slack FE 요청)
+
+- **신규 2키 업로드 완료**(재조회 10/10 일치 · Unifi **2,592키**) — `UF_100yen_share_tooltip`(툴팁 말풍선) · `UF_100yen_share_text`(LINE 공유 메시지) × 5개 언어. ja는 **FE 제공 확정문 그대로**
+- ⚠️ **Figma 미반영 요소** — `74574-7790`·`74574-8127` 두 프레임 실측에 **공유 버튼·툴팁이 없다**(FE 구현 단계 추가). 위키에 「Figma 미반영 — FE 구현 요소」로 기록
+- **초안을 등록값 실측으로 교정** — zh `朋友`(**0건**)→`好友`(88) · en `deal`(0)→`benefit`(38) · th `ดีล`(0)→`สิทธิประโยชน์`(60) · `ไอเทม`(2)→`สินค้า`(26). **실사용 0건 표기 금지** 규칙 적용 사례
+- **공유 문구의 일본어 고정 여부는 기획·마케팅 결정**으로 남겼다(선례 `UF_send_complete_share_text`는 5개 언어 등록 · LINE 공유는 **보내는 사람 앱 언어**로 생성)
+- 키 이름 선례 실측 — `_tooltip` 21건 · 공유 본문은 `UF_send_complete_share_text` 명명 준용. 게이트 `reports/gate/gate_report_100yen_share_2keys_2026-09-16.md`(P0 0 · P1 1 = ja 확정문 우선 보류)
+- 같은 스레드의 **배너 문구 단축**(`UF_100yen_oa_follow_title` ja)은 **다른 세션이 처리**(위키 v24 · `6bf9800`) — ko·en·th·zh의 하드 줄바꿈 정리는 그쪽 미결
 
 ### 2026-09-15 — 세션 #5: 100엔딜 리텐션 OA 2종 신규·재정의 (위키 `4725963532` v3→**v16**)
 

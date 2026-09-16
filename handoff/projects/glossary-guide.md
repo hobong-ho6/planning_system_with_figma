@@ -39,7 +39,7 @@
 |---|---|---|
 | 용어집 | **v5.5** · 118 terms · 11 exceptions · 22 deprecated · 2 oa_variables | `fetch_glossary.py` API 실조회(2026-09-15) · `last_updated` 2026-09-12 |
 | 기획자 가이드 | **v43** (태그 `guide-v43` · 2026-09-16 **Claude 직접 게시**) | `git tag -l 'guide-*'` 최신 · `dropweb/web3_planning_v43.zip` · 라이브 `<title>` v43 · `get_site` 원본 파일명 |
-| 용어집 보완 대기 | **18건** | `md/glossary-backlog.md` |
+| 용어집 보완 대기 | **24건**(2026-09-16) | `md/glossary-backlog.md` |
 
 - **보완은 「모아서 한 번에」다**(2026-09-14 사용자 결정) — 게이트 (d-1)에서 발견하면 **대기 목록에 등재만** 하고 그 자리에서 반영 여부를 묻지 않는다. 사용자가 **「용어집 리뷰」를 요청한 시점**에 전건을 제시해 일괄 결정한다
 - ⚠️ **v41은 라이브 게시 없이 v42에 흡수**됐다 — `guide-v41` 태그는 없고 `dropweb/web3_planning_v41.zip`만 남아 있다
