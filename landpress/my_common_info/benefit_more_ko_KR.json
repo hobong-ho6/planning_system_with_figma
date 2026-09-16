@@ -1,0 +1,25 @@
+{
+  "items": [
+    {
+      "id": "daily_mission",
+      "title": "일일 미션하고 JPYC 받기",
+      "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/d374ef6e6fdd4e67a8491d23a43b7aae.png?updatedAt=1789190195000"
+    },
+    {
+      "id": "unlimited_mission",
+      "title": "무제한 미션으로 최대 3만엔 받기",
+      "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/0e5cbdf839cf468292e98ed5386c350e.png?updatedAt=1789190198000"
+    },
+    {
+      "id": "luckyball",
+      "title": "100% 당첨! JPYC 럭키볼 뽑기",
+      "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/f77667c28d2145c7aa0ddf29d47c99ab.png?updatedAt=1789190196000"
+    },
+    {
+      "id": "korea_travel_cashback",
+      "title": "한국 여행 인기 상품 구매하고 캐시백 받기",
+      "iconUrl": "https://vos.line-scdn.net/landpress-content-v2-lkyusnekq1vv9759rbnwgamh/d374ef6e6fdd4e67a8491d23a43b7aae.png?updatedAt=1789190195000"
+    }
+  ],
+  "title": "추가 혜택 받기"
+}

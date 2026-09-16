@@ -38,7 +38,7 @@
 |---|---|---|---|---|---|---|
 | 1 | **결제**(동사형) | ⓑ 반복 오탐 | en `Pay` · th `ชำระ` 병기 검토<br>ja는 **보류**(아래 비고) | en `Pay~` **20건** · th `ชำระ` **56건** · ja `支払う` **1건** · zh `付款` **35건**(이미 동일) | `gate_report_voucher_pay_btn_oa_needed_2026-09-14.md`<br>`gate_report_clinic_consolidated_85keys_2026-09-03.md` | 2026-09-14 |
 | 2 | **할인** | ⓐ 미등재 | 실측 필요 | 실측 필요 | `gate_report_category_banner_5lang_2026-09-12.md` | 2026-09-14 |
-| 3 | **최대**(할인율 문맥) | ⓑ 반복 오탐 | zh `最高` 문맥별 추가 검토<br>(현행 `最多`만 등재) | 실측 필요 | `gate_report_category_banner_5lang_2026-09-12.md` | 2026-09-14 |
+| 3 | **최대**(할인율 문맥) | ⓑ 반복 오탐 | zh **문맥별 분기 기준**이 필요 — 금액 상한 `最高` · 수량 상한 `最多`<br>(현행 `最多`만 등재) | **실측 2026-09-16**(Unifi 2,589키): ko에 「최대」가 있는 키의 zh 표기 `最高` **78건** · `最多` **16건** · `最大` **7건** | `gate_report_category_banner_5lang_2026-09-12.md`<br>`gate_report_UNIFY-11336_benefit_detail_2026-09-16.md` | 2026-09-14 |
 | 4 | **클리닉** | ⓐ 미등재 | ko `클리닉` · ja `クリニック` · en `clinic` · th `คลินิก` · zh `診所` | 클리닉 54키 중 **12키** 사용(재실측 필요) | `gate_report_clinic_bridge_detail_54keys_2026-09-01.md` | 2026-09-14 |
 | 5 | **시술** | ⓐ 미등재 | ja `施術` 외 실측 필요 | 실측 필요 | `gate_report_clinic_bridge_detail_54keys_2026-09-01.md` | 2026-09-14 |
 | 6 | **혜택**(캐시백 문맥) | ⓑ 반복 오탐 | clinic 영역 문맥별 — th `เงินคืน` · zh `現金回饋` 추가 검토 | clinic 선례 th 4/4 · zh 다수(재실측 필요) | `gate_report_clinic_bridge_rolling_banner_10keys_2026-09-03.md`<br>`gate_report_clinic_consolidated_85keys_2026-09-03.md` | 2026-09-14 |
