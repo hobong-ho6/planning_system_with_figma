@@ -161,6 +161,67 @@ my-site/
 
 ---
 
+### 8. ⛔ MCP 직접 게시 (2026-09-16 신설 — 종전 「게시는 사용자가 수행」을 대체)
+
+**DropWeb은 MCP 서버를 제공하며, Claude가 사이트를 직접 배포·재배포할 수 있다.** 종전처럼 zip만 만들어 사용자에게 넘기지 않는다.
+
+**연결**
+
+- 엔드포인트: `https://dropweb.line-apps-beta.com/api/mcp` (HTTP) · 헤더 `Authorization: Bearer dwt_…`
+- 토큰 발급: DropWeb → **MCP Token** 메뉴(SSO 로그인 필요 — **사용자가 직접 발급**한다)
+- ⛔ **토큰은 저장소에 기록하지 않는다.** 등록 위치는 **사용자 설정 `~/.claude.json`의 `mcpServers.dropweb`** 다. 저장소 `.mcp.json`은 git 추적 대상이라 금지(CLAUDE.md 비밀값 규칙)
+
+**도구 (8종 · 실측 2026-09-16)**
+
+| 도구 | 용도 | 비고 |
+|---|---|---|
+| `deploy_site` | HTML/ZIP으로 **신규 사이트** 배포 | ⛔ **로컬 파일로는 못 쓴다**(아래 실측) |
+| `update_site` | 기존 사이트 **재배포** | ⛔ **로컬 파일로는 못 쓴다**(아래 실측) |
+| `list_sites` | 목록 조회(이름·작성자·기간 검색) | 배포 후 갱신 시각 확인용 |
+| `get_site` · `read_site_files` | 상세 정보 · 파일 목록/내용 | 읽기 전용 |
+| `rename_site` | 이름 변경 | |
+| `delete_site` | 삭제(`confirm=true`) | ⛔ **사용자가 명시 요청할 때만** |
+| `get_me` | 토큰 소유자 확인 | |
+
+**관리 대상 사이트**
+
+| 사이트 | site_id | 내용 |
+|---|---|---|
+| **web3 planning** | `ab3ffda0` | **기획자 가이드**(`guide/` → `dropweb/web3_planning_v*.zip`) |
+| web3 planning jira dashboard | `26291665` | Jira 대시보드 |
+| Web3 Planning - XLT 검수 | `02b3cfac` | XLT 검수 산출물 |
+
+**⛔ 실측 (2026-09-16) — `file_path`는 DropWeb 서버의 파일시스템 경로다**
+
+`update_site`/`deploy_site`에 **로컬 zip 경로를 주면 「파일을 찾을 수 없습니다」**로 실패한다. 절대경로·상대경로·`https://` URL **3형태 모두 동일**했다(확장자 검사는 경로 존재 확인보다 먼저 돈다 — `/etc/hosts`는 「ZIP 또는 HTML만」으로 거부). **원격 HTTP MCP라 Claude가 있는 PC의 파일을 읽지 못한다.**
+
+→ **업로드는 REST로 한다.** DropWeb 웹 UI가 쓰는 것과 같은 경로이며, **MCP 토큰으로 인증된다**:
+
+```bash
+curl -s -X PUT "https://dropweb.line-apps-beta.com/api/sites/{siteId}" \
+  -H "Authorization: Bearer $DROPWEB_TOKEN" \
+  -F "file=@dropweb/web3_planning_vN.zip;type=application/zip" \
+  -F "name=web3 planning"
+# → {"id":"ab3ffda0","name":"web3 planning","url":"/sites/ab3ffda0","files":8}  HTTP 200
+```
+
+- ⛔ **`name`을 함께 보낸다** — UI도 같이 보낸다. 빠뜨리면 사이트 이름이 바뀔 수 있다.
+- ⚠️ REST에는 **`change_summary`가 없다**(MCP 전용 필드). 변경 요약을 배포 이력에 남기려면 **커밋 메시지·`md/guide-backlog.md`·이 저장소 기록이 대체**한다. DropWeb이 파일 업로드형 MCP를 지원하면 그때 `update_site`로 전환한다.
+- **MCP는 조회·검증용으로 쓴다** — `get_site`·`list_sites`로 **수정 시각·원본 파일명·배포 횟수**를 확인해 게시를 검증한다.
+
+**절차 (기획자 가이드 재배포)**
+
+1. `guide/`를 편집하고 `md/landpress.md` §5-1 0단계로 **베이스·버전**을 확정한다
+2. `cd guide && zip -qr ../dropweb/web3_planning_vN.zip . -x ".*"`
+3. ⛔ **사용자 승인**을 받는다 — 게시는 외부에 공개되는 행위다. 승인 없이 배포하지 않는다
+4. 위 REST `PUT /api/sites/ab3ffda0`로 업로드한다
+5. MCP `get_site`로 **수정일·원본 파일명이 vN으로 갱신됐는지 확인**하고, 라이브 `index.html`의 `<title>` 버전까지 대조해 보고한다
+6. `git tag guide-vN && git push --tags` — **라이브 표식은 태그가 정본**
+
+> ⛔ **신규 사이트(`deploy_site`)는 함부로 만들지 않는다** — 기존 사이트 갱신이면 반드시 기존 `site_id`에 PUT이다. 잘못 만들면 URL이 갈려 공유 링크가 둘이 된다.
+
+---
+
 ## AI에게 전달할 프롬프트 예시
 
 아래 프롬프트를 참고하여 AI에게 요청하세요:
