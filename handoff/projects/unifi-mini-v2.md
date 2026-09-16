@@ -9,7 +9,7 @@
 ## 대상 / 링크
 
 - 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v220**
-  - **하위 `4727978725` 「LPC 관리 영역」** — **현재 v55**. LPC 컬렉션 **9개**의 정의·등록 JSON·환경 현황·비율 연동 규칙(§9-7) 정본
+  - **하위 `4727978725` 「LPC 관리 영역」** — **현재 v64**. LPC 컬렉션 **9개**의 정의·등록 JSON·환경 현황·비율 연동 규칙(§9-7) 정본
   - 하위 `4725950300` 「Admin 관리 대상」(**v11**) · `4725963532` 「100엔딜」([전용 파일](100yen-deal.md)) · `4750149077` 「일본어 검수」 · Figma `GOCHAYBS7hIrmWRGNuJOKV`(`Web3`)
 - **Unifi B/E API 스펙 `4725939674`** — FE 수신값의 정본. GuideKim 스펙과 달라 **구현 기준은 이쪽**
 - XLT: 담당 FE — `JPYC 자산 상세`·`결제 페이지` = **UIT**(`UF_`·`{{0}}`) / `Voucher Detail`·`Clinic Detail` = **LV**(`mini_`·`{0}`). **`최근 본 상품`은 화면만 LV** — 키는 `UF_` 유지(의도된 예외). Home/Category/Search/My는 이전 세션에 번역 완료
@@ -18,7 +18,7 @@
 
 ## 현재 상태
 
-본문 위키 **v220** · LPC 관리 영역 **v55** · Admin 관리 대상 **v11** · 일본어 검수 `4750149077`(신설 09-15). 등록값 실측 2026-09-16 — **Unifi 2,589키 · Dapp Portal 1,701키**. 화면 **26**(Home/Category/Search/My + 결제 **4**(바텀시트 17일 버전·Hotfix 2행 포함) · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
+본문 위키 **v223** · LPC 관리 영역 **v64** · Admin 관리 대상 **v11** · 일본어 검수 `4750149077`(신설 09-15). 등록값 실측 2026-09-16 — **Unifi 2,589키 · Dapp Portal 1,701키**. 화면 **26**(Home/Category/Search/My + 결제 **4**(바텀시트 17일 버전·Hotfix 2행 포함) · Voucher Detail 3 · Clinic Detail 4 · JPYC 2). 매 PUT `check_wiki_storage.py` pre/post exit 0.
 
 | 영역 | 상태 |
 |---|---|
@@ -70,40 +70,26 @@
 
 ## 세션 기록 (최신 위, 최대 5개)
 
-### 2026-09-16 — 세션 #16(병렬 · #15와 동시): 결제 완료 「구매한 바우처 확인하기」 동선 (v210→**v211**)
+### 2026-09-16 — 세션 #16(#15와 병렬): 결제 완료 동선 · benefit_more 2건 재편 · 재사용 키 표 (v211·v219·v223)
 
-- **Slack `C08HYMJ7Z8V` 결론 반영**(기획 확정) — **17일 버전은 마이 › 결제 내역(목록)** 으로 보낸다. 바코드 상세 직행은 주문 상세 API(`…/orders/voucher/{orderId}`)에 `orderId`가 필요한데 **`order`가 아직 GuideKim 데이터(내재화 전)** 라 결제 시점에 확보 불가 · 목록 API는 페이지네이션용이라 주문 1건 특정 불가
-- **보류 대안 2건** — ⓐ checkout·polling 응답 + `sessionStorage`(외부 도메인 경유 · FE 비선호) ⓑ JPYC 복귀 URL에 `orderId` 부착(**B/E 구조상 불가** — return url을 먼저 넘긴 뒤 `orderId` 수신)
-- **반영 3곳** — `결제 완료` 정책 6 · `2026-09-17 이후 범위`에 **행 신설**(선행 조건=결제 내재화) · History. **XLT·GA 변경 없음**. PUT은 `put_wiki_storage.py` 버전 가드 · `check_wiki_storage.py` pre/post exit 0
-- JPYC 복귀 URL `id={productId}`→`{uuid}`는 **B/E 스펙 `4725939674` 소관**(사용자 결정 · 기획 문서 미기재)
+- **결제 완료 「구매한 바우처 확인하기」**(v210→**v211**) — 17일 버전은 **마이 › 결제 내역**으로. 바코드 상세 직행은 `orderId`가 **GuideKim 데이터(내재화 전)** 라 결제 시점 확보 불가. 보류 대안 ⓐ checkout+`sessionStorage`(FE 비선호) ⓑ 복귀 URL에 `orderId`(**B/E 불가**). `2026-09-17 이후 범위`에 행 신설. JPYC 복귀 URL `uuid` 전환은 **B/E 스펙 `4725939674` 소관**
+- **LPC `benefit_more` 4건 → 2건**(v219 · LPC 위키 v64) — 남김 `daily_mission`·`luckyball` / 제거 `unlimited_mission`·`korea_travel_cashback`. `luckyball` 문구 **`매일 출석체크하고 럭키볼 받기`** 로 교체 + 5개 언어 재번역(게이트 P0 0 · `8cd2bc0`). **beta·prod × 5언어 10건** 반영·공개(재조회 일치 · null 0 · 환경 차이 0). My 5화면 이미지 재첨부. ⛔ **항목에 링크 필드가 없어 동선 변경은 FE의 `id` 분기 필요**
+- **QA 지적 → 재사용 키 표 신설**(v222·v223) — Screen 키 217 ↔ 다국어 표 157 전수 대조에서 **73키**가 값 없이 재사용 표기만. **59키 등록값 실측을 표로** 싣고 **미등록 14키는 추적 안 함 확정**(위 「⛔ 종결」)
+- ⚠️ 교훈 — **CMS 쓰기는 백그라운드 탭에서 멈춘다.** Chrome 탭이 비활성이면 `fetch`·타이머가 스로틀돼 45s 타임아웃이 난다. `navigate` 직후 같은 배치에서 실행하면 정상(1건 <2s). 또 **`JSON.stringify` 키 순서 차이로 `wrote=false` 오탐**이 난다 — 필드 단위로 비교한다
 
-### 2026-09-16 — 세션 #15: 일본어 검수 + 토스트 정책 + 상담수→리뷰수 + Jira/Slack (`456e171`·`7247e11`)
+### 2026-09-16 — 세션 #15: 일본어 검수 + 토스트 + 상담수→리뷰수 + Jira/Slack (`456e171`·`7247e11`)
 
-- **일본어 검수 전건 반영** — XLT **39키**(LV 8→Dapp Portal · UIT 31→Unifi, 엑셀 2종) · **LPC 51건 beta·prod 양쪽**(재조회 51/51 · 환경 간 차이 0 · `check_lpc_nulls` exit 0) · 관련 위키 XLT 표 **28키를 등록값으로 동기화**(`4704515582` v209 · `4725963532` v18)
-- **URL 복사 토스트 정책** — 기존 키 `UF_clinic_detail_location_copy_toast` 재사용(신규 0건)으로 Voucher/Clinic Detail 2화면 추가. **Dapp Portal 업로드 완료 실측 확인**
-- **`UF_my_jpyc_connected_badge` 키 분리**(Slack 1번) — 배지를 `_badge`/`_badge_1` 2키로 분할, **Unifi 등록 확인**(2,587→2,588키). 미션 리워드 내역 URL도 위키 반영
-- **`UF_my_history_empty_desc` 신규 1키**(Slack 3번 · UIT) — My 빈 상태 보조 설명 `구매하거나 예약한 내역이 여기에 표시돼요.` 5개 언어. 게이트 P0·P1·P2 **전부 0** · 위키 **v213→v215**(Screen XLT 표 · 다국어 표 · 변경 이력). ✅ **Unifi 업로드 완료·실측 확인**(2,589키 · 5개 언어 일치) · 슬랙 스레드 3번 회신 완료
-- **홈탭2 정책 7 — 클리닉 모음 기준 상담수→리뷰수**(Slack · 티켓 **`UNIFY-11350` 신설**·담당 catrius·11328 Relates). 신규 1키 `mini_home_clinic_review_count`(`리뷰 {0}건` · **LV · Dapp Portal**) · 게이트 P0~P2 전부 0 · 위키 **v216→v218** · Admin 위키 **v9→v11**. ⛔ 기존 `mini_home_clinic_consult_count`는 **삭제하지 않고** 대체 표기만. 영역 **제목은 Admin에서 변경**(확정 · XLT 대상 아님)
-- **`Voucher Detail` 배지(`공식 바우처`·`즉시 발급`) = Admin 관리** — Admin 위키 **v8→v9** 행 신설. XLT·LPC 대상 아님(LPC `voucher_detail`은 `summary`·`productInfo`만)
-- **바우처 상세 정책 6·7 위치 변경 주석**(QA 스레드 · 위키 **v219→v220**) — 캐시백 안내 영역이 배지 줄 아래로 이동·베타 반영. `가격 상세 펼치기`와 **별개 영역**임을 명시(UNIFY-11339 문의 원인)
-- **Jira** — `UNIFY-11309`(100엔딜 키를 `mini_home_voucher_banner_*`로 교체·담당 catrius 이관) · `UNIFY-11326`(위키↔등록값 대조 후 코멘트·Resolve)
-- `4750149077`의 **Admin 관리 문구(14영역) 섹션 삭제** — 한글 기재 불가 영역
-- ⚠️ 교훈: **키 분리는 「합치면 현재 등록값과 글자 단위로 같은가」로 검증한다** — th_TH에서 `<span />` 뒤 공백이 사라진 것을 이 대조로 잡았다(어순이 다른 언어는 자리표시자 앞뒤 공백이 눈에 안 보인다)
-- ⚠️ 교훈: **키스페이스를 먼저 확정한다** — LV/mini 화면은 **Dapp Portal**, UIT 화면은 **Unifi**를 읽는다. `UF_` 공용 키는 양쪽에 등록돼야 하고, 한쪽에만 있으면 화면에서 값을 못 찾는다
-- ⚠️ 교훈: **구두 표현은 실측으로 확인한다** — 스레드의 「6-7 part was removed」를 그대로 믿었으면 정책 2건을 지우고 **8~29번을 −2 재정렬**(XLT `No`·GA `#` 동반)할 뻔했다. 기획 Figma에 텍스트·코멘트가 **모두 살아 있어** 삭제가 아니라 **위치 이동**이었다. 되돌리기 어려운 편집일수록 먼저 재고 사용자에게 확인한다
-- ⚠️ 절차 위반 1건 — `check_wiki_storage.py pre` exit 1인데 PUT을 이어 실행했다(사후 확인: 위반 60→46 · 신규 0). **pre exit 0 전에는 PUT하지 않는다**
+- **일본어 검수 전건 반영** — XLT **39키**(LV 8→DP · UIT 31→Unifi) · **LPC 51건 beta·prod**(51/51 · 차이 0) · 위키 XLT 표 **28키 등록값 동기화**(v209 · `4725963532` v18)
+- **URL 복사 토스트** 기존 키 재사용(신규 0) · **`UF_my_jpyc_connected_badge` 2키 분리**(2,588키) · **`UF_my_history_empty_desc` 신규 1키**(2,589키 · 게이트 전부 0 · v213→v215) — 셋 다 업로드·실측 확인
+- **홈탭2 정책 7 상담수→리뷰수**(`UNIFY-11350`) — 신규 `mini_home_clinic_review_count`(LV·DP) · v216→v218 · Admin v9→v11. ⛔ 기존 `..._consult_count`는 **삭제하지 않는다** · 영역 제목은 **Admin 변경**
+- **`Voucher Detail` 배지 2종 = Admin 관리**(Admin v8→v9) · **바우처 상세 정책 6·7은 삭제가 아니라 위치 이동**(v219→v220) · Jira `UNIFY-11309`·`11326` 처리 · `4750149077` Admin 문구 섹션 삭제
+- ⚠️ 교훈 4건 — ⓐ **키 분리는 「합치면 등록값과 글자 단위로 같은가」로 검증**(th `<span />` 뒤 공백 누락을 이 대조로 잡음) ⓑ **키스페이스를 먼저 확정**(LV=DP · UIT=Unifi · `UF_` 공용은 양쪽 등록) ⓒ **구두 표현은 실측으로 확인**(「6-7 removed」를 믿었으면 정책 2건 삭제 + 번호 −2 재정렬할 뻔) ⓓ **절차 위반 1건** — `check_wiki_storage.py pre` exit 1인데 PUT했다(사후 신규 위반 0). **pre exit 0 전 PUT 금지**
 
-### 2026-09-15 — 세션 #14·#13 (요약 · 상세는 `bc810e8`·`11b8b64`)
+### 2026-09-15 — 세션 #14·#13·#12 (요약 · 상세는 `bc810e8`·`11b8b64`·`5fb41ee`·`f183bb8`)
 
-- `UF_voucher_pay_more_discount` → **`최대 {{0}}% 혜택!`**(업로드 완료) + **17일 버전** 사전 준비 · 프레임 `74620-13737`(17일)·**`74665-14721` Hotfix** 행 · 툴팁 2키·바텀시트 3키 · 리뷰 「더보기」 **3개 이상** · Admin 매핑 v3→v7 · 일본어 검수 22건
-- ⚠️ 교훈: **관례는 추측하지 말고 실측한다**(`{{0}}%`가 오히려 다수 관례였다) · **Screen 행 끝은 `</tbody></table></td></tr>`** 까지다(잘못 자르면 PUT 400) · **리터럴로 보이는 값이 동적 값일 수 있다**(코멘트 답글에 필드명)
-
-### 2026-09-15 — 세션 #12: LPC 콘텐츠 소실 복구 (`5fb41ee`·`f183bb8`)
-
-> 📄 상세 정본 `reports/restore/landpress_restore_2026-09-15.md` · 재발 방지 `md/landpress.md` §10-3-0 · `CLAUDE.md` 「⛔ LPC 쓰기 규칙」.
-
-- 🔴 LPC **4필드가 beta·prod 양쪽 `null`**(원인: PUT은 전체 교체 · 리비전 이력 없음) → `landpress/`가 유일 복구원, **160/160 일치**. ⛔ **관리 범위는 위키 `4727978725` 정의만** · 일본어 검수 문서 `4750149077` 신설
-- ⚠️ 교훈 — **「업데이트 했다」가 「값이 살아 있다」는 뜻은 아니다.** 쓰기 후 검증은 **항목 전체**를 본다
+- **#14** `UF_voucher_pay_more_discount` → `최대 {{0}}% 혜택!`(업로드) + **17일 버전** 사전 준비 · `74665-14721` Hotfix 행 신설. 교훈: **관례는 실측한다**(`{{0}}%`가 다수) · **Screen 행 끝은 `</tbody></table></td></tr>`**(잘못 자르면 PUT 400) · **리터럴처럼 보이는 값이 동적 값**일 수 있다
+- **#13** `바우처 상세 - 툴팁`(2키)·`결제페이지 - 바텀시트`(3키) · 리뷰 「더보기」 3개 이상 · **Admin 관리 대상 v3→v7**(등록 ID 매핑) · 일본어 검수 22건
+- **#12** 🔴 **LPC 4필드 beta·prod `null` 소실 → 120건 PUT로 160/160 복구**(원인: PUT은 전체 교체 · 리비전 이력 없음 · 저장소 `landpress/`가 유일 복구원). ⛔ 관리 범위는 **위키 `4727978725` 정의만**. **일본어 검수 문서 신설** [`4750149077`](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4750149077). 교훈: **「업데이트 했다」≠「값이 살아 있다」** — 쓰기 후 **항목 전체**를 본다. 정본 `reports/restore/landpress_restore_2026-09-15.md` · `md/landpress.md` §10-3-0
 
 ### 2026-09-15~14 — 세션 #11·#10·#9·#8 (요약 · 상세는 각 커밋·`reports/gate/`)
 
