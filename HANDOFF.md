@@ -36,7 +36,7 @@
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-16 | 5종 정합은 09-13 실측 유지 · **K-Pick 바우처 마스터 갱신**(badges 18/18 · reviewCount 3건 · 상품명 12종 5개 언어 축약 · `emart24`·`CU` 공식 표기) · ⚠️ `syncExcludedFields`에 `badges`·`reviewCount` 없음(동기화 시 덮일 수 있음) |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 09-16 | 용어집 **v5.5**(118 terms) · 가이드 **v43 게시 완료**(태그 `guide-v43` · **Claude가 REST로 직접 게시** · 대기 7건 전건 반영 → **0건**) · ⛔ 용어집 보완은 **「모아서 한 번에」**(`md/glossary-backlog.md` **대기 23건** · 발견 시 묻지 않는다) · **미결 1건**(`UF_clinic_detail_review_source` ja 검토) |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-15 | 점검 **#7**(09-14) 반영 — **주기 정상 복귀**(#5→#6 4일 → #7 7일) · 🔴 **프로덕션 리워드 탭 스켈레톤 고착**(#6과 환경 역전 · `mission-users` 401) · 🔴 오프라인 결제 캐시백 캠페인 신설 · KAIA **4.2→4.1%** · **Preferred Stable** 축 신설 · ⛔ Screen ID 어휘 승인 대기 **12건** · **7주 연속 2건**(Beta 0% 표기 · K-Pick GNB) · ⚠️ **#6·#7이 12일간 미기록이던 것을 09-15에 소급 반영**(리포트 근거) |
-| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + LPC `4727978725` + 일본어 검수 `4750149077` · **29화면** | 09-16 | 본문 **v231** · LPC **v64** — ✅ **LPC 이동 URL 전건 확정**(`shopping_guide` 30셀 + `service_guide` 40셀 · ⛔ **상대 경로가 정본**, JPYC 배너만 외부 전체 URL) · QA 4건 처리(11296·11299·11321 Resolved · 11333 = **LPC 아님**) · **혜택 상세 키 분리**(`UF_my_benefit_bottomsheet_total_desc` · FE 적용은 추후 일괄) · JPYC 가이드 3키 줄바꿈 · ⚠️ **줄바꿈 정본 화면별로 갈림** |
+| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + LPC `4727978725` + 일본어 검수 `4750149077` · **29화면** | 09-17 | 본문 **v247** · LPC **v64** · Admin **v13** — **캐시백 계산식 개정**(환원액을 먼저 내림 · GuideKim 지급식 일치 · 1엔 오차 해소) · **혜택 배지 Admin 항목별 on/off**(`benefitBadgeVisible`) · `UNIFY-11381` Resolved(LPC 40셀) · **XLT 14키**(신규 `share_card_btn` 포함) · 공유 **URL 복사→LINE**(GA `click_share_line`) · 🔴 미결 — 브랜드 24종 용어집 **v5.7 대기**(오표기 3건 발견) · th 39·zh 47 **구 표기 잔존** · 클리닉 홈 카드 **의료광고 조치 대상** |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` **예약 OA 16화면 전용**(100엔딜 OA는 `100yen-deal`) | 09-16 | 발송 시간 제한 정책 확정(스케줄 22~8시 금지 · 확정 T0 예외) · beta 16건 등록 완료 · ⚠️ hero·버튼 URL **임시값** · `ko_KR`만(번역 미착수) · prod는 T0 1건 `isActive` No |
 | [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` **페이지 전체** — Screen 3화면 + **OA 2종** | 09-16 | 위키 **v26** · XLT **26키** — ✅ **미등록 8키 최초 등록 + 신규 3키**(`UNIFY-11369` · Unifi 2,592→**2,603** · 55셀 재조회 일치). FE의 「7키 삭제」는 **오진**(전 버전 미등록 — 위키엔 있고 시스템엔 없던 것) · `UNIFY-11368`도 같은 원인 · ⛔ 배지 치환자 **`<strong />`**(`{{0}}` 아님) · 🔴 Home 「더보기」 landing URL 미확정 · 🔴 공유 툴팁 하드코딩 |
 
@@ -61,7 +61,7 @@
 
 ## 전역 절차 · 컨텍스트
 
-- **LPC 쓰기** — `scripts/restore/lpc_safe_put.js`로만 쓰고, 쓰기 **직전·직후** `python3 scripts/check_lpc_nulls.py` **exit 0**을 확인한다(공개 조회 API 기준 · 읽기 전용). 자세한 건 `CLAUDE.md` 「⛔ LPC 쓰기 규칙」
+- **LPC 쓰기** — `scripts/restore/lpc_safe_put.js`로만 쓰고, 쓰기 **직전·직후** `python3 scripts/check_lpc_nulls.py` **exit 0**을 확인한다(공개 조회 API 기준 · 읽기 전용). 자세한 건 `CLAUDE.md` 「⛔ LPC 쓰기 규칙」. ⚠️ **자동 승인 모드에서는 CMS 쓰기가 `[Production Deploy]`로 차단**된다(2026-09-17 실측) — 사용자 승인 후 진행하고, **beta만 먼저 넣는 우회는 §10-3-00 위반**이라 택하지 않는다
 
 규칙 정본은 `CLAUDE.md`와 `md/`다. 아래는 **문서에 없는 실측·사각지대**만 남긴다.
 
