@@ -8,15 +8,15 @@
         },
         {
           "step": 2,
-          "description": "付款完成後，優惠券將立即發放。"
+          "description": "付款完成後將立即發行優惠券。"
         },
         {
           "step": 3,
-          "description": "購買的優惠券可在 My購物 中查看，\n加 Unifi 為好友後也能透過 LINE 收取。"
+          "description": "已購買的優惠券可於 MY 購物中查看，\n加入 Unifi 好友後也可透過 LINE 收到。"
         },
         {
           "step": 4,
-          "description": "付款確認後，將以點數發放消費金額 10% 的現金回饋。"
+          "description": "確認付款後，也會以點數發放消費金額 10% 的現金回饋。"
         }
       ],
       "title": "付款流程"

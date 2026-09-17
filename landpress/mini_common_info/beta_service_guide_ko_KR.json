@@ -9,7 +9,7 @@
       {
         "id": "cashback_rate",
         "title": "캐시백은 얼마나, 언제 받을 수 있나요?",
-        "description": "바우처는 결제가 확인되면 결제 금액의 10%를 포인트로 돌려받아요.\n클리닉은 시술 후 현장에서 결제하면 결제금의 일정 비율을 포인트로 받으며, 비율은 병원마다 달라 각 병원 화면에서 확인할 수 있어요."
+        "description": "상품권은 결제가 확인되면 결제 금액의 10%를 포인트로 돌려받아요.\n클리닉은 시술 후 현장에서 결제하면 결제금의 일정 비율을 포인트로 받으며, 비율은 병원마다 달라 각 병원 화면에서 확인할 수 있어요."
       },
       {
         "id": "japanese_support",
@@ -18,18 +18,18 @@
       },
       {
         "id": "voucher_where_check",
-        "title": "구매한 바우처는 어디서 확인하나요?",
-        "description": "MY탭 > 바우처에서 확인할 수 있어요. Unifi 친구 추가 시 LINE으로도 받아볼 수 있어요."
+        "title": "구매한 상품권은 어디서 확인하나요?",
+        "description": "MY탭 > 상품권에서 확인할 수 있어요. Unifi 친구 추가 시 LINE으로도 받아볼 수 있어요."
       },
       {
         "id": "voucher_issue_time",
-        "title": "바우처는 언제 발급되나요?",
+        "title": "상품권은 언제 발급되나요?",
         "description": "결제가 완료되면 바로 발급돼요. 수령 방법은 e-쿠폰이라 별도 배송을 기다릴 필요가 없어요."
       },
       {
         "id": "voucher_how_to_use",
-        "title": "바우처는 어떻게 사용하나요?",
-        "description": "오프라인 매장에서 결제할 때 바우처의 바코드를 보여주면 돼요. 사용처와 이용 방법은 상품마다 다르니 각 상품 화면에서 확인해 주세요."
+        "title": "상품권은 어떻게 사용하나요?",
+        "description": "오프라인 매장에서 결제할 때 상품권의 바코드를 보여주면 돼요. 사용처와 이용 방법은 상품마다 다르니 각 상품 화면에서 확인해 주세요."
       },
       {
         "id": "clinic_booking",
@@ -57,7 +57,7 @@
         "step": 2,
         "label": "STEP 2",
         "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/5aef2e26372240b6aeee6f36f1aed824.png",
-        "description": "상단의 상품권 메뉴에서 구매한\n바우처를 확인할 수 있어요"
+        "description": "상단의 상품권 메뉴에서 구매한\n상품권을 확인할 수 있어요"
       },
       {
         "step": 3,
