@@ -1,8 +1,8 @@
 {
   "cta": {
-    "badge": "最大15%割引",
-    "label": "CUコンビニ1万ウォン商品券を購入",
-    "targetUrl": ""
+    "badge": "最大15%特典",
+    "label": "CUコンビニ1万ウォン商品券を1,080円で購入",
+    "targetUrl": "/benefits-mini/voucher/f16b6607-7aa0-11f1-bb9a-fa163fda432b"
   },
   "title": "K-フード旋風 1万ウォンで\nコンビニ美食探訪",
   "sections": [
@@ -11,27 +11,32 @@
         {
           "name": "ビングレ バナナ味牛乳",
           "caption": "外国人観光客に人気の定番",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/007ecb5a149c480da5c818e081ce17c7.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/f0bf17197c484dc7b0a1569543a44bd8.png",
+          "description": "外国人観光客に人気の定番商品"
         },
         {
-          "name": "ヘーゼルナッツ パウチコーヒー",
+          "name": "CU delafe ヘーゼルナッツ パウチコーヒー",
           "caption": "バナナ牛乳と合わせるSNS人気の組み合わせ",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8fa38e8236f24ceb932cee088f565ba8.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/86bebff09aee495caae0f1e5f01515df.png",
+          "description": "バナナ牛乳と合わせるSNSで人気の組み合わせ"
         },
         {
-          "name": "カップ氷",
+          "name": "ソウル牛乳 viyott チョコリング",
           "caption": "バナナ牛乳コーヒー組み合わせの必須アイテム",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/66d4a33ac3994934b71785154328348b.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/4aa8c53211ff47669ea97bda9a96415e.png",
+          "description": "日本の方に人気のデザート"
         },
         {
-          "name": "サムヤン カルボ ブルダック炒め麺",
+          "name": "サムヤン 大盛りカップ カルボ ブルダック炒め麺",
           "caption": "K-辛さの代表格",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8645907936df4ee382fd4496664dc0d6.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a3bd2a35fa4548f5b805f187654f4f39.png",
+          "description": "K-辛さの代表格"
         },
         {
-          "name": "ストリング／スライスチーズ",
+          "name": "ソウル牛乳 チェダースライスチーズ",
           "caption": "ブルダックと合わせる必須の組み合わせ",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8df9819a03c84027aab98eeffaf8bbce.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8bebbc900a57467e84497a388b1b0cbe.png",
+          "description": "ブルダックと合わせる必須の組み合わせ"
         }
       ],
       "title": "SNSで見たあの組み合わせ！",
@@ -43,7 +48,7 @@
     }
   ],
   "description": "CU 1万ウォンでコンビニ神組み合わせの食べ歩きに挑戦",
-  "heroImageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/94e5332eb3b8496984b2fc4e6b796450.png",
+  "heroImageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/c26f931b51f54f62b2f920f3d9e00dfc.png",
   "voucherSection": {
     "title": "一緒に見たいクーポン",
     "productIds": []

@@ -1,8 +1,8 @@
 {
   "cta": {
-    "badge": "최대 15% 할인",
-    "label": "CU 편의점 1만원권 구매하기",
-    "targetUrl": ""
+    "badge": "최대 15% 혜택",
+    "label": "CU 편의점 1만원권 ¥1,080에 구매하기",
+    "targetUrl": "/benefits-mini/voucher/f16b6607-7aa0-11f1-bb9a-fa163fda432b"
   },
   "title": "K푸드 열풍 1만원으로\n편의점 미식 탐방",
   "sections": [
@@ -11,27 +11,32 @@
         {
           "name": "빙그레 바나나맛우유",
           "caption": "외국인 관광객 대표 인기 상품",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/007ecb5a149c480da5c818e081ce17c7.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/f0bf17197c484dc7b0a1569543a44bd8.png",
+          "description": "외국인 관광객 대표 인기 상품"
         },
         {
-          "name": "헤이즐넛 파우치 커피",
+          "name": "CU 델라페 헤이즐넛 파우치 커피",
           "caption": "바나나우유와 함께 SNS 인기 조합",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8fa38e8236f24ceb932cee088f565ba8.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/86bebff09aee495caae0f1e5f01515df.png",
+          "description": "바나나우유와 함께 SNS 인기 조합"
         },
         {
-          "name": "컵얼음",
+          "name": "서울우유 비요뜨 초코링",
           "caption": "바나나 우유 커피 조합 필수템",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/66d4a33ac3994934b71785154328348b.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/4aa8c53211ff47669ea97bda9a96415e.png",
+          "description": "일본인 인기 디저트"
         },
         {
-          "name": "삼양 까르보불닭볶음면",
+          "name": "삼양 큰컵 까르보불닭볶음면",
           "caption": "K-매운맛 대표주자",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8645907936df4ee382fd4496664dc0d6.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/a3bd2a35fa4548f5b805f187654f4f39.png",
+          "description": "K-매운맛 대표주자"
         },
         {
-          "name": "스트링/슬라이스 치즈",
+          "name": "서울우유 체다 슬라이스 치즈",
           "caption": "불닭과 함께 필수 조합",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8df9819a03c84027aab98eeffaf8bbce.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/8bebbc900a57467e84497a388b1b0cbe.png",
+          "description": "불닭과 함께 필수 조합"
         }
       ],
       "title": "SNS에서 본 바로 그 조합!",
@@ -43,7 +48,7 @@
     }
   ],
   "description": "CU 1만원으로 편의점 꿀조합 먹방 도전",
-  "heroImageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/94e5332eb3b8496984b2fc4e6b796450.png",
+  "heroImageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/c26f931b51f54f62b2f920f3d9e00dfc.png",
   "voucherSection": {
     "title": "함께 보면 좋은 바우처",
     "productIds": []
