@@ -1,7 +1,7 @@
 {
   "cta": {
     "badge": "Up to 15% in benefits",
-    "label": "Buy an OLIVE YOUNG ₩30,000 voucher for ¥3,236",
+    "label": "Buy OLIVE YOUNG ₩30,000 for ¥2,913",
     "targetUrl": "/benefits-mini/voucher/ef779021-7aa0-11f1-bb9a-fa163fda432b"
   },
   "title": "What can you get for\n₩30,000 at OLIVE YOUNG?",
@@ -11,7 +11,7 @@
         {
           "name": "Mediheal Essential\nMask Pack, 2 sheets",
           "caption": "No.1 in OLIVE YOUNG sales",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/774f41a702c045a791ad11f26f976a7d.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/cacfedaea1dd4720adf5262c63dcf9f6.png"
         },
         {
           "name": "rom&nd Juicy Lasting Tint Mini",
@@ -55,6 +55,7 @@
         }
       ],
       "title": "Serious about skincare, even while traveling",
+      "caution": "* Prices and availability may vary by store.",
       "summary": {
         "title": "About ₩30,000 for all of them",
         "description": "One ₩30,000 voucher, all in on skincare"
@@ -79,6 +80,7 @@
         }
       ],
       "title": "K-beauty picks your friends will love",
+      "caution": "* Prices and availability may vary by store.",
       "summary": {
         "title": "About ₩26,000 for all of them",
         "description": "One ₩30,000 voucher and gifts for friends and family are done!"

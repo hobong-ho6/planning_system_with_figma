@@ -1,7 +1,7 @@
 {
   "cta": {
     "badge": "最高 15% 優惠",
-    "label": "以 ¥3,236 購買 OLIVE YOUNG 3 萬韓元商品券",
+    "label": "以 ¥2,913 購買 OLIVE YOUNG 3 萬韓元券",
     "targetUrl": "/benefits-mini/voucher/ef779021-7aa0-11f1-bb9a-fa163fda432b"
   },
   "title": "在 OLIVE YOUNG 用 3 萬韓元\n能買什麼？",
@@ -11,7 +11,7 @@
         {
           "name": "Mediheal 精華\n面膜 2 片",
           "caption": "OLIVE YOUNG 銷售排行第 1",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/774f41a702c045a791ad11f26f976a7d.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/cacfedaea1dd4720adf5262c63dcf9f6.png"
         },
         {
           "name": "rom&nd 果汁持色唇釉 迷你",
@@ -55,6 +55,7 @@
         }
       ],
       "title": "旅行中也認真保養",
+      "caution": "※ 商品價格與販售情形可能因門市而異。",
       "summary": {
         "title": "全部購買約 ₩30,000",
         "description": "一張 3 萬韓元商品券，集中投資保養品"
@@ -79,6 +80,7 @@
         }
       ],
       "title": "朋友更愛的 K-美妝好物",
+      "caution": "※ 商品價格與販售情形可能因門市而異。",
       "summary": {
         "title": "全部購買約 ₩26,000",
         "description": "一張 3 萬韓元商品券，朋友家人的禮物一次搞定！"

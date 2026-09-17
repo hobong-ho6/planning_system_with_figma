@@ -1,7 +1,7 @@
 {
   "cta": {
     "badge": "最大15%特典",
-    "label": "オリーブヤング3万ウォン商品券を3,236円で購入",
+    "label": "オリーブヤング3万ウォン券を2,913円で購入",
     "targetUrl": "/benefits-mini/voucher/ef779021-7aa0-11f1-bb9a-fa163fda432b"
   },
   "title": "オリーブヤング3万ウォンで\n何が買える？",
@@ -11,7 +11,7 @@
         {
           "name": "メディヒール エッセンシャル\nマスクパック 2枚",
           "caption": "オリーブヤング販売ランキング1位",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/774f41a702c045a791ad11f26f976a7d.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/cacfedaea1dd4720adf5262c63dcf9f6.png"
         },
         {
           "name": "ロムアンド ジューシー ラスティング ティント ミニ",
@@ -55,6 +55,7 @@
         }
       ],
       "title": "旅行中もスキンケアに本気",
+      "caution": "※ 商品の価格および取扱の有無は、店舗により異なる場合があります。",
       "summary": {
         "title": "すべて購入して約₩30,000",
         "description": "3万ウォン商品券1枚でスキンケアに集中投資"
@@ -79,6 +80,7 @@
         }
       ],
       "title": "友だちがもっと喜ぶK-ビューティーアイテム",
+      "caution": "※ 商品の価格および取扱の有無は、店舗により異なる場合があります。",
       "summary": {
         "title": "すべて購入して約₩26,000",
         "description": "3万ウォン商品券1枚で友だちや家族へのお土産準備完了！"

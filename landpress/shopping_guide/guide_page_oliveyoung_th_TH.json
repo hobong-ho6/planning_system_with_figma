@@ -1,7 +1,7 @@
 {
   "cta": {
     "badge": "สิทธิประโยชน์สูงสุด 15%",
-    "label": "ซื้อบัตรกำนัล OLIVE YOUNG 30,000 วอน ในราคา ¥3,236",
+    "label": "ซื้อ OLIVE YOUNG 30,000 วอน ราคา ¥2,913",
     "targetUrl": "/benefits-mini/voucher/ef779021-7aa0-11f1-bb9a-fa163fda432b"
   },
   "title": "ซื้ออะไรได้บ้าง\nด้วยเงิน 30,000 วอนที่ OLIVE YOUNG?",
@@ -11,7 +11,7 @@
         {
           "name": "Mediheal Essential\nมาส์กชีท 2 แผ่น",
           "caption": "อันดับ 1 ยอดขายใน OLIVE YOUNG",
-          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/774f41a702c045a791ad11f26f976a7d.png"
+          "imageUrl": "https://vos.line-scdn.net/landpress-content-v2-w5eph4y9qxe05c8fqpi7rlxh/cacfedaea1dd4720adf5262c63dcf9f6.png"
         },
         {
           "name": "rom&nd Juicy ลิปทินท์ติดทน มินิ",
@@ -55,6 +55,7 @@
         }
       ],
       "title": "จริงจังกับการดูแลผิวแม้ระหว่างเที่ยว",
+      "caution": "※ ราคาและการจำหน่ายสินค้าอาจแตกต่างกันไปตามสาขา",
       "summary": {
         "title": "ซื้อทั้งหมดประมาณ ₩30,000",
         "description": "บัตรกำนัล 30,000 วอน ใบเดียว ทุ่มให้สกินแคร์"
@@ -79,6 +80,7 @@
         }
       ],
       "title": "ไอเทม K-Beauty ที่เพื่อนๆ ชอบยิ่งกว่า",
+      "caution": "※ ราคาและการจำหน่ายสินค้าอาจแตกต่างกันไปตามสาขา",
       "summary": {
         "title": "ซื้อทั้งหมดประมาณ ₩26,000",
         "description": "บัตรกำนัล 30,000 วอน ใบเดียวก็เตรียมของฝากให้เพื่อนและครอบครัวได้ครบ!"

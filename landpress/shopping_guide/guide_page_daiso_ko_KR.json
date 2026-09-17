@@ -1,7 +1,7 @@
 {
   "cta": {
     "badge": "최대 15% 혜택",
-    "label": "다이소 1만원권 ¥1,080에 구매하기",
+    "label": "다이소 1만원권 ¥972에 구매",
     "targetUrl": "/benefits-mini/voucher/f02efff9-7aa0-11f1-bb9a-fa163fda432b"
   },
   "title": "다이소 1만원으로\n몇개 살 수 있을까?",
@@ -70,6 +70,7 @@
         }
       ],
       "title": "한국인 집에는 다 있다는 '그것'!",
+      "caution": "※ 상품 가격 및 판매 여부는 매장에 따라 달라질 수 있습니다.",
       "summary": {
         "title": "전부 구매하면 약 ₩9,500",
         "description": "1만원권 하나로 기념품 쇼핑 끝!"
