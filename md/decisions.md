@@ -9,6 +9,8 @@
 
 | 날짜 | 결정 | 이유 |
 |---|---|---|
+| 2026-09-15 | **Landpress PUT은 전체 교체다 — 콘텐츠 필드를 전부 담아 read-modify-write 한다**(정본 `md/landpress.md` §10-3-0). **강제 산출물 2종** — 쓸 때 `scripts/restore/lpc_safe_put.js`(직접 PUT 금지) · 쓰기 **직전·직후** `check_lpc_nulls.py` **exit 0** | `uid`만·한 필드만 보낸 PUT이 **형제 필드를 `null`로 지웠다** — 2026-09-14 4필드 소실(beta·prod). **리비전 이력이 없어**(`/revisions` 404 · `/audit-logs`는 GET만) CMS만으로는 복구 불가였고 저장소 `landpress/` 산출물이 유일한 복구원이었다. `e06866f`·`faa088a` |
+| 2026-09-14 | **위키 상태값은 GuideKim ↔ Unifi B/E 기준을 병기하고 구현은 B/E 기준** | FE가 받는 값은 B/E를 거쳐 달라진다 — 상품권 `ISSUE_PENDING`→`PAID` · 클리닉 `NO_SHOW`/`REJECTED`→`CANCELED` · `point.status` 대문자 · 여행 `use_state` 미제공. B/E 스펙 `4725939674` |
 | 2026-09-10 | **`XLT & GA` 셀 제목은 화면당 1개**(`{Screen ID} - XLT & GA`) — 이전엔 `- XLT`·`- Event` 2개로 나눴다. `md/GA.md` §2 정정, 새 페이지는 이 방식이 기본. 기존 페이지는 GA 작업 시 정정 권장(소급 강제 아님) | unifi-mini-v2에서 화면마다 목차(TOC) 항목이 2개씩 생겨 목차가 길어진다는 사용자 지적. XLT 키가 없는 화면도 제목은 동일하게 1개 유지 |
 | 2026-09-14 | **위키 상태값은 GuideKim ↔ Unifi B/E 기준을 병기하고 구현은 B/E 기준** | FE가 받는 값은 B/E를 거쳐 달라진다 — 상품권 `ISSUE_PENDING`→`PAID` · 클리닉 `NO_SHOW`/`REJECTED`→`CANCELED` · `point.status` 대문자 · 여행 `use_state` 미제공. B/E 스펙 `4725939674` |
 | 2026-09-14 | **ZH-TW는 한자↔숫자·변수 경계에 공백 1칸**(`共 {{0}} 件` · JP는 반대로 붙임) — **신규·변경 키부터**, 기존은 소급 안 함. 정본 `md/guide.md` §5-1 B | 등록값 283건이 공백 247(87%)·무공백 36으로 갈려 있다(`{{0}}個`↔`{{0}} 個`). 전역 통일은 재등록·QA 비용이 커 **불일치 증가만 막는다**. `e7f26bf` |

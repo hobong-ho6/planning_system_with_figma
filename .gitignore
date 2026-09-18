@@ -50,3 +50,7 @@ scripts/scripts/
 # 검증용 임시 엑셀 (landpress JSON 작업 시 validate_translation 입력)
 landpress/**/xlt_output_*.xlsx
 landpress/**/*_validation_report.md
+
+# 산출물은 커밋하지 않는다 (2026-09-18 사용자 결정 — public 저장소에 XLT 값·위키 스펙을 남기지 않는다)
+# 사본은 Auto-react(private) reports/gate/ 에 둔다. 기존 187건은 git 이력에 남아 있다(이력 정리는 별도 결정).
+reports/gate/

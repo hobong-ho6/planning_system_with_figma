@@ -9,12 +9,11 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ---
 
-## ⛔ 핸드오프 확인 규칙 (세션 시작 시 최우선 — 토큰 요청 직전)
+## ⛔ 핸드오프 확인 규칙 (세션 시작 시 최우선)
 
 **세션이 시작되면 가장 먼저 프로젝트 루트의 `HANDOFF.md`를 읽고, "현재 상태"·"다음 할 일"을 확인한 뒤 한 줄로 브리핑한다.** SessionStart 훅(`.claude/settings.json`)이 자동 주입하지만, 훅이 동작하지 않는 환경에서도 착수 전 반드시 직접 읽는다.
 
-- **순서**: ① `HANDOFF.md` 읽기 → ② `git status && git log --oneline -5`로 실제 상태 확인 — 핸드오프 기재와 다르면 **그 불일치를 먼저 보고** → ③ `git pull --rebase`(uncommitted 변경이 있으면 pull 전에 알린다) → ④ 한 줄 브리핑·착수 확인 → ⑤ 토큰 요청(아래 토큰 우선 규칙) → ⑥ 실제 작업.
-- **시점**: `HANDOFF.md`는 원격 조회가 아닌 **로컬 문서 읽기**이므로 토큰 우선 규칙의 "사전 탐색 금지"(Figma·Confluence 조회)에 해당하지 않는다 — 토큰 요청보다 먼저 읽는다.
+- **순서**: ① `HANDOFF.md` 읽기 → ② `git status && git log --oneline -5`로 실제 상태 확인 — 핸드오프 기재와 다르면 **그 불일치를 먼저 보고** → ③ `git pull --rebase`(uncommitted 변경이 있으면 pull 전에 알린다) → ④ 한 줄 브리핑·착수 확인 → ⑤ 실제 작업(토큰은 필요한 단계에서 — 아래 토큰 규칙).
 - **세션 종료 시**: 사용자가 "핸드오프 갱신"·"세션 정리"·"handoff"를 요청하면 `.claude/skills/handoff/SKILL.md`(정본 절차 — WIP 브랜치 보존·갱신 규칙·PC 간 충돌 완화)를 따라 갱신하고 커밋·푸시한다. 이 스킬의 세션 시작 절차는 위 순서와 동일하다.
 
 ### 이 저장소의 원칙
@@ -22,22 +21,19 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - 로컬에만 있는 것은 **없는 것**이다. 다른 PC로 넘겨야 할 상태는 항상 `HANDOFF.md` + Git 커밋으로 남긴다. `git stash`는 인수인계 수단이 아니다.
 - 프로젝트 전용 **스킬·에이전트는 `.claude/skills/`·`.claude/agents/`에 커밋**한다. 개인 프로필(`~/.claude/`)에만 설치된 것에 의존하지 않는다 — 다른 PC에서는 없는 것과 같다.
 - 비밀값(토큰·API 키·`.env`)은 어떤 문서·코드에도 기록하지 않는다. 키 **이름**과 획득 방법만 남긴다.
-- **git/GitHub 인증은 Claude가 대신 하지 않는다** — `gh auth login`·SSH 키 등록은 사용자가 직접 한다. (Figma·Confluence PAT는 아래 토큰 우선 규칙에 따라 매 세션 채팅으로 받되, 파일에 저장하지 않는다.)
+- **git/GitHub 인증은 Claude가 대신 하지 않는다** — `gh auth login`·SSH 키 등록은 사용자가 직접 한다. (Figma·Confluence·Jira PAT는 아래 토큰 규칙에 따라 키체인 우선, 없으면 필요한 단계에서 요청 — 파일에 저장하지 않는다.)
 
 ---
 
-## ⛔ 토큰 우선 규칙 (모든 작업 착수 전 최우선 — 예외 없음)
+## ⛔ 토큰 규칙 — 필요한 단계에서 요청한다 (2026-09-18 개정 · 종전 「토큰 우선 규칙」 대체)
 
-**어떤 단계든 작업을 시작하기 전에, 가장 먼저 사용자에게 필요한 토큰을 요청하고 받은 뒤에만 착수한다.**
+**토큰이 없어도 되는 작업은 바로 시작하고, 토큰이 필요한 단계에 닿았을 때 그 토큰만 요청한다.** 종전 「토큰을 받기 전엔 범위 파악·조회조차 금지」는 폐기했다(사용자 결정 2026-09-18 — 무인·연동 실행에서 첫 행동이 토큰 요청이면 착수 자체가 막힌다).
 
-- **요청 시점**: 사용자 요청을 받으면 **맨 처음 행동**이 토큰 요청이다. Figma 작업이면 **Figma Personal Access Token**, 위키 작업이면 **Figma + Confluence(위키) Personal Access Token 둘 다**를 먼저 요청한다.
-- **착수 금지 범위 (토큰 받기 전 절대 수행 금지)**: 토큰을 받기 전에는 **토큰 없이 가능한 작업도 진행하지 않는다.** 여기에는 다음이 모두 포함된다 —
-  - ❌ 작업 범위·분량 파악, 프레임/화면 개수 산정
-  - ❌ Figma 구조·메타데이터 조회·파싱 (`get_metadata` 등)
-  - ❌ 대상 위키 페이지 조회 (`confluence_get_page` 등)
-  - ❌ 이미지·코멘트 사전 수집, 그 외 모든 사전 탐색
-- **진행 순서**: ① 토큰 요청 → ② 사용자로부터 토큰 수신 → ③ 토큰 유효성 검증 → ④ 그 이후에 비로소 범위 파악·실제 작업 시작.
-- 토큰을 받기 전 "일단 가능한 것부터" 진행하는 것은 **규칙 위반**이다.
+- **토큰 없이 진행하는 것**: 핸드오프·`md/` 읽기, 범위·분량 파악, MCP 조회(`confluence_get_page`·`jira_get_issue`·Slack), XLT 레지스트리 조회(`fetch_xlt_registry.py` — 인증 없음), 번역·검증·엑셀 생성, 게이트 리포트 작성.
+- **토큰이 필요한 단계**: Figma REST(이미지·코멘트 수집 — Figma PAT) · Confluence REST 쓰기·첨부(`put_wiki_storage.py` 등 — Confluence PAT) · Jira REST 쓰기(Jira PAT · Confluence PAT로는 401). 그 단계 **직전에** 아래 순서로 확보한다.
+- **확보 순서**: ① macOS 키체인을 먼저 본다 — `security find-generic-password -s confluence-pat -w`(Confluence) · `-s figma-pat`(Figma) · `-s jira-pat`(Jira). 있으면 **값을 출력하지 않고** 환경변수로 스크립트에 넘긴다(`CONFLUENCE_PAT="$(security find-generic-password -s confluence-pat -w)" python3 …`). ② 없으면 **그 시점에** 사용자에게 해당 토큰만 요청하고, 받은 값은 유효성 검증(`/v1/me` · `/rest/api/user/current`) 후 세션 안에서만 쓴다. 키체인 등록은 사용자가 한다(`security add-generic-password -a hogeun -s confluence-pat -w`).
+- **변하지 않는 것**: 토큰 값을 파일·코드·문서·커밋에 기록하지 않는다. 세션 간 메시지로도 값을 넘기지 않는다 — 경로(키체인 서비스명)만 넘긴다. 요청 문구에 필요한 토큰과 이유(어느 단계에 쓰는지)를 함께 쓴다.
+- 토큰이 끝내 없으면 그 단계만 「사용자 차례」로 남기고 나머지 산출물은 완성한다 — 토큰 부재로 전체를 멈추지 않는다.
 
 ---
 
