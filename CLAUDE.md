@@ -55,7 +55,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - **쓸 때는 `scripts/restore/lpc_safe_put.js`를 쓴다** — 직접 PUT하지 않는다(현재 문서를 읽어 콘텐츠 필드를 전부 실어 보내고 건별 재조회 대조)
 - **쓰기 직전·직후 `python3 scripts/check_lpc_nulls.py` → exit 0**을 확인한다. exit 1이면 쓰기·완료 선언 금지
 - ⛔ **`uid`만 바꾸거나 한 필드만 고치는 작업이 가장 위험하다** — 2026-09-14 그런 PUT이 **4필드를 beta·prod 양쪽에서 지웠고**, CMS에 **리비전 이력이 없어**(`/revisions` 404) 저장소 `landpress/` 산출물이 유일한 복구원이었다
-- LPC에 올리는 JSON은 **반드시 `landpress/` 아래에 5개 언어 전부 커밋**한다(유일한 복구원)
+- LPC에 올리는 JSON은 **반드시 5개 언어 전부 남긴다** — 파일은 이 저장소 `landpress/`에 쓰되 **커밋 대상은 Auto-react(private) `reports/landpress/`**다(2026-09-18 변경 · PS는 public이라 `landpress/`를 gitignore했다). **여전히 유일한 복구원이므로 쓰기 세션 끝에 Auto-react 쪽으로 복사·커밋하지 않으면 작업이 끝난 것이 아니다.**
 - 관리 범위는 **위키 `4727978725`에 정의된 것만**이다 — 실측에서 더 나와도 대상이 아니다
 
 정본: `md/landpress.md` §10-3-0 · 사고 기록 `reports/restore/landpress_restore_2026-09-15.md`

@@ -54,3 +54,9 @@ landpress/**/*_validation_report.md
 # 산출물은 커밋하지 않는다 (2026-09-18 사용자 결정 — public 저장소에 XLT 값·위키 스펙을 남기지 않는다)
 # 사본은 Auto-react(private) reports/gate/ 에 둔다. 기존 187건은 git 이력에 남아 있다(이력 정리는 별도 결정).
 reports/gate/
+
+# LPC·OA 산출물도 커밋하지 않는다 (2026-09-18 사용자 결정)
+# ⚠️ 이 JSON은 LPC 복구원이다(CMS에 리비전 이력 없음 — 2026-09-14 사고). 버전 관리는 사라지지 않고
+#    Auto-react(private) reports/landpress/ · reports/oa/ 로 옮겼다. CLAUDE.md 「⛔ LPC 쓰기 규칙」 참조.
+landpress/
+oa/

@@ -27,7 +27,7 @@
 
 ## 다음 할 일
 
-- [ ] **`landpress/`(522) · `oa/`(116) JSON도 산출물로 보고 gitignore할지 결정**(사용자) — 2026-09-18에는 `reports/gate/`만 제외했다. LPC 콘텐츠·OA Flex에도 XLT 값이 들어 있다.
+- [ ] **LPC 쓰기 세션은 끝에 `landpress/`를 Auto-react `reports/landpress/`로 복사·커밋**한다(gitignore 이후 복구원 경로). 절차를 `md/landpress.md` §10-3-0에 넣을지 검토.
 - [ ] **Auto-react 유입 계약 첫 리허설** — 일감 패킷을 받아 처리하고 결과 패킷을 돌려주는 흐름 1건(정본은 Auto-react `docs/00-design.md` 「PS 실행 계약」).
 
 - (관측 대기) 활성 프로젝트가 **30개를 넘으면** 인덱스가 다시 무거워진다 → 그때 `handoff/INDEX.md` 분리 + 훅의 담당자별 필터 주입을 검토한다. 지금(11개) 하면 과설계
@@ -37,6 +37,9 @@
 
 | 날짜 | 결정 | 이유 |
 |---|---|---|
+| **2026-09-18** | **`landpress/`·`oa/`도 gitignore** — 단 LPC JSON은 복구원이므로 **커밋 대상을 Auto-react(private) `reports/landpress/`·`reports/oa/`로 이전**(사용자 결정) | CMS에 리비전 이력이 없어(2026-09-14 사고) 저장소 산출물이 유일한 복구원이다. 커밋을 없애는 게 아니라 private으로 옮긴다 |
+| **2026-09-18** | **기존 커밋 이력의 XLT 값은 정리하지 않는다**(사용자 결정 · 재제안 금지) | `main`은 팀원이 공유하는 브랜치다. 이력 재작성 + force-push 비용이 이득보다 크다. untrack으로 이후분만 막는다 |
+| **2026-09-18** | **Figma PAT도 키체인(`figma-pat`)에 둔다**(사용자 결정) — 등록은 사용자가 `security add-generic-password -a hogeun -s figma-pat -w` | 매 세션 채팅 제공은 무인 실행에서 이미지 재발급 단계를 막는다. Confluence는 09-15부터 같은 방식으로 돌고 있다 |
 | **2026-09-18** | **토큰은 「필요한 단계에서 요청」으로 개정** — 키체인(`confluence-pat`·`figma-pat`·`jira-pat`) 우선, 없으면 그 시점에 요청. 종전 「토큰 받기 전 착수 금지」 폐기(사용자 결정) | 무인·연동 실행(Auto-react 일감 패킷)에서 첫 행동이 토큰 요청이면 착수가 막힌다. Auto-react가 09-15 키체인 경로로 위키 PUT을 실증했다 |
 | **2026-09-18** | **산출물은 커밋하지 않는다** — `reports/gate/` gitignore(+ 기존 `xlt/`). 저장소는 public 유지, 사본은 Auto-react(private) `reports/gate/`(사용자 결정) | 09-17 커밋 20건+에 XLT 값·게이트 리포트가 public으로 올라갔다. private 전환은 public clone으로 쓰는 팀원을 막는다 |
 | **2026-09-18** | **Auto-react 유입 일감은 「일감 패킷」으로 받고 결과는 「결과 패킷」으로 돌려준다** — task_id를 게이트 리포트 머리와 커밋 메시지에 `[T095]`로 표기 · PS는 자기 저장소에만 쓴다 · Slack 게시는 Auto-react가 | 실행 규칙·락·게이트는 PS 세션에서만 돈다. 쓰기 주체가 둘이면 상호 오염(Auto-react↔2026에서 같은 결정) |

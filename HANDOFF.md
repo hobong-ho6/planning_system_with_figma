@@ -20,7 +20,7 @@
 
 - **프로젝트**: planning_system_with_figma — Figma → 다국어 번역(XLT) → Confluence 위키 파이프라인
 - **저장소**: GitHub `hobong-ho6/planning_system_with_figma` (branch `main`) · 로컬 경로는 PC마다 다르다 → `handoff/people/{나}.md`
-- **토큰**: Figma·Confluence·Jira PAT — **키체인 우선, 없으면 필요한 단계에서 요청**(2026-09-18 개정 · 파일·코드에 하드코딩 금지). 사용 직전 유효성 검증 · Jira는 **Jira PAT 별도**(Confluence PAT로는 401)
+- **토큰**: Figma·Confluence·Jira PAT — **키체인 우선**(`figma-pat`·`confluence-pat`·`jira-pat` · 2026-09-18 현재 `confluence-pat`만 등록됨)**, 없으면 필요한 단계에서 요청**(2026-09-18 개정 · 파일·코드에 하드코딩 금지). 사용 직전 유효성 검증 · Jira는 **Jira PAT 별도**(Confluence PAT로는 401)
 
 ---
 
@@ -32,7 +32,7 @@
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
-| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 09-18 | **토큰 규칙 「필요 시 요청」 개정 · `reports/gate/` gitignore · Auto-react 유입 계약**(09-18) · **드랍웹 게시 규칙을 「Claude 직접 게시」로 개정**(CLAUDE.md · `md/dropweb-guide.md` **§8 신설** · `landpress.md` §5-1 · `guide-backlog` 절차 ④) · 가이드 대기 **7건 전건 반영 → 0건** · 「모아서 한 번에」 운영 정착(임계 제안 규칙) · 분량 기준은 `wc -c` 바이트 · **미결 0** |
+| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 자체 | 09-18 | **토큰 규칙 「필요 시 요청」 개정 · 산출물 3종 gitignore(LPC 복구원은 Auto-react로 이전) · Auto-react 유입 계약**(09-18) · **드랍웹 게시 규칙을 「Claude 직접 게시」로 개정**(CLAUDE.md · `md/dropweb-guide.md` **§8 신설** · `landpress.md` §5-1 · `guide-backlog` 절차 ④) · 가이드 대기 **7건 전건 반영 → 0건** · 「모아서 한 번에」 운영 정착(임계 제안 규칙) · 분량 기준은 `wc -c` 바이트 · **미결 0** |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 **5종** + K-Pick 노출 정책·FAQ | 09-16 | 5종 정합은 09-13 실측 유지 · **K-Pick 바우처 마스터 갱신**(badges 18/18 · reviewCount 3건 · 상품명 12종 5개 언어 축약 · `emart24`·`CU` 공식 표기) · ⚠️ `syncExcludedFields`에 `badges`·`reviewCount` 없음(동기화 시 덮일 수 있음) |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 09-16 | 용어집 **v5.5**(118 terms) · 가이드 **v43 게시 완료**(태그 `guide-v43` · **Claude가 REST로 직접 게시** · 대기 7건 전건 반영 → **0건**) · ⛔ 용어집 보완은 **「모아서 한 번에」**(`md/glossary-backlog.md` **대기 23건** · 발견 시 묻지 않는다) · **미결 1건**(`UF_clinic_detail_review_source` ja 검토) |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-15 | 점검 **#7**(09-14) 반영 — **주기 정상 복귀**(#5→#6 4일 → #7 7일) · 🔴 **프로덕션 리워드 탭 스켈레톤 고착**(#6과 환경 역전 · `mission-users` 401) · 🔴 오프라인 결제 캐시백 캠페인 신설 · KAIA **4.2→4.1%** · **Preferred Stable** 축 신설 · ⛔ Screen ID 어휘 승인 대기 **12건** · **7주 연속 2건**(Beta 0% 표기 · K-Pick GNB) · ⚠️ **#6·#7이 12일간 미기록이던 것을 09-15에 소급 반영**(리포트 근거) |
@@ -88,7 +88,7 @@
 | 날짜 | 결정 | 이유 |
 |---|---|---|
 | **2026-09-18** | **토큰은 「필요한 단계에서 요청」** — 키체인(`confluence-pat`·`figma-pat`·`jira-pat`) 우선, 없으면 그 시점에 요청. 종전 「토큰 받기 전 착수 금지」 폐기(정본 CLAUDE.md 「⛔ 토큰 규칙」) | 무인·연동 실행(Auto-react 일감 패킷)에서 첫 행동이 토큰 요청이면 착수가 막힌다 |
-| **2026-09-18** | **산출물은 커밋하지 않는다** — `reports/gate/` gitignore(+`xlt/`). public 유지, 사본은 Auto-react(private). Auto-react 유입 일감은 **일감 패킷↔결과 패킷**, task_id `[T095]`를 게이트 리포트·커밋에 표기(정본 `handoff/projects/system-meta.md`) | 09-17 커밋에 XLT 값이 public으로 올라갔다. private 전환은 public clone으로 쓰는 팀원을 막는다 |
+| **2026-09-18** | **산출물은 커밋하지 않는다** — `reports/gate/`·`landpress/`·`oa/` gitignore(+`xlt/`). ⚠️ **LPC JSON은 복구원이라 커밋 대상이 Auto-react(private) `reports/landpress/`로 이전**(쓰기 세션 끝에 복사 필수) · 기존 이력은 정리하지 않는다(사용자 결정). public 유지, 사본은 Auto-react(private). Auto-react 유입 일감은 **일감 패킷↔결과 패킷**, task_id `[T095]`를 게이트 리포트·커밋에 표기(정본 `handoff/projects/system-meta.md`) | 09-17 커밋에 XLT 값이 public으로 올라갔다. private 전환은 public clone으로 쓰는 팀원을 막는다 |
 | **2026-09-16** | **드랍웹 게시는 Claude가 직접 한다** — 종전 「zip 전달 → 사용자 업로드」 폐지(사용자 결정). 업로드는 **REST `PUT /api/sites/{siteId}`**(MCP 토큰 인증 · `file`+`name` multipart)이고 **MCP `update_site`는 못 쓴다**(`file_path`가 DropWeb **서버** 파일시스템 경로 — 로컬 zip 3형태 모두 실패, 실측). MCP는 `get_site`로 **게시 검증**에만 쓴다. ⛔ 게시 전 **사용자 승인** · 토큰은 **`~/.claude.json`에만**(저장소 금지). 정본 `md/dropweb-guide.md` §8 | DropWeb이 MCP를 열면서 사용자가 업로드를 대신할 이유가 사라졌다. 가이드 갱신마다 따라붙던 **전달→업로드→확인 왕복**이 없어진다(`minimize-user-intervention`). ⚠️ REST에는 `change_summary`가 없어 **배포 이력에 변경 요약이 안 남는다** — 커밋·`guide-backlog` 반영 이력이 대체하며, 파일 업로드형 MCP가 나오면 전환한다. `a15b5bc` |
 | 2026-09-15 | **기획자 가이드는 「모아서 한 번에」 — 푸시마다 묻지 않고 `md/guide-backlog.md`에 등재만 한다**(정본 CLAUDE.md 📣 규칙). 다만 **대기 10건 이상 · ⛔차단 규칙 2건 이상 · 마지막 `guide-v*` 태그로부터 2주** 중 하나면 **한 줄로 제안**하고, 보류되면 **5건 더 쌓일 때까지 재제안 금지** | 가이드 1건 갱신에 **5곳 수정 + zip 재생성 + 헤더 렌더 확인 + 게시 + 태그**가 따라붙어 건건이 하면 비용이 과하고 버전만 잘게 오른다. 용어집도 이미 모아서 반영하므로(2026-09-14) **같은 흐름**이다 — 용어집 반영 작업에서 가이드를 함께 갱신한다. `1013215`·`edeb5d2` |
 
