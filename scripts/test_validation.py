@@ -220,6 +220,27 @@ check("정상 렌더 → 위반 0건",
 check("타 페이지 첨부 참조 검출",
       len(check_render('<img src="/download/attachments/999/a.png" />', "123")) >= 1)
 
+# ---------------------------------------------------------------- [7] 대기 키 대조
+print("\n[7] 미등록 대기 키 대조 (check_pending_keys)")
+import tempfile
+from check_pending_keys import scan as scan_pending, keys_in, norm
+
+with tempfile.TemporaryDirectory() as td:
+    gd = Path(td)
+    (gd / "gate_report_other_2026-09-21.md").write_text(
+        "| 1 | `UF_voucher_pay_more_cu_title` | CU 혜택은 계속돼요! |\n", encoding="utf-8")
+    hits, n = scan_pending(["CU 혜택은 계속돼요!"], gate_dir=gd)
+    check("다른 세션 리포트의 같은 문구 검출", len(hits["CU 혜택은 계속돼요!"]) == 1)
+    check("검출 행에서 키 후보 추출",
+          "UF_voucher_pay_more_cu_title" in hits["CU 혜택은 계속돼요!"][0][2])
+    hits2, _ = scan_pending(["전혀 다른 문구 ABC"], gate_dir=gd)
+    check("무관한 문구 → 0건", hits2["전혀 다른 문구 ABC"] == [])
+    hits3, _ = scan_pending(["CU 혜택은계속돼요!"], gate_dir=gd)
+    check("띄어쓰기만 다른 문구도 검출(정규화)", len(hits3["CU 혜택은계속돼요!"]) == 1)
+
+check("파일명 토큰은 키 후보에서 제외", keys_in("xlt_output_20260921.xlsx 참고") == [])
+check("norm은 공백·개행을 제거", norm("a b\nc") == "abc")
+
 # --- 결과 ---
 print(f"\n{'='*40}")
 if failures:
