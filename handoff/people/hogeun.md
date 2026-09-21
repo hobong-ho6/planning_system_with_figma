@@ -12,8 +12,9 @@
 
 ## 환경 복구
 
-- **DropWeb MCP**(09-16) — `~/.claude.json`의 `mcpServers.dropweb`. ⛔ **PC마다 등록**(토큰=비밀값, 저장소에 없음) · DropWeb **MCP Token** 메뉴에서 발급 · `md/dropweb-guide.md` §8
-
+- **DropWeb**(09-16 · **09-21 갱신**) — ⚠️ **이 PC에는 `mcpServers.dropweb` 미등록**(키체인에도 없음). 09-21 게시는 사용자가 **세션에 토큰을 직접 제공**해 REST로 했다.
+  값 노출 없이 쓰려면 `security add-generic-password -a hogeun -s dropweb-token -w`. 절차·검증은 `md/dropweb-guide.md` §8이 정본.
+- **Claude in Chrome은 사내 도메인이 차단된다**(09-21 실측) — `unifi-web.line-apps-beta.com`·`dropweb.line-apps-beta.com` 둘 다. **Beta·mini 점검은 인앱 브라우저**(→ `md/ia-check.md` 3단계). 드랍웹 라이브는 Okta SSO라 양쪽 다 못 볼 수 있어 **게시 검증은 REST 메타 + zip 해시 대조**로 한다.
 - **⚠ Python 의존성이 사라질 수 있다**(실측 1회) — `ModuleNotFoundError` 시 아래(`Pillow` 포함 — `collect_frames.py`가 요구):
   ```bash
   pip3 install --break-system-packages -r scripts/requirements.txt
