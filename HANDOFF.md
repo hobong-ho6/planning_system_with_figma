@@ -16,7 +16,7 @@
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
-| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 | 09-18 | 미결 0 · 최근: 토큰 규칙·드랍웹 직접 게시 개정, 산출물 gitignore |
+| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 | 09-22 | 미결 2 · HANDOFF 9.3KB로 압축(주입 13.5KB) · 재팽창 방지 기준·대기 키 대조기 신설 |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 5종 + K-Pick 노출 정책·FAQ | 09-16 | 정합 유지 · ⚠️ `syncExcludedFields`에 `badges`·`reviewCount` 없음(동기화 시 덮일 수 있음) |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 09-16 | 용어집 v5.5 · 가이드 v43 · ⛔ 보완은 모아서 한 번에(대기 23건) · 미결 1 |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-21 | 점검 #8 반영 · 🔴 KAIA 이율 3중 불일치·리워드 스켈레톤·Beta K-Pick 개편 · 어휘 승인 대기 12 |
