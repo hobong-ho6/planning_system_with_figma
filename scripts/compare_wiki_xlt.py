@@ -95,8 +95,9 @@ def extract_keys(tables: list) -> tuple:
     screen, multi = {}, {}
     for rows in tables:
         h = _hdr(rows)
-        if 'XLT' in h and 'Screen' in h:                      # Screen 표
-            xi, si = h.index('XLT'), h.index('Screen')
+        xlt_cols = [i for i, c in enumerate(h) if c.startswith('XLT')]
+        if xlt_cols and 'Screen' in h:                        # Screen 표 (XLT 또는 XLT & GA)
+            xi, si = xlt_cols[0], h.index('Screen')
             name_i = h.index('Screen ID') if 'Screen ID' in h else si
             for r in rows[1:]:
                 if len(r) <= xi:
