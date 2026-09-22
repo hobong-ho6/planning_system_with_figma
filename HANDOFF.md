@@ -23,7 +23,7 @@
 | [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + LPC `4727978725` · 29화면 | 09-17 | 본문 v247 · LPC v64 · 🔴 브랜드 24종 용어집 v5.7 대기 · th/zh 구 표기 잔존 · 의료광고 조치 |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` 예약 OA 16화면 | 09-16 | beta 16건 등록 · ⚠️ hero·버튼 URL 임시값 · ko만(번역 미착수) |
 | [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` — Screen 3화면 + OA 2종 | 09-16 | 위키 v26 · XLT 26키 전건 등록 · 🔴 「더보기」 landing URL 미확정 · 공유 툴팁 하드코딩 |
-| [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327`(+`4774237088`) — 전 바우처 | 09-22 | Ⅱ·Ⅲ **LPC beta 반영 완료**(50셀 · 게이트 P0 0 · 공개 API 50/50) · ⛔ **prod 미반영**(사용자 지시 · §10-3-00 예외 — beta≠prod) · XLT 엑셀 생성(Unifi 1키 · 업로드는 사용자). Ⅰ **2건** ko 확정·⛔리스크팀 검토 대기 · 🔴 구매 수량 한도 부재 |
+| [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327`(+`4774237088`) — 전 바우처 | 09-22 | **Ⅱ·Ⅲ LPC beta·prod 반영 완료**(각 50셀 · 동치 확인 · 게이트 P0 0) · 남은 건 **XLT 업로드 1키**(사용자). Ⅰ **2건** ko 확정·⛔**리스크팀 검토 대기** · 🔴 구매 수량 한도 부재(재판매 차단 공백) |
 | [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · 3화면 | 09-22 | 위키 v4 · XLT 7키 전건 등록 · ⛔ 결제 바텀시트 두 벌 키는 「유지」로 종결(09-21) |
 
 ---
