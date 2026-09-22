@@ -69,6 +69,8 @@
 
 - **⛔ 산출물은 만든 세션이 그 세션 안에서 커밋한다** — 게이트 리포트 9건·`landpress/` 100파일이 **9일간 로컬에만** 있었다(그 PC 밖에선 없는 것). **세션 종료 시 `git status`의 `??` 확인** · 내 것이면 커밋, 남의 것이면 **보고만**(임의 커밋·삭제 금지). ~~`reports/gate/`·`landpress/`는 `.gitignore` 대상이 아니다~~ → ⚠️ **2026-09-18 결정으로 뒤집혔다**: `reports/gate/`·`landpress/`·`oa/`·`xlt/`·`assets/`는 **전부 gitignore 대상**이고(실측 2026-09-22 `git check-ignore` 전건 무시됨), **사본은 Auto-react(private) `reports/{gate,landpress,oa}`에 둔다**. 따라서 「내 산출물을 커밋한다」는 **Auto-react 쪽으로 복사·커밋한다**는 뜻이다
 
+- **⛔ `git commit`은 인덱스 전체를 커밋한다 — 경로를 지정해 `git add` 해도 남의 staged 잔재가 딸려 간다**(2026-09-22 실측). 다른 세션이 `handoff/projects/cashback-disclaimer.md`의 **낡은 버전(세션 #4)** 을 staged로 남겨 둔 상태에서, 내 파일 3개만 `git add`하고 커밋했더니 그 잔재가 함께 들어가 **세션 #5 기록이 #4로 되돌아간 채 푸시**됐다(`6e7bb6f` → 복구 `65fc876`). 워킹트리에 #5가 남아 있어 손실은 없었지만 공유 브랜치에 되돌림·복구 2커밋이 남았다. **판별 함정**: 당시 `git status`는 `MM`이고 `git diff HEAD --stat`은 **비어 있었다**(staged와 unstaged가 서로 상쇄) — 이걸 「작업물 없음」으로 읽으면 안 된다. **staged 쪽은 `git diff --cached`로 따로 본다.** 조치: 커밋 직전 `git status`에 **내가 add하지 않은 staged 항목**이 있으면 ⓐ `git commit -- {내 경로들}`로 경로를 명시하거나 ⓑ `git restore --staged {남의 경로}`로 걷어낸 뒤 커밋한다(⛔ 워킹트리는 건드리지 않는다 — §16 「남의 uncommitted 변경은 커밋하지 않는다」)
+
 ## §16. 살아 있는 교훈 (HANDOFF.md 「아카이브 요약」에서 이관 · 2026-09-22)
 
 - **살아 있는 교훈**: PUT 직전 라이브 rebase 필수 · **미추적 파일을 같은 경로에 Write해 직전 세션 기록을 잃은 적 있다**(세션 시작 `git status`의 `??` 확인) · **다른 세션의 uncommitted 변경은 커밋하지 않는다**(WIP 보존 규칙을 그대로 적용하면 그 세션 작업을 가로챈다) · **세션은 병렬로 돈다**(`git fetch`만 하고 pull을 미루면 구버전 도구로 산출물을 만든다)
