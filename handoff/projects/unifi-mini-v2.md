@@ -1,13 +1,13 @@
 # unifi-mini-v2 — Unifi mini v2.0 화면정의 (Figma 정책 취합 + XLT/GA)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-17 · 세션 **#18**(병렬 다수) · 마지막 커밋 `f936693` · 위키 **v247** · LPC 위키 **v64** · Admin 위키 **v13**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-17 · 세션 **#18**(병렬 다수) · 마지막 커밋 `f936693` · 위키 **v247** · LPC 위키 **v69**(09-22 §3-4 CU `voucherSection.title` 실등록값 교체는 [cu-qr-voucher](cu-qr-voucher.md) 세션 #3) · Admin 위키 **v13**
 >
 > 📎 세션 #12~#16 상세는 **「세션 기록」이 정본**(18KB 상한으로 헤더 압축) · ⚠️ **v186→v192는 기록 없음**(다른 세션 6버전 — 위키 History가 유일한 근거)
 
 ## 대상 / 링크
 
 - 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v247**
-  - **하위 `4727978725` 「LPC 관리 영역」** — **현재 v64**. LPC 컬렉션 **9개**의 정의·등록 JSON·환경 현황·비율 연동 규칙(§9-7) 정본
+  - **하위 `4727978725` 「LPC 관리 영역」** — **현재 v69**. LPC 컬렉션 **9개**의 정의·등록 JSON·환경 현황·비율 연동 규칙(§9-7) 정본
   - 하위 `4725950300` 「Admin 관리 대상」(**v13**) · `4725963532` 「100엔딜」([전용 파일](100yen-deal.md)) · `4750149077` 「일본어 검수」 · Figma `GOCHAYBS7hIrmWRGNuJOKV`(`Web3`)
 - **Unifi B/E API 스펙 `4725939674`** — FE 수신값의 정본. GuideKim 스펙과 달라 **구현 기준은 이쪽**
 - XLT: 담당 FE — `JPYC 자산 상세`·`결제 페이지` = **UIT**(`UF_`·`{{0}}`) / `Voucher Detail`·`Clinic Detail` = **LV**(`mini_`·`{0}`). **`최근 본 상품`은 화면만 LV** — 키는 `UF_` 유지(의도된 예외). Home/Category/Search/My는 이전 세션에 번역 완료

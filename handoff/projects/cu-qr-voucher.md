@@ -1,10 +1,10 @@
 # cu-qr-voucher — CU 상품권 전용 동선 (QR 특가 · Unifi mini)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-22 · 세션 #2 · 마지막 커밋 `e6a5e28` · 위키 **v4**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-22 · 세션 #3 · 마지막 커밋 `PENDING` · 위키 **v6**
 
 ## 대상 / 링크
 
-- 위키: [pageId 4774235795](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4774235795) `CU 상품권 전용 동선` — **현재 v4** (부모 `[Hogeun]` 3910828993 · 2026-09-21 생성)
+- 위키: [pageId 4774235795](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4774235795) `CU 상품권 전용 동선` — **현재 v6** (부모 `[Hogeun]` 3910828993 · 2026-09-21 생성)
 - Figma: `Web3` `GOCHAYBS7hIrmWRGNuJOKV`
   - `CU QR Flow` `75611:4511` — 페이지 생성 시 참조(세션 #1)
   - **`화면정의` `75648:8390`** — 직속 3프레임: `Frame 2085674810`(팝업 · 내부 `75648:8233`) · `결제 페이지 - 바텀시트` `75648:8250` · `voucher Detail` `75648:7935`
@@ -16,7 +16,9 @@
 
 ## 현재 상태
 
-**위키 v4까지 반영 완료 · Screen 3화면 · XLT 7키 · GA Event 11건(view 3 · click 8).** **XLT 7키 전건 시스템 등록 완료**(2026-09-22 10:05 실측 — Dapp Portal v2.6.2 **1,727키**). 검사 전건 통과 — `check_wiki_storage pre/post` exit 0 · 버전 가드 PUT(v2→v3→v4) · `check_gate_report` exit 0 · 자동 검증 **P0 0건**(전체 7행 전수 수동 검토 동반).
+**위키 v6까지 반영 완료 · Screen 3화면 · XLT 7키 · GA Event 11건(view 3 · click 8) · LPC 관리 영역 1건.** **XLT 7키 전건 시스템 등록 완료**(2026-09-22 10:05 실측 — Dapp Portal v2.6.2 **1,727키**). 검사 전건 통과 — `check_wiki_storage pre/post` exit 0 · 버전 가드 PUT(v2→v3→v4) · `check_gate_report` exit 0 · 자동 검증 **P0 0건**(전체 7행 전수 수동 검토 동반).
+
+**LPC 관리 영역 추가(v5~v6 · 세션 #3).** Description `4. Cu 가이드 영역 추가`는 **신규 컬렉션·필드가 아니라** 운영 중인 CU 가이드 페이지 데이터를 상세에 임베드한 것이다 — LV `shopping_guide` › `guide_page`(`uid VOUCHER_CU` · postId beta 1 · prod 1). 전용 섹션에 **필드 표 · 읽기 API · 실등록 JSON(ko_KR)** 을 싣고, **Screen 표 그 행 Description에 요약 + 앵커 링크**를 넣었다(사용자 지시 — 이미지가 있는 행에서 바로 보이게). 실측: 5개 언어 전건 `published:true` · **beta↔prod SHA-256 5/5 동치**.
 
 첨부는 **4건만** 남기고 정리했다(구버전 엑셀 2 + 미참조 이미지 3 삭제 · 전부 본문 참조 중). 이미지는 어노테이션 정본이며 **같은 파일명으로 버전 갱신**해 본문 링크를 유지한다.
 
@@ -34,6 +36,7 @@
 - [ ] **P1 — `1,000엔 쿠폰 적용 중` 문구 분기**: Unifi `UF_100yen_coupon_applied`(`1,000엔 쿠폰 적용 중`) ↔ mini `mini_voucher_cu_qr_coupon_applied`(`1,000엔 할인 쿠폰 적용 중`). 같은 기능이므로 통일 여부 결정(통일 시 기존 키 재업로드 동반). `100yen-deal`과 함께 본다
 - [ ] **P2 — Description ①의 변경 이력 성격**: 코멘트 ①은 「[CU상품권 전용 UI 변경 사항]」 5개 항목(정책이 아니라 디자인 변경 목록)이다. 그대로 실었으며 정책 문장으로 다듬을지는 사용자 판단
 - [ ] **P2 — 이후 점검은 `compare_wiki_xlt.py`로**: `--page 4774235795 --registry {dapp} --registry {unifi}`로 위키↔등록값 대조가 한 번에 된다(`XLT & GA` 헤더 지원은 `c473c96`부터)
+- [ ] **P2 — Figma 시안 ↔ LPC 실등록값 차이 3건**: 합계 `₩8,200`(시안) ↔ `₩7,800`(등록) · 상품 3은 시안이 `description`을 노출(`caption`과 다름) · `빙그레 바나나맛 우유` 띄어쓰기. **실등록값이 정본**이라 위키엔 등록값을 실었다(차이 표로 명시). 시안대로 가려면 LPC beta·prod 동반 갱신 필요 — 디자이너·기획 확인 대상
 - [ ] **P2 — GA `#` 대부분 `-`**: 클릭 요소(바로 구매하기·공유·리뷰 더보기·상품 카드·팝업 버튼)에 Figma 코멘트가 없어 어노테이션 번호를 못 붙였다. 디자이너에게 코멘트 추가 요청 시 `#` 채운다
 
 ## 주요 결정 사항 (이 프로젝트 한정)
@@ -53,6 +56,14 @@
 - **Screen ID 체계** — 위 3종으로 확정. `_01_02`가 `_01_01`보다 먼저 존재하는 비대칭은 세션 #1 기존값을 보존한 결과이며 되돌리지 않는다(2026-09-21, 세션 #2)
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-09-22 — 세션 #3: LPC 관리 영역 반영 (위키 v4→v6) + LPC 정본 위키 교정
+
+- 완료: `4774235795` **v4→v5** LPC 관리 영역 섹션 신설(필드 표 · 읽기 API 2건 · 실등록 JSON ko_KR · 실측 차이 표) → **v5→v6** 사용자 지시로 **Screen 표 해당 행 Description에 요약 + 앵커 링크** 추가. `check_wiki_storage` pre/post exit 0 · 버전 가드 PUT
+- 완료: **LPC 정본 위키 `4727978725` v68→v69** — §3-4 CU JSON의 `voucherSection.title`이 낡아 있어(`함께 보면 좋은 바우처`) **실등록값 `함께 보면 좋은 상품권`으로 교체** + 이력 한 줄. 같은 대조에서 **올리브영·다이소 JSON은 전건 일치**
+- 실측: `shopping_guide` `VOUCHER_CU`는 beta·prod 5개 언어 전건 등록·공개, **SHA-256 5/5 동치**. postId는 CU만 beta·prod 모두 1(다른 브랜드는 배치가 다르다 — uid로 매핑)
+- 교훈: **위키에 박제된 JSON은 낡는다** — LPC 값을 인용하는 절은 인용 시점마다 공개 읽기 API로 재조회해 대조한다(캐시 금지 규칙의 LPC판). 이번에도 위키만 믿었으면 틀린 문구를 그대로 옮겼다
+- 부수: Figma 섹션 `71050-9071`(즐겨찾기) XLT 키 조회 — 코치마크 2문구는 기등록 `UF_clinic_detail_favorite_guide_{title,desc}`와 100% 일치. **키 이름이 `clinic_detail` 스코프라 재사용 여부는 FE 판정 필요**(미결 · 사용자 확인 전 종료)
 
 ### 2026-09-22 — 세션 #2(이어짐): 키 등록 확인 + 저장소 산출물 정리
 
