@@ -3,12 +3,16 @@
 > `HANDOFF.md`의 「전역 결정 사항」에서 이관한 **전문**이다(2026-09-15 포인터 압축).
 > HANDOFF.md는 매 세션 전문 주입되므로 **최근 결정 4건만 남기고** 나머지를 여기로 내렸다 — 삭제가 아니라 이동이다.
 >
-> - **새 전역 결정이 생기면**: HANDOFF.md 표 맨 위에 추가하고, 밀려난 것을 이 파일 맨 위로 옮긴다.
+> - **새 전역 결정이 생기면**: 전문은 **이 파일 맨 위**에 쓰고, `HANDOFF.md`에는 **날짜 + 결정 한 줄**만 남긴다(2026-09-22 개정 — 종전 「HANDOFF에 최근 4건 전문」은 주입량 때문에 폐기).
 > - **특정 프로젝트에만 적용되는 결정**은 여기가 아니라 `handoff/projects/{name}.md`의 「주요 결정 사항」에 쓴다.
 > - 이 파일은 세션에 자동 주입되지 않는다 — **재작업·재제안 의심이 들 때 직접 열어 본다.**
 
 | 날짜 | 결정 | 이유 |
 |---|---|---|
+| **2026-09-18** | **토큰은 「필요한 단계에서 요청」** — 키체인(`confluence-pat`·`figma-pat`·`jira-pat`) 우선, 없으면 그 시점에 요청. 종전 「토큰 받기 전 착수 금지」 폐기(정본 CLAUDE.md 「⛔ 토큰 규칙」) | 무인·연동 실행(Auto-react 일감 패킷)에서 첫 행동이 토큰 요청이면 착수가 막힌다 |
+| **2026-09-18** | **산출물은 커밋하지 않는다** — `reports/gate/`·`landpress/`·`oa/` gitignore(+`xlt/`). ⚠️ **LPC JSON은 복구원이라 커밋 대상이 Auto-react(private) `reports/landpress/`로 이전**(쓰기 세션 끝에 복사 필수) · 기존 이력은 정리하지 않는다(사용자 결정). public 유지, 사본은 Auto-react(private). Auto-react 유입 일감은 **일감 패킷↔결과 패킷**, task_id `[T095]`를 게이트 리포트·커밋에 표기(정본 `handoff/projects/system-meta.md`) | 09-17 커밋에 XLT 값이 public으로 올라갔다. private 전환은 public clone으로 쓰는 팀원을 막는다 |
+| **2026-09-16** | **드랍웹 게시는 Claude가 직접 한다** — 종전 「zip 전달 → 사용자 업로드」 폐지(사용자 결정). 업로드는 **REST `PUT /api/sites/{siteId}`**(MCP 토큰 인증 · `file`+`name` multipart)이고 **MCP `update_site`는 못 쓴다**(`file_path`가 DropWeb **서버** 파일시스템 경로 — 로컬 zip 3형태 모두 실패, 실측). MCP는 `get_site`로 **게시 검증**에만 쓴다. ⛔ 게시 전 **사용자 승인** · 토큰은 **`~/.claude.json`에만**(저장소 금지). 정본 `md/dropweb-guide.md` §8 | DropWeb이 MCP를 열면서 사용자가 업로드를 대신할 이유가 사라졌다. 가이드 갱신마다 따라붙던 **전달→업로드→확인 왕복**이 없어진다(`minimize-user-intervention`). ⚠️ REST에는 `change_summary`가 없어 **배포 이력에 변경 요약이 안 남는다** — 커밋·`guide-backlog` 반영 이력이 대체하며, 파일 업로드형 MCP가 나오면 전환한다. `a15b5bc` |
+| 2026-09-15 | **기획자 가이드는 「모아서 한 번에」 — 푸시마다 묻지 않고 `md/guide-backlog.md`에 등재만 한다**(정본 CLAUDE.md 📣 규칙). 다만 **대기 10건 이상 · ⛔차단 규칙 2건 이상 · 마지막 `guide-v*` 태그로부터 2주** 중 하나면 **한 줄로 제안**하고, 보류되면 **5건 더 쌓일 때까지 재제안 금지** | 가이드 1건 갱신에 **5곳 수정 + zip 재생성 + 헤더 렌더 확인 + 게시 + 태그**가 따라붙어 건건이 하면 비용이 과하고 버전만 잘게 오른다. 용어집도 이미 모아서 반영하므로(2026-09-14) **같은 흐름**이다 — 용어집 반영 작업에서 가이드를 함께 갱신한다. `1013215`·`edeb5d2` |
 | 2026-09-15 | **Landpress PUT은 전체 교체다 — 콘텐츠 필드를 전부 담아 read-modify-write 한다**(정본 `md/landpress.md` §10-3-0). **강제 산출물 2종** — 쓸 때 `scripts/restore/lpc_safe_put.js`(직접 PUT 금지) · 쓰기 **직전·직후** `check_lpc_nulls.py` **exit 0** | `uid`만·한 필드만 보낸 PUT이 **형제 필드를 `null`로 지웠다** — 2026-09-14 4필드 소실(beta·prod). **리비전 이력이 없어**(`/revisions` 404 · `/audit-logs`는 GET만) CMS만으로는 복구 불가였고 저장소 `landpress/` 산출물이 유일한 복구원이었다. `e06866f`·`faa088a` |
 | 2026-09-14 | **위키 상태값은 GuideKim ↔ Unifi B/E 기준을 병기하고 구현은 B/E 기준** | FE가 받는 값은 B/E를 거쳐 달라진다 — 상품권 `ISSUE_PENDING`→`PAID` · 클리닉 `NO_SHOW`/`REJECTED`→`CANCELED` · `point.status` 대문자 · 여행 `use_state` 미제공. B/E 스펙 `4725939674` |
 | 2026-09-10 | **`XLT & GA` 셀 제목은 화면당 1개**(`{Screen ID} - XLT & GA`) — 이전엔 `- XLT`·`- Event` 2개로 나눴다. `md/GA.md` §2 정정, 새 페이지는 이 방식이 기본. 기존 페이지는 GA 작업 시 정정 권장(소급 강제 아님) | unifi-mini-v2에서 화면마다 목차(TOC) 항목이 2개씩 생겨 목차가 길어진다는 사용자 지적. XLT 키가 없는 화면도 제목은 동일하게 1개 유지 |
