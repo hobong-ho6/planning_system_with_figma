@@ -40,7 +40,7 @@
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` **예약 OA 16화면 전용** | 09-16 | 발송 시간 제한 확정(22~8시 금지 · 확정 T0 예외) · beta 16건 등록 · ⚠️ hero·버튼 URL **임시값** · `ko_KR`만(번역 미착수) · prod T0 1건 `isActive` No |
 | [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` **페이지 전체** — Screen 3화면 + **OA 2종** | 09-16 | 위키 **v26** · XLT **26키** 전건 등록 — 미등록 8키 최초 등록 + 신규 3키(`UNIFY-11369`). FE의 「7키 삭제」는 **오진**(전 버전 미등록) · ⛔ 배지 치환자 **`<strong />`** · 🔴 Home 「더보기」 landing URL 미확정 · 🔴 공유 툴팁 하드코딩 |
 | [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327` **Voucher disclaimer**(+자식 `4774237088`) — **전 바우처 상품** | 09-22 | LPC 570필드 점검 **자격 조항 0건**. 확정 **A 신규 7 · B 수정 4(35셀) · C 삭제 7필드(70셀)**. ⛔ **약관 미변경(디스클레이머만)** · 어휘 **「일본 사용자」 통일, 판정 기준 문구에 안 씀** · **럭키볼 선례 8건**이 같은 구조로 운영 중(§4-2). ⛔ **반영 전건 미착수** · 🔴 A 적용 위치 · 🔴 BE 차단 |
-| [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · **3화면** | 09-21 | 위키 **v4** · XLT **7키**(5 신규) · GA 11건 · 게이트 P0 0 — ⚠️ 결제 바텀시트 `75648:8250`이 **두 벌 키**(다른 세션 UIT `UF_voucher_pay_more_cu_*` @`4704515582` ↔ 이 페이지 LV `mini_..._benefit_*`, 등록됨). **2026-09-21 사용자 결정: 키는 그대로 두고 재발 방지로 종결** |
+| [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · **3화면** | 09-22 | 위키 **v4** · XLT **7키**(5 신규) · GA 11건 · 게이트 P0 0 — ⚠️ 결제 바텀시트 `75648:8250`이 **두 벌 키**(다른 세션 UIT `UF_voucher_pay_more_cu_*` @`4704515582` ↔ 이 페이지 LV `mini_..._benefit_*`, 등록됨). **2026-09-21 사용자 결정: 키는 그대로 두고 재발 방지로 종결** · **XLT 7키 전건 등록 완료**(09-22) |
 
 ---
 
