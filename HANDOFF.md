@@ -26,7 +26,7 @@
 | [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327`(+`4774237088`) — 전 바우처 | 09-23 | Ⅰ **리스크팀 검토 완료**(`LNS-1622` · 확정문 2건 ⛔수정금지 · **결제페이지 단독**) · 위키 **v21** — 5개 언어 확정(P0 0) · **XLT 전건 등록 완료** · ⛔ **결제페이지는 XLT 단독**(LPC 미사용) → 남은 건 **FE 구현** · Ⅱ·Ⅲ LPC 반영 완료(남은 건 XLT 업로드 1키) · 🔴 구매 수량 한도 부재 |
 | [guidekim-insourcing](handoff/projects/guidekim-insourcing.md) | `hogeun` | 위키 `4770510177` — 어포메이션 계약 종료 대응 내재화 과업 | 09-23 | 위키 v1 신설(정리 단계 · 구현 착수 전) · 🔴 **10/20 피앗 협조 종료**·포인트 잔여 44,902P 귀속·비즈콘 계약 주체 변경이 P0 |
 | [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · 3화면 | 09-22 | 위키 v6 · XLT 7키 전건 등록 · LPC 관리 영역(`shopping_guide`/`guide_page`) 반영 · ⛔ 결제 바텀시트 두 벌 키는 「유지」로 종결(09-21) |
-| [sk-gifticon-migration](handoff/projects/sk-gifticon-migration.md) | `hogeun` | 위키 `4770508162` — SK 기프티콘 서버 이관(10/13) 고지 | 09-23 | 위키 v14 · ko 초안 단계 · 🔴 LPC `maintenance_notice` 신설 대기(필드 1개로 ①②③ · XLT 신규 키 없음) · 올리브영은 OA 보충으로 종결 |
+| [sk-gifticon-migration](handoff/projects/sk-gifticon-migration.md) | `hogeun` | 위키 `4770508162` — SK 기프티콘 서버 이관(10/13) 고지 | 09-23 | 위키 v15 · ko 초안 단계 · 🔴 `category_promotion_banner`에 `maintenance`+`maintenance_on_off` 2필드 추가 대기 · ② 사전 고지는 스위치 분리 필요 |
 
 ---
 
