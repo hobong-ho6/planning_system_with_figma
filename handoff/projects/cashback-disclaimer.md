@@ -7,23 +7,23 @@
 
 ## 대상 / 링크
 
-- 위키(정본): [4770505327](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770505327) 「**Voucher disclaimer 추가 및 기타 문구 수정**」(제목은 사용자가 3회 변경) — **현재 v19** · 부모 `[Hogeun]` `3910828993`
+- 위키(정본): [4770505327](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770505327) 「**Voucher disclaimer 추가 및 기타 문구 수정**」(제목은 사용자가 3회 변경) — **현재 v20** · 부모 `[Hogeun]` `3910828993`
   - 자식 [4774237088](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4774237088) 「Figma ↔ 등록값 차이 기록 (2026-09-21 실측)」 — **v2** · 27건
 - 리포트: `reports/policy/disclaimer_proposal_2026-09-21.md` (rev.2)
 - Figma: `GOCHAYBS7hIrmWRGNuJOKV` — **`75911-4154`(결제페이지 — ⛔ Ⅰ 확정문 2건이 반영된 최신본 · 375×1273 · 위키 Ⅰ-3의 정본)** · `72565-17516`(결제페이지 구본 — Ⅱ 영역에서만 사용) · `72528-4404`(상품권 상세) · `72959-1444`(서비스 안내) · `72193-11353`(My 상품권 상세)
 - LPC: LV `w5eph4y9qxe05c8fqpi7rlxh` / UIT `lkyusnekq1vv9759rbnwgamh` (prod) — 정의 위키 `4727978725`
 - XLT: **Unifi / WEB BROWSER** · 결제 화면은 **UIT**(`UF_` · `{{0}}`)
-- 게이트 리포트: `reports/gate/gate_report_cashback_disclaimer_2026-09-22.md` — Ⅱ·Ⅲ **P0 0 통과** · `check_gate_report.py` exit 0. ⚠️ **`reports/gate/`는 이 저장소에서 gitignore** — 로컬에만 있다(다른 PC로 넘기려면 별도 조치)
+- 게이트 리포트: **`reports/gate/gate_report_20260923_voucher_pay_disclaimer_5lang.md`(Ⅰ 5개 언어 · P0 0 · Auto-react `b9d1e11`로 사본 커밋)** · `reports/gate/gate_report_cashback_disclaimer_2026-09-22.md` — Ⅱ·Ⅲ **P0 0 통과** · `check_gate_report.py` exit 0. ⚠️ **`reports/gate/`는 이 저장소에서 gitignore** — 로컬에만 있다(다른 PC로 넘기려면 별도 조치)
 - Slack 근거: 어뷰징 `C06S33UGGP9/1789988110.106779` · 원 스레드 `C0B5WNBJPB5/1789984059.348889` · 캐시백 문구 `C07R7CE0B5H/1789619125.865969`
 - Jira: **`LNS-1622`(리스크팀 Disclaimer 검토 — ⛔ Ⅰ 문구·노출 위치의 정본 · 2026-09-22 19:01 회신 · 담당 표성만)** · `UNIFY-11508`(JPYC 결제 OFF · v1.8.0.2 prod 배포 완료) · `UNIFY-11416`(캐시백 툴팁 · 별건)
 
 ## 현재 상태
 
-문서는 **위키 `4770505327` v19**에 정본이 있다(템플릿 레이아웃 — 목차·History·Related Docs + 본문 3영역을 **제목1로 분리**). 자식 `4774237088` v2는 Figma ↔ 등록값 차이 27건.
+문서는 **위키 `4770505327` v20**에 정본이 있다(템플릿 레이아웃 — 목차·History·Related Docs + 본문 3영역을 **제목1로 분리**). 자식 `4774237088` v2는 Figma ↔ 등록값 차이 27건.
 
 | 영역 | 내용 | 상태 |
 |---|---|---|
-| **Ⅰ Disclaimer 추가** | 신규 **2건**(A-1 대상 · A-2 제재·회수) | ✅ **리스크팀 검토 완료**(`LNS-1622`) — ko는 **리스크팀 확정문**으로 교체 · 노출 위치 **결제페이지 단독** · 5개 언어 미작성 |
+| **Ⅰ Disclaimer 추가** | 신규 **2건**(A-1 대상 · A-2 제재·회수) | ✅ 리스크팀 확정문 · 결제페이지 단독 · ✅ **5개 언어 확정**(게이트 P0 0) · **XLT 등록·LPC 섹션 신설 대기** |
 | **Ⅱ 캐시백 지급 시점** | 4건(LPC 3 + XLT 1) | ✅ **LPC beta·prod 반영 완료**(각 15셀) · XLT 엑셀 생성 완료 — **업로드만 남음(사용자)** |
 | **Ⅲ 올리브영 사용처 삭제** | 7필드 | ✅ **LPC beta·prod 반영 완료**(각 35셀) — **종결** |
 
@@ -48,8 +48,10 @@
 ## 다음 할 일
 
 - [x] ~~🔴 P0 — 리스크팀 검토(Ⅰ만)~~ → **완료(2026-09-23 · `LNS-1622`)**. 확정문 2건 + 결제페이지 단독
-- [ ] 🔴 **P0 — Ⅰ 5개 언어 번역 + 게이트**: 리스크팀 확정 ko 2건이 원문. ⛔ ko는 고치지 않는다(게이트 1단계 「원문 교정」 적용 제외 — 리스크팀 정본)
-- [ ] 🔴 **P0 — Ⅰ XLT 키 확정**: `UF_voucher_pay_caution_title`·`_contents1~2`(UIT · **제안값** — Figma `xlt` 마커 3건과 1:1 · 위키 Ⅰ-3 표에 게재). ⛔ 등록 전 `fetch_xlt_registry.py --similar` + `check_pending_keys.py --wiki` 둘 다
+- [x] ~~🔴 P0 — Ⅰ 5개 언어 번역 + 게이트~~ → **완료(2026-09-23 · P0 0)**. 위키 Ⅰ-4에 게재
+- [x] ~~🔴 P0 — Ⅰ XLT 키 확정~~ → **완료**. 신규 **2키** `UF_voucher_pay_caution_contents1·2` + **기존 `UF_voucher_detail_caution` 재사용**(타이틀 · 사용자 결정)
+- [ ] 🔴 **P0 — Ⅰ XLT 2키 업로드(사용자)**: `xlt/xlt_disclaimer_unifi_20260923.xlsx`. ⚠️ `xlt/`는 gitignore — 필요 시 게이트 리포트 (b) 표에서 재생성
+- [ ] ⚠️ **`UF_voucher_detail_caution` 공유 주의**: 상품권 상세와 **값을 공유**한다 — 결제페이지만 문구를 바꾸려면 그때 키를 분리해야 한다(§2-1-b)
 - [ ] **P1 — A-1 「본 상품」 적용 범위 확인(기획·리스크팀)**: 확정문이 바우처 한정을 풀었고 `payment_common_info`는 **결제 공통**이라 클리닉 등 타 상품 결제에도 노출된다. 캐시백 없는 상품에 「캐시백 혜택은…」이 떠도 되는지 (위키 5번 3-1항)
 - [ ] 🔴 **P0 — XLT `UF_voucher_pay_step4` 업로드(사용자)**: `xlt/xlt_cashback_timing_unifi_*.xlsx`(Unifi 1키 × 5개 언어). ⚠️ **`xlt/`는 gitignore이고 2026-09-22 사용자가 폴더를 비웠다** — 필요하면 `newvals.py`의 `B2`로 재생성한다
 - [ ] 🔴 **P0 — 구매 수량 한도 신설 여부(기획·BE·리스크팀)**: 상품권에는 **1인당 구매 한도가 없다**(100엔딜만 1인 1점). 막으려는 것이 **대량 구매 후 재판매·현금화**라면 **한도가 실질 방어선**이고 A-2는 사후 근거일 뿐이다. 「대량」 판정 내부 기준도 맞춰야 한다(⛔ 문구에는 쓰지 않는다)
@@ -104,6 +106,14 @@
   - 어노테이션 **파랑**(xlt) · 매칭 텍스트 좌측 10pt · `overlaps: []` · **렌더 육안 확인 완료** · 첨부 `figma_payment_disclaimer.png`(id `4770509906`)
   - ⚠️ `collect_node_boxes`는 **`(boxes, origin)` 튜플**을 반환한다(§17 함정 — 그대로 넘기면 `AttributeError`)
   - 검증 — pre/post **exit 0** · 버전 가드 `--expect-version 18` · 라이브 재조회로 **Ⅰ 구간 구 이미지 0건 · Ⅱ·Ⅲ 이미지 참조 보존**(1/3/1) 확인
+- **(이어서) Ⅰ 5개 언어 번역 — 위키 v19→v20 · 게이트 P0 0**
+  - **키 확정(사용자 결정)** — 「유의사항」은 **동일 등록값 2건**(`UF_lockup_caution_title`·`UF_voucher_detail_caution`)이 있어 물었고 **기존 `UF_voucher_detail_caution` 재사용**으로 결정. 본문은 `_contents1`·`_contents2`(`UF_voucher_pay_` 선례 **26건** 실측). **신규는 2키뿐**
+  - **대기 키 대조** — 「유의사항」 위키 CQL 히트 10건은 **전부 제목에 그 단어가 든 무관한 페이지**(노이즈) · contents1·2는 0건
+  - **수동 전수 검토에서 zh 2건 교정** — ⓐ contents1 「**僅**提供給日本用戶」(ko에 없는 한정) → `適用於` ⓑ contents2 「기타 비정상적인 방법」이 「자동화 프로그램」으로 **축소**돼 있었다 → `或其他異常方式`. **자동 검증기는 둘 다 못 잡는다**(P0/P1 0건) — §4 사각지대 실례
+  - th 「매크로」는 음차 단독(`มาโคร`)이 거시경제로 오독될 수 있어 **의미어 + 괄호 병기**
+  - 자동 P1 5건은 **전건 오탐**(용어집 `구매`→Buy · `확인`→check) — 백로그 **#10·#30 기등재**라 새 행을 만들지 않고 재확인만
+  - 검증 — `check_gate_report.py` **exit 0** · pre/post **exit 0** · 버전 가드 `--expect-version 19` · 라이브 재조회 **10/10 셀 게재**
+  - 산출물 — 게이트 리포트를 **Auto-react `b9d1e11`로 사본 커밋**(§15) · 엑셀은 로컬 `xlt/`(gitignore)
 
 ### 2026-09-22 — 세션 #5: Ⅱ·Ⅲ **prod 반영 완료** — beta·prod 동치 복구
 
