@@ -7,10 +7,10 @@
 
 ## 대상 / 링크
 
-- 위키(정본): [4770505327](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770505327) 「**Voucher disclaimer 추가 및 기타 문구 수정**」(제목은 사용자가 3회 변경) — **현재 v18** · 부모 `[Hogeun]` `3910828993`
+- 위키(정본): [4770505327](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770505327) 「**Voucher disclaimer 추가 및 기타 문구 수정**」(제목은 사용자가 3회 변경) — **현재 v19** · 부모 `[Hogeun]` `3910828993`
   - 자식 [4774237088](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4774237088) 「Figma ↔ 등록값 차이 기록 (2026-09-21 실측)」 — **v2** · 27건
 - 리포트: `reports/policy/disclaimer_proposal_2026-09-21.md` (rev.2)
-- Figma: `GOCHAYBS7hIrmWRGNuJOKV` — `72565-17516`(결제페이지) · `72528-4404`(상품권 상세) · `72959-1444`(서비스 안내) · `72193-11353`(My 상품권 상세)
+- Figma: `GOCHAYBS7hIrmWRGNuJOKV` — **`75911-4154`(결제페이지 — ⛔ Ⅰ 확정문 2건이 반영된 최신본 · 375×1273 · 위키 Ⅰ-3의 정본)** · `72565-17516`(결제페이지 구본 — Ⅱ 영역에서만 사용) · `72528-4404`(상품권 상세) · `72959-1444`(서비스 안내) · `72193-11353`(My 상품권 상세)
 - LPC: LV `w5eph4y9qxe05c8fqpi7rlxh` / UIT `lkyusnekq1vv9759rbnwgamh` (prod) — 정의 위키 `4727978725`
 - XLT: **Unifi / WEB BROWSER** · 결제 화면은 **UIT**(`UF_` · `{{0}}`)
 - 게이트 리포트: `reports/gate/gate_report_cashback_disclaimer_2026-09-22.md` — Ⅱ·Ⅲ **P0 0 통과** · `check_gate_report.py` exit 0. ⚠️ **`reports/gate/`는 이 저장소에서 gitignore** — 로컬에만 있다(다른 PC로 넘기려면 별도 조치)
@@ -19,7 +19,7 @@
 
 ## 현재 상태
 
-문서는 **위키 `4770505327` v18**에 정본이 있다(템플릿 레이아웃 — 목차·History·Related Docs + 본문 3영역을 **제목1로 분리**). 자식 `4774237088` v2는 Figma ↔ 등록값 차이 27건.
+문서는 **위키 `4770505327` v19**에 정본이 있다(템플릿 레이아웃 — 목차·History·Related Docs + 본문 3영역을 **제목1로 분리**). 자식 `4774237088` v2는 Figma ↔ 등록값 차이 27건.
 
 | 영역 | 내용 | 상태 |
 |---|---|---|
@@ -49,7 +49,7 @@
 
 - [x] ~~🔴 P0 — 리스크팀 검토(Ⅰ만)~~ → **완료(2026-09-23 · `LNS-1622`)**. 확정문 2건 + 결제페이지 단독
 - [ ] 🔴 **P0 — Ⅰ 5개 언어 번역 + 게이트**: 리스크팀 확정 ko 2건이 원문. ⛔ ko는 고치지 않는다(게이트 1단계 「원문 교정」 적용 제외 — 리스크팀 정본)
-- [ ] 🔴 **P0 — Ⅰ XLT 키 확정**: `UF_voucher_pay_caution_title`·`_contents1~2`(UIT). ⛔ 등록 전 `fetch_xlt_registry.py --similar` + `check_pending_keys.py --wiki` 둘 다
+- [ ] 🔴 **P0 — Ⅰ XLT 키 확정**: `UF_voucher_pay_caution_title`·`_contents1~2`(UIT · **제안값** — Figma `xlt` 마커 3건과 1:1 · 위키 Ⅰ-3 표에 게재). ⛔ 등록 전 `fetch_xlt_registry.py --similar` + `check_pending_keys.py --wiki` 둘 다
 - [ ] **P1 — A-1 「본 상품」 적용 범위 확인(기획·리스크팀)**: 확정문이 바우처 한정을 풀었고 `payment_common_info`는 **결제 공통**이라 클리닉 등 타 상품 결제에도 노출된다. 캐시백 없는 상품에 「캐시백 혜택은…」이 떠도 되는지 (위키 5번 3-1항)
 - [ ] 🔴 **P0 — XLT `UF_voucher_pay_step4` 업로드(사용자)**: `xlt/xlt_cashback_timing_unifi_*.xlsx`(Unifi 1키 × 5개 언어). ⚠️ **`xlt/`는 gitignore이고 2026-09-22 사용자가 폴더를 비웠다** — 필요하면 `newvals.py`의 `B2`로 재생성한다
 - [ ] 🔴 **P0 — 구매 수량 한도 신설 여부(기획·BE·리스크팀)**: 상품권에는 **1인당 구매 한도가 없다**(100엔딜만 1인 1점). 막으려는 것이 **대량 구매 후 재판매·현금화**라면 **한도가 실질 방어선**이고 A-2는 사후 근거일 뿐이다. 「대량」 판정 내부 기준도 맞춰야 한다(⛔ 문구에는 쓰지 않는다)
@@ -98,6 +98,12 @@
 - ⚠️ **새 확인 사항** — 확정문이 「본 **상품**」이라 바우처 한정이 풀렸고, 노출 지점 `payment_common_info`는 **결제 공통**이다 → 클리닉 등 타 상품 결제에도 함께 노출된다(위키 5번 **3-1항** · 기획·리스크팀 확인)
 - 검증 — XHTML ElementTree 파싱 OK · `check_wiki_storage.py` **pre/post exit 0** · 버전 가드 `--expect-version 17` 통과 · 라이브 재조회로 **확정문 2건 일치·구 문구 소멸** 확인
 - 번역 게이트는 **미해당**(번역 산출물 없음 — ko 원문만 게재). Ⅰ 5개 언어 번역 시 수행한다
+- **(이어서) Ⅰ-3 노출 화면 교체 — 위키 v18→v19**: 사용자 지시로 **확정문이 실제 반영된 신규 프레임 `75911-4154`**(375×1273)로 교체했다
+  - 표를 **`구분 | Screen | Description` 3열**로 정정(종전 「전체 화면 ↔ 실제 반영할 영역」) · **전체 화면 이미지 제거** · **철회된 상품권 상세 행 삭제**(사용자 지시)
+  - Figma 코멘트는 **순수 `xlt` 마커 3건뿐**(정책 0건) → 규칙대로 Description 본문에 쓰지 않고 **XLT 표 `No`**로 게재. 좌표 매칭 1:1 — ①「유의사항」 ②A-1 ③A-2 → `UF_voucher_pay_caution_title`·`_contents1`·`_contents2`(**제안값**)
+  - 어노테이션 **파랑**(xlt) · 매칭 텍스트 좌측 10pt · `overlaps: []` · **렌더 육안 확인 완료** · 첨부 `figma_payment_disclaimer.png`(id `4770509906`)
+  - ⚠️ `collect_node_boxes`는 **`(boxes, origin)` 튜플**을 반환한다(§17 함정 — 그대로 넘기면 `AttributeError`)
+  - 검증 — pre/post **exit 0** · 버전 가드 `--expect-version 18` · 라이브 재조회로 **Ⅰ 구간 구 이미지 0건 · Ⅱ·Ⅲ 이미지 참조 보존**(1/3/1) 확인
 
 ### 2026-09-22 — 세션 #5: Ⅱ·Ⅲ **prod 반영 완료** — beta·prod 동치 복구
 
