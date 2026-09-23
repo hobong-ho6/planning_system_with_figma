@@ -10,7 +10,7 @@
   - 회의록 Google Docs `1pK9_rLcFU9fZg1saBfpAQaroYXP9BhP98Slc3qC9rDo` (2026-09-22 13:54 JST · Gemini 자동)
   - **GuideKim 테스트 DB 덤프** `~/Downloads/dump-20260922-154221.zip` — ⚠️ **git 미추적 · 로컬 전용**(59MB · 개인정보 포함 → 저장소에 넣지 않는다)
 - GuideKim 어드민 `https://guidekim.me/admin` (Chrome 로그인 세션 필요 · 메뉴 34개) · 파트너 API 문서 `/admin/api/unifi`
-- 인접 프로젝트: [unifi-mini-v2](unifi-mini-v2.md)(v2.0 스펙 · 상태값·LPC) · [100yen-deal](100yen-deal.md)(로스 부담 대상 프로모션) · 위키 `4770508162`(SK플래닛 서버 이관 2026-10-13)
+- 인접 프로젝트: [unifi-mini-v2](unifi-mini-v2.md)(v2.0 스펙 · 상태값·LPC) · [100yen-deal](100yen-deal.md)(로스 부담 대상 프로모션) · [sk-gifticon-migration](sk-gifticon-migration.md)(SK플래닛 서버 이관 2026-10-13 · 위키 `4770508162`)
 - XLT·게이트 리포트: **아직 없음**(번역 과업 미발생)
 
 ## 현재 상태
