@@ -24,7 +24,7 @@
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` 예약 OA 16화면 | 09-16 | beta 16건 등록 · ⚠️ hero·버튼 URL 임시값 · ko만(번역 미착수) |
 | [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` — Screen 3화면 + OA 2종 | 09-16 | 위키 v26 · XLT 26키 전건 등록 · 🔴 「더보기」 landing URL 미확정 · 공유 툴팁 하드코딩 |
 | [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327`(+`4774237088`) — 전 바우처 | 09-23 | Ⅰ **리스크팀 검토 완료**(`LNS-1622` · 확정문 2건 ⛔수정금지 · **결제페이지 단독**) · 위키 **v21** — 5개 언어 확정(P0 0) · **XLT 전건 등록 완료** · ⛔ **결제페이지는 XLT 단독**(LPC 미사용) → 남은 건 **FE 구현** · Ⅱ·Ⅲ LPC 반영 완료(남은 건 XLT 업로드 1키) · 🔴 구매 수량 한도 부재 |
-| [guidekim-insourcing](handoff/projects/guidekim-insourcing.md) | `hogeun` | 위키 `4770510177` + 하위 6 — 어포메이션 계약 종료 대응 | 09-29 | 본문 v11 · ✅ **대장 첫 장 = Phase 1 릴리즈 체크리스트 64건**(약관 13 포함) · 🎯 ① 바우처+포인트(10/20) ② Unifi Pay · 🔁 **WAUG는 어포메이션 경유 유지**(09-29 번복) · 🔴 클리닉 미정 · 🔴 **Corp↔Inc 계약이 최대 리스크** |
+| [guidekim-insourcing](handoff/projects/guidekim-insourcing.md) | `hogeun` | 위키 `4770510177` + 하위 6 — 어포메이션 계약 종료 대응 | 09-29 | 본문 v12 · ✅ **대장 첫 장 = Phase 1 릴리즈 체크리스트 69건**(약관 13 · My 7 포함) · 🎯 ① 바우처+포인트+My 페이지(10/20) ② Unifi Pay · 🔁 **WAUG는 어포메이션 경유 유지**(09-29 번복) · 🔴 클리닉 미정 · 🔴 **Corp↔Inc 계약이 최대 리스크** |
 | [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · 3화면 | 09-22 | 위키 v6 · XLT 7키 전건 등록 · LPC 관리 영역(`shopping_guide`/`guide_page`) 반영 · ⛔ 결제 바텀시트 두 벌 키는 「유지」로 종결(09-21) |
 | [sk-gifticon-migration](handoff/projects/sk-gifticon-migration.md) | `hogeun` | 위키 `4770508162` — SK 기프티콘 서버 이관(10/13) 고지 | 09-29 | 위키 v45 · 배너 LPC·OA 3종·공지사항 5개 언어 완료 · 📅 공지 10/6 10:00 · ⏳ 일본어 현지인 검토(`4791580600`)·OA 히어로·배너 URL 교체·GuideKim 사후 구제 협의 |
 
