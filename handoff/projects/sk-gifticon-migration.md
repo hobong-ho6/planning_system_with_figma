@@ -1,22 +1,22 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v28**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v29**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST · 8시간)** 의 Unifi 영향 범위 확정과 **사용자 고지 방안**(공지사항·앱푸시·OA·화면 배너). ⛔ 문구는 **ko 초안 단계**이고 다국어 번역은 미착수다.
 
 ## 대상 / 링크
 
-- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v28** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
+- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v29** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - 첨부 **5건**(전부 본문 참조): `annotated_75999-3299.png`(① 어노테이션) · `annotated_75999-3298.png`(② 어노테이션) · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 — **v2**, 버튼 URL 반영·OA-3 버튼 제거). 미참조 6건은 **삭제**(2026-09-29)
 - OA Flex JSON(ko_KR): 위키 5-4 **펼치기 행**에 게재 · 로컬 `flex_{프레임}_ko_KR.json`(세션 스크래치 — 저장소 미커밋)
-- LPC: LV **`maintenance_banner`**(2026-09-29 신설 · **beta만** · 다건 · `postId=1` · `contents.title`+`on_off` · ⚠️ `primaryLocale=en_US`) · `category_promotion_banner`(기존) — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 정의 위키 [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §3-6
+- LPC: LV **`maintenance_banner`**(2026-09-29 신설 · **beta·prod 둘 다** · 다건 · `postId=1` · `contents.title`+`on_off` · ⚠️ `primaryLocale=en_US` · **5개 언어 반영 완료·동치**) · `category_promotion_banner`(기존) — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 정의 위키 [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §3-6
 - 관련: [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725)(LPC 관리 영역) · `4155694391`(Apps Market 점검 공지 — 사내 선례) · [cashback-disclaimer](cashback-disclaimer.md)(상품권 공통 고지 문구)
 - 공문: SK플래닛 기프티콘 메일 2026-09-22 접수 — 위키 §1-1에 전문 전재
 - 게이트 리포트: **`reports/gate/gate_report_20260929_maintenance_banner_5lang.md`**(배너 문구 5개 언어 · P0 0 · `check_gate_report.py` exit 0). ⚠️ `reports/gate/`는 gitignore — **로컬에만 있다**
 
 ## 현재 상태
 
-**위키 v28에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
+**위키 v29에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
 
 - **영향 범위(실측 확정)** — Landpress 공개 API로 대조: UIT `k_pick_shopping_product` **8건** · LV `voucher_product` **4건**, **전 상품 `published:true` + 전 상품 `uid`가 `bizcon-`** → **판매 중인 상품권 전 상품이 영향권**. 구매(발급)·환불은 4브랜드 전부 불가, **올리브영은 사용까지 불가**(8건 중 5건이 올리브영). CU·이마트24·다이소는 외부핀이라 보유분 사용 가능
 - **고지 채널 4종** — 공지사항(Announcement)+앱푸시 · OA 3종 · 화면 배너 · (차단) 상세 하단 CTA 비활성. ko 초안까지 작성
@@ -29,11 +29,13 @@
 
 ## 다음 할 일
 
+- [ ] 🔴 **P0 — prod `on_off`를 `false`로 내릴지 결정**: 지금 **`true`**다. D-Day는 10/13인데, FE가 이 필드를 읽기 시작하면 **실서비스에 점검 배너가 뜨고 구매 버튼이 비활성**된다. FE 구현 전까지 `false` 권장(beta는 검증용 `true`가 의도)
+
 - [ ] 🔴 **P0 — 「6. 확인 필요」 섹션이 페이지에 없다**: 사용자가 삭제했고(2026-09-23 확인) v9에서 잔여 참조 19곳을 정리했다. 오픈 이슈(법무·BE·CS 확인 항목 ①~⑭)를 **어디서 관리할지** 결정 필요 — 별도 페이지 / Jira / 재신설
 - [x] ~~🔴 P0 — 신규 컬렉션 `maintenance_banner` 생성~~ → **beta 완료(2026-09-29 사용자)**. 다건(LIST) · `uid` 없이 `postId=1` 1건 · 5개 로케일 `published:true` · 필드 `contents.title`+`on_off` — API 실측 확인
-- [ ] 🔴 **P0 — prod 생성·등록**: `maintenance_banner`가 **prod에 없다**(`404 NOT_FOUND_COLLECTION`). beta와 같은 작업 안에서 맞춰야 한다(환경 동치)
+- [x] ~~🔴 P0 — prod 생성·등록~~ → **완료(2026-09-29)**. 사용자가 컬렉션 생성, 5개 언어 문구는 Claude가 반영 — **beta ↔ prod 동치** 확인
 - [x] ~~🔴 P0 — beta `on_off`가 `true`~~ → **의도된 값(2026-09-29 사용자 확인)**. beta는 켜 둔 상태로 검증한다
-- [ ] 🔴 **P0 — beta LPC에 4개 언어 반영(사용자 실행 대기)**: 번역·게이트 **완료**(P0 0). CMS는 세션 로그인이 필요해 Claude가 직접 쓸 수 없다(`roles/my` 401) → **`lpc_safe_put.js` 기반 실행 스크립트를 전달**했다. 실행 후 ⓐ 공개 API 재조회 ⓑ `check_lpc_nulls.py` exit 0 확인 필요. `ko_KR`은 이미 정본값이라 대상 제외
+- [x] ~~🔴 P0 — LPC 4개 언어 반영~~ → **완료(2026-09-29)**. 사용자 Chrome 세션으로 `lpc_safe_put.js` 안전 쓰기 **8건 전건 성공**(beta 4 + prod 4) · 쓰기 전후 `check_lpc_nulls.py` exit 0 · 공개 API 재조회 10셀 확인. ~~(구 항목)~~
 - [ ] ⚠️ **P1 — `primaryLocale`이 `en_US`**: 같은 beta의 `category_promotion_banner`는 `ko_KR`이다 — `?locale=` 없이 조회하면 **영어 행**이 돌아온다(조회 코드 주의)
 - [ ] 🔴 **P0 — D-7 사전 배너 불가**: 스위치가 1개라 켜면 **구매 차단이 함께 시작**된다 → 배너는 D-Day 00:00부터만. 5-1·5-7의 「배너 D-7 노출 개시」와 **충돌**한다 — 스위치를 하나 더 두거나 그 구간 고지를 공지사항·앱푸시·OA에 맡길지 결정 필요
 - [x] ~~P1 — 배너 문구 정본 확정~~ → **확정(2026-09-29 사용자)**. `[시스템 점검]` 말머리를 **빼고** ①·② Description을 LPC 실등록값과 동일하게 맞췄다
@@ -55,6 +57,7 @@
 
 | 날짜 | 결정 | 근거 |
 |---|---|---|
+| 2026-09-29 | **LPC 쓰기는 사용자 Chrome 세션으로 Claude가 직접 수행** | CMS는 Okta SSO 세션이 필요해 내장 브라우저·curl은 401이다. **Claude in Chrome**에서 `roles/my` 200(ADMIN) 확인 후 `lpc_safe_put.js` 로직을 그대로 실행했다 — 8건 전건 성공 |
 | 2026-09-29 | **배너 문구 5개 언어 확정** — 게이트 P0 0 | 용어집 v5.6(`상품권`·`구매`) + 등록값 실측(`환불` 29키: ja `返金` 21 / en `refund` 29 / th `คืนเงิน` 26 / zh `退款` 28). 시각은 **JST 기준 그대로**(Unifi mini는 일본 사용자 대상) — 현지 환산 필요 시 재작업 |
 | 2026-09-29 | **고지 문안 정본은 표성만님 수정안**(위키 코멘트 2026-09-28) | 5-3 공지사항 + OA-1·2·3 전문을 교체. 원 코멘트의 **빨간 강조**를 그대로 살렸다. ⛔ 단 **OA-3 버튼은 제거 유지** — 표성만님 안에는 「상품권 보러 가기」가 있으나 **2026-09-29 사용자 결정이 우선** |
 | 2026-09-29 | **배너 문구에서 `[시스템 점검]` 말머리 제거** | 사용자 결정. LPC 실등록값·Figma 시안과 일치시켰다 |
@@ -106,21 +109,7 @@
 - **(이어서) 배너 문구 5개 언어 번역 — 게이트 통과(P0 0)**. 자동 검증 P1 1건은 **오탐**(용어집 `구매`=`Buy`는 버튼 라벨 매핑 — 이 문장은 명사구라 `purchases`가 정확 · 백로그 #10 기등재). 수동 전수 검토 5셀 · 문자체계 혼입 0 · `check_gate_report.py` exit 0
 - ⛔ **LPC 쓰기는 Claude가 못 한다** — CMS 세션 쿠키가 필요해 `roles/my`가 401이다. `lpc_safe_put.js` 기반 스크립트를 만들어 전달했고 **사용자 실행 대기**
 - ⚠️ **(d-1) 용어집 보완 「환불」 등재 보류** — `md/glossary-backlog.md`에 **다른 세션의 미커밋 변경**이 있어 손대지 않았다(§15). 근거는 게이트 리포트에 남아 있다
-- ⚠️ **(d-2) 사용자 확인 사항** — ⓐ 시각을 JST 기준 그대로 둘지(TW 실제 23:00~07:00 · TH 전일 22:00~06:00) ⓑ 배너 길이(en 85자·th 82자 = ko의 2배) 실기기 말줄임 확인
-
-### 2026-09-23 — 세션 #1: 5-5 LPC 사양 보강 · 셀 병합 · My 제외 (위키 v7→**v9**)
-
-- **v8** — 5-5 ①의 LPC 사양을 `4727978725` §3-6과 대조해 보강(컬렉션·프로젝트 ID·`contents.title`/`on_off`·`feature_flags` 폐기·전체 교체 PUT 주의)하고, ①·② 구현 메모를 `rowspan="2"`로 병합. 현재 배너 등록값은 **공개 API로 실측**(캐시 금지 규칙)
-- **v9** — My 제외 반영(4곳) · 삭제된 6절 참조 **19곳** 정리 · **v8에서 내가 낸 오기 수정**(History `<tbody>` 안에 `<h1>Related Docs</h1>`가 들어갔다)
-- ⚠️ **교훈**: `old.replace('</tr></tbody></table>','</tr>')` 식으로 **꼬리 태그가 붙은 앵커 문자열을 부분 치환**하면 앵커에 포함된 다음 블록(`<h1>`)이 그대로 남아 중복된다. `check_wiki_storage.py` pre/post와 XHTML 파싱은 **둘 다 통과**했다 — 표 안에 제목이 들어가도 XML로는 유효하기 때문. **삽입 후 `<h1>` 개수 같은 구조 카운트를 직접 확인**해야 잡힌다
-- 검증 — pre/post **exit 0**(2회) · 버전 가드 `--expect-version 7`·`8` 통과 · 라이브 재조회로 표 구조(헤더4/①4셀 rowspan=2/②3셀/③4셀)·My 잔여·`h1` 5개 확인
-- **v10** — 올리브영 안내를 **OA 보충으로 확정**(5-1 D-Day 주석 · 5-1/5-4 OA-2 역할 명시) · 영향 판정 **🟡→🟢** · §2 사용처와 5-3·5-4 문안의 「매장·온라인몰」을 **실등록값에 맞춰 정정**
-- 🔴 **실측이 판단을 바꿨다** — 「온라인몰은 24시간이라 심야 사용 실패 우려」가 §3에 남아 있었으나, LPC prod 재조회 결과 올리브영 사용처에 **온라인몰이 없다**(cashback-disclaimer Ⅲ 반영분). 문서 안의 낡은 전제를 원본 재조회로 걷어낸 사례
-- **v11** — OA-2 발송일 **10/9(금) D-4로 통일**(5-1·5-4) · 5-7의 토요일 경고를 확정문으로 교체 · 미참조 첨부 `notice_area_my_main.png` **삭제**(7→6건 · 삭제 전 로컬 사본 확보)
-- **v13** — 5-5 ③에 **구조 제안 신설**(XLT 2키 + LPC `maintenance_notice`) · ①·② 병합 셀에 **② 브랜드 분기 소멸** 반영. 키스페이스·치환자는 **등록값 실측 근거**를 붙였다(`mini_voucher_detail_*` 20건 Dapp Portal 전용·Unifi 0건 / Dapp Portal `{0}` 193건 ↔ `{{0}}` 2건)
-- ⚠️ **커밋 사고** — `git add` 후 `git commit`이 **다른 세션이 스테이징한 `handoff/projects/guidekim-insourcing.md`를 함께 커밋**했다(`d54dda6`). 손실은 없고 되돌리지 않았다. **이후로는 `git commit -- <경로>`로 인덱스를 우회**한다
-- **v14** — 사용자 결정으로 **구조 확정**: LPC 단일 컬렉션 `maintenance_notice` · **필드 1개 `notice`** 로 ①·②·③ 통합. XLT 신규 2키 제안 **철회** · `schedule` 필드 **제거**(LPC 예약 공개로 대체) · 5-5 구현 메모를 **3행 병합**(`rowspan="3"`) · 운영 상태 2단계 표 추가
-- **v15** — 구조 **재작성**: 신규 컬렉션안 철회, 기존 `category_promotion_banner`에 `maintenance` + `maintenance_on_off` **2필드 추가**. On/Off 위치는 **별도 필드**로 결정(근거 3건 + `on_off` 로케일 5벌 실측) · ① 은 문구 복사 운용 · 운영 순서 4단계 표 추가
-- ⚠️ **설계 부작용을 명시** — 스위치가 하나라 ② 배너를 D-7에 켜면 구매도 함께 막힌다 → ②는 D-Day 00:00부터만 노출. 사전 고지가 필요하면 스위치 분리(P0)
-- **v16** — **스위치 2개 분리 확정**(`maintenance_banner_on_off` / `maintenance_buy_block_on_off`) · 운영 순서 4단계 재작성 · ② 가 **사전 고지 역할 회복**해 5-1·5-7의 「배너 D-7 개시」와 정합 일치. 구 필드명 잔재 0
-- 번역 게이트 **미해당** — ko 초안 단계이고 5-3·5-4 문안 수정은 **사실 정정**(다국어 산출물 없음). 번역 착수 시 전체 문안 대상으로 수행한다
+- **(이어서) LPC beta·prod 반영 완료** — `lpc_safe_put.js` 안전 쓰기(read-modify-write + 건별 재조회 대조) **8/8 성공** · `check_lpc_nulls.py` 쓰기 **직전·직후 exit 0** · 공개 API 재조회 **10셀 전건 일치 · beta↔prod 동치**
+- 🔴 **prod `on_off`가 `true`** — FE 구현 시 즉시 노출된다. 위키·핸드오프에 P0로 등재
+- 💡 **실측 — `landpress-content-v2`는 Claude in Chrome으로 접근된다**(핸드오프의 「사내 도메인 차단」은 `unifi-web`·`dropweb` 한정). 내장 브라우저는 Okta 로그인 벽에 막힌다
+- ⚠️ **(d-2) 사용자 확인 사항**
