@@ -1,12 +1,12 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v32**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v33**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST · 8시간)** 의 Unifi 영향 범위 확정과 **사용자 고지 방안**(공지사항·앱푸시·OA·화면 배너). ⛔ 문구는 **ko 초안 단계**이고 다국어 번역은 미착수다.
 
 ## 대상 / 링크
 
-- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v32** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
+- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v33** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - 첨부 **5건**(전부 본문 참조): `annotated_75999-3299.png`(① 어노테이션) · `annotated_75999-3298.png`(② 어노테이션) · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 — **v2**, 버튼 URL 반영·OA-3 버튼 제거). 미참조 6건은 **삭제**(2026-09-29)
 - OA Flex JSON(ko_KR): 위키 5-4 **펼치기 행**에 게재 · 로컬 `flex_{프레임}_ko_KR.json`(세션 스크래치 — 저장소 미커밋)
 - LPC: LV **`maintenance_banner`**(2026-09-29 신설 · **beta·prod 둘 다** · 다건 · `postId=1` · `contents.title` + **`on_off`(배너)** + **`buy_block_on_off`(구매 차단)** · ⚠️ `primaryLocale=en_US` · **5개 언어 반영 완료·동치** · `on_off` beta `true`/prod `false` · `buy_block_on_off` beta `true`/prod `false`) · `category_promotion_banner`(기존) — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 정의 위키 [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §3-6
@@ -16,7 +16,7 @@
 
 ## 현재 상태
 
-**위키 v32에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
+**위키 v33에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
 
 - **영향 범위(실측 확정)** — Landpress 공개 API로 대조: UIT `k_pick_shopping_product` **8건** · LV `voucher_product` **4건**, **전 상품 `published:true` + 전 상품 `uid`가 `bizcon-`** → **판매 중인 상품권 전 상품이 영향권**. 구매(발급)·환불은 4브랜드 전부 불가, **올리브영은 사용까지 불가**(8건 중 5건이 올리브영). CU·이마트24·다이소는 외부핀이라 보유분 사용 가능
 - **고지 채널 4종** — 공지사항(Announcement)+앱푸시 · OA 3종 · 화면 배너 · (차단) 상세 하단 CTA 비활성. ko 초안까지 작성
@@ -28,6 +28,8 @@
 없음.
 
 ## 다음 할 일
+
+- [ ] 🔴 **P0 — OA 3종 Landpress(`oam_message_task_multi`) beta·prod 생성 + LIAM HUB Event Message 등록 — ⛔ 차단됨(2026-09-29)**: 항목 생성 `POST …/items?locale=ko_KR`이 **Claude Code 자동 승인 모드 분류기에 거부**됐다(§1 경고 그대로). 우회하지 않았다. 중복 없음 확인(beta 53·prod 325건 전수) · 스키마 확인(postId 217) · 페이로드 3종 준비 완료 — 제목 「상품권 점검 OA-1 사전 공지 (D-7)」·「OA-2 보유자 안내 (D-4)」·「OA-3 시간 연장 안내 (조건부)」 · ko_KR만 · hero 임시. 재개 방법: ⓐ 사용자가 권한 모드를 바꾸거나 허용 ⓑ 사용자가 CMS에서 직접 생성 후 postId 전달 → Claude가 GET 확인·LIAM 진행. LIAM은 **isActive 해제**로 생성 예정(히어로 임시·다국어 미착수 = 미완성 문구 · `md/OA.md` 규칙)
 
 - [x] ~~🔴 P0 — prod `on_off`~~ → **`false`로 내렸다(2026-09-29)**. 5개 로케일 전건 · 안전 쓰기 5/5 · `check_lpc_nulls.py` exit 0. beta는 검증용 `true` 유지 — **D-Day에 prod를 `true`로 올리는 것이 운영 시작점**
 
@@ -120,6 +122,8 @@
 - ⛔ **실측 — 스키마는 API로 못 바꾼다**: `PUT /api/v1/projects/{pid}/collections/{name}`에 `fields`를 추가해 보내면 **200이지만 `fields`는 무시**된다(메타만 갱신 · 응답 `fields: []`). 스키마·데이터 **손상 없음을 즉시 재조회로 확인**했다. 필드 추가는 **빌더 UI**(`/projects/{pid}/builder/collections/{name}` → 「필드 추가」)로만 가능
 - ⚠️ **실측 — 신규 필드는 기존 item에서 `null`로 시작**한다(`isNull:false`여도). 추가 직후 **전 로케일에 값을 써야** `check_lpc_nulls`가 통과한다
 - **(이어서) v32** — beta `buy_block_on_off`를 **`true`**로 변경(5개 로케일 · 검증용 · 사용자 지시 · 안전 쓰기 5/5 · `check_lpc_nulls` exit 0). prod는 `false` 유지. ② 정책 2건에 **확인 필드 명시**(1. `on_off` + `contents.title` · 2. `buy_block_on_off`)
+- **(이어서) v33** — ① 정책에 확인 필드 명시(`maintenance_banner.on_off` · `buy_block_on_off`는 카테고리와 무관)
+- ⛔ **OA Landpress 생성 차단** — `POST oam_message_task_multi/items`가 자동 승인 모드 분류기에 거부됐다. **같은 세션의 기존 항목 PUT은 통과했고 신규 생성 POST만 막혔다**(실측). LIAM 등록도 postId가 필요해 함께 대기
 - **(d-1) 「환불」 용어집 백로그 #35 등재 완료**(사용자 지시 2026-09-29) — ⚠️ 커밋 `74efe75`에 **다른 세션의 #33·#34**(2026-09-23 미커밋분)가 함께 들어갔다. 6일 묵은 변경이라 유실 방지 겸 함께 커밋했다
 - **(이어서) LPC beta·prod 반영 완료** — `lpc_safe_put.js` 안전 쓰기(read-modify-write + 건별 재조회 대조) **8/8 성공** · `check_lpc_nulls.py` 쓰기 **직전·직후 exit 0** · 공개 API 재조회 **10셀 전건 일치 · beta↔prod 동치**
 - 🔴 **prod `on_off`가 `true`** — FE 구현 시 즉시 노출된다. 위키·핸드오프에 P0로 등재
