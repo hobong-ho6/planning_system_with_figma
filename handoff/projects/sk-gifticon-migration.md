@@ -1,12 +1,12 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 마지막 커밋 `d8356af` · 위키 **v37**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 마지막 커밋 `d8356af` · 위키 **v38**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST=JST · 8시간)** 의 Unifi 영향 확정과 **사용자 고지**(공지사항·앱푸시·OA·화면 배너·구매 차단).
 
 ## 대상 / 링크
 
-- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **v37** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
+- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **v38** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - Figma `GOCHAYBS7hIrmWRGNuJOKV` — **`75999-3299`**(카테고리 점검 시안 · ① 정본) · **`75999-3298`**(바우처 상세 점검 시안 · ② 정본)
 - 첨부 **5건**(전부 본문 참조): `annotated_75999-3299.png` · `annotated_75999-3298.png` · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 **v4** · 히어로 임시)
 - **LPC `maintenance_banner`**(LV · beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 다건 · `postId=1` · ⚠️ `primaryLocale=en_US`)
@@ -17,7 +17,7 @@
   | | Title | beta postId / messageId | prod postId / messageId |
   |---|---|---|---|
   | OA-1 (D-7 10/6) | 상품권 점검 OA-1 사전 공지 (D-7) | `244` / `N6abb47c2e2e22156952d50ed` | `2026` / `N6abb49089af6303f1a2104a1` |
-  | OA-2 (D-1 10/12) | 상품권 점검 OA-2 보유자 안내 (D-4) | `245` / `N6abb47e8896fa02756cbd19c` | `2027` / `N6abb495d8b43b853bdb6e3fe` |
+  | OA-2 (D-1 10/12) | 상품권 점검 OA-2 보유자 안내 (D-1) | `245` / `N6abb47e8896fa02756cbd19c` | `2027` / `N6abb495d8b43b853bdb6e3fe` |
   | OA-3 (조건부) | 상품권 점검 OA-3 시간 연장 안내 (조건부) | `246` / `N6abb4806896fa02756cbd19d` | `2028` / `N6abb497c9af6303f1a2104a2` |
 
   LIAM 채널 beta `Unifi Beta OA (2010418473)` · prod `Dapp Portal (2006670905)` · OA-2 placeholder `product_order_detail_url`
@@ -74,7 +74,7 @@
 
 ## 세션 기록 (최신 위, 최대 5개)
 
-### 2026-09-29 — 세션 #2: 화면 고지 확정 · LPC `maintenance_banner` · OA 3종 5개 언어 등록 (위키 v17→**v37**)
+### 2026-09-29 — 세션 #2: 화면 고지 확정 · LPC `maintenance_banner` · OA 3종 5개 언어 등록 (위키 v17→**v38**)
 
 - **5-5 화면 고지** — ①·② 행을 Figma `75999-3299`·`75999-3298` 어노테이션으로 교체 + 코멘트 정책·확인 필드 기재. ⚠️ `collect_frames.py`가 **순수 정책을 텍스트 매칭으로 배치**해 전폭 배너 글자를 가렸다 → 핀 기준으로 수동 재렌더
 - **LPC** — 사용자가 `maintenance_banner` 생성(beta·prod) → Claude가 배너 문구 5개 언어(게이트 통과) 반영 · prod 스위치 false · **`buy_block_on_off`는 빌더 UI로 Claude가 추가**(⛔ 스키마 PUT은 200이지만 `fields`를 무시한다 — 손상 없음 즉시 확인) · 신규 필드는 기존 item에서 `null`로 시작 → 전 로케일에 값 기록 · `check_lpc_nulls.py` 직전·직후 exit 0
@@ -83,7 +83,7 @@
 - ⚠️ **실측 — LIAM prod**: 허브 iframe에서 신규·편집 화면이 빈 채로 멈춤 → 내부 앱 `313-dapp-portal-admin.hub.linecorp.com` 직접 · 딥링크는 Policy Error → 루트 진입 후 `pushState` 내부 라우팅 · 다국어 반영은 LOAD MESSAGE → UPDATE(`md/OA.md`)
 - ⚠️ **실측 — CMS 쓰기는 Claude in Chrome(사용자 세션)으로 된다**. 내장 브라우저·curl은 Okta에 막힌다. 신규 생성 `POST`는 자동 승인 모드 분류기에 한 번 막혔고 사용자 허용 후 진행
 - 위키 정리 — 미참조 첨부 6건 삭제(백업 후 · 첨부 갱신은 `/{pageId}/child/attachment/{attId}/data`) · 배너 문구 통일 · OA 표에 postId·messageId · 등록 현황·읽기 API·운영 순서
-- OA-2 발송일 10/9→**10/12** 변경(한글날 휴무 · 사용자 결정) — Landpress·LIAM 내부 제목은 아직 「(D-4)」
+- OA-2 발송일 10/9→**10/12** 변경(한글날 휴무 · 사용자 결정) — Landpress 10행·LIAM 2건 제목도 「(D-1)」로 교체(위키 v38 · `check_lpc_nulls` 전후 exit 0)
 - 규칙 — `md/OA.md` **LIAM 항상 isActive Yes**(종전 「미완성이면 No」 폐기) · 로케일 추가 절차 · 용어집 백로그 #35 `환불`·#36 `종료` · 가이드 대기 #2
 - ⚠️ 커밋 `74efe75`에 다른 세션의 백로그 #33·#34(09-23 미커밋분)가 함께 들어갔다(유실 방지 겸)
 
