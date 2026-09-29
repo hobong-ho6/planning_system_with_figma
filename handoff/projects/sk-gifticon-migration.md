@@ -1,16 +1,16 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 마지막 커밋 `39701e6` · 위키 **v45**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 마지막 커밋 `39701e6` · 위키 **v46**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST=JST · 8시간)** 의 Unifi 영향 확정과 **사용자 고지**(공지사항·앱푸시·OA·화면 배너·구매 차단).
 
 ## 대상 / 링크
 
-- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **v45** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
+- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **v46** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - Figma `GOCHAYBS7hIrmWRGNuJOKV` — **`75999-3299`**(카테고리 점검 시안 · ① 정본) · **`75999-3298`**(바우처 상세 점검 시안 · ② 정본)
 - 첨부 **5건**(전부 본문 참조): `annotated_75999-3299.png` · `annotated_75999-3298.png` · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 **v4** · 히어로 임시)
 - **LPC `maintenance_banner`**(LV · beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 다건 · `postId=1` · ⚠️ `primaryLocale=en_US`)
-  - 필드: `contents.title`(문구) · `contents.targetUrl`(배너 클릭 이동 · 09-29 추가 · 현재 **샘플 공지 URL** `https://www.unifi.me/announcement/01a088b5-8f62-7ab1-afa9-69f4d9b67b80` · 비면 이동 안 함) · **`on_off`**(① 카테고리·② 상세 배너 노출 · `category_promotion_banner` **대체**) · **`buy_block_on_off`**(「바로 구매하기」 비활성)
+  - 필드: `contents.title`(문구) · `contents.targetUrl`(배너 클릭 이동 · 비면 이동 안 함 · **환경별 값** beta `https://miniapp.line.me/2008994547-GfGUdDxy/announcement/019fd56b-525f-7f30-9a3f-095e7504bb91` / prod `https://miniapp.line.me/unifi/announcement/01a04617-6a3c-78f4-824c-e298d5a511cd`) · **`on_off`**(① 카테고리·② 상세 배너 노출 · `category_promotion_banner` **대체**) · **`buy_block_on_off`**(「바로 구매하기」 비활성)
   - 현재값: beta `on_off=true`·`buy_block=true`(검증용 · 의도) / prod **둘 다 `false`** · 5개 언어 문구 반영·**beta↔prod 동치**
 - **OA 3종**(Landpress `oam_message_task_multi` · **5개 로케일 게시** · LIAM **isActive Yes**)
 
@@ -21,16 +21,16 @@
   | OA-3 (조건부) | 상품권 점검 OA-3 시간 연장 안내 (조건부) | `246` / `N6abb4806896fa02756cbd19d` | `2028` / `N6abb497c9af6303f1a2104a2` |
 
   LIAM 채널 beta `Unifi Beta OA (2010418473)` · prod `Dapp Portal (2006670905)` · OA-2 placeholder `product_order_detail_url`
-- 게이트 리포트(로컬 · gitignore · **사본 Auto-react `reports/gate/` `df94076`**): `reports/gate/gate_report_20260929_sk_notice_5lang.md`(공지 76셀 · 교정 4 · P0 0) · `reports/gate/gate_report_20260929_sk_oa3_5lang.md`(OA 132셀 · 교정 9 · P0 0) · `reports/gate/gate_report_20260929_maintenance_banner_5lang.md`(배너 · P0 0)
+- 게이트 리포트(로컬 · gitignore · **사본 Auto-react `reports/gate/` `df94076`**): `reports/gate/gate_report_20260929_sk_notice_5lang.md`(공지 76셀 · 교정 4 · P0 0) · `…_maintenance_banner_short.md`(단축 4셀 · P0 0 · Auto-react `3744edc`) · `reports/gate/gate_report_20260929_sk_oa3_5lang.md`(OA 132셀 · 교정 9 · P0 0) · `reports/gate/gate_report_20260929_maintenance_banner_5lang.md`(배너 · P0 0)
 - LPC 복구원: `landpress/maintenance_banner/`(10) · `landpress/oam_message_task_multi_sk_gifticon/`(15 — CMS 라이브 해시 일치 확인) → **Auto-react `reports/landpress/` 커밋 `df94076`**
 - 관련: [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725)(LPC 관리 영역) · `4155694391`(Apps Market 점검 공지 선례) · 표성만님 수정안 = 위키 코멘트 `4795141082`(2026-09-28)
 
 ## 현재 상태
 
-**화면 배너·OA는 등록까지 끝났고 FE 분기 기준 전달·OA 발송 운영도 확인됐다(사용자). 오픈 이슈는 전부 정리됐다(해소 4 · 종료 8 · ⑪ BE 담당 · ③ 사후 구제). 남은 것은 일본어 현지인 검토 반영·OA 히어로 수령·GuideKim 사후 구제 협의·배너 URL 교체다.**
+**화면 배너·OA는 등록까지 끝났고 FE 분기 기준 전달·OA 발송 운영도 확인됐다(사용자). 오픈 이슈는 전부 정리됐다(해소 4 · 종료 8 · ⑪ BE 담당 · ③ 사후 구제). 남은 것은 일본어 현지인 검토 반영·OA 히어로 수령·GuideKim 사후 구제 협의·FE 클릭 동작 전달이다.**
 
 - **영향(실측 확정)** — 판매 중인 상품권 **전 상품**(`bizcon-*`)이 영향권. 구매·환불은 4브랜드 전부 불가, 올리브영은 사용까지 불가지만 **점검 시간대 영업 매장이 없고 온라인몰은 사용처가 아니라 실영향 🟢**
-- **문안** — 5-3 공지사항·5-4 OA 3종은 **표성만님 수정안**이 정본(빨간 강조 유지). 배너 문구 「10월 13일 00:00 ~ 08:00 상품권 구매·환불이 일시 중단됩니다.」(`[시스템 점검]` 말머리 없음 · 4개 브랜드 동일)
+- **문안** — 5-3 공지사항·5-4 OA 3종은 **표성만님 수정안**이 정본(빨간 강조 유지). 배너 문구 「**10/13 00:00~08:00 상품권 구매·환불 일시 중단**」(09-29 단축 · 이전 「10월 13일 … 일시 중단됩니다.」)(`[시스템 점검]` 말머리 없음 · 4개 브랜드 동일)
 - **화면 고지(5-5)** — ① 카테고리 · ② 바우처 상세 상단 배너(구매 버튼 비활성 포함). 각 행에 Figma 어노테이션·코멘트 정책·**확인 필드** 명시. 구현 메모는 rowspan=2로 병합(3필드·등록 표·읽기 API·5개 언어 문구·운영 4단계). My는 제외
 - **OA** — 5개 언어 번역(게이트 통과) · Landpress 30행 게시 · LIAM 6건 Active. 히어로는 **임시**(840×570 · 28:19)
 - **공지사항(5-3)** — **5개 언어 완료**(09-29 · 게이트 P0 0 · 교정 4) · 📅 **게시 2026-10-06(화) 10:00**(앱푸시 동반) · 일본어는 검토 페이지 5·6절에 추가
@@ -43,13 +43,12 @@
 
 ## 다음 할 일
 
-- [ ] 🟡 **P1 — 배너 `targetUrl` 실제 공지 URL로 교체**: 지금은 샘플 공지사항 URL(사용자 제공 · 「나중에 변경」). 정해지면 5로케일 × beta·prod 10행을 `lpc_safe_put`으로(문구·스위치 보존) + 위키 5-5 등록 현황 갱신
 - [ ] 🟡 **P1 — FE에 배너 클릭 동작 전달**: 09-29 신규 정책(①·② 정책 1 하위 — `contents.targetUrl`로 이동 · 빈 값이면 무반응). 앞서 전달한 분기 기준(`on_off`·`buy_block_on_off`)에는 없던 내용이다
 - [ ] 🟡 **P1 — OA 히어로 최종본(수령 대기)**: 디자인팀 수령 시 **URL 교체 + Landpress 5로케일 + LIAM LOAD·UPDATE + 렌더 이미지**를 한 작업에서(`md/OA.md` 3-1)
 - [ ] 🟡 **P1 — 일본어 현지인 검토 반영(결과 대기)**: 검토용 하위 페이지 [4791580600](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4791580600)(배너 1 + OA 3종 + 공지사항·앱푸시 ko·ja 대조표 · v2 · 「검토 의견」 칸) 생성. 의견이 오면 배너는 `lpc_safe_put` beta·prod · OA는 Landpress 갱신 → LIAM 같은 messageId에서 LOAD·UPDATE. ⚠️ 표의 ja는 등록값과 **SHA-256 일치 확인**했다(2026-09-29)
 - [ ] 🟡 **P1 — 사후 구제 GuideKim 협의**: 환불 마감 10/13 보유분은 **점검 후 CS가 환불 수용**으로 결정(2026-09-29). 판매자 GuideKim과 수용 조건·처리 경로 협의 필요(위키 3번 표 취소·환불 행 · 5-7 10/13 08:00 행)
 - [ ] **P2 — 공지사항 문안 확인 3건(사용자 결정 대기 · 미적용)**: ko 제목 `[안내] … 안내` 중복 · 앱푸시에만 `(JST)` 없음 · th 인사말이 공지(`สวัสดีครับ/ค่ะ นี่คือทีม Unifi`)와 OA(`สวัสดีจาก Unifi`)에서 다름
-- [ ] **P2 — 배너 길이**: en 85자·th 82자 — 실제 노출 보고 조정(사용자 결정)
+- [ ] **P2 — 배너 길이**: 09-29 단축 후 ko 33 · ja 32 · en 56 · th 53 · zh 27자 — 실제 노출 보고 추가 조정(사용자 결정)
 
 ## 주요 결정 사항 (이 프로젝트 한정 · 최신 기준만 — 번복된 안은 뺐다)
 
@@ -77,7 +76,7 @@
 
 ## 세션 기록 (최신 위, 최대 5개)
 
-### 2026-09-29 — 세션 #2: 화면 고지 확정 · LPC `maintenance_banner` · OA 3종 5개 언어 등록 (위키 v17→**v45**)
+### 2026-09-29 — 세션 #2: 화면 고지 확정 · LPC `maintenance_banner` · OA 3종 5개 언어 등록 (위키 v17→**v46**)
 
 - **5-5 화면 고지** — ①·② 행을 Figma `75999-3299`·`75999-3298` 어노테이션으로 교체 + 코멘트 정책·확인 필드 기재. ⚠️ `collect_frames.py`가 **순수 정책을 텍스트 매칭으로 배치**해 전폭 배너 글자를 가렸다 → 핀 기준으로 수동 재렌더
 - **LPC** — 사용자가 `maintenance_banner` 생성(beta·prod) → Claude가 배너 문구 5개 언어(게이트 통과) 반영 · prod 스위치 false · **`buy_block_on_off`는 빌더 UI로 Claude가 추가**(⛔ 스키마 PUT은 200이지만 `fields`를 무시한다 — 손상 없음 즉시 확인) · 신규 필드는 기존 item에서 `null`로 시작 → 전 로케일에 값 기록 · `check_lpc_nulls.py` 직전·직후 exit 0
@@ -90,6 +89,7 @@
 - 「6. 확인 필요」 14건 대조 → 해소 4 · 잔여 8건 **종료 처리**(사용자) · ⑪ BE 담당 · ③ 사후 구제 결정 · 절 구조 보정(4-3을 4절로 · 역산 일정 5-7→**5-6**) · `4727978725` §3-6 정리(샘플 JSON·API 예시 「상품권」 · On/Off·필드명 서술 · 오배치 5개 언어 표 이동 — v71) · 낡은 문구 정리(5-1 배너 행 · 5-7 완료 표기 · 위키 v40) · 일본어 현지인 검토 하위 페이지 `4791580600` 생성(부모 Related Docs 링크 · 위키 v39)
 - **배너 클릭 이동** — ①·② 정책 1 하위에 추가(번호 추가 없이 → 이미지 ⓝ 1:1 유지) · LPC `contents.targetUrl` 10행(샘플 공지 URL · 공개 API 재조회로 10/10 반영·게시 확인) · 낡은 문구 2곳(「위치 3개」·`maintenance.bannerText`) 정리(v43)
 - **공지사항 5개 언어**(선례 `4155694391` 문체 + OA 등록값 표기 · 백로그 #37 `유의사항`) · 게시 10/6 10:00 반영(5-1·5-3·5-6) · 필드 표 `contents.title`/`targetUrl` 행 분리(v44·v45) · LPC 복구원·게이트 3건 Auto-react 사본
+- **배너 문구 단축**(en 85→56 · th 82→53 · 게이트 P0 0) + **`targetUrl` 실제 공지 URL**(beta·prod 환경별 · 전체 URL — 기존 LPC 상대 경로 관례와 다름을 위키에 명시) · ⚠️ **첫 반영 1분 뒤 beta 5행이 같은 초에 옛 값으로 재저장됐다** — 열려 있던 CMS 편집 화면의 「모든 언어 저장」으로 추정 · 사용자가 화면을 닫은 뒤 재반영·재확인(v46 · 검토 페이지 v3)
 - 규칙 — `md/OA.md` **LIAM 항상 isActive Yes**(종전 「미완성이면 No」 폐기) · 로케일 추가 절차 · 용어집 백로그 #35 `환불`·#36 `종료` · 가이드 대기 #2
 - ⚠️ 커밋 `74efe75`에 다른 세션의 백로그 #33·#34(09-23 미커밋분)가 함께 들어갔다(유실 방지 겸)
 
