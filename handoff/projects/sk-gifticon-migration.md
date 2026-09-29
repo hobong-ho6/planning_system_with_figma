@@ -1,22 +1,22 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v24**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v25**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST · 8시간)** 의 Unifi 영향 범위 확정과 **사용자 고지 방안**(공지사항·앱푸시·OA·화면 배너). ⛔ 문구는 **ko 초안 단계**이고 다국어 번역은 미착수다.
 
 ## 대상 / 링크
 
-- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v24** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
+- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v25** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - 첨부 **5건**(전부 본문 참조): `annotated_75999-3299.png`(① 어노테이션) · `annotated_75999-3298.png`(② 어노테이션) · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 — **v2**, 버튼 URL 반영·OA-3 버튼 제거). 미참조 6건은 **삭제**(2026-09-29)
 - OA Flex JSON(ko_KR): 위키 5-4 **펼치기 행**에 게재 · 로컬 `flex_{프레임}_ko_KR.json`(세션 스크래치 — 저장소 미커밋)
-- LPC: LV `category_promotion_banner` — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 정의 위키 [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §3-6
+- LPC: LV **`maintenance_banner`**(2026-09-29 신설 · **beta만** · 다건 · `postId=1` · `contents.title`+`on_off` · ⚠️ `primaryLocale=en_US`) · `category_promotion_banner`(기존) — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 정의 위키 [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §3-6
 - 관련: [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725)(LPC 관리 영역) · `4155694391`(Apps Market 점검 공지 — 사내 선례) · [cashback-disclaimer](cashback-disclaimer.md)(상품권 공통 고지 문구)
 - 공문: SK플래닛 기프티콘 메일 2026-09-22 접수 — 위키 §1-1에 전문 전재
 - 게이트 리포트: **없음**(번역 미착수 — ko 초안만)
 
 ## 현재 상태
 
-**위키 v24에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
+**위키 v25에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
 
 - **영향 범위(실측 확정)** — Landpress 공개 API로 대조: UIT `k_pick_shopping_product` **8건** · LV `voucher_product` **4건**, **전 상품 `published:true` + 전 상품 `uid`가 `bizcon-`** → **판매 중인 상품권 전 상품이 영향권**. 구매(발급)·환불은 4브랜드 전부 불가, **올리브영은 사용까지 불가**(8건 중 5건이 올리브영). CU·이마트24·다이소는 외부핀이라 보유분 사용 가능
 - **고지 채널 4종** — 공지사항(Announcement)+앱푸시 · OA 3종 · 화면 배너 · (차단) 상세 하단 CTA 비활성. ko 초안까지 작성
@@ -30,9 +30,13 @@
 ## 다음 할 일
 
 - [ ] 🔴 **P0 — 「6. 확인 필요」 섹션이 페이지에 없다**: 사용자가 삭제했고(2026-09-23 확인) v9에서 잔여 참조 19곳을 정리했다. 오픈 이슈(법무·BE·CS 확인 항목 ①~⑭)를 **어디서 관리할지** 결정 필요 — 별도 페이지 / Jira / 재신설
-- [ ] 🔴 **P0 — 신규 컬렉션 `maintenance_banner` 생성**(FE·BE): 필드 **2개뿐** — `contents`(문구 · `title`) + `on_off`(boolean). `true`면 ① 카테고리 배너(`category_promotion_banner` **대체**) · ② 상세 상단 배너 노출 + **구매 버튼 비활성**. ⚠️ 컬렉션명은 사용자 표기 `maintenace_banner`의 **오타를 바로잡아** `maintenance_banner`로 적었다 — 확인 필요
+- [x] ~~🔴 P0 — 신규 컬렉션 `maintenance_banner` 생성~~ → **beta 완료(2026-09-29 사용자)**. 다건(LIST) · `uid` 없이 `postId=1` 1건 · 5개 로케일 `published:true` · 필드 `contents.title`+`on_off` — API 실측 확인
+- [ ] 🔴 **P0 — prod 생성·등록**: `maintenance_banner`가 **prod에 없다**(`404 NOT_FOUND_COLLECTION`). beta와 같은 작업 안에서 맞춰야 한다(환경 동치)
+- [ ] 🔴 **P0 — beta `on_off`가 `true`로 켜져 있다**: 평상시 값은 `false` — 검증 후 내린다
+- [ ] 🔴 **P0 — 5개 언어가 전부 한국어**: 번역 확정 후 4개 언어 교체
+- [ ] ⚠️ **P1 — `primaryLocale`이 `en_US`**: 같은 beta의 `category_promotion_banner`는 `ko_KR`이다 — `?locale=` 없이 조회하면 **영어 행**이 돌아온다(조회 코드 주의)
 - [ ] 🔴 **P0 — D-7 사전 배너 불가**: 스위치가 1개라 켜면 **구매 차단이 함께 시작**된다 → 배너는 D-Day 00:00부터만. 5-1·5-7의 「배너 D-7 노출 개시」와 **충돌**한다 — 스위치를 하나 더 두거나 그 구간 고지를 공지사항·앱푸시·OA에 맡길지 결정 필요
-- [ ] **P1 — 배너 문구 정본 확정**: Figma 시안은 「10월 13일 00:00 ~ 08:00 …」로 `[시스템 점검]` 말머리가 없다. 위키 Description과 다르다
+- [ ] **P1 — 배너 문구 정본 확정**: **실등록값**이 「10월 13일 00:00 ~ 08:00 …」(Figma 시안과 동일)로 `[시스템 점검]` 말머리가 **없다**. 위키 ①·② Description과 다르다 — 실등록값이 정본이므로 Description을 맞출지 결정 필요
 - [x] ~~🔴 P0 — ② 사전 고지 가능 여부~~ → **해소(2026-09-23)**. **스위치 2개로 분리 확정** — 배너는 D-7부터, 구매 차단은 D-Day 00:00부터 따로 움직인다
 - [x] ~~🔴 P0 — ① `contents.title` 원문 백업~~ → **소멸(2026-09-29)**. `maintenance_banner`가 **대체 노출**이라 기존 프로모션 배너를 건드리지 않는다 — 스위치를 내리면 그대로 복귀
 - [ ] **P1 — 신규 필드 5개 로케일 전부 입력**: 비우면 `null` → `check_lpc_nulls.py` exit 1. 문구는 상시 넣고 스위치만 토글하는 운용
@@ -89,6 +93,9 @@
 - **(이어서) v24** — ① 행을 Figma **`75999-3299`**(`Frame 2085674812`) 어노테이션으로 교체 + 코멘트 정책 1건 게재. 구현 메모를 **신규 컬렉션 `maintenance_banner`(필드 2개)** 로 전면 재작성 · 운영 순서 3단계로 축소 · 미참조가 된 구 ① 이미지 삭제(백업 후)
 - 🟢 **코멘트가 백업 과제를 없앴다** — 「Maintenance Banner 활성 시 `category_promotion_banner`를 노출하지 않는다」 = **대체 노출**이라 프로모션 문구를 덮지 않는다
 - 🔴 **스위치 1개의 부작용을 명시** — D-7 사전 배너가 불가하다(켜면 구매도 차단). 5-1·5-7과 충돌하므로 확인 필요로 등재
+- **(이어서) v25** — 사용자가 **beta에 `maintenance_banner` 실제 생성**. 공개 API로 5개 로케일 전수 실측해 위키에 **등록 현황 표**(beta/prod·타입·로케일·`primaryLocale`·CMS 링크) · **읽기 API 명세** · **실등록 JSON**을 기재
+- ⚠️ **실측이 잡은 것 4건** — prod 미생성 · beta `on_off=true`(평상시는 false) · 5개 언어가 전부 한국어 · 실등록 문구에 `[시스템 점검]` 말머리 없음
+- ⚠️ **`primaryLocale`이 컬렉션마다 다르다** — 같은 beta에서 `maintenance_banner`는 `en_US`, `category_promotion_banner`는 `ko_KR`. `?locale=`을 빼면 조용히 다른 언어를 본다
 - 번역 게이트 **미해당** — 신규 번역 산출물 없음(ko 정책·기존 문안 전재 · ② 문구는 ① 기존 문장 재사용)
 
 ### 2026-09-23 — 세션 #1: 5-5 LPC 사양 보강 · 셀 병합 · My 제외 (위키 v7→**v9**)
