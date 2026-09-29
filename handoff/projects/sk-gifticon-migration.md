@@ -1,22 +1,22 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v34**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v35**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST · 8시간)** 의 Unifi 영향 범위 확정과 **사용자 고지 방안**(공지사항·앱푸시·OA·화면 배너). ⛔ 문구는 **ko 초안 단계**이고 다국어 번역은 미착수다.
 
 ## 대상 / 링크
 
-- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v34** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
+- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v35** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - 첨부 **5건**(전부 본문 참조): `annotated_75999-3299.png`(① 어노테이션) · `annotated_75999-3298.png`(② 어노테이션) · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 — **v2**, 버튼 URL 반영·OA-3 버튼 제거). 미참조 6건은 **삭제**(2026-09-29)
 - OA Flex JSON(ko_KR): 위키 5-4 **펼치기 행**에 게재 · 로컬 `flex_{프레임}_ko_KR.json`(세션 스크래치 — 저장소 미커밋)
 - LPC: LV **`maintenance_banner`**(2026-09-29 신설 · **beta·prod 둘 다** · 다건 · `postId=1` · `contents.title` + **`on_off`(배너)** + **`buy_block_on_off`(구매 차단)** · ⚠️ `primaryLocale=en_US` · **5개 언어 반영 완료·동치** · `on_off` beta `true`/prod `false` · `buy_block_on_off` beta `true`/prod `false`) · `category_promotion_banner`(기존) — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 정의 위키 [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §3-6
 - 관련: [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725)(LPC 관리 영역) · `4155694391`(Apps Market 점검 공지 — 사내 선례) · [cashback-disclaimer](cashback-disclaimer.md)(상품권 공통 고지 문구)
 - 공문: SK플래닛 기프티콘 메일 2026-09-22 접수 — 위키 §1-1에 전문 전재
-- 게이트 리포트: **`reports/gate/gate_report_20260929_maintenance_banner_5lang.md`**(배너 문구 5개 언어 · P0 0 · `check_gate_report.py` exit 0). ⚠️ `reports/gate/`는 gitignore — **로컬에만 있다**
+- 게이트 리포트: **`reports/gate/gate_report_20260929_sk_oa3_5lang.md`**(OA 3종 · 132셀 · 교정 9 · P0 0) · **`reports/gate/gate_report_20260929_maintenance_banner_5lang.md`**(배너 문구 5개 언어 · P0 0 · `check_gate_report.py` exit 0). ⚠️ `reports/gate/`는 gitignore — **로컬에만 있다**
 
 ## 현재 상태
 
-**위키 v34에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
+**위키 v35에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
 
 - **영향 범위(실측 확정)** — Landpress 공개 API로 대조: UIT `k_pick_shopping_product` **8건** · LV `voucher_product` **4건**, **전 상품 `published:true` + 전 상품 `uid`가 `bizcon-`** → **판매 중인 상품권 전 상품이 영향권**. 구매(발급)·환불은 4브랜드 전부 불가, **올리브영은 사용까지 불가**(8건 중 5건이 올리브영). CU·이마트24·다이소는 외부핀이라 보유분 사용 가능
 - **고지 채널 4종** — 공지사항(Announcement)+앱푸시 · OA 3종 · 화면 배너 · (차단) 상세 하단 CTA 비활성. ko 초안까지 작성
@@ -30,7 +30,7 @@
 ## 다음 할 일
 
 - [x] ~~🔴 P0 — OA 3종 Landpress + LIAM 등록~~ → **완료(2026-09-29 · 사용자 권한 허용 후)**. Landpress beta `244·245·246` / prod `2026·2027·2028`(ko_KR · 원본 6/6 일치) · LIAM beta `N6abb47c2e2e22156952d50ed`·`N6abb47e8896fa02756cbd19c`·`N6abb4806896fa02756cbd19d` / prod `N6abb49089af6303f1a2104a1`·`N6abb495d8b43b853bdb6e3fe`·`N6abb497c9af6303f1a2104a2` · **전부 `isActive=No`**
-- [ ] 🔴 **P0 — 발송 전 LIAM `isActive` 켜기**: 6건 모두 No. 다국어 확정·히어로 최종본 교체 후 Landpress 갱신 → LIAM **같은 messageId**에서 `LOAD MESSAGE` → `UPDATE` → isActive ON
+- [x] ~~🔴 P0 — LIAM isActive·다국어~~ → **완료(2026-09-29)**. OA 3종 **5개 언어 번역(게이트 P0 0)** → Landpress 6항목 × 4로케일 **24행 추가·게시**(`POST items/all`) → LIAM 6건 `LOAD MESSAGE` → **5개 언어 탭 · isActive Yes** → `UPDATE`
 
 - [x] ~~🔴 P0 — prod `on_off`~~ → **`false`로 내렸다(2026-09-29)**. 5개 로케일 전건 · 안전 쓰기 5/5 · `check_lpc_nulls.py` exit 0. beta는 검증용 `true` 유지 — **D-Day에 prod를 `true`로 올리는 것이 운영 시작점**
 
@@ -63,7 +63,8 @@
 
 | 날짜 | 결정 | 근거 |
 |---|---|---|
-| 2026-09-29 | **OA LIAM 등록은 `isActive=No`** | 히어로 임시·다국어 미착수 = 미완성 문구(`md/OA.md` 규칙). 발송 직전에 켠다 |
+| 2026-09-29 | ⛔ **OA LIAM 등록은 항상 `isActive = Yes`** | 사용자 결정 — 종전 「미완성이면 No」 **폐기**. `md/OA.md`에 규칙화 |
+| 2026-09-29 | **OA 다국어는 현지인 검토 없이 등록** | 사용자 직접 지시(이 건 한정 — 메모리 규칙 「현지인 검토 후 등록」과 다름). 검토 수정 시 Landpress 갱신 → LIAM LOAD·UPDATE |
 | 2026-09-29 | ⛔ **스위치 분리 — `buy_block_on_off` 추가** | 사용자 결정. 배너(D-7)와 구매 차단(D-Day 00:00)의 시점이 달라 `on_off` 하나로는 D-7 사전 배너가 불가했다. `on_off`=배너만 · `buy_block_on_off`=구매 버튼만. 이름은 `_on_off`로 **극성 통일**(`true`=동작 켬) |
 | 2026-09-29 | **OA는 Flex 메시지 + 히어로 이미지** — 현재는 임시본 | 디자인팀 제작 예정. 임시 이미지 실측 **840×570 · 비율 28:19 · 176KB · PNG · 문구 없음**(5개 언어 공통 사용 가능). ⚠️ `aspectRatio`는 **실측 `28:19`** — 관례값 `20:13`을 넣으면 좌우가 잘린다 |
 | 2026-09-29 | **시각은 JST 기준 그대로 · TW·TH 현지 환산 없음** | 사용자 결정 — **JST = KST로 동일**해 문제가 없다 |
@@ -129,6 +130,10 @@
 - **(이어서) v34 — OA 3종 등록 완료**: 사용자 권한 허용 후 Landpress POST 재시도 → beta 1건 생성·검증 → 나머지 5건 → **원본 flex JSON 깊은 비교 6/6 · 공개 API 6/6** · LIAM beta·prod 6건(isActive No)
 - ⚠️ **실측 — prod LIAM은 허브 iframe에서 신규 화면이 빈 채로 멈춘다**(3회 재현 · 신규 화면 코드 청크가 로드되지 않음). **iframe 앱 `https://313-dapp-portal-admin.hub.linecorp.com/`을 최상위로 직접 열면** 정상이고, 같은 출처라 `find`·`read_page`·JS로 값 검증이 된다. 단 **`/oam/messages/create?...` 직접 진입은 「Policy Error」** — 루트 → `Oam > Event Messages` → `New Event Message` 순서로 들어가야 한다
 - ⚠️ 도구 출력이 messageId를 `[BLOCKED: Base64 encoded data]`로 가린다 — **확대 캡처로 판독**했다
+- **(이어서) v35 — OA 다국어 등록·Active 전환**: 번역 게이트(33행×4 · 교정 9 · P0 0 · 백로그 #36 `종료` 신규) → Landpress 24행 추가·게시(24/24 깊은 비교) → LIAM beta·prod 6건 5개 언어 · isActive Yes → OA 표 각 행에 postId·messageId 기재
+- 🔴 **실측 — 기존 항목 로케일 추가 API 발견**: CMS 저장 버튼이 쓰는 **`POST …/items/all?_env=main`**(body `{postId, items:[{locale,…}]}`)로 여러 로케일을 한 번에 만든다. **종전 「Claude는 2번째 언어 추가 불가」는 틀렸다** → `md/landpress.md` §10-3 4-1·`md/OA.md` 정정 · 가이드 대기 #2
+- ⚠️ 사용자 팁: OA는 **컴포넌트 추가 → `oam_message` → FLEX** 상태여야 「다른 언어로 복사」가 동작한다. 저장 메뉴 언어 선택은 **변경분(`*`) 있는 언어만** 저장된다
+- ⚠️ LIAM 딥링크 「Policy Error」 → 루트 진입 후 **`history.pushState` 내부 라우팅**으로 편집 화면 진입 · messageId는 **상세 URL로 대조**(판독값 6/6 일치)
 - **(d-1) 「환불」 용어집 백로그 #35 등재 완료**(사용자 지시 2026-09-29) — ⚠️ 커밋 `74efe75`에 **다른 세션의 #33·#34**(2026-09-23 미커밋분)가 함께 들어갔다. 6일 묵은 변경이라 유실 방지 겸 함께 커밋했다
 - **(이어서) LPC beta·prod 반영 완료** — `lpc_safe_put.js` 안전 쓰기(read-modify-write + 건별 재조회 대조) **8/8 성공** · `check_lpc_nulls.py` 쓰기 **직전·직후 exit 0** · 공개 API 재조회 **10셀 전건 일치 · beta↔prod 동치**
 - 🔴 **prod `on_off`가 `true`** — FE 구현 시 즉시 노출된다. 위키·핸드오프에 P0로 등재

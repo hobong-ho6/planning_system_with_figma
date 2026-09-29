@@ -296,7 +296,7 @@ GET /api/v1/projects/{pid}/roles/my   → 200이면 로그인·권한 OK (type: 
 | **공개** | 같은 PUT body에 `"published": true` 추가 | ✅ |
 | 삭제 | `DELETE .../items/{postId}` | ✅ |
 | **항목 생성** | `POST .../items` → **201** + postId 반환 | ⚠️ **primary 로케일 1개만 생긴다** — 아래 10-3 6번 |
-| **기존 항목에 로케일 행 추가** | `PUT ?locale=` · `POST .../items/{id}/locales` · `/translations` · `POST .../items/{id}?locale=` · `PATCH ?locale=` | ❌ **전 경로 실패** — 아래 10-3 7번 |
+| **기존 항목에 로케일 행 추가** | ✅ **`POST .../items/all?_env=main`** · body `{postId, items:[{locale, …필드}]}` → **201** (2026-09-29 실측 · CMS 저장 버튼이 쓰는 경로) | ✅ **가능** — 아래 10-3 4-1 · 종전 실패 경로(`PUT ?locale=`·`/locales`·`/translations`·`POST /items/{id}?locale=`·`PATCH`)는 여전히 불가 |
 | 전용 publish 엔드포인트 | `/publish` 계열 전부 `Cannot POST` | ❌ — 위 플래그로 대체 |
 
 ### 10-3-00. ⛔ beta·prod는 항상 같은 상태로 유지한다 (2026-09-16 사용자 결정)
@@ -358,9 +358,12 @@ GET /api/v1/projects/{pid}/roles/my   → 200이면 로그인·권한 OK (type: 
 4. **언어별 항목이 없으면 PUT은 `404 NOT_FOUND_ITEM`** 이다. 단, **항목 자체는 API로 만들 수 있다** — 아래 4-1 참조.
 
 4-1. ⛔ **정정 (2026-09-13 실측)**: "생성 경로가 없다"는 **틀렸다.** **`POST .../items?locale={loc}`로 단일 로케일 항목을 새로 만들 수 있다**(`201` + 새 `postId` 반환, 그 로케일이 `primaryLocale: true`가 된다). 실측: beta `oam_message_task_multi`에 **15건을 `?locale=ko_KR`로 연속 생성**(postId 217~231), 전건 재조회 대조 통과.
-   - **여전히 불가능한 것**: **이미 있는 항목에 다른 로케일을 추가**하는 것(`/locales/*`·`/translations/*`는 `Cannot POST`). 즉 **한 항목의 2번째 언어부터는 사용자가 CMS UI에서** 추가해야 하고, 추가된 뒤에는 Claude가 PUT으로 채운다.
+   - ✅ **정정 (2026-09-29 실측) — 기존 항목에 로케일 추가도 API로 된다.** CMS 편집 화면의 **저장** 버튼이 호출하는 **`POST /api/v1/projects/{pid}/collections/{name}/items/all?_env=main`** 에 body **`{"postId": N, "items": [{"locale": "ja_JP", "title": …, "messages": […]}, …]}`** 를 보내면 **여러 로케일 행이 한 번에 생긴다**(201 · 응답 본문은 postId). 생성 직후는 **`published: false`** 라 이어서 로케일별 **안전 PUT(`published: true`)** 으로 게시한다. 실측: `oam_message_task_multi` beta 244~246·prod 2026~2028에 **4개 언어 × 6항목 = 24행** 생성·게시, 번역본 깊은 비교 24/24.
+     - 종전의 `/locales/*`·`/translations/*`(`Cannot POST`)·`PUT ?locale=`(404)는 **여전히 안 된다** — 저 경로만 된다.
+     - ⛔ **CMS 로케일 선택지에 `zh_CN`·`id_ID`도 있다** — Unifi 5개 언어 외에는 만들지 않는다(「모든 언어」로 저장하면 불필요한 행이 생긴다).
+     - **UI로 할 때(사용자 방법)**: `oam_message_task_multi`처럼 **컴포넌트형 필드**가 있으면 빈 로케일에서 바로 저장이 안 된다 — **컴포넌트 추가 → `oam_message` → type `FLEX`** 로 채운 상태에서 **「다른 언어로 복사」** 로 로케일을 만든다. 저장 메뉴의 언어 선택은 **변경분이 있는 언어(`ja_JP *`처럼 별표)만** 저장된다.
    - ⚠️ **같은 호출을 「로케일 추가」 용도로 쓰면 「고아 항목」이 생긴다**(2026-09-13 다른 세션 실측) — 기존 항목에 붙이려고 body에 `postId`를 넣어 `POST /items?locale=ko_KR`을 보내면 **`postId`는 무시되고 별개 항목이 새로 만들어진다**(201). 두 실측은 같은 동작의 다른 쓰임이다: **새 항목을 원할 때는 정상 동작, 로케일 추가를 원할 때는 쓰레기 항목 생성.** 의도를 먼저 분명히 하고 호출한다.
-   - **작업 순서 권장**: ① Claude가 `POST ?locale=ko_KR`로 항목 생성 → ② 사용자가 CMS에서 나머지 로케일 추가 → ③ Claude가 로케일별 PUT.
+   - **작업 순서 권장**: ① Claude가 `POST ?locale=ko_KR`로 항목 생성 → ② Claude가 **`POST /items/all`로 나머지 로케일 생성**(번역본으로) → ③ 로케일별 안전 PUT으로 `published: true` + 재조회 대조. **사용자 개입 불필요**(2026-09-29 개정).
    - ⛔ **생성은 되돌리기 번거로우니 사용자 지시가 있을 때만** 한다(라우트 확인 목적의 POST는 여전히 금지 — 위 1번). 대량 생성 전 **1건만 만들어 재조회로 검증**한 뒤 나머지를 진행한다.
 5. **미게시 항목은 공개 조회 API에 안 나온다.** 반영 확인은 `published: true` 여부까지 본다.
 6. **`POST .../items`로 만든 항목은 primary 로케일 1개뿐이다**(2026-09-13 실측: 201 · `en_US(primary)` 1행만 생성). 나머지 4개 로케일 행은 생기지 않아 그대로는 쓸 수 없다.

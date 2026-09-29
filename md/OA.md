@@ -243,7 +243,7 @@ OA 메시지 본문은 **Landpress의 `oam_message_task_multi` 컬렉션**에 �
    body: { "title": …, "messages": [ … ], "published": true }     → 201 + 새 postId
    ```
    - ⛔ **대량 생성 전 1건만 만들어 재조회로 검증**한 뒤 나머지를 진행한다(생성은 되돌리기 번거롭다).
-   - **2번째 언어부터는 Claude가 추가할 수 없다** — 사용자가 CMS UI에서 로케일을 추가해 주면 그 뒤 Claude가 PUT으로 채운다(`md/landpress.md` §10-3 4-1).
+   - **2번째 언어부터는 `POST …/items/all?_env=main`으로 Claude가 추가한다**(2026-09-29 정정 — 종전 「Claude가 추가할 수 없다」는 틀렸다). body `{postId, items:[{locale, title, messages}]}` → 생성 직후 미게시 → 로케일별 안전 PUT으로 `published: true`. 절차 정본 `md/landpress.md` §10-3 4-1. ⛔ `zh_CN`·`id_ID`는 만들지 않는다.
    - 사용자가 **이미 만들어 둔 항목이 있으면** 그 postId를 받아 3번으로 간다.
 3. **기존 항목에 쓸 때는** ⛔ **먼저 그 항목의 현재 내용을 GET해 확인한다** — 사용자가 이미 채워 둔 내용이 있으면 덮어쓰기 전에 알린다. 빈 껍데기(`type: TEXT`·`content_flex: null`·`content_text: ""`)면 그대로 교체해도 안전하다(실측: beta 216·prod 1956 모두 빈 껍데기였다). 확인 후 언어별 PUT:
    ```
@@ -281,7 +281,9 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
 - ⚠️ **브라우저 접근 경로**: 이 사내 CMS는 **Claude in Chrome(사용자의 실제 로그인 세션)** 으로 접근한다. 샌드박스 브라우저 패널에서는 리소스가 차단돼(`ERR_BLOCKED_BY_CLIENT`) 화면이 비어 보인다(실측 2026-09-12).
 - ⚠️ **화면 본문은 교차 출처 iframe**이라 JS로 조작할 수 없다 — **좌표 클릭·타이핑으로만** 다룬다. 폼이 길어 `CREATE`가 화면 밖이면 **`Message 1 (FLEX)` 패널 헤더를 눌러 접으면** 버튼이 올라온다(마우스 휠·`End` 키로는 iframe이 스크롤되지 않는다, 실측 2026-09-12).
 - ✅ **`{{이름}}` 변수는 시스템이 인식한다** — `LOAD MESSAGE` 후 **`placeholders`** 필드에 변수명이 자동 추출된다(실측: `product_name, reservation_date`). 규칙 2의 표기가 실제 치환 키와 일치한다는 확인 지점이므로, **불러온 뒤 placeholders 목록이 기대한 변수와 같은지 본다.**
-- ⛔ **`isActive`는 기본 체크(Yes)다.** 테스트·미완성 문구로 등록할 때는 **체크를 풀고 생성**해 발송되지 않게 한다. 실제 사용 시 켠다.
+- ⛔ **`isActive`는 항상 Yes(Active)로 등록한다**(2026-09-29 사용자 결정 — 종전 「테스트·미완성 문구면 체크를 풀고 생성」 규칙 **폐기**). 기본값이 체크(Yes)이므로 **해제하지 않고 그대로 생성**한다. 발송 여부는 LIAM이 아니라 **발송 운영(대상 추출·트리거)** 에서 통제한다.
+- ⚠️ **prod LIAM은 허브 iframe에서 신규·편집 화면이 빈 채로 멈출 수 있다**(2026-09-29 3회 재현). 내부 앱 **`https://313-dapp-portal-admin.hub.linecorp.com/`**(beta `…hub-beta.linecorp.com/`)을 **최상위로 직접 열면** 정상이며, 같은 출처라 `find`·JS로 값을 검증할 수 있다. 단 **딥링크(`/oam/messages/create`·`/edit/{id}`) 직접 진입은 「Policy Error」** — 루트를 연 뒤 `Oam > Event Messages`를 클릭하거나 **`history.pushState` + `popstate`로 앱 내부 라우팅**한다. messageId는 상세 화면 URL(`/oam/messages/{messageId}`)로 정확히 확인된다(도구 출력이 ID를 가리므로 판독값을 URL로 대조).
+- **다국어를 나중에 추가했을 때**: 같은 messageId의 편집 화면에서 **`LOAD MESSAGE`** → 언어 탭 5개 확인 → **`UPDATE`**. messageId는 유지된다.
 - **실측(2026-09-12 · 파이프라인 검증)**
 
   | 환경 | Landpress postId | primary locale | LIAM messageId | isActive |
