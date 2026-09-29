@@ -510,6 +510,10 @@ my_voucher_pharmacy_01            상품권 › 약국 쿠폰 목록
 my_voucher_pharmacy_qr_01_01      약국 쿠폰 QR 제시 (팝업)
 my_voucher_pharmacy_empty_01      약국 쿠폰 빈 상태
 my_favorite_01                    즐겨찾기 — 서브 카테고리 탭(전체·상품권·클리닉·K-뷰티·여행)
+my_reservation_travel_wait_01     여행 예약 상세 — 바우처 발행 대기
+my_reservation_travel_confirm_01  여행 예약 상세 — 바우처 발행 완료(바우처 열기 = WAUG 바우처 파일)
+my_reservation_travel_cancel_01   여행 예약 상세 — 결제 취소(환불 정보)
+my_voucher_refund_detail_01       모바일 상품권 주문 상세 — 결제 취소(환불)
 ```
 
 ### 2-6. Wallet Mode 전용 화면 (위키 [Screen]Wallet Mode 근거 — 기존 표기는 dot 형식, 소급 금지)

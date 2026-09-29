@@ -33,7 +33,7 @@
 |---|---|---|---|---|---|
 | 1 | **신규 XLT 키 중복 검사 2단계화** — 레지스트리(`fetch_xlt_registry.py --similar`)에 더해 **미등록 대기 키 대조 `check_pending_keys.py --wiki`**가 신규 키 확정 직전 필수가 됐다 | ⓐ 규칙 변경 + ⓑ 신규 스크립트 | ① 가이드 탭 「검증 게이트」 절에 1줄 ② 시스템 가이드 탭 문서 지도 3곳(스크립트 표에 `check_pending_keys.py`) ③ 업데이트 이력 | `CLAUDE.md` 게이트 1-2 · `md/translate.md` §2-1-c (2026-09-21 중복 등록 실측) | 2026-09-21 |
 | 2 | **OA 등록 규칙 2건 변경** — ⓐ LIAM Event Message는 **항상 `isActive = Yes`로 등록**(종전 「미완성 문구면 해제」 폐기) ⓑ **2번째 언어부터 Claude가 `POST …/items/all`로 로케일 추가**(종전 「사용자가 CMS에서 추가」 정정 · 사용자 개입 불필요) · prod LIAM은 내부 앱 직접 접속 | ⓐ 규칙 변경 | ① 가이드 탭 「OA 메시지」 섹션(LIAM 등록·로케일 추가 절차) · ④ 작업 모드 카드 | `md/OA.md` LIAM 등록 · `md/landpress.md` §10-3 4-1 | 2026-09-29 |
-| 3 | **IA 어휘 추가 — Unifi mini 마이 탭 내재화 화면 11종**(`my_reservation_*` · `my_voucher_*` · `my_voucher_pharmacy_*` · `my_favorite_01` · mini `my_main_01` — 풀 모드와 같은 ID임을 사용자가 알고 승인) | ⓐ 규칙(어휘) 변경 | ⑥ IA 탭 `IA_DATA` 동기화(`md/ia-check.md` 가이드 갱신 절차) | `md/IA.md` §2-5 · 위키 `4802744889` | 2026-09-29 |
+| 3 | **IA 어휘 추가 — Unifi mini 마이 탭 내재화 화면 15종**(11종 + 여행 예약 상세 3 · 상품권 환불 상세 1)(`my_reservation_*` · `my_voucher_*` · `my_voucher_pharmacy_*` · `my_favorite_01` · mini `my_main_01` — 풀 모드와 같은 ID임을 사용자가 알고 승인) | ⓐ 규칙(어휘) 변경 | ⑥ IA 탭 `IA_DATA` 동기화(`md/ia-check.md` 가이드 갱신 절차) | `md/IA.md` §2-5 · 위키 `4802744889` | 2026-09-29 |
 
 ## 반영 이력
 
