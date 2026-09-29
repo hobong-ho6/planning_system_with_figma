@@ -1,16 +1,16 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 마지막 커밋 `11a21f9` · 위키 **v42**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 마지막 커밋 `11a21f9` · 위키 **v43**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST=JST · 8시간)** 의 Unifi 영향 확정과 **사용자 고지**(공지사항·앱푸시·OA·화면 배너·구매 차단).
 
 ## 대상 / 링크
 
-- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **v42** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
+- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **v43** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - Figma `GOCHAYBS7hIrmWRGNuJOKV` — **`75999-3299`**(카테고리 점검 시안 · ① 정본) · **`75999-3298`**(바우처 상세 점검 시안 · ② 정본)
 - 첨부 **5건**(전부 본문 참조): `annotated_75999-3299.png` · `annotated_75999-3298.png` · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 **v4** · 히어로 임시)
 - **LPC `maintenance_banner`**(LV · beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 다건 · `postId=1` · ⚠️ `primaryLocale=en_US`)
-  - 필드: `contents.title`(문구) · **`on_off`**(① 카테고리·② 상세 배너 노출 · `category_promotion_banner` **대체**) · **`buy_block_on_off`**(「바로 구매하기」 비활성)
+  - 필드: `contents.title`(문구) · `contents.targetUrl`(배너 클릭 이동 · 09-29 추가 · 현재 **샘플 공지 URL** `https://www.unifi.me/announcement/01a088b5-8f62-7ab1-afa9-69f4d9b67b80` · 비면 이동 안 함) · **`on_off`**(① 카테고리·② 상세 배너 노출 · `category_promotion_banner` **대체**) · **`buy_block_on_off`**(「바로 구매하기」 비활성)
   - 현재값: beta `on_off=true`·`buy_block=true`(검증용 · 의도) / prod **둘 다 `false`** · 5개 언어 문구 반영·**beta↔prod 동치**
 - **OA 3종**(Landpress `oam_message_task_multi` · **5개 로케일 게시** · LIAM **isActive Yes**)
 
@@ -43,6 +43,8 @@
 ## 다음 할 일
 
 - [ ] ⏸ **대기 — 공지사항 문안 다국어**(5-3 · 6개 언어 세트) + 게이트 — 사용자 지시로 보류(2026-09-29). 재개 지시 전까지 착수하지 않는다
+- [ ] 🟡 **P1 — 배너 `targetUrl` 실제 공지 URL로 교체**: 지금은 샘플 공지사항 URL(사용자 제공 · 「나중에 변경」). 정해지면 5로케일 × beta·prod 10행을 `lpc_safe_put`으로(문구·스위치 보존) + 위키 5-5 등록 현황 갱신
+- [ ] 🟡 **P1 — FE에 배너 클릭 동작 전달**: 09-29 신규 정책(①·② 정책 1 하위 — `contents.targetUrl`로 이동 · 빈 값이면 무반응). 앞서 전달한 분기 기준(`on_off`·`buy_block_on_off`)에는 없던 내용이다
 - [ ] 🟡 **P1 — OA 히어로 최종본(수령 대기)**: 디자인팀 수령 시 **URL 교체 + Landpress 5로케일 + LIAM LOAD·UPDATE + 렌더 이미지**를 한 작업에서(`md/OA.md` 3-1)
 - [ ] 🟡 **P1 — 일본어 현지인 검토 반영(결과 대기)**: 검토용 하위 페이지 [4791580600](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4791580600)(배너 1 + OA 3종 ko·ja 대조표 · 「검토 의견」 칸) 생성. 의견이 오면 배너는 `lpc_safe_put` beta·prod · OA는 Landpress 갱신 → LIAM 같은 messageId에서 LOAD·UPDATE. ⚠️ 표의 ja는 등록값과 **SHA-256 일치 확인**했다(2026-09-29)
 - [ ] 🟡 **P1 — 사후 구제 GuideKim 협의**: 환불 마감 10/13 보유분은 **점검 후 CS가 환불 수용**으로 결정(2026-09-29). 판매자 GuideKim과 수용 조건·처리 경로 협의 필요(위키 3번 표 취소·환불 행 · 5-7 10/13 08:00 행)
@@ -74,7 +76,7 @@
 
 ## 세션 기록 (최신 위, 최대 5개)
 
-### 2026-09-29 — 세션 #2: 화면 고지 확정 · LPC `maintenance_banner` · OA 3종 5개 언어 등록 (위키 v17→**v42**)
+### 2026-09-29 — 세션 #2: 화면 고지 확정 · LPC `maintenance_banner` · OA 3종 5개 언어 등록 (위키 v17→**v43**)
 
 - **5-5 화면 고지** — ①·② 행을 Figma `75999-3299`·`75999-3298` 어노테이션으로 교체 + 코멘트 정책·확인 필드 기재. ⚠️ `collect_frames.py`가 **순수 정책을 텍스트 매칭으로 배치**해 전폭 배너 글자를 가렸다 → 핀 기준으로 수동 재렌더
 - **LPC** — 사용자가 `maintenance_banner` 생성(beta·prod) → Claude가 배너 문구 5개 언어(게이트 통과) 반영 · prod 스위치 false · **`buy_block_on_off`는 빌더 UI로 Claude가 추가**(⛔ 스키마 PUT은 200이지만 `fields`를 무시한다 — 손상 없음 즉시 확인) · 신규 필드는 기존 item에서 `null`로 시작 → 전 로케일에 값 기록 · `check_lpc_nulls.py` 직전·직후 exit 0
@@ -85,6 +87,7 @@
 - 위키 정리 — 미참조 첨부 6건 삭제(백업 후 · 첨부 갱신은 `/{pageId}/child/attachment/{attId}/data`) · 배너 문구 통일 · OA 표에 postId·messageId · 등록 현황·읽기 API·운영 순서
 - OA-2 발송일 10/9→**10/12** 변경(한글날 휴무 · 사용자 결정) — Landpress 10행·LIAM 2건 제목도 「(D-1)」로 교체(위키 v38 · `check_lpc_nulls` 전후 exit 0)
 - 「6. 확인 필요」 14건 대조 → 해소 4 · 잔여 8건 **종료 처리**(사용자) · ⑪ BE 담당 · ③ 사후 구제 결정 · 절 구조 보정(4-3을 4절로 · 역산 일정 5-7→**5-6**) · `4727978725` §3-6 정리(샘플 JSON·API 예시 「상품권」 · On/Off·필드명 서술 · 오배치 5개 언어 표 이동 — v71) · 낡은 문구 정리(5-1 배너 행 · 5-7 완료 표기 · 위키 v40) · 일본어 현지인 검토 하위 페이지 `4791580600` 생성(부모 Related Docs 링크 · 위키 v39)
+- **배너 클릭 이동** — ①·② 정책 1 하위에 추가(번호 추가 없이 → 이미지 ⓝ 1:1 유지) · LPC `contents.targetUrl` 10행(샘플 공지 URL) · 낡은 문구 2곳(「위치 3개」·`maintenance.bannerText`) 정리(v43)
 - 규칙 — `md/OA.md` **LIAM 항상 isActive Yes**(종전 「미완성이면 No」 폐기) · 로케일 추가 절차 · 용어집 백로그 #35 `환불`·#36 `종료` · 가이드 대기 #2
 - ⚠️ 커밋 `74efe75`에 다른 세션의 백로그 #33·#34(09-23 미커밋분)가 함께 들어갔다(유실 방지 겸)
 
