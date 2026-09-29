@@ -1,22 +1,22 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v31**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v32**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST · 8시간)** 의 Unifi 영향 범위 확정과 **사용자 고지 방안**(공지사항·앱푸시·OA·화면 배너). ⛔ 문구는 **ko 초안 단계**이고 다국어 번역은 미착수다.
 
 ## 대상 / 링크
 
-- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v31** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
+- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v32** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - 첨부 **5건**(전부 본문 참조): `annotated_75999-3299.png`(① 어노테이션) · `annotated_75999-3298.png`(② 어노테이션) · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 — **v2**, 버튼 URL 반영·OA-3 버튼 제거). 미참조 6건은 **삭제**(2026-09-29)
 - OA Flex JSON(ko_KR): 위키 5-4 **펼치기 행**에 게재 · 로컬 `flex_{프레임}_ko_KR.json`(세션 스크래치 — 저장소 미커밋)
-- LPC: LV **`maintenance_banner`**(2026-09-29 신설 · **beta·prod 둘 다** · 다건 · `postId=1` · `contents.title` + **`on_off`(배너)** + **`buy_block_on_off`(구매 차단)** · ⚠️ `primaryLocale=en_US` · **5개 언어 반영 완료·동치** · `on_off` beta `true`/prod `false` · `buy_block_on_off` 전부 `false`) · `category_promotion_banner`(기존) — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 정의 위키 [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §3-6
+- LPC: LV **`maintenance_banner`**(2026-09-29 신설 · **beta·prod 둘 다** · 다건 · `postId=1` · `contents.title` + **`on_off`(배너)** + **`buy_block_on_off`(구매 차단)** · ⚠️ `primaryLocale=en_US` · **5개 언어 반영 완료·동치** · `on_off` beta `true`/prod `false` · `buy_block_on_off` beta `true`/prod `false`) · `category_promotion_banner`(기존) — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 정의 위키 [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §3-6
 - 관련: [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725)(LPC 관리 영역) · `4155694391`(Apps Market 점검 공지 — 사내 선례) · [cashback-disclaimer](cashback-disclaimer.md)(상품권 공통 고지 문구)
 - 공문: SK플래닛 기프티콘 메일 2026-09-22 접수 — 위키 §1-1에 전문 전재
 - 게이트 리포트: **`reports/gate/gate_report_20260929_maintenance_banner_5lang.md`**(배너 문구 5개 언어 · P0 0 · `check_gate_report.py` exit 0). ⚠️ `reports/gate/`는 gitignore — **로컬에만 있다**
 
 ## 현재 상태
 
-**위키 v31에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
+**위키 v32에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
 
 - **영향 범위(실측 확정)** — Landpress 공개 API로 대조: UIT `k_pick_shopping_product` **8건** · LV `voucher_product` **4건**, **전 상품 `published:true` + 전 상품 `uid`가 `bizcon-`** → **판매 중인 상품권 전 상품이 영향권**. 구매(발급)·환불은 4브랜드 전부 불가, **올리브영은 사용까지 불가**(8건 중 5건이 올리브영). CU·이마트24·다이소는 외부핀이라 보유분 사용 가능
 - **고지 채널 4종** — 공지사항(Announcement)+앱푸시 · OA 3종 · 화면 배너 · (차단) 상세 하단 CTA 비활성. ko 초안까지 작성
@@ -119,6 +119,7 @@
 - **(이어서) 스위치 분리 — v31** — `maintenance_banner`에 **`buy_block_on_off`(boolean)** 를 **LPC 빌더 UI로 beta·prod 생성** · 기존 item **10셀에 `false`** 기록(안전 쓰기 10/10 · `check_lpc_nulls` exit 0) · 운영 순서 4단계 · D-7 사전 배너 **가능**
 - ⛔ **실측 — 스키마는 API로 못 바꾼다**: `PUT /api/v1/projects/{pid}/collections/{name}`에 `fields`를 추가해 보내면 **200이지만 `fields`는 무시**된다(메타만 갱신 · 응답 `fields: []`). 스키마·데이터 **손상 없음을 즉시 재조회로 확인**했다. 필드 추가는 **빌더 UI**(`/projects/{pid}/builder/collections/{name}` → 「필드 추가」)로만 가능
 - ⚠️ **실측 — 신규 필드는 기존 item에서 `null`로 시작**한다(`isNull:false`여도). 추가 직후 **전 로케일에 값을 써야** `check_lpc_nulls`가 통과한다
+- **(이어서) v32** — beta `buy_block_on_off`를 **`true`**로 변경(5개 로케일 · 검증용 · 사용자 지시 · 안전 쓰기 5/5 · `check_lpc_nulls` exit 0). prod는 `false` 유지. ② 정책 2건에 **확인 필드 명시**(1. `on_off` + `contents.title` · 2. `buy_block_on_off`)
 - **(d-1) 「환불」 용어집 백로그 #35 등재 완료**(사용자 지시 2026-09-29) — ⚠️ 커밋 `74efe75`에 **다른 세션의 #33·#34**(2026-09-23 미커밋분)가 함께 들어갔다. 6일 묵은 변경이라 유실 방지 겸 함께 커밋했다
 - **(이어서) LPC beta·prod 반영 완료** — `lpc_safe_put.js` 안전 쓰기(read-modify-write + 건별 재조회 대조) **8/8 성공** · `check_lpc_nulls.py` 쓰기 **직전·직후 exit 0** · 공개 API 재조회 **10셀 전건 일치 · beta↔prod 동치**
 - 🔴 **prod `on_off`가 `true`** — FE 구현 시 즉시 노출된다. 위키·핸드오프에 P0로 등재
