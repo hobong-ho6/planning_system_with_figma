@@ -1,22 +1,22 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v30**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-29 · 세션 #2 · 위키 **v31**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST · 8시간)** 의 Unifi 영향 범위 확정과 **사용자 고지 방안**(공지사항·앱푸시·OA·화면 배너). ⛔ 문구는 **ko 초안 단계**이고 다국어 번역은 미착수다.
 
 ## 대상 / 링크
 
-- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v30** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
+- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **현재 v31** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - 첨부 **5건**(전부 본문 참조): `annotated_75999-3299.png`(① 어노테이션) · `annotated_75999-3298.png`(② 어노테이션) · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 — **v2**, 버튼 URL 반영·OA-3 버튼 제거). 미참조 6건은 **삭제**(2026-09-29)
 - OA Flex JSON(ko_KR): 위키 5-4 **펼치기 행**에 게재 · 로컬 `flex_{프레임}_ko_KR.json`(세션 스크래치 — 저장소 미커밋)
-- LPC: LV **`maintenance_banner`**(2026-09-29 신설 · **beta·prod 둘 다** · 다건 · `postId=1` · `contents.title`+`on_off` · ⚠️ `primaryLocale=en_US` · **5개 언어 반영 완료·동치** · `on_off` beta `true`/prod `false`) · `category_promotion_banner`(기존) — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 정의 위키 [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §3-6
+- LPC: LV **`maintenance_banner`**(2026-09-29 신설 · **beta·prod 둘 다** · 다건 · `postId=1` · `contents.title` + **`on_off`(배너)** + **`buy_block_on_off`(구매 차단)** · ⚠️ `primaryLocale=en_US` · **5개 언어 반영 완료·동치** · `on_off` beta `true`/prod `false` · `buy_block_on_off` 전부 `false`) · `category_promotion_banner`(기존) — beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 정의 위키 [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725) §3-6
 - 관련: [4727978725](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4727978725)(LPC 관리 영역) · `4155694391`(Apps Market 점검 공지 — 사내 선례) · [cashback-disclaimer](cashback-disclaimer.md)(상품권 공통 고지 문구)
 - 공문: SK플래닛 기프티콘 메일 2026-09-22 접수 — 위키 §1-1에 전문 전재
 - 게이트 리포트: **`reports/gate/gate_report_20260929_maintenance_banner_5lang.md`**(배너 문구 5개 언어 · P0 0 · `check_gate_report.py` exit 0). ⚠️ `reports/gate/`는 gitignore — **로컬에만 있다**
 
 ## 현재 상태
 
-**위키 v30에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
+**위키 v31에 영향 실측·고지안이 모여 있고, 남은 것은 「확정」이다.** 번역·LPC/XLT 반영은 전부 미착수.
 
 - **영향 범위(실측 확정)** — Landpress 공개 API로 대조: UIT `k_pick_shopping_product` **8건** · LV `voucher_product` **4건**, **전 상품 `published:true` + 전 상품 `uid`가 `bizcon-`** → **판매 중인 상품권 전 상품이 영향권**. 구매(발급)·환불은 4브랜드 전부 불가, **올리브영은 사용까지 불가**(8건 중 5건이 올리브영). CU·이마트24·다이소는 외부핀이라 보유분 사용 가능
 - **고지 채널 4종** — 공지사항(Announcement)+앱푸시 · OA 3종 · 화면 배너 · (차단) 상세 하단 CTA 비활성. ko 초안까지 작성
@@ -37,7 +37,8 @@
 - [x] ~~🔴 P0 — beta `on_off`가 `true`~~ → **의도된 값(2026-09-29 사용자 확인)**. beta는 켜 둔 상태로 검증한다
 - [x] ~~🔴 P0 — LPC 4개 언어 반영~~ → **완료(2026-09-29)**. 사용자 Chrome 세션으로 `lpc_safe_put.js` 안전 쓰기 **8건 전건 성공**(beta 4 + prod 4) · 쓰기 전후 `check_lpc_nulls.py` exit 0 · 공개 API 재조회 10셀 확인. ~~(구 항목)~~
 - [ ] ⚠️ **P1 — `primaryLocale`이 `en_US`**: 같은 beta의 `category_promotion_banner`는 `ko_KR`이다 — `?locale=` 없이 조회하면 **영어 행**이 돌아온다(조회 코드 주의)
-- [ ] 🔴 **P0 — D-7 사전 배너 불가**: 스위치가 1개라 켜면 **구매 차단이 함께 시작**된다 → 배너는 D-Day 00:00부터만. 5-1·5-7의 「배너 D-7 노출 개시」와 **충돌**한다 — 스위치를 하나 더 두거나 그 구간 고지를 공지사항·앱푸시·OA에 맡길지 결정 필요
+- [x] ~~🔴 P0 — D-7 사전 배너 불가~~ → **해소(2026-09-29)**. `maintenance_banner`에 **`buy_block_on_off` 추가**(beta·prod 빌더) — `on_off`는 배너만, `buy_block_on_off`는 구매 버튼만 제어. 운영 순서 4단계로 재작성
+- [ ] ⚠️ **P1 — FE 전달 시 분기 기준 명시**: 배너는 `on_off`, 구매 버튼은 `buy_block_on_off`만 본다. **종전엔 `on_off` 하나가 둘 다 제어**했으므로 FE가 구 설계로 구현 중이면 수정 필요
 - [x] ~~P1 — 배너 문구 정본 확정~~ → **확정(2026-09-29 사용자)**. `[시스템 점검]` 말머리를 **빼고** ①·② Description을 LPC 실등록값과 동일하게 맞췄다
 - [x] ~~🔴 P0 — ② 사전 고지 가능 여부~~ → **해소(2026-09-23)**. **스위치 2개로 분리 확정** — 배너는 D-7부터, 구매 차단은 D-Day 00:00부터 따로 움직인다
 - [x] ~~🔴 P0 — ① `contents.title` 원문 백업~~ → **소멸(2026-09-29)**. `maintenance_banner`가 **대체 노출**이라 기존 프로모션 배너를 건드리지 않는다 — 스위치를 내리면 그대로 복귀
@@ -59,6 +60,7 @@
 
 | 날짜 | 결정 | 근거 |
 |---|---|---|
+| 2026-09-29 | ⛔ **스위치 분리 — `buy_block_on_off` 추가** | 사용자 결정. 배너(D-7)와 구매 차단(D-Day 00:00)의 시점이 달라 `on_off` 하나로는 D-7 사전 배너가 불가했다. `on_off`=배너만 · `buy_block_on_off`=구매 버튼만. 이름은 `_on_off`로 **극성 통일**(`true`=동작 켬) |
 | 2026-09-29 | **OA는 Flex 메시지 + 히어로 이미지** — 현재는 임시본 | 디자인팀 제작 예정. 임시 이미지 실측 **840×570 · 비율 28:19 · 176KB · PNG · 문구 없음**(5개 언어 공통 사용 가능). ⚠️ `aspectRatio`는 **실측 `28:19`** — 관례값 `20:13`을 넣으면 좌우가 잘린다 |
 | 2026-09-29 | **시각은 JST 기준 그대로 · TW·TH 현지 환산 없음** | 사용자 결정 — **JST = KST로 동일**해 문제가 없다 |
 | 2026-09-29 | **prod `on_off`는 평상시 `false`** | FE 구현 전 실서비스 노출 방지. beta만 검증용 `true`. D-Day에 prod를 `true`로 올린다 |
@@ -114,6 +116,9 @@
 - **(이어서) 배너 문구 5개 언어 번역 — 게이트 통과(P0 0)**. 자동 검증 P1 1건은 **오탐**(용어집 `구매`=`Buy`는 버튼 라벨 매핑 — 이 문장은 명사구라 `purchases`가 정확 · 백로그 #10 기등재). 수동 전수 검토 5셀 · 문자체계 혼입 0 · `check_gate_report.py` exit 0
 - ⛔ **LPC 쓰기는 Claude가 못 한다** — CMS 세션 쿠키가 필요해 `roles/my`가 401이다. `lpc_safe_put.js` 기반 스크립트를 만들어 전달했고 **사용자 실행 대기**
 - **(이어서) prod `on_off` → `false`**(5개 로케일 · 안전 쓰기 5/5 · `check_lpc_nulls` exit 0) · **OA 3종에 히어로 이미지(임시) 적용**(§3-0 실측 검증 · Flex JSON + 렌더 **v4**) · 시각 JST 확정 · 배너 길이는 노출 후 조정으로 보류
+- **(이어서) 스위치 분리 — v31** — `maintenance_banner`에 **`buy_block_on_off`(boolean)** 를 **LPC 빌더 UI로 beta·prod 생성** · 기존 item **10셀에 `false`** 기록(안전 쓰기 10/10 · `check_lpc_nulls` exit 0) · 운영 순서 4단계 · D-7 사전 배너 **가능**
+- ⛔ **실측 — 스키마는 API로 못 바꾼다**: `PUT /api/v1/projects/{pid}/collections/{name}`에 `fields`를 추가해 보내면 **200이지만 `fields`는 무시**된다(메타만 갱신 · 응답 `fields: []`). 스키마·데이터 **손상 없음을 즉시 재조회로 확인**했다. 필드 추가는 **빌더 UI**(`/projects/{pid}/builder/collections/{name}` → 「필드 추가」)로만 가능
+- ⚠️ **실측 — 신규 필드는 기존 item에서 `null`로 시작**한다(`isNull:false`여도). 추가 직후 **전 로케일에 값을 써야** `check_lpc_nulls`가 통과한다
 - **(d-1) 「환불」 용어집 백로그 #35 등재 완료**(사용자 지시 2026-09-29) — ⚠️ 커밋 `74efe75`에 **다른 세션의 #33·#34**(2026-09-23 미커밋분)가 함께 들어갔다. 6일 묵은 변경이라 유실 방지 겸 함께 커밋했다
 - **(이어서) LPC beta·prod 반영 완료** — `lpc_safe_put.js` 안전 쓰기(read-modify-write + 건별 재조회 대조) **8/8 성공** · `check_lpc_nulls.py` 쓰기 **직전·직후 exit 0** · 공개 API 재조회 **10셀 전건 일치 · beta↔prod 동치**
 - 🔴 **prod `on_off`가 `true`** — FE 구현 시 즉시 노출된다. 위키·핸드오프에 P0로 등재
