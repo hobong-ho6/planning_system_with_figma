@@ -9,6 +9,7 @@
 
 | 날짜 | 결정 | 이유 |
 |---|---|---|
+| **2026-09-29** | **OA의 LIAM 메시지는 항상 isActive=Yes(Active)로 등록한다** — 종전 「테스트·미완성 문구면 isActive 해제」 폐기(정본 `md/OA.md`) | 사용자 결정(sk-gifticon-migration). 비활성으로 두면 발송 시점에 누군가 다시 켜야 하고, 켜는 걸 잊으면 발송이 조용히 빠진다 |
 | **2026-09-18** | **토큰은 「필요한 단계에서 요청」** — 키체인(`confluence-pat`·`figma-pat`·`jira-pat`) 우선, 없으면 그 시점에 요청. 종전 「토큰 받기 전 착수 금지」 폐기(정본 CLAUDE.md 「⛔ 토큰 규칙」) | 무인·연동 실행(Auto-react 일감 패킷)에서 첫 행동이 토큰 요청이면 착수가 막힌다 |
 | **2026-09-18** | **산출물은 커밋하지 않는다** — `reports/gate/`·`landpress/`·`oa/` gitignore(+`xlt/`). ⚠️ **LPC JSON은 복구원이라 커밋 대상이 Auto-react(private) `reports/landpress/`로 이전**(쓰기 세션 끝에 복사 필수) · 기존 이력은 정리하지 않는다(사용자 결정). public 유지, 사본은 Auto-react(private). Auto-react 유입 일감은 **일감 패킷↔결과 패킷**, task_id `[T095]`를 게이트 리포트·커밋에 표기(정본 `handoff/projects/system-meta.md`) | 09-17 커밋에 XLT 값이 public으로 올라갔다. private 전환은 public clone으로 쓰는 팀원을 막는다 |
 | **2026-09-16** | **드랍웹 게시는 Claude가 직접 한다** — 종전 「zip 전달 → 사용자 업로드」 폐지(사용자 결정). 업로드는 **REST `PUT /api/sites/{siteId}`**(MCP 토큰 인증 · `file`+`name` multipart)이고 **MCP `update_site`는 못 쓴다**(`file_path`가 DropWeb **서버** 파일시스템 경로 — 로컬 zip 3형태 모두 실패, 실측). MCP는 `get_site`로 **게시 검증**에만 쓴다. ⛔ 게시 전 **사용자 승인** · 토큰은 **`~/.claude.json`에만**(저장소 금지). 정본 `md/dropweb-guide.md` §8 | DropWeb이 MCP를 열면서 사용자가 업로드를 대신할 이유가 사라졌다. 가이드 갱신마다 따라붙던 **전달→업로드→확인 왕복**이 없어진다(`minimize-user-intervention`). ⚠️ REST에는 `change_summary`가 없어 **배포 이력에 변경 요약이 안 남는다** — 커밋·`guide-backlog` 반영 이력이 대체하며, 파일 업로드형 MCP가 나오면 전환한다. `a15b5bc` |
