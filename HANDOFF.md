@@ -26,7 +26,7 @@
 | [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327`(+`4774237088`) — 전 바우처 | 09-23 | Ⅰ **리스크팀 검토 완료**(`LNS-1622` · 확정문 2건 ⛔수정금지 · **결제페이지 단독**) · 위키 **v21** — 5개 언어 확정(P0 0) · **XLT 전건 등록 완료** · ⛔ **결제페이지는 XLT 단독**(LPC 미사용) → 남은 건 **FE 구현** · Ⅱ·Ⅲ LPC 반영 완료(남은 건 XLT 업로드 1키) · 🔴 구매 수량 한도 부재 |
 | [guidekim-insourcing](handoff/projects/guidekim-insourcing.md) | `hogeun` | 위키 `4770510177` + 하위 6 — 어포메이션 계약 종료 대응 | 09-23 | 본문 v7 · 조사·정리 완료(구현 착수 전) · 🟢 **바우처·여행 내재화 확정**, 🔴 **클리닉만 미정**(라이센스 11월 초) · ⛔ **미결 43건의 정본은 대장 `4770511066`**(팀별 논의 자료 — 세션 축) · 🔴 **10/20 Fiat 협조 종료** |
 | [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · 3화면 | 09-22 | 위키 v6 · XLT 7키 전건 등록 · LPC 관리 영역(`shopping_guide`/`guide_page`) 반영 · ⛔ 결제 바텀시트 두 벌 키는 「유지」로 종결(09-21) |
-| [sk-gifticon-migration](handoff/projects/sk-gifticon-migration.md) | `hogeun` | 위키 `4770508162` — SK 기프티콘 서버 이관(10/13) 고지 | 09-29 | 위키 v29 · 배너 5개 언어 **LPC beta·prod 반영 완료**(게이트 P0 0 · 동치) · 🔴 **prod `on_off=true`**(FE 구현 시 즉시 노출) · 🔴 스위치 1개라 D-7 사전 배너 불가 |
+| [sk-gifticon-migration](handoff/projects/sk-gifticon-migration.md) | `hogeun` | 위키 `4770508162` — SK 기프티콘 서버 이관(10/13) 고지 | 09-29 | 위키 v30 · 배너 5개 언어 LPC beta·prod 반영(P0 0 · 동치 · prod `on_off=false`) · OA 히어로 임시본 적용 · 🔴 스위치 1개라 D-7 사전 배너 불가 |
 
 ---
 
