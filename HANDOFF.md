@@ -20,7 +20,7 @@
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 5종 + K-Pick 노출 정책·FAQ | 09-16 | 정합 유지 · ⚠️ `syncExcludedFields`에 `badges`·`reviewCount` 없음(동기화 시 덮일 수 있음) |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 09-16 | 용어집 v5.5 · 가이드 v43 · ⛔ 보완은 모아서 한 번에(대기 23건) · 미결 1 |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-21 | 점검 #8 반영 · 🔴 KAIA 이율 3중 불일치·리워드 스켈레톤·Beta K-Pick 개편 · 어휘 승인 대기 12 |
-| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + LPC `4727978725` · 29화면 | 09-17 | 본문 v247 · LPC v64 · 🔴 브랜드 24종 용어집 v5.7 대기 · th/zh 구 표기 잔존 · 의료광고 조치 |
+| [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + LPC `4727978725` · 29화면 | 09-29 | 본문 v247 · LPC v71 · 🔴 브랜드 24종 용어집 v5.7 대기 · th/zh 구 표기 잔존 · 의료광고 조치 |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` 예약 OA 16화면 | 09-16 | beta 16건 등록 · ⚠️ hero·버튼 URL 임시값 · ko만(번역 미착수) |
 | [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` — Screen 3화면 + OA 2종 | 09-16 | 위키 v26 · XLT 26키 전건 등록 · 🔴 「더보기」 landing URL 미확정 · 공유 툴팁 하드코딩 |
 | [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327`(+`4774237088`) — 전 바우처 | 09-23 | Ⅰ **리스크팀 검토 완료**(`LNS-1622` · 확정문 2건 ⛔수정금지 · **결제페이지 단독**) · 위키 **v21** — 5개 언어 확정(P0 0) · **XLT 전건 등록 완료** · ⛔ **결제페이지는 XLT 단독**(LPC 미사용) → 남은 건 **FE 구현** · Ⅱ·Ⅲ LPC 반영 완료(남은 건 XLT 업로드 1키) · 🔴 구매 수량 한도 부재 |

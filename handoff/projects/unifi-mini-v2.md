@@ -1,13 +1,13 @@
 # unifi-mini-v2 — Unifi mini v2.0 화면정의 (Figma 정책 취합 + XLT/GA)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-17 · 세션 **#18**(병렬 다수) · 마지막 커밋 `f936693` · 위키 **v247** · LPC 위키 **v69**(09-22 §3-4 CU `voucherSection.title` 실등록값 교체는 [cu-qr-voucher](cu-qr-voucher.md) 세션 #3) · Admin 위키 **v13**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-17 · 세션 **#18**(병렬 다수) · 마지막 커밋 `f936693` · 위키 **v247** · LPC 위키 **v71**(09-29 §3-6 정리 — On/Off 서술 `on_off`로 · 필드명 `contents` · 4-1에 잘못 들어가 있던 배너 5개 언어 표·설명을 §3-6으로 이동하고 실등록값 반영 · 샘플 JSON 「상품권」 · sk-gifticon 세션에서 수행) · 이전 09-22 §3-4 CU `voucherSection.title` 실등록값 교체는 [cu-qr-voucher](cu-qr-voucher.md) 세션 #3) · Admin 위키 **v13**
 >
 > 📎 세션 #12~#16 상세는 **「세션 기록」이 정본**(18KB 상한으로 헤더 압축) · ⚠️ **v186→v192는 기록 없음**(다른 세션 6버전 — 위키 History가 유일한 근거)
 
 ## 대상 / 링크
 
 - 위키: [pageId 4704515582](https://wiki.workers-hub.com/display/UNIFI/Unifi+mini+v2.0) `Unifi mini v2.0` — **현재 v247**
-  - **하위 `4727978725` 「LPC 관리 영역」** — **현재 v69**. LPC 컬렉션 **9개**의 정의·등록 JSON·환경 현황·비율 연동 규칙(§9-7) 정본
+  - **하위 `4727978725` 「LPC 관리 영역」** — **현재 v71**. LPC 컬렉션 **9개**의 정의·등록 JSON·환경 현황·비율 연동 규칙(§9-7) 정본
   - 하위 `4725950300` 「Admin 관리 대상」(**v13**) · `4725963532` 「100엔딜」([전용 파일](100yen-deal.md)) · `4750149077` 「일본어 검수」 · Figma `GOCHAYBS7hIrmWRGNuJOKV`(`Web3`)
 - **Unifi B/E API 스펙 `4725939674`** — FE 수신값의 정본. GuideKim 스펙과 달라 **구현 기준은 이쪽**
 - XLT: 담당 FE — `JPYC 자산 상세`·`결제 페이지` = **UIT**(`UF_`·`{{0}}`) / `Voucher Detail`·`Clinic Detail` = **LV**(`mini_`·`{0}`). **`최근 본 상품`은 화면만 LV** — 키는 `UF_` 유지(의도된 예외). Home/Category/Search/My는 이전 세션에 번역 완료
@@ -51,7 +51,6 @@
 - [ ] **P1 — XLT 미등록 8키**(100엔딜 `UF_100yen_*` — `title`·`step1`·`step2`·`usage_guide_title`·`caution_contents9`·`10`·`pay_retry_btn`·`coupon_applied`). ⛔ `UF_100yen_title`은 **무시 확정**(사용자). ✅ mini 5키는 해소. ⚠️ **`100yen-deal` 프로젝트가 09-16에 26키 전건 등록을 보고**했으니 **재실측 후 판단**
 - [ ] **P1 — `UF_voucher_pay_more_discount` ja 재검수**: 검수안이 **구 원문(`{{0}}% 할인!`) 기준**이라 적용하면 `15%%`로 렌더된다(검수안 오타 `すべの`도 있음) → 반영 제외·**현재 등록값 유지**. 현행 `全クーポン{{0}}の特典！`는 **원어민 검수 미경유**
 - [ ] **P2 — 병원 식별자 체계 통일**: 21곳 중 **18곳 `uid` / 3곳 `unifiId`(UUID)** — 이 3곳은 마스터 `externalId`가 `null`이라 「beta↔prod는 `uid` 기준」 규칙으로 **매핑 불가** → FE·기획 확인
-- [ ] **P2 — LPC 관리 영역(`4727978725`) §3-6 낡은 서술 3건**(2026-09-29 발견 · 미수정): ⓐ 「노출 On/Off는 `feature_flags` toggle」 불릿 — 같은 절 비고(09-12 `on_off` 통합)와 모순 ⓑ 「신규 필드 `banner`」 — 실제는 `contents` ⓒ 5개 언어 `contents.title` 표가 **4-1 `my_common_info` 절에 잘못 들어가 있고** 값이 09-17 이전(「바우처」)이다. 샘플 JSON·§9 API 응답 예시는 09-29 「상품권」으로 고쳤다(v70)
 - [ ] **P3 — 마스터 원본값 오류 1건**(디에이피부과 도산 `priceItems[0].name`=`상담 문의` · ₩390,000): 시술명 자리에 가격 문구. **마스터가 정본이라 그대로 둔다**(09-14 확정) — 마스터 갱신 시 정리
 
 ## ⛔ 사용자 결정으로 종결 (재작업·재제안 금지 — 이 프로젝트 한정)
