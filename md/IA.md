@@ -495,6 +495,23 @@ my_logout_01_01                   로그아웃 (확인 팝업 ⚠️)
 my_withdraw_01                    ⚠️ 계정 탈퇴
 ```
 
+🆕 **Unifi mini 마이 탭 — GuideKim My 내재화 화면 (2026-09-29 사용자 승인 · 위키 `4802744889` · Figma Web3 `76032:3300`)**
+
+```
+my_main_01                        mini 마이 메인 — 메뉴 4종(예약 내역·상품권·즐겨찾기·내 리뷰) · 보유 포인트 · 내 상품권 · 결제·예약 내역
+                                  └ ⚠️ 풀 모드 마이 메인(`/setting`)과 같은 ID다 — 사용자가 충돌을 알고 승인했다(2026-09-29). 모드 구분은 위키 문맥으로 한다
+my_reservation_01                 예약 내역 — 서브 카테고리 탭(전체·클리닉·K-뷰티·여행) + 조회 기간 필터
+my_reservation_filter_01_01       예약 내역 조회 기간 필터 (바텀시트 — 전체·1개월·3개월·6개월)
+my_reservation_empty_01           예약 내역 빈 상태
+my_voucher_01                     상품권 — 모바일 상품권 탭(기본) · 약국 쿠폰 탭
+my_voucher_filter_01_01           상품권 사용 상태 필터 (바텀시트 — 전체·사용 가능·사용 완료·기한 만료)
+my_voucher_empty_01               상품권 빈 상태
+my_voucher_pharmacy_01            상품권 › 약국 쿠폰 목록
+my_voucher_pharmacy_qr_01_01      약국 쿠폰 QR 제시 (팝업)
+my_voucher_pharmacy_empty_01      약국 쿠폰 빈 상태
+my_favorite_01                    즐겨찾기 — 서브 카테고리 탭(전체·상품권·클리닉·K-뷰티·여행)
+```
+
 ### 2-6. Wallet Mode 전용 화면 (위키 [Screen]Wallet Mode 근거 — 기존 표기는 dot 형식, 소급 금지)
 
 ```
