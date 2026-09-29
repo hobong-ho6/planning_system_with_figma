@@ -36,6 +36,7 @@
 ## §7. Landpress
 
 - **Landpress**: `landpress/`는 XLT로 관리 못 하는 문구의 제3 경로 — ⚠️ **번역 게이트 그대로 적용** · **정본은 로컬 JSON이 아니라 실등록값**. ⛔ **JSON을 바꾸면 beta·prod를 같은 작업 안에서 함께**(beta 먼저 → 검증 → prod는 beta 등록값을 읽어 PUT · 매핑은 **`uid` 기준**). API 경계 — 새 항목 생성 O / **기존 항목에 로케일 추가 O — `POST …/items/all?_env=main`**(2026-09-29 실측 · 추가 로케일은 미게시로 생겨 안전 PUT으로 `published:true` · 종전 「추가 X」는 틀렸다) · 스키마 `PUT /collections/{name}`은 200이지만 **`fields`를 무시**(필드 추가는 빌더 UI) · 로케일 파라미터는 공개·CMS 둘 다 **`?locale=`**(`?_locale=`은 **조용히 무시**). 상세 → **`md/landpress.md` §9-2 · §10-3 · §10-5-1**
+- ⚠️ **CMS 편집 화면을 열어 둔 채 저장하면 API로 쓴 값이 되돌아간다**(2026-09-29 실측 — `maintenance_banner` beta 5행이 API 반영 1분 뒤 **같은 초에** 옛 값으로 재저장됐다 · `updatedBy`는 같은 계정이라 구분되지 않는다). API로 쓰기 전 **사용자에게 해당 편집 화면을 닫게 하고**, 쓴 뒤 1분쯤 지나 `updatedAt`과 값을 **다시 조회**해 되돌림이 없는지 확인한다
 
 ## §8. 키·표기 규칙
 
