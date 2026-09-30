@@ -8,7 +8,7 @@
 
 - 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **v51** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - Figma `GOCHAYBS7hIrmWRGNuJOKV` 섹션 **`76061-19095`**(09-30 노출 위치 변경 정본) — `76061-19216` 상품권 목록(①) · `76061-19102` 상품권 상세(②) · `76061-19385` 홈(③). 종전 `75999-3299`·`75999-3298`은 대체됨
-- 첨부 본문 참조 **6건**: `annotated_76061-19216/19102/19385.png` · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 **v5** · 히어로 최종본) — ⚠️ `annotated_75999-3299/3298.png`는 **미참조**(삭제는 사용자 승인 대기)
+- 첨부 본문 참조 **6건**: `annotated_76061-19216/19102/19385.png` · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 **v5** · 히어로 최종본) — 미참조였던 `annotated_75999-3299/3298.png`는 **삭제**(09-30 사용자 지시 · 본문 이미지 참조 0 확인 · 첨부 6건 = 전부 참조)
 - **LPC `maintenance_banner`**(LV · beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 다건 · `postId=1` · ⚠️ `primaryLocale=en_US`)
   - 필드: `contents.title`(①② 문구) · **`contents.homeTitle`·`homePeriod`**(③ 홈 2줄 · 09-30 추가) · `contents.targetUrl`(배너 클릭 이동 · 비면 이동 안 함 · **환경별 값** beta `https://miniapp.line.me/2008994547-GfGUdDxy/announcement/019fd56b-525f-7f30-9a3f-095e7504bb91` / prod `https://miniapp.line.me/unifi/announcement/01a04617-6a3c-78f4-824c-e298d5a511cd`) · **`on_off`**(①②③ 배너 노출 · `category_promotion_banner` **대체**) · **`buy_block_on_off`**(「바로 구매하기」 비활성)
   - 현재값: beta `on_off=true`·`buy_block=true`(검증용 · 의도) / prod **둘 다 `false`** · 5개 언어 문구 반영·**beta↔prod 동치**
@@ -44,7 +44,6 @@
 ## 다음 할 일
 
 - [ ] 🟡 **③ 홈 배너 FE 전달 확인**(사용자) — `on_off`로 노출 · 1줄 `contents.homeTitle` / 2줄 `contents.homePeriod` · 클릭 `targetUrl`(①② 공통)
-- [ ] 🟢 미참조 첨부 `annotated_75999-3299/3298.png` 삭제 여부(사용자 결정)
 - [ ] 🟢 (d-2) 홈 날짜 `2026.10.13`(연도 포함) ↔ ①② `10/13` 형식 통일 여부(사용자 결정 · 현재는 Figma대로)
 
 ## 주요 결정 사항 (이 프로젝트 한정 · 최신 기준만 — 번복된 안은 뺐다)
@@ -86,6 +85,7 @@
 - **OA 히어로 최종본** — ⚠️ 사용자가 CMS에 넣었다고 했지만 **저장 안 된 상태**였다(공개·CMS main 모두 구값) → 채팅 URL로 진행. 새 이미지 840×504라 **`aspectRatio 28:19→5:3`** 동반 변경. Landpress 30행(히어로 외 diff 0 확인) · LIAM 6건 LOAD→UPDATE · Flex JSON 3종·렌더 v5 · 위키 5-4
 - ⚠️ **실측 — 자동 승인 모드가 LPC PUT을 차단** → 사용자 허용 후 진행. ⚠️ `lpc_safe_put` 대조가 **`contents` 객체 키 순서 재배열로 오탐 실패**(서버가 JSON 키를 재정렬해 저장) — 공개 API로 키 순서 무관 재대조해 40/40 확인. ⚠️ **LIAM 내부 앱은 상세→상세 `pushState`로 화면이 다시 그려지지 않는다**(URL과 표시 ID 불일치) · 45초 초과 스크립트는 끊겨도 **뒤에서 계속 돈다** → 건마다 루트 재진입 + 표시 ID 대조로 재검증
 - `check_lpc_nulls` 전후 exit 0 · 복구원 25파일 → Auto-react `3c56ed5`
+- 미참조 첨부 2건(`annotated_75999-*`) 삭제 — History 텍스트 언급 1건은 이미지 참조가 아니라 유지 · 렌더 검사 exit 0
 
 ### 2026-09-30 — 세션 #3: 일본어 현지인 검토 반영 (위키 v46→**v48** · 검토 페이지 v4→v5)
 
