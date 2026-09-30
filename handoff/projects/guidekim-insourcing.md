@@ -115,4 +115,4 @@
 
 ### 2026-09-23 — 세션 #1: 내재화 과업 전면 정리 (위키 7문서 신설·재편)
 
-- 산출·교훈 전문은 git 이력(`b68f65e` 이전) 참조 — 핵심: 개칭 시 `ri:content-title` 참조 직접 수복 · `guidekim.me/admin`은 운영 어드민(조회만 · 개인정보 반출 금지) · §15 함정(stage 후 바로 commit)
+- 전문은 git 이력(`b68f65e` 이전) — 개칭 시 `ri:content-title` 직접 수복 · `guidekim.me/admin`은 운영 어드민(조회만 · 개인정보 반출 금지)
