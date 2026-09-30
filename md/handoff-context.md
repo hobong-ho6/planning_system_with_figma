@@ -37,6 +37,7 @@
 
 - **Landpress**: `landpress/`는 XLT로 관리 못 하는 문구의 제3 경로 — ⚠️ **번역 게이트 그대로 적용** · **정본은 로컬 JSON이 아니라 실등록값**. ⛔ **JSON을 바꾸면 beta·prod를 같은 작업 안에서 함께**(beta 먼저 → 검증 → prod는 beta 등록값을 읽어 PUT · 매핑은 **`uid` 기준**). API 경계 — 새 항목 생성 O / **기존 항목에 로케일 추가 O — `POST …/items/all?_env=main`**(2026-09-29 실측 · 추가 로케일은 미게시로 생겨 안전 PUT으로 `published:true` · 종전 「추가 X」는 틀렸다) · 스키마 `PUT /collections/{name}`은 200이지만 **`fields`를 무시**(필드 추가는 빌더 UI) · 로케일 파라미터는 공개·CMS 둘 다 **`?locale=`**(`?_locale=`은 **조용히 무시**). 상세 → **`md/landpress.md` §9-2 · §10-3 · §10-5-1**
 - ⚠️ **CMS 편집 화면을 열어 둔 채 저장하면 API로 쓴 값이 되돌아간다**(2026-09-29 실측 — `maintenance_banner` beta 5행이 API 반영 1분 뒤 **같은 초에** 옛 값으로 재저장됐다 · `updatedBy`는 같은 계정이라 구분되지 않는다). API로 쓰기 전 **사용자에게 해당 편집 화면을 닫게 하고**, 쓴 뒤 1분쯤 지나 `updatedAt`과 값을 **다시 조회**해 되돌림이 없는지 확인한다
+- ⚠️ **객체 필드는 서버가 키 순서를 바꿔 저장한다**(2026-09-30 실측 — `maintenance_banner.contents`에 키 2개 추가 시 `title·homeTitle·targetUrl·homePeriod` 순으로 재배열). `lpc_safe_put.js`의 `JSON.stringify` 대조는 **순서까지 비교해 실패로 오탐**한다 → 실패가 나면 먼저 **키 정렬 후 재대조**(공개 API)로 실제 저장 여부를 확인한다 · ⚠️ **자동 승인 모드에선 LPC `PUT`이 분류기에 막힌다**(09-29 신규 POST에 이어 09-30 PUT도 차단) — 사용자 허용을 받고 진행
 
 ## §8. 키·표기 규칙
 
@@ -86,5 +87,6 @@
 - `.claude/launch.json`은 **git 제외**라 PC마다 직접 만들어야 하고, 이 PC에선 **npx 경로가 `/usr/local/bin/npx`**다(등록된 `~/.nvm/...` 경로는 없다). **가이드 로컬 미리보기 기동법·파이썬 `http.server` 샌드박스 함정은 `md/ia-check.md` §2-0-1이 정본**이다.
 - **Jira MCP `jira_add_comment`는 본문을 망가뜨린다**(2026-09-17 실측 · UNIFY-11360) — 마크다운→Jira 변환이 `_`를 `\*`/`\_`로 깨고(`UF_voucher_detail_guide`→`UF\*voucher\*detail\_guide`), `<span>`을 `[span]`으로 바꾸며 **여는 태그를 통째로 삭제**하기도 한다. XLT 키·태그·코드가 든 코멘트는 **Jira wiki markup**(`{{...}}`·`{noformat}`)으로 쓰고 **REST로 직접** 보낸다 — `POST/PUT /rest/api/2/issue/{key}/comment[/{id}]` · `Authorization: Bearer {Jira PAT}`. 이미 게시한 코멘트도 같은 경로로 **수정 가능**(PUT, 중복 코멘트 안 남음).
 - **`timeout` 명령이 없다**(macOS 기본 · 2026-09-15 실측) — `timeout 90 python3 ...`은 `command not found`로 죽는다. 필요하면 `gtimeout`(coreutils)을 쓰거나 그냥 실행한다.
+- **LIAM 내부 앱(`313-dapp-portal-admin`)은 상세→상세 `pushState`로 화면을 다시 그리지 않는다**(2026-09-30 실측 — URL은 바뀌었는데 표시 Message Id는 이전 건). 건마다 **루트를 새로 연 뒤** 이동하고 **표시 ID·postId를 대조**한다 · Claude in Chrome JS가 **45초를 넘기면 도구는 타임아웃을 내지만 스크립트는 뒤에서 계속 돈다** — 여러 건 쓰기는 **한 건씩** 나눠 실행한다
 - **Slack `get_thread_replies`는 긴 스레드에서 토큰 상한을 넘겨 파일로 떨어진다**(2026-09-15 실측 · 113메시지 152KB). 반환된 경로를 `python3`/`jq`로 **필요한 `ts`만 뽑아 읽는다** — 전문을 컨텍스트에 올리지 않는다.
 
