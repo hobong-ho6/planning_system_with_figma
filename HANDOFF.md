@@ -26,7 +26,7 @@
 | [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327`(+`4774237088`) — 전 바우처 | 09-23 | Ⅰ **리스크팀 검토 완료**(`LNS-1622` · 확정문 2건 ⛔수정금지 · **결제페이지 단독**) · 위키 **v21** — 5개 언어 확정(P0 0) · **XLT 전건 등록 완료** · ⛔ **결제페이지는 XLT 단독**(LPC 미사용) → 남은 건 **FE 구현** · Ⅱ·Ⅲ LPC 반영 완료(남은 건 XLT 업로드 1키) · 🔴 구매 수량 한도 부재 |
 | [guidekim-insourcing](handoff/projects/guidekim-insourcing.md) | `hogeun` | 위키 `4770510177` + 하위 6 · 기획서 `4802741598` v2.1 | 09-30 | 본문 v14 · v2.1 v32(비즈콘 v9 · 포인트 v8 · My v40 — Screen UIT/LV 분리 · v2.x 화면 이동 · 약국 쿠폰 스펙 아웃) · ⛔ **착수 전 v2.1 하단 「Claude 작업 로그」 먼저 읽기** · 파란색 = Claude 보완 · 🔴 여행 환불 신청 동선 · 약관 공지 30일 · Corp↔Inc 계약 |
 | [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · 3화면 | 09-22 | 위키 v6 · XLT 7키 전건 등록 · LPC 관리 영역(`shopping_guide`/`guide_page`) 반영 · ⛔ 결제 바텀시트 두 벌 키는 「유지」로 종결(09-21) |
-| [sk-gifticon-migration](handoff/projects/sk-gifticon-migration.md) | `hogeun` | 위키 `4770508162` — SK 기프티콘 서버 이관(10/13) 고지 | 09-30 | 위키 v51 · 화면 고지 ①②③(**홈 추가** · `homeTitle`/`homePeriod`) · OA 히어로 **최종본** LPC·LIAM 반영 · 📅 공지 10/6 10:00 · ⏳ 홈 배너 FE 전달 확인 |
+| [sk-gifticon-migration](handoff/projects/sk-gifticon-migration.md) | `hogeun` | 위키 `4770508162` — SK 기프티콘 서버 이관(10/13) 고지 | 09-30 | 위키 v52 · 화면 고지 ①②③(홈 추가 · FE 전달 완료) · OA 히어로 최종본 LPC·LIAM 반영 · 남은 작업 없음 · 📅 10/6 공지·배너 on → 10/13 구매 차단 |
 
 ---
 
