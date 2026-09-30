@@ -503,12 +503,12 @@ my_main_01                        mini 마이 메인 — 메뉴 4종(예약 내�
 my_reservation_01                 예약 내역 — 서브 카테고리 탭(전체·클리닉·K-뷰티·여행) + 조회 기간 필터
 my_reservation_filter_01_01       예약 내역 조회 기간 필터 (바텀시트 — 전체·1개월·3개월·6개월)
 my_reservation_empty_01           예약 내역 빈 상태
-my_voucher_01                     상품권 — 모바일 상품권 탭(기본) · 약국 쿠폰 탭
+my_voucher_01                     상품권 — 모바일 상품권(사용 상태 필터) · 약국 쿠폰 탭은 스펙 아웃(2026-09-30)
 my_voucher_filter_01_01           상품권 사용 상태 필터 (바텀시트 — 전체·사용 가능·사용 완료·기한 만료)
 my_voucher_empty_01               상품권 빈 상태
-my_voucher_pharmacy_01            상품권 › 약국 쿠폰 목록
-my_voucher_pharmacy_qr_01_01      약국 쿠폰 QR 제시 (팝업)
-my_voucher_pharmacy_empty_01      약국 쿠폰 빈 상태
+my_voucher_pharmacy_01 ❌폐기     ~~상품권 › 약국 쿠폰 목록~~ → 약국 쿠폰 스펙 아웃(2026-09-30 사용자 결정 · 위키 My v15에서 화면 삭제)
+my_voucher_pharmacy_qr_01_01 ❌폐기 ~~약국 쿠폰 QR 제시 (팝업)~~ → 〃
+my_voucher_pharmacy_empty_01 ❌폐기 ~~약국 쿠폰 빈 상태~~ → 〃
 my_favorite_01                    즐겨찾기 — 서브 카테고리 탭(전체·상품권·클리닉·K-뷰티·여행)
 my_reservation_travel_wait_01     여행 예약 상세 — 바우처 발행 대기
 my_reservation_travel_confirm_01  여행 예약 상세 — 바우처 발행 완료(바우처 열기 = WAUG 바우처 파일)
