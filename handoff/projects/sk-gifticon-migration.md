@@ -1,12 +1,12 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-30 · 세션 #3 · 마지막 커밋 `8c42e7f` · 위키 **v47**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-30 · 세션 #3 · 마지막 커밋 `8c42e7f` · 위키 **v48**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST=JST · 8시간)** 의 Unifi 영향 확정과 **사용자 고지**(공지사항·앱푸시·OA·화면 배너·구매 차단).
 
 ## 대상 / 링크
 
-- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **v47** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
+- 위키(정본): [4770508162](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4770508162) 「SK플래닛 기프티콘 서버 이관(2026-10-13) 영향 및 사용자 고지 방안」 — **v48** · 부모 `[Hogeun]` `3910828993` · 공간 `UNIFI`
 - Figma `GOCHAYBS7hIrmWRGNuJOKV` — **`75999-3299`**(카테고리 점검 시안 · ① 정본) · **`75999-3298`**(바우처 상세 점검 시안 · ② 정본)
 - 첨부 **5건**(전부 본문 참조): `annotated_75999-3299.png` · `annotated_75999-3298.png` · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 **v4** · 히어로 임시)
 - **LPC `maintenance_banner`**(LV · beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 다건 · `postId=1` · ⚠️ `primaryLocale=en_US`)
@@ -74,7 +74,7 @@
 
 ## 세션 기록 (최신 위, 최대 5개)
 
-### 2026-09-30 — 세션 #3: 일본어 현지인 검토 반영 (위키 v46→**v47** · 검토 페이지 v4→v5)
+### 2026-09-30 — 세션 #3: 일본어 현지인 검토 반영 (위키 v46→**v48** · 검토 페이지 v4→v5)
 
 - 검토자 塚原 香音(검토 페이지 `4791580600` v4 · 「검토 의견」 13칸) — 배너는 의견 없음
 - 사용자 결정 — OA-2 #4 「（10月12日 23:59まで）**まで**の」 중복만 정리, 나머지는 **검토안 그대로**(OA-2 #3 「制限されております」 시제 포함 · 「상품권 공급사의」 누락 등 ko↔ja 뜻 차이도 승인)
@@ -82,6 +82,7 @@
 - **Landpress** ja_JP 6항목(beta 244·245·246 / prod 2026·2027·2028) — 정확 일치 치환(치환 수 3·4·3 확인) · ko·en·th·zh **해시 불변** · beta = prod · `check_lpc_nulls` 전후 exit 0
 - **Admin(LIAM)** 6건 `LOAD MESSAGE` → JA_JP 탭 마커 확인 → `UPDATE` → 상세에서 ja 재확인 · isActive True 유지
 - 위키 5-3 공지 ja 2셀 · 5-4 반영 기록 · History / 검토 페이지에 「반영 완료」 표기(검토 의견 칸은 보존)
+- 종료 처리 3건(사후 구제 협의 · 공지 문안 확인 · 배너 길이)을 위키에도 반영 — 3번 표 · 5-3 · 5-5 · 5-6 (v48)
 - 복구원 `landpress/oam_message_task_multi_sk_gifticon/*_ja_JP.json`(라이브 해시 일치) → Auto-react `0b8ed07`. ⚠️ Auto-react에 **다른 세션의 미커밋 `reports/tasks/*`**가 있어 pull 없이 경로 지정 커밋(원격 0 0 확인)
 
 ### 2026-09-29 — 세션 #2: 화면 고지 확정 · LPC `maintenance_banner` · OA 3종 5개 언어 등록 (위키 v17→**v46**)
