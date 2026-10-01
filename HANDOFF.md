@@ -24,7 +24,7 @@
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` 예약 OA 16화면 | 09-16 | beta 16건 등록 · ⚠️ hero·버튼 URL 임시값 · ko만(번역 미착수) |
 | [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` — Screen 3화면 + OA 2종 | 09-16 | 위키 v26 · XLT 26키 전건 등록 · 🔴 「더보기」 landing URL 미확정 · 공유 툴팁 하드코딩 |
 | [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327`(+`4774237088`) — 전 바우처 | 09-23 | Ⅰ **리스크팀 검토 완료**(`LNS-1622` · 확정문 2건 ⛔수정금지 · **결제페이지 단독**) · 위키 **v21** — 5개 언어 확정(P0 0) · **XLT 전건 등록 완료** · ⛔ **결제페이지는 XLT 단독**(LPC 미사용) → 남은 건 **FE 구현** · Ⅱ·Ⅲ LPC 반영 완료(남은 건 XLT 업로드 1키) · 🔴 구매 수량 한도 부재 |
-| [guidekim-insourcing](handoff/projects/guidekim-insourcing.md) | `hogeun` | 위키 `4770510177` + 하위 6 · 기획서 `4802741598` v2.1 | 09-30 | 본문 v14 · v2.1 v33(비즈콘 v10 · 포인트 v9 · My v40 — Screen UIT/LV 분리 · v2.x 화면 이동 · 약국 쿠폰 스펙 아웃) · ⛔ **착수 전 v2.1 하단 「Claude 작업 로그」 먼저 읽기** · 파란색 = Claude 보완 · 🔴 여행 환불 신청 동선 · 약관 공지 30일 · Corp↔Inc 계약 |
+| [guidekim-insourcing](handoff/projects/guidekim-insourcing.md) | `hogeun` | 위키 `4770510177` + 하위 6 · 기획서 `4802741598` v2.1 | 10-01 | v2.1 v62(비즈콘 v30 · 포인트 v41 · My v43 · 🆕 약관 검토 항목 `4814244434`) · 10/20 포인트 스펙(무상 · 180일 · 결제 차감 · UI 안내) · 상품권 부분 환불 없음 · ⛔ **착수 전 v2.1 「Claude 작업 로그」 먼저** · 🔴 약관 공지 30일 · Corp↔Inc 계약 |
 | [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · 3화면 | 09-22 | 위키 v6 · XLT 7키 전건 등록 · LPC 관리 영역(`shopping_guide`/`guide_page`) 반영 · ⛔ 결제 바텀시트 두 벌 키는 「유지」로 종결(09-21) |
 | [sk-gifticon-migration](handoff/projects/sk-gifticon-migration.md) | `hogeun` | 위키 `4770508162` — SK 기프티콘 서버 이관(10/13) 고지 | 09-30 | 위키 v52 · 화면 고지 ①②③(홈 추가 · FE 전달 완료) · OA 히어로 최종본 LPC·LIAM 반영 · 남은 작업 없음 · 📅 10/6 공지·배너 on → 10/13 구매 차단 |
 
@@ -50,7 +50,7 @@
 | 2 | 파이프라인·엑셀 | ⛔ 엑셀은 **`export_to_xlt.create_xlt_excel`로만** — pandas 직접 생성은 `plurals`가 깨져 업로드 실패 |
 | 3 | 스크립트 계약 | `validate_translation.py <엑셀> <용어집>`은 **위치 인자만**(빠뜨리면 2단계를 조용히 건너뜀) · `CONFLUENCE_PAT`은 **환경변수** · `scripts/` 수정 후 **`test_validation.py` 필수** |
 | 4 | 검증기 사각지대 | **`P0=0`은 「이 검사가 볼 수 있는 범위에 문제 없음」** — 언어 혼입은 20조합 중 15개만 잡는다 |
-| 5 | 위키 편집 | 라이브 재조회 → surgical 교체 → **버전 가드** → PUT → `check_wiki_storage.py` **pre/post exit 0** · 첨부는 **`/data`** 로 PUT(없으면 조용히 무시) |
+| 5 | 위키 편집 | 라이브 재조회 → surgical 교체 → **버전 가드** → PUT → `check_wiki_storage.py` **pre/post exit 0** · 첨부는 **`/data`** 로 PUT(없으면 조용히 무시) · ⚠️ 인라인 코멘트는 **버전 없이** 마커를 넣는다 — PUT 직전 재조회 + 마커 보존 assert |
 | 6 | 프레임·어노테이션 | 이미지 ⓝ = Description 번호 = XLT No **1:1** · 정책=빨강/xlt=파랑 · **렌더 후 육안 확인 필수** · 동명 프레임 주의 |
 | 7 | Landpress | **정본은 로컬 JSON이 아니라 실등록값** · ⛔ beta·prod를 **같은 작업 안에서 함께**(`uid` 기준) · 로케일 추가는 `POST items/all`(09-29 정정) |
 | 8 | 키·표기 규칙 | LV(`mini_`·`{0}`) / UIT(`UF_`·`{{0}}`) / OA는 팀이 아님 — 위키에 구분이 없으면 **사용자에게 질문** |

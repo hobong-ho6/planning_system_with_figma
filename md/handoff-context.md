@@ -28,6 +28,8 @@
 ## §5. 위키 편집
 
 - **위키 편집**: 라이브 재조회 → 균형 `<tr>` surgical 교체 → **버전 가드**(PUT 직전 재확인) → PUT → `check_wiki_storage.py` **pre/post exit 0**. 첨부는 `POST .../child/attachment/{id}/data`(**같은 파일명 유지 → 본문 링크 그대로 최신본**) — ⚠️ **`/data` 없이 `child/attachment`에 POST하면 버전이 오르지 않고 조용히 무시된다**(2026-09-15 실측: 4장 전부 구버전 유지). 기존 첨부 id를 먼저 조회한다 · History는 같은 날 1행 병합 · **이미지는 위키 첨부가 정본**(로컬 `assets/`는 재생성물·git 미추적). ⚠️ **storage 정규식은 중첩표·리스트를 고려한다** — `<tr>(.*?)</tr>` 비탐욕이 XLT 셀 중첩표에서 끊겨 **16프레임 XLT 컬럼이 공란**으로 보였고 `<ol><li>` 번호 소실로 "번호 누락" 오탐(**에이전트 3건이 동일 오판** — 에이전트 결과는 실측으로 걷어낸다). ⚠️ **문자열 치환은 구간 한정 + assert** — 전역 치환은 History 과거 이력을 훼손한다
+- ⚠️ **인라인 코멘트는 버전을 올리지 않고 본문에 `<ac:inline-comment-marker>`를 넣는다**(2026-10-01 실측) — 버전 가드는 이 변경을 못 잡는다. 미리 받아 둔 원문으로 PUT하면 마커가 지워져 코멘트가 **dangling**이 된다(병렬 세션의 비즈콘 v27 PUT). → **PUT 직전에 다시 받고, 편집 전후 마커 목록이 같은지 assert**한다. 코멘트는 `GET /rest/api/content/{page}/child/comment?expand=extensions.inlineProperties,extensions.resolution&depth=all` · 해결 여부는 `/rest/inlinecomments/1.0/comments/{id}`의 `resolveProperties`
+- ⚠️ **코멘트 해결 API** — `/rest/inlinecomments/1.0/comments/{id}/resolve`는 **404**(PUT · POST · 변형 모두). `PUT /rest/api/content/{id}`에 `extensions.resolution.status=resolved`로 하면 해결은 되지만 **해결자가 Anonymous로 남고 그 코멘트의 `extensions.resolution` 펼침 조회가 500**이 된다 → 코멘트 해결은 **사용자에게 UI로 요청**하는 것이 낫다. REST storage는 `<br />`(MCP 조회는 `<br/>`)이고 헤딩 · 셀에 nbsp(`\xa0`)가 섞여 앵커가 자주 어긋난다 — 짧은 앵커 + 위치 기준 교체가 안전
 
 ## §6. 프레임·어노테이션
 
