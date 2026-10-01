@@ -220,6 +220,22 @@ check("정상 렌더 → 위반 0건",
 check("타 페이지 첨부 참조 검출",
       len(check_render('<img src="/download/attachments/999/a.png" />', "123")) >= 1)
 
+def _hist(*cells):
+    rows = "".join(f"<tr><td>{c}</td><td>x</td></tr>" for c in cells)
+    return f"<h1>History</h1><table><tbody><tr><th>Date</th><th>History</th></tr>{rows}</tbody></table>"
+
+T = '<div class="content-wrapper"><p><time datetime="2026-09-30" /></p></div>'
+check("History 같은 날짜 2행 검출(<time>)",
+      any("[History] 2026-09-30" in v for v in check_storage(_hist(T, T))))
+check("History 같은 날짜 2행 검출(텍스트 날짜)",
+      any("[History] 2026-07-01" in v for v in check_storage(_hist("2026-07-01", "2026-07-01"))))
+check("History 날짜별 1행 → 위반 0건",
+      check_storage(_hist(T, '<time datetime="2026-10-01" />')) == [])
+check("Release History는 검사 대상 아님",
+      check_storage(_hist(T, T).replace("<h1>History</h1>", "<h1>Release History</h1>")) == [])
+check("History 셀 안 중첩 표의 행은 세지 않음",
+      check_storage(_hist(T + "<table><tr><td>2026-09-30</td></tr></table>")) == [])
+
 # ---------------------------------------------------------------- [7] 대기 키 대조
 print("\n[7] 미등록 대기 키 대조 (check_pending_keys)")
 import tempfile

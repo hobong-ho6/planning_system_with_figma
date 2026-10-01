@@ -272,7 +272,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `check_gate_report.py` | 게이트 리포트 완결성 검사 (필수 요소 6종 — 완료 선언 직전 exit 0 확인) | 1단계 Step 5 게이트 |
 | `check_lpc_nulls.py` | LPC 콘텐츠 필드 `null`·미게시 검사 (위키 정의 9개 컬렉션 × 4프로젝트 × 5개 언어 · 읽기 전용) | **LPC 쓰기 직전·직후** — exit 0 확인 |
 | `restore/lpc_safe_put.js` | LPC 안전 쓰기 템플릿 (read-modify-write + 재조회 대조) — ⛔ 직접 PUT 금지 | LPC에 쓸 때 (브라우저 콘솔) |
-| `check_wiki_storage.py` | 위키 storage/렌더 규칙 검사 (Screen 표 4컬럼·첨부 `ri:page` 금지·URL 이스케이프 / 렌더 `Unknown Attachment`) | 3단계 위키 PUT **직전 `pre`·직후 `post`** — exit 0 확인 |
+| `check_wiki_storage.py` | 위키 storage/렌더 규칙 검사 (Screen 표 4컬럼·첨부 `ri:page` 금지·URL 이스케이프·**History 같은 날짜 행 중복** / 렌더 `Unknown Attachment`) | 3단계 위키 PUT **직전 `pre`·직후 `post`** — exit 0 확인 |
 | `put_wiki_storage.py` | 위키 본문(storage) **버전 가드 PUT** — 로컬 파일을 그대로 보내고, 라이브 버전이 `--expect-version`과 다르면 **PUT 하지 않고 exit 2**(다른 세션이 먼저 고침) · PUT 후 본문 길이가 5% 이상 어긋나면 exit 3. MCP `confluence_update_page`는 본문을 대화에 실어 큰 페이지에서 **본문 유실 위험**이 있다(2026-09-12 실측 사고) | 3단계 위키 PUT — **본문이 크거나 다른 세션과 동시 편집 가능성이 있으면 필수** |
 | `collect_frames.py` | 프레임 읽기 전용 배치 수집 (노드·코멘트 1회 조회 + 좌표 정규화 + 텍스트 매칭 + 어노테이션 렌더 → `frames.json`) | 3단계 Step 3~4 입력 생성 (프레임 다수 시) |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |

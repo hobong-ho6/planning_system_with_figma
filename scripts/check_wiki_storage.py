@@ -11,6 +11,8 @@ Confluence storage 규칙 위반 검사기 (md/wiki.md Screen 표·첨부 참조
   ⓑ 첨부 참조에 <ri:page>를 넣어 다른 스페이스 키(LINENEXT)를 가리켜
      이미지·엑셀이 "알 수 없는 첨부파일"로 깨진 위반 (2026-07-30 같은 페이지)
   ⓒ Figma URL의 & 미이스케이프로 storage 파싱이 깨지는 위반
+  ⓓ History 표에 같은 날짜 행이 2개 이상인 위반 — 같은 날짜는 한 행의 <ul>에 <li>로 누적
+     (2026-10-01 pageId=4802744889 등 3페이지 · 09-30 하루에 16행이 쌓였다)
 
 pre 검사는 **로컬 storage 문자열/파일** 또는 **라이브 페이지**를 대상으로 할 수 있다.
 post 검사는 라이브 렌더(body.view)를 받아 실제로 깨졌는지 확인한다 — storage에 마크업이
@@ -53,6 +55,50 @@ RENDER_ERROR_MARKERS = [
 # ──────────────────────────────────────────────────────────────
 # pre: storage XHTML 검사
 # ──────────────────────────────────────────────────────────────
+
+def _first_table(seg: str) -> str:
+    """seg에서 첫 <table>을 중첩 표까지 균형 맞춰 잘라 반환(없으면 '')."""
+    start = seg.find("<table")
+    if start < 0:
+        return ""
+    depth = 0
+    for m in re.finditer(r"<table\b|</table>", seg[start:]):
+        depth += 1 if m.group(0) != "</table>" else -1
+        if depth == 0:
+            return seg[start:start + m.end()]
+    return seg[start:]
+
+
+def _history_dup_dates(storage: str) -> list:
+    """제목이 정확히 'History'인 섹션의 첫 표에서 2행 이상인 날짜 목록을 반환.
+
+    'Release History'(마스터 페이지 버전 표)는 대상이 아니다.
+    날짜는 첫 셀의 <time datetime> 또는 YYYY-MM-DD 텍스트에서 읽는다.
+    """
+    dups = []
+    for m in re.finditer(r"<h([1-3])[^>]*>(.*?)</h\1>", storage, re.S):
+        if re.sub(r"<[^>]+>", "", m.group(2)).strip() != "History":
+            continue
+        table = _first_table(storage[m.end():])
+        # 중첩 표 안의 행은 세지 않도록 내부 표를 지운다
+        outer = table[6:]
+        while True:
+            inner = _first_table(outer)
+            if not inner:
+                break
+            outer = outer.replace(inner, "", 1)
+        seen = {}
+        for row in re.findall(r"<tr[^>]*>(.*?)</tr>", outer, re.S):
+            first = re.search(r"<td[^>]*>(.*?)</td>", row, re.S)
+            if not first:
+                continue
+            d = re.search(r'datetime="(\d{4}-\d{2}-\d{2})', first.group(1)) or \
+                re.search(r"(\d{4}-\d{2}-\d{2})", re.sub(r"<[^>]+>", "", first.group(1)))
+            if d:
+                seen[d.group(1)] = seen.get(d.group(1), 0) + 1
+        dups += [(k, n) for k, n in seen.items() if n > 1]
+    return dups
+
 
 def _screen_table_headers(storage: str) -> list:
     """Screen 섹션 이후 첫 표의 헤더 셀 목록들을 반환(표별 리스트)."""
@@ -111,6 +157,12 @@ def check_storage(storage: str, allow_ri_page: bool = False) -> list:
             if re.search(r"&(?!amp;|lt;|gt;|quot;|#\d+;|apos;)", url):
                 violations.append(
                     f"[URL 이스케이프] {attr}의 URL에 raw '&' 존재 — '&amp;'로 이스케이프 필요: {url[:90]}")
+
+    # ⓓ History 같은 날짜 행 중복
+    for date, n in _history_dup_dates(storage):
+        violations.append(
+            f"[History] {date} 행이 {n}개 — 같은 날짜는 한 행의 <ul>에 <li>로 누적한다 "
+            f"(md/wiki.md 'History 표' 같은 날짜 병합)")
 
     return violations
 
@@ -195,7 +247,7 @@ def main(argv):
         print(f"❌ {label} 위반 {len(violations)}건 — {target}")
         for v in violations:
             print(f"  - {v}")
-        print("\n→ md/wiki.md 'Screen 표 컬럼 구성' / '4-C 첨부 참조' 규칙에 맞게 고친 뒤 재실행하세요.")
+        print("\n→ md/wiki.md 'Screen 표 컬럼 구성' / '4-C 첨부 참조' / 'History 표' 규칙에 맞게 고친 뒤 재실행하세요.")
         return 1
 
     print(f"✅ {label} 통과 — {target}")
