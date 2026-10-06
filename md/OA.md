@@ -115,6 +115,12 @@ for l,u in URLS.items():                      # {lang: url}
 
 - **hero**: image, `size:"full"`·`aspectRatio:"20:13"`·`aspectMode:"cover"`. **`action`은 넣지 않는다**(동작 검증본 기준 — 버튼으로만 이동).
 - **body**: vertical box — ① 타이틀 text(`weight:"bold"`·`size:"lg"`·`wrap:true`), ② 하위 box(vertical, `margin:"md"`·`spacing:"sm"`)에 본문·각주 text 컴포넌트(`size:"sm"`·`color:"#666666"`·`wrap:true`). 위키 번역표의 문단·각주는 **줄 단위로 별도 text 컴포넌트**로 나눈다(KR 셀의 문단 구조 그대로).
+- ⛔ **text 안에 줄바꿈 `\n`을 넣지 않는다 (2026-10-06 실측 — 실발송에서 줄이 붙어 나갔다)**. LIAM을 거쳐 실제 발송된 메시지는 `\n`을 **줄바꿈으로 적용하지 않는다** — 「▶ 점검 일시 2026년 10월 13일(화) 00:00 ~ 08:00 (JST) ※ …」처럼 한 문단으로 붙어 가독성이 무너진다(`sk-gifticon-migration` OA-1 prod 발송분).
+  - **여러 줄 문단은 줄마다 text 하나**로 나누고, 한 문단에 속한 줄들은 `{"type":"box","layout":"vertical","contents":[text, text, …]}`(spacing 없음)로 묶는다. 문단 사이 간격은 상위 box의 `spacing:"sm"`이 만든다.
+  - 줄을 나눈 text는 **원래 text의 속성(size·color·wrap 등)을 그대로 복사**한다 — 문구는 바꾸지 않는다(구조만 변경이라 번역 게이트 대상 아님).
+  - 타이틀·버튼 `label`·`alt_text`에도 `\n`을 쓰지 않는다.
+  - **Landpress에 쓰기 직전 검사**: 모든 text 노드에 `\n`이 0건인지 확인한다(예: `python3 -c "import json,sys;d=json.load(open(sys.argv[1]));f=lambda x:(isinstance(x,dict) and ((x.get('type')=='text' and '\n' in x['text']) or any(f(v) for v in x.values()))) or (isinstance(x,list) and any(f(v) for v in x));print('NG' if f(d) else 'OK')" flex.json`).
+  - ⚠️ **`render_oa_flex.py` 근사 렌더로는 이 문제가 안 보인다** — 렌더러는 `\n`을 줄바꿈으로 그려 정상처럼 보인다. **LIAM 미리보기는 실발송과 같이 `\n`을 무시**하므로, LIAM `LOAD MESSAGE` 후 미리보기 카드에서 줄이 나뉘어 보이는지 확인한다.
 - **footer**: vertical box(`spacing:"sm"`) — **첫 번째(주) 버튼 `style:"primary"`·`color:"#000000"`**, 두 번째 이후 버튼 `style:"link"`·`color:"#000000"`, 공통 `height:"sm"`, `action:{type:"uri", label, uri}`. **빈 `contents:[]` box를 넣지 않는다**(검증 실패 요인).
 
 ```json
@@ -131,9 +137,12 @@ for l,u in URLS.items():                      # {lang: url}
     "type": "box",
     "layout": "vertical",
     "contents": [
-      { "type": "text", "text": "가입 완료! 친구가 보낸 🎁\n럭키볼 선물 1개가 도착했어요.", "weight": "bold", "size": "lg", "wrap": true },
+      { "type": "text", "text": "가입 완료! 친구가 보낸 🎁 럭키볼 선물 1개가 도착했어요.", "weight": "bold", "size": "lg", "wrap": true },
       { "type": "box", "layout": "vertical", "margin": "md", "spacing": "sm", "contents": [
-        { "type": "text", "text": "이제 친구를 직접 초대해서\n럭키볼 선물을 더 받을 수 있어요!", "size": "sm", "color": "#666666", "wrap": true },
+        { "type": "box", "layout": "vertical", "contents": [
+          { "type": "text", "text": "이제 친구를 직접 초대해서", "size": "sm", "color": "#666666", "wrap": true },
+          { "type": "text", "text": "럭키볼 선물을 더 받을 수 있어요!", "size": "sm", "color": "#666666", "wrap": true }
+        ] },
         { "type": "text", "text": "* 당첨 보상은 즉시 지급됩니다. 최대 5분까지 소요됩니다.", "size": "sm", "color": "#666666", "wrap": true }
       ] }
     ]
@@ -185,6 +194,7 @@ python3 scripts/render_oa_flex.py --input bubbles.json --out-dir assets/oa_rende
 | 레이아웃·요소 순서·문단 구분선 | **폰트**(LINE 자체 폰트 ↔ 시스템 폰트) |
 | 색상·버튼 스타일·배치 | **미세 여백**(1~2px 수준), 줄바꿈 위치 |
 | hero 이미지 비율·크롭 | LINE 앱의 말풍선 바깥 UI |
+| | ⛔ **text 안 `\n`** — 렌더러는 줄바꿈으로 그리지만 **실발송은 무시한다**(2026-10-06 실측 · 위 「Flex 메시지 JSON」 ⛔ 항목). 렌더가 정상이어도 `\n`이 있으면 실발송은 줄이 붙는다 |
 
 - 위키 첨부·리뷰용으로는 충분하지만, **발송 전 최종 확인은 사람이 Flex Message Simulator에서** 한다(규칙 3의 확인 흐름은 그대로 유지).
 - ⛔ **렌더 이미지를 "실제 발송 화면"이라고 단정해 보고하지 않는다.** 근사 렌더임을 함께 밝힌다.

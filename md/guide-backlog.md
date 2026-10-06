@@ -35,6 +35,7 @@
 | 2 | **OA 등록 규칙 2건 변경** — ⓐ LIAM Event Message는 **항상 `isActive = Yes`로 등록**(종전 「미완성 문구면 해제」 폐기) ⓑ **2번째 언어부터 Claude가 `POST …/items/all`로 로케일 추가**(종전 「사용자가 CMS에서 추가」 정정 · 사용자 개입 불필요) · prod LIAM은 내부 앱 직접 접속 | ⓐ 규칙 변경 | ① 가이드 탭 「OA 메시지」 섹션(LIAM 등록·로케일 추가 절차) · ④ 작업 모드 카드 | `md/OA.md` LIAM 등록 · `md/landpress.md` §10-3 4-1 | 2026-09-29 |
 | 3 | **IA 어휘 추가 — Unifi mini 마이 탭 내재화 화면 15종**(11종 + 여행 예약 상세 3 · 상품권 환불 상세 1)(`my_reservation_*` · `my_voucher_*` · `my_voucher_pharmacy_*` · `my_favorite_01` · mini `my_main_01` — 풀 모드와 같은 ID임을 사용자가 알고 승인) — ⚠️ 2026-09-30 약국 쿠폰 3종(`my_voucher_pharmacy_*`) ❌폐기(스펙 아웃) → 반영 시 **12종** | ⓐ 규칙(어휘) 변경 | ⑥ IA 탭 `IA_DATA` 동기화(`md/ia-check.md` 가이드 갱신 절차) | `md/IA.md` §2-5 · 위키 `4802744889` | 2026-09-29 |
 | 4 | **위키 History 같은 날짜 병합을 검사기로 강제** — `check_wiki_storage.py pre`가 History 표의 같은 날짜 행 2개 이상을 **exit 1**로 막는다 · 규칙은 정본 템플릿(`Date \| History \| Jira Ticket …`) 포함 **모든 History 표**에 적용(`md/wiki.md` 「History 표」) | ⓐ 규칙 변경(⛔ 차단) | 가이드 탭 위키 업데이트 · 검증 절 / 시스템 가이드 탭 스크립트 표 | 2026-10-01 정본 템플릿 4페이지에서 하루 16~20행 누적 | 2026-10-01 |
+| 5 | **OA Flex text 안 `\n` 금지** — 실발송은 `\n` 줄바꿈을 적용하지 않는다 → 여러 줄은 **줄마다 text + 문단 단위 `box(vertical)`** · Landpress 쓰기 직전 `\n` 0건 검사 · 근사 렌더로는 안 보이고 **LIAM 미리보기로 확인**(`md/OA.md` 「Flex 메시지 JSON」 ⛔ 항목) | ⓐ 규칙 변경(⛔ 차단) | 가이드 OA 메시지 탭 Flex 구조 절 · 샘플 JSON | 2026-10-06 SK 점검 OA-1 prod 발송분 줄 붙음(사용자 확인) | 2026-10-06 |
 
 ## 반영 이력
 
