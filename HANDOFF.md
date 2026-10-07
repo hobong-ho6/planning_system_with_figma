@@ -69,10 +69,10 @@
 
 > **전문·근거는 [`md/decisions.md`](md/decisions.md)가 정본**이다(2026-09-22부터 최근 4건도 전문을 거기 둔다 — 주입량 축소). 아래는 최근 4건의 결정문 한 줄이며, **재작업·재제안이 의심되면 그 파일을 먼저 연다.**
 
+- **2026-10-08** **핸드오프 프로젝트 파일 = 구조 규칙 우선 · 25KB 경고선** — 바이트 하드 상한은 주입 파일(`HANDOFF.md` 20KB · `people/` 3KB · 합계 24KB)에만(정본 `handoff/README.md`)
 - **2026-09-29** **OA의 LIAM 메시지는 항상 isActive=Yes로 등록** — 종전 「테스트·미완성이면 해제」 폐기(정본 `md/OA.md`)
 - **2026-09-18** 토큰은 **「필요한 단계에서 요청」** — 키체인 우선, 없으면 그 시점에 요청(정본 `CLAUDE.md` 「⛔ 토큰 규칙」)
 - **2026-09-18** **산출물은 커밋하지 않는다** — `reports/gate`·`landpress`·`oa`·`xlt`·`assets` gitignore · **사본은 Auto-react(private)** · Auto-react 일감은 task_id 표기
-- **2026-09-16** **드랍웹 게시는 Claude가 직접** — REST `PUT /api/sites/{siteId}`(MCP `update_site`는 못 쓴다) · ⛔ 게시 전 사용자 승인(정본 `md/dropweb-guide.md` §8)
 
 ## ⛔ 전역 종결 (재작업·재제안 금지)
 
