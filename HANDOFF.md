@@ -18,15 +18,16 @@
 |---|---|---|---|---|
 | [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 | 09-22 | 미결 2 · HANDOFF 9.3KB로 압축(주입 13.5KB) · 재팽창 방지 기준·대기 키 대조기 신설 |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 5종 + K-Pick 노출 정책·FAQ | 09-16 | 정합 유지 · ⚠️ `syncExcludedFields`에 `badges`·`reviewCount` 없음(동기화 시 덮일 수 있음) |
-| [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 09-16 | 용어집 v5.5 · 가이드 v43 · ⛔ 보완은 모아서 한 번에(대기 23건) · 미결 1 |
+| [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 10-08 | 용어집 v5.5 · 가이드 v43 · ⛔ 보완은 모아서 한 번에(대기 36건) · 미결 1 |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-21 | 점검 #8 반영 · 🔴 KAIA 이율 3중 불일치·리워드 스켈레톤·Beta K-Pick 개편 · 어휘 승인 대기 12 |
 | [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + LPC `4727978725` · 29화면 | 09-29 | 본문 v247 · LPC v71 · 🔴 브랜드 24종 용어집 v5.7 대기 · th/zh 구 표기 잔존 · 의료광고 조치 |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` 예약 OA 16화면 | 09-16 | beta 16건 등록 · ⚠️ hero·버튼 URL 임시값 · ko만(번역 미착수) |
 | [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` — Screen 3화면 + OA 2종 | 09-16 | 위키 v26 · XLT 26키 전건 등록 · 🔴 「더보기」 landing URL 미확정 · 공유 툴팁 하드코딩 |
 | [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327`(+`4774237088`) — 전 바우처 | 09-23 | Ⅰ **리스크팀 검토 완료**(`LNS-1622` · 확정문 2건 ⛔수정금지 · **결제페이지 단독**) · 위키 **v21** — 5개 언어 확정(P0 0) · **XLT 전건 등록 완료** · ⛔ **결제페이지는 XLT 단독**(LPC 미사용) → 남은 건 **FE 구현** · Ⅱ·Ⅲ LPC 반영 완료(남은 건 XLT 업로드 1키) · 🔴 구매 수량 한도 부재 |
-| [guidekim-insourcing](handoff/projects/guidekim-insourcing.md) | `hogeun` | 위키 `4770510177` + 하위 · 기획서 `4802741598` v2.1 | 10-08 | v2.1 v156 · My v108 · 🔴 **XLT 업로드 대기 5묶음** · 캐시백 → 포인트 적립 결정 4건 · 탈퇴 영역 결정 5건 · 정책 문서 재편 대조 · ⛔ **착수 전 v2.1 「Claude 작업 로그」 먼저** |
+| [guidekim-insourcing](handoff/projects/guidekim-insourcing.md) | `hogeun` | 위키 `4770510177` + 하위 · 기획서 `4802741598` v2.1 | 10-08 | v2.1 v157 · My v109 · 🆕 결제 · 포인트 문서 Screen + 고지 보완 · 결제 회의 9장 · JPYC 복합결제 · GuideKim 포인트 소멸 · 🔴 XLT 업로드 대기 6묶음 · ⛔ **착수 전 v2.1 「Claude 작업 로그」 먼저** |
 | [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · 3화면 | 09-22 | 위키 v6 · XLT 7키 전건 등록 · LPC 관리 영역(`shopping_guide`/`guide_page`) 반영 · ⛔ 결제 바텀시트 두 벌 키는 「유지」로 종결(09-21) |
 | [sk-gifticon-migration](handoff/projects/sk-gifticon-migration.md) | `hogeun` | 위키 `4770508162` — SK 기프티콘 서버 이관(10/13) 고지 | 10-07 | 위키 v69 · 배너 prod `targetUrl` → 10/6 게시 공지(`01a0f60f…`) · ⚠️ prod `on_off=false`(T148 배너 미노출 QA) · OA 3종 **10/6 순화 문안**(5개 언어 · 줄 단위 text 구조 · OA-1 ja 현지인 검토) beta·prod LPC·LIAM 반영 · 10/6 OA-1 발송 · 📅 10/12 OA-2 → 10/13 구매 차단 |
+| [reward-tab-feedback](handoff/projects/reward-tab-feedback.md) | `hogeun` | 위키 `4838291699` 리워드탭 피드백(v1.11.0) | 10-08 | Screen `reward_main_01` + popup luckyball 2행 · 🔴 Dapp Portal XLT 3키 업로드 대기 · FE 확인(게임 미션 「받기」 키 공유) |
 
 ---
 
