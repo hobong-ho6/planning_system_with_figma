@@ -514,6 +514,14 @@ my_reservation_travel_wait_01     여행 예약 상세 — 바우처 발행 대�
 my_reservation_travel_confirm_01  여행 예약 상세 — 바우처 발행 완료(바우처 열기 = WAUG 바우처 파일)
 my_reservation_travel_cancel_01   여행 예약 상세 — 결제 취소(환불 정보)
 my_voucher_refund_detail_01       모바일 상품권 주문 상세 — 결제 취소(환불)
+my_review_writable_01             🆕 내 리뷰 › 리뷰 쓰기 탭 — 리뷰를 쓸 수 있는 구매 · 예약 건 · 작성 만료일(2026-10-07 승인 · 위키 Review `4845874885` · Figma `76567-18041`)
+my_review_01                      🆕 내 리뷰 › 내 리뷰 탭 — 작성한 리뷰 목록
+my_review_02                      🆕 내 리뷰 탭 — 3줄 넘는 리뷰를 펼친 상태
+my_review_write_01                🆕 상품권 리뷰 작성 — 입력 전
+my_review_write_02                🆕 상품권 리뷰 작성 — 별점 · 리뷰 입력 상태
+my_review_edit_01                 🆕 상품권 리뷰 수정 · 삭제
+my_review_done_01                 🆕 리뷰 등록 완료 — 다음에 쓸 리뷰가 있는 경우
+my_review_done_02                 🆕 리뷰 등록 완료 — 다음에 쓸 리뷰가 없는 경우
 ```
 
 ### 2-6. Wallet Mode 전용 화면 (위키 [Screen]Wallet Mode 근거 — 기존 표기는 dot 형식, 소급 금지)
