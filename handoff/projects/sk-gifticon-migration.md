@@ -1,6 +1,6 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-10-06 · 세션 #5 · 마지막 커밋 `32dacc5` · Auto-react `21a2906`(⚠️ 미푸시) · 위키 **v68**
+> 담당자: `hogeun` · 마지막 갱신: 2026-10-07 · 세션 #5 · 마지막 커밋 `32dacc5` · Auto-react `21a2906`(⚠️ 미푸시) · 위키 **v69**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST=JST · 8시간)** 의 Unifi 영향 확정과 **사용자 고지**(공지사항·앱푸시·OA·화면 배너·구매 차단).
 
@@ -10,7 +10,7 @@
 - Figma `GOCHAYBS7hIrmWRGNuJOKV` 섹션 **`76061-19095`**(09-30 노출 위치 변경 정본) — `76061-19216` 상품권 목록(①) · `76061-19102` 상품권 상세(②) · `76061-19385` 홈(③). 종전 `75999-3299`·`75999-3298`은 대체됨
 - 첨부 본문 참조 **6건**: `annotated_76061-19216/19102/19385.png` · `oa_sample_1_notice/2_holder/3_delay.png`(OA 근사 렌더 · **10/6 순화 문안·줄 단위 구조**) — 미참조였던 `annotated_75999-3299/3298.png`는 **삭제**(09-30 사용자 지시 · 본문 이미지 참조 0 확인 · 첨부 6건 = 전부 참조)
 - **LPC `maintenance_banner`**(LV · beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · 다건 · `postId=1` · ⚠️ `primaryLocale=en_US`)
-  - 필드: `contents.title`(①② 문구) · **`contents.homeTitle`·`homePeriod`**(③ 홈 2줄 · 09-30 추가) · `contents.targetUrl`(배너 클릭 이동 · 비면 이동 안 함 · **환경별 값** beta `https://miniapp.line.me/2008994547-GfGUdDxy/announcement/019fd56b-525f-7f30-9a3f-095e7504bb91` / prod `https://miniapp.line.me/unifi/announcement/01a04617-6a3c-78f4-824c-e298d5a511cd`) · **`on_off`**(①②③ 배너 노출 · `category_promotion_banner` **대체**) · **`buy_block_on_off`**(「바로 구매하기」 비활성)
+  - 필드: `contents.title`(①② 문구) · **`contents.homeTitle`·`homePeriod`**(③ 홈 2줄 · 09-30 추가) · `contents.targetUrl`(배너 클릭 이동 · 비면 이동 안 함 · **환경별 값** beta `https://miniapp.line.me/2008994547-GfGUdDxy/announcement/019fd56b-525f-7f30-9a3f-095e7504bb91` / prod `https://miniapp.line.me/unifi/announcement/01a0f60f-1b1e-71c3-abae-fc53dc81e8ab` — **10/6 게시 공지사항으로 교체(10-07 · 종전 `01a04617…`)**) · **`on_off`**(①②③ 배너 노출 · `category_promotion_banner` **대체**) · **`buy_block_on_off`**(「바로 구매하기」 비활성)
   - 현재값: beta `on_off=true`·`buy_block=true`(검증용 · 의도) / prod **둘 다 `false`** · 5개 언어 문구 반영·**beta↔prod 동치**
 - **OA 3종**(Landpress `oam_message_task_multi` · **5개 로케일 게시** · LIAM **isActive Yes**) — **10/6 순화 문안 · 본문 줄 단위 text 구조 · beta=prod 동치**
 
