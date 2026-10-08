@@ -21,4 +21,5 @@
 
 ## 도구 함정
 
+- ⚠️ `render_oa_flex.py` — 이 PC(`AL02359162`)에서 headless Chrome이 「Failed to create headless user data directory container」로 실패 · `--headless=new`면 스크린샷은 되지만 프로세스가 안 끝난다 → `--chrome` 래퍼로 우회(2026-10-08)
 - macOS·MCP·스크립트 함정 7건(`collect_node_boxes` 언패킹 · 레지스트리 JSON 구조 · XLT API 사내망 전제 · `launch.json` npx 경로 · **Jira MCP가 코멘트 본문을 깨뜨림** · `timeout` 명령 없음 · Slack 긴 스레드는 파일로 떨어짐) → [`md/handoff-context.md`](../../md/handoff-context.md) §17
