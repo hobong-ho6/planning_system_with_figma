@@ -1,6 +1,6 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-10-12 23:58 · 세션 #8(AD03230205 · 새 계정) · Auto-react `ae90526` · 위키 **v69**
+> 담당자: `hogeun` · 마지막 갱신: 2026-10-13 08:12 · 세션 #8(AD03230205 · 새 계정) · Auto-react `c1fe791` · 위키 **v72** · 위키 **v69**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST=JST · 8시간)** 의 Unifi 영향 확정과 **사용자 고지**(공지사항·앱푸시·OA·화면 배너·구매 차단).
 
@@ -84,6 +84,7 @@
   | OA-1 (D-7 10/6) | 상품권 점검 OA-1 사전 공지 (D-7) | `244` / `N6abb47c2e2e22156952d50ed` | `2026` / `N6abb49089af6303f1a2104a1` |
   | OA-2 (D-1 10/12) | 상품권 점검 OA-2 보유자 안내 (D-1) | `245` / `N6abb47e8896fa02756cbd19c` | `2027` / `N6abb495d8b43b853bdb6e3fe` |
   | OA-3 (조건부) | 상품권 점검 OA-3 시간 연장 안내 (조건부) | `246` / `N6abb4806896fa02756cbd19d` | `2028` / `N6abb497c9af6303f1a2104a2` |
+  | 🆕 OA-4 (완료 · 10/13) | 상품권 점검 OA-4 완료 안내 | `259` / `N6acd688f1bf0d337ff2ba045` | `2066` / `N6acd69298b43b853bdc76a35` |
 
   LIAM 채널 beta `Unifi Beta OA (2010418473)` · prod `Dapp Portal (2006670905)` · OA-2 placeholder `product_order_detail_url`
 - 게이트 리포트(로컬 · gitignore · **사본 Auto-react `reports/gate/` `df94076`**): `reports/gate/gate_report_20260929_sk_notice_5lang.md`(공지 76셀 · 교정 4 · P0 0) · `…_maintenance_banner_short.md`(단축 4셀 · P0 0 · Auto-react `3744edc`) · `reports/gate/gate_report_20260929_sk_oa3_5lang.md`(OA 132셀 · 교정 9 · P0 0) · `reports/gate/gate_report_20260929_maintenance_banner_5lang.md`(배너 · P0 0) · **`reports/gate/gate_report_20261006_sk_oa_soften_5lang.md`**(OA 순화 5개 언어 · §1~7 · P0 0 · 텍스트 정본 `oa_soft_20261006_5lang.json`)
@@ -106,7 +107,9 @@
 - [x] 10/6 OA-1 발송(prod 템플릿 `N6abb49089af6303f1a2104a1`) — 순화 문안 · 줄 단위 구조 · ja 현지인 검토 반영 후 LIAM 재LOAD(사용자)
 - [x] 10/12 23:50 prod `buy_block_on_off=true` — 브라우저 타이머로 완료(5/5 · Auto-react `ae90526`)
 - [ ] LandPress MCP `item_update` 다국어 행 지정 방법 beta 시험(사용자 승인 후)
-- [ ] **10/13 08:00 이후** — 공개 취소 확인 · FE 처리 확인 · 스위치 false 원복 여부 사용자 결정 · 지연 시 OA-3
+- [x] 10/13 08:00 공개 취소 실행 확인(공개 API 0건 · 08:03)
+- [x] **OA-4 점검 완료 안내 신설**(10/13 사용자 지시 · 친구추가 사용자 전체) — 5개 언어 게이트 P0 0(`reports/gate/gate_report_20261013_sk_oa4_done_5lang.md`) · 위키 v70~72 · Landpress beta `259`·prod `2066` · LIAM beta·prod 생성(isActive Yes) · 복구원 `landpress/oam_message_task_multi_sk_gifticon/20261013_oa4_done/` → Auto-react `c1fe791` · ⚠️ 본문 「00:00 ~ 08:00」은 정시 종료 기준 · **발송은 운영(사용자)**
+- [ ] **10/13 이후** — FE 처리 확인(비공개 = 배너 숨김 · 구매 가능) · 스위치 false 원복 여부 사용자 결정
 - [ ] (확인 필요) 10/12 OA-2 발송 여부 — 이 세션에서 확인하지 않았다
 - [ ] (선택) OA-2·OA-3 ja 현지인 검토 — 받으면 ja만 키 단위 패치(Landpress beta·prod + LIAM 재LOAD). ⚠️ OA-1 「申し訳ありません」 ↔ OA-2·3 「申し訳ございません」 경어 수준 불일치(게이트 §7 d-2)
 - [ ] Auto-react 미푸시 커밋 정리 — 이 세션 5건(`1b1ea04`~`21a2906`) 앞에 **다른 세션 watch 커밋 4건**이 미푸시로 쌓여 있어 푸시 보류
