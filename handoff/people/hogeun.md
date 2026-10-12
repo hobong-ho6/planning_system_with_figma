@@ -8,7 +8,7 @@
 | hostname | 저장소 경로 | git 세팅 | 비고 |
 |---|---|---|---|
 | `AL02359162.local` | `/Users/user/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 접속 시 XLT 읽기 API 사용 가능 |
-| `AD03230205ui-iMac.local` | `/Users/ad03230205/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 OK(2026-09-15 XLT API 실측) · **DropWeb MCP 등록됨**(2026-09-16) |
+| `AD03230205ui-iMac.local` | `/Users/ad03230205/Documents/planning_system_with_figma` | ✅ 완료(2026-08-20) | 사내망 OK(2026-09-15 XLT API 실측) · **DropWeb MCP 등록됨**(2026-09-16) · **LandPress Content MCP 등록**(2026-10-12 · user scope · 미실사용) · 시스템 잠자기 0 |
 
 ## 환경 복구
 
