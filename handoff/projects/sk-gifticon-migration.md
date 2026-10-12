@@ -11,7 +11,7 @@
 | 시각(KST) | 동작 | 누가 · 어떻게 | 상태(10/12 11:42 실측) |
 |---|---|---|---|
 | 10/12 23:00 | prod `maintenance_banner` **공개** — 배너 노출 · 구매 가능 | **LPC 예약 공개**(사용자 설정 · 5개 언어 · `env=main` · `actionAt` 14:00Z) | 5건 `READY` ✅ |
-| 10/12 **23:50** | prod 5개 언어 **`buy_block_on_off` false → true** | **Claude가 CMS API로** — 아래 실행 절차 | ⚠️ 원래 PC(`AL02359162`) 세션에 **세션 전용 예약(CronCreate · 23:46 시작)**만 있다 → **다른 PC 세션에는 예약이 없다. 이어받는 세션이 23:46쯤 직접 실행**(또는 사용자가 CMS 화면에서 직접 켠다) |
+| 10/12 **23:50** | prod 5개 언어 **`buy_block_on_off` false → true** | **Claude가 CMS API로** — 아래 실행 절차 | ⚠️ 원래 PC(`AL02359162`) 세션에 **세션 전용 예약(CronCreate · 23:46 시작)**만 있다 → **다른 PC 세션에는 예약이 없다. 이어받는 세션이 23:46쯤 직접 실행**(또는 사용자가 CMS 화면에서 직접 켠다) · 🆕 **10/12 19:58 — `AD03230205` 세션에 세션 전용 예약(CronCreate 23:43) 설정 · 실행 스크립트 dry-run 통과**(5개 언어 비공개 · `on_off=true` · `buy_block=false` · null 0) · ⚠️ CMS 예약으로는 필드 값 변경 불가(사용자 확인) — API 실행이 정본 · 23:50 예약은 CMS에 없음(조회 확인) |
 | 10/13 08:00 | prod **공개 취소** | **LPC 예약**(사용자 설정 · 5개 언어 · `actionAt` 23:00Z) | 5건 `READY` ✅ |
 
 - **지금 값(10/12 11:42)**: prod 5개 언어 `published=false` · `on_off=true` · `buy_block_on_off=false` / beta 5개 언어 `published=true` · 둘 다 `true`(검증용 · 건드리지 않는다) · beta 예약 0건
