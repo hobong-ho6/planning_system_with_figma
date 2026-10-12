@@ -169,7 +169,8 @@ my-site/
 
 - 엔드포인트: `https://dropweb.line-apps-beta.com/api/mcp` (HTTP) · 헤더 `Authorization: Bearer dwt_…`
 - 토큰 발급: DropWeb → **MCP Token** 메뉴(SSO 로그인 필요 — **사용자가 직접 발급**한다)
-- ⛔ **토큰은 저장소에 기록하지 않는다.** 등록 위치는 **사용자 설정 `~/.claude.json`의 `mcpServers.dropweb`** 다. 저장소 `.mcp.json`은 git 추적 대상이라 금지(CLAUDE.md 비밀값 규칙)
+- **토큰 확보 순서 (2026-10-12 추가)**: ① macOS 키체인 `security find-generic-password -s dropweb-token -w` — **값을 출력하지 않고** 환경변수로 넘긴다(`DROPWEB_TOKEN="$(security find-generic-password -s dropweb-token -w)" curl …`) ② 없으면 게시 직전에 사용자에게 요청한다. 등록은 사용자가 한다(`security add-generic-password -a hogeun -s dropweb-token -w`)
+- ⛔ **토큰은 저장소에 기록하지 않는다.** MCP 도구로 쓸 때의 등록 위치는 **사용자 설정 `~/.claude.json`의 `mcpServers.dropweb`** 다. 저장소 `.mcp.json`은 git 추적 대상이라 금지(CLAUDE.md 비밀값 규칙)
 
 **도구 (8종 · 실측 2026-09-16)**
 
@@ -198,6 +199,7 @@ my-site/
 → **업로드는 REST로 한다.** DropWeb 웹 UI가 쓰는 것과 같은 경로이며, **MCP 토큰으로 인증된다**:
 
 ```bash
+DROPWEB_TOKEN="$(security find-generic-password -s dropweb-token -w)"
 curl -s -X PUT "https://dropweb.line-apps-beta.com/api/sites/{siteId}" \
   -H "Authorization: Bearer $DROPWEB_TOKEN" \
   -F "file=@dropweb/web3_planning_vN.zip;type=application/zip" \
