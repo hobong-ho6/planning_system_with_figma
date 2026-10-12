@@ -1,8 +1,31 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-10-07 · 세션 #5 · 마지막 커밋 `32dacc5` · Auto-react `21a2906`(⚠️ 미푸시) · 위키 **v69**
+> 담당자: `hogeun` · 마지막 갱신: 2026-10-12 · 세션 #6 · 마지막 커밋 `32dacc5` · Auto-react `21a2906`(⚠️ 미푸시) · 위키 **v69**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST=JST · 8시간)** 의 Unifi 영향 확정과 **사용자 고지**(공지사항·앱푸시·OA·화면 배너·구매 차단).
+
+## 🔴 진행 중 — 10/12~13 이관 당일 운영 (다른 PC에서 이어받기 · 이 절을 먼저 읽는다)
+
+**확정 계획(사용자 2026-10-12)**: 23:00 배너 공개(LPC 예약) → **23:50 구매 버튼 비활성화 = Claude가 API로 `buy_block_on_off=true`** → 08:00 공개 취소(LPC 예약). 이관 작업 00:00~08:00 KST(=JST).
+
+| 시각(KST) | 동작 | 누가 · 어떻게 | 상태(10/12 11:42 실측) |
+|---|---|---|---|
+| 10/12 23:00 | prod `maintenance_banner` **공개** — 배너 노출 · 구매 가능 | **LPC 예약 공개**(사용자 설정 · 5개 언어 · `env=main` · `actionAt` 14:00Z) | 5건 `READY` ✅ |
+| 10/12 **23:50** | prod 5개 언어 **`buy_block_on_off` false → true** | **Claude가 CMS API로** — 아래 실행 절차 | ⚠️ 원래 PC(`AL02359162`) 세션에 **세션 전용 예약(CronCreate · 23:46 시작)**만 있다 → **다른 PC 세션에는 예약이 없다. 이어받는 세션이 23:46쯤 직접 실행**(또는 사용자가 CMS 화면에서 직접 켠다) |
+| 10/13 08:00 | prod **공개 취소** | **LPC 예약**(사용자 설정 · 5개 언어 · `actionAt` 23:00Z) | 5건 `READY` ✅ |
+
+- **지금 값(10/12 11:42)**: prod 5개 언어 `published=false` · `on_off=true` · `buy_block_on_off=false` / beta 5개 언어 `published=true` · 둘 다 `true`(검증용 · 건드리지 않는다) · beta 예약 0건
+- **23:50 실행 절차** (⛔ CLAUDE.md 「LPC 쓰기 규칙」 · `md/landpress.md` §10-3-0)
+  1. `python3 scripts/check_lpc_nulls.py --env LV_prod` → exit 0(아니면 중단 · 보고)
+  2. Claude in Chrome 새 탭 `https://landpress-content-v2.linecorp.com/projects`(⚠️ Chrome에서 이 도메인은 열린다 · 로그인은 **사용자**가 한다 — 401이면 재로그인 요청 후 대기)
+  3. 5개 로케일 GET `/api/v1/projects/w5eph4y9qxe05c8fqpi7rlxh/collections/maintenance_banner/items/1?locale={en_US|ko_KR|ja_JP|zh_TW|th_TH}` → 백업 `landpress/maintenance_banner/20261012_buy_block_on/` · 23:00 공개 실행 여부(`published`) 기록 — 안 됐으면 이 PUT의 `published:true`로 함께 공개된다(그대로 진행 · 보고)
+  4. **23:50:00 KST까지 브라우저 JS에서 await로 대기** → 로케일별 read-modify-write `PUT …/items/1?locale=…` — 받은 객체의 콘텐츠 필드 전부 + `buy_block_on_off:true` + `published:true`(다건) · 시스템 필드(`id·postId·locale·primaryLocale·published·createdAt·updatedAt·uid·_env·createdBy·updatedBy·_publishReservations`)는 뺀다(`scripts/restore/lpc_safe_put.js` 방식 · ⚠️ `contents` 키 순서는 서버가 재정렬하므로 대조는 키 순서 무관)
+  5. 재GET 5/5 + 공개 API `https://landpress-content.line-scdn.net/contents/v2/projects/w5eph4y9qxe05c8fqpi7rlxh/collections/maintenance_banner/items?locale=…`로 노출 확인 → `check_lpc_nulls.py --env LV_prod` exit 0
+  6. 백업 → Auto-react `reports/landpress/` 커밋 · 푸시 → 사용자 보고
+  - ⚠️ 자동 승인 모드는 prod LPC PUT을 「Production Deploy」로 막는다(세션 #4 · #5 실측) — 사용자 허용이 필요할 수 있다 · 브라우저 JS 45초 초과 시 중간에 멈춘다 → 공개 API로 확인 후 남은 로케일만 재실행
+  - **비상 수단**: CMS 화면에서 prod `maintenance_banner` 각 언어의 `buy_block_on_off`를 켜고 저장 · 공개(사용자)
+- **08:00 이후 확인할 것**: ① 공개 취소 실행 확인(공개 API 0건) ② **FE가 「비공개 = 배너 숨김 · 구매 가능」으로 처리하는지 화면 확인**(미검증) ③ 비공개여도 저장값은 `buy_block_on_off=true`로 남는다 — 나중에 재공개하면 구매가 바로 막힌다 → **두 스위치를 false로 되돌릴지 사용자 결정**(미정) ④ 지연 시 OA-3(prod `2028`)
+- 예약 공개 API · 시간대 정리: `md/landpress.md` **§10-2-1**(커밋 `476de3e`)
 
 ## 대상 / 링크
 
@@ -35,16 +58,18 @@
 - **OA(10/6 전면 개정)** — Slack 피드백(「중단」→임시 점검·08:00 재개 인상 · 긍정 톤 · 일본어 위화감 없게) + 사용자 지시로 3종 재작성 → 「원활한 서비스 제공을 위해」 · 「불편을 드려 죄송하지만 대부분 평소처럼」 · 구매·환불 08:00 재개 · 올리브영 08:00 이후 · OA-2 만료 ※는 **올리브영 한정** · 「점검 중에도 이용 가능(24시간 편의점 바코드)」 블록은 **사용자 지시로 삭제**. 5개 언어(AI 2차 검토 2회) · **OA-1 ja는 현지인(塚原 香音) 검토 3칸 반영**(OA-2·3 ja는 미검토). Landpress 30행·LIAM 6건(beta·prod) 반영 · ⛔ 본문은 **줄마다 text + 문단 box** 구조(`\n` 미사용 — 실발송에서 줄바꿈 무시 실측). 히어로 최종본 유지(`30245f7c…png` · `5:3`)
 - **공지사항(5-3)** — **5개 언어 완료**(09-29 · 게이트 P0 0 · 교정 4) · 📅 **게시 2026-10-06(화) 10:00**(앱푸시는 10/6 전체 삭제됨) · 일본어는 검토 페이지 5·6절에 추가
 - **FE·BE** — FE에 분기 기준 전달 완료(사용자 · 배너 `on_off` / 구매 버튼 `buy_block_on_off` / `?locale=` 필수) · **배너 클릭 동작 전달 완료**(09-30 사용자 · `contents.targetUrl`로 이동 · 빈 값이면 이동 안 함) · OA-2 `{{product_order_detail_url}}`은 BE가 발송 시 채운다
-- **운영 순서** — 평상시(둘 다 false) → **D-7 10/6 `on_off=true`** + OA-1 → D-1 10/12 OA-2 → **D-Day 00:00 `buy_block_on_off=true`** → 08:00 둘 다 false(미복구 시 OA-3)
+- **운영 순서** — ~~평상시(둘 다 false) → D-7 10/6 `on_off=true` + OA-1 → D-1 10/12 OA-2 → D-Day 00:00 `buy_block_on_off=true` → 08:00 둘 다 false~~ → **10/12 확정: prod는 비공개로 대기 → 23:00 예약 공개(배너) → 23:50 Claude API 구매 차단 → 08:00 예약 공개 취소**(위 「🔴 진행 중」) · 미복구 시 OA-3
 
 ## 진행 중 작업(WIP)
 
-없음.
+**10/12 23:50 구매 차단 실행 대기** — 위 「🔴 진행 중」 절차. 원래 PC 세션 예약은 그 세션이 살아 있어야만 돈다(다른 PC에선 직접 실행).
 
 ## 다음 할 일
 
 - [x] 10/6 OA-1 발송(prod 템플릿 `N6abb49089af6303f1a2104a1`) — 순화 문안 · 줄 단위 구조 · ja 현지인 검토 반영 후 LIAM 재LOAD(사용자)
-- [ ] 📅 운영: 10/12 OA-2 → 10/13 00:00 `buy_block_on_off=true` → 08:00 둘 다 false(미복구 시 OA-3)
+- [ ] 🔴 **10/12 23:50 prod `buy_block_on_off=true`(Claude API)** — 위 절차 · 23:00 공개 · 08:00 공개 취소는 LPC 예약 완료
+- [ ] **10/13 08:00 이후** — 공개 취소 확인 · FE 처리 확인 · 스위치 false 원복 여부 사용자 결정 · 지연 시 OA-3
+- [ ] (확인 필요) 10/12 OA-2 발송 여부 — 이 세션에서 확인하지 않았다
 - [ ] (선택) OA-2·OA-3 ja 현지인 검토 — 받으면 ja만 키 단위 패치(Landpress beta·prod + LIAM 재LOAD). ⚠️ OA-1 「申し訳ありません」 ↔ OA-2·3 「申し訳ございません」 경어 수준 불일치(게이트 §7 d-2)
 - [ ] Auto-react 미푸시 커밋 정리 — 이 세션 5건(`1b1ea04`~`21a2906`) 앞에 **다른 세션 watch 커밋 4건**이 미푸시로 쌓여 있어 푸시 보류
 
@@ -52,6 +77,7 @@
 
 | 날짜 | 결정 | 근거 |
 |---|---|---|
+| 10-12 | **이관 당일 운영 = 23:00 배너 공개(LPC 예약) → 23:50 구매 차단(Claude API) → 08:00 공개 취소(LPC 예약)** — 종전 「D-Day 00:00 차단 · 08:00 둘 다 false」 대체 · 공개 · 공개 취소 예약은 사용자가 설정 | 사용자 |
 | 09-30 | **③ 홈 배너는 같은 컬렉션 `maintenance_banner.contents`에 `homeTitle`·`homePeriod` 키 추가** · 스위치·링크는 ①②와 공통 | 사용자 결정 — 별도 컬렉션 대신. 홈은 2줄(제목+기간) 형식이라 키만 분리 |
 | 09-30 | **③ 홈 기간 문구는 ①② 날짜 형식으로 통일**(`10/13 00:00~08:00` · 연도 생략) | 사용자 결정 — Figma 원문 `2026.10.13` 대신. 날짜 변경 시 `title`·`homePeriod`를 함께 고친다 |
 | 09-30 | **② 「상품권 이미지 비활성화」는 스펙 제외** | 사용자 결정 — Figma 캡션만 있음, 번호 미부여 |
@@ -83,6 +109,11 @@
 
 ## 세션 기록 (최신 위, 최대 5개)
 
+### 2026-10-12 — 세션 #6: 예약 공개 API 확인 · 이관 당일 운영 예약
+
+- LPC 예약 공개(publish reservation) API 7종을 CMS 번들에서 찾고 조회로 구조 실측 → `md/landpress.md` §10-2-1(`476de3e`) · prod `maintenance_banner` 비공개 · `on_off=true` · `buy_block=false` 확인 → 사용자 예약(23:00 공개 · 08:00 공개 취소 5+5건 `READY`) 검증 · 23:50 구매 차단은 이 PC 세션 전용 예약(CronCreate)
+- 교훈 — **세션 전용 예약(CronCreate)은 그 PC · 그 세션이 살아 있을 때만 돈다** → PC를 옮길 수 있으면 핸드오프에 실행 절차를 통째로 남긴다 · 정해진 시각의 공개/내림은 LPC 예약이 Claude 실행보다 안전하다(필드 값 변경만 Claude)
+
 ### 2026-10-06 — 세션 #5: OA 3종 순화 재작성 · 5개 언어 · beta·prod 반영 · 줄바꿈 규칙 (위키 v58→**v68**)
 
 - Slack 스레드(`C0B5WNBJPB5` · D-7 OA 발송 작업) 피드백 + 사용자 지시로 OA 3종 ko·ja 순화 → AI 2차 검토(ja · en/th/zh 각 1회) → 5개 언어 · 게이트 `gate_report_20261006_sk_oa_soften_5lang.md` §1~7(P0 0)
@@ -106,6 +137,4 @@
 
 ### 2026-09-30 — 세션 #3: 일본어 현지인 검토(塚原 香音 · 검토 페이지 `4791580600`) 반영 — ja 12셀 · Landpress 6항목·LIAM 6건 · 종료 처리 3건 위키 반영 (위키 v46→v48 · 게이트 `gate_report_20260930_sk_ja_native_review.md`)
 
-### 2026-09-29 — 세션 #2: 화면 고지 확정 · LPC `maintenance_banner` 신설 · OA 3종 5개 언어 등록(Landpress `POST items/all` · LIAM 6건) · 「6. 확인 필요」 14건 정리 · 공지사항 5개 언어 (위키 v17→v46)
-
-### 2026-09-23 — 세션 #1: 문서 생성 · 5-5 설계 반복(v7→v16) — 교훈: 부분 치환으로 `<h1>` 중복(구조 카운트 직접 확인) · 커밋은 `git commit -- <경로>`
+### 2026-09-23 ~ 29 — 세션 #1 · #2 (요약): 문서 생성 · 5-5 설계 반복 · 화면 고지 확정 · `maintenance_banner` 신설 · OA 3종 5개 언어 등록 · 공지사항 5개 언어 — 교훈: 부분 치환 `<h1>` 중복 · 커밋은 `git commit -- <경로>`
