@@ -336,7 +336,22 @@ CMS 예약(§10-2-1)은 **공개 · 공개 취소만** 된다. 「23:50에 `buy_
 - **취소**: 그 탭 콘솔 `clearInterval(window.__lpct_{TAG})` 또는 탭 닫기 · **다시 걸기**: 같은 TAG로 다시 붙여넣으면 이전 타이머를 지우고 새로 건다
 - ⛔ **beta · prod 동시 원칙(§10-3-00)은 그대로다** — 한쪽만 바꾸는 운영 스위치(prod만 켜는 이관 대응 등)는 **사용자 결정이 있을 때만**
 - ⚠️ 실행 시각 직후 **사람이 한 번 확인**한다 — 탭이 닫혔거나 로그인이 풀렸으면 CMS 화면에서 직접 바꾼다(비상 수단)
-- 대안 비교: Claude가 그 시각에 직접 PUT(세션 · 승인 · 계정에 묶임) · CMS 예약(공개/공개 취소만) · LandPress Content MCP(`item_update`는 수정본에 저장, 반영 도구는 opt-in · 예약 도구 없음 — 2026-10-12 README 기준 미검증)
+- 대안 비교: Claude가 그 시각에 직접 PUT(세션 · 승인 · 계정에 묶임) · CMS 예약(공개/공개 취소만) · LandPress Content MCP(⛔ 다국어 컬렉션 쓰기 불가 — primary 로케일에만 써진다 · 예약 도구 없음 · §10-2-3 실측)
+
+### 10-2-3. LandPress Content MCP (`@linecorp/landpress-content-mcp`) — 읽기는 OK, ⛔ 다국어 컬렉션 쓰기 금지 (2026-10-13 beta 실측)
+
+이 PC(`AD03230205`)에 user scope로 등록돼 있다(로그인은 MCP가 자체 쿠키로 처리 · 401이면 자동 재로그인 후 같은 호출 재시도).
+
+| 동작 | 결과 (2026-10-13 · beta `maintenance_banner` postId 1) |
+|---|---|
+| `item_list(locale="all")` | ✅ **읽기 정상** — 비공개 행·`_publishReservations`까지 보인다(prod 비공개 항목 확인에 유용) |
+| `item_update` + `item_data.locale="ko_KR"` | ⛔ **`locale`이 무시되고 primary 로케일(en_US) 행에 써졌다** — 영어 행에 한국어 문구가 들어갔다. **라이브에 즉시 반영**(2025-03-10 이전 프로젝트라 수정본 단계 없음 · republish 불필요). 즉시 원복 · 5개 언어 백업 대조 일치 |
+| `item_update` + 필드 일부만 | ✅ **400 `UNDEFINED_VALUE`로 거부** — null로 지우지 않는다(CMS PUT의 null 사고는 MCP에서는 막힌다) |
+| 게시·게시 취소·삭제 | 숨김(`LANDPRESS_CONTENT_ENABLE_DANGEROUS_TOOLS=true` + 재시작 필요) · 예약 도구 없음 |
+
+- ⛔ **다국어 컬렉션(LPC 5개 언어)에 `item_update`를 쓰지 않는다** — 로케일을 고를 수 없어 **primary 로케일만** 바뀐다. 의도한 언어가 아니라 primary를 덮어쓴다(데이터 사고). 쓰기는 지금까지처럼 **브라우저 세션 + CMS API(`?locale=`)** 로 한다(§10-3 · `lpc_safe_put.js`)
+- ✅ **읽기·확인 용도로 쓴다** — 비공개 항목·예약 상태 조회, 쓰기 후 대조
+- 단일 로케일 컬렉션이거나 primary만 바꿀 때는 기술적으로 가능하지만, 전체 필드를 다 보내야 하고(부분 갱신 불가) 즉시 라이브라 이점이 적다
 
 ### 10-3-00. ⛔ beta·prod는 항상 같은 상태로 유지한다 (2026-09-16 사용자 결정)
 
