@@ -109,7 +109,9 @@
 - [ ] LandPress MCP `item_update` 다국어 행 지정 방법 beta 시험(사용자 승인 후)
 - [x] 10/13 08:00 공개 취소 실행 확인(공개 API 0건 · 08:03)
 - [x] **OA-4 점검 완료 안내 신설**(10/13 사용자 지시 · 친구추가 사용자 전체) — 5개 언어 게이트 P0 0(`reports/gate/gate_report_20261013_sk_oa4_done_5lang.md`) · 위키 v70~72 · Landpress beta `259`·prod `2066` · LIAM beta·prod 생성(isActive Yes) · 복구원 `landpress/oam_message_task_multi_sk_gifticon/20261013_oa4_done/` → Auto-react `c1fe791` · ✏️ **prod만 문안 수정**(사용자 지시 · 점검 기간·「점검 중 이용에 불편…」 삭제 · LIAM prod LOAD→UPDATE · 위키 v73) · beta 259·LIAM beta도 prod와 동일하게 맞춤(공개 API 5/5 · 위키 v74) · **발송은 운영(사용자)**
-- [ ] **10/13 이후** — FE 처리 확인(비공개 = 배너 숨김 · 구매 가능) · 스위치 false 원복 여부 사용자 결정
+- [x] 10/13 스위치 2개(`on_off`·`buy_block_on_off`) **false 원복** — beta·prod 5개 언어(사용자 지시 · prod 비공개 유지 · beta 공개 유지) · 문구 보존 · check_lpc_nulls exit 0 · 백업 `landpress/maintenance_banner/20261013_switches_off/` → Auto-react
+- [ ] FE 처리 확인(비공개 = 배너 숨김 · 구매 가능)
+- [ ] LandPress MCP 쓰기 시험(beta) — 10/13 읽기는 실사용 OK · 쓰기는 미시험
 - [ ] (확인 필요) 10/12 OA-2 발송 여부 — 이 세션에서 확인하지 않았다
 - [ ] (선택) OA-2·OA-3 ja 현지인 검토 — 받으면 ja만 키 단위 패치(Landpress beta·prod + LIAM 재LOAD). ⚠️ OA-1 「申し訳ありません」 ↔ OA-2·3 「申し訳ございません」 경어 수준 불일치(게이트 §7 d-2)
 - [ ] Auto-react 미푸시 커밋 정리 — 이 세션 5건(`1b1ea04`~`21a2906`) 앞에 **다른 세션 watch 커밋 4건**이 미푸시로 쌓여 있어 푸시 보류
