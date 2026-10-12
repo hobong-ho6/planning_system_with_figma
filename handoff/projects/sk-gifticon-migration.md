@@ -1,6 +1,6 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-10-12 20:10 · 세션 #7(AD03230205) · 마지막 커밋 `d6da4b5` · Auto-react `21a2906`(⚠️ 미푸시) · 위키 **v69**
+> 담당자: `hogeun` · 마지막 갱신: 2026-10-12 23:58 · 세션 #8(AD03230205 · 새 계정) · Auto-react `ae90526` · 위키 **v69**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST=JST · 8시간)** 의 Unifi 영향 확정과 **사용자 고지**(공지사항·앱푸시·OA·화면 배너·구매 차단).
 
@@ -98,12 +98,14 @@
 
 ## 진행 중 작업(WIP)
 
-**10/12 23:50 구매 차단 — 브라우저 타이머로 대기 중**(`AD03230205` Chrome 탭 · 위 「🔴 진행 중」) · 00:00 이후 새 계정 세션: 탭 `localStorage.bb_live_result` · 공개 API 5/5 `buy_block_on_off=true` · `check_lpc_nulls --env LV_prod` → 백업 저장 · Auto-react 커밋
+✅ **10/12 23:50 구매 차단 완료**(세션 #8 실측) — 타이머 23:50:09 실행 · 5개 언어 OK(14:50:10~13Z) · MCP `item_list`·공개 API 5/5 `buy_block_on_off=true`·`on_off=true`·문구 3필드 그대로 · `check_lpc_nulls --env LV_prod` exit 0 · 백업 `landpress/maintenance_banner/20261012_buy_block_on/`(before·after 5+5 + `_timer_result.json`) → Auto-react `ae90526` · 타이머 탭은 실행 후 사라짐(결과는 같은 도메인 `localStorage`에 남음) · 08:00 공개 취소 예약 5건 `READY` · ⚠️ en_US만 23:05:54 수정 흔적(값 정상 · 원인 미확인)
+- LandPress MCP 확인(세션 #8): `auth_status` 정상 · prod/beta 프로젝트 모두 2024-09-19 생성 → 안내서상 `item_update`가 **라이브 즉시 반영**(republish 불필요) · ⚠️ `item_update`에 **locale 인자가 없어** 다국어 행 지정 방법 미검증 · 예약 기능 없음 → 이번엔 타이머 유지(사용자 결정) · 쓰기 시험은 beta에서 후속
 
 ## 다음 할 일
 
 - [x] 10/6 OA-1 발송(prod 템플릿 `N6abb49089af6303f1a2104a1`) — 순화 문안 · 줄 단위 구조 · ja 현지인 검토 반영 후 LIAM 재LOAD(사용자)
-- [ ] 🔴 **10/12 23:50 prod `buy_block_on_off=true`(Claude API)** — 위 절차 · 23:00 공개 · 08:00 공개 취소는 LPC 예약 완료
+- [x] 10/12 23:50 prod `buy_block_on_off=true` — 브라우저 타이머로 완료(5/5 · Auto-react `ae90526`)
+- [ ] LandPress MCP `item_update` 다국어 행 지정 방법 beta 시험(사용자 승인 후)
 - [ ] **10/13 08:00 이후** — 공개 취소 확인 · FE 처리 확인 · 스위치 false 원복 여부 사용자 결정 · 지연 시 OA-3
 - [ ] (확인 필요) 10/12 OA-2 발송 여부 — 이 세션에서 확인하지 않았다
 - [ ] (선택) OA-2·OA-3 ja 현지인 검토 — 받으면 ja만 키 단위 패치(Landpress beta·prod + LIAM 재LOAD). ⚠️ OA-1 「申し訳ありません」 ↔ OA-2·3 「申し訳ございません」 경어 수준 불일치(게이트 §7 d-2)
