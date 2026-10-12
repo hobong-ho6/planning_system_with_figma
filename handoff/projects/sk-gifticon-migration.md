@@ -1,6 +1,6 @@
 # sk-gifticon-migration — SK플래닛 기프티콘 서버 이관(2026-10-13) 영향·고지
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-10-13 08:12 · 세션 #8(AD03230205 · 새 계정) · Auto-react `c2c6a22` · 위키 **v73** · 위키 **v69**
+> 담당자: `hogeun` · 마지막 갱신: 2026-10-13 08:12 · 세션 #8(AD03230205 · 새 계정) · Auto-react `c2c6a22` · 위키 **v74** · 위키 **v69**
 >
 > 📌 **범위**: SK플래닛 사업양수도에 따른 **기프티콘 서버 이관(2026-10-13 00:00~08:00 KST=JST · 8시간)** 의 Unifi 영향 확정과 **사용자 고지**(공지사항·앱푸시·OA·화면 배너·구매 차단).
 
@@ -108,7 +108,7 @@
 - [x] 10/12 23:50 prod `buy_block_on_off=true` — 브라우저 타이머로 완료(5/5 · Auto-react `ae90526`)
 - [ ] LandPress MCP `item_update` 다국어 행 지정 방법 beta 시험(사용자 승인 후)
 - [x] 10/13 08:00 공개 취소 실행 확인(공개 API 0건 · 08:03)
-- [x] **OA-4 점검 완료 안내 신설**(10/13 사용자 지시 · 친구추가 사용자 전체) — 5개 언어 게이트 P0 0(`reports/gate/gate_report_20261013_sk_oa4_done_5lang.md`) · 위키 v70~72 · Landpress beta `259`·prod `2066` · LIAM beta·prod 생성(isActive Yes) · 복구원 `landpress/oam_message_task_multi_sk_gifticon/20261013_oa4_done/` → Auto-react `c1fe791` · ✏️ **prod만 문안 수정**(사용자 지시 · 점검 기간·「점검 중 이용에 불편…」 삭제 · LIAM prod LOAD→UPDATE · 위키 v73) · ⚠️ **beta 259·LIAM beta는 수정 전 문안**(prod와 다름 — 맞출지 사용자 결정) · **발송은 운영(사용자)**
+- [x] **OA-4 점검 완료 안내 신설**(10/13 사용자 지시 · 친구추가 사용자 전체) — 5개 언어 게이트 P0 0(`reports/gate/gate_report_20261013_sk_oa4_done_5lang.md`) · 위키 v70~72 · Landpress beta `259`·prod `2066` · LIAM beta·prod 생성(isActive Yes) · 복구원 `landpress/oam_message_task_multi_sk_gifticon/20261013_oa4_done/` → Auto-react `c1fe791` · ✏️ **prod만 문안 수정**(사용자 지시 · 점검 기간·「점검 중 이용에 불편…」 삭제 · LIAM prod LOAD→UPDATE · 위키 v73) · beta 259·LIAM beta도 prod와 동일하게 맞춤(공개 API 5/5 · 위키 v74) · **발송은 운영(사용자)**
 - [ ] **10/13 이후** — FE 처리 확인(비공개 = 배너 숨김 · 구매 가능) · 스위치 false 원복 여부 사용자 결정
 - [ ] (확인 필요) 10/12 OA-2 발송 여부 — 이 세션에서 확인하지 않았다
 - [ ] (선택) OA-2·OA-3 ja 현지인 검토 — 받으면 ja만 키 단위 패치(Landpress beta·prod + LIAM 재LOAD). ⚠️ OA-1 「申し訳ありません」 ↔ OA-2·3 「申し訳ございません」 경어 수준 불일치(게이트 §7 d-2)
