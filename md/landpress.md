@@ -316,6 +316,28 @@ CMS는 **예약 공개 · 예약 공개 취소**를 지원한다. 웹 UI는 항�
 - **운영 실측(2026-10-12)**: Dapp Portal Release 1,296건(공개 · 공개 취소 둘 다 사용) · Kaia Wallet Release 66건 · ⚠️ **UNIFI - PROD에 `actionAt` 2026-06-09 03:00Z인 `READY` 24건이 미실행으로 남아 있다**(`env=modified` · `reward_promotions` · `faq#166` 등) — 의도인지 확인 필요
 - **활용**: 정해진 시각의 공개 · 내림은 Claude가 그 시각에 PUT하는 것보다 **예약 공개가 안전하다**(세션 만료 · 자동 승인 모드 CMS 쓰기 차단과 무관). 한 항목 안의 **필드 값만 바꿔야 할 때**(스위치 ON 등)는 수정본(`modified`)을 저장한 뒤 그 수정본을 예약 공개한다
 
+### 10-2-2. 정해진 시각에 필드 값 바꾸기 — 브라우저 타이머 `scripts/restore/lpc_timer_put.js` (2026-10-12 신설)
+
+CMS 예약(§10-2-1)은 **공개 · 공개 취소만** 된다. 「23:50에 `buy_block_on_off`를 켠다」처럼 **필드 값을 정해진 시각에 바꾸는 예약은 CMS에 없다**(사용자 확인). 이때는 CMS 탭 안에 타이머를 걸어 둔다.
+
+- **동작**: 로그인된 `landpress-content-v2.linecorp.com` 탭 안에서 20초마다 시각을 확인하다가 `FIRE_AT`이 되면 언어별로 **최신값을 다시 읽고 → 콘텐츠 필드 전부 + 바꿀 필드로 PUT → 재조회 대조**(§10-3-0 `lpc_safe_put.js`와 같은 방식 · 키 순서 무관 비교). 이미 목표값이면 건너뛰고, 실패하면 3회 재시도
+- **Claude 세션 · 계정과 무관하다** — 코드는 페이지 안에서 돈다. Claude가 멈춰도(세션 종료 · 계정 전환 · 22:00~24:00 같은 이용 중단) 실행된다. 필요한 건 **탭 · Chrome · Mac(잠자기 없음) · LPC 로그인** 넷뿐이다
+- **실측(2026-10-12 SK 기프티콘 이관)**: 1분 뒤 DRY 타이머가 백그라운드 탭에서 목표 +5초에 실행 · 5분 keepalive 200 유지
+
+| 단계 | 할 일 |
+|---|---|
+| 1. 설정 | 파일 맨 위 `CONFIG` — `TAG`(영문 짧은 이름) · **`FIRE_AT`(시간대 필수 · 예 `'2026-10-12T23:50:00+09:00'`)** · `PID` · `COL`(⚠️ 다건 컬렉션 전용) · `POST_ID` · `LOCALES` · `FIELDS` · `DRY` |
+| 2. `FIELDS` | 최상위 필드를 통째로: `{ buy_block_on_off: true }` · 객체 필드의 한 키만: `cur => ({ contents: { ...cur.contents, targetUrl: 'https://…' } })` |
+| 3. 시험 | **`DRY: true` + 1~2분 뒤 `FIRE_AT`**로 먼저 건다(PUT 없음 — 대상 · 보존 필드만 점검) → 탭 제목 「[TAG 완료] en:DRY …」 확인 |
+| 4. 걸기 | `DRY: false`로 바꿔 같은 탭(또는 새 CMS 탭) 콘솔에 붙여넣는다. 사용자는 DevTools 콘솔(⌥⌘J · 처음엔 「붙여넣기 허용」 입력), Claude는 Claude in Chrome `javascript_tool`. 쓰기 전 `check_lpc_nulls.py` exit 0 |
+| 5. 대기 | 탭 제목 「[TAG 대기] {FIRE_AT}」 · ⛔ **그 탭은 이동 · 새로고침 · 닫기 금지**(페이지가 바뀌면 타이머가 사라진다) · CMS를 보려면 다른 탭을 쓴다 · 로그인이 풀리면 제목이 「⚠️ 로그인 만료」로 바뀐다 |
+| 6. 확인 | 실행 직후 제목 「[TAG 완료] en:OK ko:OK …」 · 그 탭 `localStorage`의 `lpct_{TAG}_result` · `_log` · `_backup_{locale}`(PUT 직전 값) → **공개 API로 반영 확인** → `check_lpc_nulls.py` exit 0 → 백업을 `landpress/`에 저장 · Auto-react 커밋(§LPC 쓰기 규칙) |
+
+- **취소**: 그 탭 콘솔 `clearInterval(window.__lpct_{TAG})` 또는 탭 닫기 · **다시 걸기**: 같은 TAG로 다시 붙여넣으면 이전 타이머를 지우고 새로 건다
+- ⛔ **beta · prod 동시 원칙(§10-3-00)은 그대로다** — 한쪽만 바꾸는 운영 스위치(prod만 켜는 이관 대응 등)는 **사용자 결정이 있을 때만**
+- ⚠️ 실행 시각 직후 **사람이 한 번 확인**한다 — 탭이 닫혔거나 로그인이 풀렸으면 CMS 화면에서 직접 바꾼다(비상 수단)
+- 대안 비교: Claude가 그 시각에 직접 PUT(세션 · 승인 · 계정에 묶임) · CMS 예약(공개/공개 취소만) · LandPress Content MCP(`item_update`는 수정본에 저장, 반영 도구는 opt-in · 예약 도구 없음 — 2026-10-12 README 기준 미검증)
+
 ### 10-3-00. ⛔ beta·prod는 항상 같은 상태로 유지한다 (2026-09-16 사용자 결정)
 
 **LPC에 쓸 때는 beta·prod 양쪽에 같은 변경을 반영하고, 두 환경의 값이 같은지 재조회로 확인한다.** 한쪽만 고치면 그 차이가 **조용히 남는다** — 공개 조회 API로는 두 환경을 따로 봐야 해서 눈에 띄지 않는다.
