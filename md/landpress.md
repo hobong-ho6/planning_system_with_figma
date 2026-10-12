@@ -299,6 +299,23 @@ GET /api/v1/projects/{pid}/roles/my   → 200이면 로그인·권한 OK (type: 
 | **기존 항목에 로케일 행 추가** | ✅ **`POST .../items/all?_env=main`** · body `{postId, items:[{locale, …필드}]}` → **201** (2026-09-29 실측 · CMS 저장 버튼이 쓰는 경로) | ✅ **가능** — 아래 10-3 4-1 · 종전 실패 경로(`PUT ?locale=`·`/locales`·`/translations`·`POST /items/{id}?locale=`·`PATCH`)는 여전히 불가 |
 | 전용 publish 엔드포인트 | `/publish` 계열 전부 `Cannot POST` | ❌ — 위 플래그로 대체 |
 
+### 10-2-1. 예약 공개(publish reservation) — API로도 설정할 수 있다 (2026-10-12 실측)
+
+CMS는 **예약 공개 · 예약 공개 취소**를 지원한다. 웹 UI는 항목 편집 화면 「Scheduled actions → Add schedule」(실행 유형 **공개 / 공개 취소** · 언어 선택 · 일시 · 설명)이고, 같은 기능이 CMS 백오피스 API에 있다(CMS 번들 `index-*.js`의 `publishReservationController*` 7종 · 조회는 실호출로 확인).
+
+| 동작 | 호출 |
+|---|---|
+| 항목 1건에 예약 추가 | `POST /api/v1/projects/{pid}/collections/{col}/items/{postId}/publish-reservations` |
+| 여러 건 추가 / 수정 | `POST` / `PUT …/collections/{col}/items/publish-reservations` |
+| 1건 수정 / 삭제 | `PUT` / `DELETE …/collections/{col}/publish-reservations/{id}` |
+| 조회 | `GET …/items/{postId}/publish-reservations` · `GET …/collections/{col}/publish-reservations` · `GET /api/v1/projects/{pid}/publish-reservations` ✅ 200 |
+
+- **예약 객체**: `action`(`PUBLISH` · `UNPUBLISH`) · **`actionAt`(UTC ISO)** · **`locale`(언어별 1건 — UI 「All languages」는 언어 수만큼 생긴다)** · `env`(`main` = 지금 값 / `modified` = 저장해 둔 수정본) · `description` · `status`(`READY` → `DONE`) · `batchAt`(실행 시각) · 삭제는 `deletedAt`(소프트 삭제). 항목 조회 응답의 `_publishReservations`에도 실린다
+- **시간대**: UI는 로컬 시간대(UTC+9 표시)로 입력받아 **UTC로 저장**한다 — UI 23:00(UTC+9) = `actionAt` 14:00Z. KST = JST라 한국 · 일본 시각이 같다
+- **⚠️ 추가(POST) 본문 형식은 아직 실호출로 확인하지 않았다** — 조회 객체로 보면 `{action, actionAt, locale, env, description}`일 가능성이 크다. 처음 쓸 때 **beta의 영향 없는 항목에 만들고 바로 삭제**해 형식을 확정한 뒤 이 절을 고친다
+- **운영 실측(2026-10-12)**: Dapp Portal Release 1,296건(공개 · 공개 취소 둘 다 사용) · Kaia Wallet Release 66건 · ⚠️ **UNIFI - PROD에 `actionAt` 2026-06-09 03:00Z인 `READY` 24건이 미실행으로 남아 있다**(`env=modified` · `reward_promotions` · `faq#166` 등) — 의도인지 확인 필요
+- **활용**: 정해진 시각의 공개 · 내림은 Claude가 그 시각에 PUT하는 것보다 **예약 공개가 안전하다**(세션 만료 · 자동 승인 모드 CMS 쓰기 차단과 무관). 한 항목 안의 **필드 값만 바꿔야 할 때**(스위치 ON 등)는 수정본(`modified`)을 저장한 뒤 그 수정본을 예약 공개한다
+
 ### 10-3-00. ⛔ beta·prod는 항상 같은 상태로 유지한다 (2026-09-16 사용자 결정)
 
 **LPC에 쓸 때는 beta·prod 양쪽에 같은 변경을 반영하고, 두 환경의 값이 같은지 재조회로 확인한다.** 한쪽만 고치면 그 차이가 **조용히 남는다** — 공개 조회 API로는 두 환경을 따로 봐야 해서 눈에 띄지 않는다.
