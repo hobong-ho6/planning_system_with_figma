@@ -11,7 +11,7 @@
 | 시각(KST) | 동작 | 누가 · 어떻게 | 상태(10/12 11:42 실측) |
 |---|---|---|---|
 | 10/12 23:00 | prod `maintenance_banner` **공개** — 배너 노출 · 구매 가능 | **LPC 예약 공개**(사용자 설정 · 5개 언어 · `env=main` · `actionAt` 14:00Z) | 5건 `READY` ✅ |
-| 10/12 **23:50** | prod 5개 언어 **`buy_block_on_off` false → true** | **Claude가 CMS API로** — 아래 실행 절차 | ⚠️ 원래 PC(`AL02359162`) 세션에 **세션 전용 예약(CronCreate · 23:46 시작)**만 있다 → **다른 PC 세션에는 예약이 없다. 이어받는 세션이 23:46쯤 직접 실행**(또는 사용자가 CMS 화면에서 직접 켠다) · 🆕 **10/12 19:58 — `AD03230205` 세션에 세션 전용 예약(CronCreate 23:43) 설정 · 실행 스크립트 dry-run 통과**(5개 언어 비공개 · `on_off=true` · `buy_block=false` · null 0) · ⚠️ CMS 예약으로는 필드 값 변경 불가(사용자 확인) — API 실행이 정본 · 23:50 예약은 CMS에 없음(조회 확인) |
+| 10/12 **23:50** | prod 5개 언어 **`buy_block_on_off` false → true** | **Claude가 CMS API로** — 아래 실행 절차 | ⚠️ 원래 PC(`AL02359162`) 세션에 **세션 전용 예약(CronCreate · 23:46 시작)**만 있다 → **다른 PC 세션에는 예약이 없다. 이어받는 세션이 23:46쯤 직접 실행**(또는 사용자가 CMS 화면에서 직접 켠다) · 🔁 **10/12 20:00 변경 — Claude 계정 SSO 전환(22:00 기존 계정 삭제 · 22:00~24:00 Claude 이용 불가 · Auto-react HANDOFF 🚨 절)** 때문에 Claude 세션 예약은 못 돈다 → **`AD03230205` Chrome 탭(landpress CMS · 제목 「[live 대기] 23:50 KST buy_block ON」)에 브라우저 타이머를 걸어 두었다** — Claude와 무관하게 23:50:00 KST에 5개 언어 read-modify-write PUT(`buy_block_on_off:true` · `published:true` · 이미 true면 건너뜀 · 3회 재시도) · 20초 간격 확인 · 5분마다 keepalive · 결과는 그 탭 `localStorage` `bb_live_result` · `bb_live_log` · `bb_live_backup_{locale}`(PUT 직전 값) + 탭 제목 「[live 완료] …」 · DRY 타이머 실발화 테스트 통과(목표 +5초) · iMac 시스템 잠자기 0(안 잔다) · CMS 예약으로는 필드 값 변경 불가(사용자 확인) · ⚠️ 탭 · Chrome을 닫거나 CMS 로그인이 풀리면 실패 → **23:50 직후 사용자가 탭 제목 또는 공개 API로 확인**, 안 됐으면 CMS 화면에서 직접 켠다 · 00:00 이후 새 계정 세션이 결과 확인 · 백업 저장(`landpress/maintenance_banner/20261012_buy_block_on/`) · Auto-react 커밋 |
 | 10/13 08:00 | prod **공개 취소** | **LPC 예약**(사용자 설정 · 5개 언어 · `actionAt` 23:00Z) | 5건 `READY` ✅ |
 
 - **지금 값(10/12 11:42)**: prod 5개 언어 `published=false` · `on_off=true` · `buy_block_on_off=false` / beta 5개 언어 `published=true` · 둘 다 `true`(검증용 · 건드리지 않는다) · beta 예약 0건
@@ -62,7 +62,7 @@
 
 ## 진행 중 작업(WIP)
 
-**10/12 23:50 구매 차단 실행 대기** — 위 「🔴 진행 중」 절차. 원래 PC 세션 예약은 그 세션이 살아 있어야만 돈다(다른 PC에선 직접 실행).
+**10/12 23:50 구매 차단 — 브라우저 타이머로 대기 중**(`AD03230205` Chrome 탭 · 위 「🔴 진행 중」) · 00:00 이후 새 계정 세션: 탭 `localStorage.bb_live_result` · 공개 API 5/5 `buy_block_on_off=true` · `check_lpc_nulls --env LV_prod` → 백업 저장 · Auto-react 커밋
 
 ## 다음 할 일
 
