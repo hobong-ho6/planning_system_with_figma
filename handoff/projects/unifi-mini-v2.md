@@ -1,6 +1,6 @@
 # unifi-mini-v2 — Unifi mini v2.0 화면정의 (Figma 정책 취합 + XLT/GA)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-17 · 세션 **#18**(병렬 다수) · 마지막 커밋 `f936693` · 위키 **v247** · LPC 위키 **v71**(09-29 §3-6 정리 — On/Off 서술 `on_off`로 · 필드명 `contents` · 4-1에 잘못 들어가 있던 배너 5개 언어 표·설명을 §3-6으로 이동하고 실등록값 반영 · 샘플 JSON 「상품권」 · sk-gifticon 세션에서 수행) · 이전 09-22 §3-4 CU `voucherSection.title` 실등록값 교체는 [cu-qr-voucher](cu-qr-voucher.md) 세션 #3) · Admin 위키 **v13**
+> 담당자: `hogeun` · 마지막 갱신: 2026-09-17 · 세션 **#18**(병렬 다수) · 마지막 커밋 `f936693` · 위키 **v247** · LPC 위키 **v73**(10-13 voucher_product 4종 문구 정리 — 아래 「다음 할 일」 첫 줄) · 종전 v71(09-29 §3-6 정리 — On/Off 서술 `on_off`로 · 필드명 `contents` · 4-1에 잘못 들어가 있던 배너 5개 언어 표·설명을 §3-6으로 이동하고 실등록값 반영 · 샘플 JSON 「상품권」 · sk-gifticon 세션에서 수행) · 이전 09-22 §3-4 CU `voucherSection.title` 실등록값 교체는 [cu-qr-voucher](cu-qr-voucher.md) 세션 #3) · Admin 위키 **v13**
 >
 > 📎 세션 #12~#16 상세는 **「세션 기록」이 정본**(18KB 상한으로 헤더 압축) · ⚠️ **v186→v192는 기록 없음**(다른 세션 6버전 — 위키 History가 유일한 근거)
 
@@ -38,6 +38,9 @@
 없음. 세션 #12 산출물(복구 기록·검증 스크립트·`md/landpress.md` §10-3-0)은 전부 푸시 완료. 위키·LPC는 git 밖 산출물이다.
 
 ## 다음 할 일
+
+- [x] **10-13 voucher_product 4종(올리브영·CU·다이소·이마트24) 문구 정리** — 「사용방법」 = [사용처] / 결제 시 상품권 바코드 제시(올리브영·다이소는 「또는 셀프계산대 이용」) / (CU 괄호·다이소 셀프계산대 절차·온라인스토어 유지) / 사용이 어려운 경우 매장 직원에게 문의 · 올리브영 「셀프계산대 사용 불가」·입점매장, 이마트24 특수점포, 사용안내 「(일부 매장 제외)」 삭제 · 모바일상품권·모바일금액권→상품권, en·th·zh 용어집 표기(Voucher·บัตรกำนัล·禮券) 전면 통일(쿠폰 계열 오표기 포함) · 「상품권 유효기간」 3종 통일 · ja 환불·사용 방법 2단계는 UIT 검수 문체로 LV 통일 · ⛔ 요약 칩 「사용처」 괄호는 유지(사용자 결정) · LV vd·mvd + UIT mvd × beta·prod × 5개 언어 80행(공개 API 80/80 · check_lpc_nulls 전후 exit 0) · 게이트 `reports/gate/gate_report_20261013_voucher_product_usage_term_5lang.md` · 복구원 `landpress/voucher_product/20261013_usage_voucher_term/` → Auto-react `f0b2501` · LPC 위키 v73(3-2 실등록 JSON 샘플)
+- [ ] (후속 제안) `voucher_common_info.voucher_usage`·위키 3-3에 `coupon box`·`バウチャー` 등 구 표기 잔존 — 같은 용어 통일 대상인지 사용자 확인
 
 > 완료·종결 항목은 여기 남기지 않는다 — **「⛔ 종결」 섹션이 정본**(중복 제거, 09-14).
 
