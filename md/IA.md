@@ -539,6 +539,17 @@ my_reservation_travel_wait_01     여행 예약 상세 — 바우처 발행 대�
 my_reservation_travel_confirm_01  여행 예약 상세 — 바우처 발행 완료(바우처 열기 = WAUG 바우처 파일)
 my_reservation_travel_cancel_01   여행 예약 상세 — 결제 취소(환불 정보)
 my_voucher_refund_detail_01       모바일 상품권 주문 상세 — 결제 취소(환불)
+my_voucher_detail_01              🆕 상품권 상세 — 바코드 활성화(Redeem) 전(2026-10-13 승인 · 위키 My `4802744889` · Figma `77228-1128`)
+my_voucher_detail_01_01           🆕 상품권 활성화 확인 (팝업 — SK 발권 요청 · Figma `77228-1014`)
+my_voucher_detail_01_02           🆕 상품권 활성화 실패 (팝업 — 발권 실패 · 품절 · 30분 뒤 재시도 / 고객센터 · Figma `77228-4901`)
+my_voucher_detail_02              🆕 상품권 상세 — 활성화 후(바코드 · 사용 기한 30일 · Figma `77228-1222`)
+my_voucher_detail_03              🆕 상품권 상세 — 사용 완료(USED · Figma `77228-1363`)
+my_voucher_detail_04              🆕 상품권 상세 — 사용 기한 만료(EXPIRED · Figma `77228-1432`)
+my_voucher_detail_05              🆕 상품권 상세 — 결제 취소(CANCELED · 바코드 표시 불가 · Figma `77228-1501`)
+my_voucher_detail_notice_01_01    🆕 상품 설명 및 유의사항 (바텀시트 — LPC `voucher_product.my_voucher_detail.notice` · Figma `77228-991`)
+my_voucher_order_01               🆕 상품권 주문 내역 — 주문 · 결제 · 포인트 정보 + 구매 취소하기(Figma `77228-1760`)
+my_voucher_order_01_01            🆕 구매 취소 확인 (팝업 — 예상 환불 금액 · 반환 포인트 · Figma `77228-1827`)
+my_voucher_refund_done_01         🆕 구매 취소 완료 — 환불 금액 · 반환 포인트 · 환불 일시(Figma `77228-1724`)
 my_review_writable_01             🆕 내 리뷰 › 리뷰 쓰기 탭 — 리뷰를 쓸 수 있는 구매 · 예약 건 · 작성 만료일(2026-10-07 승인 · 위키 Review `4845874885` · Figma `76567-18041`)
 my_review_01                      🆕 내 리뷰 › 내 리뷰 탭 — 작성한 리뷰 목록
 my_review_02                      🆕 내 리뷰 탭 — 3줄 넘는 리뷰를 펼친 상태
