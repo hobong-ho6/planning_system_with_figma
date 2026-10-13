@@ -1,0 +1,4 @@
+- 세션: guidekim-insourcing · hogeun · `AD03230205ui-iMac`
+- 시작: 2026-10-13 18:13
+- 점유 자원: md/IA.md
+- 목적: My 상품권 상세(바코드 · 환불 · 활성화) Screen ID 11개 등록
