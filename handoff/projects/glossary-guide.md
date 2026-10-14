@@ -1,6 +1,6 @@
 # glossary-guide — 용어집 + 기획자 가이드 (⚠️ 전역 자원 · 락 필요)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-09-16 · 커밋 `a15b5bc` · 라이브 태그 **`guide-v43`**(2026-09-16 **Claude가 직접 게시** · `get_site`·라이브 `<title>` 대조 확인)
+> 담당자: `hogeun` · 마지막 갱신: 2026-10-14 · 커밋 `51c4027` · 라이브 태그 **`guide-v47`**(2026-10-14 Claude 직접 게시 · `get_site` 원본 파일명 v47 · 라이브 `<title>` v47 대조 확인)
 >
 > ⛔ **2026-09-16 — 게시 주체가 바뀌었다: Claude가 직접 올린다**(사용자 결정 · 전역 결정 표). 업로드는 **REST `PUT /api/sites/ab3ffda0`**(MCP 토큰 · `file`+`name`)이며 **MCP `update_site`는 못 쓴다**(`file_path`가 DropWeb **서버** FS 경로 — 로컬 zip 절대·상대·URL 3형태 모두 「파일을 찾을 수 없습니다」). 검증은 MCP `get_site`(원본 파일명·수정일·배포 횟수) + 라이브 `<title>`. 정본 `md/dropweb-guide.md` §8
 >
@@ -38,7 +38,7 @@
 | 항목 | 라이브 | 근거 |
 |---|---|---|
 | 용어집 | **v5.5** · 118 terms · 11 exceptions · 22 deprecated · 2 oa_variables | `fetch_glossary.py` API 실조회(2026-09-15) · `last_updated` 2026-09-12 |
-| 기획자 가이드 | **v43** (태그 `guide-v43` · 2026-09-16 **Claude 직접 게시**) | `git tag -l 'guide-*'` 최신 · `dropweb/web3_planning_v43.zip` · 라이브 `<title>` v43 · `get_site` 원본 파일명 |
+| 기획자 가이드 | **v47** (태그 `guide-v47` · 2026-10-14 Claude 직접 게시) | `git tag -l 'guide-*'` 최신 · `dropweb/web3_planning_v47.zip` · 라이브 `<title>` v47 · `get_site` 원본 파일명 · 대기 0건 |
 | 용어집 보완 대기 | **24건**(2026-09-16) | `md/glossary-backlog.md` |
 
 - **보완은 「모아서 한 번에」다**(2026-09-14 사용자 결정) — 게이트 (d-1)에서 발견하면 **대기 목록에 등재만** 하고 그 자리에서 반영 여부를 묻지 않는다. 사용자가 **「용어집 리뷰」를 요청한 시점**에 전건을 제시해 일괄 결정한다
@@ -76,6 +76,11 @@
 - **가이드 용어집 검증 버튼 현행 유지**(2026-07-30) — 드랍웹이 정적 호스팅이고 용어집 API가 CORS 헤더를 주지 않아 자동 대조 불가, 수동 폴백 동작. **사용자 결정**
 
 ## 세션 기록
+
+### 2026-10-14 — 가이드 v47 게시(대기 4건 전건 반영) (`51c4027` · 태그 `guide-v47`)
+
+- 반영 — ① LPC 값 예약 타이머 `lpc_timer_put.js` ② LandPress MCP 조회 전용 ③ OA 샘플 JSON 칼럼 폐지 ④ OA Flex JSON · zip 첨부 폐지 · 추가 정정: Landpress 언어 항목 생성도 AI가 수행(「AI가 할 수 있는 일」 표 · ② 카드 · OA 등록 절차의 옛 서술)
+- 게시 — REST `PUT /api/sites/ab3ffda0` 200 · `get_site` 배포 16회차 · 원본 파일명 v47 · 라이브 `<title>` v47 · 레인 점유 → 해제(`6fbdda8` · `127be9f`) · 대기 목록 0건(기준선 `guide-v47`)
 
 ### 2026-09-16 — 가이드 v43 게시(대기 7건 전건 반영) + 드랍웹 직접 게시 전환 (`a15b5bc`)
 
