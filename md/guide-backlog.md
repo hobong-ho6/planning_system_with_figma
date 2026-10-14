@@ -31,6 +31,7 @@
 |---|---|---|---|---|---|
 | 1 | LPC 필드 값 예약 변경 — 브라우저 타이머 `scripts/restore/lpc_timer_put.js` 신설(CMS 예약은 공개/공개 취소만) | ⓑ 새 스크립트 | 시스템 가이드 탭 파일 표 · Landpress 절(쓰기 경로) | `md/landpress.md` §10-2-2 | 2026-10-12 |
 | 2 | ⛔ LandPress Content MCP는 읽기 전용으로 쓴다 — `item_update`가 `locale`을 무시하고 primary 로케일에 즉시 써진다(beta 실측) · 도구 선택 기준 표(CMS API·MCP·UI — Claude가 상황별 선택) | ⓐ 규칙 | Landpress 절(쓰기 경로) | `md/landpress.md` §10-2-3 · §10-6 | 2026-10-13 |
+| 3 | OA 위키 Screen 표에서 「샘플 JSON(KR)」 칼럼 폐지 — Claude가 Landpress·LIAM에 직접 등록하므로 불필요(4칼럼으로 복귀) · 발송 원본은 Landpress 등록값 | ⓐ 규칙 | OA 메시지 절(위키 표 구조) | `md/OA.md` 「위키 반영」 | 2026-10-14 |
 
 ## 반영 이력
 

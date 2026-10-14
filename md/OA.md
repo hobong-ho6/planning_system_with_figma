@@ -87,7 +87,7 @@ for l,u in URLS.items():                      # {lang: url}
 | # | 대상 | 확인 방법 |
 |---|---|---|
 | ⓐ | **위키 Screen 표의 다국어 번역 셀** | 라이브 재조회로 5개 언어 반영 확인 |
-| ⓑ | **위키 「샘플 JSON(KR)」 칸**(2026-09-12 추가) | 라이브 재조회 후 JSON 파싱 + 구 문구 잔존 0건 |
+| ⓑ | ~~위키 「샘플 JSON(KR)」 칸~~ — **2026-10-14 폐지**(칼럼을 두지 않는다 · 아래 「위키 반영」) | — |
 | ⓒ | **언어별 Flex JSON**(`oa/flex_{프레임}_{lang}.json` 5개) | JSON 파싱 + 구 문구 잔존 0건 |
 | ⓓ | **zip 첨부**(`flex_{프레임}_5lang.zip`) | **첨부를 다시 내려받아** 압축 해제 후 5파일 전수 재검증 |
 | ⓔ | **렌더 이미지**(`oa_flex_{슬러그}.png`, 2026-09-12 추가) | `render_oa_flex.py` 재실행 → 같은 파일명으로 첨부 갱신 → 렌더 확인 |
@@ -181,7 +181,7 @@ for l,u in URLS.items():                      # {lang: url}
 python3 scripts/render_oa_flex.py --input bubbles.json --out-dir assets/oa_render
 ```
 
-- bubble JSON을 **파싱해서 그린다** — 문구를 스크립트에 하드코딩하지 않으므로, 위키에 실린 샘플 JSON을 그대로 입력하면 **같은 이미지가 재현**된다.
+- bubble JSON을 **파싱해서 그린다** — 문구를 스크립트에 하드코딩하지 않으므로, 같은 bubble JSON(`oa/` 산출물 또는 Landpress 등록값)을 그대로 입력하면 **같은 이미지가 재현**된다.
 - 지원 노드: `box`(vertical/horizontal/baseline·margin·spacing·paddingAll·backgroundColor) · `text`(size·weight·color·wrap·align·margin) · `separator` · `button`(primary/secondary/link·height·color) · `image`(aspectRatio·aspectMode) · `spacer`. `icon`·`video`는 무시한다.
 - 크기 키워드는 LINE 스펙 근사로 매핑한다(`sm`=13px, `lg`=17px, spacing `md`=8px …).
 - 캡처 후 **Pillow로 여백을 자동 크롭**해 카드만 남긴다(`{slug}.png` + `manifest.json`).
@@ -240,7 +240,7 @@ OA 메시지 본문은 **Landpress의 `oam_message_task_multi` 컬렉션**에 �
 }
 ```
 
-- **`content_flex`에는 bubble만 넣는다** — 위키 「샘플 JSON(KR)」 칸의 값과 같은 형태다.
+- **`content_flex`에는 bubble만 넣는다** — ⛔ `{"type":"flex","altText":…,"contents":{…}}` 봉투로 감싸지 않는다(Flex Message Simulator도 `invalid json`으로 거부 · 실측 2026-09-12). `altText`는 `alt_text` 필드에 따로 넣는다.
 - **언어**: `ko_KR` · `en_US` · `ja_JP` · `zh_TW` · `th_TH` (LIAM HUB 탭 표기는 `EN_US`·`JA_JP`·`TH_TH`·`KO_KR`·`ZH_TW`).
 - `postId`는 환경마다 다르다 — beta에서 받은 id를 prod에 쓰지 않는다.
 
@@ -314,15 +314,12 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
 ## 위키 반영 (OA 섹션)
 
 - 위치: Screen 섹션의 `<h4>OA</h4>` 서브섹션 아래 표.
-- 컬럼: `Screen ID | Screen(이미지) | Description | 샘플 JSON(KR) | 다국어 번역(XLT 키 미부여) 또는 XLT & GA`
-  - **「샘플 JSON(KR)」은 Description 바로 오른쪽**에 둔다(2026-09-12 신설). 화면 표의 마지막 칼럼 이름은 페이지 템플릿에 따라 `다국어 번역` 또는 `XLT & GA`이며, 그대로 둔다.
-  - ⚠️ `scripts/check_wiki_storage.py`는 Screen 표를 4컬럼으로 검사하지만 **「샘플 JSON(KR)」은 예외로 허용**한다(다른 칼럼 추가는 여전히 위반).
+- 컬럼: `Screen ID | Screen(이미지) | Description | 다국어 번역(XLT 키 미부여) 또는 XLT & GA` — 마지막 칼럼 이름은 페이지 템플릿에 따라 `다국어 번역` 또는 `XLT & GA`이며, 그대로 둔다.
+  - ⛔ **「샘플 JSON(KR)」 칼럼을 두지 않는다**(2026-10-14 사용자 결정 — 종전 2026-09-12 신설 규칙 폐지). 사용자가 직접 Landpress에 등록하던 때 복사용으로 필요했지만, **이제 Claude가 Landpress·LIAM에 직접 등록**하므로 위키에 JSON을 둘 필요가 없다. 발송 원본은 **Landpress 등록값**(아래 「등록 현황」 표의 postId)이고, 작업 중 bubble JSON은 `oa/` 산출물로만 관리한다. 기존 페이지에 이 칼럼이 남아 있으면 그 페이지를 고칠 때 함께 지운다.
+  - 문구는 Description의 **메시지 초안 표**(altText · 타이틀 · 본문 · 안내 · 버튼 → 이동 · 비고)로 남긴다.
+  - Landpress 등록 시 URL 실값이 없어 **임시값을 넣었다면 그 사실을 Description 비고와 등록 현황 표 아래 비고에 남긴다.**
 - 번역 칸: 키 없는 `No | KR | JA | EN | TH | ZH-TW` 중첩표(규칙 1). 변수는 `{{이름}}`으로 표기(규칙 2).
 - **Screen 칸 = 렌더 이미지**: `scripts/render_oa_flex.py` 산출물 `oa_flex_{슬러그}.png`를 첨부해 `<ac:image>`로 건다(위 「Flex 렌더링 이미지」). Figma 렌더·실기기 캡처가 있으면 그것을 우선한다.
-- **샘플 JSON(KR) 칸**: bubble **단일 객체**를 `code` 매크로로 넣는다.
-  - ⛔ `{"type":"flex","altText":…,"contents":{…}}` 봉투로 감싸지 않는다 — Flex Message Simulator가 `invalid json`으로 거부한다(실측 2026-09-12). `altText`는 Description의 메시지 초안 표에 남긴다.
-  - ⛔ code 매크로에 **`<ac:parameter ac:name="language">json</ac:parameter>`를 넣지 않는다** — 이 위키에서 `Error rendering macro 'code'`가 난다(실측 2026-09-12).
-  - 확인용으로 URL 실값을 임시로 넣었다면(시뮬레이터 렌더 테스트 등) **그 사실을 Description 비고에 남긴다.**
 - **Flex JSON(언어별 5개)은 해당 화면 Description 셀에 첨부·링크**한다 — `Flex: [ko_KR] [en_US] [ja_JP] [zh_TW] [th_TH]` 형태 다운로드 링크(규칙 3). intro 영역이 아니라 화면별 Description에 둔다.
 - **등록 현황 표(필수 — Landpress·LIAM HUB 등록 후)**: 환경별 id를 기록한다.
 
@@ -354,7 +351,7 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
    → 각 화면 Description에 zip 링크 1개 확인
 8. **렌더 이미지 생성·첨부** — `scripts/render_oa_flex.py`로 화면별 PNG 생성
    → `oa_flex_{슬러그}.png`로 첨부하고 Screen 칸에 `<ac:image>` 연결
-9. 위키 OA 섹션 반영(키 없는 번역표 + 렌더 이미지 + 샘플 JSON(KR) 칼럼 + Flex JSON zip) + History
+9. 위키 OA 섹션 반영(키 없는 번역표 + 렌더 이미지 + Flex JSON zip) + History — 샘플 JSON 칼럼은 두지 않는다(2026-10-14)
    (XLT 엑셀·전역 키 표는 건드리지 않는다)
    → PUT 직전/직후 `check_wiki_storage.py pre|post` exit 0 확인
 10. **사용자에게 "Landpress에 등록할까요?" 확인** → 등록 시 언어별 항목 생성 요청
