@@ -1,4 +1,0 @@
-- 세션: guidekim-insourcing OA · hogeun · `AD03230205ui-iMac.local`
-- 시작: 2026-10-14 14:32
-- 점유 자원: guide/ + dropweb/web3_planning_v47.zip
-- 목적: 기획자 가이드 v47 — 대기 4건(LPC 타이머 · MCP 읽기 전용 · OA 샘플 JSON · OA zip 폐지)
