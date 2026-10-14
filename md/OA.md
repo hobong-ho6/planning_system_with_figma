@@ -1,7 +1,7 @@
 # OA(LINE 공식계정) 메시지 처리 규칙
 
 > LINE 공식계정(OA, Official Account)으로 발송하는 푸시/알림 메시지의 다국어화·변수화·Flex 메시지 구현 규칙을 정의한다.
-> OA 메시지는 화면(UI) XLT와 **관리 주체·시스템이 다르다**(LINE OA 콘솔/Messaging API에서 발송) — 그래서 XLT 시스템 키를 부여하지 않고 **번역·변수·Flex JSON만** 산출해 위키에 문서화한다.
+> OA 메시지는 화면(UI) XLT와 **관리 주체·시스템이 다르다**(LINE OA 콘솔/Messaging API에서 발송) — 그래서 XLT 시스템 키를 부여하지 않고 **번역·변수·Flex JSON만** 산출한다. Flex JSON은 **Claude가 Landpress·LIAM에 직접 등록**하고, 위키에는 문구(메시지 초안·번역표)·렌더 이미지·등록 현황만 문서화한다(2026-10-14 — JSON·zip을 위키에 두지 않는다).
 
 ---
 
@@ -45,11 +45,11 @@
 - OA 메시지의 첨부 이미지는 **LINE Flex Message JSON(flex image)** 형태로 생성한다.
 - 이미지 **URI(https)는 Claude가 임의로 넣지 않고 사용자에게 문의**해 입력받는다(입력 전에는 `{{IMAGE_URL}}` 플레이스홀더로 둔다).
 - Flex 메시지의 텍스트 컴포넌트에는 규칙 2의 `{{변수이름}}`을 그대로 사용한다.
-- **⛔ 최종 첨부본은 URL 실값 필수 (2026-07-27 확정)**: `hero.url`·`action.uri` 등 **URL 계열 필드는 LINE이 형식 검증**하므로 `{{IMAGE_URL}}`·`{{ACTION_URL}}` 플레이스홀더가 남아 있으면 **Flex Message Simulator·실발송 모두 렌더 거부**된다. 플레이스홀더는 값 미확정 단계의 중간 산출물로만 허용하며, **위키에 첨부하는 최종본은 반드시 실값 URL을 반영**한다. 반면 `text` 필드 안의 `{{변수}}`는 단순 문자열이라 그대로 두어도 동작한다.
+- **⛔ 최종 첨부본은 URL 실값 필수 (2026-07-27 확정)**: `hero.url`·`action.uri` 등 **URL 계열 필드는 LINE이 형식 검증**하므로 `{{IMAGE_URL}}`·`{{ACTION_URL}}` 플레이스홀더가 남아 있으면 **Flex Message Simulator·실발송 모두 렌더 거부**된다. 플레이스홀더는 값 미확정 단계의 중간 산출물로만 허용하며, **Landpress에 등록하는 최종본은 반드시 실값 URL을 반영**한다(미확정이면 임시값을 넣고 위키 비고에 남긴다). 반면 `text` 필드 안의 `{{변수}}`는 단순 문자열이라 그대로 두어도 동작한다.
   - **실값 출처**: 해당 OA 화면의 위키 Screen 표 **Description에 기입된 `IMAGE_URL`·`ACTION_URL`**(사용자 기입)을 매 실행 위키에서 새로 조회해 사용한다. 미기입이면 사용자에게 문의(그때까지만 플레이스홀더 유지).
 - **⛔ Flex 스펙 준수(필수)**: OA Flex JSON은 **`templates/flex_message_spec.json`**(LINE 공식 Flex Message bubble 스펙)의 구조·관례를 기반으로 하되, 아래 **동작 검증 구조(캠페인 확정형)** 를 따른다. 산출물은 **bubble JSON**(스펙과 동일 레벨)로 낸다.
 - **⛔ 언어별 개별 파일(필수)**: OA Flex는 **언어별로 JSON 파일을 따로** 만든다 — 프레임당 5개 파일 `flex_{프레임}_{lang}.json`(ko_KR·en_US·ja_JP·zh_TW·th_TH). **한 파일에 5개 언어를 묶지 않는다.** 텍스트·버튼 label만 언어별 치환, 구조·`{{변수}}`·URL 실값은 동일.
-- **⛔ Description 첨부(필수) — zip 통합(2026-07-27 변경)**: 생성한 언어별 Flex JSON 5개는 **화면별로 하나의 zip(`flex_{프레임}_5lang.zip`)으로 묶어** Confluence에 첨부하고, **해당 OA 화면의 Screen 표 Description 셀**에 zip 다운로드 링크 1개로 건다(intro 영역 아님. 라벨 예: `전체 언어 다운로드 (ko·ja·en·th·zh)`). 언어별 JSON을 개별 링크로 나열하지 않는다 — 사용자가 하나씩 내려받는 불편을 없애기 위한 결정. 개별 JSON 파일 산출물(`oa/flex_{프레임}_{lang}.json`)은 그대로 생성·보관하고 zip으로만 묶는다. **기존 첨부 갱신은 같은 파일명 유지 + `POST .../child/attachment/{attachmentId}/data`**(파일명이 같으면 Description 링크가 최신본을 그대로 렌더).
+- **⛔ Flex JSON·zip을 위키에 첨부하지 않는다 (2026-10-14 사용자 결정 — 종전 2026-07-27 「Description 첨부(필수) — zip 통합」 폐지)**: 사용자가 직접 OA 콘솔·Landpress에 넣던 때 내려받기용으로 필요했지만, **이제 Claude가 Landpress·LIAM에 직접 등록**한다. 언어별 JSON(`oa/flex_{프레임}_{lang}.json`)은 등록 입력용 로컬 산출물로만 만들고, `flex_{프레임}_5lang.zip`은 만들지 않는다. **발송 원본은 Landpress 등록값**(위키 「등록 현황」 표의 postId)이다. 기존 페이지에 zip 링크가 남아 있으면 그 페이지를 고칠 때 링크와 첨부를 함께 지운다.
 
 #### 3-0. ⛔ 히어로 이미지 규격 — 받은 이미지는 매번 실측 검증 (2026-09-11 신설, 다음 작업부터 적용)
 
@@ -89,7 +89,7 @@ for l,u in URLS.items():                      # {lang: url}
 | ⓐ | **위키 Screen 표의 다국어 번역 셀** | 라이브 재조회로 5개 언어 반영 확인 |
 | ⓑ | ~~위키 「샘플 JSON(KR)」 칸~~ — **2026-10-14 폐지**(칼럼을 두지 않는다 · 아래 「위키 반영」) | — |
 | ⓒ | **언어별 Flex JSON**(`oa/flex_{프레임}_{lang}.json` 5개) | JSON 파싱 + 구 문구 잔존 0건 |
-| ⓓ | **zip 첨부**(`flex_{프레임}_5lang.zip`) | **첨부를 다시 내려받아** 압축 해제 후 5파일 전수 재검증 |
+| ⓓ | ~~zip 첨부~~ — **2026-10-14 폐지**(위키에 첨부하지 않는다) | — |
 | ⓔ | **렌더 이미지**(`oa_flex_{슬러그}.png`, 2026-09-12 추가) | `render_oa_flex.py` 재실행 → 같은 파일명으로 첨부 갱신 → 렌더 확인 |
 | ⓕ | **Landpress 항목**(등록했다면) | 언어별 PUT 후 공개 조회 API 재조회 대조 |
 | ⓖ | **LIAM HUB Event Message**(등록했다면) | Landpress를 다시 `LOAD MESSAGE` → 확인 → `UPDATE` (Landpress만 고치면 발송 메시지는 구 문구다) |
@@ -99,11 +99,11 @@ for l,u in URLS.items():                      # {lang: url}
 > - **`Title`은 Landpress와 연동되지 않는다** — LIAM의 `Title`은 생성 시 입력한 **별도 필드**다. Landpress 항목명을 바꿔도 따라오지 않으므로 **Edit 화면에서 직접 고쳐야 한다**(실측: 항목명을 바꿨는데 LIAM은 구 명칭 유지). ⚠️ Claude in Chrome으로 고칠 때 **ref 클릭은 입력칸에 포커스가 안 잡혀 타이핑이 버려진다** — 좌표 클릭 → `cmd+a` → 입력 후 `input` 값을 JS로 확인하고 UPDATE(2026-09-29 실측)
 
 
-**왜 차단 체크인가**: `Flex JSON·zip`은 **OA 콘솔·Messaging API에 그대로 넣는 발송 원본**이다. 위키 표만 고치면 문서는 최신인데 **실제 발송은 구 문구**가 나간다.
+**왜 차단 체크인가**: **Landpress 등록값(과 그 입력인 Flex JSON)** 은 **LIAM을 거쳐 그대로 발송되는 원본**이다. 위키 표만 고치면 문서는 최신인데 **실제 발송은 구 문구**가 나간다.
 
 > **실측 사례(2026-08-05)**: 「럭키볼 친구소개 비실시간 지급 변경」에서 위키 표 12곳(4개 언어)만 고치고 **Flex zip 3종·JSON 15개를 구 문구(`즉시 지급`·`최대 5분`)로 방치**했다. 사용자가 "json도 업데이트한거지?"라고 묻기 전까지 발견되지 않았다. 그 상태로 발송했다면 **지급 시점을 즉시로 잘못 안내**하게 된다.
 
-**첨부 갱신 시 파일명 주의(같은 실측 세션에서 재발)**: `curl -F "file=@/tmp/newzip_xxx.zip"` 처럼 **임시 파일명으로 올리면 curl이 basename을 파일명으로 보내 첨부 제목이 바뀌고 Description 링크가 깨진다.** 반드시 **`-F "file=@경로;filename=원래이름"`** 으로 원래 파일명을 명시하거나, 업로드 직전 원래 이름으로 복사한다. 갱신 후 첨부 목록을 조회해 **파일명이 그대로인지 확인**한다.
+**첨부 갱신 시 파일명 주의(같은 실측 세션에서 재발)**: `curl -F "file=@/tmp/render_xxx.png"` 처럼 **임시 파일명으로 올리면 curl이 basename을 파일명으로 보내 첨부 제목이 바뀌고 본문 참조(렌더 이미지 등)가 깨진다.** 반드시 **`-F "file=@경로;filename=원래이름"`** 으로 원래 파일명을 명시하거나, 업로드 직전 원래 이름으로 복사한다. 갱신 후 첨부 목록을 조회해 **파일명이 그대로인지 확인**한다.
 
 **다른 문서에서 OA 영역을 복사해 올 때**: `<ri:attachment ri:filename>`은 **같은 페이지의 첨부만** 가리킨다. 섹션만 복사하면 참조가 전부 깨지므로 **원본 첨부 파일을 내려받아 같은 파일명으로 새 페이지에 업로드**한다(`<ri:page>`로 다른 페이지 첨부를 가리키는 방식은 금지). 복사 후 사용하지 않게 된 첨부는 **본문 참조 0건을 확인하고 사용자 승인을 받은 뒤** 삭제한다.
 
@@ -163,8 +163,8 @@ for l,u in URLS.items():                      # {lang: url}
 
 - **언어별 개별 파일(필수)**: `ko_KR·en_US·ja_JP·zh_TW·th_TH` 각각 **별도 파일** `flex_{프레임}_{lang}.json`으로 생성한다(한 파일에 묶지 않음, 규칙 3). `text`·버튼 `label`만 언어별 치환.
 - `url`·`uri`는 **https 실값 필수**(규칙 3 — 플레이스홀더 잔존 시 시뮬레이터·실발송 렌더 거부). 값 미확정 단계에서만 `{{IMAGE_URL}}`·`{{ACTION_URL}}` 유지 후 사용자에게 문의.
-- 산출물은 `oa/flex_{프레임}_{lang}.json`으로 저장하고 Confluence에 첨부한다.
-- **확인 흐름 권장**: ko_KR 1건을 먼저 생성해 사용자가 [Flex Message Simulator](https://developers.line.biz/flex-simulator/)로 렌더 확인 → 통과 후 나머지 언어 일괄 생성·첨부.
+- 산출물은 `oa/flex_{프레임}_{lang}.json`으로 저장해 **Landpress 등록 입력으로 쓴다** — Confluence에 첨부하지 않는다(2026-10-14).
+- **확인 흐름 권장**: ko_KR 1건을 먼저 생성해 사용자가 [Flex Message Simulator](https://developers.line.biz/flex-simulator/)로 렌더 확인 → 통과 후 나머지 언어 일괄 생성.
 
 ---
 
@@ -320,7 +320,7 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
   - Landpress 등록 시 URL 실값이 없어 **임시값을 넣었다면 그 사실을 Description 비고와 등록 현황 표 아래 비고에 남긴다.**
 - 번역 칸: 키 없는 `No | KR | JA | EN | TH | ZH-TW` 중첩표(규칙 1). 변수는 `{{이름}}`으로 표기(규칙 2).
 - **Screen 칸 = 렌더 이미지**: `scripts/render_oa_flex.py` 산출물 `oa_flex_{슬러그}.png`를 첨부해 `<ac:image>`로 건다(위 「Flex 렌더링 이미지」). Figma 렌더·실기기 캡처가 있으면 그것을 우선한다.
-- **Flex JSON(언어별 5개)은 해당 화면 Description 셀에 첨부·링크**한다 — `Flex: [ko_KR] [en_US] [ja_JP] [zh_TW] [th_TH]` 형태 다운로드 링크(규칙 3). intro 영역이 아니라 화면별 Description에 둔다.
+- ⛔ **Flex JSON·zip 첨부·다운로드 링크를 두지 않는다**(2026-10-14 폐지 — 규칙 3).
 - **등록 현황 표(필수 — Landpress·LIAM HUB 등록 후)**: 환경별 id를 기록한다.
 
   | 화면 | Landpress postId (beta) | LIAM messageId (beta) | Landpress postId (prod) | LIAM messageId (prod) |
@@ -346,12 +346,10 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
 6. Flex JSON 생성 — **"동작 검증 구조(캠페인 확정형)" + URL 실값(위키 Description 기입값)** 적용,
    언어별 개별 파일 5개. URL 미기입 화면만 플레이스홀더 유지 후 사용자 문의.
    ko_KR 먼저 생성 → 사용자 시뮬레이터 렌더 확인 → 나머지 언어 일괄 생성(권장)
-7. Confluence 첨부 — 화면별 5개 언어를 `flex_{프레임}_5lang.zip`으로 묶어 첨부
-   (기존 첨부는 같은 파일명으로 POST .../child/attachment/{id}/data 갱신)
-   → 각 화면 Description에 zip 링크 1개 확인
+7. (2026-10-14 폐지) ~~Flex JSON zip Confluence 첨부~~ — 위키에 JSON·zip을 두지 않는다
 8. **렌더 이미지 생성·첨부** — `scripts/render_oa_flex.py`로 화면별 PNG 생성
    → `oa_flex_{슬러그}.png`로 첨부하고 Screen 칸에 `<ac:image>` 연결
-9. 위키 OA 섹션 반영(키 없는 번역표 + 렌더 이미지 + Flex JSON zip) + History — 샘플 JSON 칼럼은 두지 않는다(2026-10-14)
+9. 위키 OA 섹션 반영(메시지 초안 표 + 키 없는 번역표 + 렌더 이미지) + History — 샘플 JSON 칼럼 · Flex zip은 두지 않는다(2026-10-14)
    (XLT 엑셀·전역 키 표는 건드리지 않는다)
    → PUT 직전/직후 `check_wiki_storage.py pre|post` exit 0 확인
 10. **사용자에게 "Landpress에 등록할까요?" 확인** → 등록 시 언어별 항목 생성 요청
