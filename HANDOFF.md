@@ -1,7 +1,8 @@
 # HANDOFF — 공유 정본
 
 <!-- 핸드오프는 3계층이다. 이 파일에 쓰는 것/쓰지 않는 것·분량 상한·재팽창 방지 기준은 `handoff/README.md`가 정본이다.
-     절차 정본(세션 시작·종료): `.claude/skills/handoff/SKILL.md` -->
+     절차 정본(세션 시작·종료): `.claude/skills/handoff/SKILL.md`
+     분량: 목표 10~15KB · 상한 20KB · 2026-10-14 실측 11.3KB (세션 종료 때마다 `wc -c HANDOFF.md`로 갱신 — handoff/README.md 「분량 조정」) -->
 
 - **프로젝트**: planning_system_with_figma — Figma → 다국어 번역(XLT) → Confluence 위키 파이프라인
 - **저장소**: GitHub `hobong-ho6/planning_system_with_figma` (branch `main`) · 로컬 경로는 PC마다 다르다 → `handoff/people/{나}.md`
@@ -69,9 +70,9 @@
 
 > **전문·근거는 [`md/decisions.md`](md/decisions.md)가 정본**이다(2026-09-22부터 최근 4건도 전문을 거기 둔다 — 주입량 축소). 아래는 최근 4건의 결정문 한 줄이며, **재작업·재제안이 의심되면 그 파일을 먼저 연다.**
 
+- **2026-10-14** **핸드오프 분량 = 목표 범위 + 신호 기반 조정** — 목표 HANDOFF 10~15KB · people 2~3KB · 프로젝트 15~25KB · 상한은 그대로 · 신호 2세션 연속이면 조정(정본 `handoff/README.md` 「분량 조정」)
 - **2026-10-14** **OA 위키에 샘플 JSON · Flex zip을 두지 않는다** — Claude가 Landpress · LIAM 직접 등록 · 발송 원본은 Landpress 등록값(정본 `md/OA.md`)
 - **2026-10-08** **핸드오프 프로젝트 파일 = 구조 규칙 우선 · 25KB 경고선** — 바이트 하드 상한은 주입 파일(`HANDOFF.md` 20KB · `people/` 3KB · 합계 24KB)에만(정본 `handoff/README.md`)
-- **2026-09-29** **OA의 LIAM 메시지는 항상 isActive=Yes로 등록** — 종전 「테스트·미완성이면 해제」 폐기(정본 `md/OA.md`)
 - **2026-09-18** 토큰은 **「필요한 단계에서 요청」** — 키체인 우선, 없으면 그 시점에 요청(정본 `CLAUDE.md` 「⛔ 토큰 규칙」)
 
 ## ⛔ 전역 종결 (재작업·재제안 금지)

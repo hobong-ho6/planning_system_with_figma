@@ -1,6 +1,6 @@
 # hogeun
 
-> 사람키: `hogeun` · git identity `Hogeun Kim <hogeun.kim.lnxt@gmail.com>` · `handoff.person=hogeun` — **PC 2대 동일**(규칙: `handoff/README.md` 「사람 식별」)
+> 사람키: `hogeun` · git identity `Hogeun Kim <hogeun.kim.lnxt@gmail.com>` · `handoff.person=hogeun` — **PC 2대 동일**(규칙: `handoff/README.md` 「사람 식별」) · 크기 2.7KB(10/14 · 목표 2~3KB)
 > 담당 프로젝트: **활성 전부**(`HANDOFF.md` 인덱스 참조 — 수치는 적지 않는다, 늘 어긋난다)
 
 ## PC
