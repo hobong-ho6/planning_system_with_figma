@@ -1,0 +1,4 @@
+- 세션: guidekim-insourcing OA(PS) · hogeun · `AD03230205ui-iMac.local`
+- 시작: 2026-10-14 23:03
+- 점유 자원: handoff/README.md + .claude/skills/handoff/SKILL.md + md/decisions.md + 프로젝트 파일 3개(guidekim-insourcing · cashback-disclaimer · sk-gifticon-migration)
+- 목적: 핸드오프 분량 목표 범위 + 신호 기반 조정 규칙 적용(Auto-react a4452a4 기준) · 경고선 초과 3개 포인터 압축
