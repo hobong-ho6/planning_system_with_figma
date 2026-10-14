@@ -25,19 +25,16 @@
 
 ## 대기 중
 
-> 기준선: **`guide-v46`**(2026-10-12 · 대기 5건 전건 반영). 아래는 그 이후 변경 중 가이드에 미반영된 것이다.
+> 기준선: **`guide-v47`**(2026-10-14 · 대기 4건 전건 반영). 아래는 그 이후 변경 중 가이드에 미반영된 것이다.
 
 | # | 변경 | 종류 | 가이드 갱신 대상 | 근거 | 등재일 |
 |---|---|---|---|---|---|
-| 1 | LPC 필드 값 예약 변경 — 브라우저 타이머 `scripts/restore/lpc_timer_put.js` 신설(CMS 예약은 공개/공개 취소만) | ⓑ 새 스크립트 | 시스템 가이드 탭 파일 표 · Landpress 절(쓰기 경로) | `md/landpress.md` §10-2-2 | 2026-10-12 |
-| 2 | ⛔ LandPress Content MCP는 읽기 전용으로 쓴다 — `item_update`가 `locale`을 무시하고 primary 로케일에 즉시 써진다(beta 실측) · 도구 선택 기준 표(CMS API·MCP·UI — Claude가 상황별 선택) | ⓐ 규칙 | Landpress 절(쓰기 경로) | `md/landpress.md` §10-2-3 · §10-6 | 2026-10-13 |
-| 3 | OA 위키 Screen 표에서 「샘플 JSON(KR)」 칼럼 폐지 — Claude가 Landpress·LIAM에 직접 등록하므로 불필요(4칼럼으로 복귀) · 발송 원본은 Landpress 등록값 | ⓐ 규칙 | OA 메시지 절(위키 표 구조) | `md/OA.md` 「위키 반영」 | 2026-10-14 |
-| 4 | OA Flex JSON·zip 위키 첨부 폐지 — 언어별 JSON은 Landpress 등록 입력용 로컬 산출물로만 · zip 생성 안 함 · 발송 원본은 Landpress 등록값 · 절차 요약 7단계 폐지 | ⓐ 규칙 | OA 메시지 절(산출물 · 절차) | `md/OA.md` 규칙 3 · 3-1 · 절차 요약 | 2026-10-14 |
 
 ## 반영 이력
 
 | 버전 | 날짜 | 반영한 대기 건 |
 |---|---|---|
+| **v47** | 2026-10-14 | **4건 전건** — ① LPC 값 예약 변경 타이머 `lpc_timer_put.js`(Landpress 절 · 파일 표) ② LandPress MCP 조회 전용(Landpress 절) ③ OA 위키 샘플 JSON 칼럼 폐지 ④ OA Flex JSON·zip 첨부 폐지(OA 절 · 예시 · 파일 표)<br>**추가 정정** — 「AI가 할 수 있는 일」 표 · ② 언어 항목 카드 · OA 등록 절차: 언어 항목 생성도 AI가 한다(종전 「기획자가 CMS에서 생성」 — `md/OA.md` 2026-09-13/09-29 정정 미반영분) |
 | **v46** | 2026-10-12 | **5건 전건** — ① 새 XLT 키 미등록 대기 키 대조(`check_pending_keys.py` · 검증 게이트 절 + 스크립트 표) ② OA 등록 규칙(LIAM `isActive` 항상 Yes · 2번째 언어부터 AI 로케일 추가) ③ mini 마이 어휘 → `IA_DATA` 하위 7행(예약·여행 상세·상품권·즐겨찾기·내 리뷰·포인트·결제 · 10/7·10/8 승인분 포함) ④ ⛔ 위키 History 같은 날짜 행 차단(위키 생성 카드 + 스크립트 표) ⑤ ⛔ OA Flex text `\n` 금지(OA 섹션 경고) |
 | **v43** | 2026-09-16 | **7건 전건** — ① LPC 쓰기 규칙(차단 게이트 5번 신설) ② `md/decisions.md` 신설(문서 지도 3곳) ③ 용어집 대기 목록 운영(현재 23건) ④ 신규 스크립트 2종(`check_lpc_nulls.py`·`restore/lpc_safe_put.js`) ⑤ OA LIAM 스냅샷 규칙 ⑥ OA 발송 시간 제한(22~08시 · 예약 확정 예외) ⑦ `put_wiki_storage.py` 등재<br>**추가 반영** — DropWeb **직접 게시** 전환(사용자 결정 2026-09-16 · 종전 「게시는 사용자가 수행」 대체) |
 
