@@ -278,6 +278,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `put_wiki_storage.py` | 위키 본문(storage) **버전 가드 PUT** — 로컬 파일을 그대로 보내고, 라이브 버전이 `--expect-version`과 다르면 **PUT 하지 않고 exit 2**(다른 세션이 먼저 고침) · PUT 후 본문 길이가 5% 이상 어긋나면 exit 3. MCP `confluence_update_page`는 본문을 대화에 실어 큰 페이지에서 **본문 유실 위험**이 있다(2026-09-12 실측 사고) | 3단계 위키 PUT — **본문이 크거나 다른 세션과 동시 편집 가능성이 있으면 필수** |
 | `collect_frames.py` | 프레임 읽기 전용 배치 수집 (노드·코멘트 1회 조회 + 좌표 정규화 + 텍스트 매칭 + 어노테이션 렌더 → `frames.json`) | 3단계 Step 3~4 입력 생성 (프레임 다수 시) |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
+| `xlt_batch.py` | **XLT 업로드 대기 원장** — 만든 엑셀을 `add`로 쌓고, 요청 시 `build`로 팀(UIT/LV)·서비스별 최종 엑셀 1개씩 생성(같은 키는 마지막 값) · 등록 후 `uploaded` | 1단계 Step 7 엑셀 생성 직후 `add` · 사용자 「최종 XLT」 요청 시 `build` |
 | `patch_translation.py` | 키 단위 번역 패치 (지정 언어 셀만 교체·무결성 가드) | 키 단위 번역 패치 모드 (`md/translate.md`) |
 | `render_oa_flex.py` | OA Flex bubble JSON → 카드 이미지(PNG) 렌더 (HTML/CSS + headless Chrome + 자동 크롭) — **근사 렌더**, 최종 확인은 사람이 Flex Simulator에서 | OA 렌더 이미지 첨부 (`md/OA.md`) |
 | `build_prototype_data.py` | data.js/i18n.js 생성 + 무결성 검증 (입력: prototype_input.json, translation_extract.json, translation_data.json, comments_data.json) | 2단계 Step 5 |
