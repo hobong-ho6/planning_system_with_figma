@@ -484,6 +484,11 @@ python3 scripts/xlt_batch.py build                # 요청 시 — Auto-react/xl
 python3 scripts/xlt_batch.py uploaded --team UIT  # 사용자가 시스템 등록을 마쳤다고 하면
 ```
 
+**⛔ 사용자에게 넘기는 업로드용 엑셀은 `~/Downloads`에 만든다(2026-10-16 사용자 지시 · 정본 Auto-react `CLAUDE.md`)**:
+- 파일명 `xlt_{팀}_{서비스}_{디바이스}_{내용}_{N}keys_{YYYYMMDD}.xlsx` — WEB · IPHONE 값이 같으면 `WEB_IPHONE_공용` 1개. 라이브에 이미 같은 값으로 등록된 키는 뺀다
+- 만든 뒤 `chflags nohidden <파일>`(워크트리 숨김 플래그가 복사본에 따라온다)
+- **시스템 업로드가 확인되면 다운로드 폴더 사본을 지운다** — 「확인」= `fetch_xlt_registry.py` 라이브 재조회에서 그 엑셀의 **모든 키 · 모든 대상(서비스 × 디바이스) · 5개 언어**가 엑셀 값과 일치. 하나라도 다르면 남겨 두고 사용자에게 알린다. 지우는 건 다운로드 사본뿐 — 저장소 `xlt/` 사본은 두고 원장만 `uploaded`로 바꾼다
+
 ---
 
 ## 산출물 스키마 (다음 단계 입력 — 파일명·구조 고정)
