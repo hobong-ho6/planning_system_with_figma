@@ -1,0 +1,4 @@
+- 세션: OA 렌더 body 여백 · hogeun · `AD03230205ui-iMac.local`
+- 시작: 2026-10-21 17:54
+- 점유 자원: scripts/render_oa_flex.py
+- 목적: body paddingAll 지정 시 .sec 기본 여백 중복 제거
