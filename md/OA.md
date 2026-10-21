@@ -165,7 +165,7 @@ for l,u in URLS.items():                      # {lang: url}
 | 설명 · 유의사항 | 13px · `#000000` · 구분선 아래 20px | box `margin:"20px"` → text `size:"13px"` · `color:"#000000"` · `wrap:true` |
 | 버튼 | 높이 46 · 모서리 8 · 간격 8 · 주 `#000000` / 보조 `#F6F7FA` | footer `spacing:"sm"` · 주 `primary`·`#000000` / 보조 `secondary`·`#F6F7FA`(아래 「보조 버튼」) |
 
-- ⚠️ **px 크기 지정(`size:"20px"`·`margin:"10px"`)은 시뮬레이터 확인 전이라 「권장」이다.** 확인되면 이 줄을 지운다. 버튼 높이 46px는 Flex 버튼이 픽셀 높이를 받지 않아 `height:"md"`(기본)로 두고 맞추지 않는다.
+- ✅ **px 크기 지정(`size:"20px"`·`"13px"`·`margin:"10px"`/`"20px"`·`paddingAll:"20px"`)은 LIAM beta·prod 미리보기에서 정상 확인됐다**(Unifi mini v2.1 OA 10건 · 사용자 확인 2026-10-21). 버튼 높이 46px는 Flex 버튼이 픽셀 높이를 받지 않아 `height:"md"`(기본)로 두고 맞추지 않는다.
 - 안내 문장 색은 **`#000000`** 이다(종전 첫 정의의 회색 `#787C82` · 동작 검증 구조의 `#666666`을 ① 에서는 쓰지 않는다).
 - **불릿 = `"* "` 접두 text, 항목마다 text 하나.** baseline box(기호 · 본문 분리)는 쓰지 않는다 — Figma 불릿 문장이 줄바꿈 때 **들여쓰기 없이 왼쪽 끝에서 이어지므로**(내어쓰기 없음) 접두 text가 시안과 같다. 불릿 없는 주요 설명은 첫 text로 둔다. `\n` 금지는 그대로다.
 
@@ -206,16 +206,16 @@ for l,u in URLS.items():                      # {lang: url}
 - **왜 `image` 단독(`aspectRatio`)이 아닌가**: Flex `image`는 픽셀 높이를 지정할 수 없고 높이가 `말풍선 폭 ÷ aspectRatio`로 정해진다. 비교안이었던 `20:13 · fit + 배경`(A안)은 **말풍선 폭에 따라 높이가 변해** 「고정 높이」 정의와 맞지 않는다. `1:1 cover`(B안)·종전 `20:13 cover`도 같은 이유로 쓰지 않는다.
 - **영역 배경색 = 이미지 가장자리 색**: 이미지가 영역보다 좁게 들어가면 좌우 여백이 box 배경으로 칠해진다. Figma export 에셋은 배경이 이미지에 포함돼 있다 — 활성화 완료 300×200 = `#F6F7FA` · 공지 안내형 300×180 = `#E9FDEE`(연두 · 영역 레이어 `area` 채움과 동일, 시안 아이콘에 딸린 배경) · 캠페인형 840×504 = `#CFF1FF`. **공지사항은 이미지마다 배경이 다르므로 받은 이미지의 가장자리 색을 실측해 `backgroundColor`에 넣는다**(`#F6F7FA` 고정 아님).
 
-### 보조 버튼 — 회색 채움 (2026-10-21 시범 적용 · v2.1 OA 재생성 후 최종 결정)
+### 보조 버튼 — 회색 채움 (2026-10-21 · v2.1 OA 10건 LIAM 반영 · 미리보기 정상)
 
-Figma의 두 번째 버튼(「상품 둘러보기」 — 포인트 적립 · 캠페인형)은 **회색 채움**이다. 종전 `style:"link"` 대신 아래로 시범 적용한다:
+Figma의 두 번째 버튼(「상품 둘러보기」 — 포인트 적립 · 캠페인형)은 **회색 채움**이다. 종전 `style:"link"` 대신 아래로 쓴다:
 
 ```json
 { "type": "button", "style": "secondary", "color": "#F6F7FA", "height": "sm",
   "action": { "type": "uri", "label": "상품 둘러보기", "uri": "https://…" } }
 ```
 
-- 사용자가 Unifi mini v2.1 OA를 이 디자인안 기준으로 재생성해 시뮬레이터로 본 뒤 최종 결정한다(10/21). 결정 전까지 「시범」 표기를 지우지 않는다.
+- Unifi mini v2.1 OA를 이 디자인안으로 재생성해 Landpress · LIAM beta · prod까지 반영했다(10/21 · 사용자 미리보기 확인) — 시범 표기 해제.
 - 주 버튼은 그대로 `style:"primary"` · `color:"#000000"`.
 
 ---
@@ -225,7 +225,7 @@ Figma의 두 번째 버튼(「상품 둘러보기」 — 포인트 적립 · 캠
 기준 스펙은 **`templates/flex_message_spec.json`**(LINE 공식 Brown Cafe bubble)이되, 실운영에서 동작 확인된 아래 구조를 따른다:
 
 - **hero**: **이미지가 없는 유형은 `hero` 키를 빼고**, 있는 유형은 위 「hero 이미지 규격」의 **고정 높이 box**(200px/180px · 안쪽 image `fit`)로 넣는다(2026-10-21 — 종전 `image`·`20:13`·`cover` 고정 폐지). **`action`은 넣지 않는다**(버튼으로만 이동).
-- **구분선**: 유형 구조의 「구분선」(정보성 데이터 ↔ 설명 · 유의사항)은 body 안 `{"type":"separator","margin":"20px","color":"#EFEFEF"}`로 넣는다(Figma 실측 · 시뮬레이터 확인 전 권장).
+- **구분선**: 유형 구조의 「구분선」(정보성 데이터 ↔ 설명 · 유의사항)은 body 안 `{"type":"separator","margin":"20px","color":"#EFEFEF"}`로 넣는다(Figma 실측 · LIAM 미리보기 확인 10/21).
 - **body**: vertical box — ① 타이틀 text(`weight:"bold"`·`size:"lg"`·`wrap:true`), ② 하위 box(vertical, `margin:"md"`·`spacing:"sm"`)에 본문·각주 text 컴포넌트(`size:"sm"`·`color:"#666666"`·`wrap:true`). **① 개인별 진행 상태 안내는 위 「① Flex 스타일 값」을 따른다**(타이틀 20px · 13px · `#000000` · 정보성 데이터 → 구분선 → 설명 · 불릿). 위키 번역표의 문단·각주는 **줄 단위로 별도 text 컴포넌트**로 나눈다(KR 셀의 문단 구조 그대로).
 - ⛔ **text 안에 줄바꿈 `\n`을 넣지 않는다 (2026-10-06 실측 — 실발송에서 줄이 붙어 나갔다)**. LIAM을 거쳐 실제 발송된 메시지는 `\n`을 **줄바꿈으로 적용하지 않는다** — 「▶ 점검 일시 2026년 10월 13일(화) 00:00 ~ 08:00 (JST) ※ …」처럼 한 문단으로 붙어 가독성이 무너진다(`sk-gifticon-migration` OA-1 prod 발송분).
   - **여러 줄 문단은 줄마다 text 하나**로 나누고, 한 문단에 속한 줄들은 `{"type":"box","layout":"vertical","contents":[text, text, …]}`(spacing 없음)로 묶는다. 문단 사이 간격은 상위 box의 `spacing:"sm"`이 만든다.
@@ -233,7 +233,7 @@ Figma의 두 번째 버튼(「상품 둘러보기」 — 포인트 적립 · 캠
   - 타이틀·버튼 `label`·`alt_text`에도 `\n`을 쓰지 않는다.
   - **Landpress에 쓰기 직전 검사**: 모든 text 노드에 `\n`이 0건인지 확인한다(예: `python3 -c "import json,sys;d=json.load(open(sys.argv[1]));f=lambda x:(isinstance(x,dict) and ((x.get('type')=='text' and '\n' in x['text']) or any(f(v) for v in x.values()))) or (isinstance(x,list) and any(f(v) for v in x));print('NG' if f(d) else 'OK')" flex.json`).
   - ⚠️ **`render_oa_flex.py` 근사 렌더로는 이 문제가 안 보인다** — 렌더러는 `\n`을 줄바꿈으로 그려 정상처럼 보인다. **LIAM 미리보기는 실발송과 같이 `\n`을 무시**하므로, LIAM `LOAD MESSAGE` 후 미리보기 카드에서 줄이 나뉘어 보이는지 확인한다.
-- **footer**: vertical box(`spacing:"sm"`) — **첫 번째(주) 버튼 `style:"primary"`·`color:"#000000"`**, 두 번째 이후 버튼 `style:"secondary"`·`color:"#F6F7FA"`(2026-10-21 시범 — 위 「보조 버튼」 · 종전 `link`), 공통 `height:"sm"`, `action:{type:"uri", label, uri}`. **빈 `contents:[]` box를 넣지 않는다**(검증 실패 요인).
+- **footer**: vertical box(`spacing:"sm"`) — **첫 번째(주) 버튼 `style:"primary"`·`color:"#000000"`**, 두 번째 이후 버튼 `style:"secondary"`·`color:"#F6F7FA"`(2026-10-21 — 위 「보조 버튼」 · 종전 `link`), 공통 `height:"sm"`, `action:{type:"uri", label, uri}`. **빈 `contents:[]` box를 넣지 않는다**(검증 실패 요인).
 
 ```json
 {
