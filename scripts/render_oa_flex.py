@@ -97,7 +97,8 @@ def render_text(node):
 def render_separator(node):
     color = node.get("color", "#e5e5e5")
     m = px(SPACING, node.get("margin"), 0)
-    return f'<hr style="border:none;border-top:1px solid {color};margin:{m}px 0">'
+    # LINE separator margin은 위쪽 간격만 만든다
+    return f'<hr style="border:none;border-top:1px solid {color};margin:{m}px 0 0">'
 
 
 def render_button(node):
@@ -212,7 +213,9 @@ def bubble_to_html(bubble, width=300):
         else:
             parts.append(f'<div class="sec">{render_node(hero)}</div>')
     if bubble.get("body"):
-        parts.append(f'<div class="sec">{render_box(bubble["body"])}</div>')
+        # body에 paddingAll이 있으면 LINE 기본 여백 대신 그 값만 쓴다
+        pad = ' style="padding:0"' if bubble["body"].get("paddingAll") else ""
+        parts.append(f'<div class="sec"{pad}>{render_box(bubble["body"])}</div>')
     if bubble.get("footer"):
         parts.append(f'<div class="sec" style="padding-top:4px">{render_box(bubble["footer"])}</div>')
     return PAGE.format(width=width, parts="".join(parts))
