@@ -114,7 +114,8 @@ def render_button(node):
     if style_kind == "primary":
         base += [f"background:{color}", "color:#ffffff"]
     elif style_kind == "secondary":
-        base += ["background:#dcdfe5", f"color:{color}"]
+        # LINE secondary: color = 배경색, 글자는 검정
+        base += [f"background:{node.get('color', '#dcdfe5')}", "color:#111111"]
     else:  # link
         base += ["background:transparent", f"color:{color}"]
     if node.get("margin"):
@@ -130,6 +131,26 @@ def render_image(node, in_hero=False):
     if not in_hero and node.get("margin"):
         style.append(f"margin-top:{px(SPACING, node['margin'])}px")
     return f'<img src="{url}" style="{";".join(style)}">'
+
+
+def render_hero_box(node):
+    """hero 고정 높이 box — 안쪽 image는 높이에 맞춰 비율 유지·가로 중앙(md/OA.md 「hero 이미지 규격」)."""
+    style = ["display:flex", "flex-direction:column", "align-items:center", "overflow:hidden",
+             f"height:{px(SPACING, node.get('height'), 200)}px",
+             f"padding:{px(SPACING, node.get('paddingAll'), 0)}px"]
+    jc = {"center": "center", "flex-start": "flex-start", "flex-end": "flex-end"}
+    style.append(f"justify-content:{jc.get(node.get('justifyContent'), 'flex-start')}")
+    if node.get("backgroundColor"):
+        style.append(f"background:{node['backgroundColor']}")
+    inner = []
+    for c in node.get("contents", []):
+        if c.get("type") == "image":
+            mode = "cover" if c.get("aspectMode", "fit") == "cover" else "contain"
+            inner.append(f'<img src="{escape(c.get("url", ""), quote=True)}" '
+                         f'style="display:block;width:100%;height:100%;object-fit:{mode}">')
+        else:
+            inner.append(render_node(c))
+    return f'<div style="{";".join(style)}">{"".join(inner)}</div>'
 
 
 def render_box(node):
@@ -184,8 +205,12 @@ def bubble_to_html(bubble, width=300):
         parts.append(f'<div class="sec">{render_box(bubble["header"])}</div>')
     hero = bubble.get("hero")
     if hero:
-        parts.append(render_image(hero, in_hero=True) if hero.get("type") == "image"
-                     else f'<div class="sec">{render_node(hero)}</div>')
+        if hero.get("type") == "image":
+            parts.append(render_image(hero, in_hero=True))
+        elif hero.get("height"):
+            parts.append(render_hero_box(hero))
+        else:
+            parts.append(f'<div class="sec">{render_node(hero)}</div>')
     if bubble.get("body"):
         parts.append(f'<div class="sec">{render_box(bubble["body"])}</div>')
     if bubble.get("footer"):

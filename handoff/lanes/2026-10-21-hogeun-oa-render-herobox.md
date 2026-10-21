@@ -1,4 +1,0 @@
-- 세션: OA 렌더 hero box · hogeun · `AD03230205ui-iMac.local`
-- 시작: 2026-10-21 15:57
-- 점유 자원: scripts/render_oa_flex.py
-- 목적: hero box(height px · justifyContent · paddingAll 0 · image fit) 렌더 지원
