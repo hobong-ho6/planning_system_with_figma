@@ -18,7 +18,7 @@
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
 | [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 | 09-22 | 미결 2 · HANDOFF 9.3KB로 압축(주입 13.5KB) · 재팽창 방지 기준·대기 키 대조기 신설 |
-| [masters](handoff/projects/masters.md) | `hogeun` | 마스터 5종 + K-Pick 노출 정책·FAQ | 09-16 | 정합 유지 · ⚠️ `syncExcludedFields`에 `badges`·`reviewCount` 없음(동기화 시 덮일 수 있음) |
+| [masters](handoff/projects/masters.md) | `hogeun` | 마스터 5종 + K-Pick 노출 정책·FAQ | 10-21 | mini 마스터 v17 버전 6(v2.1.0) 신설 · 6↔6 · ⚠️ `syncExcludedFields`에 `badges`·`reviewCount` 없음 |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 10-14 | 용어집 v5.5 · 가이드 v47 · ⛔ 보완은 모아서 한 번에(대기 36건) · 미결 1 |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-21 | 점검 #8 반영 · 🔴 KAIA 이율 3중 불일치·리워드 스켈레톤·Beta K-Pick 개편 · 어휘 승인 대기 12 |
 | [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + LPC `4727978725` · 29화면 | 09-29 | 본문 v247 · LPC v71 · 🔴 브랜드 24종 용어집 v5.7 대기 · th/zh 구 표기 잔존 · 의료광고 조치 |
