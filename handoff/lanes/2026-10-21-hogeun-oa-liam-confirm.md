@@ -1,0 +1,4 @@
+- 세션: OA LIAM 확인 기록 · hogeun · `AD03230205ui-iMac.local`
+- 시작: 2026-10-21 19:03
+- 점유 자원: md/OA.md
+- 목적: hero C안 LIAM 실측 확인 기록
