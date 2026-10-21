@@ -29,6 +29,7 @@
 | [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · 3화면 | 09-22 | 위키 v6 · XLT 7키 전건 등록 · LPC 관리 영역(`shopping_guide`/`guide_page`) 반영 · ⛔ 결제 바텀시트 두 벌 키는 「유지」로 종결(09-21) |
 | [sk-gifticon-migration](handoff/projects/sk-gifticon-migration.md) | `hogeun` | 위키 `4770508162` — SK 기프티콘 서버 이관(10/13) 고지 | 10-13 | 이관 운영 완료(공개 · 구매 차단 · 08:00 공개 취소 ✅) · 🆕 OA-4 완료 안내 등록(Landpress·LIAM beta·prod · 발송은 운영) · 스위치 2개 false 원복 ✅ · ▶ FE 처리 확인 |
 | [reward-tab-feedback](handoff/projects/reward-tab-feedback.md) | `hogeun` | 위키 `4838291699` 리워드탭 피드백(v1.11.0) | 10-08 | Screen `reward_main_01` + popup luckyball 2행 · 🔴 Dapp Portal XLT 3키 업로드 대기 · FE 확인(게임 미션 「받기」 키 공유) |
+| [gift-voucher](handoff/projects/gift-voucher.md) | `hogeun` | 위키 `4920650222`(타사 조사) + `4917412059`(기획 초안) — 상품권 선물하기 | 10-21 | 제안 단계 · 두 페이지 v1 생성 · 결정 필요 11건 · 🔴 의료법(클리닉) · 리스크 LNS-1622 확인 대기 |
 
 ---
 
