@@ -42,7 +42,7 @@
 - **`altText`에는 변수를 쓸 수 없다**(2026-08-05 사용자 확정). 봉투 텍스트는 고정 문구로만 작성하며, 금액 등 가변 값을 넣자는 제안을 하지 않는다.
 
 ### 3. 첨부 이미지 → LINE Flex 메시지 JSON, 이미지 URI는 사용자 입력
-- OA 메시지의 첨부 이미지는 **LINE Flex Message JSON(flex image)** 형태로 생성한다.
+- OA 메시지의 첨부 이미지는 **LINE Flex Message JSON(flex image)** 형태로 생성한다. **이미지를 넣을지·영역 높이는 OA 유형이 정한다** — 아래 「OA 유형별 템플릿」(2026-10-21).
 - 이미지 **URI(https)는 Claude가 임의로 넣지 않고 사용자에게 문의**해 입력받는다(입력 전에는 `{{IMAGE_URL}}` 플레이스홀더로 둔다).
 - Flex 메시지의 텍스트 컴포넌트에는 규칙 2의 `{{변수이름}}`을 그대로 사용한다.
 - **⛔ 최종 첨부본은 URL 실값 필수 (2026-07-27 확정)**: `hero.url`·`action.uri` 등 **URL 계열 필드는 LINE이 형식 검증**하므로 `{{IMAGE_URL}}`·`{{ACTION_URL}}` 플레이스홀더가 남아 있으면 **Flex Message Simulator·실발송 모두 렌더 거부**된다. 플레이스홀더는 값 미확정 단계의 중간 산출물로만 허용하며, **Landpress에 등록하는 최종본은 반드시 실값 URL을 반영**한다(미확정이면 임시값을 넣고 위키 비고에 남긴다). 반면 `text` 필드 안의 `{{변수}}`는 단순 문자열이라 그대로 두어도 동작한다.
@@ -109,11 +109,92 @@ for l,u in URLS.items():                      # {lang: url}
 
 ---
 
+## OA 유형별 템플릿 — 디자인팀 공통 정의 (2026-10-21 신설)
+
+> 근거: Slack `#C097X2T31FE` 「OA 메시지 이미지 및 UI 공통 정의」(디자인 · 2026-10-21) · Figma `uyUkM7rWWg1vAwpf47um86` node `75646-454` 「OA메시지 공통」. 기획(사용자) 회신 「정의 기준에 맞춰 기존 메시지 업데이트 후 최종 검토 요청」.
+> **원칙: 모든 OA에 이미지를 넣지 않는다 — 내용 전달이 우선이고, 이미지는 정의된 유형에만 둔다.** 새 OA를 만들거나 기존 OA를 고칠 때 먼저 아래 두 유형 중 어디에 속하는지 정하고, 그 유형의 hero 유무·구조를 따른다.
+
+### 유형 판별
+
+| 유형 | 정의 | 이미지(hero) |
+|---|---|---|
+| **① 개인별 진행 상태 안내** | 사용자 개인의 거래·상태 변화 알림(구매·활성화·적립·환불 등) | **상품권 활성화 완료에만** 넣는다. 나머지는 hero 없음 |
+| **② 공지사항** | 다수에게 보내는 캠페인·서비스 공지(점검·중단·신규 상품 등) | **모든 유형에 넣는다** |
+
+어디에도 맞지 않는 새 OA는 임의로 정하지 않고 사용자에게 유형을 묻는다.
+
+### ① 개인별 진행 상태 안내 — 4종
+
+공통 구조: **(hero) → 타이틀 → 상품명·기한 정보 → 구분선 → 기타 안내 → 버튼**
+
+| # | 메시지 | hero | 타이틀(Figma) | 버튼 |
+|---|---|---|---|---|
+| 1 | 구매 완료 | 없음 | 상품권 구매가 완료 되었어요. | 구매 내역보기 |
+| 2 | 상품권 활성화 완료 | **있음 · 영역 높이 200px** | **바코드 활성화 완료! / 매장에서 바코드를 보여주세요.**(사용자 결정 10/21 — Figma 「상품권 활성화 완료!」 대체) | 바코드 확인하기 |
+| 3 | 포인트 적립 | 없음 | ¥{금액} 포인트가 적립됐어요! | 포인트 내역 보기(주) + 상품 둘러보기(보조 · 회색 채움) |
+| 4 | 환불 완료 | 없음 | 환불이 완료되었어요 | 환불 내역 보기 |
+
+- **문구는 템플릿이 아니라 위키 확정 문안이 정본이다.** 위 표의 타이틀은 구조 확인용 Figma 값이며, 실제 문안·번역은 해당 프로젝트 OA 위키(예: [[Unifi mini - OA]] `4833603093`)의 확정값을 쓴다.
+- ⚠️ **Figma와 정책 충돌(2026-10-21)**: 구매 완료 기타 안내의 「활성화 기한이 지나면 사용·환불이 불가해요」는 **현행 정책(기한 경과 시 수수료 20% 차감 후 자동 환불)과 다르다.** Figma 문구를 옮기지 말고 위키 확정 문안을 쓴다(정책 > Figma 코멘트·시안).
+- 기타 안내의 보조 문장 색 `#787C82`(Figma 구매 완료 카드 회색 문장 — 변수 미바인딩 실측값).
+
+### ② 공지사항 — 2종 (모두 hero 있음)
+
+| 유형 | 이미지 | 구조 | 버튼 |
+|---|---|---|---|
+| **캠페인형**(비주얼 강조형) | **영역 높이 180px** · 상품 이미지 여러 장을 가로로 나열한 **합성 이미지 1장**(Figma export 에셋 840×504 = 5:3) | hero → 타이틀 → 소제목(bold) + 불릿 본문 반복 → 버튼 | 2개(주 + 보조 회색 채움) |
+| **공지 안내형** | **영역 높이 180px** · 아이콘 + 배경이 들어간 이미지 1장(Figma export 에셋 300×180 = 5:3) | hero → 타이틀 → 공지 세부 내용 및 기한 → 구분선 → 기타 안내 → 버튼 | 1개 |
+
+- 캠페인형 시안의 「가로 스크롤」은 잘린 이미지 나열 연출이다 — Figma export 에셋이 **한 장(840×504)** 이라 Flex에서도 hero 이미지 1장으로 넣는다(carousel 아님).
+
+### ⛔ hero 이미지 규격 — Figma 이미지 코멘트가 정의다 (2026-10-21 확정)
+
+| 항목 | 정의 |
+|---|---|
+| 노출 | **이미지 영역의 높이에 맞춰 노출 · 원본 비율 유지 · 가로 중앙 정렬** |
+| 영역 높이 | **① 개인별 진행 상태 안내 = 200px**(활성화 완료) · **② 공지사항 = 180px**(캠페인형·공지 안내형) |
+| 영역 배경 | 활성화 완료 = `#F6F7FA`(Figma 변수 `Shape-05`) · 공지사항 = **이미지 자체 배경색과 같은 값**(아래) |
+
+**Flex 구조 — hero를 `box`로 두고 높이를 고정한다(10/21 시뮬레이터 노출 확인):**
+
+```json
+"hero": {
+  "type": "box", "layout": "vertical",
+  "height": "200px",
+  "paddingAll": "0px",
+  "backgroundColor": "#F6F7FA",
+  "justifyContent": "center",
+  "contents": [
+    { "type": "image", "url": "https://…", "size": "full", "aspectRatio": "{이미지 실측 비율}", "aspectMode": "fit" }
+  ]
+}
+```
+
+- `height`는 유형별로 `"200px"`(개인별 진행 상태 안내) / `"180px"`(공지사항). `image`의 `aspectRatio`는 3-0대로 **이미지 실측 비율**.
+- ⛔ **box에 `alignItems:"center"`를 주지 않는다** — 이미지가 **0 크기로 사라진다**(2026-10-21 시뮬레이터 실측). 가로 중앙 정렬은 `size:"full"` + `aspectMode:"fit"`이 만든다.
+- **왜 `image` 단독(`aspectRatio`)이 아닌가**: Flex `image`는 픽셀 높이를 지정할 수 없고 높이가 `말풍선 폭 ÷ aspectRatio`로 정해진다. 비교안이었던 `20:13 · fit + 배경`(A안)은 **말풍선 폭에 따라 높이가 변해** 「고정 높이」 정의와 맞지 않는다. `1:1 cover`(B안)·종전 `20:13 cover`도 같은 이유로 쓰지 않는다.
+- **영역 배경색 = 이미지 가장자리 색**: 이미지가 영역보다 좁게 들어가면 좌우 여백이 box 배경으로 칠해진다. Figma export 에셋은 배경이 이미지에 포함돼 있다 — 활성화 완료 300×200 = `#F6F7FA` · 공지 안내형 300×180 = `#E9FDEE`(연두 · 영역 레이어 `area` 채움과 동일, 시안 아이콘에 딸린 배경) · 캠페인형 840×504 = `#CFF1FF`. **공지사항은 이미지마다 배경이 다르므로 받은 이미지의 가장자리 색을 실측해 `backgroundColor`에 넣는다**(`#F6F7FA` 고정 아님).
+
+### 보조 버튼 — 회색 채움 (2026-10-21 시범 적용 · v2.1 OA 재생성 후 최종 결정)
+
+Figma의 두 번째 버튼(「상품 둘러보기」 — 포인트 적립 · 캠페인형)은 **회색 채움**이다. 종전 `style:"link"` 대신 아래로 시범 적용한다:
+
+```json
+{ "type": "button", "style": "secondary", "color": "#F6F7FA", "height": "sm",
+  "action": { "type": "uri", "label": "상품 둘러보기", "uri": "https://…" } }
+```
+
+- 사용자가 Unifi mini v2.1 OA를 이 디자인안 기준으로 재생성해 시뮬레이터로 본 뒤 최종 결정한다(10/21). 결정 전까지 「시범」 표기를 지우지 않는다.
+- 주 버튼은 그대로 `style:"primary"` · `color:"#000000"`.
+
+---
+
 ## Flex 메시지 JSON 동작 검증 구조 (캠페인 확정형 — 2026-07-27, 럭키볼 캠페인에서 시뮬레이터 동작 확인)
 
 기준 스펙은 **`templates/flex_message_spec.json`**(LINE 공식 Brown Cafe bubble)이되, 실운영에서 동작 확인된 아래 구조를 따른다:
 
-- **hero**: image, `size:"full"`·`aspectRatio:"20:13"`·`aspectMode:"cover"`. **`action`은 넣지 않는다**(동작 검증본 기준 — 버튼으로만 이동).
+- **hero**: **이미지가 없는 유형은 `hero` 키를 빼고**, 있는 유형은 위 「hero 이미지 규격」의 **고정 높이 box**(200px/180px · 안쪽 image `fit`)로 넣는다(2026-10-21 — 종전 `image`·`20:13`·`cover` 고정 폐지). **`action`은 넣지 않는다**(버튼으로만 이동).
+- **구분선**: 유형 구조의 「구분선」(상품명·기한 정보 ↔ 기타 안내)은 body 안 `{"type":"separator","margin":"lg"}`로 넣는다(권장 — 시뮬레이터 확인 전).
 - **body**: vertical box — ① 타이틀 text(`weight:"bold"`·`size:"lg"`·`wrap:true`), ② 하위 box(vertical, `margin:"md"`·`spacing:"sm"`)에 본문·각주 text 컴포넌트(`size:"sm"`·`color:"#666666"`·`wrap:true`). 위키 번역표의 문단·각주는 **줄 단위로 별도 text 컴포넌트**로 나눈다(KR 셀의 문단 구조 그대로).
 - ⛔ **text 안에 줄바꿈 `\n`을 넣지 않는다 (2026-10-06 실측 — 실발송에서 줄이 붙어 나갔다)**. LIAM을 거쳐 실제 발송된 메시지는 `\n`을 **줄바꿈으로 적용하지 않는다** — 「▶ 점검 일시 2026년 10월 13일(화) 00:00 ~ 08:00 (JST) ※ …」처럼 한 문단으로 붙어 가독성이 무너진다(`sk-gifticon-migration` OA-1 prod 발송분).
   - **여러 줄 문단은 줄마다 text 하나**로 나누고, 한 문단에 속한 줄들은 `{"type":"box","layout":"vertical","contents":[text, text, …]}`(spacing 없음)로 묶는다. 문단 사이 간격은 상위 box의 `spacing:"sm"`이 만든다.
@@ -121,17 +202,18 @@ for l,u in URLS.items():                      # {lang: url}
   - 타이틀·버튼 `label`·`alt_text`에도 `\n`을 쓰지 않는다.
   - **Landpress에 쓰기 직전 검사**: 모든 text 노드에 `\n`이 0건인지 확인한다(예: `python3 -c "import json,sys;d=json.load(open(sys.argv[1]));f=lambda x:(isinstance(x,dict) and ((x.get('type')=='text' and '\n' in x['text']) or any(f(v) for v in x.values()))) or (isinstance(x,list) and any(f(v) for v in x));print('NG' if f(d) else 'OK')" flex.json`).
   - ⚠️ **`render_oa_flex.py` 근사 렌더로는 이 문제가 안 보인다** — 렌더러는 `\n`을 줄바꿈으로 그려 정상처럼 보인다. **LIAM 미리보기는 실발송과 같이 `\n`을 무시**하므로, LIAM `LOAD MESSAGE` 후 미리보기 카드에서 줄이 나뉘어 보이는지 확인한다.
-- **footer**: vertical box(`spacing:"sm"`) — **첫 번째(주) 버튼 `style:"primary"`·`color:"#000000"`**, 두 번째 이후 버튼 `style:"link"`·`color:"#000000"`, 공통 `height:"sm"`, `action:{type:"uri", label, uri}`. **빈 `contents:[]` box를 넣지 않는다**(검증 실패 요인).
+- **footer**: vertical box(`spacing:"sm"`) — **첫 번째(주) 버튼 `style:"primary"`·`color:"#000000"`**, 두 번째 이후 버튼 `style:"secondary"`·`color:"#F6F7FA"`(2026-10-21 시범 — 위 「보조 버튼」 · 종전 `link`), 공통 `height:"sm"`, `action:{type:"uri", label, uri}`. **빈 `contents:[]` box를 넣지 않는다**(검증 실패 요인).
 
 ```json
 {
   "type": "bubble",
   "hero": {
-    "type": "image",
-    "url": "https://…(위키 Description 기입 IMAGE_URL 실값)",
-    "size": "full",
-    "aspectRatio": "20:13",
-    "aspectMode": "cover"
+    "type": "box", "layout": "vertical", "height": "180px", "paddingAll": "0px",
+    "backgroundColor": "#E9FDEE", "justifyContent": "center",
+    "contents": [
+      { "type": "image", "url": "https://…(위키 Description 기입 IMAGE_URL 실값)",
+        "size": "full", "aspectRatio": "5:3", "aspectMode": "fit" }
+    ]
   },
   "body": {
     "type": "box",
@@ -154,7 +236,7 @@ for l,u in URLS.items():                      # {lang: url}
     "contents": [
       { "type": "button", "style": "primary", "color": "#000000", "height": "sm",
         "action": { "type": "uri", "label": "럭키볼 선물 오픈하기✨", "uri": "https://…(위키 Description 기입 ACTION_URL 실값)" } },
-      { "type": "button", "style": "link", "color": "#000000", "height": "sm",
+      { "type": "button", "style": "secondary", "color": "#F6F7FA", "height": "sm",
         "action": { "type": "uri", "label": "확인하기", "uri": "https://…(버튼별 ACTION_URL 실값)" } }
     ]
   }
