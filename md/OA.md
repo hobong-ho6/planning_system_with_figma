@@ -186,7 +186,7 @@ for l,u in URLS.items():                      # {lang: url}
 | 영역 높이 | **① 개인별 진행 상태 안내 = 200px**(활성화 완료) · **② 공지사항 = 180px**(캠페인형·공지 안내형) |
 | 영역 배경 | 활성화 완료 = `#F6F7FA`(Figma 변수 `Shape-05`) · 공지사항 = **이미지 자체 배경색과 같은 값**(아래) |
 
-**Flex 구조 — hero를 `box`로 두고 높이를 고정한다(10/21 시뮬레이터 노출 확인):**
+**Flex 구조 — hero를 `box`로 두고 높이를 고정한다(10/21 시뮬레이터 노출 확인 · Unifi mini v2.1 OA 10건 Landpress beta·prod 반영 후 LIAM beta·prod 미리보기 정상 — 사용자 확인 10/21):**
 
 ```json
 "hero": {
