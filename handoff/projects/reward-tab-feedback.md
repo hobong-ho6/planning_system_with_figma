@@ -1,18 +1,20 @@
 # reward-tab-feedback — 리워드탭 개선 후 피드백 반영 (Unifi v1.11.0)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-10-08 · 세션 #1 · 마지막 커밋 `b941b82`
+> 담당자: `hogeun` · 마지막 갱신: 2026-10-22 · 세션 #2(T236) · 마지막 커밋 (이 커밋)
 
 ## 대상 / 링크
 
-- 위키: `4838291699` 「리워드탭 개선 후 피드백 반영」(상위 `[PL] Unifi v1.11.0`) — **현재 v4**
-- Figma: Web3 `76360-16841` 「리워드탭 추가 변경」(Rewards 탭 · 출석 체크 · 이자 카드)
+- 위키: `4838291699` 「리워드탭 개선 후 피드백 반영」(상위 `[PL] Unifi v1.11.0`) — **현재 v10**
+- Figma: Web3 `76360-16841` 「리워드탭 추가 변경」 → **정본 섹션 `80632:5261` 「리워드탭 개선 후 피드백 반영」**(v10 반영)
 - XLT 서비스·키스페이스: **Dapp Portal**(v2.7.0) · 키 `UF_common_apps_btn_get`(UIT 형식) · `mr_interest_boost_card(_ing)`(`{0}`) · 위키 Screen 소제목 **LV**(사용자 확인 2026-10-07)
 - 엑셀: 위키 첨부 `xlt_output_20261007103653.xlsx`(3키 통합 · Dapp Portal 업로드용 — 앞서 만든 1키 · 2키 엑셀과 값 동일)
 - 게이트 리포트: `gate_report_20261007_common_apps_btn_get_checkin.md` · `_mr_interest_boost_card_ing.md` · `_reward_tab_wiki_4838291699.md`(gitignore → Auto-react `e43615b` 사본)
 
 ## 현재 상태
 
-Screen `reward_main_01` 1행(이미지 어노테이션 · 코멘트 2건 · XLT 3키) + 다국어 번역 섹션 + 엑셀 첨부. 같은 페이지에 원본 `4333020754` 「popup luckyball」 행을 **LIFF(USDT) · Unifi mini(JPYC) 2행으로 나눠 복사**(이미지 재첨부 · 원본 형식 그대로 — Screen ID 비구조화 · XLT `#` 빈칸). 게이트 P0 0.
+**v10 (2026-10-22 · T236)**: Screen을 JPYC / USDT / Common으로 구분 — `reward_main_01` JPYC·USDT(정책 1~5 · 수령 완료 상태) · `reward_checkin_01`(출석 상태 8종) · `reward_luckyball_history_01`(받은 내역·없음) · XLT 신규 5키 `mr_luckyball_daily_done_tomorrow`·`mr_luckyball_history_{title,dc_done,gm_done,empty}` → Auto-react 원장 pending(LV/Dapp Portal) · 게이트 `gate_report_20261022_luckyball_history_wiki_4838291699.md` P0 0
+
+(이전) Screen `reward_main_01` 1행(이미지 어노테이션 · 코멘트 2건 · XLT 3키) + 다국어 번역 섹션 + 엑셀 첨부. 같은 페이지에 원본 `4333020754` 「popup luckyball」 행을 **LIFF(USDT) · Unifi mini(JPYC) 2행으로 나눠 복사**(이미지 재첨부 · 원본 형식 그대로 — Screen ID 비구조화 · XLT `#` 빈칸). 게이트 P0 0.
 
 | 키 | 변경 | 값 |
 |---|---|---|
@@ -26,6 +28,8 @@ Screen `reward_main_01` 1행(이미지 어노테이션 · 코멘트 2건 · XLT 
 
 ## 다음 할 일
 
+- [ ] **P0 — 신규 5키 Dapp Portal 일괄 업로드**(원장 build → 사용자 등록 → 레지스트리 대조)
+- [ ] P1 — 디자이너 확인: 빈 상태 어미 혼용(없습니다/있어요) · 「내일 미션하고 … 또」 · 받은 내역 핀 ⑥(3일차 중복 — 5일차 의도?) · 「3개월·최신순」 기존 `UF_history_filter_*` 재사용 FE 확인
 - [ ] **P0 — 사용자 Dapp Portal 업로드 확인** — 「올렸다」 하면 레지스트리 재조회로 3키 대조
 - [ ] **P0 — FE 확인**: 게임 미션 「받기」 버튼이 `UF_common_apps_btn_get`을 공유하는지(공유면 그 버튼도 「출석하기」로 바뀐다 — 위키 정책 1에 확인 필요로 기재)
 - [ ] P2 — 출석 ja · en 표기 통일 여부(`UF_dm_dc_btn` 出席する · Check In ↔ 나머지 출석 키 チェックイン · Check in) · popup luckyball 행을 구조화 Screen ID로 바꿀지

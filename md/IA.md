@@ -308,6 +308,9 @@ reward_mission_game_detail_01     개별 게임 미션 상세 (/benefits/games/{
                                   └ 구성(실측): 참여자 수·일일 미션 카운트다운 / 보상 수령(예: 30분 자유 이용권) / 세부 미션 진행도 3종 / 게임 소개·미리보기 / 공식 계정(Discord·Medium·X·Instagram) / FAQ / 플레이 버튼
 reward_luckyball_draw_01          ⚠️ 럭키볼 뽑기 (최대 500 USDT / mini는 JPYC)
 reward_luckyball_result_01_01     ⚠️ 뽑기 결과 팝업
+reward_luckyball_history_01       🆕 **럭키볼 받은 내역** (2026-10-22 사용자 승인 · 위키 `4838291699` · 미실측 — Figma `80594:4550`·빈 상태 `80625:4703`)
+                                  └ 리워드 탭 「나의 럭키볼」 영역 클릭 시 진입 · 출석 체크 N일차 완료 / 게임 미션 완료 항목 · 3개월·최신순 필터 · 물음표 → 기존 럭키볼 지급 안내 팝업
+                                  └ `reward_history_01`(USDT 리워드 내역)과 별개 화면 — 신규 페이지·신규 API
 reward_history_01                 리워드 내역 ("리워드 0 USDT >" 진입점 · mini는 SkyFlag 리워드 미표시 안내)
 reward_mission_market_01          🆕 **NEXT Bay 게임 마켓플레이스 미션 (2026-09-03 Beta 실측 · 🔴 2026-09-21 프로덕션 승격)**
                                   └ ⛔ **「프로덕션 미노출」 기재 정정 (2026-09-21)** — 프로덕션 리워드 탭 **최상단 배너**로 노출된다(비로그인 실측).

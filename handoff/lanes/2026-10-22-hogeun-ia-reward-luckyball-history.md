@@ -1,4 +1,0 @@
-- 세션: T236 · hogeun · `AL02359162`
-- 시작: 2026-10-22 16:40
-- 점유 자원: md/IA.md
-- 목적: reward_luckyball_history_01 · reward_checkin_01 상태 Screen ID 어휘 추가(위키 4838291699 v10)
