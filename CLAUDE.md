@@ -265,7 +265,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 |------|------|----------|
 | `fetch_glossary.py` | 용어집 API 조회 → glossary.json | 1단계 Step 3 |
 | `fetch_xlt_registry.py` | XLT 시스템 등록값 조회(타겟 프로브·버전 목록·5개 언어 pivot·유사 키 검색) — **읽기 전용** | 1단계 Step 2-1 · XLT 검증 Step 1 (`md/xlt-verify.md`) |
-| `check_pending_keys.py` | **미등록 대기 키 대조** — 게이트 리포트 + **위키 전문 검색(CQL)** 으로 「다른 세션이 오늘 위키에만 올린 키」를 찾는다(읽기 전용) | 1단계 Step 2-1-c — **신규 키 확정 직전 필수** |
+| `check_pending_keys.py` | **미등록 대기 키 대조** — 게이트 리포트(**PS + Auto-react `reports/gate`** · `--gate-dir` 추가) + **위키 전문 검색(CQL)** 으로 「다른 세션이 오늘 위키에만 올린 키」를 찾는다(읽기 전용) | 1단계 Step 2-1-c — **신규 키 확정 직전 필수** |
 | `verify_xlt_glossary.py` | 등록값 ↔ 용어집 대조 → 리포트 + 수정 제안, `--apply`로 업로드 엑셀 생성 | XLT 검증 Step 3·5 (`md/xlt-verify.md`) |
 | `compare_wiki_xlt.py` | 위키 페이지 XLT 키 ↔ 등록값 대조(동일/상이/**서비스 간 분기**/미등록 + 유사 키 추천) — ⛔ 레지스트리 병합 금지 | 위키 페이지 대조 모드 (`md/xlt-verify.md` §9) |
 | `fetch_comments.py` | Figma 코멘트 reply-aware 조회 (루트+답글 스레드, 자기 점검 로그) — **인라인 재구현 금지** | 1단계 코멘트 선별 모드 · 3단계 위키 Description |
@@ -278,7 +278,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `put_wiki_storage.py` | 위키 본문(storage) **버전 가드 PUT** — 로컬 파일을 그대로 보내고, 라이브 버전이 `--expect-version`과 다르면 **PUT 하지 않고 exit 2**(다른 세션이 먼저 고침) · PUT 후 본문 길이가 5% 이상 어긋나면 exit 3. MCP `confluence_update_page`는 본문을 대화에 실어 큰 페이지에서 **본문 유실 위험**이 있다(2026-09-12 실측 사고) | 3단계 위키 PUT — **본문이 크거나 다른 세션과 동시 편집 가능성이 있으면 필수** |
 | `collect_frames.py` | 프레임 읽기 전용 배치 수집 (노드·코멘트 1회 조회 + 좌표 정규화 + 텍스트 매칭 + 어노테이션 렌더 → `frames.json`) | 3단계 Step 3~4 입력 생성 (프레임 다수 시) |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |
-| `xlt_batch.py` | **XLT 업로드 대기 원장** — 만든 엑셀을 `add`로 쌓고, 요청 시 `build`로 팀(UIT/LV)·서비스별 최종 엑셀 1개씩 생성(같은 키는 마지막 값) · 등록 후 `uploaded` | 1단계 Step 7 엑셀 생성 직후 `add` · 사용자 「최종 XLT」 요청 시 `build` |
+| `xlt_batch.py` | **XLT 업로드 대기 원장** — 만든 엑셀을 `add`로 쌓고, 요청 시 `build`로 팀(UIT/LV)·서비스·디바이스별 최종 엑셀 생성(**같은 키 대기 행은 갱신** · UIT·Unifi는 IPHONE `{0}` 엑셀도) · 등록 후 `uploaded`/`verified` · 원장 경로 `AR_ROOT` | 1단계 Step 7 엑셀 생성 직후 `add` · 사용자 「최종 XLT」 요청 시 `build` |
 | `patch_translation.py` | 키 단위 번역 패치 (지정 언어 셀만 교체·무결성 가드) | 키 단위 번역 패치 모드 (`md/translate.md`) |
 | `render_oa_flex.py` | OA Flex bubble JSON → 카드 이미지(PNG) 렌더 (HTML/CSS + headless Chrome + 자동 크롭) — **근사 렌더**, 최종 확인은 사람이 Flex Simulator에서 | OA 렌더 이미지 첨부 (`md/OA.md`) |
 | `build_prototype_data.py` | data.js/i18n.js 생성 + 무결성 검증 (입력: prototype_input.json, translation_extract.json, translation_data.json, comments_data.json) | 2단계 Step 5 |

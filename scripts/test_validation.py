@@ -254,6 +254,24 @@ with tempfile.TemporaryDirectory() as td:
     hits3, _ = scan_pending(["CU 혜택은계속돼요!"], gate_dir=gd)
     check("띄어쓰기만 다른 문구도 검출(정규화)", len(hits3["CU 혜택은계속돼요!"]) == 1)
 
+with tempfile.TemporaryDirectory() as td1, tempfile.TemporaryDirectory() as td2:
+    (Path(td2) / "gate_report_ar.md").write_text("| `UF_ar_only_key` | AR 리포트에만 있는 문구 |\n", encoding="utf-8")
+    hits4, n4 = scan_pending(["AR 리포트에만 있는 문구"], gate_dirs=[Path(td1), Path(td2), Path(td1) / "없음"])
+    check("복수 게이트 폴더 — 두 번째 폴더(AR)의 리포트도 대조", len(hits4["AR 리포트에만 있는 문구"]) == 1 and n4 == 1)
+
+print("\n[8] XLT 대기 원장 (xlt_batch)")
+import xlt_batch
+xlt_batch.AR = Path("/x/Auto-react")
+check("다른 PC 절대경로 → 저장소 상대경로",
+      xlt_batch.rel_source("/Users/other/Documents/Auto-react/reports/gate/a.md") == ("reports/gate/a.md", ""))
+check("워크트리 경로 → 저장소 상대경로",
+      xlt_batch.rel_source("/Users/o/Documents/Auto-react/.claude/worktrees/w1/reports/gate/a.md")[0] == "reports/gate/a.md")
+check("경로 뒤 설명은 분리", xlt_batch.rel_source("reports/gate/a.md · 사용자 채팅") == ("reports/gate/a.md", "사용자 채팅"))
+check("IPHONE 치환자 {{0}} → {0}", xlt_batch.to_iphone("{{0}}% 적립 {{name}}", "k") == "{0}% 적립 {name}")
+check("UIT·Unifi 기본 대상 = WEB + IPHONE",
+      xlt_batch.targets_of({"team": "UIT", "service": "Unifi"}) == ["WEB BROWSER", "IPHONE"]
+      and xlt_batch.targets_of({"team": "LV", "service": "Dapp Portal"}) == ["WEB BROWSER"])
+
 check("파일명 토큰은 키 후보에서 제외", keys_in("xlt_output_20260921.xlsx 참고") == [])
 check("norm은 공백·개행을 제거", norm("a b\nc") == "abc")
 

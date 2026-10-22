@@ -97,6 +97,17 @@ def validate_excel(filepath: Path):
     print("✓ 검증 완료")
 
 if __name__ == '__main__':
+    # 인자 없이 실행하면 도움말만 출력한다 — 예전엔 `--help`조차 샘플 엑셀을 만들었다(2026-10-22).
+    # 실제 사용은 import: `from export_to_xlt import create_xlt_excel`
+    import argparse
+    ap = argparse.ArgumentParser(description="XLT 업로드용 엑셀 생성기 — 보통은 create_xlt_excel()을 import해 쓴다")
+    ap.add_argument('--demo', action='store_true', help="샘플 2키로 엑셀을 만들고 규격을 검증한다")
+    ap.add_argument('--output-dir', default='xlt', help="--demo 출력 폴더(기본 ./xlt)")
+    args = ap.parse_args()
+    if not args.demo:
+        ap.print_help()
+        raise SystemExit(0)
+
     # 테스트 데이터
     test_data = [
         {
@@ -117,5 +128,5 @@ if __name__ == '__main__':
         }
     ]
 
-    filepath = create_xlt_excel(test_data)
+    filepath = create_xlt_excel(test_data, output_dir=args.output_dir)
     validate_excel(filepath)

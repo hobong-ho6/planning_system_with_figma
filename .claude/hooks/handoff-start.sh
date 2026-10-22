@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # SessionStart 훅 — 핸드오프 계층 주입 + 온보딩 상태 판별 (계약: handoff/README.md)
-# 주입: ① 공유 정본 ② 점유 레인 ③ 내 people 파일 ④ 프로젝트 목록 ⑤ 온보딩 상태
+# 주입: ① 공유 정본 ② 점유 레인 ③ 내 people 파일 ④ 프로젝트 목록 ⑤ 온보딩 상태 ⑥ Auto-react 밀림 큐
 # 프로젝트 본문은 주입하지 않는다(대상이 정해지면 그때 읽는다).
 # 어떤 실패도 세션 시작을 막지 않는다.
 set -uo pipefail
@@ -138,6 +138,35 @@ out.append(", ".join(projects) if projects else "없음.")
 if resolved and owned.get(resolved):
     out.append(f"내 담당: {', '.join(owned[resolved])}")
 
+# ── ⑥ Auto-react 밀림 큐 — Auto-react가 PS 경로를 혼자 처리해 projects 기록이 밀린 건(2026-10-22)
+ar_root = os.path.expanduser(os.environ.get("AR_ROOT") or "~/Documents/Auto-react")
+backlog = []
+try:
+    with open(os.path.join(ar_root, "reports/tasks/ps_backlog.jsonl"), encoding="utf-8") as f:
+        for n, line in enumerate(f, 1):
+            try:
+                r = json.loads(line)
+            except ValueError:
+                continue
+            if isinstance(r, dict) and not r.get("done"):
+                backlog.append((n, r))
+except OSError:
+    pass
+backlog_out = []
+if backlog:
+    backlog_out += ["", f"==== ⑥ Auto-react 밀림 {len(backlog)}건 ({ar_root}/reports/tasks/ps_backlog.jsonl) ====",
+                    "PS 기록이 밀린 Auto-react 작업이다. 브리핑에 건수를 넣고, 사용자 확인 후 반영한다:",
+                    "  ① 행마다 `handoff/projects/<project>.md` 세션 기록에 **한 줄** 요약(날짜 · 일감 · 요약 · 산출물 경로) — "
+                    "한 프로젝트의 밀림은 세션 기록 **1개 항목**으로 묶는다 · 구조 규칙(세션 기록 최대 5개 · 헤더 15줄) 유지",
+                    "  ② `python3 scripts/ps_backlog.py done <줄번호…>`(또는 `--task T…`)로 done:true → 프로젝트 파일 커밋·푸시",
+                    "  프로젝트 파일이 없는 행은 반영하지 말고 사용자에게 어느 프로젝트인지 묻는다."]
+    for n, r in backlog[:20]:
+        proj = r.get("project", "?")
+        miss = "" if os.path.exists(os.path.join(root, "handoff/projects", f"{proj}.md")) else " ⚠️파일 없음"
+        backlog_out.append(f"  {n:>4}  {str(r.get('at', ''))[:10]} {r.get('task', '')} [{proj}]{miss} {r.get('summary', '')}")
+    if len(backlog) > 20:
+        backlog_out.append(f"  … 외 {len(backlog) - 20}건 — `python3 scripts/ps_backlog.py list`")
+
 out += ["", "==== ⑤ 온보딩 상태 (자동 판별) ====",
         f"상태: {state}",
         f"사람키: {resolved or '(미확인)'} (근거: {evidence or '없음'})"
@@ -152,6 +181,7 @@ if state.startswith("D"):
     if authors.strip():
         out += ["이 저장소 커밋 author 이력(사람 후보):", authors.strip()]
 out.append("⛔ 위 조치에 없는 설정을 사용자에게 묻지 말 것 — 판별로 알 수 있는 것은 묻지 않는다.")
+out += backlog_out
 
 print(json.dumps({
     "hookSpecificOutput": {

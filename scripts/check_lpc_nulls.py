@@ -32,16 +32,15 @@ import argparse
 import json
 import sys
 import urllib.request
+from pathlib import Path
 
 PUB = ("https://landpress-content.line-scdn.net/contents/v2"
        "/projects/{pid}/collections/{col}/items?locale={loc}")
 
-PROJECTS = {
-    'LV_beta':  'a2qaxhygpi95g8l4a48n2vn4',
-    'LV_prod':  'w5eph4y9qxe05c8fqpi7rlxh',
-    'UIT_beta': 'n7nuefo6t491uc9cp863lgyq',
-    'UIT_prod': 'lkyusnekq1vv9759rbnwgamh',
-}
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from lpc_ids import LPC_PROJECTS  # noqa: E402 — ID 정본은 lpc_ids.py 한 곳
+
+PROJECTS = {f'{team}_{env}': pid for team, envs in LPC_PROJECTS.items() for env, pid in envs.items()}
 
 # 위키 4727978725 정의 9개 컬렉션 (팀 → 컬렉션)
 TARGETS = {

@@ -145,7 +145,8 @@ def main():
     p.add_argument('--service')
     p.add_argument('--device', default='WEB BROWSER')
     p.add_argument('--version', help="미지정 시 최신(versionSeq 최댓값)")
-    p.add_argument('--output', default='scripts/xlt_registry.json')
+    # 기본값은 실행 위치(cwd)가 아니라 이 스크립트 옆 — Auto-react 등 다른 폴더에서 실행해도 거기 쓰지 않는다
+    p.add_argument('--output', default=str(Path(__file__).resolve().parent / 'xlt_registry.json'))
     p.add_argument('--list-targets', action='store_true', help="유효한 service/device 조합 프로브")
     p.add_argument('--list-versions', action='store_true', help="해당 타겟의 버전 목록만 출력")
     p.add_argument('--similar', metavar='문구', help="등록값에서 같거나 비슷한 문구의 키 검색")

@@ -12,7 +12,9 @@
 
 대조원은 둘이다. 읽기 전용이며 아무것도 바꾸지 않는다.
 
-  ① 로컬 `reports/gate/*.md` — 당일 다른 세션의 작업 흔적
+  ① 게이트 리포트 `reports/gate/*.md` — 당일 다른 세션의 작업 흔적.
+     기본 대조 폴더는 **PS `reports/gate` + Auto-react `$AR_ROOT/reports/gate`** 둘이다(2026-10-22 —
+     Auto-react에서 만든 리포트는 PS 폴더에 없어 대조되지 않았다). `--gate-dir`로 더 붙인다.
   ② **위키 전문 검색(CQL `text ~`)** — ⛔ **이쪽이 정본이다.** ①은 리포트가 ko 원문을 싣지
      않으면 못 잡는다(2026-09-21 실측: 상대 세션 리포트에 ko 표가 없어 ①은 0건, ②는 상대
      페이지 `4704515582`를 정확히 찾아냈다). 키를 확정하기 전 반드시 ②까지 돌린다.
@@ -38,7 +40,10 @@ import sys
 import time
 from pathlib import Path
 
-GATE_DIR = Path(__file__).resolve().parent.parent / "reports" / "gate"
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from roots import AR_ROOT, PS_ROOT  # noqa: E402
+
+GATE_DIRS = [PS_ROOT / "reports" / "gate", AR_ROOT / "reports" / "gate"]
 KEY_RE = re.compile(r"\b(?:[A-Za-z][A-Za-z0-9]*_)+[A-Za-z0-9_]+\b")
 # 키가 아닌 파일명·경로 토큰을 걸러낸다
 NOT_KEY = re.compile(r"\.(md|py|json|xlsx|png|js)$|^gate_report|^xlt_output|^check_|^fetch_|^validate_")
@@ -53,14 +58,26 @@ def keys_in(line: str) -> list:
     return [k for k in KEY_RE.findall(line) if not NOT_KEY.search(k)]
 
 
-def scan(texts, days=None, threshold=0.85, gate_dir=GATE_DIR):
-    """각 문구에 대해 (파일, 유사도, 키후보, 발췌) 목록을 돌려준다."""
-    if not gate_dir.exists():
-        print(f"⚠️ 게이트 리포트 폴더가 없다: {gate_dir} — 대조를 건너뛴다(「확인 못 함」)")
+def scan(texts, days=None, threshold=0.85, gate_dir=None, gate_dirs=None):
+    """각 문구에 대해 (파일, 유사도, 키후보, 발췌) 목록을 돌려준다.
+
+    대조 폴더: gate_dirs(목록) 또는 gate_dir(하나) · 둘 다 없으면 GATE_DIRS.
+    없는 폴더는 경고하고 건너뛴다 · 전부 없으면 None(「확인 못 함」).
+    """
+    dirs = list(gate_dirs) if gate_dirs else [gate_dir] if gate_dir else GATE_DIRS
+    dirs = list(dict.fromkeys(Path(d).expanduser().resolve() for d in dirs))
+    found_dirs = [d for d in dirs if d.is_dir()]
+    for d in dirs:
+        if d not in found_dirs:
+            print(f"⚠️ 게이트 리포트 폴더가 없다: {d} — 이 폴더는 대조하지 못했다")
+    if not found_dirs:
         return None
     cutoff = time.time() - days * 86400 if days else None
-    reports = [p for p in sorted(gate_dir.glob("*.md"))
-               if cutoff is None or p.stat().st_mtime >= cutoff]
+    reports = []
+    for d in found_dirs:
+        mine = [p for p in sorted(d.glob("*.md")) if cutoff is None or p.stat().st_mtime >= cutoff]
+        print(f"대조 대상: {d} — {len(mine)}건")
+        reports += mine
     hits = {t: [] for t in texts}
     targets = {t: norm(t) for t in texts}
     for path in reports:
@@ -81,7 +98,8 @@ def scan(texts, days=None, threshold=0.85, gate_dir=GATE_DIR):
                         continue
                 cands = keys_in(line)
                 if cands:
-                    hits[t].append((path.name, round(ratio, 2), cands, line.strip()[:160]))
+                    hits[t].append((path.name if len(found_dirs) == 1 else f"{path.parent.parent.parent.name}/{path.name}",
+                                    round(ratio, 2), cands, line.strip()[:160]))
     return hits, len(reports)
 
 
@@ -135,6 +153,8 @@ def main(argv=None):
     ap.add_argument("--from-json", help="translation_data.json 등 [{'ko_KR': ...}] 파일에서 문구를 읽는다")
     ap.add_argument("--days", type=int, default=None, help="최근 N일 리포트만 스캔(기본 전체)")
     ap.add_argument("--threshold", type=float, default=0.85, help="유사도 하한(기본 0.85)")
+    ap.add_argument("--gate-dir", action="append", default=None,
+                    help="대조할 게이트 리포트 폴더(여러 번 지정 가능) — 지정하면 기본값(PS + $AR_ROOT reports/gate)에 더한다")
     ap.add_argument("--wiki", action="store_true", help="위키 전문 검색(CQL)까지 대조 — CONFLUENCE_PAT 필요")
     ap.add_argument("--exclude", default="", help="제외할 pageId(작업 대상 페이지 자신) — 쉼표 구분")
     a = ap.parse_args(argv)
@@ -147,7 +167,8 @@ def main(argv=None):
     if not texts:
         ap.error("대조할 문구가 없다 (인자 또는 --from-json)")
 
-    result = scan(texts, days=a.days, threshold=a.threshold)
+    result = scan(texts, days=a.days, threshold=a.threshold,
+                  gate_dirs=GATE_DIRS + [Path(p) for p in (a.gate_dir or [])])
     if result is None:
         return 0
     hits, n_reports = result

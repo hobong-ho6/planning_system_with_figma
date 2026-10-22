@@ -476,12 +476,14 @@ filepath = create_xlt_excel(translation_data, output_dir='xlt')  # 위 규격(pr
 - [ ] plurals 시트가 고정 포맷대로 생성되었는지 확인
 - [ ] Excel에서 파일을 열어 데이터 무결성 확인
 
-**⛔ XLT 업로드 대기 원장에 올린다(2026-10-15 사용자 결정 — 업로드는 모아서 한 번에)**: 게이트(exit 0)를 통과한 엑셀은 만들 때마다(신규·키 단위 패치 모두) 원장에 올린다. 사용자가 「최종 XLT」를 요청하면 대기분을 **팀(UIT/LV)·서비스별 엑셀 1개씩**으로 만든다 — 같은 키는 마지막 값이 최종이다. 원장은 Auto-react `xlt/batch/ledger.json`(커밋 대상).
+**⛔ XLT 업로드 대기 원장에 올린다(2026-10-15 사용자 결정 — 업로드는 모아서 한 번에)**: 게이트(exit 0)를 통과한 엑셀은 만들 때마다(신규·키 단위 패치 모두) 원장에 올린다. 사용자가 「최종 XLT」를 요청하면 대기분을 **팀(UIT/LV)·서비스·디바이스별 엑셀**로 만든다 — **한 키 = 대기 1행**(같은 키를 다시 `add`하면 그 행을 갱신) · UIT·Unifi는 WEB(`{{0}}`)과 IPHONE(`{0}`) 엑셀을 함께 낸다. 원장은 Auto-react `xlt/batch/ledger.json`(커밋 대상 · 경로는 env `AR_ROOT` · 기본 `~/Documents/Auto-react` — 원장이 없으면 만들지 않고 멈춘다). 게이트 리포트(`--source`)는 Auto-react `reports/gate`에 둔다(원장엔 저장소 기준 상대경로).
 ```bash
 python3 scripts/xlt_batch.py add --team UIT --service Unifi --source <게이트리포트.md> <엑셀.xlsx>
-python3 scripts/xlt_batch.py list                 # 대기 현황
-python3 scripts/xlt_batch.py build                # 요청 시 — Auto-react/xlt/xlt_{팀}_{서비스}_batch_{N}keys_{날짜}.xlsx
-python3 scripts/xlt_batch.py uploaded --team UIT  # 사용자가 시스템 등록을 마쳤다고 하면
+python3 scripts/xlt_batch.py status               # 상태 집계 + 대기 현황(list는 별칭)
+python3 scripts/xlt_batch.py build                # 요청 시 — Auto-react/xlt/xlt_{팀}_{서비스}[_IPHONE]_batch_{N}keys_{날짜}.xlsx
+python3 scripts/xlt_batch.py uploaded --team UIT  # 사용자가 시스템 등록을 마쳤다고 하면(같은 키의 이전 업로드 행은 superseded)
+python3 scripts/xlt_batch.py verified K1 K2 --text "live 대조 Unifi WEB v… · IPHONE v… · 5개 언어 일치"
+python3 scripts/xlt_batch.py mark K1 --not-needed --note "사유"
 ```
 
 **⛔ 사용자에게 넘기는 업로드용 엑셀은 `~/Downloads`에 만든다(2026-10-16 사용자 지시 · 정본 Auto-react `CLAUDE.md`)**:
