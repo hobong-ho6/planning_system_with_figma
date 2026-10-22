@@ -1,4 +1,0 @@
-- 세션: PS 정비(Auto-react 연계) · hogeun · `AL02359162.local`
-- 시작: 2026-10-22
-- 점유 자원: scripts/check_pending_keys.py · scripts/xlt_batch.py · scripts/export_to_xlt.py · scripts/fetch_xlt_registry.py · scripts/check_lpc_nulls.py · scripts/(신규 roots.py · lpc_ids.py · ps_backlog.py) · .claude/hooks/handoff-start.sh · CLAUDE.md(스크립트 표 2행) · md/translate.md(xlt_batch 사용법)
-- 목적: Auto-react 감사(10/22 §3-B) — AR_ROOT/PS_ROOT 경로 단일화 · 대기 키 대조에 AR 게이트 포함 · xlt_batch 원장 정비 · 밀림 큐 훅

@@ -17,7 +17,7 @@
 
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
-| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 | 09-22 | 미결 2 · HANDOFF 9.3KB로 압축(주입 13.5KB) · 재팽창 방지 기준·대기 키 대조기 신설 |
+| [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 | 10-22 | 미결 3 · 🆕 Auto-react 연계 — `AR_ROOT`·대기 키 AR 게이트 대조·`xlt_batch` v2(원장 이관)·밀림 큐 훅 ⑥ |
 | [masters](handoff/projects/masters.md) | `hogeun` | 마스터 5종 + K-Pick 노출 정책·FAQ | 10-21 | mini 마스터 v17 버전 6(v2.1.0) 신설 · 6↔6 · ⚠️ `syncExcludedFields`에 `badges`·`reviewCount` 없음 |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 10-14 | 용어집 v5.5 · 가이드 v47 · ⛔ 보완은 모아서 한 번에(대기 36건) · 미결 1 |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-21 | 점검 #8 반영 · 🔴 KAIA 이율 3중 불일치·리워드 스켈레톤·Beta K-Pick 개편 · 어휘 승인 대기 12 |
@@ -62,7 +62,7 @@
 | 11 | 용어집 「실사용 0건」 판정 | 문자열이 있어도 **뜻이 다르면 선례가 아니다** |
 | 12 | 고유명사 로마자 표기 | ⛔ 추측 금지 — **번역이 아니라 조사**(공식 출처 확인 후 대소문자까지 그대로) |
 | 13 | 캐시 금지 실측 | 감사 도중 키가 실제로 삭제돼 1시간 만에 수가 바뀌었다 — 원본 재조회는 형식이 아니다 |
-| 14 | 신규 XLT 키 중복 검사 | ⛔ 레지스트리만으론 부족 — **`check_pending_keys.py --wiki`**(다른 세션이 위키에만 올린 미등록 키는 위키 검색만 잡는다) |
+| 14 | 신규 XLT 키 중복 검사 | ⛔ 레지스트리만으론 부족 — **`check_pending_keys.py --wiki`**(다른 세션이 위키에만 올린 미등록 키는 위키 검색만 잡는다 · 게이트 리포트는 PS + Auto-react 둘 다 기본 대조) |
 | 15 | 산출물 커밋 책임 | 만든 세션이 그 세션 안에 커밋 · 세션 종료 시 `git status`의 `??` 확인 · **남의 변경은 보고만** · 산출물 5종은 gitignore라 **사본은 Auto-react(private)** · ⛔ `git commit`은 **인덱스 전체**를 커밋한다 — 남의 staged 잔재를 먼저 확인 |
 
 ---
