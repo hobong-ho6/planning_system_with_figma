@@ -32,7 +32,7 @@
 - **기획서 `4802741598` Unifi mini v2.1**(사용자 작성) — 하위 비즈콘 `4802741642` · 포인트 시스템 `4802743195` · **Unifi mini - My `4802744889`**(Screen UIT / LV · 하위 (참고)리뷰 정책 `4833585344` · 🆕 Review · 결제 · 포인트) · 약관 검토 `4814244434` · 결제 · 환불 · 정산 `4817844202`. 하위는 **excerpt-include 발췌**(v2.1 post 검사의 「다른 페이지 첨부」는 발췌 정상 경고). ⛔ **Claude 보완은 파란색 `rgb(0,82,204)`**(검정 전환 = 채택 · 삭제 = 불채택 · Claude가 새로 만든 문서는 검정)
   - 포인트 하위(Claude 작성) — `4794414156` 복합결제 환불 업계 조사 · `4817817147` 정책 비교 — MOLTS · Unifi · GuideKim · `4814253387` 포인트 사용자 고지 — 디자인 논의(17건 · 「Unifi 화면 — 노출 제안」 주석 이미지 `prop_*.png` · **패널 제목 = D번호**라 번호를 다시 매기면 이미지도 다시 그린다)
   - MOLTS 법무 근거(molt) — `2379550434` Marketplace 법무 검토 · `2015068359` MOLTS Point · NPP 환불/환수 법무 `1951887791` · ⚠️ MOLTS 공개 약관엔 포인트 조항이 없다 · 「기한 연장 · 리셋 금지」 출처는 **Unifi 법무 1차** Slack `p1790764871618879`
-- 🆕 **Admin 하위 `4949345564` 「Unifi mini v2.1 - Admin - LPC 콘텐츠 필드별 화면 노출」 v6**(10/26 · LPC → Admin · XLT 이관 전 현황) — 9개 컬렉션 59행 · 확인 필요 17건 · 공개 API 10/26 prod ko 기준
+- 🆕 **Admin 하위 `4949345564` 「Unifi mini v2.1 - Admin - LPC 콘텐츠 필드별 화면 노출」 v7**(10/26 · LPC → Admin · XLT 이관 전 현황) — 9개 컬렉션 59행 · 확인 필요 17건 · 공개 API 10/26 prod ko 기준
 - **사업 구조 정본 = `4822778759`** — **LINE NEXT Inc. 직판 · Corp 제외**
 - **My 기준 Figma = `GOCHAYBS7hIrmWRGNuJOKV` 페이지 `76032:3300`**(포인트 내역 `76114:5859` · 내 리뷰 `76114:4138` · refund detail `76035:8082` · 결제페이지 전체 `76157-3067`) · v2.0 바우처 상세 리뷰 = 개별 `72565-12725` · 전체 `72565-12850`(GuideKim 리뷰 API 기준 · 출처 문구 `mini_voucher_detail_review_source_desc`)
 - 위키 본문 `4770510177` · ⛔ 대장 `4770511066`(⚠️ `TOS-14` 재사용 금지 · 다음 TOS는 `TOS-16`) · ⛔ 포인트 원장 = N Point Platform
@@ -102,8 +102,9 @@
 ## 세션 기록 (최신 위, 최대 5개)
 
 ### 2026-10-26 — LPC 콘텐츠 필드별 화면 노출 위키 신설 (사이드 세션 · Auto-react 메인 요청)
-- `4949345564` v6(부모 Admin `4833603520`) — 범위 = LPC 관리 영역 `4727978725` 정의 9개 컬렉션(메인 지시 6개 + LV 클리닉 · UIT my_common_info · payment_common_info 추가) · 컬렉션별 표 59행 · 확인 필요 17건(쇼핑 가이드 CU 3 · 카테고리 배너 2 · 클리닉 상세 9 · 혜택 상세 3)
+- `4949345564` v7(부모 Admin `4833603520`) — 범위 = LPC 관리 영역 `4727978725` 정의 9개 컬렉션(메인 지시 6개 + LV 클리닉 · UIT my_common_info · payment_common_info 추가) · 컬렉션별 표 59행 · 확인 필요 17건(쇼핑 가이드 CU 3 · 카테고리 배너 2 · 클리닉 상세 9 · 혜택 상세 3)
 - v3 — 「이관 방향 (2026-10-26 검토)」 절(필드별 XLT / Admin · 근거 · 전제 · 검토안은 Yellow 「검토」) + 「Admin 관리 항목의 입력 방식」(안 A JSON 그대로 / 안 B 입력 폼 · 미정) — 메인 세션 경유 사용자 요청
+- v7 — guide_ 화면 4개 제거(서비스 안내 · 쇼핑 가이드는 **LPC 유지** · 사용자 결정) · My 혜택 상세 「추가 혜택 받기」 → XLT `UF_my_benefit_more_title` · `_mission` · `_luckyball`(09-11 제거한 미등록 키 이름 재사용 · 게이트 Auto-react `gate_report_20261026_lpc_benefit_more_xlt_3keys.md` P0 0) — XLT 이관 키 합계 29
 - v6 — 화면 정의 형식으로 변경(Screen 표 1개 `Screen ID | Screen | Description | XLT & GA` 12행 · Description에 현재 LPC · 이관 방향 · 전제 · XLT 중첩표 No 대응 · 다국어 번역 6컬럼 표)
 - v5 — 화면 기준 재구성(이미지 | 현재 관리 · 이관 방향 · XLT Key 나란히 · 7화면 20행 · 필드 상세 59행은 부록 펼치기) · XLT 이관 26키 정의(LV `mini_voucher_detail_usage_*` · `_summary_*` 16 / UIT `UF_voucher_detail_usage_*` 10 · 미등록 · 엑셀 미생성) · 게이트 `reports/gate/gate_report_20261026_lpc_migration_xlt_26keys.md` P0 0 · Unifi 동일 ko 6문구는 사용자 결정으로 mini_ 신규
 - v4 — 컬렉션별 화면 이미지 12장(Figma 시안 + LPC 영역 박스 · `4865399718` · `4727978725` 첨부 재사용 · 사용자 요청) · payment_common_info 제외(화면 미사용)
