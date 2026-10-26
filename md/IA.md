@@ -575,6 +575,10 @@ payment_01                        🆕 상품권 결제 페이지 — 포인트 
 payment_point_full_01             🆕 상품권 결제 페이지 — 포인트로 전액 결제(결제 수단 비활성)
 payment_issue_fail_01             🆕 상품권 발행 실패 — 발권 최종 실패로 결제 자동 취소(2026-10-12 승인 · 위키 결제 `4845874905` · Figma `76809-4348`) · ⚠️ v2.0 `payment_fail_01`(PG 결제 실패)과 다른 화면 — 같은 섹션의 주문 내역 상세 · 마이 결제 내역은 `my_voucher_refund_detail_01` · `my_main_01` 상태 변형으로 재사용
                                   └ 결제 완료는 기존 `payment_complete_01`(위키 My 「결제 완료」 절) · ⚠️ K-Pick 체크아웃 어휘(승인 대기 ⑪)와는 별개로 승인됐다
+payment_complete_oa_01            결제 완료 후 LINE 친구 추가 안내 바텀시트(위키 B-3 퍼널 조정 `4770507579` · 올리브영 동선 B 재사용)
+payment_complete_pay_more_01_01   🆕 결제 완료 — 추가 구매 유도 바텀시트(2026-10-26 승인 · 위키 「올리브영 상품권 LINE 친구추가 동선」 · Figma `80767-638`)
+voucher_detail_oliveyoung_01      🆕 상품권 상세(올리브영) — 매장 방문 토스트 노출 상태(2026-10-26 승인 · 〃 · Figma `80767-1081`)
+voucher_detail_oa_link_01_01      🆕 상품권 상세 — 혜택가 구매 링크 LINE으로 받기 바텀시트(2026-10-26 승인 · 〃 · Figma `80767-2488`)
 ```
 
 ### 2-6. Wallet Mode 전용 화면 (위키 [Screen]Wallet Mode 근거 — 기존 표기는 dot 형식, 소급 금지)

@@ -82,6 +82,7 @@
 | 47 | **유의사항** ja_JP(「구매 전 유의사항」) | ⓑ 등재값 문맥 예외 | 용어집 `注意事項` ↔ `UF_voucher_pay_steps_title` 「ご購入前の確認事項」(일본어 검토자안 · 사용자 채택 10/19) — 「구매 전」 문맥만 예외로 둘지 결정 | 실측 2026-10-19(Unifi v1.13.0): ja `注意事項` **11건** · `確認事項` **0건**(패치 반영 후 1건) | `gate_report_20261019_v21_ja_review_patch_25keys.md` (d-1) | 2026-10-19 |
 | 48 | **문의하기** zh_TW | ⓑ 등재값 재검토 | 용어집 `回報問題` ↔ 대만어 검토자안 `聯絡客服`(`UF_settings_main_submenu_helpcenter_inquiry` · **사용자 채택 10/19** — 이 키만 聯絡客服, 푸터 등 나머지 「문의하기」 4키는 回報問題) — 바꾸면 「문의하기」 키 전부(푸터 등) 함께 | 실측 2026-10-19: `回報問題` WEB 2 · IPHONE 5 · DP 4 / `聯絡客服` **0** | 위키 4881799220 v5 · Auto-react `reports/gate/gate_report_20261019_v21_zh_review_patch.md` | 2026-10-19 |
 | 49 | **결제** zh_TW(매장 계산 문맥 「결제하기 직전」) | ⓑ 등재값 문맥 예외 | 용어집 `付款`(v4.9) ↔ 대만어 검토자안 `結帳前`(LPC usage.items · voucher_usage — **사용자 채택 10/19**) | 실측 2026-10-19: ko 「결제」 포함 키의 zh — `付款` WEB 69 · IPHONE 197 · DP 14 / `結帳` WEB 2 · IPHONE 2 · DP 0 | 위와 같음 | 2026-10-19 |
+| 50 | **혜택가** | ⓑ 반복 오탐 | 「혜택」과 별도 등재 — ja `特典価格` · en `benefit price` · th `ราคาพิเศษ` · zh `優惠價` | **실측 2026-10-26**(Unifi WEB v1.14.0): ko 「혜택가」 포함 3키 — ja `特典価格` 3 · en `benefit price` 3 · th `ราคาพิเศษ` 3 · zh `優惠價` 3 | `gate_report_20261026_oliveyoung_friend_flow.md`(Auto-react) | 2026-10-26 |
 
 ### 비고
 
