@@ -795,6 +795,7 @@ login_terms_01                    ⚠️ 약관 동의 (가입 플로우 — Uni
 promo_luckyball_inviter_01        럭키볼 초대자 프로모션 페이지 (위키 작업 실측)
 promo_luckyball_invitee_01        럭키볼 피초대자 프로모션 페이지 (위키 작업 실측)
 promo_goldenball_01               ⚠️ 황금럭키볼 프로모션 (mini 홈 배너 — 위키 근거)
+promo_100yen_line_open_01_01      1,000엔 할인 프로모션 페이지 — X에서 접근 시 「LINE에서 열기」 팝업 (2026-10-26 사용자 승인 · 위키 「X에서 접근 시 LINE으로 열기 동선」)
 ```
 
 ### 2-9. pay — 오프라인 QR 결제 (🆕 신설 실측 2026-09-03 · 라우트 `/pay/...` · ⚠️ 주기능 어휘 미확정)
