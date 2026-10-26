@@ -1,4 +1,0 @@
-- 세션: 사이드 세션 · hogeun · `AL02359162.local`
-- 시작: 2026-10-26 10:20
-- 점유 자원: guide/ + dropweb/web3_planning_v48.zip + md/guide-backlog.md
-- 목적: 기획자 가이드 v48 — 대기 #1~#5 반영(게시·태그는 사용자 승인 후)
