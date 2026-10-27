@@ -10,7 +10,7 @@ Release History **데이터 행 ↔ Summary `<h3>버전 N` 블록 1:1** 상태:
 |---|---|---|---|
 | [Master] Lucky Ball Promotion | `4368569057` | v17 | ✅ 8↔8 |
 | [Master] Mission and Reward | `4368568387` | **v20** | ✅ **10↔10** |
-| [Master] Unifi mini | `4386238705` | **v17** | ✅ **6↔6**(10-21 실측) |
+| [Master] Unifi mini | `4386238705` | **v19** | ✅ **6↔6**(10-27 실측 · 버전 5에 100엔딜 단락) |
 | [Master] Wallet Mode | `4386238738` | v3 | ✅ 2↔2 |
 | [Master] K-Pick | `4686410639` | **v6** | ✅ 8↔8 |
 

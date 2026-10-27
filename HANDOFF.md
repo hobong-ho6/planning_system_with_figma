@@ -18,12 +18,12 @@
 | 프로젝트 | 담당자 | 대상 | 갱신 | 한 줄 상태 |
 |---|---|---|---|---|
 | [system-meta](handoff/projects/system-meta.md) | `hogeun` | 핸드오프 구조·규칙·도구 | 10-22 | 미결 3 · 🆕 Auto-react 연계 — `AR_ROOT`·대기 키 AR 게이트 대조·`xlt_batch` v2(원장 이관)·밀림 큐 훅 ⑥ |
-| [masters](handoff/projects/masters.md) | `hogeun` | 마스터 5종 + K-Pick 노출 정책·FAQ | 10-21 | mini 마스터 v17 버전 6(v2.1.0) 신설 · 6↔6 · ⚠️ `syncExcludedFields`에 `badges`·`reviewCount` 없음 |
+| [masters](handoff/projects/masters.md) | `hogeun` | 마스터 5종 + K-Pick 노출 정책·FAQ | 10-27 | mini 마스터 v19 버전 5에 100엔딜 단락 · 6↔6 · ⚠️ `syncExcludedFields`에 `badges`·`reviewCount` 없음 |
 | [glossary-guide](handoff/projects/glossary-guide.md) | `hogeun` | 용어집 + 기획자 가이드 **(전역 자원 · 락 필요)** | 10-14 | 용어집 v5.5 · 가이드 v47 · ⛔ 보완은 모아서 한 번에(대기 36건) · 미결 1 |
 | [ia-monitor](handoff/projects/ia-monitor.md) | `hogeun` | Unifi IA 주간 점검(월 10:00) | 09-21 | 점검 #8 반영 · 🔴 KAIA 이율 3중 불일치·리워드 스켈레톤·Beta K-Pick 개편 · 어휘 승인 대기 12 |
 | [unifi-mini-v2](handoff/projects/unifi-mini-v2.md) | `hogeun` | 위키 `4704515582` + LPC `4727978725` · 29화면 | 09-29 | 본문 v247 · LPC v71 · 🔴 브랜드 24종 용어집 v5.7 대기 · th/zh 구 표기 잔존 · 의료광고 조치 |
 | [unifi-mini-v2-oa](handoff/projects/unifi-mini-v2-oa.md) | `hogeun` | 위키 `4725932984` 예약 OA 16화면 | 09-16 | beta 16건 등록 · ⚠️ hero·버튼 URL 임시값 · ko만(번역 미착수) |
-| [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` — Screen 3화면 + OA 2종 | 09-16 | 위키 v26 · XLT 26키 전건 등록 · 🔴 「더보기」 landing URL 미확정 · 공유 툴팁 하드코딩 |
+| [100yen-deal](handoff/projects/100yen-deal.md) | `hogeun` | 위키 `4725963532` — Screen 3화면 + OA 2종 | 10-27 | 위키 v34 · 환불 시 쿠폰 재발급 Policy 반영 · 🔴 재발급 OA · 법무 LNS-1741 회신 대기 · 공유 툴팁 하드코딩 |
 | [cashback-disclaimer](handoff/projects/cashback-disclaimer.md) | `hogeun` | 위키 `4770505327`(+`4774237088`) — 전 바우처 | 09-23 | Ⅰ **리스크팀 검토 완료**(`LNS-1622` · 확정문 2건 ⛔수정금지 · **결제페이지 단독**) · 위키 **v21** — 5개 언어 확정(P0 0) · **XLT 전건 등록 완료** · ⛔ **결제페이지는 XLT 단독**(LPC 미사용) → 남은 건 **FE 구현** · Ⅱ·Ⅲ LPC 반영 완료(남은 건 XLT 업로드 1키) · 🔴 구매 수량 한도 부재 |
 | [guidekim-insourcing](handoff/projects/guidekim-insourcing.md) | `hogeun` | 위키 `4770510177` + 하위 · 기획서 `4802741598` v2.1 | 10-21 | ✅ **v2.1 OA 10건 새 템플릿 · 5개 언어 · Landpress·LIAM beta/prod 완료**(OA 위키 v56) · 🆕 **10/22 포인트 리뷰 — 포인트 시스템 v90 「리뷰 안건 15건」** · 상품 단위 LPC 전환(LPC 관리 `4865399718` v18 — 16브랜드 + 42상품 임시 uid · beta만 · 🔴 FE가 임시 uid 얻는 방법 · 사용 기간 30일 → 비즈콘 API) · 리스크 v15 문구 LPC 반영 · OA 사용 기간 변수 · 카테고리 구조 변경(XLT 정의 대기) · ⛔ **착수 전 v2.1 「Claude 작업 로그」 먼저** |
 | [cu-qr-voucher](handoff/projects/cu-qr-voucher.md) | `hogeun` | 위키 `4774235795` CU 상품권 전용 동선 · 3화면 | 09-22 | 위키 v6 · XLT 7키 전건 등록 · LPC 관리 영역(`shopping_guide`/`guide_page`) 반영 · ⛔ 결제 바텀시트 두 벌 키는 「유지」로 종결(09-21) |
