@@ -31,7 +31,7 @@
 | [reward-tab-feedback](handoff/projects/reward-tab-feedback.md) | `hogeun` | 위키 `4838291699` 리워드탭 피드백(v1.11.0) | 10-08 | Screen `reward_main_01` + popup luckyball 2행 · 🔴 Dapp Portal XLT 3키 업로드 대기 · FE 확인(게임 미션 「받기」 키 공유) |
 | [gift-voucher](handoff/projects/gift-voucher.md) | `hogeun` | 위키 `4920650222`(타사 조사) + `4917412059`(기획 초안) — 상품권 선물하기 | 10-21 | 제안 단계 · 두 페이지 v1 생성 · 결정 필요 11건 · 🔴 의료법(클리닉) · 리스크 LNS-1622 확인 대기 |
 | [oliveyoung-friend-flow](handoff/projects/oliveyoung-friend-flow.md) | `hogeun` | 위키 `4949348987` 올리브영 친구추가 동선 A·B · 4화면 | 10-26 | 위키 v1 · XLT 신규 8키 업로드 대기(UIT · WEB+IPHONE) · 재사용 2키 |
-| [travel-schedule-event](handoff/projects/travel-schedule-event.md) | `hogeun` | 위키 `4964266842` 여행 일정 등록 이벤트(메가커피 0원 결제 · 일정 기준 OA) | 10-29 | 위키 v8(T248 · 마케팅 수정본 + 사용자 확정 반영) · 🔴 확정 필요 4건(법무 2 · OA 시각 · 개발 일정) · 메가커피 아메리카노 상품 추가 필요 · 디자인 대기(Screen 목록만 · XLT 없음) |
+| [travel-schedule-event](handoff/projects/travel-schedule-event.md) | `hogeun` | 위키 `4964266842` 여행 일정 등록 이벤트(메가커피 0원 결제 · 일정 기준 OA) | 10-29 | 위키 v9(T248 · 마케팅 수정본 + 사용자 확정 반영) · 🔴 확정 필요 4건(법무 2 · OA 시각 · 개발 일정) · 메가커피 아메리카노 상품 추가 필요 · 디자인 대기(Screen 목록만 · XLT 없음) |
 | [isaac-toast-order](handoff/projects/isaac-toast-order.md) | `hogeun` | 위키 `4966458661` 이삭토스트 LINE 주문(비버웍스 PoC) + 리서치 `4964267756` | 10-29 | 위키 2종 생성(T246) · 🔴 정리 필요 12건 · 비버 주문 API 명세 대기 · PG 가이드 첨부 보류 |
 | [product-ops-process](handoff/projects/product-ops-process.md) | `hogeun` | 위키 `4964269512` Unifi 상품 운영 프로세스(월간) | 10-29 | v16(T245) · 10-29 회의 결과 반영 · 11월 파일럿 · 액션 8 · 🔴 확인 필요 8건 · 11월 파일럿 대기 |
 
