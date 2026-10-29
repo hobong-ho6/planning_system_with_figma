@@ -33,7 +33,7 @@
 | [oliveyoung-friend-flow](handoff/projects/oliveyoung-friend-flow.md) | `hogeun` | 위키 `4949348987` 올리브영 친구추가 동선 A·B · 4화면 | 10-26 | 위키 v1 · XLT 신규 8키 업로드 대기(UIT · WEB+IPHONE) · 재사용 2키 |
 | [travel-schedule-event](handoff/projects/travel-schedule-event.md) | `hogeun` | 위키 `4964266842` 여행 일정 등록 이벤트(메가커피 0원 결제 · 일정 기준 OA) | 10-29 | 위키 v2(T248 · 본문 기본 색) · 🔴 확정 필요 11건 · 디자인 대기(Screen 목록만 · XLT 없음) |
 | [isaac-toast-order](handoff/projects/isaac-toast-order.md) | `hogeun` | 위키 `4966458661` 이삭토스트 LINE 주문(비버웍스 PoC) + 리서치 `4964267756` | 10-29 | 위키 2종 생성(T246) · 🔴 정리 필요 12건 · 비버 주문 API 명세 대기 · PG 가이드 첨부 보류 |
-| [product-ops-process](handoff/projects/product-ops-process.md) | `hogeun` | 위키 `4964269512` Unifi 상품 운영 프로세스(월간) | 10-29 | 논의용 초안 v6(T245) · 팀별 스윔레인 · 2 선행/1 선택 · 🔴 확인 필요 4건 · 10-29 부서 논의 결과 반영 대기 |
+| [product-ops-process](handoff/projects/product-ops-process.md) | `hogeun` | 위키 `4964269512` Unifi 상품 운영 프로세스(월간) | 10-29 | 논의용 초안 v7(T245) · 팀별 스윔레인 · 2 선행/1 선택 · 🔴 확인 필요 3건 · 10-29 부서 논의 결과 반영 대기 |
 
 ---
 
