@@ -1,10 +1,10 @@
 # travel-schedule-event — 여행 일정 등록 이벤트 (메가커피 1잔 무료 · 0원 결제 · 일정 기준 OA)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-10-29 · 위키 **v1** · 일감 T248(Auto-react)
+> 담당자: `hogeun` · 마지막 갱신: 2026-10-29 · 위키 **v2** · 일감 T248(Auto-react)
 
 ## 대상 / 링크
 
-- 위키: [pageId 4964266842](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4964266842) `여행 일정 등록 이벤트` — **현재 v1**(2026-10-29 생성 · 부모 `[Hogeun]` 3910828993 · space UNIFI)
+- 위키: [pageId 4964266842](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4964266842) `여행 일정 등록 이벤트` — **현재 v2**(2026-10-29 생성 · 부모 `[Hogeun]` 3910828993 · space UNIFI)
 - 근거: 마케팅 기획안 `4942806551` v8 · Slack 동선 `C0A8MF0UGKC`/`1793233223.253899` · 빌링 `C07RVC37258`/`1793237414.059209` · 100엔딜 `4725963532` Policy 선례
 - 초안 정본: Auto-react `reports/plans/T248_travel_schedule_event_draft.md` (v0.1)
 - Figma: 없음 — 디자인 작업 중
@@ -12,7 +12,7 @@
 
 ## 현재 상태
 
-정본 템플릿으로 위키 v1을 생성했다(History · Related Docs · Background · Policy 16행 · Flow 텍스트 흐름도 · Screen 필요 화면 7행 · OA ①②③ · 확정 필요 정리 11행). Claude 작성 본문은 파랑, 초안의 🔴 항목은 빨강 + 「[확정 필요]」(54곳) — 추정으로 채우지 않았다. `check_wiki_storage.py` pre·post exit 0.
+정본 템플릿으로 위키 v1을 생성했다(History · Related Docs · Background · Policy 16행 · Flow 텍스트 흐름도 · Screen 필요 화면 7행 · OA ①②③ · 확정 필요 정리 11행). 본문은 기본 색(v2 — 사용자 지시로 파랑 해제), 초안의 🔴 항목은 빨강 + 「[확정 필요]」(54곳) — 추정으로 채우지 않았다. `check_wiki_storage.py` pre·post exit 0.
 
 ## 진행 중 작업(WIP)
 
@@ -29,7 +29,7 @@
 | 날짜 | 결정 | 근거 / 커밋 |
 |---|---|---|
 | 10-29 | 범위는 마케팅 기획안 ② 여행 일정 등록 이벤트만 — ① X 이벤트는 Unifi 화면 개발이 없어 제외 | 초안 v0.1 Background |
-| 10-29 | 제목 「여행 일정 등록 이벤트」 · 본문 파랑 유지로 생성 | 사용자 승인(PS 세션) |
+| 10-29 | 제목 「여행 일정 등록 이벤트」 · 본문 파랑으로 생성 → 같은 날 **기본 색으로 변경**(v2 · 빨강 「확정 필요」는 유지) | 사용자 지시(PS 세션) |
 
 ## ⛔ 사용자 결정으로 종결 (재작업·재제안 금지 — 이 프로젝트 한정)
 
@@ -39,5 +39,5 @@
 
 ### 2026-10-29 — T248 위키 신규 생성
 
-- 완료: 초안 v0.1 → 위키 `4964266842` v1 생성 · 재조회 검증(pre·post exit 0 · 빨강 54 · 파랑 83)
+- 완료: 초안 v0.1 → 위키 `4964266842` v1 생성 → v2 파란 글자 83곳 기본 색 전환(버전 가드 PUT · pre·post exit 0) · v1 재조회 검증(pre·post exit 0 · 빨강 54 · 파랑 83)
 - 교훈: 레인 락은 전역 자원 전용이라 자기 위키 페이지 신규 생성에는 잡지 않았다
