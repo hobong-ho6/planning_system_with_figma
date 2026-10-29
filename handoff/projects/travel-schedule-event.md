@@ -1,10 +1,10 @@
 # travel-schedule-event — 여행 일정 등록 이벤트 (메가커피 1잔 무료 · 0원 결제 · 일정 기준 OA)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-10-29 · 위키 **v5** · 일감 T248(Auto-react)
+> 담당자: `hogeun` · 마지막 갱신: 2026-10-29 · 위키 **v6** · 일감 T248(Auto-react)
 
 ## 대상 / 링크
 
-- 위키: [pageId 4964266842](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4964266842) `여행 일정 등록 이벤트` — **현재 v5**(2026-10-29 생성 · 부모 `[Hogeun]` 3910828993 · space UNIFI)
+- 위키: [pageId 4964266842](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4964266842) `여행 일정 등록 이벤트` — **현재 v6**(2026-10-29 생성 · 부모 `[Hogeun]` 3910828993 · space UNIFI)
 - 근거: **마케팅 기획서 수정본 `4971430425` v8(정책 기준)** · 마케팅 기획안 `4942806551` v8(아카이브) · Slack 동선 `C0A8MF0UGKC`/`1793233223.253899` · 빌링 `C07RVC37258`/`1793237414.059209` · 100엔딜 `4725963532` Policy 선례
 - 초안 정본: Auto-react `reports/plans/T248_travel_schedule_event_draft.md` (v0.1)
 - Figma: 없음 — 디자인 작업 중
@@ -41,6 +41,10 @@ v3에서 마케팅 기획서 수정본(4971430425 v8)을 반영했다 — 확정
 - 없음
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-10-29 — T248 바코드 활성화 기한 추가 (v6)
+
+- 완료: Policy 쿠폰 지급에 「바코드 활성화는 90일 이내(기존 바우처 정책)」 추가 · 활성화 후 60일 유효와 함께 · v5→v6 · pre·post exit 0
 
 ### 2026-10-29 — T248 확정 필요 5건 회신 반영 (v5)
 
