@@ -32,6 +32,7 @@
 | [gift-voucher](handoff/projects/gift-voucher.md) | `hogeun` | 위키 `4920650222`(타사 조사) + `4917412059`(기획 초안) — 상품권 선물하기 | 10-21 | 제안 단계 · 두 페이지 v1 생성 · 결정 필요 11건 · 🔴 의료법(클리닉) · 리스크 LNS-1622 확인 대기 |
 | [oliveyoung-friend-flow](handoff/projects/oliveyoung-friend-flow.md) | `hogeun` | 위키 `4949348987` 올리브영 친구추가 동선 A·B · 4화면 | 10-26 | 위키 v1 · XLT 신규 8키 업로드 대기(UIT · WEB+IPHONE) · 재사용 2키 |
 | [travel-schedule-event](handoff/projects/travel-schedule-event.md) | `hogeun` | 위키 `4964266842` 여행 일정 등록 이벤트(메가커피 0원 결제 · 일정 기준 OA) | 10-29 | 위키 v1 생성(T248) · 🔴 확정 필요 11건 · 디자인 대기(Screen 목록만 · XLT 없음) |
+| [isaac-toast-order](handoff/projects/isaac-toast-order.md) | `hogeun` | 위키 `4966458661` 이삭토스트 LINE 주문(비버웍스 PoC) + 리서치 `4964267756` | 10-29 | 위키 2종 생성(T246) · 🔴 정리 필요 12건 · 비버 주문 API 명세 대기 · PG 가이드 첨부 보류 |
 
 ---
 
