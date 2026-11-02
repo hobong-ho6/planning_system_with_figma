@@ -33,6 +33,7 @@
 | [oliveyoung-friend-flow](handoff/projects/oliveyoung-friend-flow.md) | `hogeun` | 위키 `4949348987` 올리브영 친구추가 동선 A·B · 4화면 | 10-26 | 위키 v1 · XLT 신규 8키 업로드 대기(UIT · WEB+IPHONE) · 재사용 2키 |
 | [travel-schedule-event](handoff/projects/travel-schedule-event.md) | `hogeun` | 위키 `4964266842` 여행 일정 등록 이벤트(메가커피 0원 결제 · 일정 기준 OA) | 11-02 | 위키 v25(T248 · Screen 표 LV 5 · UIT 2 · Figma 흐름 반영 · 마케팅 수정본 v11 반영 · 참여 대상 LINE 앱 언어 일본어 · LINE mini 페이지) · 🔴 확정 필요 3건(개인정보 법무 · OA 문구·버튼 · 개발 일정) · Screen 표(KR만) · XLT 키 디자인 확정 후 |
 | [withdraw-voucher-block](handoff/projects/withdraw-voucher-block.md) | `hogeun` | 위키 `4978660847` Unifi 탈퇴 — 활성화 전 상품권 보유 시 환불 후 탈퇴(T254) | 11-02 | 위키 v1 생성 · 기획 이미지 4장 · XLT 후보 2키(신규 1 · 값 변경 1) 미업로드 · 기존 위키 연계는 별도 승인 |
+| [presession-favorite](handoff/projects/presession-favorite.md) | `hogeun` | 위키 `4980099111` 프리세션(간편 로그인) 즐겨찾기 허용(T247) | 11-02 | 위키 v1 생성 · 🔴 반영 버전 미정(10-26 beta revert) · 확정 필요 7건 · Anne 회신 초안 미게시 · 기존 위키 정합은 제안만 |
 | [isaac-toast-order](handoff/projects/isaac-toast-order.md) | `hogeun` | 위키 `4966458661` 이삭토스트 LINE 주문(비버웍스 PoC) + 리서치 `4964267756` | 10-29 | 위키 2종 생성(T246) · 🔴 정리 필요 12건 · 비버 주문 API 명세 대기 · PG 가이드 첨부 보류 |
 | [product-ops-process](handoff/projects/product-ops-process.md) | `hogeun` | 위키 `4964269512` Unifi 상품 운영 프로세스(월간) | 10-29 | v16(T245) · 10-29 회의 결과 반영 · 11월 파일럿 · 액션 8 · 🔴 확인 필요 8건 · 11월 파일럿 대기 |
 
