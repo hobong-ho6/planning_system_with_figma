@@ -1,10 +1,10 @@
 # presession-favorite — 프리세션(간편 로그인) 상태 즐겨찾기 허용 (T247)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-11-02 · 사이드 세션(Auto-react 메인 지시) · 위키 **v1**
+> 담당자: `hogeun` · 마지막 갱신: 2026-11-02 · 사이드 세션(Auto-react 메인 지시) · 위키 **v2**
 
 ## 대상 / 링크
 
-- 위키: [pageId 4980099111](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4980099111) 「Unifi mini - 프리세션(간편 로그인) 즐겨찾기 허용 - LV」 — **v1**(2026-11-02 생성 · 공간 UNIFI · 상위 **4949365748** 「Unifi 개선 과제 요약 — LV / UIT」 · `children` 매크로로 자동 목록)
+- 위키: [pageId 4980099111](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4980099111) 「Unifi mini - 프리세션(간편 로그인) 즐겨찾기 허용 - LV」 — **v2**(2026-11-02 생성 · v2 담당 FE LV 명시 · 공간 UNIFI · 상위 **4949365748** 「Unifi 개선 과제 요약 — LV / UIT」 · `children` 매크로로 자동 목록)
 - 근거: web3_dev Slack `C08HYMJ7Z8V/p1792729296351129` 「[상품 즐겨찾기 동선]」 — 답글 54개(번역봇 27) · 첨부 없음 · 11-02 라이브 정독
   - 10-23 정수영 님: 프리세션에서도 저장 가능(BE) · 프리세션 = 지갑 미생성 가입 / 재로그인 시 핀코드 미입력 → `x-pre-session` 쿠키
   - 10-23 김동욱 님: BE 대응 완료 · FE 작업만 하면 배포 가능 · 진달래 님: My 주문 내역 · 상세는 프리세션 조회 가능
@@ -15,7 +15,7 @@
 
 ## 현재 상태
 
-위키 v1 생성 — History · Related Docs · Background · Policy 6행(저장 · 만료 · 로그인 전환 · 파기 · 노출 화면 · 반영 버전) · Flow · Screen 2행(이미지 없음 · 동작만 변경) · XLT 변경 없음 · API · 데이터 · 확정 필요 7건. 본문 파란 글자 · 「11-02 추가」 태그 · 미정은 「확인 필요」 태그. `check_wiki_storage.py` pre(file · live) · post exit 0.
+상위 4949365748 v21에 요약 반영(사용자 지시 · LV): 과제 한눈에 보기 1행 · LV 작업 「프리세션 즐겨찾기 허용」 절 · Related Docs Slack 1행 · 11-02 History 행에 합침 · 버전 가드 PUT · pre/post exit 0. 위키 v1 생성 — History · Related Docs · Background · Policy 6행(저장 · 만료 · 로그인 전환 · 파기 · 노출 화면 · 반영 버전) · Flow · Screen 2행(이미지 없음 · 동작만 변경) · XLT 변경 없음 · API · 데이터 · 확정 필요 7건. 본문 파란 글자 · 「11-02 추가」 태그 · 미정은 「확인 필요」 태그. `check_wiki_storage.py` pre(file · live) · post exit 0.
 
 ## 진행 중 작업(WIP)
 
@@ -24,9 +24,13 @@
 ## 다음 할 일
 
 - [ ] 확정 필요 7건 정리 → 반영 버전 결정 → Anne 님 회신(초안: 사이드 세션 노트 `T247_presession_favorite.md` · 미게시)
-- [ ] 기존 위키 정합 제안(별도 승인): 계정 생성 시나리오 4743946291(정준영 님 문서 — 직접 수정 말고 요청) 즐겨찾기 행에 선반영 링크 · 탈퇴 표 「즐겨찾기 보관」 적정성 · 상위 4949365748 LV 요약에 1줄 · Unifi mini - My my_favorite_01에 프리세션 조회 1줄
+- [ ] 기존 위키 정합 제안(별도 승인): 계정 생성 시나리오 4743946291(정준영 님 문서 — 직접 수정 말고 요청) 즐겨찾기 행에 선반영 링크 · 탈퇴 표 「즐겨찾기 보관」 적정성 · Unifi mini - My my_favorite_01에 프리세션 조회 1줄
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-02 — 메인 지시: 상위 요약 갱신
+- 4949365748 v20 → v21 — 프리세션 즐겨찾기 요약(「11-02 추가」 · LV 배지 · 파란 글자) · 제목은 변경 안 함(현 제목 「Unifi 개선 과제 요약 — LV / UIT」이 이미 묶음 제목이라 과제명을 붙이지 않는 패턴)
+- 4980099111 v1 → v2 — Background 첫 줄 담당 FE LV · History 1줄
 
 ### 2026-11-02 — 사이드 세션: 위키 생성
 - 부모: 형제 과제(T237 · T248 · T253 · T254)와 같은 4949365748 — `children` 매크로라 상위 본문 수정 없이 목록에 노출
