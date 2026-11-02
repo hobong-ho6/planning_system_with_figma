@@ -65,7 +65,7 @@ v12(11-02)에서 마케팅 수정본 v8 → v11 변경분을 반영했다 — �
 
 ### 2026-11-02 — T248 마케팅 v13 반영 · LINE 제공 화면 삭제 (v24 · v25)
 
-- 완료: 위 결정 반영 · pre·post exit 0 · 첨부 `promotion_travel_main_01_01.png` · `promotion_travel_register_01_03.png`는 본문 참조 없이 남아 있음(삭제는 사용자 확인 후)
+- 완료: 위 결정 반영 · pre·post exit 0 · 미사용 첨부 `promotion_travel_main_01_01.png` · `promotion_travel_register_01_03.png` 삭제(사용자 지시 · 휴지통 · post exit 0) — 남은 첨부 7개
 - 확인 필요: 마케팅 문서 D-14 OA는 아직 「클리닉 예약 관련 상품 안내」 — 마케팅과 올리브영 안내로 맞춰야 함
 
 ### 2026-11-02 — T248 Screen 표 (v23)
