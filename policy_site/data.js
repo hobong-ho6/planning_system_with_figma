@@ -165,7 +165,11 @@ window.POLICY_DATA = {
     "캐시백",
     "Admin"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "문서 불일치",
+    "question": "적립률 5%(10/21 결정)인데 v2.1 사용자 흐름 ① 「floor(실결제 엔화 × 10%)」 · 결제·환불·정산 3장 예시 · 결제 PAY-3 예시에 10%가 남아 있다 — 해당 문서 정리 필요."
+   }
   },
   {
    "service": "Unifi mini",
@@ -421,7 +425,11 @@ window.POLICY_DATA = {
     "OA",
     "앱 푸시"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "소멸 예정 알림의 앱 푸시 병행 · 최소 포인트 기준 · 발송 시각을 정한다."
+   }
   },
   {
    "service": "Unifi mini",
@@ -530,7 +538,11 @@ window.POLICY_DATA = {
     "복원",
     "예외"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "「당사 귀책 시 만료 포인트 복원」 고지는 라이브인데 운영 절차가 없다 — 귀책 판정 주체 · 발행 유형 · 유효기간을 정한다."
+   }
   },
   {
    "service": "Unifi mini",
@@ -601,7 +613,11 @@ window.POLICY_DATA = {
     "차지백",
     "GuideKim 환불"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "상충",
+    "question": "이미 만료돼 회수하지 못한 포인트도 환불 금액에서 빼는가? 「만료 기일이 빠른 것부터(10/19)」는 어떤 질문에 대한 결정인가?"
+   }
   },
   {
    "service": "Unifi mini",
@@ -1067,7 +1083,11 @@ window.POLICY_DATA = {
     "usablePeriodDays",
     "상품별"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "문서 불일치",
+    "question": "사용 기한이 상품별로 바뀌었는데(10/21) 기존 4브랜드 LPC 문구는 「사용 기한: 30일」 — 4종 모두 실제 30일인지 확인."
+   }
   },
   {
    "id": "voucher-sales-limit",
@@ -1113,7 +1133,11 @@ window.POLICY_DATA = {
     "증액",
     "발급 예정액"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "세부 미결",
+    "question": "운영팀 모니터링 「한도 소진율」이 이 정책의 사용률과 같은 기준인지 확인(운영팀)."
+   }
   },
   {
    "id": "voucher-purchase-limit",
@@ -1160,7 +1184,11 @@ window.POLICY_DATA = {
     "판매 누계",
     "잔여 수량"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "세부 미결",
+    "question": "인당 제한 초과 · 품절 사용자 안내 문구와 노출 화면 정리(디자인팀)."
+   }
   },
   {
    "id": "voucher-activation-failure",
@@ -1222,7 +1250,11 @@ window.POLICY_DATA = {
     "CS",
     "3초"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "상충",
+    "question": "발권 실패와 품절을 하나로 합치고 안내를 한 문구로 줄이는 안(v2.1 작업 로그 R1·R2)을 Redeem 정본에 반영할지, 현행 2단계 안내를 유지할지?"
+   }
   },
   {
    "id": "voucher-seller",
@@ -1398,7 +1430,11 @@ window.POLICY_DATA = {
     "현금화",
     "LNS-1622"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "세부 미결",
+    "question": "결제페이지 Disclaimer가 바우처 외 상품 결제에도 노출되는지 적용 범위 확인."
+   }
   },
   {
    "id": "voucher-grace-93-abolished",
@@ -1647,7 +1683,11 @@ window.POLICY_DATA = {
     "비즈콘",
     "계약 종료"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "세부 미결",
+    "question": "공급 중단 시 비즈콘이 미사용 · 잔액 목록을 줄 수 있는지 확인(사용자 10/21)."
+   }
   },
   {
    "id": "refund-pre-release-guidekim",
@@ -1743,7 +1783,11 @@ window.POLICY_DATA = {
     "제휴사",
     "고객 귀책"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "고객 귀책(쿠폰 제시 누락 · 대상 외 메뉴 등) 처리 · 재발급 방법 · 고객 거부 확인 절차를 정한다(사업 · 법무)."
+   }
   },
   {
    "details": [
@@ -1855,7 +1899,11 @@ window.POLICY_DATA = {
     "version": 2,
     "section": "Specification > Policy (11-02 추가)"
    },
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "상충",
+    "question": "활성화 전 상품권이 있으면 탈퇴를 막는가(11-02 초안), 경고 후 허용하는가(My v199 · 계정 생성 시나리오 v161)?"
+   }
   },
   {
    "details": [
@@ -1945,7 +1993,11 @@ window.POLICY_DATA = {
     "version": 161,
     "section": "3. 계정 상태 정의 > 탈퇴 시 정보별 처리 (11-02 추가)"
    },
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "탈퇴 시 보관 기간 · 해시 방식 · 개인정보처리방침 반영 여부를 확정한다(정보보안 · 법무 · 개발). v1.14.0 이메일 파기는 설정 기본값 false로 배포됨."
+   }
   },
   {
    "details": [
@@ -2142,7 +2194,11 @@ window.POLICY_DATA = {
     "version": 3,
     "section": "Specification > Policy (11-02 추가)"
    },
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "간편 로그인 즐겨찾기 허용의 반영 버전과 확정 필요 7건을 정한다(v1.16.0 가입 간소화에 포함되는지 포함)."
+   }
   },
   {
    "details": [
@@ -2193,7 +2249,11 @@ window.POLICY_DATA = {
     "version": 4,
     "section": "Product Info 개요 · Task List"
    },
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "정본 없음",
+    "question": "탈퇴 후 재가입 시 이전 지갑 노출 · 자산 가져오기의 정책 페이지가 없다 — 정본 문서를 만들지, 기존 문서에 넣을지 정한다."
+   }
   },
   {
    "details": [
@@ -2341,7 +2401,11 @@ window.POLICY_DATA = {
     "version": 2,
     "section": "Specification > Policy"
    },
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "2뎁스 홈 버튼 헤더의 적용 범위(3뎁스 포함 · 결제 단계 제외 · 로고 헤더 대체)와 배포 버전을 확정한다."
+   }
   },
   {
    "details": [
@@ -2587,7 +2651,11 @@ window.POLICY_DATA = {
     "법무",
     "LNS-1741"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "다이소 「정가 판매」 정책 위반 여부를 SK플래닛과 사전 협의한다(법무 LNS-1741은 문제 없음 회신)."
+   }
   },
   {
    "id": "100yen-refund-coupon-restore",
@@ -2877,7 +2945,11 @@ window.POLICY_DATA = {
     "법무",
     "여행 일정"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "여행 일정 · 목적 수집 동의 문구와 보관 기간을 확정한다(법무 검토 중 · v1.15.1 배포 전 필요)."
+   }
   },
   {
    "id": "reward-tab-composition",
@@ -3053,7 +3125,11 @@ window.POLICY_DATA = {
     "일일 한도",
     "쿨다운 20초"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "상충",
+    "question": "광고 리워드 1일 한도는 100회(Policy)인가 5회(Screen 한도 팝업)인가?"
+   }
   },
   {
    "id": "skyflag-web-liff",
@@ -3271,7 +3347,11 @@ window.POLICY_DATA = {
     "version": 65,
     "section": "Specification > Policy > 발송 시점(소멸 예정)"
    },
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "O-7 발송 시점(7일·1일 전 제안) 확정 · 최소 포인트 기준 · 같은 날 소멸분 합산 기준(시간대)을 정한다."
+   }
   },
   {
    "details": [
@@ -3314,7 +3394,11 @@ window.POLICY_DATA = {
     "version": 65,
     "section": "Specification > 발송 목록 > 환불 · O-12"
    },
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "O-11의 0P 행 처리 · 환불 OA 발송 시점(요청/완료) · 운영자 환불 포함 여부를 정하고, O-12 쿠폰 복구 「수기」 서술을 11-02 자동 되돌리기 배포(v2.2.0.1)에 맞출지 확인한다."
+   }
   },
   {
    "details": [
@@ -3351,7 +3435,11 @@ window.POLICY_DATA = {
     "version": 2,
     "section": "Product Info 개요 · Task List"
    },
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "정본 없음",
+    "question": "OA 발송 언어 기준 정본(4636898140)이 조회되지 않는다(삭제 또는 권한) — 현재 정본 위치를 알려 주면 카드를 채운다."
+   }
   },
   {
    "details": [
@@ -3469,7 +3557,11 @@ window.POLICY_DATA = {
     "version": 26,
     "section": "2. 법무 관점 L-6 · 5. 사용자 고지 체크리스트 > 환불 조건"
    },
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "문서 불일치",
+    "question": "문구 확정 대장 B-6 「확정 문구」 열은 10/15 요약본(비율 없음)인데 라이브 XLT는 「수수료 20%」 명기 — 대장 갱신 필요."
+   }
   },
   {
    "details": [
@@ -3577,7 +3669,11 @@ window.POLICY_DATA = {
     "11/4",
     "자산복구"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "세부 미결",
+    "question": "에어드롭 컨트랙트 최종 소유 · 키 관리 주체 확인."
+   }
   },
   {
    "id": "prime-lockup-maturity-display",
@@ -3734,7 +3830,11 @@ window.POLICY_DATA = {
     "12월",
     "부스트"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "미정",
+    "question": "12월 USDT 이율 개편안(A안 · B안)을 결정한다(11월 회의체)."
+   }
   },
   {
    "id": "jpyc-interest-rate",
@@ -3808,7 +3908,11 @@ window.POLICY_DATA = {
     "재확인 팝업",
     "JPYC EX"
    ],
-   "checkedAt": "2026-11-03"
+   "checkedAt": "2026-11-03",
+   "review": {
+    "kind": "세부 미결",
+    "question": "JPYC 상환 중복 송금 이력 저장 위치(로컬/서버) 확인."
+   }
   },
   {
    "id": "srcr-gas-sponsorship",

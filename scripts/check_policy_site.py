@@ -19,6 +19,7 @@ from pathlib import Path
 DATA = Path(__file__).resolve().parent.parent / 'policy_site' / 'data.js'
 STATUSES = {'최신', '변경됨', '폐기', '확인 필요', '예정'}
 SERVICES = {'Unifi', 'Unifi mini'}
+REVIEW_KINDS = {'상충', '미정', '정본 없음', '문서 불일치', '세부 미결'}
 REQUIRED = ['id', 'area', 'title', 'summary', 'service', 'status', 'source', 'checkedAt']
 
 
@@ -56,6 +57,11 @@ def check_format(d):
             errors.append(f'{tag}: 적용 버전 {p["release"]!r}가 releases에 없음')
         if p.get('status') == '확인 필요' and not p.get('conflicts'):
             warns.append(f'{tag}: 확인 필요인데 conflicts(근거)가 없다')
+        rv = p.get('review')
+        if p.get('status') == '확인 필요' and not rv:
+            errors.append(f'{tag}: 확인 필요인데 review(리뷰 질문)가 없다')
+        if rv and (rv.get('kind') not in REVIEW_KINDS or not rv.get('question')):
+            errors.append(f'{tag}: review.kind·question 형식 오류')
         if p.get('status') == '변경됨' and not p.get('changes'):
             errors.append(f'{tag}: 변경됨인데 changes가 없다')
     return errors, warns

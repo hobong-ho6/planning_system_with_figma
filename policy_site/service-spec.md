@@ -12,6 +12,7 @@
 | 페이지 | 역할 |
 |---|---|
 | `index.html` | 정책 목록(검색 · 영역 · 상태 · 서비스 필터) + 하단 「배포 이력 기준 주요 과업」 |
+| `review.html` | 기획팀 리뷰 — 카드의 `review` 항목(상충 · 미정 · 정본 없음 · 문서 불일치 · 세부 미결)을 모아 「결정할 것」 질문과 근거 위키를 보여 준다 · 종류 필터 |
 | `rules.html` | 작성 규칙 — 다른 기획자의 Claude가 읽고 그대로 따르는 정책 추가·수정 절차 |
 
 ## 페이지별 기능
@@ -23,13 +24,14 @@
 - **서비스 선택**: Unifi / Unifi mini
 - **정책 카드**: 상태 배지 · 제목 · 서비스/FE 태그 · 요약 · (확인 필요 시) 근거 상자 · 정본 링크·판수·절 · 적용 버전(배포일) · 확인일 · 「자세히」(세부 · 변경 이력 · 관련 위키)
 - **링크 공유**: `?area=refund`(영역 지정) · `?q=80%`(검색어 지정) · `#p-{id}`(카드로 이동)
+- **리뷰 페이지**: 종류 칩 필터 · 카드마다 결정할 것(질문) · 정책 카드 링크 · 현재 요약 · 적용 버전 · 근거 위키(판수 · 절 · 내용)
 - **배포 이력**: 버전 · 배포일 · 배포 완료/전 · 릴리즈 노트 · 과업과 기획서 링크
 - 모바일(640px 이하)에서는 필터 영역이 상단에 고정되지 않는다.
 
 ## 데이터 구조
 
 - `data.js` 한 파일(`window.POLICY_DATA`): `meta` · `areas` · `policies` · `releases`. 필드 정의는 `rules.html` 6절.
-- 정책 카드 필드: id · area · title · summary · details · service · fe · status · source(pageId·title·version·section) · related · release · changes · conflicts · keywords · checkedAt
+- 정책 카드 필드: id · area · title · summary · details · service · fe · status · source(pageId·title·version·section) · related · release · changes · conflicts · keywords · checkedAt · review(kind · question)
 - 저장소 검사: `scripts/check_policy_site.py`(형식) · `--live`(정본 위키 라이브 판수 대조)
 
 ## 디자인 가이드
@@ -47,4 +49,4 @@
 
 | 날짜 | 버전 | 내용 |
 |---|---|---|
-| 2026-11-03 | v1 | 최초 제작(T256) — 영역 9개 · 정책 88건(최신 48 · 확인 필요 17 · 예정 17 · 변경됨 5 · 폐기 1) · 배포 이력 27개 버전 · 작성 규칙 페이지. 정본 위키 50건은 11-03 라이브 판수와 대조함 |
+| 2026-11-03 | v1 | 최초 제작(T256) — 영역 9개 · 정책 88건(최신 48 · 확인 필요 17 · 예정 17 · 변경됨 5 · 폐기 1) · 배포 이력 27개 버전 · 작성 규칙 페이지. 정본 위키 50건은 11-03 라이브 판수와 대조함 · 리뷰 페이지(26건) |
