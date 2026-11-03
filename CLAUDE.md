@@ -194,6 +194,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `md/glossary-changelog.md` | 용어집(`web3_xlt_json`) 버전별 변경 이력(git 추적) — 용어집 갱신 시마다 항목 추가 필수 |
 | `md/OA.md` | OA(LINE 공식계정) 메시지 규칙 — XLT 키 미부여(번역만)·변수 `{{이름}}`(사용자 정의)·Flex 메시지 JSON·**렌더 이미지 생성(`render_oa_flex.py`)·Landpress(`oam_message_task_multi`) 등록·LIAM HUB Event Message 등록**. OA 섹션 프레임 처리 시 필수 참조 |
 | `md/dropweb-guide.md` | 정적 웹사이트 배포 규격 — `md/prototype.md` 수행 시 필수 참조 |
+| `md/policy-site.md` | **Unifi Policy 사이트**(정책 모음 DropWeb) 포인터 — 정본 규칙은 `policy_site/rules.html`(사이트에 함께 게시 · 다른 기획자의 Claude도 읽는다). 정책 카드 추가·수정·게시 시 참조 |
 | `md/xlt-verify.md` | **XLT 시스템 등록값 검증 정본** — 읽기 API 명세(엔드포인트·인증 없음·서비스별 키스페이스 분리)·타겟 확정(서비스/디바이스/버전 사용자 선택)·용어집 대조·수정 제안·업로드 엑셀. **정기 검증 시 + 번역 Step 2-1 유사 키 제안 시 필수 참조** |
 | `md/GA.md` | GA Event 정의 규칙 — Screen 표 4열 `XLT & GA`(storage `&amp;`) · XLT 중첩표 아래 `# \| Event Name \| Parameter` 표 · `view_`+Screen ID 화면당 1개(Parameter `-`) · `click_` 클릭 요소 자동 부여(`#`=어노테이션 번호). **위키 업데이트에서 사용자가 GA event 추가를 요청한 경우에만** 적용 |
 | `md/IA.md` | Unifi(unifi.me) IA 분석 정본 — **Screen ID(`주기능_부기능_세부기능_01` 소문자) 부여 시 어휘 참조**. IA 변경 시 이 파일만 갱신. **⛔ Screen ID 부여는 매핑 표 사용자 검토·승인 후에만 진행** (기존 위키는 소급 전환 금지) |
@@ -275,6 +276,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `restore/lpc_safe_put.js` | LPC 안전 쓰기 템플릿 (read-modify-write + 재조회 대조) — ⛔ 직접 PUT 금지 | LPC에 쓸 때 (브라우저 콘솔) |
 | `restore/lpc_timer_put.js` | LPC **정해진 시각에 필드 값 변경**(CMS 예약은 공개/공개 취소만) — CMS 탭 안 브라우저 타이머 · Claude 세션과 무관 · DRY 시험 → 걸기 → 결과 `localStorage` (`md/landpress.md` §10-2-2) | 스위치 필드를 특정 시각에 켜고 끌 때 (브라우저 콘솔) |
 | `check_wiki_storage.py` | 위키 storage/렌더 규칙 검사 (Screen 표 4컬럼·첨부 `ri:page` 금지·URL 이스케이프·**History 같은 날짜 행 중복** / 렌더 `Unknown Attachment`) | 3단계 위키 PUT **직전 `pre`·직후 `post`** — exit 0 확인 |
+| `check_policy_site.py` | Unifi Policy 사이트 `policy_site/data.js` 형식 검사 · `--live`로 정본 위키 판수 대조(오른 카드 = 재확인 필요) — 읽기 전용 | 정책 사이트 게시 직전 — exit 0 확인 |
 | `put_wiki_storage.py` | 위키 본문(storage) **버전 가드 PUT** — 로컬 파일을 그대로 보내고, 라이브 버전이 `--expect-version`과 다르면 **PUT 하지 않고 exit 2**(다른 세션이 먼저 고침) · PUT 후 본문 길이가 5% 이상 어긋나면 exit 3. MCP `confluence_update_page`는 본문을 대화에 실어 큰 페이지에서 **본문 유실 위험**이 있다(2026-09-12 실측 사고) | 3단계 위키 PUT — **본문이 크거나 다른 세션과 동시 편집 가능성이 있으면 필수** |
 | `collect_frames.py` | 프레임 읽기 전용 배치 수집 (노드·코멘트 1회 조회 + 좌표 정규화 + 텍스트 매칭 + 어노테이션 렌더 → `frames.json`) | 3단계 Step 3~4 입력 생성 (프레임 다수 시) |
 | `export_to_xlt.py` | XLT 엑셀 생성 (properties + plurals) | 1단계 Step 7 |

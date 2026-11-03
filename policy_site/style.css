@@ -1,0 +1,100 @@
+:root {
+  --bg: #f6f7f9;
+  --card: #fff;
+  --ink: #111827;
+  --sub: #4b5563;
+  --line: #e5e7eb;
+  --brand: #06c755;
+  --brand-ink: #047a35;
+  --s-latest: #047857;  --s-latest-bg: #d1fae5;
+  --s-changed: #b45309; --s-changed-bg: #fef3c7;
+  --s-dead: #6b7280;    --s-dead-bg: #f3f4f6;
+  --s-check: #b91c1c;   --s-check-bg: #fee2e2;
+  --s-plan: #1d4ed8;    --s-plan-bg: #dbeafe;
+}
+* { box-sizing: border-box; }
+body { margin: 0; font-family: Pretendard, system-ui, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: var(--brand-ink); }
+.wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+
+.top { position: sticky; top: 0; z-index: 10; background: rgba(255,255,255,.92); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+.top-in { height: 56px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.brand { display: flex; align-items: center; gap: 8px; font-weight: 700; color: var(--ink); text-decoration: none; white-space: nowrap; }
+.logo { display: grid; place-items: center; width: 30px; height: 30px; border-radius: 8px; background: var(--brand); color: #fff; font-size: 12px; }
+.nav { display: flex; gap: 16px; font-size: 14px; white-space: nowrap; }
+.nav a { color: var(--sub); text-decoration: none; }
+.nav a.is-on, .nav a:hover { color: var(--ink); font-weight: 600; }
+
+.hero { padding: 28px 0 8px; }
+.hero h1 { font-size: 24px; margin: 0 0 6px; }
+.sub { color: var(--sub); margin: 0; font-size: 14px; }
+.meta { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 8px; font-size: 13px; }
+.meta span { background: var(--card); border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; }
+
+.controls { position: sticky; top: 56px; z-index: 5; background: var(--bg); padding: 12px 0; }
+#q { width: 100%; font: inherit; font-size: 15px; padding: 11px 14px; border: 1px solid #d1d5db; border-radius: 10px; background: #fff; }
+#q:focus { outline: 2px solid var(--brand); border-color: transparent; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 10px; }
+.chip { font: inherit; font-size: 13px; padding: 5px 12px; border-radius: 999px; border: 1px solid #d1d5db; background: #fff; color: var(--sub); cursor: pointer; }
+.chip:hover { border-color: var(--brand); }
+.chip.is-on { background: var(--ink); border-color: var(--ink); color: #fff; }
+.chip .n { opacity: .6; margin-left: 4px; }
+.chips.small .chip { font-size: 12px; padding: 3px 10px; }
+.row2 { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 8px; }
+.row2 .chips { margin-top: 8px; }
+#svc { font: inherit; font-size: 13px; padding: 5px 8px; border: 1px solid #d1d5db; border-radius: 8px; background: #fff; margin-top: 8px; }
+.count { font-size: 13px; color: var(--sub); margin: 4px 0 8px; }
+
+.list { display: grid; gap: 10px; }
+.area-h { font-size: 15px; margin: 18px 0 2px; display: flex; align-items: baseline; gap: 8px; }
+.area-h small { color: var(--sub); font-weight: 400; font-size: 13px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 14px 16px; }
+.card.is-dead { opacity: .7; }
+.card-h { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+.card-h h3 { font-size: 16px; margin: 0; flex: 1 1 200px; }
+.badge { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 6px; white-space: nowrap; }
+.b-최신 { color: var(--s-latest); background: var(--s-latest-bg); }
+.b-변경됨 { color: var(--s-changed); background: var(--s-changed-bg); }
+.b-폐기 { color: var(--s-dead); background: var(--s-dead-bg); }
+.b-확인필요 { color: var(--s-check); background: var(--s-check-bg); }
+.b-예정 { color: var(--s-plan); background: var(--s-plan-bg); }
+.tag { font-size: 12px; color: var(--sub); border: 1px solid var(--line); border-radius: 6px; padding: 1px 7px; white-space: nowrap; }
+.summary { margin: 8px 0 0; font-size: 14.5px; }
+.facts { margin: 10px 0 0; display: grid; grid-template-columns: max-content 1fr; gap: 2px 12px; font-size: 13px; color: var(--sub); }
+.facts dt { font-weight: 600; color: #374151; }
+.facts dd { margin: 0; overflow-wrap: anywhere; }
+details { margin-top: 8px; font-size: 13.5px; }
+summary { cursor: pointer; color: var(--brand-ink); }
+details ul { margin: 6px 0 0; padding-left: 18px; }
+.conf { margin-top: 8px; border-left: 3px solid var(--s-check); background: #fff7f7; padding: 6px 10px; font-size: 13px; }
+.empty { text-align: center; color: var(--sub); padding: 40px 0; }
+
+.releases { margin: 40px 0 0; }
+.releases h2 { font-size: 18px; margin: 0 0 4px; }
+.rel { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 10px 14px; margin-top: 8px; font-size: 13.5px; }
+.rel-h { display: flex; flex-wrap: wrap; gap: 8px; align-items: baseline; }
+.rel-h b { font-size: 14.5px; }
+.rel ul { margin: 6px 0 0; padding-left: 18px; }
+
+.foot { padding: 32px 16px 48px; font-size: 13px; color: var(--sub); }
+
+/* rules.html */
+.doc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; margin: 20px 0 40px; }
+.doc h2 { font-size: 18px; margin: 28px 0 8px; padding-top: 8px; border-top: 1px solid var(--line); }
+.doc h2:first-of-type { border-top: 0; margin-top: 8px; }
+.doc h3 { font-size: 15px; margin: 18px 0 6px; }
+.doc table { border-collapse: collapse; width: 100%; font-size: 13.5px; display: block; overflow-x: auto; }
+.doc th, .doc td { border: 1px solid var(--line); padding: 6px 8px; text-align: left; vertical-align: top; }
+.doc th { background: #f9fafb; white-space: nowrap; }
+.doc pre { background: #0f172a; color: #e2e8f0; padding: 12px 14px; border-radius: 8px; overflow-x: auto; font-size: 12.5px; line-height: 1.5; }
+.doc code { font-size: 12.5px; background: #f3f4f6; padding: 1px 5px; border-radius: 4px; overflow-wrap: anywhere; }
+.doc pre code { background: none; padding: 0; }
+.stop { border-left: 4px solid var(--s-check); background: #fff7f7; padding: 8px 12px; border-radius: 0 8px 8px 0; }
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 20px; }
+  .controls { position: static; }
+  .nav { gap: 12px; font-size: 13px; }
+  .facts { grid-template-columns: 1fr; }
+  .facts dt { margin-top: 4px; }
+}

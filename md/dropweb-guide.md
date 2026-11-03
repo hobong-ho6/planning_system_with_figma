@@ -191,6 +191,7 @@ my-site/
 | **web3 planning** | `ab3ffda0` | **기획자 가이드**(`guide/` → `dropweb/web3_planning_v*.zip`) |
 | web3 planning jira dashboard | `26291665` | Jira 대시보드 |
 | Web3 Planning - XLT 검수 | `02b3cfac` | XLT 검수 산출물 |
+| Unifi Policy | (첫 배포 후 기입) | 정책 모음(`policy_site/` → `dropweb/unifi_policy_v*.zip`) · 규칙 `md/policy-site.md` — 첫 배포만 신규 사이트, 이후 이 ID에 PUT |
 
 **⛔ 실측 (2026-09-16) — `file_path`는 DropWeb 서버의 파일시스템 경로다**
 
