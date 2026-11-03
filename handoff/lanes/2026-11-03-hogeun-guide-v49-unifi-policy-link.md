@@ -1,4 +1,0 @@
-- 세션: T256 후속 · hogeun · `AD03230205ui-iMac`
-- 시작: 2026-11-03 13:52
-- 점유 자원: guide/ + dropweb/web3_planning_v49.zip + md/guide-backlog.md
-- 목적: 기획자 가이드에 Unifi Policy 링크 추가(대기 #3)
