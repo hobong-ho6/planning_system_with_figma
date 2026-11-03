@@ -1,10 +1,10 @@
 # travel-schedule-event — 여행 일정 등록 이벤트 (메가커피 1잔 무료 · 0원 결제 · 일정 기준 OA)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-11-03 · 위키 **v46** · 일감 T248(Auto-react)
+> 담당자: `hogeun` · 마지막 갱신: 2026-11-03 · 위키 **v47** · 일감 T248(Auto-react)
 
 ## 대상 / 링크
 
-- 위키: [pageId 4964266842](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4964266842) `여행 일정 등록 이벤트` — **현재 v46** (v41 늦은 등록 쿠폰 → 출국 D-1 발송 · v42 PC 웹 interstitial page · v43 관심사 최대 2개 · v45 유의사항 개인정보 안내 caution_contents3·4(미등록 · 다국어 검토 4980105151 v5 · v46 구분자 원문 「·」 유지) · v44 선택완료 코멘트·어노테이션·신규 키 mini_promotion_travel_interest_max_desc(미등록) — 관심사 프레임 Figma는 아직 복수 선택) · 하위 「다국어 검토 (ja_JP · zh_TW)」 [4980105151](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4980105151) v2 · 제목 「여행 일정 등록 이벤트 - LV / UIT」(v20 사용자 변경 · 2026-10-29 생성 · 부모 `[Hogeun]` 3910828993 · space UNIFI)
+- 위키: [pageId 4964266842](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4964266842) `여행 일정 등록 이벤트` — **현재 v47** (v41 늦은 등록 쿠폰 → 출국 D-1 발송 · v42 PC 웹 interstitial page · v43 관심사 최대 2개 · v45 유의사항 개인정보 안내 caution_contents3·4(미등록 · 다국어 검토 4980105151 v5 · v46 구분자 원문 「·」 유지 · v47 유의사항 초안 caution_contents5~15(임시 · DA 리뷰 후 변경 가능 · 4980105151 v6)) · v44 선택완료 코멘트·어노테이션·신규 키 mini_promotion_travel_interest_max_desc(미등록) — 관심사 프레임 Figma는 아직 복수 선택) · 하위 「다국어 검토 (ja_JP · zh_TW)」 [4980105151](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4980105151) v2 · 제목 「여행 일정 등록 이벤트 - LV / UIT」(v20 사용자 변경 · 2026-10-29 생성 · 부모 `[Hogeun]` 3910828993 · space UNIFI)
 - 근거: **마케팅 기획서 수정본 `4971430425` v11(정책 기준 · 11-02 김도윤 수정)** · 마케팅 기획안 `4942806551` v8(아카이브) · 마케팅 PR 위키 `4973442433` · Slack 동선 `C0A8MF0UGKC`/`1793233223.253899` · 빌링 `C07RVC37258`/`1793237414.059209` · 100엔딜 `4725963532` Policy 선례
 - 초안 정본: Auto-react `reports/plans/T248_travel_schedule_event_draft.md` (v0.1)
 - Figma: `GOCHAYBS7hIrmWRGNuJOKV` (Web3) 페이지 `81031:284` 「여행 일정 등록 이벤트」 — 섹션 「여행 일정 등록」 `81033:13640` · 「상품권 수령」 `81033:16255` (위키 Flow에 widget 임베드 · v16)
