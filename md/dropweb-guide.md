@@ -191,7 +191,9 @@ my-site/
 | **web3 planning** | `ab3ffda0` | **기획자 가이드**(`guide/` → `dropweb/web3_planning_v*.zip`) |
 | web3 planning jira dashboard | `26291665` | Jira 대시보드 |
 | Web3 Planning - XLT 검수 | `02b3cfac` | XLT 검수 산출물 |
-| Unifi Policy | (첫 배포 후 기입) | 정책 모음(`policy_site/` → `dropweb/unifi_policy_v*.zip`) · 규칙 `md/policy-site.md` — 첫 배포만 신규 사이트, 이후 이 ID에 PUT |
+| Unifi Policy | `d0bfd593mw01zjua` | 정책 모음(`policy_site/` → `dropweb/unifi_policy_v*.zip`) · 규칙 `md/policy-site.md` — 첫 배포만 신규 사이트, 이후 이 ID에 PUT |
+
+> 🔄 **2026-11-03 실측 — MCP 도구가 바뀌었다.** `deploy_site`·`update_site`는 이제 파일을 받지 않고 **1회용 업로드 토큰(약 30분)이 담긴 curl 명령**을 돌려준다(`file_path`=로컬 ZIP 절대경로를 주면 미리 채워짐). 그 명령을 로컬에서 실행하면 배포된다 — **신규 사이트도 Claude가 직접 만들 수 있다**(Unifi Policy `d0bfd593mw01zjua` 첫 배포). `update_site`는 `change_summary` 필수 · 다른 사람이 먼저 재배포했으면 **409** → 덮어쓰지 말고 합친 뒤 다시. 아래 2026-09-16 실측과 REST PUT 절차는 종전 방식 기록이다(여전히 동작하는지는 미확인).
 
 **⛔ 실측 (2026-09-16) — `file_path`는 DropWeb 서버의 파일시스템 경로다**
 
