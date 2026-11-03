@@ -1,4 +1,0 @@
-- 세션: T256 하위 세션 · hogeun · `AD03230205ui-iMac.local`
-- 시작: 2026-11-03
-- 점유 자원: policy_site/(신규) + dropweb/unifi_policy_v1.zip + md/policy-site.md(신규) + scripts/check_policy_site.py(신규) + md/dropweb-guide.md §8 사이트 표 · CLAUDE.md 표 2곳
-- 목적: Unifi Policy 정책 모음 DropWeb 사이트 제작(배포는 메인 승인 후)
