@@ -1,4 +1,0 @@
-- 세션: T256 후속 · hogeun · `AD03230205ui-iMac`
-- 시작: 2026-11-04 15:53
-- 점유 자원: scripts/policy_site_apply.py(신규) + md/policy-site.md + policy_site/rules.html
-- 목적: 정책 사이트 릴리즈 연동 자동 갱신(Auto-react release_watch 연동)
