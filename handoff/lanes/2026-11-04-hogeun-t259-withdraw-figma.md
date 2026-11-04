@@ -1,0 +1,4 @@
+- 세션: T259 사이드 · hogeun · `AD03230205ui-iMac`
+- 시작: 2026-11-04 19:40
+- 점유 자원: 위키 4978660847 + handoff/projects/withdraw-voucher-block.md
+- 목적: 탈퇴(활성화 전 상품권 보유) 위키에 Figma 시안 연결 · Screen 이미지 교체
