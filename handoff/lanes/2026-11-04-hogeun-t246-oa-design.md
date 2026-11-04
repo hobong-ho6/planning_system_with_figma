@@ -1,4 +1,0 @@
-- 세션: T246 OA 시안 반영 · hogeun · `AD03230205ui-iMac`
-- 시작: 2026-11-04 19:26
-- 점유 자원: 위키 4966458661 Screen OA 영역 + handoff/projects/isaac-toast-order.md
-- 목적: Figma 디자인 시안(78851-1659) 이미지·링크를 OA 메시지 행에 추가 · 초안 대비 차이 정리
