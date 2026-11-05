@@ -279,6 +279,51 @@ Figma의 두 번째 버튼(「상품 둘러보기」 — 포인트 적립 · 캠
 - 산출물은 `oa/flex_{프레임}_{lang}.json`으로 저장해 **Landpress 등록 입력으로 쓴다** — Confluence에 첨부하지 않는다(2026-10-14).
 - **확인 흐름 권장**: ko_KR 1건을 먼저 생성해 사용자가 [Flex Message Simulator](https://developers.line.biz/flex-simulator/)로 렌더 확인 → 통과 후 나머지 언어 일괄 생성.
 
+### postback 인터랙션 — 탭하면 말풍선이 뜨는 동작 (2026-11-05 테스트 · ⚠️ 시범 · 웹훅 단계 미완)
+
+> 계기: Figma `uyUkM7rWWg1vAwpf47um86` node `78851:1659` 「식사 준비 완료」 — 카드의 「食品受け取りが難しい場合 ?」 링크를 탭하면 **점주에게 보여줄 메시지가 새 말풍선으로** 뜨는 시안. Flex는 정적이라 말풍선 안에서 펼칠 수 없고, **탭 → 사용자 말풍선 → 웹훅 → 봇 말풍선** 흐름으로만 구현된다. 정책이 아니라 **구현 가능성 테스트 결과**다 — 디자인·b/e 확인 전까지 정식 규칙으로 쓰지 않는다.
+
+| 말풍선 | 만드는 주체 | 서버(웹훅) | 테스트 결과 |
+|---|---|---|---|
+| **사용자 말풍선**(오른쪽 · 「食品受け取りが難しい場合」) | LINE 앱이 탭 순간에 직접 생성 — postback `displayText` | **불필요** | ✅ 실기기에서 탭마다 생성 확인(2026-11-05 · prod 2190 새 발송본) |
+| **봇 말풍선**(왼쪽 · 점주 제시용) | 서버가 postback 이벤트를 받아 Reply/Push로 발송 | **필요** | ⏳ b/e에 웹훅 요청 중 — 미확인 |
+
+**Flex 구조** — 링크 행 box 전체에 postback을 건다(text 단독은 터치 영역이 작다):
+
+```json
+{ "type": "box", "layout": "horizontal", "margin": "md", "paddingAll": "10px", "alignItems": "center",
+  "action": { "type": "postback", "label": "受け取り困難",
+              "data": "action=show_owner_msg&order_no=193",
+              "displayText": "食品受け取りが難しい場合" },
+  "contents": [ …링크 text, "?" 원형(cornerRadius box)… ] }
+```
+
+- ⛔ **`displayText`가 없으면 탭해도 아무 반응이 없다**(무음 postback) — 테스트 초기에 `displayText` 없는 카드를 발송해 「눌러도 안 나온다」가 됐다. 사용자 말풍선이 필요하면 반드시 넣는다. `displayText`·`text`(deprecated) 동시 사용 불가 · 각 300자 · `data` 300자.
+- 봇 말풍선은 별도 Flex 메시지다 — LPC에 **단독 항목**으로 등록해 두고 서버가 postId로 불러 Reply한다(발송 대상 메시지가 아니므로 LIAM Event Message를 만들지 않는다). 회색 박스는 box `backgroundColor:"#F6F7FA"` · `cornerRadius:"8px"`, 굵은 부분은 text `contents` span(`weight:"bold"`). `\n` 금지는 그대로.
+- **Reply token은 1회용 · 수신 후 1분 이내**(공식) — 초과 시 Push(쿼터 소모).
+- 탭마다 사용자 말풍선이 **쌓인다**(실측 3탭=3말풍선) — 웹훅이 붙으면 봇 답장도 탭 횟수만큼 반복되므로 중복 방지 정책이 필요하다.
+- Flex에는 툴팁·팝오버·말풍선 내부 펼침 컴포넌트가 없다 — 탭 반응은 위 두 말풍선으로만 만든다.
+- 근거(LINE 공식): `reference/messaging-api/` — Text·Box `action`, Postback action, Reply token / `docs/messaging-api/flex-message-elements/`.
+
+**테스트 항목(LPC)** — 테스트 값이므로 확인 후 삭제한다.
+
+| 환경 | postId | 내용 |
+|---|---|---|
+| beta | 352 (`ko_KR`) | 카드 — postback + `displayText` |
+| beta | 357 (`ko_KR`) | 점주 제시 답장 Flex(봇 말풍선) |
+| prod | 2190 (`en_US`, 사용자 등록) | 카드 복사본 — `displayText` 추가 반영 |
+
+- 테스트 값: hero는 `placehold.co` 임시 이미지, 답장 문구는 시안의 한국어 그대로(일본 매장용이면 현지어 필요), 주문번호 193 고정, 지도 링크는 구글맵 테스트 URL. 로케일은 1개만 만들었다(prod·5개 언어 미생성 — beta·prod 동일 유지 규칙의 예외).
+
+**디자인에 확인할 질문(미회신)**
+1. 점주 제시 메시지가 꼭 채팅 말풍선이어야 하나 — LIFF 웹뷰가 더 안전하지 않은가.
+2. 점주 메시지 언어(시안은 한국어) — 일본 매장이면 일본어.
+3. 「食事準備完了」에 hero(매장 로고) 허용 여부 — 위 「① 개인별 진행 상태 안내」는 hero를 활성화 완료에만 허용(충돌).
+4. 사용자 말풍선을 보여도 되나(현재 시안엔 없음) · 재탭·시간 경과 후 탭 동작.
+5. 「店舗場所」 이동처.
+
+**미결(b/e)**: 이 OA 채널의 웹훅 사용 가능 여부 · postback 수신 → 357 Reply 구현 · LIAM 발송분의 postback도 같은 웹훅으로 오는지.
+
 ---
 
 ## Flex 렌더링 이미지 — Claude가 직접 그려 위키에 첨부 (2026-09-12 신설)
