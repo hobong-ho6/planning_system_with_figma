@@ -78,9 +78,40 @@ def px(table, key, default=0):
 # bubble JSON → HTML
 # ──────────────────────────────────────────────────────────────
 
+def layout_extras(node):
+    """공통 배치 속성 — flex · cornerRadius · padding* · alignItems · justifyContent · width · border · position/offset*."""
+    s = []
+    if "flex" in node:
+        s.append(f"flex:{node['flex']} {node['flex']} auto" if node["flex"] else "flex:0 0 auto")
+    if node.get("cornerRadius"):
+        s += [f"border-radius:{px(SPACING, node['cornerRadius'])}px", "overflow:hidden"]
+    for k, css in (("paddingTop", "padding-top"), ("paddingBottom", "padding-bottom"),
+                   ("paddingStart", "padding-left"), ("paddingEnd", "padding-right")):
+        if node.get(k):
+            s.append(f"{css}:{px(SPACING, node[k])}px")
+    amap = {"center": "center", "flex-start": "flex-start", "flex-end": "flex-end"}
+    if node.get("alignItems"):
+        s.append(f"align-items:{amap.get(node['alignItems'], 'stretch')}")
+    if node.get("justifyContent"):
+        s.append(f"justify-content:{amap.get(node['justifyContent'], 'flex-start')}")
+    if node.get("width"):
+        s.append(f"width:{node['width']}")
+    if node.get("borderWidth"):
+        s.append(f"border:{px(SPACING, node['borderWidth'])}px solid {node.get('borderColor', '#e5e5e5')}")
+    if node.get("position") == "absolute":
+        s.append("position:absolute")
+        for k, css in (("offsetTop", "top"), ("offsetBottom", "bottom"),
+                       ("offsetStart", "left"), ("offsetEnd", "right")):
+            if node.get(k) is not None:
+                s.append(f"{css}:{px(SPACING, node[k])}px")
+        s.append("overflow:visible")
+    return s
+
+
 def render_text(node):
     size = px(FONT_SIZE, node.get("size", "md"), 14)
     style = [f"font-size:{size}px", "line-height:1.5", "margin:0"]
+    style += layout_extras(node)
     style.append(f"color:{node.get('color', '#000000')}")
     if node.get("weight") == "bold":
         style.append("font-weight:700")
@@ -157,7 +188,7 @@ def render_hero_box(node):
 def render_box(node):
     layout = node.get("layout", "vertical")
     spacing = px(SPACING, node.get("spacing"), 0)
-    style = ["display:flex", f"gap:{spacing}px"]
+    style = ["display:flex", f"gap:{spacing}px", "position:relative"]
     style.append("flex-direction:column" if layout == "vertical" else "flex-direction:row")
     if layout == "baseline":
         style.append("align-items:baseline")
@@ -167,6 +198,7 @@ def render_box(node):
         style.append(f"padding:{px(SPACING, node['paddingAll'])}px")
     if node.get("backgroundColor"):
         style.append(f"background:{node['backgroundColor']}")
+    style += layout_extras(node)
     inner = "".join(render_node(c) for c in node.get("contents", []))
     return f'<div style="{";".join(style)}">{inner}</div>'
 

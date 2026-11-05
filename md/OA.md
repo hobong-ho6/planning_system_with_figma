@@ -178,6 +178,26 @@ for l,u in URLS.items():                      # {lang: url}
 
 - 캠페인형 시안의 「가로 스크롤」은 잘린 이미지 나열 연출이다 — Figma export 에셋이 **한 장(840×504)** 이라 Flex에서도 hero 이미지 1장으로 넣는다(carousel 아님).
 
+### 추천 상품권 캐러셀 카드 — 이미지 · 문구 분리 (2026-11-05 사용자 결정 · T248 ④)
+
+캐러셀(carousel)로 상품권을 추천할 때 **카드에 글자를 이미지로 굽지 않는다.** 카드 1장 = bubble 1개이고, 아래 순서 · 스타일 값을 쓴다(위 「① Flex 스타일 값」 · 「hero 이미지 규격」과 같은 값):
+
+**hero(상품 이미지) → 타이틀 → 정보 → 구분선 → 설명 → 버튼**
+
+| 영역 | Flex |
+|---|---|
+| hero | box `height:"180px"` · `paddingAll:"0px"` · `backgroundColor:"#F6F7FA"` · `justifyContent:"center"` → image `size:"full"` · `aspectRatio`=이미지 실측(상품 이미지 1:1) · `aspectMode:"fit"` |
+| 타이틀 | text 20px bold `#000000` `wrap` |
+| 정보 | box `margin:"10px"` → text 13px `#000000`(할인율 · 캐시백처럼 값 위주 한 줄) |
+| 구분선 | separator `margin:"20px"` · `#EFEFEF` |
+| 설명 | box `margin:"20px"` → text 13px `#000000` `wrap` |
+| 버튼 | footer `spacing:"sm"` → button `primary` · `#000000` · `height:"sm"` · 카드별 `uri` |
+
+- **바꿔 넣는 곳은 이미지 URL · 텍스트 3개 · 버튼 label/uri뿐이다** — 문구는 LPC에서 언어별로 고치고, 이미지는 글자 없는 이미지 1장을 5개 언어가 같이 쓴다(언어별 카드 이미지 제작 불필요).
+- 카드 문구 안의 변수(`{{discount_rate}}` 등)는 **발송 때 치환**된다(이미지에 값을 굽지 않는다).
+- 실례: T248 ④-1 ~ ④-8(LPC beta 328 ~ 349 / prod 2160 ~ 2181) · 생성 스크립트 · 문구 · 복구원 Auto-react `reports/landpress/t248_oa4_card_struct_20261105/`.
+- 렌더: `scripts/render_oa_flex.py`가 `cornerRadius` · `flex` · `position:"absolute"`(offset*) · `padding*` · `alignItems` · `justifyContent` · `width` · `borderWidth`를 그린다(2026-11-05 추가).
+
 ### ⛔ hero 이미지 규격 — Figma 이미지 코멘트가 정의다 (2026-10-21 확정)
 
 | 항목 | 정의 |
