@@ -1,6 +1,6 @@
 # 100yen-deal — 100엔딜 프로모션 (Unifi mini · XLT **26키** + **리텐션 OA 2종**)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-11-04 · 위키 **v34**
+> 담당자: `hogeun` · 마지막 갱신: 2026-11-05 · 위키 **v34**
 >
 > 📌 **범위**: 위키 `4725963532` 한 페이지 전체 — Screen 3화면(XLT 13키) + **OA 서브섹션 2종**. 예약 OA 16화면(`4725932984`)은 [`unifi-mini-v2-oa`](unifi-mini-v2-oa.md) 소관이다.
 >
@@ -36,7 +36,7 @@
 
 ## 다음 할 일
 
-- [ ] 🔴 **T260 재참여 차단 · 동일카드 안내 정책 결정 13건**: 위키 [`4993463591`](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4993463591) 「정리 필요사항」 — 시점·판정 API·표기·이동처·동일카드 안내 수준(CTO ↔ RM/FDS)·Radar 전역 룰 해제 여부 등. 결정 후 문구 확정 → 번역 게이트 → XLT 등록(후보 `UF_100yen_rebuy_block_*`·`UF_100yen_card_limit_*`)
+- [ ] 🔴 **T260 재참여 차단 · 동일카드 안내 정책 결정 14건**(위키 **v2**): 위키 [`4993463591`](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4993463591) 「정리 필요사항」 — 시점·판정 API(Radar 차단 사유 구분)·표기(한 번만/1회만)·이동처(UX안 「쇼핑 카테고리」=E 확인)·동일카드 안내 수준(CTO ↔ RM/FDS)·#10 전역 룰 삭제 · 이메일 목록 환불 해제·#14 이메일·발급국 차단 안내 등. 결정 후 문구 확정 → 번역 게이트 → XLT 등록(후보 `UF_100yen_rebuy_block_*`·`UF_100yen_card_limit_*`)
 - [ ] 🔴 **재발급 OA 메시지 확정**: 100엔딜 환불 → 쿠폰 재발급 시 `N6adefbe47fe2132ce77c6103`을 보내는지 개발팀 답 대기(Slack `C08HYMJ7Z8V`/`1792731859.477639`) · 확정되면 Policy 「환불 · 쿠폰 재발급」 행과 마스터 버전 5 단락의 빨간 표기를 함께 갱신
 - [ ] 🔴 **결제 구조 법무 회신(LNS-1741)**: Policy 「결제」 「정가 구매 · 포인트 결제에 가깝다」 줄 · 회신 오면 빨간 표기 정리
 
@@ -63,6 +63,12 @@
 - ⛔ **Landpress를 고치면 LIAM에서 `LOAD MESSAGE` → `UPDATE`를 반드시 한다** — LIAM은 **스냅샷**을 들고 있어 Landpress만 고치면 발송은 구 문구다(`md/OA.md` 규칙 3-1 ⓖ · 2026-09-15 실측)
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-05 · 사이드 세션 T260 — 위키 검토 · 출처 대조 반영 (v1→**v2**)
+- 대조: Slack `C0A8MF0UGKC`/`1792746877.274189` 전체(119) · `C08HYMJ7Z8V`/`1792464562.925679`(Stripe 100엔 중복 결제 방지 10/20~10/26) · Jira `UNIFY-11279`(Closed) · `UNIFY-13071`(Open) · Auto-react 정책 사이트 `100yen-refund-coupon-restore`(일치)
+- 새로 확인한 사실: ① **UX 의견 11-05 김명선** 「100엔 딜은 1회만 참여할 수 있어요. / 다른 특가 상품도 확인해 보세요! / 확인(쇼핑 카테고리로 이동)」 ② **Radar 룰 10/23 교체**(표성만 — BE가 fingerprint 목록 API 전달 → 100엔딜 상품 결제 시 차단) · 환불 시 목록 해제 실측 ③ **이메일 중복 차단 10/26**(`email_100_yen` · v2.1.0.6 · UNIFY-13071) ④ 결제 수단별 fingerprint 상이 ⑤ 발급국 JP·TW만 허용
+- 반영: Background · 현행 정책(「동일카드 · 동일 이메일」) · 차단 조건(판정 주체 → Stripe Radar 룰) · 문구 A UX안 열 · 이동처 E · B-2 오안내 위험 · XLT 후보 비고 · 정리 필요사항 #2·#3·#4·#10 갱신 · **#14 신설** · Related Docs · History — 11-05 태그(변경 6 · 추가 1) · 파란색
+- put_wiki_storage v1→v2 · check_wiki_storage pre/post exit 0 · XLT 등록 없음 · 게이트 없음(번역 없음) · 검토 노트 `T260_review_1105.md`(사이드 세션 공유 노트)
 
 ### 2026-11-04 · 사이드 세션 T260 — 재참여 차단 · 동일카드 결제 제한 안내 정책 신규 위키
 - 위키 [pageId 4993463591](https://wiki.workers-hub.com/pages/viewpage.action?pageId=4993463591) **v1** · 상위 `[Hogeun]` 3910828993(신규 기본 상위 규칙) · 정본 템플릿 · check_wiki_storage pre/post exit 0
