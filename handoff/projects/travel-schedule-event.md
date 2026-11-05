@@ -194,3 +194,4 @@ v12(11-02)에서 마케팅 수정본 v8 → v11 변경분을 반영했다 — �
 - 11-05 추가(v90): not_eligible_oa_desc 등록 확인 — 14:37 v2.7.0 5/5 일치(첫 조회 14:30엔 미반영) · 원장 uploaded_verified · 다운로드 사본 삭제
 - 11-05 추가(v105): ④ 카드 구조 전환 · discount_rate · cashback_rate 발송 때 치환 필요(개발 확인) · 카드 이미지 디자인팀 제작 후 URL 교체 · md/OA.md 「추천 상품권 캐러셀 카드」 규칙 신설 · render_oa_flex.py 속성 추가
 - 11-05 추가: beta 프로모션 페이지 360px 다국어 개행 점검 — 하위 위키 「여행 일정 등록 이벤트 - 다국어 개행 점검 (360px)」 pageId 4993478530(v3 · ja 7 · en 3 · th 3 · zh 3건 · ko는 lng 지정해도 일본어로 표시돼 미점검 · 유의사항 6 {0} 미치환 버그) · 문구(정책 불일치 유의사항 1 · 얼럿)는 사용자 결정으로 유지 · 등록 · 완료 화면은 LIFF 밖이라 미점검
+- 11-05 추가: 개행 수정 XLT 엑셀 — 5키 8셀(ja 5 · zh 2 · en 1 · 줄바꿈만 · 360px 실측 확인) · `~/Downloads/xlt_LV_DappPortal_WEB_travel_linebreak_5keys_20261105.xlsx` · 게이트 Auto-react gate_report_20261105_t248_linebreak.md exit 0 · 원장 pending 5 · 하위 위키 4993478530 v5 기록 · 업로드 후 재대조 필요
