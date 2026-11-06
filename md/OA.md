@@ -471,7 +471,7 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
 - ✅ **앱 브라우저 등록 절차 (2026-11-06 실측 — ④ 16건)**:
   1. **prod**: `https://313-dapp-portal-admin.hub.linecorp.com/` 루트 → 「Event Messages」 클릭(채널 기본값 `Dapp Portal (2006670905)` 확인)
   2. **beta**: 루트를 바로 열면 **403 Access Denied** — 먼저 beta 허브(`https://liam-hub.hub-beta.linecorp.com/service-view/313?menuId=23160&roleId=6970`)를 한 번 열어 세션을 만든 뒤 `https://313-dapp-portal-admin.hub-beta.linecorp.com/` 루트 → 「Event Messages」(채널 `Unifi Beta OA (2010418473)` 확인)
-  3. 이 사이트는 앱 브라우저의 **「사이트 수준 권한」이 막혀 있어 동작마다 「한 번만 허용」을 받는다** — 건별 클릭은 허용 창이 수십 번 뜬다. **`scripts/oa/liam_register_batch.js`를 `javascript_tool` 1회로 실행**해 N건을 한 번에 등록한다(CONFIG `channel` · `envMarker`(환경별 LIFF ID) · `items`[제목, postId]). 스크립트는 건마다 채널 · 제목 · postId · 언어 탭 5개 · FLEX 안 환경 표식이 맞을 때만 `CREATE`하고 어긋나면 멈춘다
+  3. 이 사이트는 앱 브라우저의 **「사이트 수준 권한」이 막혀 있어 동작마다 「한 번만 허용」을 받는다** — 건별 클릭은 허용 창이 수십 번 뜬다. **`scripts/liam_register_batch.js`를 `javascript_tool` 1회로 실행**해 N건을 한 번에 등록한다(CONFIG `channel` · `envMarker`(환경별 LIFF ID) · `items`[제목, postId]). 스크립트는 건마다 채널 · 제목 · postId · 언어 탭 5개 · FLEX 안 환경 표식이 맞을 때만 `CREATE`하고 어긋나면 멈춘다
   4. 결과의 messageId를 위키 「LIAM msg id」(beta / prod) 칸에 기록한다
   - 입력값은 React 제어 입력이라 **네이티브 setter + `input` 이벤트**로 넣고, **1초 기다린 뒤** `LOAD MESSAGE`를 누른다(바로 누르면 불러오지 않는다 — beta 실측). 응답이 없으면 한 번 더 누른다(스크립트에 들어 있다)
   - **재동기화가 필요한지 판단**: LIAM 목록의 등록 시각이 LPC `updatedAt`보다 늦으면 이미 최신이다(다시 `LOAD`·`UPDATE`할 필요 없음)

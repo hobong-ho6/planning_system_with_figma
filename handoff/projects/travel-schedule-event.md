@@ -73,7 +73,7 @@ v12(11-02)에서 마케팅 수정본 v8 → v11 변경분을 반영했다 — �
 
 - 사용자 지시 「LIAM에 Claude가 메시지 등록」(Chrome 확장은 사내 정책 차단) → 앱 브라우저 관리자 앱 루트에서 등록 — prod 8(Dapp Portal 2006670905) · beta 8(Unifi Beta OA 2010418473 · beta는 허브 먼저 열어야 루트 403 해소) · 5개 언어 · isActive Yes · ② · ③은 LIAM 등록(11-05 16:43 ~ 16:46)이 LPC 최종 수정 이후라 재동기화 불필요 · 위키 v123 msg id 기입
 - 앱 브라우저는 이 사이트의 사이트 수준 권한이 막혀 동작마다 허용 → 스크립트 1회 실행으로 일괄 등록(허용 1회)
-- 규칙화(사용자 지시): `scripts/oa/liam_register_batch.js` · `scripts/restore/lpc_payload_server.py` · `scripts/restore/lpc_bulk_put.js` 신설 · `md/OA.md` LIAM 절차 · 캐러셀 카드 Figma 구조 · `md/landpress.md` §10-6(앱 브라우저 · MCP media_upload) · §10-6-1(대량 쓰기) · CLAUDE.md 스크립트 표 · 가이드 대기 #5 ~ #7 · 레인 `2026-11-06-hogeun-oa-liam-batch` 점유 · 해제
+- 규칙화(사용자 지시): `scripts/liam_register_batch.js` · `scripts/restore/lpc_payload_server.py` · `scripts/restore/lpc_bulk_put.js` 신설 · `md/OA.md` LIAM 절차 · 캐러셀 카드 Figma 구조 · `md/landpress.md` §10-6(앱 브라우저 · MCP media_upload) · §10-6-1(대량 쓰기) · CLAUDE.md 스크립트 표 · 가이드 대기 #5 ~ #7 · 레인 `2026-11-06-hogeun-oa-liam-batch` 점유 · 해제
 
 ### 2026-11-06 — T248 OA ④ 할인 표기 OFF 통일 (v122 · 검토 v32)
 
