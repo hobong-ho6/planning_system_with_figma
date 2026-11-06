@@ -275,6 +275,8 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 | `check_lpc_nulls.py` | LPC 콘텐츠 필드 `null`·미게시 검사 (위키 정의 9개 컬렉션 × 4프로젝트 × 5개 언어 · 읽기 전용) | **LPC 쓰기 직전·직후** — exit 0 확인 |
 | `restore/lpc_safe_put.js` | LPC 안전 쓰기 템플릿 (read-modify-write + 재조회 대조) — ⛔ 직접 PUT 금지 | LPC에 쓸 때 (브라우저 콘솔) |
 | `restore/lpc_timer_put.js` | LPC **정해진 시각에 필드 값 변경**(CMS 예약은 공개/공개 취소만) — CMS 탭 안 브라우저 타이머 · Claude 세션과 무관 · DRY 시험 → 걸기 → 결과 `localStorage` (`md/landpress.md` §10-2-2) | 스위치 필드를 특정 시각에 켜고 끌 때 (브라우저 콘솔) |
+| `restore/lpc_bulk_put.js` + `restore/lpc_payload_server.py` | LPC **대량 안전 쓰기** — 로컬 서버가 적재 데이터를 CMS 탭에 넘기고 · 행마다 read-modify-write · 키 순서 무관 재조회 대조 · before/after 저장 (`md/landpress.md` §10-6-1) | 수십 행 LPC 쓰기 (앱 브라우저 CMS 탭 · 스크립트 1회) |
+| `oa/liam_register_batch.js` | **LIAM Event Message 일괄 등록** — 관리자 앱 루트 탭에서 1회 실행 · 건마다 채널 · 제목 · postId · 언어 탭 · 환경 표식 검증 후 CREATE (`md/OA.md` 「LIAM HUB 등록」) | LPC 등록 후 LIAM 등록 (사용자 확인 후) |
 | `check_wiki_storage.py` | 위키 storage/렌더 규칙 검사 (Screen 표 4컬럼·첨부 `ri:page` 금지·URL 이스케이프·**History 같은 날짜 행 중복** / 렌더 `Unknown Attachment`) | 3단계 위키 PUT **직전 `pre`·직후 `post`** — exit 0 확인 |
 | `put_wiki_storage.py` | 위키 본문(storage) **버전 가드 PUT** — 로컬 파일을 그대로 보내고, 라이브 버전이 `--expect-version`과 다르면 **PUT 하지 않고 exit 2**(다른 세션이 먼저 고침) · PUT 후 본문 길이가 5% 이상 어긋나면 exit 3. MCP `confluence_update_page`는 본문을 대화에 실어 큰 페이지에서 **본문 유실 위험**이 있다(2026-09-12 실측 사고) | 3단계 위키 PUT — **본문이 크거나 다른 세션과 동시 편집 가능성이 있으면 필수** |
 | `collect_frames.py` | 프레임 읽기 전용 배치 수집 (노드·코멘트 1회 조회 + 좌표 정규화 + 텍스트 매칭 + 어노테이션 렌더 → `frames.json`) | 3단계 Step 3~4 입력 생성 (프레임 다수 시) |

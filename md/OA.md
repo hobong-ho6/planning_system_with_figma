@@ -178,25 +178,26 @@ for l,u in URLS.items():                      # {lang: url}
 
 - 캠페인형 시안의 「가로 스크롤」은 잘린 이미지 나열 연출이다 — Figma export 에셋이 **한 장(840×504)** 이라 Flex에서도 hero 이미지 1장으로 넣는다(carousel 아님).
 
-### 추천 상품권 캐러셀 카드 — 이미지 · 문구 분리 (2026-11-05 사용자 결정 · T248 ④)
+### 추천 상품권 캐러셀 카드 — Figma 디자인 카드 (2026-11-06 개정 · T248 ④ · 종전 11-05 「이미지 · 문구 분리」 구조 대체)
 
-캐러셀(carousel)로 상품권을 추천할 때 **카드에 글자를 이미지로 굽지 않는다.** 카드 1장 = bubble 1개이고, 아래 순서 · 스타일 값을 쓴다(위 「① Flex 스타일 값」 · 「hero 이미지 규격」과 같은 값):
+캐러셀(carousel)로 상품권을 추천할 때 카드 1장 = bubble 1개이고, **Figma 디자인 카드 구조**를 쓴다(Figma `uyUkM7rWWg1vAwpf47um86` 79701:3491 · 79772:3740):
 
-**hero(상품 이미지) → 타이틀 → 정보 → 구분선 → 설명 → 버튼**
+**hero(카드 이미지) → 타이틀 → 정보 → 설명 · footer 버튼**
 
 | 영역 | Flex |
 |---|---|
-| hero | box `height:"180px"` · `paddingAll:"0px"` · `backgroundColor:"#F6F7FA"` · `justifyContent:"center"` → image `size:"full"` · `aspectRatio`=이미지 실측(상품 이미지 1:1) · `aspectMode:"fit"` |
-| 타이틀 | text 20px bold `#000000` `wrap` |
-| 정보 | box `margin:"10px"` → text 13px `#000000`(할인율 · 캐시백처럼 값 위주 한 줄) |
-| 구분선 | separator `margin:"20px"` · `#EFEFEF` |
-| 설명 | box `margin:"20px"` → text 13px `#000000` `wrap` |
-| 버튼 | footer `spacing:"sm"` → button `primary` · `#000000` · `height:"sm"` · 카드별 `uri` |
+| hero | image `size:"full"` · `aspectRatio:"14:9"` · `aspectMode:"cover"` · `action`(카드 링크) — 디자인 이미지 840×540(= 카드 280×180 × 3) |
+| 타이틀 | text 19px bold `#000000` `wrap` (body `paddingAll:"20px"`) — ⛔ **혜택률 숫자를 넣지 않는다**(11-06 디자이너 합의) |
+| 정보 | text 13px `#000000` `margin:"6px"` — 값 한 줄(예: 「올리브영 상품권 N% OFF + N% 포인트 적립」) |
+| 설명 | text 13px `#000000` `margin:"6px"` `wrap` — 3줄(줄바꿈 `\n`) |
+| 버튼 | ⛔ **footer**(`paddingStart/End/Bottom:"20px"` · `paddingTop:"0px"`) → box `#000000` · `cornerRadius:"8px"` · 위아래 14px · 좌우 10px · `action` → text 14px bold 흰색 가운데 |
 
-- **바꿔 넣는 곳은 이미지 URL · 텍스트 3개 · 버튼 label/uri뿐이다** — 문구는 LPC에서 언어별로 고치고, 이미지는 글자 없는 이미지 1장을 5개 언어가 같이 쓴다(언어별 카드 이미지 제작 불필요).
-- 카드 문구 안의 변수(`{{discount_rate}}` 등)는 **발송 때 치환**된다(이미지에 값을 굽지 않는다).
-- 실례: T248 ④-1 ~ ④-8(LPC beta 328 ~ 349 / prod 2160 ~ 2181) · 생성 스크립트 · 문구 · 복구원 Auto-react `reports/landpress/t248_oa4_card_struct_20261105/`.
-- 렌더: `scripts/render_oa_flex.py`가 `cornerRadius` · `flex` · `position:"absolute"`(offset*) · `padding*` · `alignItems` · `justifyContent` · `width` · `borderWidth`를 그린다(2026-11-05 추가).
+- ⛔ **버튼은 body가 아니라 footer에 둔다** — 캐러셀은 카드 높이를 가장 긴 카드에 맞추는데, 버튼이 body 끝에 있으면 문구가 짧은 카드의 버튼이 위로 올라간다. footer에 두면 카드 맨 아래에 고정된다(11-06 디자이너 요청 · LPC 반영).
+- ⛔ **버튼은 `button` 컴포넌트가 아니라 box + text로 그린다** — 라벨에 변수(`{{…_benefit_rate}}`)를 쓰기 위해서다.
+- **숫자 변수는 라벨대로 쓴다**: 「N% OFF」 · 「할인」 자리 = 할인율 · 「포인트 적립」 자리 = 캐시백율 · 「최대 N% 혜택」 · 버튼 「N% 최대 혜택받고 구매하기」 = 최대 혜택률(할인 + 캐시백). 할인 표기는 **「OFF」로 통일**(11-06 디자이너). 캐시백의 화면 표기는 **CX 용어집대로 「포인트 적립」**(ko · en 「Get N% back in points」 · th 「สะสมคะแนน」). 변수는 브랜드별로 나눈다(한 캐러셀에 여러 브랜드가 들어가므로 · `oliveyoung_` · `kcafe_` · `daiso_` · `max_` × `discount` · `cashback` · `benefit` `_rate`).
+- 카드 이미지는 1장을 5개 언어가 같이 쓴다(이미지 안 글자 포함 허용 — 11-06 사용자 결정).
+- 실례 · 생성 스크립트: Auto-react `reports/landpress/t248_oa_20261106/`(`card_copy_figma.py` 문구 · `card_build_figma.py` Flex · `img_urls.json` LPC 미디어 URL) · LPC beta 328 ~ 349 / prod 2160 ~ 2181 · LIAM 16건.
+- 렌더: `scripts/render_oa_flex.py`(근사 — 캐러셀 카드 높이 맞춤은 그리지 않는다. 실제 확인은 Flex Simulator).
 
 ### ⛔ hero 이미지 규격 — Figma 이미지 코멘트가 정의다 (2026-10-21 확정)
 
@@ -466,7 +467,14 @@ Landpress 등록이 끝나면 사내 CMS **LIAM HUB**에서 그 항목을 불러
 6. **`UPDATE`** 버튼으로 생성한다(신규 화면에서는 `CREATE`로 보일 수 있다).
 7. 생성되면 **`messageId`** 가 발급된다(예: `N6aa3b1eb401c795e1244ceef`). 이 값을 위키에 기록한다.
 
-- ⚠️ **브라우저 접근 경로**: 이 사내 CMS는 **Claude in Chrome(사용자의 실제 로그인 세션)** 으로 접근한다. 샌드박스 브라우저 패널에서는 리소스가 차단돼(`ERR_BLOCKED_BY_CLIENT`) 화면이 비어 보인다(실측 2026-09-12).
+- ⚠️ **브라우저 접근 경로 (2026-11-06 갱신)**: Chrome 확장(Claude in Chrome)은 **사내 정책으로 막혀 있다**. **Claude 앱 브라우저**에서 허브 주소를 열면 본문 iframe(`313-dapp-portal-admin…`)이 `ERR_BLOCKED_BY_CLIENT`로 차단돼 빈 화면이다 — **관리자 앱 루트를 최상위로 연다**(아래 항목).
+- ✅ **앱 브라우저 등록 절차 (2026-11-06 실측 — ④ 16건)**:
+  1. **prod**: `https://313-dapp-portal-admin.hub.linecorp.com/` 루트 → 「Event Messages」 클릭(채널 기본값 `Dapp Portal (2006670905)` 확인)
+  2. **beta**: 루트를 바로 열면 **403 Access Denied** — 먼저 beta 허브(`https://liam-hub.hub-beta.linecorp.com/service-view/313?menuId=23160&roleId=6970`)를 한 번 열어 세션을 만든 뒤 `https://313-dapp-portal-admin.hub-beta.linecorp.com/` 루트 → 「Event Messages」(채널 `Unifi Beta OA (2010418473)` 확인)
+  3. 이 사이트는 앱 브라우저의 **「사이트 수준 권한」이 막혀 있어 동작마다 「한 번만 허용」을 받는다** — 건별 클릭은 허용 창이 수십 번 뜬다. **`scripts/oa/liam_register_batch.js`를 `javascript_tool` 1회로 실행**해 N건을 한 번에 등록한다(CONFIG `channel` · `envMarker`(환경별 LIFF ID) · `items`[제목, postId]). 스크립트는 건마다 채널 · 제목 · postId · 언어 탭 5개 · FLEX 안 환경 표식이 맞을 때만 `CREATE`하고 어긋나면 멈춘다
+  4. 결과의 messageId를 위키 「LIAM msg id」(beta / prod) 칸에 기록한다
+  - 입력값은 React 제어 입력이라 **네이티브 setter + `input` 이벤트**로 넣고, **1초 기다린 뒤** `LOAD MESSAGE`를 누른다(바로 누르면 불러오지 않는다 — beta 실측). 응답이 없으면 한 번 더 누른다(스크립트에 들어 있다)
+  - **재동기화가 필요한지 판단**: LIAM 목록의 등록 시각이 LPC `updatedAt`보다 늦으면 이미 최신이다(다시 `LOAD`·`UPDATE`할 필요 없음)
 - ⚠️ **화면 본문은 교차 출처 iframe**이라 JS로 조작할 수 없다 — **좌표 클릭·타이핑으로만** 다룬다. 폼이 길어 `CREATE`가 화면 밖이면 **`Message 1 (FLEX)` 패널 헤더를 눌러 접으면** 버튼이 올라온다(마우스 휠·`End` 키로는 iframe이 스크롤되지 않는다, 실측 2026-09-12).
 - ✅ **`{{이름}}` 변수는 시스템이 인식한다** — `LOAD MESSAGE` 후 **`placeholders`** 필드에 변수명이 자동 추출된다(실측: `product_name, reservation_date`). 규칙 2의 표기가 실제 치환 키와 일치한다는 확인 지점이므로, **불러온 뒤 placeholders 목록이 기대한 변수와 같은지 본다.**
 - ⛔ **`isActive`는 항상 Yes(Active)로 등록한다**(2026-09-29 사용자 결정 — 종전 「테스트·미완성 문구면 체크를 풀고 생성」 규칙 **폐기**). 기본값이 체크(Yes)이므로 **해제하지 않고 그대로 생성**한다. 발송 여부는 LIAM이 아니라 **발송 운영(대상 추출·트리거)** 에서 통제한다.

@@ -507,3 +507,18 @@ body: { "exceptions": { …용어집 전체 JSON… }, "published": true }
 - **쓰기·게시** → **CMS API**(§10-3 · `lpc_safe_put.js` 방식). 용어집처럼 한 덩어리 JSON(24KB 규모)도 반드시 API로 넣는다
 - **UI 조작**은 API로 막히는 것만(현재 해당 없음 · LIAM HUB는 별도 시스템이라 UI만 된다 — `md/OA.md`)
 - 크롬 확장이 끊겼으면 **읽기는 MCP로 먼저 진행**하고, 쓰기 단계에 닿았을 때만 사용자에게 재연결을 요청한다
+- ⛔ **Chrome 확장(Claude in Chrome)은 사내 정책으로 막혀 있다(2026-11-06 사용자)** — CMS API 쓰기는 **Claude 앱 브라우저(Browser pane)** 탭에서 한다. 첫 진입 때 `workers-hub.okta.com` 로그인 화면이 나오면 **사용자가 그 창에서 로그인**한다(자격증명은 Claude가 다루지 않는다). 로그인 후 `GET /api/v1/projects/{pid}/roles/my` 200(ADMIN 등)을 확인하고 시작한다
+- **미디어(이미지) 업로드는 MCP `media_upload`로 한다**(2026-11-06 실측 — beta `line-objects.com/landpress-content-v2-…` · prod `vos.line-scdn.net/landpress-content-v2-…` URL 발급). 항목 쓰기가 아니라 MCP 쓰기 금지(§10-2-3)에 걸리지 않는다. 첫 호출이 401이면 MCP가 재로그인하므로 같은 호출을 재시도한다(재시도 전 `media_list`로 중복 확인)
+
+### 10-6-1. 대량 쓰기 — 로컬 데이터 서버 + `lpc_bulk_put.js` (2026-11-06 신설 · T248 OA ④ 80행 × 3회)
+
+여러 행(수십 건)을 쓸 때는 **JSON을 호출문에 싣지 않고** 로컬 서버로 탭에 넘긴다. 앱 브라우저는 작업마다 허용을 받을 수 있으므로 **스크립트 1회 실행으로 전 행을 처리**한다.
+
+1. 적재 데이터 `{ "<env>_<postId>_<locale>": { 바꿀 필드: 값 } }`를 만든다(생성 스크립트 · 바꿀 필드만)
+2. `python3 scripts/check_lpc_nulls.py` → exit 0
+3. 백그라운드: `python3 scripts/restore/lpc_payload_server.py <payload.json> <저장 폴더>`(127.0.0.1 · CMS 출처만 CORS 허용)
+4. CMS 탭에서 `scripts/restore/lpc_bulk_put.js`(CONFIG `filter` · `tag`)를 실행 — 행마다 현재 문서 GET → 콘텐츠 필드 전부 보존 + 바꿀 필드만 덮어 PUT → 재조회 대조. **대조는 키 순서 무관**(CMS가 객체 키 순서를 바꿔 돌려준다 — 단순 `JSON.stringify` 비교는 「wrote=false」 오탐, 실측). 쓰기 전후 원본은 서버가 저장 폴더에 `before_*` · `after_*`로 남긴다(복구원)
+5. 결과 `실패: 0` → **공개 API로 다시 읽어 적재 데이터와 대조 + beta = prod 대조**(환경별 URL만 정규화) → `check_lpc_nulls.py` exit 0
+6. 서버 종료(`kill`) · CMS 탭 닫기 · 저장 폴더를 Auto-react `reports/landpress/`에 커밋(복구원)
+
+- 처음 한 행만 써서 대조한 뒤 나머지를 진행한다(대조 기준이 틀리면 전 행이 실패로 찍힌다)
