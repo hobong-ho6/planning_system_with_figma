@@ -1,4 +1,0 @@
-- 세션: T248 OA 후속 · hogeun · `AD03230205`
-- 시작: 2026-11-06 16:35
-- 점유 자원: md/OA.md · md/landpress.md · md/guide-backlog.md · scripts/oa/ · scripts/restore/lpc_payload_server.py · scripts/restore/lpc_bulk_put.js
-- 목적: LIAM 일괄 등록 스크립트 · LPC 대량 쓰기 방식 · 캐러셀 카드 Figma 구조를 규칙에 반영(사용자 11-06 지시)
