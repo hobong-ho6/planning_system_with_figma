@@ -31,7 +31,7 @@
 - [ ] P1 OA ② 알림 신청 유도 — 대상 · 발송 시점 · 텍스트 메시지 ja · 링크 확정(위키 확정 필요 #4)
 - [ ] P2 Figma 원문 수정 요청 — 구분자 · 띄어쓰기 · 유의사항 통합 · 「병원」 → 「클리닉」
 - [ ] P1 프로모션 페이지 URL(FE 전달) → 위키 기입 · 배너 이동처 · SEO 위키 경로
-- [ ] P1 OA 이미지 호스팅 URL(① 히어로 600×360 · ② 카드 936×936 ko · ja) → JSON `{{IMAGE_URL}}` 교체 · ② 링크 `{{CLINIC_PAGE_URL}}` 확정 — 로컬 JSON `oa/clinic/*.json`(gitignore · 재생성: 세션 scratchpad build_oa.py)
+- [ ] P1 OA beta 등록 — **이미지는 beta 미디어에 업로드 완료**(279 OA ① 히어로 600×360 · 280 OA ② ja 카드 · 281 OA ② ko 카드 · 200 · 규격 OK) · URL 넣은 JSON 로컬 `oa/clinic/beta/`(gitignore) · ⛔ 항목 생성 미완 — 앱 브라우저에서 CMS 요청이 `ERR_BLOCKED_BY_CLIENT`(사이트 미허용) · `/api/v1/init` 401(미로그인) → 사용자 허용 · 로그인 후 OA ① ko 생성 → 4개 언어 → 게시 → 재조회 · OA ②는 링크(`{{CLINIC_PAGE_URL}}`) 확정 후
 - [ ] P2 OA ① LPC `oam_message_task_multi` 등록 · LIAM 등록(쓰기 규칙 · 사용자 확인 후) — 법무 「관련 OA는 라이선스 취득 후 발송」 조건 확인(확정 필요 #3)
 - [ ] P2 LPC `maintenance_banner` 클리닉 배너(beta postId 6 · 「캐시백」 문구 · 공지사항 이동처) 정리 여부 — XLT 전환 후 FE가 쓰지 않으면 끈다
 
