@@ -29,7 +29,7 @@
 - [x] 일본어 검토(5020680922 v6) 회신 반영 — ja 8건(notify_label · notify_btn · share_message · SEO description 「申し込む」 → 「受け取る」 · main_desc 「ご紹介します」 · home_banner_desc · OA ① 본문 「特典」 · OA ① 타이틀 「設定完了」) · 게이트 8차 exit 0 · 엑셀 재첨부 · 원장 갱신 · 로컬 Flex JSON(`oa/clinic/` · `beta/`) 수정
 - [x] OA ① ja 문구(設定完了 · 特典) Landpress 반영 — beta 378 · prod 2222 ja_JP 행 safe PUT · 공개 API 재조회 2/2 · null exit 0 · 복구원 after.json ja 행 갱신(Auto-react · 미커밋)
 - [x] LIAM 반영 — beta `N6af16ea026bae23cf7931188` EDIT → LOAD MESSAGE → UPDATE 완료 · 저장 후 재조회 확인(JA 타이틀 · 본문 · alt_text 신규 · postId 378 · Active) · prod `N6af16fc308d4f77178003edf`는 **사용자가 직접 UPDATE**(11-09 · 브라우저 패널이 prod 관리자 앱을 차단해 Claude 재조회 미확인)
-- [ ] P2 share_message 끝 문장 「一緒に申し込んでみませんか？」 동사 통일 여부 — 검토자 확인 권장(게이트 8차 d-2)
+- [x] share_message 끝 문장 — **검토된 그대로 유지**(「一緒に申し込んでみませんか？」 · 사용자 결정 11-09)
 - [ ] P1 OA ② 알림 신청 유도 — 대상 · 발송 시점 · 텍스트 메시지 ja · 링크 확정(위키 확정 필요 #4)
 - [ ] P2 Figma 원문 수정 요청 — 구분자 · 띄어쓰기 · 유의사항 통합 · 「병원」 → 「클리닉」
 - [ ] P1 프로모션 페이지 URL(FE 전달) → 위키 기입 · 배너 이동처 · SEO 위키 경로
@@ -38,7 +38,8 @@
 - [x] OA ① LIAM 등록 완료 — beta `N6af16ea026bae23cf7931188`(Unifi Beta OA) · prod `N6af16fc308d4f77178003edf`(Dapp Portal) · 5개 언어 · Active
 - [x] OA ② 알림 신청 유도 — **범위에서 삭제**(사용자 결정 11-09 · 위키 v16 · 일본어 검토 v5) · 업로드한 이미지 beta 280 · 281 · prod 2536 · 2537은 미사용
 - [ ] P2 OA ① LPC `oam_message_task_multi` 등록 · LIAM 등록(쓰기 규칙 · 사용자 확인 후) — 법무 「관련 OA는 라이선스 취득 후 발송」 조건 확인(확정 필요 #3)
-- [ ] P2 LPC `maintenance_banner` 클리닉 배너(beta postId 6 · 「캐시백」 문구 · 공지사항 이동처) 정리 여부 — XLT 전환 후 FE가 쓰지 않으면 끈다
+- [x] LPC `maintenance_banner` beta 클리닉 배너 postId 6 **영구 삭제**(사용자 결정 11-09 · 5개 언어 404 · 공개 API에 postId 1만 남음 · null exit 0 · 삭제 전 백업 Auto-react `reports/landpress/clinic_maint_banner_beta_20261109/before.json`(미커밋))
+- [x] FE Flow 지적 · 이주성 님 인라인 코멘트 — 사용자 해결(11-09)
 
 ## 주요 결정 사항 (이 프로젝트 한정)
 
