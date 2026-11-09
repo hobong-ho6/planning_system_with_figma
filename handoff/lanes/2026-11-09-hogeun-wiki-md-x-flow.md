@@ -1,4 +1,0 @@
-- 세션: 사이드 세션(clinic-open-notify) · hogeun · `local`
-- 시작: 2026-11-09 15:10
-- 점유 자원: md/wiki.md · md/guide-backlog.md
-- 목적: 「LINE으로 열기 팝업 필수」 규칙을 X 동선 결정(팝업 없이 LINE 이동)으로 정정
