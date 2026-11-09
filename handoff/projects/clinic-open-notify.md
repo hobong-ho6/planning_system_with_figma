@@ -4,14 +4,14 @@
 
 ## 대상 / 링크
 
-- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v5**(v5 Figma 코멘트 정책 · 친구 추가 시트 01_03 · Flow Web3 · SEO · 링크 미리보기 · OA ②) · 부모 `[Hogeun]` 3910828993
+- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v6**(v5 Figma 코멘트 정책 · 친구 추가 시트 01_03 · Flow Web3 · SEO · 링크 미리보기 · OA ② / v6 외부 앱(X) 동선 — 웹에서도 페이지 표시 · 신청 · 공유 버튼 클릭 시 팝업 없이 LINE 이동 · 공유 링크 partner_code · `line_app_only` 키 삭제) · 부모 `[Hogeun]` 3910828993
 - 연관: 여행 일정 등록 이벤트 위키 `4964266842` **v130**에 참여 완료 클리닉 배너를 다시 넣었다(Policy 「참여 완료」 · Screen 정책 · XLT 14 ~ 16 · GA `click_clinic_banner`)
 - SEO: Unifi SEO 위키 `4723429040` **v67** 「3. 이벤트 페이지」에 클리닉 오픈 알림 신청 정의(ja 메타 · title = `mini_common_header_title` · sitemap 제외 · 경로 FE 전달 후 기입 · 파란 글씨 + 11-09 추가 태그)
-- 일본어 검토: 하위 [5020680922](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5020680922) 「클리닉 오픈 알림 신청 이벤트 - 일본어 검토 (ja_JP)」 v1 — 검토 회신 대기
+- 일본어 검토: 하위 [5020680922](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5020680922) 「클리닉 오픈 알림 신청 이벤트 - 일본어 검토 (ja_JP)」 v2 — 검토 회신 대기
 - Figma(Web3): `GOCHAYBS7hIrmWRGNuJOKV` 83202:3552(메인 · 버튼 분기 코멘트) · 83202:3925(신청 완료 · 버튼 비활성 코멘트) · 83202:4463(친구 추가 바텀 시트 · Flow)
 - Figma: `uyUkM7rWWg1vAwpf47um86` 페이지 「1105 - 클리닉 그랜드 오프닝」 `79247:616`
 - 법무: LNS-1790 · 위키 5003948351(11-06 미팅 정리 — 「캐시백」 → 「포인트 페이백」 · 유의사항 면책 문구)
-- XLT: Dapp Portal WEB BROWSER · 프리픽스 `mini_promotion_clinic_` · 담당 FE **LV** · 신규 21키 + 값 변경 2키(`mini_promotion_travel_clinic_banner_title` · `_desc`) · 재사용 `mini_luckyball_notice_title` · `Apps_common_complete`
+- XLT: Dapp Portal WEB BROWSER · 프리픽스 `mini_promotion_clinic_` · 담당 FE **LV** · 신규 20키 + 값 변경 2키(`mini_promotion_travel_clinic_banner_title` · `_desc`) · 재사용 `mini_luckyball_notice_title` · `Apps_common_complete`
 - 엑셀: `xlt/xlt_LV_DappPortal_clinic_open_notify_20261109.xlsx`(위키 첨부) · 원장 `xlt_batch.py add` 완료 — **등록은 사용자**
 - 게이트 리포트: Auto-react `reports/gate/gate_report_20261109_clinic_open_notify.md`(check_gate_report exit 0 · 2차 독립 검토 반영)
 
