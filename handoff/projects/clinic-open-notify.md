@@ -4,7 +4,7 @@
 
 ## 대상 / 링크
 
-- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v6**(v5 Figma 코멘트 정책 · 친구 추가 시트 01_03 · Flow Web3 · SEO · 링크 미리보기 · OA ② / v6 외부 앱(X) 동선 — 웹에서도 페이지 표시 · 신청 · 공유 버튼 클릭 시 팝업 없이 LINE 이동 · 공유 링크 partner_code · `line_app_only` 키 삭제) · 부모 `[Hogeun]` 3910828993
+- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v8**(v7 Flow는 Web3 위젯만(사용자 편집) · v8 SEO 별도 영역 / v5 Figma 코멘트 정책 · 친구 추가 시트 01_03 · Flow Web3 · SEO · 링크 미리보기 · OA ② / v6 외부 앱(X) 동선 — 웹에서도 페이지 표시 · 신청 · 공유 버튼 클릭 시 팝업 없이 LINE 이동 · 공유 링크 partner_code · `line_app_only` 키 삭제) · 부모 `[Hogeun]` 3910828993
 - 연관: 여행 일정 등록 이벤트 위키 `4964266842` **v130**에 참여 완료 클리닉 배너를 다시 넣었다(Policy 「참여 완료」 · Screen 정책 · XLT 14 ~ 16 · GA `click_clinic_banner`)
 - SEO: Unifi SEO 위키 `4723429040` **v67** 「3. 이벤트 페이지」에 클리닉 오픈 알림 신청 정의(ja 메타 · title = `mini_common_header_title` · sitemap 제외 · 경로 FE 전달 후 기입 · 파란 글씨 + 11-09 추가 태그)
 - 일본어 검토: 하위 [5020680922](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5020680922) 「클리닉 오픈 알림 신청 이벤트 - 일본어 검토 (ja_JP)」 v2 — 검토 회신 대기
