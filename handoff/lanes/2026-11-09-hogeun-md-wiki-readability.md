@@ -1,4 +1,0 @@
-- 세션: Auto-react 위임 PS 세션 · hogeun · `AL02359162`
-- 시작: 2026-11-09
-- 점유 자원: md/wiki.md · md/guide-backlog.md
-- 목적: 위키 가독성(텍스트 나열 금지) 규칙 추가
