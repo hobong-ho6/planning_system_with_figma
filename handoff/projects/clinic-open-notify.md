@@ -12,7 +12,7 @@
 - Figma: `uyUkM7rWWg1vAwpf47um86` 페이지 「1105 - 클리닉 그랜드 오프닝」 `79247:616`
 - 법무: LNS-1790 · 위키 5003948351(11-06 미팅 정리 — 「캐시백」 → 「포인트 페이백」 · 유의사항 면책 문구)
 - XLT: Dapp Portal WEB BROWSER · 프리픽스 `mini_promotion_clinic_` · 담당 FE **LV** · 신규 20키 + 값 변경 2키(`mini_promotion_travel_clinic_banner_title` · `_desc`) · 재사용 `mini_luckyball_notice_title` · `Apps_common_complete`
-- 엑셀: `xlt/xlt_LV_DappPortal_clinic_open_notify_20261109.xlsx`(위키 첨부) · 원장 `xlt_batch.py add` 완료 — **등록은 사용자**
+- 엑셀: `xlt/xlt_LV_DappPortal_clinic_open_notify_20261109.xlsx`(위키 첨부) · 원장 `xlt_batch.py add` 완료 — **11-09 등록 · 라이브 확인 완료**
 - 게이트 리포트: Auto-react `reports/gate/gate_report_20261109_clinic_open_notify.md`(check_gate_report exit 0 · 2차 독립 검토 반영)
 
 ## 현재 상태
@@ -25,7 +25,7 @@
 
 ## 다음 할 일
 
-- [ ] P1 XLT 엑셀 등록(사용자) → 등록 확인
+- [x] XLT 22키 등록(사용자 11-09) → 라이브 재조회 일치(Dapp Portal · WEB BROWSER v2.7.0 · 22키 × 5개 언어 · 불일치 0) · 원장 uploaded · uploaded_verified
 - [x] 일본어 검토(5020680922 v6) 회신 반영 — ja 8건(notify_label · notify_btn · share_message · SEO description 「申し込む」 → 「受け取る」 · main_desc 「ご紹介します」 · home_banner_desc · OA ① 본문 「特典」 · OA ① 타이틀 「設定完了」) · 게이트 8차 exit 0 · 엑셀 재첨부 · 원장 갱신 · 로컬 Flex JSON(`oa/clinic/` · `beta/`) 수정
 - [x] OA ① ja 문구(設定完了 · 特典) Landpress 반영 — beta 378 · prod 2222 ja_JP 행 safe PUT · 공개 API 재조회 2/2 · null exit 0 · 복구원 after.json ja 행 갱신(Auto-react · 미커밋)
 - [x] LIAM 반영 — beta `N6af16ea026bae23cf7931188` EDIT → LOAD MESSAGE → UPDATE 완료 · 저장 후 재조회 확인(JA 타이틀 · 본문 · alt_text 신규 · postId 378 · Active) · prod `N6af16fc308d4f77178003edf`는 **사용자가 직접 UPDATE**(11-09 · 브라우저 패널이 prod 관리자 앱을 차단해 Claude 재조회 미확인)
