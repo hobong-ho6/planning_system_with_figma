@@ -4,7 +4,7 @@
 
 ## 대상 / 링크
 
-- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v13**(v12 Flow 위젯 Web3 83202:268 · OA ② 인라인 코멘트(사용자 · 이주성) · v13 OA ① beta 378 기록 / v9 · v10 Screen 행 순서(사용자) · v11 OA 메시지 생성 — 언어별 Flex JSON(로컬 `oa/clinic/`) · OA ② 텍스트 ja · 근사 렌더 3장 · OA ② 이미지 라벨 최신 / v7 Flow는 Web3 위젯만(사용자 편집) · v8 SEO 별도 영역 / v5 Figma 코멘트 정책 · 친구 추가 시트 01_03 · Flow Web3 · SEO · 링크 미리보기 · OA ② / v6 외부 앱(X) 동선 — 웹에서도 페이지 표시 · 신청 · 공유 버튼 클릭 시 팝업 없이 LINE 이동 · 공유 링크 partner_code · `line_app_only` 키 삭제) · 부모 `[Hogeun]` 3910828993
+- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v14**(v12 Flow 위젯 Web3 83202:268 · OA ② 인라인 코멘트(사용자 · 이주성) · v13 OA ① beta 378 기록 · v14 prod 2222 / v9 · v10 Screen 행 순서(사용자) · v11 OA 메시지 생성 — 언어별 Flex JSON(로컬 `oa/clinic/`) · OA ② 텍스트 ja · 근사 렌더 3장 · OA ② 이미지 라벨 최신 / v7 Flow는 Web3 위젯만(사용자 편집) · v8 SEO 별도 영역 / v5 Figma 코멘트 정책 · 친구 추가 시트 01_03 · Flow Web3 · SEO · 링크 미리보기 · OA ② / v6 외부 앱(X) 동선 — 웹에서도 페이지 표시 · 신청 · 공유 버튼 클릭 시 팝업 없이 LINE 이동 · 공유 링크 partner_code · `line_app_only` 키 삭제) · 부모 `[Hogeun]` 3910828993
 - 연관: 여행 일정 등록 이벤트 위키 `4964266842` **v130**에 참여 완료 클리닉 배너를 다시 넣었다(Policy 「참여 완료」 · Screen 정책 · XLT 14 ~ 16 · GA `click_clinic_banner`)
 - SEO: Unifi SEO 위키 `4723429040` **v67** 「3. 이벤트 페이지」에 클리닉 오픈 알림 신청 정의(ja 메타 · title = `mini_common_header_title` · sitemap 제외 · 경로 FE 전달 후 기입 · 파란 글씨 + 11-09 추가 태그)
 - 일본어 검토: 하위 [5020680922](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5020680922) 「클리닉 오픈 알림 신청 이벤트 - 일본어 검토 (ja_JP)」 v3 — 검토 회신 대기
@@ -32,7 +32,8 @@
 - [ ] P2 Figma 원문 수정 요청 — 구분자 · 띄어쓰기 · 유의사항 통합 · 「병원」 → 「클리닉」
 - [ ] P1 프로모션 페이지 URL(FE 전달) → 위키 기입 · 배너 이동처 · SEO 위키 경로
 - [x] OA ① Landpress beta 등록 완료 — `oam_message_task_multi` **postId 378**(5개 언어 게시 · 공개 API 5/5 일치 · null exit 0 · 복구원 Auto-react `reports/landpress/clinic_oa1_beta_20261109/after.json`(미커밋)) · 미디어 279(히어로) · 280 · 281(OA ② 카드)
-- [ ] P1 OA ① prod 등록 + LIAM beta · prod Event Message — 사용자 확인 후
+- [x] OA ① Landpress prod 등록 완료 — **postId 2222**(5개 언어 게시 · beta 378과 공개 API 5/5 일치 · 히어로 prod 미디어 2535 · OA ② 카드 prod 미디어 2536 ja · 2537 ko · 복구원 Auto-react `reports/landpress/clinic_oa1_prod_20261109/after.json`(미커밋))
+- [ ] P1 OA ① LIAM beta · prod Event Message 등록(`scripts/liam_register_batch.js` · 사용자 확인 후)
 - [ ] P1 OA ② 등록 — 링크 확정 후 · 위키 인라인 코멘트(이주성 님): 「직접 발송이 필요하면 말씀」 — 발송 주체 답변 필요
 - [ ] P2 OA ① LPC `oam_message_task_multi` 등록 · LIAM 등록(쓰기 규칙 · 사용자 확인 후) — 법무 「관련 OA는 라이선스 취득 후 발송」 조건 확인(확정 필요 #3)
 - [ ] P2 LPC `maintenance_banner` 클리닉 배너(beta postId 6 · 「캐시백」 문구 · 공지사항 이동처) 정리 여부 — XLT 전환 후 FE가 쓰지 않으면 끈다
