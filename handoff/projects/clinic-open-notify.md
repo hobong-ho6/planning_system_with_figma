@@ -27,7 +27,8 @@
 
 - [ ] P1 XLT 엑셀 등록(사용자) → 등록 확인
 - [x] 일본어 검토(5020680922 v6) 회신 반영 — ja 8건(notify_label · notify_btn · share_message · SEO description 「申し込む」 → 「受け取る」 · main_desc 「ご紹介します」 · home_banner_desc · OA ① 본문 「特典」 · OA ① 타이틀 「設定完了」) · 게이트 8차 exit 0 · 엑셀 재첨부 · 원장 갱신 · 로컬 Flex JSON(`oa/clinic/` · `beta/`) 수정
-- [ ] P1 OA ① ja 문구 변경을 Landpress beta 378 · prod 2222 ja_JP 행과 LIAM beta · prod 메시지에 반영(쓰기 — 사용자 확인 후)
+- [x] OA ① ja 문구(設定完了 · 特典) Landpress 반영 — beta 378 · prod 2222 ja_JP 행 safe PUT · 공개 API 재조회 2/2 · null exit 0 · 복구원 after.json ja 행 갱신(Auto-react · 미커밋)
+- [ ] P1 LIAM 반영 — beta `N6af16ea026bae23cf7931188` EDIT → LOAD MESSAGE → UPDATE 완료(UPDATE 전 JA 신규 · 타 언어 동일 확인 · **저장 후 재확인 미완** — 브라우저 패널이 관리자 앱 `assets/index-*.js` 차단) · prod `N6af16fc308d4f77178003edf` 미반영(LIAM은 등록 시점 스냅샷이라 LPC만 고쳐서는 안 바뀐다)
 - [ ] P2 share_message 끝 문장 「一緒に申し込んでみませんか？」 동사 통일 여부 — 검토자 확인 권장(게이트 8차 d-2)
 - [ ] P1 OA ② 알림 신청 유도 — 대상 · 발송 시점 · 텍스트 메시지 ja · 링크 확정(위키 확정 필요 #4)
 - [ ] P2 Figma 원문 수정 요청 — 구분자 · 띄어쓰기 · 유의사항 통합 · 「병원」 → 「클리닉」
