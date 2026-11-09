@@ -1,13 +1,13 @@
 # clinic-open-notify — 클리닉 오픈 알림 신청 이벤트 (12월 첫 결제 20% 포인트 페이백 사전 이벤트)
 
-> 담당자: `hogeun` · 마지막 갱신: 2026-11-09 · 일감 **T270**(Auto-react 원장 · executing · 마감 11-11 · LNS-1790) · 인수인계 위키 5004849532 v4 반영
+> 담당자: `hogeun` · 마지막 갱신: 2026-11-09(일본어 검토 반영) · 일감 **T270**(Auto-react 원장 · executing · 마감 11-11 · LNS-1790) · 인수인계 위키 5004849532 v4 반영
 
 ## 대상 / 링크
 
-- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v16**(v16 OA ② 삭제 / v15 LIAM msg id · 확정 필요 #1 유의사항 · #3 OA ① 법무 완료 / v12 Flow 위젯 Web3 83202:268 · OA ② 인라인 코멘트(사용자 · 이주성) · v13 OA ① beta 378 기록 · v14 prod 2222 / v9 · v10 Screen 행 순서(사용자) · v11 OA 메시지 생성 — 언어별 Flex JSON(로컬 `oa/clinic/`) · OA ② 텍스트 ja · 근사 렌더 3장 · OA ② 이미지 라벨 최신 / v7 Flow는 Web3 위젯만(사용자 편집) · v8 SEO 별도 영역 / v5 Figma 코멘트 정책 · 친구 추가 시트 01_03 · Flow Web3 · SEO · 링크 미리보기 · OA ② / v6 외부 앱(X) 동선 — 웹에서도 페이지 표시 · 신청 · 공유 버튼 클릭 시 팝업 없이 LINE 이동 · 공유 링크 partner_code · `line_app_only` 키 삭제) · 부모 `[Hogeun]` 3910828993
+- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v18**(v18 일본어 검토 회신 반영 — ja 8건 · 엑셀 · OA ① ja 렌더 재첨부 / v16 OA ② 삭제 / v15 LIAM msg id · 확정 필요 #1 유의사항 · #3 OA ① 법무 완료 / v12 Flow 위젯 Web3 83202:268 · OA ② 인라인 코멘트(사용자 · 이주성) · v13 OA ① beta 378 기록 · v14 prod 2222 / v9 · v10 Screen 행 순서(사용자) · v11 OA 메시지 생성 — 언어별 Flex JSON(로컬 `oa/clinic/`) · OA ② 텍스트 ja · 근사 렌더 3장 · OA ② 이미지 라벨 최신 / v7 Flow는 Web3 위젯만(사용자 편집) · v8 SEO 별도 영역 / v5 Figma 코멘트 정책 · 친구 추가 시트 01_03 · Flow Web3 · SEO · 링크 미리보기 · OA ② / v6 외부 앱(X) 동선 — 웹에서도 페이지 표시 · 신청 · 공유 버튼 클릭 시 팝업 없이 LINE 이동 · 공유 링크 partner_code · `line_app_only` 키 삭제) · 부모 `[Hogeun]` 3910828993
 - 연관: 여행 일정 등록 이벤트 위키 `4964266842` **v130**에 참여 완료 클리닉 배너를 다시 넣었다(Policy 「참여 완료」 · Screen 정책 · XLT 14 ~ 16 · GA `click_clinic_banner`)
-- SEO: Unifi SEO 위키 `4723429040` **v67** 「3. 이벤트 페이지」에 클리닉 오픈 알림 신청 정의(ja 메타 · title = `mini_common_header_title` · sitemap 제외 · 경로 FE 전달 후 기입 · 파란 글씨 + 11-09 추가 태그)
-- 일본어 검토: 하위 [5020680922](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5020680922) 「클리닉 오픈 알림 신청 이벤트 - 일본어 검토 (ja_JP)」 v5 — 검토 회신 대기
+- SEO: Unifi SEO 위키 `4723429040` **v67** **v68**(description ja 검토 반영) 「3. 이벤트 페이지」에 클리닉 오픈 알림 신청 정의(ja 메타 · title = `mini_common_header_title` · sitemap 제외 · 경로 FE 전달 후 기입 · 파란 글씨 + 11-09 추가 태그)
+- 일본어 검토: 하위 [5020680922](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5020680922) 「클리닉 오픈 알림 신청 이벤트 - 일본어 검토 (ja_JP)」 **v7** — 검토 회신(v6 · Azumi Soka) 반영 완료 · v6이 v4 기준 편집이라 되살아난 OA ② 영역은 v7에서 다시 뺐다
 - Figma(Web3): `GOCHAYBS7hIrmWRGNuJOKV` 83202:3552(메인 · 버튼 분기 코멘트) · 83202:3925(신청 완료 · 버튼 비활성 코멘트) · 83202:4463(친구 추가 바텀 시트 · Flow)
 - Figma: `uyUkM7rWWg1vAwpf47um86` 페이지 「1105 - 클리닉 그랜드 오프닝」 `79247:616`
 - 법무: LNS-1790 · 위키 5003948351(11-06 미팅 정리 — 「캐시백」 → 「포인트 페이백」 · 유의사항 면책 문구)
@@ -26,7 +26,9 @@
 ## 다음 할 일
 
 - [ ] P1 XLT 엑셀 등록(사용자) → 등록 확인
-- [ ] P1 일본어 검토(5020680922) 회신 반영 → 키 단위 패치 · OA ② 이미지 문구는 디자인 반영
+- [x] 일본어 검토(5020680922 v6) 회신 반영 — ja 8건(notify_label · notify_btn · share_message · SEO description 「申し込む」 → 「受け取る」 · main_desc 「ご紹介します」 · home_banner_desc · OA ① 본문 「特典」 · OA ① 타이틀 「設定完了」) · 게이트 8차 exit 0 · 엑셀 재첨부 · 원장 갱신 · 로컬 Flex JSON(`oa/clinic/` · `beta/`) 수정
+- [ ] P1 OA ① ja 문구 변경을 Landpress beta 378 · prod 2222 ja_JP 행과 LIAM beta · prod 메시지에 반영(쓰기 — 사용자 확인 후)
+- [ ] P2 share_message 끝 문장 「一緒に申し込んでみませんか？」 동사 통일 여부 — 검토자 확인 권장(게이트 8차 d-2)
 - [ ] P1 OA ② 알림 신청 유도 — 대상 · 발송 시점 · 텍스트 메시지 ja · 링크 확정(위키 확정 필요 #4)
 - [ ] P2 Figma 원문 수정 요청 — 구분자 · 띄어쓰기 · 유의사항 통합 · 「병원」 → 「클리닉」
 - [ ] P1 프로모션 페이지 URL(FE 전달) → 위키 기입 · 배너 이동처 · SEO 위키 경로
