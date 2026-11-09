@@ -6,6 +6,7 @@
 
 - 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v4**(v4 레이아웃 단 정정) · 부모 `[Hogeun]` 3910828993
 - 연관: 여행 일정 등록 이벤트 위키 `4964266842` **v130**에 참여 완료 클리닉 배너를 다시 넣었다(Policy 「참여 완료」 · Screen 정책 · XLT 14 ~ 16 · GA `click_clinic_banner`)
+- SEO: Unifi SEO 위키 `4723429040` **v67** 「3. 이벤트 페이지」에 클리닉 오픈 알림 신청 정의(ja 메타 · title = `mini_common_header_title` · sitemap 제외 · 경로 FE 전달 후 기입 · 파란 글씨 + 11-09 추가 태그)
 - Figma: `uyUkM7rWWg1vAwpf47um86` 페이지 「1105 - 클리닉 그랜드 오프닝」 `79247:616`
 - 법무: LNS-1790 · 위키 5003948351(11-06 미팅 정리 — 「캐시백」 → 「포인트 페이백」 · 유의사항 면책 문구)
 - XLT: Dapp Portal WEB BROWSER · 프리픽스 `mini_promotion_clinic_` · 담당 FE **LV** · 신규 21키 + 값 변경 2키(`mini_promotion_travel_clinic_banner_title` · `_desc`) · 재사용 `mini_luckyball_notice_title` · `Apps_common_complete`
@@ -26,7 +27,7 @@
 - [ ] P1 유의사항 전체 문구 확인(사용자 — 위키 「확정 필요」 #1)
 - [ ] P1 일본어 검토 위키 생성 — **사용자가 문구 정리 후 요청할 때**(main_desc 「한국 시술 … 걱정 없이, 안심하고」 문장 포함)
 - [ ] P2 Figma 원문 수정 요청 — 구분자 · 띄어쓰기 · 유의사항 통합 · 「병원」 → 「클리닉」
-- [ ] P1 프로모션 페이지 URL(FE 전달) → 위키 기입 · 배너 이동처
+- [ ] P1 프로모션 페이지 URL(FE 전달) → 위키 기입 · 배너 이동처 · SEO 위키 경로
 - [ ] P2 OA ① LPC `oam_message_task_multi` 등록 · LIAM 등록(쓰기 규칙 · 사용자 확인 후) — 법무 「관련 OA는 라이선스 취득 후 발송」 조건 확인(확정 필요 #3)
 - [ ] P2 LPC `maintenance_banner` 클리닉 배너(beta postId 6 · 「캐시백」 문구 · 공지사항 이동처) 정리 여부 — XLT 전환 후 FE가 쓰지 않으면 끈다
 
