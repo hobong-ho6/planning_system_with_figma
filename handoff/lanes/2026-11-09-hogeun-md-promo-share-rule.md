@@ -1,4 +1,0 @@
-- 세션: Auto-react 위임 PS 세션 · hogeun · `AL02359162`
-- 시작: 2026-11-09
-- 점유 자원: md/wiki.md · md/guide-backlog.md
-- 목적: 프로모션 페이지 공유하기(LINE 메시지 공유) 규칙 추가
