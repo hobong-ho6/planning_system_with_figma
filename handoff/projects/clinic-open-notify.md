@@ -4,7 +4,7 @@
 
 ## 대상 / 링크
 
-- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v2** · 부모 `[Hogeun]` 3910828993
+- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v4**(v4 레이아웃 단 정정) · 부모 `[Hogeun]` 3910828993
 - 연관: 여행 일정 등록 이벤트 위키 `4964266842` **v130**에 참여 완료 클리닉 배너를 다시 넣었다(Policy 「참여 완료」 · Screen 정책 · XLT 14 ~ 16 · GA `click_clinic_banner`)
 - Figma: `uyUkM7rWWg1vAwpf47um86` 페이지 「1105 - 클리닉 그랜드 오프닝」 `79247:616`
 - 법무: LNS-1790 · 위키 5003948351(11-06 미팅 정리 — 「캐시백」 → 「포인트 페이백」 · 유의사항 면책 문구)
