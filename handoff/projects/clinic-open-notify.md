@@ -4,17 +4,17 @@
 
 ## 대상 / 링크
 
-- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v1** · 부모 `[Hogeun]` 3910828993
+- 위키: [pageId 5004850074](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5004850074) 「클리닉 오픈 알림 신청 이벤트 - LV」 — **현재 v2** · 부모 `[Hogeun]` 3910828993
 - 연관: 여행 일정 등록 이벤트 위키 `4964266842` **v130**에 참여 완료 클리닉 배너를 다시 넣었다(Policy 「참여 완료」 · Screen 정책 · XLT 14 ~ 16 · GA `click_clinic_banner`)
 - Figma: `uyUkM7rWWg1vAwpf47um86` 페이지 「1105 - 클리닉 그랜드 오프닝」 `79247:616`
 - 법무: LNS-1790 · 위키 5003948351(11-06 미팅 정리 — 「캐시백」 → 「포인트 페이백」 · 유의사항 면책 문구)
-- XLT: Dapp Portal WEB BROWSER · 프리픽스 `mini_promotion_clinic_` · 담당 FE **LV** · 신규 22키 + 값 변경 2키(`mini_promotion_travel_clinic_banner_title` · `_desc`) · 재사용 `mini_luckyball_notice_title` · `Apps_common_complete`
+- XLT: Dapp Portal WEB BROWSER · 프리픽스 `mini_promotion_clinic_` · 담당 FE **LV** · 신규 21키 + 값 변경 2키(`mini_promotion_travel_clinic_banner_title` · `_desc`) · 재사용 `mini_luckyball_notice_title` · `Apps_common_complete`
 - 엑셀: `xlt/xlt_LV_DappPortal_clinic_open_notify_20261109.xlsx`(위키 첨부) · 원장 `xlt_batch.py add` 완료 — **등록은 사용자**
 - 게이트 리포트: Auto-react `reports/gate/gate_report_20261109_clinic_open_notify.md`(check_gate_report exit 0 · 2차 독립 검토 반영)
 
 ## 현재 상태
 
-위키 v1을 생성했다(Screen 5행 · OA ① · 다국어 · 확정 필요 3건). 렌더 검사 pre · post exit 0. 프로모션 페이지는 **일본어 전용**이라 해당 키는 ko · ja만 번역했고, 엑셀의 en · th · zh 칸에는 ja 값을 넣었다. 홈 배너 · 참여 완료 배너 · OA ①은 5개 언어로 번역했다.
+위키 v1을 생성했고 v2에서 원문을 정리했다(「병원」 → 「클리닉」 · 유의사항 2 · 4 통합 · 법무 문구 키 contents5 → contents4 · 원장 contents5 not_needed). Screen 5행 · OA ① · 다국어 · 확정 필요 3건. 렌더 검사 pre · post exit 0. 프로모션 페이지는 **일본어 전용**이라 해당 키는 ko · ja만 번역했고, 엑셀의 en · th · zh 칸에는 ja 값을 넣었다. 홈 배너 · 참여 완료 배너 · OA ①은 5개 언어로 번역했다.
 
 ## 진행 중 작업(WIP)
 
@@ -24,6 +24,8 @@
 
 - [ ] P1 XLT 엑셀 등록(사용자) → 등록 확인
 - [ ] P1 유의사항 전체 문구 확인(사용자 — 위키 「확정 필요」 #1)
+- [ ] P1 일본어 검토 위키 생성 — **사용자가 문구 정리 후 요청할 때**(main_desc 「한국 시술 … 걱정 없이, 안심하고」 문장 포함)
+- [ ] P2 Figma 원문 수정 요청 — 구분자 · 띄어쓰기 · 유의사항 통합 · 「병원」 → 「클리닉」
 - [ ] P1 프로모션 페이지 URL(FE 전달) → 위키 기입 · 배너 이동처
 - [ ] P2 OA ① LPC `oam_message_task_multi` 등록 · LIAM 등록(쓰기 규칙 · 사용자 확인 후) — 법무 「관련 OA는 라이선스 취득 후 발송」 조건 확인(확정 필요 #3)
 - [ ] P2 LPC `maintenance_banner` 클리닉 배너(beta postId 6 · 「캐시백」 문구 · 공지사항 이동처) 정리 여부 — XLT 전환 후 FE가 쓰지 않으면 끈다
@@ -35,12 +37,14 @@
 | 11-09 | 신규 페이지로 작성(여행 위키 확장 아님) · 부모 `[Hogeun]` · 담당 FE 전부 LV | 사용자 선택 |
 | 11-09 | 프로모션 페이지 일본어 전용 · 신청 대상 누구나 · 참여 완료 배너 = 참여 완료 사용자 전원 · 배너 문구 XLT 관리 | 사용자 지시 |
 | 11-09 | 「캐시백」 번역 = 기존 등록 표현(ja ポイント還元 · en back in points · th สะสมคะแนน · zh 點數累積) · ko는 법무 지정 「포인트 페이백」 | 사용자 지시 · 법무 11-06 |
+| 11-09 | 원문 정리: 「병원」 → 「클리닉」 통일 · 유의사항 2 · 4 통합 · 「첫 결제」 조건 문구는 그대로(페이지 본문이 설명) · main_desc는 일본어 검토 후 | 사용자 지시(v2) |
 | 11-09 | OA ① = 알림 신청 완료 즉시 발송 · 알림 해제 = Unifi LINE 공식 계정 친구 해제 · OA 범위는 신청 완료 1건만 | 사용자 지시 |
 
 ## ⛔ 사용자 결정으로 종결 (재작업·재제안 금지 — 이 프로젝트 한정)
 
 - 신청 기간 · 클리닉 오픈 후 페이지 · 배너 처리 — 다루지 않음(11-09)
 - 12월 오픈 안내 OA — 이번 범위 아님(11-09)
+- 홈 배너 · 메인 타이틀에 「첫 결제」 조건 추가 — 프로모션 페이지 본문에서 설명하므로 불필요(11-09)
 
 ## 세션 기록 (최신 위, 최대 5개)
 
