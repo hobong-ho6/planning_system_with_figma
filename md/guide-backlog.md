@@ -36,6 +36,7 @@
 | 5 | OA 추천 상품권 캐러셀 카드 = **Figma 디자인 카드**(hero 14:9 cover → 타이틀(숫자 없음) → 정보 → 설명 · **버튼 footer 고정** · box 버튼 라벨 변수) · 숫자 변수는 라벨대로(OFF/할인 = 할인율 · 포인트 적립 = 캐시백율 · 최대 혜택 = 합계) · 캐시백 화면 표기 = CX 용어집 「포인트 적립」 | 규칙 | OA 작업 모드 카드 · 가이드 탭 OA 섹션 | `md/OA.md` 「추천 상품권 캐러셀 카드」 | 2026-11-06 |
 | 6 | **LIAM Event Message를 Claude가 앱 브라우저에서 일괄 등록** — Chrome 확장 사내 정책 차단 → 관리자 앱 루트(beta는 허브 먼저) · `scripts/liam_register_batch.js` 1회 실행(허용 1회 · 건별 검증 후 CREATE) | 새 기능 | OA 작업 모드 · 「이렇게 요청하세요」(「LIAM 등록해줘」) · 시스템 가이드 스크립트 표 | `md/OA.md` 「LIAM HUB 등록」 | 2026-11-06 |
 | 7 | **LPC 대량 쓰기** — 앱 브라우저 CMS 탭 + `scripts/restore/lpc_payload_server.py`(로컬 데이터 서버) + `scripts/restore/lpc_bulk_put.js`(안전 쓰기 · 키 순서 무관 대조 · before/after 저장) · 이미지는 MCP `media_upload` | 새 기능 | 시스템 가이드 스크립트 표 · LPC 작업 모드 | `md/landpress.md` §10-6 · §10-6-1 | 2026-11-06 |
+| 8 | ⛔ **프로모션 페이지 「LINE으로 열기」 팝업 필수 정의** — LIFF 페이지는 X 등 외부 IAB에서 참여 불가 → 외부 유입 프로모션은 팝업 필수 · 인터스티셜이 있어도 생략 금지 · 진입 경로 · 팝업 문구(XLT) · LINE 앱 URL 확인 | 규칙 | 가이드 탭 위키 생성 · 정책 작성 카드 · 「이렇게 요청하세요」 프로모션 기획 예시 | `md/wiki.md` 「프로모션 페이지 — LINE으로 열기 팝업」 · 사용자 지시 2026-11-09 | 2026-11-09 |
 
 ## 반영 이력
 
