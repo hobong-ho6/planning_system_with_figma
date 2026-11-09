@@ -37,6 +37,7 @@
 | 6 | **LIAM Event Message를 Claude가 앱 브라우저에서 일괄 등록** — Chrome 확장 사내 정책 차단 → 관리자 앱 루트(beta는 허브 먼저) · `scripts/liam_register_batch.js` 1회 실행(허용 1회 · 건별 검증 후 CREATE) | 새 기능 | OA 작업 모드 · 「이렇게 요청하세요」(「LIAM 등록해줘」) · 시스템 가이드 스크립트 표 | `md/OA.md` 「LIAM HUB 등록」 | 2026-11-06 |
 | 7 | **LPC 대량 쓰기** — 앱 브라우저 CMS 탭 + `scripts/restore/lpc_payload_server.py`(로컬 데이터 서버) + `scripts/restore/lpc_bulk_put.js`(안전 쓰기 · 키 순서 무관 대조 · before/after 저장) · 이미지는 MCP `media_upload` | 새 기능 | 시스템 가이드 스크립트 표 · LPC 작업 모드 | `md/landpress.md` §10-6 · §10-6-1 | 2026-11-06 |
 | 8 | ⛔ **프로모션 페이지 「LINE으로 열기」 팝업 필수 정의** — LIFF 페이지는 X 등 외부 IAB에서 참여 불가 → 외부 유입 프로모션은 팝업 필수 · 인터스티셜이 있어도 생략 금지 · 진입 경로 · 팝업 문구(XLT) · LINE 앱 URL 확인 | 규칙 | 가이드 탭 위키 생성 · 정책 작성 카드 · 「이렇게 요청하세요」 프로모션 기획 예시 | `md/wiki.md` 「프로모션 페이지 — LINE으로 열기 팝업」 · 사용자 지시 2026-11-09 | 2026-11-09 |
+| 9 | ⛔ **프로모션 페이지 공유하기 = 「LINE 메시지로 공유」**(링크 복사 아님) — Flex OA(Landpress · LIAM) 미사용 · 공유 문구(XLT · 5개 언어)만 FE 전달 · 기획 시 문구 · 링크(partner_code) · OGP 이미지 · 제목 · 설명 확정 | 규칙 | 가이드 탭 위키 생성 · 정책 작성 카드 · 「이렇게 요청하세요」 프로모션 기획 예시 | `md/wiki.md` 「프로모션 페이지 — 공유하기」 · 사용자 지시 2026-11-09 | 2026-11-09 |
 
 ## 반영 이력
 

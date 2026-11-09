@@ -184,6 +184,16 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 - **기획 시 확인할 것** — ① 진입 경로(LINE 앱 / 외부 웹 / X 등 SNS IAB) ② 경로별 동작(참여 가능 여부 · 팝업 노출 여부) ③ 팝업 문구(XLT Key · 5개 언어) ④ 팝업에서 이동할 LINE 앱 URL(miniapp LIFF 경로).
 - 근거 스레드: web3_dev [2026-11-09](https://group-all-workers-hub.slack.com/archives/C08HYMJ7Z8V/p1794188224070839) — 위키에는 Related Docs(Discussion 행)로 남긴다.
 
+### ⛔ 프로모션 페이지 — 공유하기는 「LINE 메시지로 공유」 (2026-11-09 신설 — 생성·업데이트 공통)
+
+**프로모션 페이지의 공유하기는 「링크 복사」가 아니라 「LINE 메시지로 공유」(LIFF shareTargetPicker 계열)로 기획한다.** 여행 일정 등록 이벤트(pageId `4964266842`)의 공유 버튼이 링크 복사로 되어 있어, 100엔딜처럼 메시지 공유로 바꾸기로 했다(11-09).
+
+- **Flex OA 메시지(Landpress · LIAM)를 쓰지 않는다.** 공유 메시지는 FE가 직접 발행하고 BE · LPC에서 관리하지 않는다(BE · FE 확인 11-09). 기획자는 **공유 문구(텍스트)만** XLT Key 또는 5개 언어 표로 FE에 넘긴다. 공유 링크의 `partner_code`(레퍼럴)는 FE가 붙인다.
+- **받는 사람 대화방에 보이는 모양** — ① 텍스트 말풍선(공유 문구 + 단축 링크 `https://lin.ee/…?v=1&partner_code=…`) ② 그 아래 링크 미리보기 카드(OGP 이미지 · 제목 · 설명).
+- **기획 시 정할 것** — ⓐ 공유 문구(XLT · 5개 언어) ⓑ 링크(단축 URL · `partner_code` 레퍼럴) ⓒ OGP 이미지 · 제목 · 설명(미리보기 카드에 노출된다).
+- 참고 캡처(100엔딜 공유 실측 11-09): Auto-react `reports/landpress/t248_oa_20261109_coupon_url/line_share_message_example_20261109.webp` — 대화방 이름 등 개인 표시가 있어 이 저장소(public)에는 복사하지 않는다.
+- 근거 스레드: 위 「LINE으로 열기」 절과 같은 web3_dev 스레드(11-09).
+
 ### 위키 생성 — 정보 없는 섹션 처리
 
 `Schedule`·`Policy`·`Screen` 등 **아직 내용이 없는 섹션은 골격만 남기고 비워 둔다** — 추측으로 채우지 않는다. `Schedule`은 `Design / Development / Release` 항목 골격 정도만 둔다. 사용자가 화면 반영까지 요청하면 그때 Step 3~5로 Screen 표를 채운다.
