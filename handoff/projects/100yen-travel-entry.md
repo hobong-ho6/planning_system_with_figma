@@ -39,3 +39,4 @@
 - Figma REST(키체인 figma-pat)로 텍스트 · 이미지 · 코멘트 조회 · 레지스트리 3종(Unifi WEB · IPHONE · Dapp Portal) 실조회 · 대기 키 대조 0건
 - 유사 키 히트는 전부 Dapp Portal LV `mini_promotion_travel_*` — 서비스 · 팀이 달라 신규 `UF_` 키로 두고 번역 문형만 맞춤
 - [x] 2026-11-11 XLT 등록 확인 — Unifi WEB BROWSER v1.15.2에 신규 7키 등록 · 5개 언어가 엑셀과 일치. IPHONE에는 올리지 않는다(사용자 결정 11-11) — 등록 완료
+- [ ] 2026-11-11 ja 버튼 축약(사용자 결정 · 실기기 2줄 줄바꿈) — sheet_btn 「日程を登録してコーヒーを受け取る」 · banner_btn 「コーヒーを受け取る」 · ja만 · 엑셀 `xlt/xlt_output_20261111193839.xlsx` · 위키 v7 · 첨부 v4 · 게이트 4차 P0 0 → **사용자 WEB 재업로드 후 등록값 확인**
