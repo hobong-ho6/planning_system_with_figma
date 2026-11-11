@@ -38,3 +38,4 @@
 - 사용자 결정 5건 반영(v2 · v3 — 1/27 이후 기존 바텀시트 · 배너 미노출) · 타이틀 1키 병합(게이트 2차 P0 0) · 일본어 검토 하위 페이지 생성
 - Figma REST(키체인 figma-pat)로 텍스트 · 이미지 · 코멘트 조회 · 레지스트리 3종(Unifi WEB · IPHONE · Dapp Portal) 실조회 · 대기 키 대조 0건
 - 유사 키 히트는 전부 Dapp Portal LV `mini_promotion_travel_*` — 서비스 · 팀이 달라 신규 `UF_` 키로 두고 번역 문형만 맞춤
+- [x] 2026-11-11 XLT 등록 확인 — Unifi WEB BROWSER v1.15.2에 신규 7키 등록 · 5개 언어가 엑셀과 일치. **IPHONE(v1.3.9 · v1.4.0)에는 없음** → IPHONE 업로드 여부 확인 필요
