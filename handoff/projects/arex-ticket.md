@@ -7,7 +7,7 @@
 - 기획 정본(정준영 · 남의 페이지 — 본문 수정 안 함): [AREX 공항철도 동선 제공](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5043902344) `5043902344` — 11-19 확인 v75
 - 하위 신규 1: [AREX 조사 리포트 (11-19)](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071419749) `5071419749` — **v1**
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
-- 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v1** · 화면 17섹션(Figma 프레임 25) · key·JSON 칸은 사용자가 채움
+- 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v2** · Screen 표 1개(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · collection·key·JSON 칸은 사용자가 채움
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
 - 관련: [UNIFY-13718](https://jira.workers-hub.com/browse/UNIFY-13718) · 기존 API 정리 `5035185824` · FE API 정리 `5059914396` · 정책 비교 `5049820028`
 - 출시: Unifi AREX 11/25(수)
@@ -36,6 +36,12 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — Admin 콘텐츠 설정 v2 재구성
+
+- 완료(사용자 지시 · 승인): `5072857588` v1→v2. 작성 예시와 화면별 섹션 17개를 삭제했다. 기획 위키 형식의 Screen 표 1개(`Screen ID | Screen | Description | LPC`)로 교체했다. 행은 `arex_detail_01`(AREX - Detail `84407-138` · 빨간 box 5개)과 `arex_kiosk_guide_02`(AREX - Guide `84407-369` · box 1개)다. 이미지 ⓝ = Description 번호 = LPC 표 No.
+- 첨부: 같은 이름 2장은 새 이미지로 교체했고(`/data`), 구 화면 이미지 15장은 사용자 승인 후 삭제했다. 렌더 확인 결과 이미지 2 · Unknown macro 0.
+- 참고: 같은 Figma 페이지에 `AREX - Payment`(`84407-504`) · `AREX - Ticket`(`84407-614`)도 있다. 사용자가 지정하지 않아 넣지 않았다.
 
 ### 2026-11-19 — Admin 콘텐츠 설정 틀 페이지 생성
 
