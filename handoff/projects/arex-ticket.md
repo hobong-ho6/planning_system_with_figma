@@ -7,6 +7,7 @@
 - 기획 정본(정준영 · 남의 페이지 — 본문 수정 안 함): [AREX 공항철도 동선 제공](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5043902344) `5043902344` — 11-19 확인 v75
 - 하위 신규 1: [AREX 조사 리포트 (11-19)](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071419749) `5071419749` — **v1**
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
+- 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v1** · 화면 17섹션(Figma 프레임 25) · key·JSON 칸은 사용자가 채움
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
 - 관련: [UNIFY-13718](https://jira.workers-hub.com/browse/UNIFY-13718) · 기존 API 정리 `5035185824` · FE API 정리 `5059914396` · 정책 비교 `5049820028`
 - 출시: Unifi AREX 11/25(수)
@@ -21,6 +22,8 @@
 
 ## 다음 할 일
 
+- [ ] P1 `5072857588` key · beta/prod JSON 작성(사용자) · prod 호스트 확인(`api-reward-unifi.line-apps.com` 추정 — 11-19 무응답) · OA 메시지가 contents API 대상인지 확인
+
 - [ ] P1 분석 페이지 10절 「AREX에 확인할 것」 13건 — 정준영 기획 정리 필요사항 #13(확인 대상 전종화)과 합쳐 묻는지 사용자 판단
 - [ ] P3 「AREX 공항철도 정책 비교」 `5049820028`(11-14)이 Auto-react 원본 리포트 5절 관련 위키 목록에 없음 — 위키 `5071419749`에는 5-1 표와 Related Docs에 이미 넣었다. 원본 리포트 보완은 Auto-react 쪽 일(11-19 메인 지적)
 - [ ] P2 환불 정책 확정(법무 · 리스크) 뒤 두 페이지의 환불 행 갱신 — 기획 v75(발급 전 환불 · 75% 자동 환불) ↔ Slack 11-18(결제 시점부터 환불 불가)
@@ -33,6 +36,12 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — Admin 콘텐츠 설정 틀 페이지 생성
+
+- 완료: `5072857588` v1 생성(사용자 승인 후) · 이미지 17장 첨부 · 렌더 확인(이미지 17 · Unknown macro 0 · Unknown Attachment 0) · 부모 하위 목록 노출. 부모 v75는 그대로.
+- 구성: Policy(API 형식 `/v1/contents/{type}/{key}?locale=` · beta 호스트) · 작성 예시(`info_banner`/`arex-detail_page` 실응답 — 상세 상단 분홍 띠, `backgroundColor #FD184F`) · 화면별 [이미지 | `콘텐츠 영역 · type · key · beta JSON · prod JSON · 비고`] 표. 후보 29행은 파란색 「(후보)」, 근거는 부모 Description 번호(「Admin에서 관리한다」).
+- 발견: Figma 프레임(`78991:*`)은 이름이 없어 프레임 위 라벨로 부모 Screen ID와 대응시켰다. OA 7005(라벨 「공항 가이드 화면에서 LINE 친구추가 시」)↔`arex_oa_purchased_01`, 7678(「한국 도착 시점」)↔`arex_oa_arrival_01`은 라벨과 부모 정의가 다르다. 요청 locale `en-US` → 응답 `en_US`.
 
 ### 2026-11-19 — AREX 하위 위키 2종 생성
 
