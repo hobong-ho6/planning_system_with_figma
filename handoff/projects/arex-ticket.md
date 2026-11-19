@@ -7,7 +7,7 @@
 - 기획 정본(정준영 · 남의 페이지 — 본문 수정 안 함): [AREX 공항철도 동선 제공](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5043902344) `5043902344` — 11-19 확인 v75
 - 하위 신규 1: [AREX 조사 리포트 (11-19)](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071419749) `5071419749` — **v1**
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
-- 하위 신규 4: [AREX 다국어 용어 검토](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071424286) `5071424286` — **v1** · 1절 AREX 공식 확인 용어(ja · en · zh_TW · th 공식 없음) · 2절 전체 용어 검토표(검토 의견 칸) · 3절 공식과 다르게 쓴 곳
+- 하위 신규 4: [AREX 다국어 용어 검토](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071424286) `5071424286` — **v2** · 4절 다국어 번역본(6키 × 5개 언어) 추가 · 1절 AREX 공식 확인 용어(ja · en · zh_TW · th 공식 없음) · 2절 전체 용어 검토표(검토 의견 칸) · 3절 공식과 다르게 쓴 곳
 - 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v6** · Screen 표 1개(4열: `Screen ID | Screen | Description | Admin`)(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · 4열 `Admin`(No · collection `AREX` · beta key · prod key — key는 사용자가 채움) · 항목별 JSON(ko_KR 초안 · 기존 LPC 포맷)은 Description 펼치기
 - 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v3** · OA 5건(Figma `78988-3814`) · Screen 표(번역 칸 KR/JA/ZH-TW) + 「OA 등록 현황」 표 · LPC `oam_message_task_multi` ko_KR beta `398~402` / prod `2293~2297` · LIAM msg ID는 사용자가 채움 · 복구원 Auto-react `reports/landpress/arex_oa_20261119/`
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
@@ -56,6 +56,11 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — 용어 검토 위키에 번역본 · 키별 JSON 파일
+
+- Admin 콘텐츠 `5072857588`은 v12 그대로다(공식 용어 · 다국어 이미 반영 · ko 문구는 공식 표기와 같아 바꾸지 않음). 용어 검토 `5071424286` v1→v2에 4절 「다국어 번역본」(키별 펼치기 6개 · 코드 블록 30개 · 저장값 일치)을 넣었다.
+- 키별 JSON 6개(`{locale: data}` 형태 · 5개 언어)를 `~/Downloads/arex_contents_20261119/`에 만들었다 — 로컬 전달본이다(저장소 밖).
 
 ### 2026-11-19 — 공식 용어 반영 v12 · 용어 검토 위키
 
