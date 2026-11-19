@@ -7,7 +7,7 @@
 - 기획 정본(정준영 · 남의 페이지 — 본문 수정 안 함): [AREX 공항철도 동선 제공](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5043902344) `5043902344` — 11-19 확인 v75
 - 하위 신규 1: [AREX 조사 리포트 (11-19)](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071419749) `5071419749` — **v1**
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
-- 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v2** · Screen 표 1개(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · collection·key·JSON 칸은 사용자가 채움
+- 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v3** · Screen 표 1개(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · 4열 `Admin`(No · collection `AREX` · key) · 항목별 JSON은 Description 펼치기 · key·JSON은 사용자가 채움
 - 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v1** · OA 5건(Figma `78988-3814`) · 메시지별 beta/prod LPC 아이템·msg ID 칸은 사용자가 채움
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
 - 관련: [UNIFY-13718](https://jira.workers-hub.com/browse/UNIFY-13718) · 기존 API 정리 `5035185824` · FE API 정리 `5059914396` · 정책 비교 `5049820028`
@@ -39,6 +39,10 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — Admin 콘텐츠 설정 v3
+
+- 완료(사용자 지시): `5072857588` v2→v3. 4열 제목을 `LPC`에서 `Admin`으로 바꿨고, 표는 `No · collection · key`만 남겼다(collection은 전부 `AREX` · beta/prod JSON 열 삭제). Description은 「Admin 관리 영역」으로 바꾸고 항목마다 펼치기(expand) + 빈 JSON 코드 블록(`{}` · language js)을 넣었다. 렌더 확인 결과 Unknown macro 0 · 이미지 2.
 
 ### 2026-11-19 — LINE OA 메시지 ID 정리 페이지 생성
 
