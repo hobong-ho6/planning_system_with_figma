@@ -1,0 +1,4 @@
+- 세션: arex-oa-wiki 사이드 · hogeun · `AL02359162`
+- 시작: 2026-11-19 14:46
+- 점유 자원: scripts/render_oa_flex.py
+- 목적: headless Chrome 별도 프로필(--user-data-dir) 1줄 — Chrome 실행 중 렌더 실패 수정
