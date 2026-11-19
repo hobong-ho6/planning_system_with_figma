@@ -9,7 +9,7 @@
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
 - 하위 신규 4: [AREX 다국어 용어 검토](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071424286) `5071424286` — **v2** · 4절 다국어 번역본(6키 × 5개 언어) 추가 · 1절 AREX 공식 확인 용어(ja · en · zh_TW · th 공식 없음) · 2절 전체 용어 검토표(검토 의견 칸) · 3절 공식과 다르게 쓴 곳
 - 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v6** · Screen 표 1개(4열: `Screen ID | Screen | Description | Admin`)(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · 4열 `Admin`(No · collection `AREX` · beta key · prod key — key는 사용자가 채움) · 항목별 JSON(ko_KR 초안 · 기존 LPC 포맷)은 Description 펼치기
-- 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v3** · OA 5건(Figma `78988-3814`) · Screen 표(번역 칸 KR/JA/ZH-TW) + 「OA 등록 현황」 표 · LPC `oam_message_task_multi` ko_KR beta `398~402` / prod `2293~2297` · LIAM msg ID는 사용자가 채움 · 복구원 Auto-react `reports/landpress/arex_oa_20261119/`
+- 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v5** · OA 5건(Figma `78988-3814`) · Screen 표(렌더 + Figma 이미지 · 번역 5개 언어) + 「OA 등록 현황」 표 · LPC `oam_message_task_multi` 5개 언어 beta `398~402` / prod `2293~2297` · LIAM beta `N6afe9d17…`~ / prod `N6afea107…`~ 10건(isActive No) · 복구원 Auto-react `reports/landpress/arex_oa_20261119/`
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
 - 관련: [UNIFY-13718](https://jira.workers-hub.com/browse/UNIFY-13718) · 기존 API 정리 `5035185824` · FE API 정리 `5059914396` · 정책 비교 `5049820028`
 - 출시: Unifi AREX 11/25(수)
@@ -36,7 +36,7 @@
 - [ ] P1 `5072857588` v4 JSON 확인(사용자) — FAQ 「짐」 답변 사실 확인 · 키오스크 가이드 단계 이미지 URL(LPC 미디어 업로드) · ko_KR 확정 후 5개 언어 번역(게이트 적용)
 - [ ] P1 `5072857588` v4 환불 문구(FAQ · 상품 요약 · 변경 및 취소 JSON)는 부모 v75 기준(발급 전 결제 취소 가능 · 기한 다음 날 자동 환불)이다. Slack 11-18 18:23 정준영 정리(결제 시점부터 환불 불가 검토 · 자동 환불 없음)와 다르므로, 환불 정책 확정 뒤 JSON을 갱신한다
 
-- [ ] P1 OA JA · ZH-TW 번역 수령 → 위키 번역 칸 + LPC ja_JP · zh_TW 로케일 추가(beta · prod · `POST /items/all`) · CTA 실 URL 수령 → LPC beta · prod 수정(현재 임시 `https://unifi.me`) → LIAM 등록·재동기화
+- [ ] P1 OA JA · ZH-TW 원어민 검토본 수령 → 위키 번역 칸 + LPC beta · prod 교체 → LIAM LOAD MESSAGE → UPDATE · CTA 실 URL 수령 → 같은 순서(현재 임시 `https://unifi.me`) · LIAM isActive 켜기는 언어별 테스트 발송(수신 User Id) 필요
 - [ ] P1 `5072858062` OA 5건 확인 필요 — 버튼 이동처(Figma 연결 없음 · 「탑승 위치 확인하기」 대상 화면 없음) · 만료 예고 14일·3일 전을 LPC 아이템 1개/2개 · 교환 번호 OA 정의 누락(`arex_kiosk_guide_01_01` 시트가 「LINE으로 보내드려요」 안내) · Figma 라벨 3건(7005·7174·7678)이 부모 발송 시점과 다름 · 디자인 미반영(교환번호 줄 · 탑승 1시간 전 타이틀 · 귀국편 본문)
 
 - [ ] P1 `5072857588` key · beta/prod JSON 작성(사용자) · prod 호스트 확인(`api-reward-unifi.line-apps.com` 추정 — 11-19 무응답) · OA 메시지가 contents API 대상인지 확인
@@ -56,6 +56,12 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — AREX OA 다국어 · LIAM 등록 · 위키 v4~v5
+
+- 렌더 이미지: `render_oa_flex.py` headless Chrome이 실행 중 Chrome 프로필과 충돌해 exit 1 → `--user-data-dir` 1줄 수정(레인 점유 · `ee0079a`) · 위키 v4 Screen 칸에 렌더 + Figma 2장.
+- LIAM: ko_KR만 있는 LPC로는 CREATE가 반응하지 않았다(사용자: 「모든 언어가 등록되어 있어야 LIAM 등록 가능」). → ja · en · th · zh 번역(게이트 Auto-react `reports/gate/gate_report_20261119_arex_oa_5lang.md` · P0 0 · `check_gate_report` exit 0 · 직통열차 공식 표기 airportrailroad.com: ja 直通列車 · en Express Train · zh 特快列車 · th 공식 없음) → LPC `POST /items/all` + 안전 PUT 게시(10건 × 4언어 · 공개 API 50셀 대조 0 불일치 · beta = prod · null exit 0) → LIAM beta 5 · prod 5 생성(5개 언어).
+- 실측: LIAM 생성 화면에 「{언어} 정상발송확인」 · 「isActive」 체크가 생겼다 — 둘 다 잠김이며 **모든 언어 테스트 발송 확인 후에만 isActive를 켤 수 있다**(그래서 10건 모두 isActive No). CREATE는 **JS click()으로는 반응 없고 실제 클릭만 동작**한다(입력 · LOAD는 JS로 가능). prod 관리자 루트도 허브를 먼저 열어야 403이 풀린다. 앱 브라우저 CMS 탭에서 `127.0.0.1` fetch 차단.
 
 ### 2026-11-19 — 용어 검토 위키에 번역본 · 키별 JSON 파일
 
