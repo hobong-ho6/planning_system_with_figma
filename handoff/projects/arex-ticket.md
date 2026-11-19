@@ -23,7 +23,9 @@
 
 ## 다음 할 일
 
-- [ ] P1 `5072857588` v9 FAQ 추가분(짐 답변 · `city_airport_terminal`) — ① Unifi 발급 승차권 QR로 서울역 도심공항터미널 게이트를 통과할 수 있는지 확인 ② ko 확정 후 en·ja·th·zh 번역(게이트) ③ Admin 반영(사용자 · beta는 id 통일과 함께)
+- [ ] P1 `5072857588` v10 5개 언어 JSON을 Admin(beta)에 반영(사용자) — 위키 펼치기에서 언어별로 복사 · 반영 뒤 30건 API 재조회로 대조 · (d-2) 사용자 결정 2건: 「사용처」 라벨 의역(`Route` 등) 유지 여부 · ja FAQ 제목 `FAQ` vs `よくある質問`
+
+- [ ] P1 `5072857588` v9 FAQ 추가분(짐 답변 · `city_airport_terminal`) — ① Unifi 발급 승차권 QR로 서울역 도심공항터미널 게이트를 통과할 수 있는지 확인 ② ~~번역~~ v10 완료 ③ Admin 반영(사용자 · beta는 id 통일과 함께)
 
 - [ ] P1 AREX contents beta FAQ `id`를 ko id로 통일(사용자 결정 11-19) — 붙여넣기용 JSON은 `landpress/arex_contents/beta_arex_detail_faq_{locale}_after.json`(로컬 · gitignore)에 있다. Admin `https://480-unifi-apps-cms-fe.hub-beta.linecorp.com/contents`(LIAM HUB 480 · menu 28955)는 앱 브라우저에서 스크립트가 `ERR_BLOCKED_BY_CLIENT`로 차단돼 Claude가 반영하지 못함 → 사용자가 반영한 뒤 API로 재조회
 - [ ] P2 AREX contents 쓰기 경로 미확인 — 공개 API `/v3/api-docs`는 경로 0건 · CORS는 게이트웨이 전체에 PUT 등을 허용해 근거가 안 됨 · Admin URL · 인증을 알아야 확인 가능(이 세션은 Admin 쓰기 금지)
@@ -49,6 +51,12 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — Admin 콘텐츠 5개 언어 번역 v10
+
+- 완료(사용자 지시): `5072857588` v9→v10. 항목 6개의 펼치기를 「JSON (5개 언어)」로 바꿔 ko · ja · en · th · zh 코드 블록 30개를 넣었다(43행 × 5개 언어 · FAQ id는 ko id로 통일). 게이트: 자동 P0 1→0(zh `・`) · P1 38 전건 오탐 판정 · 수동 수정 2건(zh) · `check_gate_report` exit 0 → Auto-react `reports/gate/gate_report_20261119_arex_contents.md`(PS `reports/gate`는 gitignore). 용어집 대기 #51 「교환 번호」 등재.
+- beta 사용자 등록본에서 발견: en FAQ에 `서울역` 한글이 남아 있음 · `boarding pass`/`ticket` 혼용 · FAQ id 번역됨 → 이번 번역으로 대체할 것.
+- 로컬 사본: `landpress/arex_contents/arex_contents_5lang_20261119.json`(gitignore).
 
 ### 2026-11-19 — FAQ 보강 v9
 

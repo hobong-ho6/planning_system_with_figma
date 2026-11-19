@@ -83,6 +83,7 @@
 | 48 | **문의하기** zh_TW | ⓑ 등재값 재검토 | 용어집 `回報問題` ↔ 대만어 검토자안 `聯絡客服`(`UF_settings_main_submenu_helpcenter_inquiry` · **사용자 채택 10/19** — 이 키만 聯絡客服, 푸터 등 나머지 「문의하기」 4키는 回報問題) — 바꾸면 「문의하기」 키 전부(푸터 등) 함께 | 실측 2026-10-19: `回報問題` WEB 2 · IPHONE 5 · DP 4 / `聯絡客服` **0** | 위키 4881799220 v5 · Auto-react `reports/gate/gate_report_20261019_v21_zh_review_patch.md` | 2026-10-19 |
 | 49 | **결제** zh_TW(매장 계산 문맥 「결제하기 직전」) | ⓑ 등재값 문맥 예외 | 용어집 `付款`(v4.9) ↔ 대만어 검토자안 `結帳前`(LPC usage.items · voucher_usage — **사용자 채택 10/19**) | 실측 2026-10-19: ko 「결제」 포함 키의 zh — `付款` WEB 69 · IPHONE 197 · DP 14 / `結帳` WEB 2 · IPHONE 2 · DP 0 | 위와 같음 | 2026-10-19 |
 | 50 | **혜택가** | ⓑ 반복 오탐 | 「혜택」과 별도 등재 — ja `特典価格` · en `benefit price` · th `ราคาพิเศษ` · zh `優惠價` | **실측 2026-10-26**(Unifi WEB v1.14.0): ko 「혜택가」 포함 3키 — ja `特典価格` 3 · en `benefit price` 3 · th `ราคาพิเศษ` 3 · zh `優惠價` 3 | `gate_report_20261026_oliveyoung_friend_flow.md`(Auto-react) | 2026-10-26 |
+| 51 | **교환 번호**(AREX 승차권 교환) | ⓑ 반복 오탐 | 등재값 `교환`(en `swap` · th `แลกเปลี่ยน` · zh `交換`)이 승차권 「교환 번호」에서 3개 언어(en · th · zh) 동시 P1로 오탐한다(15건)(이번 사용 ja `交換番号` · en `exchange number` · zh `兌換號碼` · th `หมายเลขแลกตั๋ว`). #24 · #27과 같은 문맥 분기 문제 — ⛔ 실사용 0건이라 권장값 미정 · AREX XLT 등록 후 재실측 | 실측 2026-11-19(Unifi WEB BROWSER v1.16.1 · 2,935키): ko 「교환 번호」 **0키** | `gate_report_20261119_arex_contents.md` (d-1) | 2026-11-19 |
 
 ### 비고
 
