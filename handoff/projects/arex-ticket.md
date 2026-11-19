@@ -8,7 +8,7 @@
 - 하위 신규 1: [AREX 조사 리포트 (11-19)](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071419749) `5071419749` — **v1**
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
 - 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v6** · Screen 표 1개(4열: `Screen ID | Screen | Description | Admin`)(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · 4열 `Admin`(No · collection `AREX` · beta key · prod key — key는 사용자가 채움) · 항목별 JSON(ko_KR 초안 · 기존 LPC 포맷)은 Description 펼치기
-- 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v2** · OA 5건(Figma `78988-3814`) · Screen 표 1개 + 「OA 등록 현황」 표 1개(LPC postId · LIAM msg ID × beta/prod — 사용자가 채움)
+- 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v3** · OA 5건(Figma `78988-3814`) · Screen 표(번역 칸 KR/JA/ZH-TW) + 「OA 등록 현황」 표 · LPC `oam_message_task_multi` ko_KR beta `398~402` / prod `2293~2297` · LIAM msg ID는 사용자가 채움 · 복구원 Auto-react `reports/landpress/arex_oa_20261119/`
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
 - 관련: [UNIFY-13718](https://jira.workers-hub.com/browse/UNIFY-13718) · 기존 API 정리 `5035185824` · FE API 정리 `5059914396` · 정책 비교 `5049820028`
 - 출시: Unifi AREX 11/25(수)
@@ -26,6 +26,7 @@
 - [ ] P1 `5072857588` v4 JSON 확인(사용자) — FAQ 「짐」 답변 사실 확인 · 키오스크 가이드 단계 이미지 URL(LPC 미디어 업로드) · ko_KR 확정 후 5개 언어 번역(게이트 적용)
 - [ ] P1 `5072857588` v4 환불 문구(FAQ · 상품 요약 · 변경 및 취소 JSON)는 부모 v75 기준(발급 전 결제 취소 가능 · 기한 다음 날 자동 환불)이다. Slack 11-18 18:23 정준영 정리(결제 시점부터 환불 불가 검토 · 자동 환불 없음)와 다르므로, 환불 정책 확정 뒤 JSON을 갱신한다
 
+- [ ] P1 OA JA · ZH-TW 번역 수령 → 위키 번역 칸 + LPC ja_JP · zh_TW 로케일 추가(beta · prod · `POST /items/all`) · CTA 실 URL 수령 → LPC beta · prod 수정(현재 임시 `https://unifi.me`) → LIAM 등록·재동기화
 - [ ] P1 `5072858062` OA 5건 확인 필요 — 버튼 이동처(Figma 연결 없음 · 「탑승 위치 확인하기」 대상 화면 없음) · 만료 예고 14일·3일 전을 LPC 아이템 1개/2개 · 교환 번호 OA 정의 누락(`arex_kiosk_guide_01_01` 시트가 「LINE으로 보내드려요」 안내) · Figma 라벨 3건(7005·7174·7678)이 부모 발송 시점과 다름 · 디자인 미반영(교환번호 줄 · 탑승 1시간 전 타이틀 · 귀국편 본문)
 
 - [ ] P1 `5072857588` key · beta/prod JSON 작성(사용자) · prod 호스트 확인(`api-reward-unifi.line-apps.com` 추정 — 11-19 무응답) · OA 메시지가 contents API 대상인지 확인
@@ -43,6 +44,14 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — AREX OA 5건 LPC 등록 · 위키 v3
+
+- 사용자 지시: 번역 칸은 JP/TW를 받으므로 구분해서 표로 · CTA는 `https://unifi.me` 임시 · LPC beta/prod 생성 · 위키 갱신.
+- 사용자 결정: 변수 `{{issue_deadline}}` · `{{departure_datetime}}` · `{{departure_station}}` · `{{arrival_station}}` · `{{car_number}}` · `{{seat_number}}`(상품명은 고정 문구) · 시안↔정책은 **정책 우선**(교환번호 줄 삭제 · 탑승 1시간 전 타이틀 임시 「곧 AREX 직통열차 출발 시간이에요. …」 · 환불 문구는 Figma 유지) · 귀국편 본문 제외.
+- LPC: `POST ?locale=ko_KR`(앱 브라우저 CMS 세션) — beta 398~402 · prod 2293~2297 · 1건 선검증 후 진행 · 10/10 재조회 깊은 비교 일치 · beta = prod · `check_lpc_nulls` 전후 exit 0. 구조는 ① 개인별 진행 상태 안내(prod 2071 선례). LIAM 미등록.
+- 위키 v2 → v3(버전 가드) · 렌더 확인(이미지 5 · Unknown macro 0). 이미지는 Figma 시안 그대로라 등록 문구와 다른 곳은 비고에 기록.
+- 실측: 앱 브라우저 CMS 탭에서 `127.0.0.1` 로컬 payload 서버 fetch가 막혔다(`Failed to fetch`) → payload를 javascript_tool에 직접 실었다(8KB). `render_oa_flex.py`는 이 PC headless Chrome 실패로 생략. Python 3.9는 한글이 든 매우 긴 줄에서 「Non-UTF-8 code」 SyntaxError를 낸다 → 줄을 나누면 해결.
 
 ### 2026-11-19 — Admin 콘텐츠 설정 v6(디자인 열 제거)
 
