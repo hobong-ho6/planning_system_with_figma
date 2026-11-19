@@ -23,6 +23,8 @@
 
 ## 다음 할 일
 
+- [ ] P1 `5072857588` v9 FAQ 추가분(짐 답변 · `city_airport_terminal`) — ① Unifi 발급 승차권 QR로 서울역 도심공항터미널 게이트를 통과할 수 있는지 확인 ② ko 확정 후 en·ja·th·zh 번역(게이트) ③ Admin 반영(사용자 · beta는 id 통일과 함께)
+
 - [ ] P1 AREX contents beta FAQ `id`를 ko id로 통일(사용자 결정 11-19) — 붙여넣기용 JSON은 `landpress/arex_contents/beta_arex_detail_faq_{locale}_after.json`(로컬 · gitignore)에 있다. Admin `https://480-unifi-apps-cms-fe.hub-beta.linecorp.com/contents`(LIAM HUB 480 · menu 28955)는 앱 브라우저에서 스크립트가 `ERR_BLOCKED_BY_CLIENT`로 차단돼 Claude가 반영하지 못함 → 사용자가 반영한 뒤 API로 재조회
 - [ ] P2 AREX contents 쓰기 경로 미확인 — 공개 API `/v3/api-docs`는 경로 0건 · CORS는 게이트웨이 전체에 PUT 등을 허용해 근거가 안 됨 · Admin URL · 인증을 알아야 확인 가능(이 세션은 Admin 쓰기 금지)
 
@@ -47,6 +49,10 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — FAQ 보강 v9
+
+- 완료(사용자 지시): `5072857588` v8→v9. FAQ ko_KR JSON에서 짐 답변을 「객차 끝 큰 짐 공간」으로 바꾸고, 10번째 문항 `city_airport_terminal`(서울역 도심공항터미널 — 탑승수속 · 수하물 위탁 · 출국심사 · 05:20~19:00 · 마감 T1 3시간 / T2 3시간 20분 전 · 출처 arex.or.kr)을 추가했다. Description에 「Unifi QR 통과 여부 확인 필요 · 다른 언어 번역 전」을 적었다. Admin은 미반영이다.
 
 ### 2026-11-19 — contents 쓰기 시험 · FAQ 웹 보충 조사
 
