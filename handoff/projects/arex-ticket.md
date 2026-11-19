@@ -48,6 +48,11 @@
 
 ## 세션 기록 (최신 위, 최대 5개)
 
+### 2026-11-19 — contents 쓰기 시험 · FAQ 웹 보충 조사
+
+- 쓰기 시험(사용자 승인): 공개 API `arex_detail_banner` ko-KR에 지금 값과 같은 JSON으로 PUT · PATCH를 보냈다. 둘 다 **401 `ACCESS_DENIED`**였고 값 · `updatedAt`은 바뀌지 않았다. 쓰기 경로는 있지만 인증이 필요하다(어떤 토큰인지는 미확인). Admin 앱은 앱 브라우저에서 그 호스트 요청이 전부 `ERR_BLOCKED_BY_CLIENT`로 막힌다.
+- FAQ 웹 조사(제안만 · 위키 미반영): 공식 arex.or.kr 기준 서울역 도심공항터미널(지하 2층 · 직통열차 승차권 QR 필요 · 05:20~19:00 · 탑승수속 · 수하물 위탁 · 출국심사)이 보충 후보다. Unifi 발급 승차권으로 이용 가능한지는 확인이 필요하다. 짐은 블로그 다수가 「객차 끝 대형 짐 공간」으로 일치한다. 지연 · 운행 중단 시 운임 반환(약관)은 Unifi 환불 정책 확정 후 판단한다.
+
 ### 2026-11-19 — AREX contents beta 조회 확인
 
 - 위키 v8에서 사용자가 beta key 6개를 등록했다. 6개 key × 5개 언어 = 30건 모두 `GET /v1/contents/arex/{key}?locale=` 200 · onOff true다. ko_KR `data`는 위키 JSON과 완전히 같고, 다른 언어도 구조가 같다. 컬렉션 경로는 `info_banner`가 아니라 `arex`다.
