@@ -318,6 +318,7 @@ def main():
 
         subprocess.run(
             [chrome, "--headless", "--disable-gpu", "--hide-scrollbars",
+             f"--user-data-dir={os.path.join(html_dir, '_chrome_profile')}",  # 사용 중인 Chrome 프로필과 충돌 방지
              f"--screenshot={png_path}",
              f"--window-size={args.width + 100},{args.window_height}",
              f"file://{html_path}"],
