@@ -57,6 +57,10 @@
 
 ## 세션 기록 (최신 위, 최대 5개)
 
+### 2026-11-19 — Admin(beta) 반영 확인
+
+- 사용자가 키별 JSON(하이픈 locale 형식)을 beta Admin에 반영했다. API 재조회 결과 6키 × 5개 언어 = **30/30 일치**(위키 v12 JSON과 동일 · FAQ id ko 통일 · 공식 용어 반영 포함). 위 「다음 할 일」의 FAQ id 통일 · v10/v12 Admin 반영 항목은 beta 기준 완료다. prod 반영 · prod key는 남았다.
+
 ### 2026-11-19 — AREX OA 다국어 · LIAM 등록 · 위키 v4~v5
 
 - 렌더 이미지: `render_oa_flex.py` headless Chrome이 실행 중 Chrome 프로필과 충돌해 exit 1 → `--user-data-dir` 1줄 수정(레인 점유 · `ee0079a`) · 위키 v4 Screen 칸에 렌더 + Figma 2장.
