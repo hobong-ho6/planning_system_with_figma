@@ -23,7 +23,7 @@
 
 ## 다음 할 일
 
-- [ ] P2 AREX contents FAQ `id`가 en·ja·th·zh에서 번역돼 있음(`travel time`·`移動時間` 등 — ko는 `travel_time`) · 언어별 id가 달라도 FE가 문제없는지 확인하거나 ko id로 통일
+- [ ] P1 AREX contents beta FAQ `id`를 ko id로 통일(사용자 결정 11-19) — 붙여넣기용 JSON은 `landpress/arex_contents/beta_arex_detail_faq_{locale}_after.json`(로컬 · gitignore)에 있다. Admin `https://480-unifi-apps-cms-fe.hub-beta.linecorp.com/contents`(LIAM HUB 480 · menu 28955)는 앱 브라우저에서 스크립트가 `ERR_BLOCKED_BY_CLIENT`로 차단돼 Claude가 반영하지 못함 → 사용자가 반영한 뒤 API로 재조회
 - [ ] P2 AREX contents 쓰기 경로 미확인 — 공개 API `/v3/api-docs`는 경로 0건 · CORS는 게이트웨이 전체에 PUT 등을 허용해 근거가 안 됨 · Admin URL · 인증을 알아야 확인 가능(이 세션은 Admin 쓰기 금지)
 
 - [ ] P1 `5072857588` v4 JSON 확인(사용자) — FAQ 「짐」 답변 사실 확인 · 키오스크 가이드 단계 이미지 URL(LPC 미디어 업로드) · ko_KR 확정 후 5개 언어 번역(게이트 적용)
