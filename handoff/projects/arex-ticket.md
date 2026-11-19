@@ -8,7 +8,7 @@
 - 하위 신규 1: [AREX 조사 리포트 (11-19)](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071419749) `5071419749` — **v1**
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
 - 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v3** · Screen 표 1개(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · 4열 `Admin`(No · collection `AREX` · key) · 항목별 JSON은 Description 펼치기 · key·JSON은 사용자가 채움
-- 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v1** · OA 5건(Figma `78988-3814`) · 메시지별 beta/prod LPC 아이템·msg ID 칸은 사용자가 채움
+- 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v2** · OA 5건(Figma `78988-3814`) · Screen 표 1개 + 「OA 등록 현황」 표 1개(LPC postId · LIAM msg ID × beta/prod — 사용자가 채움)
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
 - 관련: [UNIFY-13718](https://jira.workers-hub.com/browse/UNIFY-13718) · 기존 API 정리 `5035185824` · FE API 정리 `5059914396` · 정책 비교 `5049820028`
 - 출시: Unifi AREX 11/25(수)
@@ -39,6 +39,11 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — OA 정리 페이지 v2 재구성
+
+- 사용자 지시: 메시지별 「ID 정리」 표 5개를 없애고, Screen 정의(`Screen ID | Screen | Description | 다국어 번역` — 4열 규칙, 번역 칸 「-」)에 메시지 정보를 합침. LPC · msg ID는 OA 목록 한 표(「OA 등록 현황」: 화면 · 트리거 · LPC postId / LIAM msg ID × beta · prod · 비고)로 정리. 맨 위 요약 표는 이 표로 대체.
+- PUT v1 → v2(버전 가드) · 렌더 확인(이미지 5 · Unknown macro 0).
 
 ### 2026-11-19 — Admin 콘텐츠 설정 v3
 
