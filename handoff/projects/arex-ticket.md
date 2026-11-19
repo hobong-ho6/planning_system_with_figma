@@ -36,7 +36,7 @@
 - [ ] P1 `5072857588` v4 JSON 확인(사용자) — FAQ 「짐」 답변 사실 확인 · 키오스크 가이드 단계 이미지 URL(LPC 미디어 업로드) · ko_KR 확정 후 5개 언어 번역(게이트 적용)
 - [ ] P1 `5072857588` v4 환불 문구(FAQ · 상품 요약 · 변경 및 취소 JSON)는 부모 v75 기준(발급 전 결제 취소 가능 · 기한 다음 날 자동 환불)이다. Slack 11-18 18:23 정준영 정리(결제 시점부터 환불 불가 검토 · 자동 환불 없음)와 다르므로, 환불 정책 확정 뒤 JSON을 갱신한다
 
-- [ ] P1 OA JA · ZH-TW 원어민 검토본 수령 → 위키 번역 칸 + LPC beta · prod 교체 → LIAM LOAD MESSAGE → UPDATE · CTA 실 URL 수령 → 같은 순서(현재 임시 `https://unifi.me`) · LIAM isActive 켜기는 언어별 테스트 발송(수신 User Id) 필요
+- [ ] P1 OA JA · ZH-TW 원어민 검토본 수령 → 위키 번역 칸 + LPC beta · prod 교체 → LIAM LOAD MESSAGE → UPDATE · CTA 실 URL 수령 → 같은 순서(현재 임시 `https://unifi.me`) · LIAM isActive 10건은 **사용자가 직접 켠다**(11-19 결정 · 언어별 테스트 발송 → 정상발송확인 → isActive → UPDATE)
 - [ ] P1 `5072858062` OA 5건 확인 필요 — 버튼 이동처(Figma 연결 없음 · 「탑승 위치 확인하기」 대상 화면 없음) · 만료 예고 14일·3일 전을 LPC 아이템 1개/2개 · 교환 번호 OA 정의 누락(`arex_kiosk_guide_01_01` 시트가 「LINE으로 보내드려요」 안내) · Figma 라벨 3건(7005·7174·7678)이 부모 발송 시점과 다름 · 디자인 미반영(교환번호 줄 · 탑승 1시간 전 타이틀 · 귀국편 본문)
 
 - [ ] P1 `5072857588` key · beta/prod JSON 작성(사용자) · prod 호스트 확인(`api-reward-unifi.line-apps.com` 추정 — 11-19 무응답) · OA 메시지가 contents API 대상인지 확인
