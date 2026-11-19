@@ -7,7 +7,7 @@
 - 기획 정본(정준영 · 남의 페이지 — 본문 수정 안 함): [AREX 공항철도 동선 제공](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5043902344) `5043902344` — 11-19 확인 v75
 - 하위 신규 1: [AREX 조사 리포트 (11-19)](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071419749) `5071419749` — **v1**
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
-- 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v3** · Screen 표 1개(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · 4열 `Admin`(No · collection `AREX` · key) · 항목별 JSON은 Description 펼치기 · key·JSON은 사용자가 채움
+- 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v4** · Screen 표 1개(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · 4열 `Admin`(No · collection `AREX` · beta key · prod key — key는 사용자가 채움) · 항목별 JSON(ko_KR 초안 · 기존 LPC 포맷)은 Description 펼치기
 - 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v2** · OA 5건(Figma `78988-3814`) · Screen 표 1개 + 「OA 등록 현황」 표 1개(LPC postId · LIAM msg ID × beta/prod — 사용자가 채움)
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
 - 관련: [UNIFY-13718](https://jira.workers-hub.com/browse/UNIFY-13718) · 기존 API 정리 `5035185824` · FE API 정리 `5059914396` · 정책 비교 `5049820028`
@@ -22,6 +22,8 @@
 없음
 
 ## 다음 할 일
+
+- [ ] P1 `5072857588` v4 JSON 확인(사용자) — FAQ 「짐」 답변 사실 확인 · 변경 및 취소 문구가 Figma(출발 30분 전 · 수수료)와 부모 v75(탑승일 전날 · 수수료 없음) 중 어느 쪽인지 · 키오스크 가이드 단계 이미지 URL(LPC 미디어 업로드) · ko_KR 확정 후 5개 언어 번역(게이트 적용)
 
 - [ ] P1 `5072858062` OA 5건 확인 필요 — 버튼 이동처(Figma 연결 없음 · 「탑승 위치 확인하기」 대상 화면 없음) · 만료 예고 14일·3일 전을 LPC 아이템 1개/2개 · 교환 번호 OA 정의 누락(`arex_kiosk_guide_01_01` 시트가 「LINE으로 보내드려요」 안내) · Figma 라벨 3건(7005·7174·7678)이 부모 발송 시점과 다름 · 디자인 미반영(교환번호 줄 · 탑승 1시간 전 타이틀 · 귀국편 본문)
 
@@ -39,6 +41,11 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — Admin 콘텐츠 설정 v4(항목별 JSON)
+
+- 완료(사용자 지시): `5072857588` v3→v4. key 열을 beta · prod로 나눴다. 항목 6개의 JSON(ko_KR)을 펼치기에 넣었다. 포맷은 LV beta LPC에서 실측했다: 띠 배너=reward `info_banner` `body.data` · 상품 요약=`voucher_product.voucher_detail.summary`(+`linkLabel`·`targetUrl`) · FAQ=`mini_common_info.service_guide.faq`(9건, 이미지 5건 + 부모 초안) · 변경 및 취소/유의사항=`productInfo.sections[]` 항목 · 키오스크 가이드=`shopping_guide.guide_page`.
+- 문구 근거: 부모 v75 정책 초안이 기준이다. Figma 이미지 문구(출발 30분 전 변경 · 수수료 · 「교환코드」 · 「탑승권」)는 부모 v75와 달라 따르지 않았다. FAQ 「짐이 많아도」 답변은 새로 쓴 초안이라 사실 확인이 필요하다.
 
 ### 2026-11-19 — OA 정리 페이지 v2 재구성
 
