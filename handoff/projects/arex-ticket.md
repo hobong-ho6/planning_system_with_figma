@@ -7,6 +7,7 @@
 - 기획 정본(정준영 · 남의 페이지 — 본문 수정 안 함): [AREX 공항철도 동선 제공](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5043902344) `5043902344` — 11-19 확인 v75
 - 하위 신규 1: [AREX 조사 리포트 (11-19)](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071419749) `5071419749` — **v1**
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
+- 하위 신규 4: [AREX 다국어 용어 검토](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071424286) `5071424286` — **v1** · 1절 AREX 공식 확인 용어(ja · en · zh_TW · th 공식 없음) · 2절 전체 용어 검토표(검토 의견 칸) · 3절 공식과 다르게 쓴 곳
 - 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v6** · Screen 표 1개(4열: `Screen ID | Screen | Description | Admin`)(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · 4열 `Admin`(No · collection `AREX` · beta key · prod key — key는 사용자가 채움) · 항목별 JSON(ko_KR 초안 · 기존 LPC 포맷)은 Description 펼치기
 - 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v3** · OA 5건(Figma `78988-3814`) · Screen 표(번역 칸 KR/JA/ZH-TW) + 「OA 등록 현황」 표 · LPC `oam_message_task_multi` ko_KR beta `398~402` / prod `2293~2297` · LIAM msg ID는 사용자가 채움 · 복구원 Auto-react `reports/landpress/arex_oa_20261119/`
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
@@ -23,7 +24,9 @@
 
 ## 다음 할 일
 
-- [ ] P1 `5072857588` v10 5개 언어 JSON을 Admin(beta)에 반영(사용자) — 위키 펼치기에서 언어별로 복사 · 반영 뒤 30건 API 재조회로 대조 · (d-2) 사용자 결정 대기: 「사용처」 라벨 의역(`Route` 등) 유지 여부
+- [ ] P1 용어 검토 위키 `5071424286` 검토 의견 회수 → 반영(en 「승차권」 `train ticket` vs 공식 `ticket` 포함) · 교통센터 ja · zh 공식 표기 미확인
+
+- [ ] P1 `5072857588` v10 5개 언어 JSON을 Admin(beta)에 반영(사용자) — 위키 펼치기에서 언어별로 복사 · 반영 뒤 30건 API 재조회로 대조
 
 - [ ] P1 `5072857588` v9 FAQ 추가분(짐 답변 · `city_airport_terminal`) — ① Unifi 발급 승차권 QR로 서울역 도심공항터미널 게이트를 통과할 수 있는지 확인 ② ~~번역~~ v10 완료 ③ Admin 반영(사용자 · beta는 id 통일과 함께)
 
@@ -46,12 +49,19 @@
 
 | 날짜 | 결정 | 근거 / 커밋 |
 |---|---|---|
+| 2026-11-19 | 「사용처」 라벨은 LPC 상품권과 동일(`利用可能店舗` · `Where to use` · `使用地點` · `สถานที่ใช้งาน`) · 다국어 표기는 AREX 공식 사이트 표기 우선 | 사용자 결정 · 위키 v12 |
 | 2026-11-19 | AREX FAQ ja 제목은 `よくある質問`(XLT 등록값 `UF_main_faq_title` ja `FAQ`를 따르지 않음) — 위키 v11 | 사용자 결정 |
 | 2026-11-19 | `5072857588` 「변경 및 취소」 JSON은 부모 v75 기준을 유지한다(Figma 이미지 문구 「출발 30분 전 · 수수료」를 따르지 않음) · 디자인 열은 제거 | 사용자 결정 |
 | 2026-11-19 | 리포트 「6. 나와 관련된 지점」은 위키에서 빼고 「담당 · 참여자」(자료에서 확인된 역할만 기재)로 바꿈 | 지휘 세션 일감 패킷 |
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — 공식 용어 반영 v12 · 용어 검토 위키
+
+- 사용자 질문(「지금 용어가 모두 AREX 공식이냐」)에 대한 답: **아니었다** — 이전에는 en만 공식 확인했다. arex.or.kr에서 언어를 바꿔(세션 locale · `/locale.do` POST) 이용 절차 · 역 정보 · 메시지 파일(`/message/message-web_{locale}.properties`)을 대조했다. 태국어 공식 사이트는 없다.
+- 완료: Admin 콘텐츠 `5072857588` v11→v12(41행 공식 표기 반영 · 「사용처」 라벨 상품권과 동일 · Related Docs에 용어 검토 위키). 용어 검토 위키 `5071424286` v1 생성(부모 `5043902344` 하위). 게이트 재검증 P0 0 → Auto-react `286f46f`.
+- 교훈: arex.or.kr 다국어는 URL의 `clientLocale` 파라미터가 아니라 **세션 locale**로 바뀐다(`/locale.do` POST 후 같은 세션에서 조회).
 
 ### 2026-11-19 — Admin 콘텐츠 5개 언어 번역 v10
 
