@@ -7,7 +7,7 @@
 - 기획 정본(정준영 · 남의 페이지 — 본문 수정 안 함): [AREX 공항철도 동선 제공](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5043902344) `5043902344` — 11-19 확인 v75
 - 하위 신규 1: [AREX 조사 리포트 (11-19)](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071419749) `5071419749` — **v1**
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
-- 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v4** · Screen 표 1개(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · 4열 `Admin`(No · collection `AREX` · beta key · prod key — key는 사용자가 채움) · 항목별 JSON(ko_KR 초안 · 기존 LPC 포맷)은 Description 펼치기
+- 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v5** · Screen 표 1개(5열: `Screen ID | Screen | 디자인 | Description | Admin`)(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · 4열 `Admin`(No · collection `AREX` · beta key · prod key — key는 사용자가 채움) · 항목별 JSON(ko_KR 초안 · 기존 LPC 포맷)은 Description 펼치기
 - 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v2** · OA 5건(Figma `78988-3814`) · Screen 표 1개 + 「OA 등록 현황」 표 1개(LPC postId · LIAM msg ID × beta/prod — 사용자가 채움)
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
 - 관련: [UNIFY-13718](https://jira.workers-hub.com/browse/UNIFY-13718) · 기존 API 정리 `5035185824` · FE API 정리 `5059914396` · 정책 비교 `5049820028`
@@ -42,6 +42,11 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — Admin 콘텐츠 설정 v5(디자인 열)
+
+- 완료(사용자 지시 · 승인): `5072857588` v4→v5. Screen 열 옆에 「디자인」 열을 추가했다. 동선 Figma `uyUkM7rWWg1vAwpf47um86`의 원본 렌더 `78991-3817` · `78991-4963`(빨간 box 없음)을 `*_design.png`로 첨부했다. 렌더 확인 결과 이미지 4 · 오류 0.
+- ⚠️ `check_wiki_storage.py pre`는 Screen 표 4열 고정 규칙 때문에 5열을 위반으로 본다(OA 예외만 허용). 사용자 지시로 5열을 유지했다. 다음에 이 페이지를 고칠 때 pre 검사의 이 1건은 의도된 예외다.
 
 ### 2026-11-19 — Admin 콘텐츠 설정 v4(항목별 JSON)
 
