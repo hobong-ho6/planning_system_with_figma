@@ -8,6 +8,7 @@
 - 하위 신규 1: [AREX 조사 리포트 (11-19)](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5071419749) `5071419749` — **v1**
 - 하위 신규 2: [AREX 예약발매 API 가이드 v2.1 분석 — Unifi 정책 대조](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857358) `5072857358` — **v1**
 - 하위 신규 3: [AREX 화면별 Admin 콘텐츠 설정](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072857588) `5072857588` — **v2** · Screen 표 1개(AREX - Detail · AREX - Guide · Figma `GOCHAYBS7hIrmWRGNuJOKV` node `84407-136`) · collection·key·JSON 칸은 사용자가 채움
+- 하위 신규 4: [AREX LINE OA 메시지 ID 정리](https://wiki.workers-hub.com/pages/viewpage.action?pageId=5072858062) `5072858062` — **v1** · OA 5건(Figma `78988-3814`) · 메시지별 beta/prod LPC 아이템·msg ID 칸은 사용자가 채움
 - 원본: Auto-react `reports/research/arex_timeline_20261119.md` · API 가이드 PDF v2.1(36쪽, 위키 `5035185824`에 첨부)
 - 관련: [UNIFY-13718](https://jira.workers-hub.com/browse/UNIFY-13718) · 기존 API 정리 `5035185824` · FE API 정리 `5059914396` · 정책 비교 `5049820028`
 - 출시: Unifi AREX 11/25(수)
@@ -21,6 +22,8 @@
 없음
 
 ## 다음 할 일
+
+- [ ] P1 `5072858062` OA 5건 확인 필요 — 버튼 이동처(Figma 연결 없음 · 「탑승 위치 확인하기」 대상 화면 없음) · 만료 예고 14일·3일 전을 LPC 아이템 1개/2개 · 교환 번호 OA 정의 누락(`arex_kiosk_guide_01_01` 시트가 「LINE으로 보내드려요」 안내) · Figma 라벨 3건(7005·7174·7678)이 부모 발송 시점과 다름 · 디자인 미반영(교환번호 줄 · 탑승 1시간 전 타이틀 · 귀국편 본문)
 
 - [ ] P1 `5072857588` key · beta/prod JSON 작성(사용자) · prod 호스트 확인(`api-reward-unifi.line-apps.com` 추정 — 11-19 무응답) · OA 메시지가 contents API 대상인지 확인
 
@@ -36,6 +39,12 @@
 | 2026-11-19 | 분석 페이지는 필드 상세를 다시 쓰지 않고 `5035185824`(API 정리) · `5059914396`(FE API)으로 링크만 검 | 중복 방지 |
 
 ## 세션 기록 (최신 위, 최대 5개)
+
+### 2026-11-19 — LINE OA 메시지 ID 정리 페이지 생성
+
+- 완료: `5072858062` v1 생성(사용자 승인 후) · Figma 프레임 이미지 5장 첨부 · 렌더 확인(이미지 5 · Unknown macro 0 · Unknown Attachment 0) · 부모 하위 목록 노출. 부모·형제 본문은 수정하지 않음.
+- 구성: Policy(LPC `oam_message_task_multi` · beta `a2qaxhygpi95g8l4a48n2vn4` / prod `w5eph4y9qxe05c8fqpi7rlxh` · LIAM 채널 beta Unifi Beta OA 2010418473 / prod Dapp Portal 2006670905) · OA 요약 표 · Figma 라벨↔부모 Screen ID 대조 · 메시지별 [이미지 | 정보] + 「ID 정리」 표(빈칸) · 확인 필요 5건.
+- 발견: Figma OA 프레임은 `78991:7005·7174·7343·7678·7512` 5개뿐이고 코멘트와 프로토타입 연결이 없다. 7174 라벨 「남은 발급기한 7일 이하」 ↔ 부모 14일·3일 전. 형제 페이지가 v2에서 Web3 파일로 옮겨 갔는데, 거기에 OA 새 버전이 있는지는 확인하지 않았다.
 
 ### 2026-11-19 — Admin 콘텐츠 설정 v2 재구성
 
