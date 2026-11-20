@@ -185,6 +185,72 @@ Mode B의 상세 절차는 아래 **"단일 프레임 행 추가/갱신 (Mode B 
 
 - 기존 페이지는 **소급 정리하지 않는다** — 그 페이지를 고칠 때 손대는 섹션만 이 규칙으로 맞추고, 페이지 전체 정리는 사용자가 요청할 때 한다.
 
+### ⛔ 위키 정리 — Log 단 · 가독성 · 개발 참고 (사용자 지시 2026-11-20 — 생성·업데이트 공통)
+
+**본문에는 현재 상태만 쓰고, 경위 · 검증 기록은 맨 아래 Log 단에 모은다. 개발팀이 알아야 할 사항은 Description 항목마다 「개발 참고」로 정의한다.** 본보기는 AREX 화면별 Admin 콘텐츠 설정(pageId `5072857588` v26)이다.
+
+**1. 로그는 본문에 쓰지 않는다** — 아래는 Background · Policy · Description에 쓰지 않고 Log 단으로 보낸다.
+
+| 로그 종류 | 예 |
+|---|---|
+| 결정 경위 | 「11-20 사용자 결정으로 XLT에서 Admin JSON으로 되돌림」 |
+| 검증 기록 | 조회 200 · 5개 언어 N건 일치 · prod=beta 대조 |
+| 용어 근거 | 어느 용어집 · 검토 페이지를 따랐는지 |
+| 미반영 사유 | 반영하지 않은 문구 · 정책과 그 이유 |
+
+**2. Log 단** — 페이지 맨 아래에 `ac:layout-section ac:type="single"`을 추가하고 `<h1>Log</h1>` + 한 줄 설명 + **expand 매크로**로 분류해 기록한다.
+
+- 분류(펼치기 제목): `결정 로그` · `문구 · 정책 반영 로그` · `용어 로그` · `검증 로그` — **해당 분류가 없으면 펼치기를 만들지 않는다.**
+- 항목은 `<li>` 하나에 한 건, **`MM-DD`로 시작**한다.
+
+```xml
+<ac:layout-section ac:type="single"><ac:layout-cell><h1>Log</h1><p>결정 · 검증 이력. 펼쳐서 본다.</p>
+<ac:structured-macro ac:name="expand" ac:schema-version="1"><ac:parameter ac:name="title">결정 로그</ac:parameter><ac:rich-text-body><ul>
+  <li>11-20 상단 띠 배너를 XLT로 바꿨다가 같은 날 Admin JSON으로 되돌림(사용자 결정)</li>
+</ul></ac:rich-text-body></ac:structured-macro>
+<!-- 문구 · 정책 반영 로그 / 용어 로그 / 검증 로그 — 있는 것만 -->
+</ac:layout-cell></ac:layout-section>
+```
+
+**3. 본문은 현재 상태만**
+
+| 영역 | 쓰는 것 | 빼는 것 |
+|---|---|---|
+| Background | 무엇을 · 어떻게(입력 방식) · 기준 문서 — 몇 줄 | 경위 · 변경 이력 |
+| Policy 표 | 현재 정책 · 규격 | 조회 기록 · 날짜별 실측 메모 |
+| Description | 화면 요소 정의 · 개발 참고 | 결정 경위 · 검증 결과 |
+
+**4. 개발팀이 알아야 할 사항은 Description에 정의한다** — 아래는 해당 항목에 **info 매크로(제목 「개발 참고」)**로 쓴다.
+
+- 신규 필드(형식 · 값 예시)
+- 적용 우선순위(예: `backgroundGradient`가 있으면 `backgroundColor`보다 우선)
+- 빈 값일 때 동작(그리지 않음 · 이동 없음 등)
+- FE가 정의해야 하는 동작
+- 이후 변경 예정(예: 고정 숫자를 변수로 전환 예정)
+
+신규 필드는 Policy 표에도 `신규 필드` 행으로 **한 줄만** 안내하고 위치를 가리킨다(예: `backgroundGradient`(상단 띠 배너) — Screen 1번 「개발 참고」).
+
+```xml
+<ac:structured-macro ac:name="info" ac:schema-version="1"><ac:parameter ac:name="title">개발 참고</ac:parameter><ac:rich-text-body><ul>
+  <li>신규 필드 <code>backgroundGradient</code>: CSS <code>linear-gradient()</code> 문자열. 값이 있으면 그대로 적용하고, 없으면 <code>backgroundColor</code>를 쓴다.</li>
+</ul></ac:rich-text-body></ac:structured-macro>
+```
+
+**5. Admin · JSON 항목 구조** — 항목마다 이 순서로 쓴다.
+
+1. `<h4>번호. 이름</h4>`
+2. API 링크
+3. 개발 참고(info 매크로)
+4. JSON 형식 정의 표 — `필드 | 타입 | 정의`
+5. JSON 펼치기(expand) — **전체 언어 JSON 1개**, Admin에 그대로 입력하는 형태. 제목 예: `1. JSON — 전체 언어 (Admin 그대로 입력)`
+
+**6. History와의 관계**
+
+- History 표는 **날짜별로 무엇을 바꿨는지 짧은 요약**만 쓴다(아래 Step 3 「같은 날짜 병합」 규칙 그대로). 세부 경위는 Log에 쓴다.
+- ⛔ 기존 History를 요약으로 정리할 때 **기존 항목을 지우지 않는다** — Step 3 「기존 History 행·항목은 보존(삭제 금지)」 규칙과 맞춰, 요약 전 원문을 Log 단의 **「이전 History 원문」 펼치기**로 **원문 그대로** 옮긴 뒤 History 표를 요약한다.
+
+**7. 적용 범위** — 기존 페이지는 **소급 정리하지 않는다**. 그 페이지를 고칠 때 또는 사용자가 정리를 요청할 때 맞춘다.
+
 ### 정책 변경 표시 — 날짜 태그 (사용자 확정 방식, 2026-10-26 — 생성·업데이트 공통)
 
 **기존 위키의 본문(Policy 표 · 상태 정의 · 정리 필요사항 · Screen Description 등 — History 표 제외)을 고칠 때, 바뀐 곳이 속한 Policy 행 · 섹션 맨 앞에 Confluence status 매크로로 날짜 태그를 붙인다(같은 날짜는 행 · 섹션당 1개 — 아래 「모아서 단다」).** 본보기는 pageId `4743946291`(v124 실측)이다.
